@@ -1,0 +1,14 @@
+.hamburgerActive {
+    & > span:first-child {
+        transform: rotate(45deg) translate(1rem, 0.25rem);
+    }
+
+    & > span:nth-child(2) {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    & > span:last-child {
+        transform: rotate(-45deg) translate(1rem, -0.25rem);
+    }
+}

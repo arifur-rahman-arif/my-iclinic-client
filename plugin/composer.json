@@ -1,0 +1,19 @@
+{
+    "name": "digitaltechnologa/belugasswimming",
+    "description": "Plugin to make API endpoints for front-end made with Next.js",
+    "type": "project",
+    "authors": [
+        {
+            "name": "AR. Arif",
+            "email": "dev.ar.arif@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DigitalTechnologia\\Beluga\\": "includes/classes"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "belugasswimming-client",
+  "version": "1.0.0",
+  "author": "https://digitaltechnologia.com",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently 'next dev' 'yarn tailwind --watch'",
+    "tailwind": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css",
+    "build": "next build",
+    "export": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css --minify && next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "code-check": "npx eslint . --ext .ts --ext .tsx --fix",
+    "format": "npx prettier --write \"**/*.+(html|css|scss|sass|less|js|jsx|ts|tsx|json|php)\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.5",
+    "gsap": "^3.11.3",
+    "next": "13.0.5",
+    "next-seo": "^5.14.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-lottie": "^1.2.3",
+    "react-redux": "^8.0.5",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@types/react-lottie": "^1.2.6",
+    "@types/react-redux": "^7.1.24",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-tailwindcss": "^3.7.0",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.0",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "sass": "^1.56.1",
+    "tailwindcss": "^3.2.4"
+  }
+}
