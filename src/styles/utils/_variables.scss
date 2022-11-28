@@ -3,15 +3,22 @@
     --container-width: 124rem; // 1240px
 
     // Color variables
-    --color-secondary: #3a3a3a;
-    --color-primary: #ffe202;
+    --color-secondary: #222d30;
+    --color-brand: #33d9ff;
+    --color-brand-light: #edfafd;
+    --color-white: #fff;
 
     // Typography variables
-    --font-lato-light: 'Lato-Light', arial, helvetica, sans-serif;
-    --font-lato-medium: 'Lato-Medium', arial, helvetica, sans-serif;
-    --font-lato-bold: 'Lato-Bold', arial, helvetica, sans-serif;
+    --mulish-light: 'Mulish-Light', arial, helvetica, sans-serif;
+    --mulish-medium: 'Mulish-Medium', arial, helvetica, sans-serif;
+    --mulish-bold: 'Mulish-Bold', arial, helvetica, sans-serif;
 
-    // CSS property variables
-    --transition: 500ms cubic-bezier(0.17, 0.67, 0.78, 0.46);
+    --lato-light: 'Lato-Light', arial, helvetica, sans-serif;
+    --lato-medium: 'Lato-Medium', arial, helvetica, sans-serif;
+    --lato-bold: 'Lato-Bold', arial, helvetica, sans-serif;
+
+    // Miscellaneous variables
+    --transition: 300ms cubic-bezier(0.77, 0.2, 0.05, 1);
+    --shadow1: 0.4rem 0.4rem 2.4rem rgba(142, 142, 142, 0.25);
     --border-radius: 2.5rem;
 }

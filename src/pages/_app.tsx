@@ -1,9 +1,9 @@
+import store from '@/app/store';
 import '@/styles/globals.scss';
-import '../../build/styles/tailwind.css';
 
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import store from '@/app/store';
+import '../../build/styles/tailwind.css';
 import MainLayout from '../layouts/MainLayout';
 
 /**
@@ -11,7 +11,7 @@ import MainLayout from '../layouts/MainLayout';
  *
  * @export
  * @param {AppProps} { Component, pageProps }
- * @return {*}  {JSX.Element}
+ * @returns {*}  {JSX.Element}
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
     return (

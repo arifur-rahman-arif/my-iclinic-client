@@ -1,3 +1,22 @@
+// Mulish font
+@font-face {
+    font-family: 'Mulish-Light';
+    font-weight: lighter;
+    src: url('/fonts/Mulish/Mulish-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Mulish-Medium';
+    font-weight: normal;
+    src: url('/fonts/Mulish/Mulish-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Mulish-Bold';
+    font-weight: bold;
+    src: url('/fonts/Mulish/Mulish-Bold.ttf');
+}
+
 // Lato font
 @font-face {
     font-family: 'Lato-Light';

@@ -13,7 +13,7 @@ interface PropInterface {
 const Section = ({
     children,
     className,
-    defaultClassName = 'mt-24 w-full sm:mt-36 md:mt-48'
+    defaultClassName = 'mt-24 w-full sm:mt-36 lg:mt-48'
 }: PropInterface): JSX.Element => {
     return <section className={`${defaultClassName || ''} ${className || ''}`}>{children}</section>;
 };

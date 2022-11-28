@@ -1,5 +1,5 @@
+import navbarSlice from '@/features/navbar/navbarSlice';
 import { configureStore } from '@reduxjs/toolkit';
-import cartSlice from '@/features/cart/cartSlice';
 
 /**
  * Redux make store function to create the store
@@ -8,13 +8,11 @@ import cartSlice from '@/features/cart/cartSlice';
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            cart: cartSlice
+            navbar: navbarSlice
         }
     });
 };
 
 const store = makeStore();
-
 export type AppState = ReturnType<typeof store.getState>;
-
 export default store;

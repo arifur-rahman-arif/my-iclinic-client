@@ -1,3 +1,5 @@
+import Page from '@/components/Page';
+
 /**
  * Home/Landing page component for the App
  *
@@ -6,8 +8,8 @@
  */
 export default function Home(): JSX.Element {
     return (
-        <>
-            <h1>Eye Clinic webpage</h1>
-        </>
+        <Page title="Home">
+            <></>
+        </Page>
     );
 }
