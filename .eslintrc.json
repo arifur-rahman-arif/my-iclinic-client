@@ -175,7 +175,8 @@
         ],
         "semi": ["error"],
         "quote-props": ["error", "as-needed"],
-        "operator-linebreak": ["error", "after"]
+        "operator-linebreak": ["error", "after"],
+        "no-tabs": ["error", { "allowIndentationTabs": true }]
     },
     "overrides": [
         {

@@ -37,14 +37,15 @@ const LinkList = ({
     stickyNavActive
 }: LinkListPropsInterface): any => {
     let linkClassNames =
-        'inline-block w-full text-[1.6rem] font-medium leading-8 hover:text-primary text-secondary lg:text-white';
+        'inline-block w-full text-[1.6rem] font-mulishMedium leading-8 hover:text-primary text-secondary lg:text-white';
 
     if (linkActive) {
-        linkClassNames = 'inline-block w-full text-[1.6rem] font-medium leading-8 hover:text-primary text-primary';
+        linkClassNames =
+            'inline-block w-full text-[1.6rem] font-mulishMedium leading-8 hover:text-primary text-primary';
     }
 
     if (stickyNavActive) {
-        linkClassNames = `inline-block w-full text-[1.6rem] font-medium leading-8 hover:text-primary ${
+        linkClassNames = `inline-block w-full text-[1.6rem] font-mulishMedium leading-8 hover:text-primary ${
             linkActive ? 'text-primary' : 'text-secondary'
         }`;
     }

@@ -3,35 +3,41 @@
     font-family: 'Mulish-Light';
     font-weight: lighter;
     src: url('/fonts/Mulish/Mulish-Light.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Mulish-Medium';
     font-weight: normal;
     src: url('/fonts/Mulish/Mulish-Medium.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Mulish-Bold';
     font-weight: bold;
     src: url('/fonts/Mulish/Mulish-Bold.ttf');
+    font-display: swap;
 }
 
 // Lato font
 @font-face {
     font-family: 'Lato-Light';
-    font-weight: lighter;
+    font-weight: 300;
     src: url('/fonts/Lato/Lato-Light.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Lato-Medium';
     font-weight: 500;
     src: url('/fonts/Lato/Lato-Regular.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Lato-Bold';
     font-weight: bolder;
     src: url('/fonts/Lato/Lato-Bold.ttf');
+    font-display: swap;
 }

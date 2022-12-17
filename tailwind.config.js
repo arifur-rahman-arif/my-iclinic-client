@@ -3,30 +3,35 @@
 module.exports = {
     mode: 'jit',
     content: [
-        './src/**/*.{js,ts,jsx,tsx}'
+        './src/**/*.{ts,jsx,tsx}'
     ],
     autoprefixer: {},
     theme: {
         extend: {
             colors: {
-                brand: '#33d9ff',
-                brandLight: '#edfafd',
-                secondary: '#222d30',
-                white: '#fff'
+                brand: 'var(--color-brand)',
+                brandLight: 'var(--color-brand-light)',
+                heading: 'var(--color-heading)',
+                heading2: 'var(--color-heading2)',
+                secondary: 'var(--color-secondary)',
+                white: 'var(--color-white)',
+                yellow: 'var(--color-yellow)',
+                blue: 'var(--color-blue)',
             },
             fontFamily: {
-                mulishLight: '\'Mulish-Light\', arial, helvetica, sans-serif',
-                mulishMedium: '\'Mulish-Medium\', arial, helvetica, sans-serif',
-                mulishBold: '\'Mulish-Bold\', arial, helvetica, sans-serif',
-                latoLight: '\'Lato-Light\', arial, helvetica, sans-serif',
-                latoMedium: '\'Lato-Medium\', arial, helvetica, sans-serif',
-                latoBold: '\'Lato-Bold\', arial, helvetica, sans-serif'
+                mulishLight: 'var(--mulish-light)',
+                mulishMedium: 'var(--mulish-medium)',
+                mulishBold: 'var(--mulish-bold)',
+                latoLight: 'var(--lato-light)',
+                latoMedium: 'var(--lato-medium)',
+                latoBold: 'var(--lato-bold)'
             },
             borderRadius: {
-                primary: '2.5rem'
+                primary: 'var(--border-radius)'
             },
             boxShadow: {
-                'shadow1': '0.4rem 0.4rem 2.4rem rgba(142, 142, 142, 0.25)'
+                'shadow1': 'var(--shadow1)',
+                'shadow2': 'var(--shadow2)'
             }
         }
     },
