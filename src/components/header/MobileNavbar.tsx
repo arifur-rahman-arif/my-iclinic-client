@@ -38,24 +38,17 @@ const MobileNavbar = ({ removeIndicator }: MobileNavbarInstance): JSX.Element =>
      * @param {boolean} open
      * @returns {(event: (KeyboardEvent | MouseEvent)) => void}
      */
-    const toggleDrawer = // eslint-disable-next-line
-
-            (
-                anchor: Anchor,
-                open: boolean
-            ): ((event: KeyboardEvent | MouseEvent) => void) => // eslint-disable-next-line
-            (event: KeyboardEvent | MouseEvent) => {
-                // eslint-disable-next-line
-                if (
-                    // eslint-disable-next-line
-                    event.type === 'keydown' && // eslint-disable-next-line
-                    ((event as KeyboardEvent).key === 'Tab' || (event as KeyboardEvent).key === 'Shift') // eslint-disable-next-line
-                ) {
-                    // eslint-disable-next-line
-                    return; // eslint-disable-next-line
-                }
-                dispatch(toggleNavbar(!navbarPositionState[anchorPosition])); // eslint-disable-next-line
-            };
+    const toggleDrawer =
+        (anchor: Anchor, open: boolean): ((event: KeyboardEvent | MouseEvent) => void) =>
+        (event: KeyboardEvent | MouseEvent) => {
+            if (
+                event.type === 'keydown' &&
+                ((event as KeyboardEvent).key === 'Tab' || (event as KeyboardEvent).key === 'Shift')
+            ) {
+                return;
+            }
+            dispatch(toggleNavbar(!navbarPositionState[anchorPosition]));
+        };
 
     useEffect(() => {
         setTimeout(() => {
