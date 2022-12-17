@@ -40,15 +40,15 @@ const MobileNavbar = ({ removeIndicator }: MobileNavbarInstance): JSX.Element =>
      */
     const toggleDrawer =
         (anchor: Anchor, open: boolean): ((event: KeyboardEvent | MouseEvent) => void) =>
-        (event: KeyboardEvent | MouseEvent) => {
-            if (
-                event.type === 'keydown' &&
+            (event: KeyboardEvent | MouseEvent) => {
+                if (
+                    event.type === 'keydown' &&
                 ((event as KeyboardEvent).key === 'Tab' || (event as KeyboardEvent).key === 'Shift')
-            ) {
-                return;
-            }
-            dispatch(toggleNavbar(!navbarPositionState[anchorPosition]));
-        };
+                ) {
+                    return;
+                }
+                dispatch(toggleNavbar(!navbarPositionState[anchorPosition]));
+            };
 
     useEffect(() => {
         setTimeout(() => {
