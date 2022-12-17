@@ -1,3 +1,4 @@
 **/*.config.js
 canUsePassiveEvents.ts
 useOnclickOutside.tsx
+MobileNavbar.tsx
