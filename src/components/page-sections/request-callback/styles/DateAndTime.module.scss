@@ -1,0 +1,76 @@
+@import '/src/styles/utils/breakpoints';
+
+.calendar {
+    :global {
+        .react-calendar {
+            border: none;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow1);
+            background-color: var(--color-white);
+            width: 100%;
+            padding: 1rem;
+
+            @include media-breakpoint-up(sm) {
+                padding: 2rem;
+                box-shadow: var(--shadow1);
+            }
+
+            button {
+                &,
+                & * {
+                    font-size: 1.6rem;
+                }
+            }
+
+            &__navigation__arrow {
+                font-size: 3.2rem !important;
+                display: grid;
+                place-items: center;
+                position: relative;
+                top: -0.3rem;
+            }
+
+            &__navigation__prev-button,
+            &__navigation__next-button {
+                font-size: 3.5rem;
+            }
+
+            &__navigation__label__labelText {
+                font-size: 2rem;
+            }
+
+            &__tile--now {
+                background: #ffffa9 !important;
+            }
+
+            &__tile--active {
+                position: relative;
+                z-index: 1;
+                background: none !important;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background: none !important;
+                }
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    border-radius: 50%;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-49%, -50%);
+                    z-index: -1;
+                    background: var(--color-brand);
+                }
+            }
+
+            &__tile--hasActive {
+                background: var(--color-brand-light);
+            }
+        }
+    }
+}

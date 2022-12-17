@@ -1,3 +1,4 @@
 import MainLayout from './MainLayout';
+import NoNavigationLayout from './NoNavigationLayout';
 
-export { MainLayout };
+export { NoNavigationLayout, MainLayout };

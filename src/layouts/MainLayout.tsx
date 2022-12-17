@@ -1,5 +1,9 @@
 import { Header } from '@/components/header';
+import LazyComponent from '@/components/LazyComponent';
 import { ReactNode } from 'react';
+import dynamic from 'next/dynamic';
+
+const Footer = dynamic(() => import('@/components/footer/Footer'));
 
 interface PropTypes {
     children: ReactNode;
@@ -16,7 +20,9 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
         <>
             <Header />
             {children}
-            {/* <Footer /> */}
+            <LazyComponent>
+                <Footer />
+            </LazyComponent>
         </>
     );
 };

@@ -13,9 +13,14 @@ interface PropTypes {
 const ContainerFluid = ({
     children,
     className,
-    defaultClassName = 'relative mx-auto w-full px-8 xl:px-0'
+    defaultClassName = 'relative mx-auto w-full px-8 xl:px-0',
+    ...others
 }: PropTypes): JSX.Element => {
-    return <div className={`${defaultClassName} ${className} px-8 xl:px-0`}>{children}</div>;
+    return (
+        <div className={`${defaultClassName} ${className} px-8 xl:px-0`} {...others}>
+            {children}
+        </div>
+    );
 };
 
 export default ContainerFluid;

@@ -8,8 +8,9 @@ import Page from '@/components/Page';
  */
 export default function Home(): JSX.Element {
     return (
-        <Page title="Home">
-            <></>
-        </Page>
+        <Page
+            title="Home"
+            description="Our specialist consultants offer a selection of laser eye surgery and lens surgery treatments that allow you to discover crystal clear vision."
+        ></Page>
     );
 }

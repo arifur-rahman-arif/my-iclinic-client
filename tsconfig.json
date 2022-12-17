@@ -44,8 +44,8 @@
 			"@/icons/*": [
 				"public/images/icons/*"
 			],
-			"@/app/*": [
-				"src/app/*"
+			"@/store": [
+				"src/store/store.ts"
 			],
 			"@/features/*": [
 				"src/features/*"
@@ -53,6 +53,9 @@
 			"@/services/*": [
 				"src/services/*"
 			],
+			"@/hooks": [
+				"src/hooks/index.ts"
+			]
 		}
   },
   "include": [

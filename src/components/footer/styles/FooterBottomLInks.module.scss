@@ -1,0 +1,14 @@
+.list {
+    li:not(:last-child) {
+        a:after {
+            content: '';
+            position: absolute;
+            top: 60%;
+            right: 0;
+            height: 70%;
+            width: 0.1rem;
+            background-color: var(--color-secondary);
+            transform: translate(1.5rem, -50%);
+        }
+    }
+}
