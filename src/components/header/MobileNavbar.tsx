@@ -64,6 +64,7 @@ const MobileNavbar = ({ removeIndicator }: MobileNavbarInstance): JSX.Element =>
                         </Link>
 
                         <IconButton
+                            aria-label="Close navigation"
                             onClick={() => {
                                 dispatch(toggleNavbar(!navbarPositionState[anchorPosition]));
                             }}

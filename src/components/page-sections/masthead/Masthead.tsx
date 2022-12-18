@@ -17,8 +17,8 @@ const Masthead = (): JSX.Element => {
                     alt=""
                     fill
                     className="object-cover object-[75%_top]"
-                    quality={60}
-                    priority
+                    quality={40}
+                    priority={true}
                     sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
                 />
             </div>

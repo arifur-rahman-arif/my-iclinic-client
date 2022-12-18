@@ -1,9 +1,9 @@
 import { Accordion } from '@/components/accordion';
 import { Container } from '@/components/container';
 import { FaqListInterface } from '@/components/page-sections/faq/faqList';
-import FaqSearch from './FaqSearch';
 import { Section } from '@/components/section';
 import { useState } from 'react';
+import FaqSearch from './FaqSearch';
 
 interface FaqInterface {
     faqs: FaqListInterface[];

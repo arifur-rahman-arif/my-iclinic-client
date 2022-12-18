@@ -1,21 +1,19 @@
 import { DrawLine, Masthead, SideImageSection, StackedSection } from '@/components/page-sections';
 
-import { Button } from '@/components/button';
 import { Container, ContainerFluid } from '@/components/container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/link';
 import Page from '@/components/Page';
 import { presbyoundFaqList } from '@/components/page-sections/faq/faqList';
-import { FeaturedPatient, presbyoundSliders } from '@/components/page-sections/featured-patient';
+import { presbyoundSliders } from '@/components/page-sections/featured-patient';
 import { LeftRightSection, LeftRightSectionChildrenInterface } from '@/components/page-sections/left-right';
 import { presbyoundStackList } from '@/components/page-sections/stacked-section';
 import { Section } from '@/components/section';
-import { normalSlideList } from '@/components/slider/card-slider/normal-card-slide/normalSlideList';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useEffect, useState } from 'react';
-import gsap from 'gsap';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -24,8 +22,10 @@ if (typeof window !== 'undefined') {
 const PdfDownload = dynamic(() => import('@/components/page-sections/pdf-download/PdfDownload'));
 const CompanyLogos = dynamic(() => import('@/components/page-sections/company-logos/CompanyLogos'));
 const Faq = dynamic(() => import('@/components/page-sections/faq/Faq'));
-const NormalSlide = dynamic(() => import('@/components/slider/card-slider/normal-card-slide/NormalSlide'));
 const CallbackSection = dynamic(() => import('@/components/page-sections/request-callback/CallbackSection'));
+const BottomBanner = dynamic(() => import('@/components/page-sections/bottom-full-banners/BottomBanner'));
+const FeaturedPatient = dynamic(() => import('@/components/page-sections/featured-patient/FeaturedPatient'));
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/normal-slide/NormalSlideSection'));
 
 const leftRightList: Array<LeftRightSectionChildrenInterface> = [
     {
@@ -221,21 +221,23 @@ export default function Presbyound(): JSX.Element {
                 }}
             />
 
-            <FeaturedPatient
-                h2Title="Presbyound Patient"
-                h3Title="Life after Presbyound laser eye surgery"
-                bandImageDescription={[
-                    `My experience was amazing. The whole team is very kind and exceedingly professional.`,
-                    'The after care is exceptional and I would highly recommend them.'
-                ]}
-                bandImageTitle="Sharon Needleman"
-                bandImageURL="/images/section-images/mr-lukicov.png"
-                reviewDescription={[
-                    `Being able to see again without glasses is the best feeling and the best money I have ever spent!!!`
-                ]}
-                reviewTitle="Thank you My-iClinic"
-                sliders={presbyoundSliders}
-            />
+            <LazyComponent>
+                <FeaturedPatient
+                    h2Title="Presbyound Patient"
+                    h3Title="Life after Presbyound laser eye surgery"
+                    bandImageDescription={[
+                        `My experience was amazing. The whole team is very kind and exceedingly professional.`,
+                        'The after care is exceptional and I would highly recommend them.'
+                    ]}
+                    bandImageTitle="Sharon Needleman"
+                    bandImageURL="/images/section-images/mr-lukicov.png"
+                    reviewDescription={[
+                        `Being able to see again without glasses is the best feeling and the best money I have ever spent!!!`
+                    ]}
+                    reviewTitle="Thank you My-iClinic"
+                    sliders={presbyoundSliders}
+                />
+            </LazyComponent>
 
             <SideImageSection
                 h2Heading="Transparent Price"
@@ -307,76 +309,9 @@ export default function Presbyound(): JSX.Element {
                 positionReversed={true}
             />
 
-            {/* Full banner section */}
-            <Section>
-                <ContainerFluid className="z-[2] px-0">
-                    <div
-                        style={{ background: 'linear-gradient(180deg, #30CAD3 0%, rgba(204, 231, 254, 0) 100%)' }}
-                        className="w-full"
-                    >
-                        <div className="relative w-full md:hidden">
-                            <Image
-                                src="/images/section-images/presbyound-banner-bg.png"
-                                alt="Want to be free from reading glasses?"
-                                width={415}
-                                height={319}
-                                quality={30}
-                                className="absolute right-0 top-0 h-auto w-auto"
-                            />
-                            {/* Hidden image to take the actual space for absolute positioned element */}
-                            <Image
-                                src="/images/section-images/presbyound-banner-bg.png"
-                                alt="Want to be free from reading glasses?"
-                                width={415}
-                                height={319}
-                                quality={1}
-                                className="invisible h-auto w-auto"
-                            />
-                        </div>
-                        <Container className="relative grid grid-cols-1 items-center py-12 md:min-h-[57.5rem] md:grid-cols-[auto_1fr] md:py-0">
-                            {/* Banner */}
-                            <div className="relative z-10 grid max-w-[33.8rem] grid-cols-1 content-start gap-x-6 justify-self-center rounded-primary md:max-w-[56rem] md:grid-cols-[auto_1fr] md:gap-y-24 md:justify-self-start md:bg-brandLight md:py-24 md:px-12 md:shadow-shadow2">
-                                <h2 className="font-latoLight text-[3.2rem] font-light normal-case leading-[3.6rem] text-heading md:col-span-2 md:text-[4.8rem] md:leading-[4.8rem]">
-                                    Want to be free from reading glasses?
-                                </h2>
-                                <Button
-                                    type="anchor"
-                                    text="Book a consultation"
-                                    iconPosition="left"
-                                    className="mt-24 justify-self-center md:mt-0 md:justify-self-start"
-                                    icon={
-                                        <Image
-                                            src="/images/icons/icon-calendar-outline-darker.svg"
-                                            alt=""
-                                            width={20}
-                                            height={20}
-                                            quality={2}
-                                            className="h-8 w-8"
-                                        />
-                                    }
-                                />
-                                <Button
-                                    type="anchor"
-                                    text="0208 445 8877"
-                                    iconPosition="left"
-                                    className="mt-6 place-content-center justify-self-center border !bg-transparent md:mt-0 md:min-w-[23.3rem] md:justify-self-start md:text-[2rem] md:leading-[2.4rem]"
-                                    icon={
-                                        <Image
-                                            src="/images/icons/icon-phone-dark.svg"
-                                            alt=""
-                                            width={20}
-                                            height={20}
-                                            quality={2}
-                                            className="h-8 w-8"
-                                        />
-                                    }
-                                />
-                            </div>
-                        </Container>
-                        <div className="absolute top-0 left-0 z-[1] h-full w-full bg-[100%_100%] bg-no-repeat md:bg-[url('/images/section-images/presbyound-banner-bg-desktop.webp')] lg:bg-[auto_100%] lg:bg-[right_center]"></div>
-                    </div>
-                </ContainerFluid>
-            </Section>
+            <LazyComponent>
+                <BottomBanner />
+            </LazyComponent>
 
             <Section>
                 <ContainerFluid className="md:h-[51rem]">
@@ -576,18 +511,18 @@ export default function Presbyound(): JSX.Element {
                 <PdfDownload />
             </LazyComponent>
 
-            <Section>
-                <ContainerFluid className="px-0">
-                    <NormalSlide sliderList={normalSlideList} />
-                </ContainerFluid>
-            </Section>
+            <LazyComponent>
+                <NormalSlideSection />
+            </LazyComponent>
 
-            <Faq
-                faqs={presbyoundFaqList}
-                titleLight="Presbyound Frequently"
-                titleBold="Asked Questions"
-                description="Have a question? We’r here to help."
-            />
+            <LazyComponent>
+                <Faq
+                    faqs={presbyoundFaqList}
+                    titleLight="Presbyound Frequently"
+                    titleBold="Asked Questions"
+                    description="Have a question? We’r here to help."
+                />
+            </LazyComponent>
         </Page>
     );
 }

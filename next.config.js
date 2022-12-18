@@ -7,6 +7,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+    images: {
+        formats: ['image/avif', 'image/webp'],
+    },
     i18n: {
         // These are all the locales you want to support in
         // your application
