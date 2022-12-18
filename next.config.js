@@ -35,15 +35,15 @@ const nextConfig = {
         //   },
         // ],
     },
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.svg$/i,
-            issuer: /\.[jt]sx?$/,
-            use: ['@svgr/webpack'],
-        });
+    // webpack(config) {
+    //     config.module.rules.push({
+    //         test: /\.svg$/i,
+    //         issuer: /\.[jt]sx?$/,
+    //         use: ['@svgr/webpack'],
+    //     });
 
-        return config;
-    },
+    //     return config;
+    // },
     // Need this, if it is a static file export
     // trailingSlash: true,
     // experimental:{appDir: true}

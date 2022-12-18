@@ -132,12 +132,11 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu, router }: NavLink
                         />
 
                         <IconButton
-                            // Absolute right-0 top-2/4 -translate-y-2/4 translate-x-14 xl:translate-x-10
                             onClick={() => {
                                 toggleSubmenu(menu.slug, menu.parentMenu || false);
                             }}
                             ref={iconRef}
-                            className="absolute right-0 top-0 -translate-y-2 xl:relative xl:translate-y-0"
+                            className="absolute right-0 top-0 -translate-y-1 xl:relative xl:translate-y-0"
                             title="Dropdown"
                         >
                             <Image
