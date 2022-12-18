@@ -32,6 +32,7 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
     const [sliderSpace, setSliderSpace] = useState<number>(0);
     const [autoHeight, setAutoHeight] = useState<boolean>(true);
     const [navigation, setNavigation] = useState<boolean>(true);
+    const [speed, setSpeed] = useState<number>(300);
     const [autoPlayConfig] = useState<any>({
         delay: 4000,
         disableOnInteraction: false
@@ -70,6 +71,7 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
             setSliderSpace(1);
             setAutoHeight(true);
             setNavigation(true);
+            setSpeed(300);
             setPaginationConfig({
                 clickable: true,
                 type: 'fraction'
@@ -82,12 +84,13 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
             setAutoHeight(false);
             setNavigation(false);
             setPaginationConfig(false);
+            setSpeed(2000);
         }
     };
 
     return (
         <Swiper
-            speed={2000}
+            speed={speed}
             direction={direction}
             slidesPerView={slidesPerView}
             spaceBetween={sliderSpace}

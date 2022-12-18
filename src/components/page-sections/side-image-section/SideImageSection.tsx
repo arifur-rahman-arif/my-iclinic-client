@@ -79,7 +79,7 @@ const SideImageSection = ({
                         src={sectionImage.url}
                         width={sectionImage.width}
                         height={sectionImage.height}
-                        quality={20}
+                        quality={70}
                         className="md:hidden"
                         alt={h3LightHeading ? h3LightHeading : normalLightHeading || ''}
                     />
@@ -87,7 +87,7 @@ const SideImageSection = ({
                         src={sectionImageDesktop.url}
                         width={sectionImageDesktop.width}
                         height={sectionImageDesktop.height}
-                        quality={20}
+                        quality={70}
                         className={`hidden md:block`}
                         alt={h3LightHeading ? h3LightHeading : normalLightHeading || ''}
                     />

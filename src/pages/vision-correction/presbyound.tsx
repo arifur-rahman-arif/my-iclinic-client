@@ -14,7 +14,7 @@ import { normalSlideList } from '@/components/slider/card-slider/normal-card-sli
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 
 if (typeof window !== 'undefined') {
@@ -34,7 +34,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-consultation.png"
                 width={390}
                 height={390}
-                quality={20}
+                quality={70}
                 className="md:hidden"
                 alt="Presbyound Consultation"
             />
@@ -44,7 +44,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-consultation-desktop.png"
                 width={685}
                 height={587}
-                quality={20}
+                quality={70}
                 className="hidden md:block"
                 alt="Presbyound Consultation"
             />
@@ -63,7 +63,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-surgery.png"
                 width={390}
                 height={390}
-                quality={20}
+                quality={70}
                 className="md:hidden"
                 alt="Presbyound surgery"
             />
@@ -73,7 +73,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-surgery-desktop.png"
                 width={677}
                 height={558}
-                quality={20}
+                quality={70}
                 className="hidden md:block"
                 alt="Presbyound surgery"
             />
@@ -92,7 +92,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-aftercare.png"
                 width={390}
                 height={390}
-                quality={20}
+                quality={70}
                 className="md:hidden"
                 alt="Presbyound aftercare"
             />
@@ -102,7 +102,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-aftercare-desktop.png"
                 width={685}
                 height={587}
-                quality={20}
+                quality={70}
                 className="hidden md:block"
                 alt="Presbyound aftercare"
             />
@@ -124,19 +124,31 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
  * @returns {JSX.Element}
  */
 export default function Presbyound(): JSX.Element {
+    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+
     useEffect(() => {
         setInterval(() => {
             ScrollTrigger.refresh();
-        }, 700);
+        }, 3000);
+
+        const windowWidth = window.innerWidth;
+
+        if (windowWidth > 768) {
+            setLoadCallbackSection(true);
+        }
+
+        setTimeout(() => {
+            if (windowWidth < 768) {
+                setLoadCallbackSection(true);
+            }
+        }, 1500);
     }, []);
 
     return (
         <Page title="Presbyound" description="Correct your vision and say Goodbye to reading glasses">
             <Masthead />
 
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
+            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
             <SideImageSection
                 h2Heading="Vision correction treatment"
@@ -173,7 +185,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment.png"
                             width={370}
                             height={352}
-                            quality={20}
+                            quality={70}
                             className="md:hidden"
                             alt="London’s best laser treatment for achieving clear vision at all distances"
                         />
@@ -181,7 +193,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment-desktop.png"
                             width={688}
                             height={607}
-                            quality={20}
+                            quality={70}
                             className="hidden md:block"
                             alt="Getting rid of your reading glasses with our Presbyound Laser Treatment"
                         />
@@ -308,7 +320,7 @@ export default function Presbyound(): JSX.Element {
                                 alt="Want to be free from reading glasses?"
                                 width={415}
                                 height={319}
-                                quality={20}
+                                quality={70}
                                 className="absolute right-0 top-0 h-auto w-auto"
                             />
                             {/* Hidden image to take the actual space for absolute positioned element */}
@@ -347,7 +359,7 @@ export default function Presbyound(): JSX.Element {
                                     type="anchor"
                                     text="0208 445 8877"
                                     iconPosition="left"
-                                    className="mt-6 place-content-center justify-self-center md:mt-0 md:min-w-[23.3rem] md:justify-self-start md:text-[2rem] md:leading-[2.4rem]"
+                                    className="mt-6 place-content-center justify-self-center border !bg-transparent md:mt-0 md:min-w-[23.3rem] md:justify-self-start md:text-[2rem] md:leading-[2.4rem]"
                                     icon={
                                         <Image
                                             src="/images/icons/icon-phone-dark.svg"
@@ -373,7 +385,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={388}
                         height={101}
-                        quality={20}
+                        quality={70}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
@@ -473,7 +485,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={638}
                         height={137}
-                        quality={20}
+                        quality={70}
                         className="mx-auto md:h-auto md:w-auto"
                     />
                 </Container>
@@ -542,7 +554,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={388}
                         height={101}
-                        quality={20}
+                        quality={70}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
@@ -550,7 +562,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={1157}
                         height={470}
-                        quality={20}
+                        quality={70}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </Container>

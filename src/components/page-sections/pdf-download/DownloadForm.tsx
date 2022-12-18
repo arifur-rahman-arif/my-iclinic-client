@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
 import { RadioField, TextField } from '@/components/inputs';
 
 import { Button } from '@/components/button';
@@ -8,12 +8,17 @@ import { useDispatch } from 'react-redux';
 import { useDownloadFormSubmissionMutation } from '@/services/downloadForm';
 import { validateEmail } from '@/utils/miscellaneous';
 
+interface DownloadFormInterface {
+    setShowDownloadOnTheWayTemplate: Dispatch<SetStateAction<boolean>>;
+    setShowForm: Dispatch<SetStateAction<boolean>>;
+}
+
 /**
- *Download form for the pdf
+ * Download form for the pdf
  *
  * @returns {*}  {JSX.Element}
  */
-const DownloadForm = (): JSX.Element => {
+const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: DownloadFormInterface): JSX.Element => {
     const dispatch = useDispatch();
     const [submitForm, response] = useDownloadFormSubmissionMutation();
     const [name, setName] = useState<string>('');
@@ -50,17 +55,18 @@ const DownloadForm = (): JSX.Element => {
             }
 
             if (response.isSuccess) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'success',
-                        alertMessage: (response.error as any).data.data.message
-                    })
-                );
+                // Dispatch(
+                //     handleAlert({
+                //         showAlert: true,
+                //         alertType: 'success',
+                //         alertMessage: (response.error as any).data.data.message
+                //     })
+                // );
+                // window.open('/pdf/cataract-surgery.pdf', '_blank');
 
+                setShowForm(false);
+                setShowDownloadOnTheWayTemplate(true);
                 resetForm();
-
-                window.open('/pdf/cataract-surgery.pdf', '_blank');
             }
         } catch (err: any) {
             dispatch(

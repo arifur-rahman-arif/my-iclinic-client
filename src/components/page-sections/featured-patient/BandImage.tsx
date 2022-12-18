@@ -17,7 +17,7 @@ const BandImage = ({ title, imageURL }: BandImageInterface): JSX.Element => {
         <div className="relative max-w-[40rem] justify-self-center md:justify-self-end">
             <div className="relative z-[1] flex flex-col items-center justify-start gap-14 rounded-primary bg-white p-8 shadow-shadow1 sm:p-14">
                 <div className="overflow-hidden rounded-primary">
-                    <Image src={imageURL} width={332} height={244} quality={20} alt="" className="" />
+                    <Image src={imageURL} width={332} height={244} quality={70} alt="" className="" />
                 </div>
 
                 <H4Variant1 className="text-center">{title}</H4Variant1>

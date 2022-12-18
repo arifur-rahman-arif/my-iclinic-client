@@ -226,3 +226,11 @@ body {
     width: 5px;
     height: 1px;
 }
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px white inset; /* Change the color to your own background color */
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset; /*your box-shadow*/
+}

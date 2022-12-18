@@ -17,7 +17,7 @@ const CompanyLogos = (): JSX.Element => {
                             className="h-full w-full object-contain"
                             src="/images/section-images/royal-society-medicine.png"
                             alt=""
-                            quality={20}
+                            quality={70}
                             width={157}
                             height={68}
                         />
@@ -27,7 +27,7 @@ const CompanyLogos = (): JSX.Element => {
                             className="h-full w-full object-contain"
                             src="/images/section-images/ukiscrs.png"
                             alt=""
-                            quality={20}
+                            quality={70}
                             width={143}
                             height={52}
                         />
@@ -37,7 +37,7 @@ const CompanyLogos = (): JSX.Element => {
                             className="h-full w-full object-contain"
                             src="/images/section-images/royal-collage.png"
                             alt=""
-                            quality={20}
+                            quality={70}
                             width={143}
                             height={143}
                         />
@@ -47,7 +47,7 @@ const CompanyLogos = (): JSX.Element => {
                             className="h-full w-full object-contain"
                             src="/images/section-images/escrs.png"
                             alt=""
-                            quality={20}
+                            quality={70}
                             width={153}
                             height={80}
                         />

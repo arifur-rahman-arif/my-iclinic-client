@@ -57,7 +57,7 @@ const NormalSlide = ({ sliderList }: NormalSlidePropInterface) => {
                                             alt=""
                                             width={22}
                                             height={22}
-                                            className="md:h-auto md:w-auto"
+                                            className="h-[2.2rem] w-[2.2rem]"
                                             key={index}
                                         />
                                     ))}

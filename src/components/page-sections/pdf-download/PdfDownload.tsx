@@ -4,6 +4,11 @@ import Image from 'next/image';
 import PdfList from './PdfList';
 import { Section } from '@/components/section';
 import pdfList from './pdfList';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const DownloadOnTheWay = dynamic(() => import('./DownloadOnTheWay'));
+const Thankyou = dynamic(() => import('./Thankyou'));
 
 /**
  * Pdf download section
@@ -11,10 +16,14 @@ import pdfList from './pdfList';
  * @returns {*}  {JSX.Element}
  */
 const PdfDownload = (): JSX.Element => {
+    const [showForm, setShowForm] = useState<boolean>(true);
+    const [showDownloadOnTheWayTemplate, setShowDownloadOnTheWayTemplate] = useState<boolean>(false);
+    const [showThankYouTemplate, setShowThankYouTemplate] = useState<boolean>(false);
+
     return (
         <Section>
             <Container>
-                <div className="relative mx-auto grid max-w-[100.2rem] grid-cols-1 overflow-y-clip rounded-primary bg-white shadow-shadow1 md:grid-cols-[auto_1fr]">
+                <div className="relative mx-auto grid max-w-[100.2rem] grid-cols-1 rounded-primary bg-white shadow-shadow1 md:grid-cols-[auto_1fr]">
                     <Image
                         alt=""
                         src="/images/section-images/half-skewed-shape.svg"
@@ -28,7 +37,7 @@ const PdfDownload = (): JSX.Element => {
                             <Image
                                 src="/images/section-images/eye-testing-letters.svg"
                                 alt=""
-                                quality={20}
+                                quality={70}
                                 width={253}
                                 height={160}
                                 className="h-[16rem] w-[25.3rem]"
@@ -46,7 +55,22 @@ const PdfDownload = (): JSX.Element => {
                         </ul>
                     </div>
 
-                    <DownloadForm />
+                    {showForm && (
+                        <DownloadForm
+                            setShowForm={setShowForm}
+                            setShowDownloadOnTheWayTemplate={setShowDownloadOnTheWayTemplate}
+                        />
+                    )}
+
+                    {showDownloadOnTheWayTemplate && (
+                        <DownloadOnTheWay
+                            showDownloadOnTheWayTemplate={showDownloadOnTheWayTemplate}
+                            setShowThankYouTemplate={setShowThankYouTemplate}
+                            setShowDownloadOnTheWayTemplate={setShowDownloadOnTheWayTemplate}
+                        />
+                    )}
+
+                    {showThankYouTemplate && <Thankyou />}
                 </div>
             </Container>
         </Section>

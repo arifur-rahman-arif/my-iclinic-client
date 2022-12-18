@@ -16,7 +16,7 @@ interface DoneInterface {
 /**
  * Thank you step for request-callback submission
  *
- * @param {DoneInterface} { date }
+ * @param {DoneInterface} { date, formSubmitted }
  * @returns {*}  {JSX.Element}
  */
 const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
@@ -41,7 +41,7 @@ const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
                 <p className="text-center">We just sent you a confirmation email</p>
                 <Image
                     src="/images/avaters/people-jumping.svg"
-                    quality={20}
+                    quality={70}
                     alt=""
                     width={152}
                     height={130}

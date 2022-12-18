@@ -123,7 +123,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu, router }: NavLink
         <>
             {menu?.submenu ? (
                 <li className="relative flex w-full flex-col items-start justify-center xl:w-auto">
-                    <div className="relative flex w-full items-center justify-start xl:gap-2">
+                    <div className="relative flex w-full items-center justify-between xl:justify-start xl:gap-2 ">
                         <SingleLink
                             menu={menu}
                             isMenuActive={isMenuActive}
@@ -137,7 +137,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu, router }: NavLink
                                 toggleSubmenu(menu.slug, menu.parentMenu || false);
                             }}
                             ref={iconRef}
-                            className="absolute right-0 top-0 -translate-y-1 xl:relative xl:translate-y-[0.1rem]"
+                            className="absolute right-0 top-0 -translate-y-2 xl:relative xl:translate-y-0"
                             title="Dropdown"
                         >
                             <Image

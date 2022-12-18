@@ -35,7 +35,7 @@ const FooterBody = (): JSX.Element => {
                         width={158}
                         height={49}
                         src="/images/logos/logo-iclinic-footer.png"
-                        quality={20}
+                        quality={70}
                     />
                     <h4 className="normal-case">Quality approved Clinic</h4>
                 </div>
@@ -45,7 +45,7 @@ const FooterBody = (): JSX.Element => {
                 <div className={`mt-6 w-full max-w-[45.3rem] overflow-hidden`}>
                     <Image
                         src="/images/icons/icon-pin-long.svg"
-                        quality={20}
+                        quality={70}
                         alt=""
                         width={453}
                         height={2}

@@ -60,6 +60,13 @@ const TextField = ({
         animateInput();
     }, []);
 
+    useEffect(() => {
+        if (value) return;
+
+        inputRef.current.blur();
+        removeAnimation();
+    }, [value]);
+
     // Animate the error text
     useEffect(() => {
         error &&
@@ -207,7 +214,7 @@ const TextField = ({
 
             {value ? (
                 <span
-                    className={`absolute right-4 ${
+                    className={`absolute right-4 cursor-pointer ${
                         type === 'textarea' ? 'top-12 -translate-y-2/4' : 'top-2/4 -translate-y-2/4'
                     }`}
                 >

@@ -50,7 +50,7 @@ const StackBox = ({ image, desktopImage, title, descriptions, boxWidth, index }:
                 width={image.width}
                 height={image.height}
                 alt={title}
-                quality={20}
+                quality={70}
                 className="justify-self-center md:hidden md:h-auto md:w-auto"
             />
             <Image
@@ -58,7 +58,7 @@ const StackBox = ({ image, desktopImage, title, descriptions, boxWidth, index }:
                 width={desktopImage.width}
                 height={desktopImage.height}
                 alt={title}
-                quality={20}
+                quality={70}
                 className={`hidden rounded-primary md:block md:h-auto md:w-auto ${
                     isEven ? 'justify-self-end' : 'justify-self-start'
                 }`}

@@ -3,19 +3,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // Define a service using a base URL and expected endpoints
 export const downloadFormApi = createApi({
     reducerPath: 'downloadFormApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_REST_URL}` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `/api` }),
     // BaseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_WP_URL}/wp-json/wp/v2/` }),
     endpoints: (builder) => ({
         downloadFormSubmission: builder.mutation({
             query: (body) => {
                 return {
-                    url: `/submit-download-form`,
+                    url: `/pdf-download`,
                     method: 'POST',
-                    body,
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_WP_JWT_TOKEN}`
-                    }
+                    body
                 };
             }
         })

@@ -88,9 +88,9 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
             >
                 <span onClick={() => setExpanded(!expanded)} className="grid cursor-pointer place-items-start">
                     {expanded ? (
-                        <Image src="/images/icons/icon-minus-dark-bg.svg" alt="" width={34} height={34} quality={20} />
+                        <Image src="/images/icons/icon-minus-dark-bg.svg" alt="" width={34} height={34} quality={70} />
                     ) : (
-                        <Image src="/images/icons/icon-plus-dark-bg.svg" alt="" width={34} height={34} quality={20} />
+                        <Image src="/images/icons/icon-plus-dark-bg.svg" alt="" width={34} height={34} quality={70} />
                     )}
                 </span>
                 <div onClick={() => setExpanded(!expanded)} className="grid cursor-pointer grid-cols-1 gap-8">
@@ -112,7 +112,7 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
                         <div className="relative h-4 w-full">
                             <Image
                                 src="/images/icons/icon-pin-long.svg"
-                                quality={20}
+                                quality={70}
                                 alt=""
                                 fill
                                 sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
