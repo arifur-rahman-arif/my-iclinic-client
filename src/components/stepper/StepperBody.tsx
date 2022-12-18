@@ -28,7 +28,8 @@ const StepperBody = ({ steppers, activateNextStepper, children }: StepperBodyInt
                             activateNextStepper: activateNextStepper,
                             shouldActivateNextStep: stepper.activateNextStep,
                             stepperIndex: index,
-                            clonedElement: true
+                            clonedElement: true,
+                            indicatorActive: stepper.indicatorActive
                         })}
                     </div>
 

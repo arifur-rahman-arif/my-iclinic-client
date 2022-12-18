@@ -28,7 +28,7 @@ const FaqSearch = ({ filterFaq }: FaqSearchInterface): JSX.Element => {
                         alt=""
                         width={24}
                         height={24}
-                        quality={70}
+                        quality={30}
                         className="h-[2.4rem] w-[2.4rem]"
                     />
                 }

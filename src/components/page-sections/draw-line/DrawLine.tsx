@@ -49,7 +49,7 @@ const DrawLine = ({ image, desktopImage }: DrawLineInterface) => {
                 width={image.width}
                 height={image.height}
                 className="mx-auto object-contain md:hidden"
-                quality={70}
+                quality={30}
             />
             <Image
                 src={desktopImage.url}
@@ -57,7 +57,7 @@ const DrawLine = ({ image, desktopImage }: DrawLineInterface) => {
                 width={desktopImage.width}
                 height={desktopImage.height}
                 className="mx-auto hidden object-contain md:block"
-                quality={70}
+                quality={30}
             />
             <div ref={coverRef} className="absolute top-0 left-0 hidden h-full w-full bg-white md:block"></div>
         </div>

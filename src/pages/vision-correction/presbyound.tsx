@@ -34,7 +34,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-consultation.png"
                 width={390}
                 height={390}
-                quality={70}
+                quality={30}
                 className="md:hidden"
                 alt="Presbyound Consultation"
             />
@@ -44,7 +44,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-consultation-desktop.png"
                 width={685}
                 height={587}
-                quality={70}
+                quality={30}
                 className="hidden md:block"
                 alt="Presbyound Consultation"
             />
@@ -63,7 +63,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-surgery.png"
                 width={390}
                 height={390}
-                quality={70}
+                quality={30}
                 className="md:hidden"
                 alt="Presbyound surgery"
             />
@@ -73,7 +73,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-surgery-desktop.png"
                 width={677}
                 height={558}
-                quality={70}
+                quality={30}
                 className="hidden md:block"
                 alt="Presbyound surgery"
             />
@@ -92,7 +92,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-aftercare.png"
                 width={390}
                 height={390}
-                quality={70}
+                quality={30}
                 className="md:hidden"
                 alt="Presbyound aftercare"
             />
@@ -102,7 +102,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyound-aftercare-desktop.png"
                 width={685}
                 height={587}
-                quality={70}
+                quality={30}
                 className="hidden md:block"
                 alt="Presbyound aftercare"
             />
@@ -141,7 +141,7 @@ export default function Presbyound(): JSX.Element {
             if (windowWidth < 768) {
                 setLoadCallbackSection(true);
             }
-        }, 1500);
+        }, 2500);
     }, []);
 
     return (
@@ -185,7 +185,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment.png"
                             width={370}
                             height={352}
-                            quality={70}
+                            quality={30}
                             className="md:hidden"
                             alt="London’s best laser treatment for achieving clear vision at all distances"
                         />
@@ -193,7 +193,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment-desktop.png"
                             width={688}
                             height={607}
-                            quality={70}
+                            quality={30}
                             className="hidden md:block"
                             alt="Getting rid of your reading glasses with our Presbyound Laser Treatment"
                         />
@@ -320,7 +320,7 @@ export default function Presbyound(): JSX.Element {
                                 alt="Want to be free from reading glasses?"
                                 width={415}
                                 height={319}
-                                quality={70}
+                                quality={30}
                                 className="absolute right-0 top-0 h-auto w-auto"
                             />
                             {/* Hidden image to take the actual space for absolute positioned element */}
@@ -385,14 +385,14 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={388}
                         height={101}
-                        quality={70}
+                        quality={30}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
                         src="/images/section-images/mountain-image-desktop.png"
                         alt=""
                         fill
-                        quality={70}
+                        quality={30}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </ContainerFluid>
@@ -485,7 +485,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={638}
                         height={137}
-                        quality={70}
+                        quality={30}
                         className="mx-auto md:h-auto md:w-auto"
                     />
                 </Container>
@@ -554,7 +554,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={388}
                         height={101}
-                        quality={70}
+                        quality={30}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
@@ -562,7 +562,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={1157}
                         height={470}
-                        quality={70}
+                        quality={30}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </Container>

@@ -1,11 +1,9 @@
-import * as animationData from '@/images/lottie/check.lottie.json';
-
 import { getTheDayName, getTheMonthName } from '@/utils/miscellaneous';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-const Lottie = dynamic(() => import('react-lottie'));
+const LottieComponent = dynamic(() => import('./LottieComponent'));
 
 interface DoneInterface {
     date: Date;
@@ -22,18 +20,7 @@ interface DoneInterface {
 const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
     return (
         <div className="grid grid-cols-1 gap-8">
-            {formSubmitted && (
-                <Lottie
-                    options={{
-                        animationData: animationData,
-                        autoplay: true,
-                        loop: false
-                    }}
-                    speed={1}
-                    title="Thank you"
-                    style={{ width: '5.3rem', height: '5.3rem', background: 'transparent' }}
-                />
-            )}
+            {formSubmitted && <LottieComponent />}
 
             <div className="flex w-full flex-col items-center justify-start gap-4">
                 <h3 className="sm:leading-16 font-latoBold sm:text-[4rem]">Thank You</h3>
@@ -41,7 +28,7 @@ const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
                 <p className="text-center">We just sent you a confirmation email</p>
                 <Image
                     src="/images/avaters/people-jumping.svg"
-                    quality={70}
+                    quality={30}
                     alt=""
                     width={152}
                     height={130}

@@ -13,7 +13,7 @@ const Page404: NextPage = (): JSX.Element => {
         <Page title="404">
             <div className="grid h-screen w-full place-items-center content-center bg-brandLight">
                 <div>
-                    <Image src="/images/section-images/404.png" alt="404" width={723} height={427} quality={70} />
+                    <Image src="/images/section-images/404.png" alt="404" width={723} height={427} quality={30} />
                 </div>
                 <div className="mt-12 flex flex-col items-start justify-start gap-6">
                     <h3 className="font-latoBold normal-case">Something is missing!</h3>
@@ -24,7 +24,7 @@ const Page404: NextPage = (): JSX.Element => {
                             width={24}
                             height={24}
                             src="/images/icons/icon-arrow-tail-left.svg"
-                            quality={70}
+                            quality={30}
                         />
                         <span className="font-mulishBold capitalize">Go back</span>
                     </Link>

@@ -14,8 +14,10 @@ import { Button } from '@/components/button';
 import { TextField } from '@/components/inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
-import Calendar from 'react-calendar';
 import { useDispatch } from 'react-redux';
+import dynamic from 'next/dynamic';
+
+const Calendar = dynamic(() => import('react-calendar'));
 
 interface DateAndTimeInterface {
     date: Date;
@@ -33,6 +35,7 @@ interface DateAndTimeInterface {
     stepperIndex?: number;
     checkInputsForNextStepActivation: (arg: number, arg2: string) => void;
     clonedElement?: boolean;
+    indicatorActive?: boolean;
 }
 
 /**
@@ -56,7 +59,8 @@ const DateAndTime = ({
     activateNextStepper,
     stepperIndex,
     checkInputsForNextStepActivation,
-    clonedElement
+    clonedElement,
+    indicatorActive
 }: DateAndTimeInterface) => {
     const dispatch = useDispatch();
     const [submitForm, response] = useRequestCallbackSubmitMutation();
@@ -196,11 +200,15 @@ const DateAndTime = ({
     return (
         <div className={`${styles.calendar} grid h-full w-full grid-rows-[1fr_auto_auto] gap-12`}>
             <div className="w-full overflow-x-auto sm:overflow-x-visible" id="react-calendar">
-                <Calendar
-                    className="calender max-h-[26.5rem] min-w-[35.5rem] overflow-x-auto overflow-y-auto"
-                    onChange={setDate}
-                    value={date}
-                />
+                {indicatorActive === true ? (
+                    <Calendar
+                        className="calender max-h-[26.5rem] min-w-[35.5rem] overflow-x-auto overflow-y-auto"
+                        onChange={setDate}
+                        value={date}
+                    />
+                ) : (
+                    <div className="min-h-[26.4rem] w-full"></div>
+                )}
             </div>
 
             <div className="min-h-[12rem] w-full">

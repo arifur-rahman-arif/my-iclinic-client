@@ -61,7 +61,7 @@ const FooterHeader = (): JSX.Element => {
                         <Image
                             src="/images/icons/icon-pin-bold.svg"
                             alt=""
-                            quality={70}
+                            quality={30}
                             fill
                             className="w-full"
                             sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"

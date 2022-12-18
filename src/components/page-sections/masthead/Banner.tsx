@@ -29,7 +29,7 @@ const Banner = (): JSX.Element => {
                             alt=""
                             width={77}
                             height={14}
-                            quality={70}
+                            quality={30}
                         />
                     </span>
                     <span className="font-mulishBold text-[1.4rem] font-extrabold uppercase leading-[1.4rem]">
