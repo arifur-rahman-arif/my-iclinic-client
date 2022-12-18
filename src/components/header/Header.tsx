@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/button';
 import { Container } from '@/components/container';
 import Hamburger from '@/components/header/hamburger/Hamburger';
+import gsap from 'gsap';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import NavMenu from '@/components/header/NavMenu';
-import dynamic from 'next/dynamic';
-import gsap from 'gsap';
 
 const MobileNavbar = dynamic(() => import('@/components/header/MobileNavbar'));
+const NavMenu = dynamic(() => import('@/components/header/NavMenu'));
 
 /**
  * Header component for the app
@@ -18,6 +18,7 @@ const MobileNavbar = dynamic(() => import('@/components/header/MobileNavbar'));
  */
 const Header = (): JSX.Element => {
     const [loadMobileMenu, setLoadMobileMenu] = useState<boolean>(false);
+    const [loadDesktopMenu, setLoadDesktopMenu] = useState<boolean>(false);
     const headerRef = useRef<HTMLHeadingElement>(null);
 
     /**
@@ -43,10 +44,11 @@ const Header = (): JSX.Element => {
                 });
         });
 
-        // Load the mobile menu after 500ms to improve the page load time
-        setTimeout(() => {
-            setLoadMobileMenu(true);
-        }, 500);
+        loadMenu();
+
+        window.addEventListener('resize', () => {
+            loadMenu();
+        });
 
         // When user start scrolling make the header slide down from top and make it sticky
         window.addEventListener('scroll', () => {
@@ -69,6 +71,19 @@ const Header = (): JSX.Element => {
         });
     }, []);
 
+    /**
+     * Load the menu for either desktop or for mobile based on screen size
+     */
+    const loadMenu = () => {
+        const windowWidth = window.innerWidth;
+
+        if (windowWidth < 1280) {
+            !loadMobileMenu && setLoadMobileMenu(true);
+        } else {
+            !loadDesktopMenu && setLoadDesktopMenu(true);
+        }
+    };
+
     return (
         <>
             {loadMobileMenu && <MobileNavbar removeIndicator={removeIndicator} />}
@@ -90,7 +105,7 @@ const Header = (): JSX.Element => {
                         </Link>
 
                         {/*  Navigation links  */}
-                        <NavMenu />
+                        {loadDesktopMenu && <NavMenu />}
 
                         {/*    Round box */}
                         {/* <div className="hidden h-[5.8rem] w-[5.8rem] cursor-pointer items-center justify-center gap-[0.06rem] rounded-full border-2 border-brand bg-brand transition-all duration-300 hover:bg-transparent xl:flex">
