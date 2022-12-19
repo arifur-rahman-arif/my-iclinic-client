@@ -1,6 +1,6 @@
 import { CardSlideInterface } from '@/components/slider';
 
-export const presbyoundSliders: CardSlideInterface[] = [
+export const presbyondSliders: CardSlideInterface[] = [
     {
         imageURL: '/images/section-images/mr-lukicov-holding-bicycle.png'
     },

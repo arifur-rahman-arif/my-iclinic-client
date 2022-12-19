@@ -99,7 +99,7 @@ const Header = (): JSX.Element => {
                                 alt="My-iClinic"
                                 width={154}
                                 height={36}
-                                quality={30}
+                                quality={60}
                                 priority
                             />
                         </Link>

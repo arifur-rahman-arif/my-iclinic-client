@@ -1,6 +1,4 @@
-// Import { pinAnimation } from '@/utils/gsapFunctions';
-// import { usePinAnimation } from '@/utils/gsapFunctions';
-import { pinAnimation } from '@/utils/gsapFunctions';
+import { imageScaleAnimation, pinAnimation } from '@/utils/gsapFunctions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
@@ -45,6 +43,8 @@ const StackBox = ({
 
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLImageElement>(null);
+    const imageMobileRef = useRef<HTMLImageElement>(null);
 
     pinAnimation({
         pinRef: pinRef,
@@ -52,23 +52,30 @@ const StackBox = ({
         trigger: pinAnimationTrigger
     });
 
+    imageScaleAnimation({ imageRef: imageRef });
+    imageScaleAnimation({ imageRef: imageMobileRef });
+
     return (
-        <div className="relative grid w-full gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:max-w-[97.5rem] md:p-0 md:shadow-none">
+        <div
+            className={`relative grid w-full gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:gap-0 md:p-0 md:shadow-none lg:max-w-[97.5rem]`}
+        >
             <Image
                 src={image.url}
                 width={image.width}
                 height={image.height}
                 alt={altText || ''}
-                quality={30}
-                className="justify-self-center md:hidden md:h-auto md:w-auto"
+                quality={60}
+                className="card-image image-card -mt-12 scale-110 justify-self-center opacity-0 md:hidden md:h-auto md:w-auto"
+                ref={imageMobileRef}
             />
             <Image
                 src={desktopImage.url}
                 width={desktopImage.width}
                 height={desktopImage.height}
                 alt={altText || ''}
-                quality={30}
-                className={`hidden rounded-primary md:block md:h-auto md:w-auto ${
+                quality={60}
+                ref={imageRef}
+                className={`image-card -mt-12 hidden scale-110 rounded-primary opacity-0 md:block md:w-[60vmax] xl:w-auto ${
                     isEven ? 'justify-self-end' : 'justify-self-start'
                 }`}
             />
@@ -85,14 +92,16 @@ const StackBox = ({
                 <h3 className="normal-case">
                     <strong className="normal-case">{title}</strong>
                 </h3>
-                <Image
-                    ref={pinRef}
-                    src="/images/icons/icon-pin-horizontal.svg"
-                    alt=""
-                    width={66}
-                    height={1}
-                    className="w-0"
-                />
+                <div className="h-2 w-full">
+                    <Image
+                        ref={pinRef}
+                        src="/images/icons/icon-pin-horizontal.svg"
+                        alt=""
+                        width={66}
+                        height={1}
+                        className="w-0"
+                    />
+                </div>
                 <div className="grid gap-6">
                     {descriptions.map((desc, index) => (
                         <p key={index}>{desc}</p>

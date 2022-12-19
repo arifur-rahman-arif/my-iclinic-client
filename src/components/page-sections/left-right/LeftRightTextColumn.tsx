@@ -34,15 +34,17 @@ const LeftRightTextColumn = ({ index, title, descriptions }: TextColumnInteracti
                     width={67}
                     height={42}
                 />
-                <Image
-                    ref={pinRef}
-                    src="/images/icons/icon-pin-yellow.svg"
-                    alt=""
-                    quality={10}
-                    width={150}
-                    height={2}
-                    className="w-0"
-                />
+                <div className="h-2 w-full">
+                    <Image
+                        ref={pinRef}
+                        src="/images/icons/icon-pin-yellow.svg"
+                        alt=""
+                        quality={10}
+                        width={150}
+                        height={2}
+                        className="w-0"
+                    />
+                </div>
             </div>
             <div className="grid gap-6">
                 <H4Variant1>{title}</H4Variant1>

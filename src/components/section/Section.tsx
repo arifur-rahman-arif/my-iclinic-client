@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 interface PropInterface {
     children: JSX.Element | JSX.Element[];
     className?: string;
@@ -10,12 +12,17 @@ interface PropInterface {
  * @param {PropTypes} { children, className }
  * @returns {*}  {JSX.Element}
  */
-const Section = ({
-    children,
-    className,
-    defaultClassName = 'mt-24 w-full sm:mt-36 lg:mt-48'
-}: PropInterface): JSX.Element => {
-    return <section className={`${defaultClassName || ''} ${className || ''}`}>{children}</section>;
-};
+const Section = forwardRef(
+    (
+        { children, className, defaultClassName = 'mt-24 w-full sm:mt-36 lg:mt-48' }: PropInterface,
+        ref: any
+    ): JSX.Element => {
+        return (
+            <section ref={ref} className={`${defaultClassName || ''} ${className || ''}`}>
+                {children}
+            </section>
+        );
+    }
+);
 
 export default Section;

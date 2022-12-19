@@ -38,9 +38,9 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 type: 'text',
-                name: 'Presbyound',
-                url: '/vision-correction/presbyound',
-                slug: 'vision-correction/presbyound',
+                name: 'Presbyond',
+                url: '/vision-correction/presbyond',
+                slug: 'vision-correction/presbyond',
                 dotAnimation: true
             }
         ]

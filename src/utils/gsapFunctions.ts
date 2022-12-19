@@ -8,16 +8,15 @@ export const barAnimation = () => {
     if (document.querySelectorAll('.bar-animation-inactive').length) {
         gsap.to('.bar-animation-inactive', {
             width: '0%',
-            duration: 1.2,
-            overwrite: true,
-            ease: 'elastic.out(1, 1)'
+            duration: 0.4,
+            overwrite: true
         });
     }
 
     if (document.querySelector('.bar-animation')) {
         gsap.to('.bar-animation', {
             width: '100%',
-            duration: 1.2,
+            duration: 1.5,
             ease: 'elastic.out(1, 0.3)'
         });
     }
@@ -89,15 +88,40 @@ export const pinAnimation = ({
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: trigger.current,
-                start: 'top 80%',
+                start: 'top 90%',
                 toggleActions: 'play none none reverse'
             }
         });
 
         timeline.to(pinRef.current, {
             width: width,
-            duration: 1,
+            duration: 2,
             ease: 'expo.inOut'
+        });
+    }, []);
+};
+
+/**
+ * Image scale animation that will scale down the initial extra size
+ *
+ * @param {{ pinRef: MutableRefObject<any> }} { pinRef }
+ */
+export const imageScaleAnimation = ({ imageRef }: { imageRef: MutableRefObject<any> }) => {
+    useEffect(() => {
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: imageRef.current,
+                start: 'top bottom',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        timeline.to(imageRef.current, {
+            scale: 1,
+            duration: 1.5,
+            opacity: 1,
+            marginTop: 0,
+            ease: 'sine.inOut'
         });
     }, []);
 };

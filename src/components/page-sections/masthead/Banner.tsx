@@ -29,7 +29,7 @@ const Banner = (): JSX.Element => {
                             alt=""
                             width={77}
                             height={14}
-                            quality={30}
+                            quality={60}
                         />
                     </span>
                     <span className="font-mulishBold text-[1.4rem] font-extrabold uppercase leading-[1.4rem]">
@@ -41,23 +41,23 @@ const Banner = (): JSX.Element => {
             {/* Headings */}
             <div className="grid w-full max-w-[46.3rem] grid-cols-1 gap-6 md:col-span-2 md:gap-12">
                 <h1>
-                    Presbyound Laser
+                    Presbyond Laser
                     <br />
                     Treatment London
                 </h1>
-                <h2 className="text-heading2">Correct your vision and say Goodbye to reading glasses</h2>
+                <h2 className="normal-case text-heading2">Correct your vision and say Goodbye to reading glasses</h2>
                 <Image
                     src="/images/icons/icon-pin-yellow.svg"
                     quality={10}
                     width={150}
                     height={2}
                     alt=""
-                    className="md:hidden md:h-auto"
+                    className=""
                 />
             </div>
             {/* Price */}
             <div className="flex items-center justify-start gap-4 md:self-center">
-                <span className="bg-secondary2 block h-[2.4rem] w-2"></span>
+                <span className="block h-[2.4rem] w-2 bg-heading2"></span>
                 <span className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2 md:text-[2.4rem] md:uppercase md:leading-[2.4rem]">
                     £2,400 per eye
                 </span>

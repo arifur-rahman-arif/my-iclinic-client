@@ -1,6 +1,6 @@
-import { presbyoundStackList } from './stackedColumnList';
+import { presbyondStackList } from './stackedColumnList';
 import StackBox, { StackBoxInterface } from './StackBox';
 import StackedSection from './StackedSection';
 
-export { StackedSection, StackBox, presbyoundStackList };
+export { StackedSection, StackBox, presbyondStackList };
 export type { StackBoxInterface };

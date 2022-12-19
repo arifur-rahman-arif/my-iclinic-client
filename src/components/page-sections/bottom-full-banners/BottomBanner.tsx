@@ -18,16 +18,16 @@ const BottomBanner = (): JSX.Element => {
                 >
                     <div className="relative w-full md:hidden">
                         <Image
-                            src="/images/section-images/presbyound-banner-bg.png"
+                            src="/images/section-images/presbyond-banner-bg.png"
                             alt="Want to be free from reading glasses?"
                             width={415}
                             height={319}
-                            quality={30}
+                            quality={60}
                             className="absolute right-0 top-0 h-auto w-auto"
                         />
                         {/* Hidden image to take the actual space for absolute positioned element */}
                         <Image
-                            src="/images/section-images/presbyound-banner-bg.png"
+                            src="/images/section-images/presbyond-banner-bg.png"
                             alt="Want to be free from reading glasses?"
                             width={415}
                             height={319}
@@ -75,7 +75,7 @@ const BottomBanner = (): JSX.Element => {
                             />
                         </div>
                     </Container>
-                    <div className="absolute top-0 left-0 z-[1] h-full w-full bg-[100%_100%] bg-no-repeat md:bg-[url('/images/section-images/presbyound-banner-bg-desktop.webp')] lg:bg-[auto_100%] lg:bg-[right_center]"></div>
+                    <div className="absolute top-0 left-0 z-[1] h-full w-full bg-[100%_100%] bg-no-repeat md:bg-[url('/images/section-images/presbyond-banner-bg-desktop.webp')] lg:bg-[auto_100%] lg:bg-[right_center]"></div>
                 </div>
             </ContainerFluid>
         </Section>

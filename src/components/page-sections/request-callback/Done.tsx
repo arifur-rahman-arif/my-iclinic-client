@@ -28,7 +28,7 @@ const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
                 <p className="text-center">We just sent you a confirmation email</p>
                 <Image
                     src="/images/avaters/people-jumping.svg"
-                    quality={30}
+                    quality={60}
                     alt=""
                     width={152}
                     height={130}

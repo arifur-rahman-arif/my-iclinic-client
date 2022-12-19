@@ -1,13 +1,13 @@
 import { DrawLine, Masthead, SideImageSection } from '@/components/page-sections';
 
-import { Container, ContainerFluid } from '@/components/container';
+import { Container } from '@/components/container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/link';
 import Page from '@/components/Page';
-import { presbyoundFaqList } from '@/components/page-sections/faq/faqList';
-import { presbyoundSliders } from '@/components/page-sections/featured-patient';
+import { presbyondFaqList } from '@/components/page-sections/faq/faqList';
+import { presbyondSliders } from '@/components/page-sections/featured-patient';
 import { LeftRightSectionChildrenInterface } from '@/components/page-sections/left-right';
-import { presbyoundStackList } from '@/components/page-sections/stacked-section';
+import { presbyondStackList } from '@/components/page-sections/stacked-section';
 import { Section } from '@/components/section';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
@@ -33,61 +33,62 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/left-r
     ssr: true
 });
 const BottomMenu = dynamic(() => import('@/components/page-sections/bottom-menu/BottomMenu'));
+const SideVideoSection = dynamic(() => import('@/components/page-sections/side-image-section/SideVideoSection'));
 
 const leftRightList: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyound-consultation.png"
+                src="/images/section-images/presbyond-consultation.png"
                 width={390}
                 height={390}
-                quality={30}
+                quality={60}
                 className="md:hidden"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyound-consultation-desktop.png"
+                src="/images/section-images/presbyond-consultation-desktop.png"
                 width={685}
                 height={587}
-                quality={30}
+                quality={60}
                 className="hidden md:block"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
-        title: `Presbyound Consultation`,
+        title: `Presbyond Consultation`,
         descriptions: [
-            `When you arrive for your Presbyound consultation with us, our friendly technicians will carry out some detailed assessments on your eyes.`,
+            `When you arrive for your Presbyond consultation with us, our friendly technicians will carry out some detailed assessments on your eyes.`,
             `These assessments will measure your eyes, your prescription and check the overall health for any other eye conditions you may have.`,
-            `Our laser specialist will then be able to assess your suitability for presbyound and they will talk you through the treatment and how Presbyound will best work for you and your lifestyle.`,
-            `We understand that laser treatment is a life-changing decision which is why our Presbyound consultation is completely FREE without any obligation to commit to treatment!`
+            `Our laser specialist will then be able to assess your suitability for presbyond and they will talk you through the treatment and how Presbyond will best work for you and your lifestyle.`,
+            `We understand that laser treatment is a life-changing decision which is why our Presbyond consultation is completely FREE without any obligation to commit to treatment!`
         ]
     },
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyound-surgery.png"
+                src="/images/section-images/presbyond-surgery.png"
                 width={390}
                 height={390}
-                quality={30}
+                quality={60}
                 className="md:hidden"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyound-surgery-desktop.png"
+                src="/images/section-images/presbyond-surgery-desktop.png"
                 width={677}
                 height={558}
-                quality={30}
+                quality={60}
                 className="hidden md:block"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
-        title: `Presbyound surgery`,
+        title: `Presbyond surgery`,
         descriptions: [
-            `Our presbyound laser treatment uses a unique blended vision technique which extends the eyes ability to see from near through to intermediate and distant sight.`,
+            `Our presbyond laser treatment uses a unique blended vision technique which extends the eyes ability to see from near through to intermediate and distant sight.`,
             `On the day of treatment, our friendly nurse team will greet you and talk you through the preparations for the treatment and will answer any questions you may have before meeting your specialist again.`,
             `They will carefully take care of administering anesthetic eye drops into your eyes so that the laser treatment will be completely painless.`,
             `Your specialist will greet you in the treatment room and they will give clear, easy instruction as the laser reshapes your eye. The procedure itself takes up to 20 minutes per eye without any pain or discomfort. Once the treatment is finished, our nurse will talk you through any questions you may have and will show you the aftercare eye drops you will be required to use at home.`
@@ -96,10 +97,10 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyound-aftercare.png"
+                src="/images/section-images/presbyond-aftercare.png"
                 width={390}
                 height={390}
-                quality={30}
+                quality={60}
                 className="md:hidden"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
@@ -108,19 +109,19 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyound-aftercare-desktop.png"
+                src="/images/section-images/presbyond-aftercare-desktop.png"
                 width={685}
                 height={587}
-                quality={30}
+                quality={60}
                 className="hidden md:block"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
                 "
             />
         ),
-        title: `Presbyound aftercare`,
+        title: `Presbyond aftercare`,
         descriptions: [
-            `Presbyound only requires an initial 1 week recovery period with little activity.`,
+            `Presbyond only requires an initial 1 week recovery period with little activity.`,
             `In the initial days of your recovery period there may be a gritty sensation and you may experience some sensitivity to light.`,
             `Any symptoms experienced after your treatment will reside as your eyes fully heal and process your new refraction.`,
             `In your aftercare appointment with your laser specialist, they will check the progress of your vision and keep you informed about how long you should keep using your eye drops.`
@@ -134,13 +135,13 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
  * @export
  * @returns {JSX.Element}
  */
-export default function Presbyound(): JSX.Element {
+export default function Presbyond(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
 
     useEffect(() => {
         setInterval(() => {
             ScrollTrigger.refresh();
-        }, 3000);
+        }, 2000);
 
         const windowWidth = window.innerWidth;
 
@@ -167,23 +168,23 @@ export default function Presbyound(): JSX.Element {
             <SideImageSection
                 h2Heading="Vision correction treatment"
                 h3LightHeading="Getting rid of your reading glasses with"
-                h3BoldHeading="our Presbyound Laser Treatment"
+                h3BoldHeading="our Presbyond Laser Treatment"
                 altText="Woman with reading glasses has a headache from watching her laptop screen. She is
                 long sighted, suffering from presbyopia."
                 descriptions={[
                     `Always wanted to know what your vision could be like without the need for reading
                     glasses?`,
                     `If you suffer from presbyopia (also known as long sightedness, farsightedness,
-                        hypermetropia and hyperopia), our Presbyound laser surgery can fix your refractive error
+                        hypermetropia and hyperopia), our Presbyond laser surgery can fix your refractive error
                         for an easier, clearer way of life.`
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/presbyound-laser-treatment.png',
+                    url: '/images/section-images/presbyond-laser-treatment.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/presbyound-laser-treatment-desktop.png',
+                    url: '/images/section-images/presbyond-laser-treatment-desktop.png',
                     width: 688,
                     height: 642
                 }}
@@ -201,7 +202,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment.png"
                             width={370}
                             height={352}
-                            quality={30}
+                            quality={60}
                             className="md:hidden"
                             alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
                             glasses to see a text message.
@@ -211,7 +212,7 @@ export default function Presbyound(): JSX.Element {
                             src="/images/section-images/best-laser-treatment-desktop.png"
                             width={688}
                             height={607}
-                            quality={30}
+                            quality={60}
                             className="hidden md:block"
                             alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
                             glasses to see a text message.
@@ -226,28 +227,50 @@ export default function Presbyound(): JSX.Element {
             </LazyComponent>
 
             <SideImageSection
-                normalLightHeading="What to expect after your Presbyound Treatment with our London specialists."
+                normalLightHeading="What to expect after your Presbyond Treatment with our London specialists."
                 altText="Older man with clear vision looking at his fit bit after running a marathon."
                 descriptions={[
-                    `Saving vision, time, money and the planet! Having Presbyound is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyound surgery!`,
+                    `Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!`,
                     `Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.`
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/presbyound-treatment.png',
+                    url: '/images/section-images/presbyond-treatment.png',
                     width: 366,
                     height: 361
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/presbyound-treatment-desktop.png',
+                    url: '/images/section-images/presbyond-treatment-desktop.png',
                     width: 677,
                     height: 558
                 }}
             />
 
             <LazyComponent>
+                <SideVideoSection
+                    h2Heading="What our Presbyond patients Say After treatment"
+                    h3Heading="Hear from a patient"
+                    descriptions={[
+                        `When you choose My-iClinic’s 5-star rated services, you can rest assured that you’ve made the best possible choice for your eyesight.
+                     Our specialist optometrists carefully work with you to evaluate your eyes to offer you the best
+                      possible course of treatment – allowing you to re-discover a life of normal vision.`
+                    ]}
+                    sectionImage={{
+                        url: '/images/section-images/presbyond-treatment.png',
+                        width: 366,
+                        height: 361
+                    }}
+                    sectionImageDesktop={{
+                        url: '/images/section-images/presbyond-treatment-desktop.png',
+                        width: 677,
+                        height: 558
+                    }}
+                />
+            </LazyComponent>
+
+            <LazyComponent>
                 <FeaturedPatient
-                    h2Title="Presbyound Patient"
-                    h3Title="Life after Presbyound laser eye surgery"
+                    h2Title="Presbyond Patient"
+                    h3Title="Life after Presbyond laser eye surgery"
                     bandImageDescription={[
                         `My experience was amazing. The whole team is very kind and exceedingly professional.`,
                         'The after care is exceptional and I would highly recommend them.'
@@ -258,7 +281,7 @@ export default function Presbyound(): JSX.Element {
                         `Being able to see again without glasses is the best feeling and the best money I have ever spent!!!`
                     ]}
                     reviewTitle="Thank you My-iClinic"
-                    sliders={presbyoundSliders}
+                    sliders={presbyondSliders}
                 />
             </LazyComponent>
 
@@ -269,7 +292,7 @@ export default function Presbyound(): JSX.Element {
                 h3BoldHeading="Transparent cost"
                 descriptions={[
                     `Having to wear glasses and contact lenses is a big financial burden overtime. We never subject the safety of people’s eye health to a cheap deal like glasses and contact lenses do and we also understand you don’t want to pay more than what’s fair.`,
-                    `Our advanced Presbyound treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
+                    `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
                 ]}
                 sectionImage={{
                     url: '/images/section-images/transparent-price.png',
@@ -302,15 +325,42 @@ export default function Presbyound(): JSX.Element {
                                 Finace Options?
                             </LinkText>
                         </p>
+
+                        <ul className="ml-12 grid gap-6">
+                            <li className="flex items-start justify-start gap-4">
+                                <Image
+                                    src="/images/icons/icon-blue-and-outline-circle.svg"
+                                    alt=""
+                                    width={35}
+                                    height={23}
+                                    className="h-[2.4rem] w-[2.4rem]"
+                                />
+                                <p className="font-mulishBold">
+                                    One dedicated presbyond specialist
+                                    <br />
+                                    for your treatment
+                                </p>
+                            </li>
+                            <li className="flex items-start justify-start gap-4">
+                                <Image
+                                    src="/images/icons/icon-blue-and-outline-circle.svg"
+                                    alt=""
+                                    width={35}
+                                    height={23}
+                                    className="h-[2.4rem] w-[2.4rem]"
+                                />
+                                <p className="font-mulishBold">Most affordable price in London</p>
+                            </li>
+                        </ul>
                     </div>
                 }
             />
 
             <LazyComponent>
                 <StackedSection
-                    stackList={presbyoundStackList}
+                    stackList={presbyondStackList}
                     h3LightHeading="Why do our patients choose our"
-                    h3BoldHeading="Presbyound laser surgery?"
+                    h3BoldHeading="Presbyond laser surgery?"
                     descriptions={[
                         `The answer is simple – they want to escape limitations and take charge of their life.`
                     ]}
@@ -343,7 +393,7 @@ export default function Presbyound(): JSX.Element {
                 <BottomBanner />
             </LazyComponent>
 
-            <Section>
+            {/* <Section>
                 <ContainerFluid className="md:h-[51rem]">
                     <Image
                         src="/images/section-images/mountain-image-mobile.png"
@@ -352,7 +402,7 @@ export default function Presbyound(): JSX.Element {
                         "
                         width={393}
                         height={137}
-                        quality={30}
+                        quality={60}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
@@ -361,11 +411,11 @@ export default function Presbyound(): JSX.Element {
                         contact lenses.
                         "
                         fill
-                        quality={30}
+                        quality={60}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </ContainerFluid>
-            </Section>
+            </Section> */}
 
             <DrawLine
                 image={{
@@ -454,7 +504,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={638}
                         height={137}
-                        quality={30}
+                        quality={60}
                         className="mx-auto md:h-auto md:w-auto"
                     />
                 </Container>
@@ -523,7 +573,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={399}
                         height={162}
-                        quality={30}
+                        quality={60}
                         className="mx-auto md:hidden"
                     />
                     <Image
@@ -531,7 +581,7 @@ export default function Presbyound(): JSX.Element {
                         alt=""
                         width={1157}
                         height={470}
-                        quality={30}
+                        quality={60}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </Container>
@@ -551,8 +601,8 @@ export default function Presbyound(): JSX.Element {
 
             <LazyComponent>
                 <Faq
-                    faqs={presbyoundFaqList}
-                    titleLight="Presbyound Frequently"
+                    faqs={presbyondFaqList}
+                    titleLight="Presbyond Frequently"
                     titleBold="Asked Questions"
                     description="Have a question? We’r here to help."
                 />

@@ -1,5 +1,4 @@
 import { Container } from '@/components/container';
-import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/section';
 import StackBox from './StackBox';
 import { StackListInterface } from './stackedColumnList';
@@ -26,8 +25,6 @@ const StackedSection = ({
     return (
         <Section>
             <Container className="grid gap-12 md:gap-24">
-                <TextColumn h3LightHeading={h3LightHeading} h3BoldHeading={h3BoldHeading} descriptions={descriptions} />
-
                 {stackList.map((stack, index) => (
                     <StackBox
                         key={index}

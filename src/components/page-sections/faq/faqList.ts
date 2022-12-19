@@ -4,7 +4,7 @@ export interface FaqListInterface {
     shortDescription?: string;
 }
 
-export const presbyoundFaqList: FaqListInterface[] = [
+export const presbyondFaqList: FaqListInterface[] = [
     {
         title: 'What is Presbyopia?',
         description:
