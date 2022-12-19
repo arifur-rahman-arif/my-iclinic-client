@@ -17,7 +17,7 @@ interface AccordionItemInterface {
  * @returns {*} {JSX.Element}
  */
 const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
-    const { title, description } = accordion;
+    const { title, description, shortDescription } = accordion;
 
     const [expanded, setExpanded] = useState<boolean>(index === 0 ? true : false);
     const descriptionRef = useRef<HTMLDivElement>(null);
@@ -95,18 +95,27 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
                 </span>
                 <div onClick={() => setExpanded(!expanded)} className="grid cursor-pointer grid-cols-1 gap-8">
                     <h4 className="normal-case">{title || ''}</h4>
-                    <p
-                        ref={shotDescriptionRef}
-                        className={`${expanded ? 'max-h-0' : 'max-h-[300rem]'} overflow-hidden`}
-                    >
-                        {trimText(description, 50) || ''}
-                    </p>
+                    {shortDescription ? (
+                        <p
+                            ref={shotDescriptionRef}
+                            className={`${expanded ? 'max-h-0' : 'max-h-[300rem]'} overflow-hidden`}
+                        >
+                            {trimText(shortDescription, 50) || ''}
+                        </p>
+                    ) : (
+                        <p
+                            ref={shotDescriptionRef}
+                            className={`${expanded ? 'max-h-0' : 'max-h-[300rem]'} overflow-hidden`}
+                        >
+                            {trimText(description, 50) || ''}
+                        </p>
+                    )}
                 </div>
                 <div
                     ref={descriptionRef}
                     className={`relative col-start-2 overflow-hidden ${!expanded ? 'max-h-0' : 'max-h-[300rem]'}`}
                 >
-                    <p>{description || ''}</p>
+                    <p dangerouslySetInnerHTML={{ __html: description }}></p>
 
                     <div ref={longPinRef} className={`mt-20 ${expanded ? 'w-full' : 'w-0'}`}>
                         <div className="relative h-4 w-full">

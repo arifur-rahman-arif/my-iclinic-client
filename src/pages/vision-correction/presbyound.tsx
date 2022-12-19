@@ -1,4 +1,4 @@
-import { DrawLine, Masthead, SideImageSection, StackedSection } from '@/components/page-sections';
+import { DrawLine, Masthead, SideImageSection } from '@/components/page-sections';
 
 import { Container, ContainerFluid } from '@/components/container';
 import LazyComponent from '@/components/LazyComponent';
@@ -6,7 +6,7 @@ import { LinkText } from '@/components/link';
 import Page from '@/components/Page';
 import { presbyoundFaqList } from '@/components/page-sections/faq/faqList';
 import { presbyoundSliders } from '@/components/page-sections/featured-patient';
-import { LeftRightSection, LeftRightSectionChildrenInterface } from '@/components/page-sections/left-right';
+import { LeftRightSectionChildrenInterface } from '@/components/page-sections/left-right';
 import { presbyoundStackList } from '@/components/page-sections/stacked-section';
 import { Section } from '@/components/section';
 import gsap from 'gsap';
@@ -26,6 +26,13 @@ const CallbackSection = dynamic(() => import('@/components/page-sections/request
 const BottomBanner = dynamic(() => import('@/components/page-sections/bottom-full-banners/BottomBanner'));
 const FeaturedPatient = dynamic(() => import('@/components/page-sections/featured-patient/FeaturedPatient'));
 const NormalSlideSection = dynamic(() => import('@/components/page-sections/normal-slide/NormalSlideSection'));
+const StackedSection = dynamic(() => import('@/components/page-sections/stacked-section/StackedSection'), {
+    ssr: true
+});
+const LeftRightSection = dynamic(() => import('@/components/page-sections/left-right/LeftRightSection'), {
+    ssr: true
+});
+const BottomMenu = dynamic(() => import('@/components/page-sections/bottom-menu/BottomMenu'));
 
 const leftRightList: Array<LeftRightSectionChildrenInterface> = [
     {
@@ -36,7 +43,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={390}
                 quality={30}
                 className="md:hidden"
-                alt="Presbyound Consultation"
+                alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
         desktopImage: (
@@ -46,7 +53,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={587}
                 quality={30}
                 className="hidden md:block"
-                alt="Presbyound Consultation"
+                alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
         title: `Presbyound Consultation`,
@@ -65,7 +72,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={390}
                 quality={30}
                 className="md:hidden"
-                alt="Presbyound surgery"
+                alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
         desktopImage: (
@@ -75,7 +82,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={558}
                 quality={30}
                 className="hidden md:block"
-                alt="Presbyound surgery"
+                alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
         title: `Presbyound surgery`,
@@ -94,7 +101,9 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={390}
                 quality={30}
                 className="md:hidden"
-                alt="Presbyound aftercare"
+                alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
+                reading her ipad without reading glasses.
+                "
             />
         ),
         desktopImage: (
@@ -104,7 +113,9 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 height={587}
                 quality={30}
                 className="hidden md:block"
-                alt="Presbyound aftercare"
+                alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
+                reading her ipad without reading glasses.
+                "
             />
         ),
         title: `Presbyound aftercare`,
@@ -145,7 +156,10 @@ export default function Presbyound(): JSX.Element {
     }, []);
 
     return (
-        <Page title="Presbyound" description="Correct your vision and say Goodbye to reading glasses">
+        <Page
+            title="Presbyond Laser eye surgery In London"
+            description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
+        >
             <Masthead />
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
@@ -154,6 +168,8 @@ export default function Presbyound(): JSX.Element {
                 h2Heading="Vision correction treatment"
                 h3LightHeading="Getting rid of your reading glasses with"
                 h3BoldHeading="our Presbyound Laser Treatment"
+                altText="Woman with reading glasses has a headache from watching her laptop screen. She is
+                long sighted, suffering from presbyopia."
                 descriptions={[
                     `Always wanted to know what your vision could be like without the need for reading
                     glasses?`,
@@ -187,7 +203,9 @@ export default function Presbyound(): JSX.Element {
                             height={352}
                             quality={30}
                             className="md:hidden"
-                            alt="London’s best laser treatment for achieving clear vision at all distances"
+                            alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
+                            glasses to see a text message.
+                            "
                         />
                         <Image
                             src="/images/section-images/best-laser-treatment-desktop.png"
@@ -195,16 +213,21 @@ export default function Presbyound(): JSX.Element {
                             height={607}
                             quality={30}
                             className="hidden md:block"
-                            alt="Getting rid of your reading glasses with our Presbyound Laser Treatment"
+                            alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
+                            glasses to see a text message.
+                            "
                         />
                     </div>
                 </Container>
             </Section>
 
-            <LeftRightSection childrenList={leftRightList} />
+            <LazyComponent>
+                <LeftRightSection childrenList={leftRightList} />
+            </LazyComponent>
 
             <SideImageSection
                 normalLightHeading="What to expect after your Presbyound Treatment with our London specialists."
+                altText="Older man with clear vision looking at his fit bit after running a marathon."
                 descriptions={[
                     `Saving vision, time, money and the planet! Having Presbyound is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyound surgery!`,
                     `Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.`
@@ -258,6 +281,7 @@ export default function Presbyound(): JSX.Element {
                     width: 689,
                     height: 558
                 }}
+                altText="Happy couple on a hike in the mountains after correcting their long-sighted vision."
                 textColumnExtras={
                     <div className="grid gap-6">
                         <h2 className="normal-case">
@@ -282,12 +306,16 @@ export default function Presbyound(): JSX.Element {
                 }
             />
 
-            <StackedSection
-                stackList={presbyoundStackList}
-                h3LightHeading="Why do our patients choose our"
-                h3BoldHeading="Presbyound laser surgery?"
-                descriptions={[`The answer is simple – they want to escape limitations and take charge of their life.`]}
-            />
+            <LazyComponent>
+                <StackedSection
+                    stackList={presbyoundStackList}
+                    h3LightHeading="Why do our patients choose our"
+                    h3BoldHeading="Presbyound laser surgery?"
+                    descriptions={[
+                        `The answer is simple – they want to escape limitations and take charge of their life.`
+                    ]}
+                />
+            </LazyComponent>
 
             <SideImageSection
                 h3LightHeading="Want to be free from your glasses after"
@@ -307,6 +335,8 @@ export default function Presbyound(): JSX.Element {
                     height: 500
                 }}
                 positionReversed={true}
+                altText="Old man excited about getting rid of his reading glasses with Presbyond laser
+                treatment."
             />
 
             <LazyComponent>
@@ -316,16 +346,20 @@ export default function Presbyound(): JSX.Element {
             <Section>
                 <ContainerFluid className="md:h-[51rem]">
                     <Image
-                        src="/images/section-images/mountain-image-3.png"
-                        alt=""
-                        width={388}
-                        height={101}
+                        src="/images/section-images/mountain-image-mobile.png"
+                        alt="Beautiful lake and mountains. Climate change awareness from plastic glasses and
+                        contact lenses.
+                        "
+                        width={393}
+                        height={137}
                         quality={30}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
                         src="/images/section-images/mountain-image-desktop.png"
-                        alt=""
+                        alt="Beautiful lake and mountains. Climate change awareness from plastic glasses and
+                        contact lenses.
+                        "
                         fill
                         quality={30}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
@@ -487,10 +521,10 @@ export default function Presbyound(): JSX.Element {
                     <Image
                         src="/images/section-images/mountain-image-3.png"
                         alt=""
-                        width={388}
-                        height={101}
+                        width={399}
+                        height={162}
                         quality={30}
-                        className="mx-auto md:hidden md:h-auto md:w-auto"
+                        className="mx-auto md:hidden"
                     />
                     <Image
                         src="/images/section-images/mountain-image-3-desktop.png"
@@ -523,6 +557,8 @@ export default function Presbyound(): JSX.Element {
                     description="Have a question? We’r here to help."
                 />
             </LazyComponent>
+
+            {loadCallbackSection ? <BottomMenu /> : <></>}
         </Page>
     );
 }

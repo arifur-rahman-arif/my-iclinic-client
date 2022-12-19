@@ -22,6 +22,7 @@ export interface SideImageSectionInterface {
     positionReversed?: boolean;
     sectionClass?: string;
     imageYPosition?: 'top' | 'bottom' | 'center';
+    altText?: string;
 }
 
 /**
@@ -53,7 +54,8 @@ const SideImageSection = ({
     textColumnExtras,
     positionReversed = false,
     sectionClass,
-    imageYPosition = 'center'
+    imageYPosition = 'center',
+    altText
 }: SideImageSectionInterface): JSX.Element => {
     return (
         <Section className={`${sectionClass || ''}`}>
@@ -81,7 +83,7 @@ const SideImageSection = ({
                         height={sectionImage.height}
                         quality={30}
                         className="md:hidden"
-                        alt={h3LightHeading ? h3LightHeading : normalLightHeading || ''}
+                        alt={altText || ''}
                     />
                     <Image
                         src={sectionImageDesktop.url}
@@ -89,7 +91,7 @@ const SideImageSection = ({
                         height={sectionImageDesktop.height}
                         quality={30}
                         className={`hidden md:block`}
-                        alt={h3LightHeading ? h3LightHeading : normalLightHeading || ''}
+                        alt={altText || ''}
                     />
                 </div>
             </Container>

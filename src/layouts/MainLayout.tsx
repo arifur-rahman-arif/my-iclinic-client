@@ -2,8 +2,12 @@ import { Header } from '@/components/header';
 import LazyComponent from '@/components/LazyComponent';
 import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
+import { AlertInterface } from '@/features/alert/alertSlice';
+import { AppState } from '@/store';
 
 const Footer = dynamic(() => import('@/components/footer/Footer'));
+const Alert = dynamic(() => import('@/components/alert/Alert'));
 
 interface PropTypes {
     children: ReactNode;
@@ -16,6 +20,8 @@ interface PropTypes {
  * @constructor
  */
 const MainLayout = ({ children }: PropTypes): JSX.Element => {
+    const { showAlert } = useSelector((state: AppState) => state.alert as AlertInterface);
+
     return (
         <>
             <Header />
@@ -23,6 +29,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             <LazyComponent>
                 <Footer />
             </LazyComponent>
+            {showAlert && <Alert />}
         </>
     );
 };

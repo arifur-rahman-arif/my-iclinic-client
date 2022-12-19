@@ -3,7 +3,6 @@ import '../../build/styles/tailwind.css';
 
 import { MainLayout, NoNavigationLayout } from 'src/layouts';
 
-import { Alert } from '@/components/alert';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import store from '@/store';
@@ -32,7 +31,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                 <PageLayout>
                     <Component {...pageProps} />
                 </PageLayout>
-                <Alert />
             </Provider>
         </>
     );

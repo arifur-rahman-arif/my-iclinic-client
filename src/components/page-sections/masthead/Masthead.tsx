@@ -14,7 +14,7 @@ const Masthead = (): JSX.Element => {
             <div className="absolute right-0 left-auto -z-[1] h-2/4 w-full max-w-[123.1rem] md:h-full">
                 <Image
                     src="/images/masthead/masthead-presbyound.png"
-                    alt=""
+                    alt="Presbyopic woman reading a book with her glasses on."
                     fill
                     className="object-cover object-[75%_top]"
                     quality={40}

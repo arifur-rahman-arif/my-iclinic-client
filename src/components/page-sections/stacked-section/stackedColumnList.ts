@@ -19,7 +19,9 @@ export const presbyoundStackList: StackListInterface[] = [
             `Reading this with glasses on? Everyone’s vision changes as they age.`,
             `Now, you can have safe and effective Presbyound laser eye surgery aimed at reducing the need for reading glasses.`
         ],
-        boxWidth: '51.4rem'
+        boxWidth: '51.4rem',
+        altText: `Middle aged woman on a hike without her glasses and without any presbyopic
+        symptoms.`
     },
     {
         image: {
@@ -37,7 +39,9 @@ export const presbyoundStackList: StackListInterface[] = [
             `Presbyound can help you feel like you’re winning the battle against aging.
 			 Pause the clock on your eyes and regain that youthful confidence that you never knew you had lost.`
         ],
-        boxWidth: '45.9rem'
+        boxWidth: '45.9rem',
+        altText: `Middle aged couple driving a vintage car with blended vision from laser eye
+        surgery.`
     },
     {
         image: {
@@ -55,7 +59,8 @@ export const presbyoundStackList: StackListInterface[] = [
             `A sense of freedom and convenience washes over you.`,
             `Any anxiety surrounding your vision and dependency on lenses has left. You feel younger and reinvigorated.`
         ],
-        boxWidth: '60.7rem'
+        boxWidth: '60.7rem',
+        altText: `Old woman painting after Presbyond treatment.`
     },
     {
         image: {
@@ -73,6 +78,7 @@ export const presbyoundStackList: StackListInterface[] = [
             `With your new vision, you’re more able to accomplish your goals and are even ready to set more challenging ones for your future.`,
             `Remove visual limitations and enjoy the hobbies you love without needing to update your glasses every time.`
         ],
-        boxWidth: '60.7rem'
+        boxWidth: '60.7rem',
+        altText: `Man trying to see his phone with glasses on, suffering from presbyopia.`
     }
 ];

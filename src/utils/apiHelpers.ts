@@ -29,7 +29,6 @@ interface PostDataInterface {
  * @param {GetDataInterface} { url, cb }
  */
 export const postData = async ({ url, body }: PostDataInterface): Promise<any> => {
-    console.log(body);
     const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),

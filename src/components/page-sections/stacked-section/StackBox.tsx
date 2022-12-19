@@ -23,6 +23,7 @@ export interface StackBoxInterface {
     descriptions: string[];
     boxWidth: string;
     index: number;
+    altText?: string;
 }
 
 /**
@@ -31,7 +32,15 @@ export interface StackBoxInterface {
  * @param {StackBoxInterface} { image, desktopImage, title, descriptions, boxWidth, index }
  * @returns {*}  {JSX.Element}
  */
-const StackBox = ({ image, desktopImage, title, descriptions, boxWidth, index }: StackBoxInterface): JSX.Element => {
+const StackBox = ({
+    image,
+    desktopImage,
+    title,
+    descriptions,
+    boxWidth,
+    index,
+    altText
+}: StackBoxInterface): JSX.Element => {
     const isEven = index % 2 === 0 ? true : false;
 
     const pinRef = useRef<any>(null);
@@ -49,7 +58,7 @@ const StackBox = ({ image, desktopImage, title, descriptions, boxWidth, index }:
                 src={image.url}
                 width={image.width}
                 height={image.height}
-                alt={title}
+                alt={altText || ''}
                 quality={30}
                 className="justify-self-center md:hidden md:h-auto md:w-auto"
             />
@@ -57,7 +66,7 @@ const StackBox = ({ image, desktopImage, title, descriptions, boxWidth, index }:
                 src={desktopImage.url}
                 width={desktopImage.width}
                 height={desktopImage.height}
-                alt={title}
+                alt={altText || ''}
                 quality={30}
                 className={`hidden rounded-primary md:block md:h-auto md:w-auto ${
                     isEven ? 'justify-self-end' : 'justify-self-start'

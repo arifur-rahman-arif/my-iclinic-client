@@ -43,12 +43,23 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
                 return;
             }
 
+            if (response.status === 'rejected') {
+                dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertType: 'error',
+                        alertMessage: 'Unable to submit form'
+                    })
+                );
+                return;
+            }
+
             if (response.isError) {
                 dispatch(
                     handleAlert({
                         showAlert: true,
                         alertType: 'error',
-                        alertMessage: (response.error as any)?.data.data.message
+                        alertMessage: ((response as any).error as any)?.data.data.message
                     })
                 );
                 return;

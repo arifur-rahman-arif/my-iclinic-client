@@ -45,6 +45,7 @@ const StackedSection = ({
                         title={stack.title}
                         descriptions={stack.descriptions}
                         boxWidth={stack.boxWidth}
+                        altText={stack.altText}
                     />
                 ))}
             </Container>
