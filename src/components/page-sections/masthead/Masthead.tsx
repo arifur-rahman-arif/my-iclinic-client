@@ -17,7 +17,7 @@ const Masthead = (): JSX.Element => {
                     alt="Presbyopic woman reading a book with her glasses on."
                     fill
                     className="object-cover object-[75%_top]"
-                    quality={40}
+                    quality={100}
                     priority={true}
                     sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
                 />
