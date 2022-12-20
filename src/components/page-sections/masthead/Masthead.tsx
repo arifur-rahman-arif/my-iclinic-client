@@ -13,13 +13,12 @@ const Masthead = (): JSX.Element => {
         <Section defaultClassName="mt-24 w-full xl:h-[11.4rem] relative min-h-[56.9rem] md:min-h-[63rem]">
             <div className="absolute right-0 left-auto -z-[1] h-2/4 w-full max-w-[123.1rem] md:h-full">
                 <Image
-                    src="/images/masthead/masthead-presbyond.webp"
+                    src="/images/masthead/masthead-presbyond.png"
                     alt="Presbyopic woman reading a book with her glasses on."
                     fill
                     className="object-cover object-[75%_top]"
-                    quality={100}
+                    quality={70}
                     priority={true}
-                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
                 />
             </div>
 
