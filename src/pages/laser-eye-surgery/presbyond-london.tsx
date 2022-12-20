@@ -552,7 +552,7 @@ export default function Presbyond(): JSX.Element {
                     </div>
                 }
             />
-            {/*
+
             <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
@@ -566,7 +566,7 @@ export default function Presbyond(): JSX.Element {
                 }}
             />
 
-            <Section className="!mt-0">
+            {/* <Section className="!mt-0">
                 <Container>
                     <Image
                         src="/images/section-images/mountain-image-3.png"
