@@ -81,7 +81,7 @@ const SideImageSection = ({
                         src={sectionImage.url}
                         width={sectionImage.width}
                         height={sectionImage.height}
-                        quality={60}
+                        quality={70}
                         className="md:hidden"
                         alt={altText || ''}
                     />
@@ -89,7 +89,7 @@ const SideImageSection = ({
                         src={sectionImageDesktop.url}
                         width={sectionImageDesktop.width}
                         height={sectionImageDesktop.height}
-                        quality={60}
+                        quality={70}
                         className={`hidden md:block`}
                         alt={altText || ''}
                     />

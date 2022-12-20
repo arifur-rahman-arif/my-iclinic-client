@@ -64,7 +64,7 @@ const StackBox = ({
                 width={image.width}
                 height={image.height}
                 alt={altText || ''}
-                quality={60}
+                quality={70}
                 className="card-image image-card -mt-12 scale-110 justify-self-center opacity-0 md:hidden md:h-auto md:w-auto"
                 ref={imageMobileRef}
             />
@@ -73,7 +73,7 @@ const StackBox = ({
                 width={desktopImage.width}
                 height={desktopImage.height}
                 alt={altText || ''}
-                quality={60}
+                quality={70}
                 ref={imageRef}
                 className={`image-card -mt-12 hidden scale-110 rounded-primary opacity-0 md:block md:w-[60vmax] xl:w-auto ${
                     isEven ? 'justify-self-end' : 'justify-self-start'

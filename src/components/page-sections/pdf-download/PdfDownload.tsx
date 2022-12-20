@@ -37,7 +37,7 @@ const PdfDownload = (): JSX.Element => {
                             <Image
                                 src="/images/section-images/eye-testing-letters.svg"
                                 alt=""
-                                quality={60}
+                                quality={70}
                                 width={253}
                                 height={160}
                                 className="h-[16rem] w-[25.3rem]"

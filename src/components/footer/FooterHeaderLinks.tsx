@@ -13,7 +13,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                 <Image
                     src="/images/icons/icon-calendar-outline-darker.svg"
                     alt=""
-                    quality={60}
+                    quality={70}
                     width={20}
                     height={20}
                     className="h-8 w-8"
@@ -27,7 +27,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                 <Image
                     src="/images/icons/icon-map-outline.svg"
                     alt=""
-                    quality={60}
+                    quality={70}
                     width={20}
                     height={20}
                     className="h-8 w-8"
@@ -41,7 +41,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                 <Image
                     src="/images/icons/icon-telephone-outline.svg"
                     alt=""
-                    quality={60}
+                    quality={70}
                     width={20}
                     height={20}
                     className="h-8 w-8"
@@ -55,7 +55,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                 <Image
                     src="/images/icons/icon-eye-outlined-blue.svg"
                     alt=""
-                    quality={60}
+                    quality={70}
                     width={24}
                     height={24}
                     className="h-[2.4rem] w-[2.4rem]"
@@ -73,7 +73,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                 <Image
                     src="/images/icons/icon-mail-outline-dark.svg"
                     alt=""
-                    quality={60}
+                    quality={70}
                     width={20}
                     height={20}
                     className="h-8 w-8"

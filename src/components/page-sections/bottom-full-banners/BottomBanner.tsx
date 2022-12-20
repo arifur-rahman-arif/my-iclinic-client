@@ -22,7 +22,7 @@ const BottomBanner = (): JSX.Element => {
                             alt="Want to be free from reading glasses?"
                             width={415}
                             height={319}
-                            quality={60}
+                            quality={70}
                             className="absolute right-0 top-0 h-auto w-auto"
                         />
                         {/* Hidden image to take the actual space for absolute positioned element */}

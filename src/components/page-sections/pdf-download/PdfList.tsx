@@ -12,7 +12,7 @@ const PdfList = ({ listText }: { listText: string }): JSX.Element => {
             <Image
                 src="/images/icons/icon-check-grey.svg"
                 alt=""
-                quality={60}
+                quality={70}
                 width={20}
                 height={20}
                 className="mt-2"

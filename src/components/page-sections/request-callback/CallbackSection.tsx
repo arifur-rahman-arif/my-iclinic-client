@@ -65,7 +65,7 @@ const CallbackSection = (): JSX.Element => {
                         src={RequestCallbackBgPng}
                         alt=""
                         className="absolute left-0 top-2/4 -z-[1] hidden aspect-auto h-[calc(100%_+_13rem)] max-h-[63rem] w-auto -translate-y-2/4 md:block"
-                        quality={50}
+                        quality={70}
                         priority
                     />
                     <h3 className="leading-16 hidden self-center font-latoBold text-[4rem] normal-case md:col-span-2 md:block xl:col-span-1 xl:ml-[4.5rem] xl:max-w-[21.4rem]">

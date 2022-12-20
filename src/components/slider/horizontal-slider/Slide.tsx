@@ -23,7 +23,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                                 alt=""
                                 width={103}
                                 height={19}
-                                quality={60}
+                                quality={70}
                                 className="ml-4 h-[1.9rem] w-[10.3rem]"
                             />
                         )}
@@ -33,7 +33,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                                 alt=""
                                 width={103}
                                 height={19}
-                                quality={60}
+                                quality={70}
                                 className="ml-4 h-[1.9rem] w-[10.3rem]"
                             />
                         )}
@@ -43,7 +43,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                                 alt=""
                                 width={103}
                                 height={19}
-                                quality={60}
+                                quality={70}
                                 className="ml-4 h-[1.9rem] w-[10.3rem]"
                             />
                         )}
@@ -53,7 +53,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                                 alt=""
                                 width={103}
                                 height={19}
-                                quality={60}
+                                quality={70}
                                 className="ml-4 h-[1.9rem] w-[10.3rem]"
                             />
                         )}
@@ -63,7 +63,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                                 alt=""
                                 width={103}
                                 height={19}
-                                quality={60}
+                                quality={70}
                                 className="ml-4 h-[1.9rem] w-[10.3rem]"
                             />
                         )}
@@ -74,7 +74,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                         alt=""
                         width={103}
                         height={19}
-                        quality={60}
+                        quality={70}
                         className="ml-4 h-[1.9rem] w-[10.3rem]"
                     />
                 )}
@@ -87,7 +87,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                             className="h-[4.3rem] w-[4.3rem]"
                             width={45}
                             height={45}
-                            quality={60}
+                            quality={70}
                         />
                     ) : (
                         <span className="grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full bg-brandLight font-latoBold tracking-wide">

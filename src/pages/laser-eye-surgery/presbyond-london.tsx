@@ -42,7 +42,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-consultation.png"
                 width={390}
                 height={390}
-                quality={60}
+                quality={70}
                 className="md:hidden"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
@@ -52,7 +52,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-consultation-desktop.png"
                 width={685}
                 height={587}
-                quality={60}
+                quality={70}
                 className="hidden md:block"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
@@ -71,7 +71,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-surgery.png"
                 width={390}
                 height={390}
-                quality={60}
+                quality={70}
                 className="md:hidden"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
@@ -81,7 +81,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-surgery-desktop.png"
                 width={677}
                 height={558}
-                quality={60}
+                quality={70}
                 className="hidden md:block"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
@@ -100,7 +100,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-aftercare.png"
                 width={390}
                 height={390}
-                quality={60}
+                quality={70}
                 className="md:hidden"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
@@ -112,7 +112,7 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
                 src="/images/section-images/presbyond-aftercare-desktop.png"
                 width={685}
                 height={587}
-                quality={60}
+                quality={70}
                 className="hidden md:block"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
@@ -202,7 +202,7 @@ export default function Presbyond(): JSX.Element {
                             src="/images/section-images/best-laser-treatment.png"
                             width={370}
                             height={352}
-                            quality={60}
+                            quality={70}
                             className="md:hidden"
                             alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
                             glasses to see a text message.
@@ -212,7 +212,7 @@ export default function Presbyond(): JSX.Element {
                             src="/images/section-images/best-laser-treatment-desktop.png"
                             width={688}
                             height={607}
-                            quality={60}
+                            quality={70}
                             className="hidden md:block"
                             alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
                             glasses to see a text message.
@@ -402,7 +402,7 @@ export default function Presbyond(): JSX.Element {
                         "
                         width={393}
                         height={137}
-                        quality={60}
+                        quality={70}
                         className="mx-auto md:hidden md:h-auto md:w-auto"
                     />
                     <Image
@@ -411,7 +411,7 @@ export default function Presbyond(): JSX.Element {
                         contact lenses.
                         "
                         fill
-                        quality={60}
+                        quality={70}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </ContainerFluid>
@@ -504,7 +504,7 @@ export default function Presbyond(): JSX.Element {
                         alt=""
                         width={638}
                         height={137}
-                        quality={60}
+                        quality={70}
                         className="mx-auto md:h-auto md:w-auto"
                     />
                 </Container>
@@ -552,7 +552,7 @@ export default function Presbyond(): JSX.Element {
                     </div>
                 }
             />
-
+            {/*
             <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
@@ -573,7 +573,7 @@ export default function Presbyond(): JSX.Element {
                         alt=""
                         width={399}
                         height={162}
-                        quality={60}
+                        quality={70}
                         className="mx-auto md:hidden"
                     />
                     <Image
@@ -581,11 +581,11 @@ export default function Presbyond(): JSX.Element {
                         alt=""
                         width={1157}
                         height={470}
-                        quality={60}
+                        quality={70}
                         className="mx-auto hidden md:block md:h-auto md:w-auto"
                     />
                 </Container>
-            </Section>
+            </Section> */}
 
             <LazyComponent>
                 <CompanyLogos />

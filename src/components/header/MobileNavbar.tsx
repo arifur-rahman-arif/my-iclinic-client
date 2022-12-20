@@ -58,7 +58,7 @@ const MobileNavbar = ({ removeIndicator }: MobileNavbarInstance): JSX.Element =>
                                 alt="My-iClinic"
                                 width={154}
                                 height={36}
-                                quality={60}
+                                quality={70}
                                 priority
                             />
                         </Link>
