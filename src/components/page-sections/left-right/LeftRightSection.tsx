@@ -1,7 +1,9 @@
 import { Container } from '@/components/container';
 import { Section } from '@/components/section';
+import { useEffect } from 'react';
 import ImageComponent from './ImageComponent';
 import LeftRightTextColumn from './LeftRightTextColumn';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export interface LeftRightSectionChildrenInterface {
     mobileImage: JSX.Element;
@@ -21,6 +23,10 @@ interface LeftRightSectionInterface {
  * @returns {*}  {JSX.Element}
  */
 const LeftRightSection = ({ childrenList }: LeftRightSectionInterface): JSX.Element => {
+    useEffect(() => {
+        ScrollTrigger.refresh();
+    }, []);
+
     return (
         <>
             <Section className="grid gap-8 overflow-hidden md:gap-40">

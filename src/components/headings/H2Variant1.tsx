@@ -18,7 +18,7 @@ interface H4Variant1Interface {
  */
 const H2Variant1 = ({
     children,
-    defaultClassName = 'w-full font-latoBold md:text-[4rem] text-[3.6rem] leading-[4rem] normal-case md:leading-[4rem]',
+    defaultClassName = 'w-full font-latoBold md:text-[4rem] text-[3.6rem] leading-[4rem] normal-case md:leading-[4rem] text-heading',
     className
 }: H4Variant1Interface): JSX.Element => {
     return <h2 className={`${defaultClassName} ${className}`}>{children}</h2>;

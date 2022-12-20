@@ -1,64 +1,53 @@
 import { FcGoogle } from 'react-icons/fc';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { annotate } from 'rough-notation';
+import styles from './styles/Heading.module.scss';
+import { MastheadInterface } from './Masthead';
+import { useDeviceSize } from '@/hooks';
+
+interface BannerInterface extends Omit<MastheadInterface, 'mastheadImage'> {}
+
 /**
  * Banner component for the masthead
  *
  * @returns {*}  {JSX.Element}
  */
-const Banner = (): JSX.Element => {
-    const h1Ref = useRef<HTMLHeadingElement>(null);
-    const h2Ref = useRef<HTMLHeadingElement>(null);
+const Banner = ({ h1Title, h2Title }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement>(null);
+    const bannerRef = useRef<HTMLDivElement>(null);
+    const [startH2Animation, setStartH2Animation] = useState<boolean>(false);
+    const deviceSize = useDeviceSize();
 
     useEffect(() => {
-        const tl = gsap.timeline();
+        const h1SpanElements = document.querySelectorAll('#masthead-title > span');
 
-        h1Ref.current &&
-            tl
-                .to(h1Ref.current, {
-                    transform: 'scale(1)',
-                    duration: 3,
-                    transition: 'cubic-bezier(0.11, 0, 0.5, 0)'
-                })
-                .to(
-                    '.h1-inner-span',
-                    {
-                        filter: 'blur(0px)',
-                        stagger: {
-                            amount: 0.7
-                        },
-                        duration: 3,
-                        opacity: 1,
-                        transition: 'cubic-bezier(0.11, 0, 0.5, 0)'
-                    },
-                    '-=2.5'
-                )
-                .to(
-                    h2Ref.current,
-                    {
-                        transform: 'scale(1)',
-                        duration: 3,
-                        transition: 'cubic-bezier(0.11, 0, 0.5, 0)'
-                    },
-                    '-=2.5'
-                )
-                .to(
-                    '.h2-inner-span',
-                    {
-                        filter: 'blur(0px)',
-                        scale: 1,
-                        stagger: {
-                            amount: 0.7
-                        },
-                        duration: 3,
-                        opacity: 1,
-                        transition: 'cubic-bezier(0.11, 0, 0.5, 0)'
-                    },
-                    '-=2'
-                );
+        h1SpanElements &&
+            gsap.to(h1SpanElements, {
+                y: -80,
+                duration: 5,
+                scrollTrigger: {
+                    trigger: bannerRef.current,
+                    start: `top ${deviceSize === 'large' ? '17%' : 'top'}`,
+                    scrub: true
+                }
+            });
+
+        gsap.to('.h2-inner-span', {
+            y: -80,
+            duration: 5,
+            overwrite: true,
+            scrollTrigger: {
+                trigger: bannerRef.current,
+                start: `top ${deviceSize === 'large' ? '17%' : 'top'}`,
+                scrub: true
+            }
+        });
+
+        setTimeout(() => {
+            setStartH2Animation(true);
+        }, 1000);
 
         setTimeout(() => {
             if (!priceRef.current) return;
@@ -68,11 +57,14 @@ const Banner = (): JSX.Element => {
                 animationDuration: 1800
             });
             annotation.show();
-        }, 4000);
+        }, 2000);
     }, []);
 
     return (
-        <div className="grid w-full grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white p-12 md:max-w-[60.5rem] md:grid-cols-[auto_1fr]">
+        <div
+            className="grid w-full grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white p-12 md:max-w-[60.5rem] md:grid-cols-[auto_1fr]"
+            ref={bannerRef}
+        >
             {/* Reviews */}
             <div className="flex flex-wrap items-center justify-start gap-8 md:col-start-2 md:row-start-2 md:justify-end">
                 {/* Review 1 */}
@@ -103,44 +95,10 @@ const Banner = (): JSX.Element => {
                 </div>
             </div>
             {/* Headings */}
-            <div className="grid w-full max-w-[46.3rem] grid-cols-1 gap-6 md:col-span-2 md:gap-12">
-                <h1 ref={h1Ref} className={`scale-[0.8] will-change-transform`}>
-                    <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>{' '}
-                    <span className="h1-inner-span inline-block opacity-0 blur-sm">Laser</span>
-                    <br />
-                    <span className="h1-inner-span inline-block opacity-0 blur-sm">Treatment</span>{' '}
-                    <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
-                </h1>
-                <h2 className={`scale-90 whitespace-pre-line text-left`} ref={h2Ref}>
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        Correct
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        your
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        vision
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        and
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        say
-                    </span>
-                    <br />
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        Goodbye
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        Goodbye
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        reading
-                    </span>{' '}
-                    <span className="h2-inner-span normal-case text-heading2 opacity-0 blur-sm will-change-transform">
-                        glasses
-                    </span>
-                </h2>
+            <div className="grid w-full max-w-[50.3rem] grid-cols-1 gap-6 md:col-span-2 md:gap-12">
+                <div className={`${styles.styles}`}>{h1Title}</div>
+                <div className={`${startH2Animation ? 'blurry-text' : ''}`}>{h2Title}</div>
+
                 <Image
                     src="/images/icons/icon-pin-yellow.svg"
                     quality={10}

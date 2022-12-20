@@ -6,6 +6,7 @@
 @import 'utils/fonts';
 @import 'utils/variables';
 @import 'utils/breakpoints';
+@import 'utils/animations/blurry-text';
 @import '../components/header/styles/header';
 
 * {
@@ -32,7 +33,9 @@
         color: var(--color-secondary);
         background: var(--color-brand);
     }
+}
 
+html {
     scroll-behavior: smooth;
 }
 
@@ -224,7 +227,7 @@ body {
 
 #stepper-indicator::-webkit-scrollbar {
     width: 5px;
-    height: 1px;
+    height: 3px;
 }
 
 input:-webkit-autofill {

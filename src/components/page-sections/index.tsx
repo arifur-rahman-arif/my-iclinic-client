@@ -9,6 +9,8 @@ import { StackedSection } from './stacked-section';
 import { SideImageSectionInterface } from './side-image-section/SideImageSection';
 import TextColumn from './section-parts/TextColumn';
 import DrawLine from './draw-line/DrawLine';
+import FoldSection from './fold-section/FoldSection';
+import FullWidthImageSection from './side-image-section/FullWidthImageSection';
 
 export {
     PersonalInfo,
@@ -21,7 +23,9 @@ export {
     SideImageSection,
     StackedSection,
     TextColumn,
-    DrawLine
+    DrawLine,
+    FoldSection,
+    FullWidthImageSection
 };
 
 export type { SideImageSectionInterface };

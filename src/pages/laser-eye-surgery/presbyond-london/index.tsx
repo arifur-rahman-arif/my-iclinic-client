@@ -1,4 +1,4 @@
-import { DrawLine, Masthead, SideImageSection } from '@/components/page-sections';
+import { DrawLine, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
 
 import { Container } from '@/components/container';
 import LazyComponent from '@/components/LazyComponent';
@@ -14,6 +14,9 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import LaserTreatment from '@/sectionImages/best-laser-treatment.png';
+import LaserTreatmentDesktop from '@/sectionImages/best-laser-treatment-desktop.png';
+import { useDeviceSize } from '@/hooks';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -32,7 +35,6 @@ const StackedSection = dynamic(() => import('@/components/page-sections/stacked-
 const LeftRightSection = dynamic(() => import('@/components/page-sections/left-right/LeftRightSection'), {
     ssr: true
 });
-const BottomMenu = dynamic(() => import('@/components/page-sections/bottom-menu/BottomMenu'));
 const SideVideoSection = dynamic(() => import('@/components/page-sections/side-image-section/SideVideoSection'));
 
 const leftRightList: Array<LeftRightSectionChildrenInterface> = [
@@ -137,22 +139,15 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
  */
 export default function Presbyond(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+    const deviceSize = useDeviceSize();
 
     useEffect(() => {
-        setInterval(() => {
-            ScrollTrigger.refresh();
-        }, 2000);
+        ScrollTrigger.refresh();
 
-        const windowWidth = window.innerWidth;
-
-        if (windowWidth > 768) {
-            setLoadCallbackSection(true);
-        }
+        if (deviceSize === 'large') setLoadCallbackSection(true);
 
         setTimeout(() => {
-            if (windowWidth < 768) {
-                setLoadCallbackSection(true);
-            }
+            if (deviceSize === 'small') setLoadCallbackSection(true);
         }, 2500);
     }, []);
 
@@ -161,7 +156,49 @@ export default function Presbyond(): JSX.Element {
             title="Presbyond Laser eye surgery In London"
             description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
         >
-            <Masthead />
+            <Masthead
+                mastheadImage="/images/masthead/masthead-presbyond.png"
+                h1Title={
+                    <h1 id="masthead-title">
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>{' '}
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Laser</span>
+                        <br />
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Treatment</span>{' '}
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    </h1>
+                }
+                h2Title={
+                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            Correct
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            your
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            vision
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            and
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            say
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            Goodbye
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            to
+                        </span>
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            reading
+                        </span>{' '}
+                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
+                            glasses
+                        </span>
+                    </h2>
+                }
+            />
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
@@ -190,37 +227,13 @@ export default function Presbyond(): JSX.Element {
                 }}
             />
 
-            <Section className="bg-brandLight">
-                <Container className="grid grid-cols-1 items-center gap-12 py-16 md:grid-cols-2 md:gap-24 md:py-24">
-                    <div className="grid">
-                        <h3 className="w-full max-w-[50rem] normal-case">
-                            London’s best laser treatment for achieving clear vision at all distances
-                        </h3>
-                    </div>
-                    <div className="row-start-1 justify-self-center md:row-auto md:justify-self-auto">
-                        <Image
-                            src="/images/section-images/best-laser-treatment.png"
-                            width={370}
-                            height={352}
-                            quality={70}
-                            className="md:hidden"
-                            alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
-                            glasses to see a text message.
-                            "
-                        />
-                        <Image
-                            src="/images/section-images/best-laser-treatment-desktop.png"
-                            width={688}
-                            height={607}
-                            quality={70}
-                            className="hidden md:block"
-                            alt="Man suffers from long-sightedness. He squints at his phone, holding his prescription
-                            glasses to see a text message.
-                            "
-                        />
-                    </div>
-                </Container>
-            </Section>
+            <FullWidthImageSection
+                h3Title="London’s best laser treatment for achieving clear vision at all distances"
+                altText="Man suffers from long-sightedness. He squints at his phone, holding his prescription
+                glasses to see a text message."
+                image={LaserTreatment}
+                desktopImage={LaserTreatmentDesktop}
+            />
 
             <LazyComponent>
                 <LeftRightSection childrenList={leftRightList} />
@@ -607,8 +620,6 @@ export default function Presbyond(): JSX.Element {
                     description="Have a question? We’r here to help."
                 />
             </LazyComponent>
-
-            {loadCallbackSection ? <BottomMenu /> : <></>}
         </Page>
     );
 }

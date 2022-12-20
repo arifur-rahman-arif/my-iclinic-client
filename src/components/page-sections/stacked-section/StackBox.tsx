@@ -1,4 +1,5 @@
-import { imageScaleAnimation, pinAnimation } from '@/utils/gsapFunctions';
+import { useDeviceSize } from '@/hooks';
+import { pinAnimation } from '@/utils/gsapFunctions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
@@ -39,6 +40,7 @@ const StackBox = ({
     index,
     altText
 }: StackBoxInterface): JSX.Element => {
+    const deviceSize = useDeviceSize();
     const isEven = index % 2 === 0 ? true : false;
 
     const pinRef = useRef<any>(null);
@@ -52,33 +54,35 @@ const StackBox = ({
         trigger: pinAnimationTrigger
     });
 
-    imageScaleAnimation({ imageRef: imageRef });
-    imageScaleAnimation({ imageRef: imageMobileRef });
-
     return (
         <div
             className={`relative grid w-full gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:gap-0 md:p-0 md:shadow-none lg:max-w-[97.5rem]`}
         >
-            <Image
-                src={image.url}
-                width={image.width}
-                height={image.height}
-                alt={altText || ''}
-                quality={70}
-                className="card-image image-card -mt-12 scale-110 justify-self-center opacity-0 md:hidden md:h-auto md:w-auto"
-                ref={imageMobileRef}
-            />
-            <Image
-                src={desktopImage.url}
-                width={desktopImage.width}
-                height={desktopImage.height}
-                alt={altText || ''}
-                quality={70}
-                ref={imageRef}
-                className={`image-card -mt-12 hidden scale-110 rounded-primary opacity-0 md:block md:w-[60vmax] xl:w-auto ${
-                    isEven ? 'justify-self-end' : 'justify-self-start'
-                }`}
-            />
+            {deviceSize === 'small' && (
+                <Image
+                    src={image.url}
+                    width={image.width}
+                    height={image.height}
+                    alt={altText || ''}
+                    quality={70}
+                    className="card-image image-card justify-self-center md:hidden md:h-auto md:w-auto"
+                    ref={imageMobileRef}
+                />
+            )}
+
+            {deviceSize === 'large' && (
+                <Image
+                    src={desktopImage.url}
+                    width={desktopImage.width}
+                    height={desktopImage.height}
+                    alt={altText || ''}
+                    quality={70}
+                    ref={imageRef}
+                    className={`image-card hidden rounded-primary md:block md:w-[60vmax] xl:w-auto ${
+                        isEven ? 'justify-self-end' : 'justify-self-start'
+                    }`}
+                />
+            )}
 
             <div
                 style={{

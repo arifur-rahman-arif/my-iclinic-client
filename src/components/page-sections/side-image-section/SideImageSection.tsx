@@ -1,6 +1,7 @@
 import { Container } from '@/components/container';
 import TextColumn from '@/components/page-sections/section-parts/TextColumn';
 import { Section } from '@/components/section';
+import { useDeviceSize } from '@/hooks';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -57,6 +58,8 @@ const SideImageSection = ({
     imageYPosition = 'center',
     altText
 }: SideImageSectionInterface): JSX.Element => {
+    const deviceSize = useDeviceSize();
+
     return (
         <Section className={`${sectionClass || ''}`}>
             <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
@@ -77,22 +80,27 @@ const SideImageSection = ({
                         positionReversed ? 'md:col-start-1 md:row-start-1' : ''
                     } ${imageYPosition === 'top' && 'self-start'} ${imageYPosition === 'bottom' && 'self-end'}`}
                 >
-                    <Image
-                        src={sectionImage.url}
-                        width={sectionImage.width}
-                        height={sectionImage.height}
-                        quality={70}
-                        className="md:hidden"
-                        alt={altText || ''}
-                    />
-                    <Image
-                        src={sectionImageDesktop.url}
-                        width={sectionImageDesktop.width}
-                        height={sectionImageDesktop.height}
-                        quality={70}
-                        className={`hidden md:block`}
-                        alt={altText || ''}
-                    />
+                    {deviceSize === 'small' && (
+                        <Image
+                            src={sectionImage.url}
+                            width={sectionImage.width}
+                            height={sectionImage.height}
+                            quality={70}
+                            className="md:hidden"
+                            alt={altText || ''}
+                        />
+                    )}
+
+                    {deviceSize === 'large' && (
+                        <Image
+                            src={sectionImageDesktop.url}
+                            width={sectionImageDesktop.width}
+                            height={sectionImageDesktop.height}
+                            quality={70}
+                            className={`hidden md:block`}
+                            alt={altText || ''}
+                        />
+                    )}
                 </div>
             </Container>
         </Section>

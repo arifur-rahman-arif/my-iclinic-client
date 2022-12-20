@@ -16,12 +16,7 @@ interface StackedSectionInterface {
  * @param {StackedSectionInterface} { stackList, h3LightHeading, h3BoldHeading, descriptions }
  * @returns {*}  {JSX.Element}
  */
-const StackedSection = ({
-    stackList,
-    h3LightHeading,
-    h3BoldHeading,
-    descriptions
-}: StackedSectionInterface): JSX.Element => {
+const StackedSection = ({ stackList }: StackedSectionInterface): JSX.Element => {
     return (
         <Section>
             <Container className="grid gap-12 md:gap-24">

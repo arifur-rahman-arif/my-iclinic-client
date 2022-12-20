@@ -17,6 +17,8 @@ module.exports = {
                 white: 'var(--color-white)',
                 yellow: 'var(--color-yellow)',
                 blue: 'var(--color-blue)',
+                darkBlue: 'var(--color-dark-blue)',
+                midDarkBlue: 'var(--color-mid-dark-blue)',
             },
             fontFamily: {
                 mulishLight: 'var(--mulish-light)',

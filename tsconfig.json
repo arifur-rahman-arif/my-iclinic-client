@@ -29,9 +29,6 @@
       }
     ],
     "paths": {
-			"@/images/*": [
-				"public/images/*"
-			],
 			"@/components/*": [
 				"src/components/*"
 			],
@@ -41,9 +38,7 @@
 			"@/utils/*": [
 				"src/utils/*"
 			],
-			"@/icons/*": [
-				"public/images/icons/*"
-			],
+			
 			"@/store": [
 				"src/store/store.ts"
 			],
@@ -55,7 +50,16 @@
 			],
 			"@/hooks": [
 				"src/hooks/index.ts"
-			]
+			],
+			"@/icons/*": [
+				"public/images/icons/*"
+			],
+			"@/sectionImages/*": [
+				"public/images/section-images/*"
+			],
+			"@/masthead/*": [
+				"public/images/masthead/*"
+			],
 		}
   },
   "include": [
