@@ -1,4 +1,4 @@
-import * as animationData from '@/images/lottie/check.lottie.json';
+import * as animationData from '@/lottie/check.lottie.json';
 import Lottie from 'react-lottie';
 
 /**

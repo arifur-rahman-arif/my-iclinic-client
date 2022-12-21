@@ -11,6 +11,7 @@ import TextColumn from './section-parts/TextColumn';
 import DrawLine from './draw-line/DrawLine';
 import FoldSection from './fold-section/FoldSection';
 import FullWidthImageSection from './side-image-section/FullWidthImageSection';
+import FullWidthImageSection2 from './side-image-section/FullWidthImageSection2';
 
 export {
     PersonalInfo,
@@ -25,7 +26,8 @@ export {
     TextColumn,
     DrawLine,
     FoldSection,
-    FullWidthImageSection
+    FullWidthImageSection,
+    FullWidthImageSection2
 };
 
 export type { SideImageSectionInterface };

@@ -1,8 +1,19 @@
-import { FoldSection, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
+import {
+    FoldSection,
+    FullWidthImageSection,
+    FullWidthImageSection2,
+    Masthead,
+    SideImageSection
+} from '@/components/page-sections';
 
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/link';
 import Page from '@/components/Page';
+import IconCalender from '@/icons/icon-calender-15.svg';
+import IconEyeballFocusing from '@/icons/icon-eye-ball-focusing.svg';
+import IconEyePlus from '@/icons/icon-eye-plus.svg';
+import IconEyeTesting from '@/icons/icon-eye-testing.svg';
+import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
+import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
 import ShortSightedImageLarge from '@/sectionImages/short-sighted-vision-large.png';
 import ShortSightedImage from '@/sectionImages/short-sighted-vision.png';
 import gsap from 'gsap';
@@ -20,7 +31,7 @@ const CallbackSection = dynamic(() => import('@/components/page-sections/request
 /**
  * Home/Landing page component for the App
  *
- * Url: /laser-eye-surgery/presbyond-london-price
+ * Url: /laser-eye-surgery/presbyond-london/price
  *
  * @export
  * @returns {JSX.Element}
@@ -37,6 +48,7 @@ export default function PresbyondPricing(): JSX.Element {
         >
             <Masthead
                 mastheadImage="/images/masthead/masthead-presbyond-pricing.png"
+                altText="Woman reading the cost of Presbyond Treatment in London."
                 h1Title={
                     <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>
@@ -73,111 +85,104 @@ export default function PresbyondPricing(): JSX.Element {
 
             <FoldSection />
 
-            <SideImageSection
-                h2Heading="Vision correction treatment"
-                h3LightHeading="Getting rid of your reading glasses with"
-                h3BoldHeading="our Presbyond Laser Treatment"
-                altText="Woman with reading glasses has a headache from watching her laptop screen. She is
-                long sighted, suffering from presbyopia."
-                descriptions={[
-                    `Always wanted to know what your vision could be like without the need for reading
-                    glasses?`,
-                    `If you suffer from presbyopia (also known as long sightedness, farsightedness,
-                        hypermetropia and hyperopia), our Presbyond laser surgery can fix your refractive error
-                        for an easier, clearer way of life.`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/presbyond-laser-treatment.png',
-                    width: 370,
-                    height: 352
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/presbyond-laser-treatment-desktop.png',
-                    width: 688,
-                    height: 642
-                }}
-            />
+            <FullWidthImageSection2 />
 
             <FullWidthImageSection
                 h3Title="Permanently correct"
                 boldHeading="your short-sighted vision with our all-inclusive cost."
-                altText="Man suffers from long-sightedness. He squints at his phone, holding his prescription
-                glasses to see a text message."
+                altText="Woman with presbyond blended vision, without needing reading glasses."
                 image={ShortSightedImage}
                 desktopImage={ShortSightedImageLarge}
+                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 pb-24 md:pb-0"
+                overlayAnimation
             />
 
             <SideImageSection
-                h2Heading="Transparent Price"
-                h3LightHeading="Clearer vision with an
-                all inclusive,"
-                h3BoldHeading="Transparent cost"
-                descriptions={[
-                    `Having to wear glasses and contact lenses is a big financial burden overtime. We never subject the safety of people’s eye health to a cheap deal like glasses and contact lenses do and we also understand you don’t want to pay more than what’s fair.`,
-                    `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
-                ]}
+                h2Heading="Presbyond consultation"
+                h3LightHeading="What’s included in my"
+                h3BoldHeading="private consultation and treatment?"
                 sectionImage={{
-                    url: '/images/section-images/transparent-price.png',
+                    url: '/images/section-images/private-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/transparent-price-desktop.png',
-                    width: 689,
-                    height: 558
+                    url: '/images/section-images/private-consultation-desktop.png',
+                    width: 616,
+                    height: 549
                 }}
-                altText="Happy couple on a hike in the mountains after correcting their long-sighted vision."
+                altText="Woman with presbyond blended vision, without needing reading glasses."
+                positionReversed
                 textColumnExtras={
-                    <div className="grid gap-6">
-                        <h2 className="normal-case">
-                            £2,400 per Eye
-                            <br /> With 10 Months Interest-Free Finance available!
-                        </h2>
-                        <p>
-                            The best laser eye surgery price in London, saving an average of £1,000 for your treatment
-                            when you come to My-iClinic.
-                        </p>
-                        <p>
-                            Want to know more about our{' '}
-                            <LinkText
-                                href="#"
-                                className="font-mulishBold font-extrabold text-blue"
-                                indicatorColor="bg-blue"
-                            >
-                                Finace Options?
-                            </LinkText>
-                        </p>
-
-                        <ul className="ml-12 grid gap-6">
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold">
-                                    One dedicated presbyond specialist
-                                    <br />
-                                    for your treatment
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold">Most affordable price in London</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul className="grid w-full gap-6 md:max-w-[52rem]">
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconEyeTesting} alt="" className="h-16 w-16" />
+                            <p className="">
+                                <strong>A FREE</strong> suitability laser check with our laser specialist (a
+                                comprehensive assessment of your suitability and how presbyond will suit your
+                                lifestyle).
+                            </p>
+                        </li>
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconPersonInFrame} alt="" className="h-16 w-16" />
+                            <p className="">
+                                A comprehensive consultation with your dedicated laser specialist (inclusive of all eye
+                                assessment and eye scans).
+                            </p>
+                        </li>
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" />
+                            <p className="">
+                                Your Presbyond treatment performed in our private laser suite with your dedicated
+                                specialist and our friendly team.
+                            </p>
+                        </li>
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconEyePlus} alt="" className="h-16 w-16" />
+                            <p className="">
+                                Up to four FREE aftercare appointments with your dedicated laser specialist (inclusive
+                                of eye assessments and eye scans)
+                            </p>
+                        </li>
+                    </ul>
                 }
             />
 
+            <SideImageSection
+                h2Heading="Presbyond finance"
+                h3LightHeading="Want to pay for your"
+                h3BoldHeading="treatment each month?"
+                altText="Man in his work-shop without presbyopia or long-sighted vision."
+                descriptions={[
+                    `We understand having Presbyond to correct your vision is a great investment in your
+                     eye health and lifestyle. We offer 12 months interest- free finance to help make that investment become a reality!`
+                ]}
+                sectionImage={{
+                    url: '/images/section-images/presbyond-finance.png',
+                    width: 370,
+                    height: 352
+                }}
+                sectionImageDesktop={{
+                    url: '/images/section-images/presbyond-finance-large.png',
+                    width: 574,
+                    height: 560
+                }}
+                textColumnExtras={
+                    <ul className="grid w-full gap-6 md:max-w-[43rem]">
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconHandHoldingLove} alt="" className="h-16 w-16" />
+                            <h5 className="normal-case">You are eligible for our 12 months interest-free finance</h5>
+                        </li>
+                        <li className="flex items-start justify-start gap-6">
+                            <Image src={IconCalender} alt="" className="h-16 w-16" />
+                            <h5 className="normal-case">Calculate your monthly spend for your laser treatment</h5>
+                        </li>
+                    </ul>
+                }
+                midExtras={<h4 className="normal-case">Finance available for Presbyond</h4>}
+            />
+
+            <div className="mt-48"></div>
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>

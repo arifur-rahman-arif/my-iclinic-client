@@ -38,7 +38,6 @@
 			"@/utils/*": [
 				"src/utils/*"
 			],
-			
 			"@/store": [
 				"src/store/store.ts"
 			],
@@ -59,6 +58,9 @@
 			],
 			"@/masthead/*": [
 				"public/images/masthead/*"
+			],
+			"@/lottie/*": [
+				"public/images/lottie/*"
 			],
 		}
   },

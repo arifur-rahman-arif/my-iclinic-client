@@ -33,20 +33,21 @@ const FoldItem = ({
     const deviceSize = useDeviceSize();
 
     useEffect(() => {
-        foldedElement.current &&
-            gsap.to(foldedElement.current, {
-                transform: 'rotateY(0deg)',
-                left: 0,
-                duration: 1.5,
-                scrollTrigger: {
-                    trigger: foldedElement.current,
-                    start: `top ${deviceSize === 'small' ? 'center' : '70%'}`,
-                    onEnter: () => {
-                        originalElement.current && originalElement.current.classList.add('original-element-active');
-                    }
+        if (!foldedElement.current || deviceSize === '') return;
+
+        gsap.to(foldedElement.current, {
+            transform: 'rotateY(0deg)',
+            left: 0,
+            duration: 1.5,
+            scrollTrigger: {
+                trigger: foldedElement.current,
+                start: deviceSize === 'large' ? 'top 70%' : 'top center',
+                onEnter: () => {
+                    originalElement.current && originalElement.current.classList.add('original-element-active');
                 }
-            });
-    }, []);
+            }
+        });
+    }, [deviceSize]);
 
     return (
         <>
