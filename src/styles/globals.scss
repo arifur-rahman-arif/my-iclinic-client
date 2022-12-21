@@ -157,9 +157,15 @@ body {
         &,
         * {
             font-size: 2rem;
+            line-height: 2.4rem;
             font-weight: bolder;
             font-family: var(--lato-bold);
             text-transform: uppercase;
+
+            @include media-breakpoint-up(md) {
+                font-size: 2.4rem;
+                line-height: 3.2rem;
+            }
         }
     }
 

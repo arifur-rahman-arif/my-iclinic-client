@@ -158,6 +158,7 @@ export default function Presbyond(): JSX.Element {
         >
             <Masthead
                 mastheadImage="/images/masthead/masthead-presbyond.png"
+                altText="Presbyopic woman reading a book with her glasses on."
                 h1Title={
                     <h1 id="masthead-title">
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>{' '}

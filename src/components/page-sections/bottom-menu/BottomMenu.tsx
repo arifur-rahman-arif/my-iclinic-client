@@ -16,27 +16,27 @@ const BottomMenu = (): JSX.Element => {
         <div className="fixed bottom-0 left-0 z-10 h-32 w-full overflow-hidden bg-white py-12 px-20 shadow-shadow1 sm:hidden">
             <ul className="flex h-full w-full items-center justify-between gap-10">
                 <li>
-                    <Link href="#">
+                    <Link href="#" aria-label="Booking">
                         <Image src={IconCalender} alt="" quality={20} />
                     </Link>
                 </li>
                 <li>
-                    <Link href="#">
+                    <Link href="#" aria-label="Call">
                         <Image src={IconTelephoneOutline} alt="" quality={20} />
                     </Link>
                 </li>
                 <li>
-                    <Link href="#">
+                    <Link href="#" aria-label="Live chat">
                         <Image src={IconChat} alt="" quality={20} />
                     </Link>
                 </li>
                 <li>
-                    <Link href="#">
+                    <Link href="#" aria-label="Email">
                         <Image src={IconLetter} alt="" quality={20} />
                     </Link>
                 </li>
                 <li>
-                    <Link href="#">
+                    <Link href="#" aria-label="Location">
                         <Image src={IconMapOutline} alt="" quality={20} />
                     </Link>
                 </li>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type AcceptedDeviceSizes = 'small' | 'large';
+type AcceptedDeviceSizes = 'small' | 'large' | '';
 
 /**
  * Hooks to detect the screen size either on resize or page load
@@ -8,7 +8,7 @@ type AcceptedDeviceSizes = 'small' | 'large';
  * @returns {*}  {AcceptedDeviceSizes}
  */
 const useDeviceSize = (): AcceptedDeviceSizes => {
-    const [deviceSize, setDeviceSize] = useState<AcceptedDeviceSizes>('small');
+    const [deviceSize, setDeviceSize] = useState<AcceptedDeviceSizes>('');
 
     useEffect(() => {
         changeDeviceSize();

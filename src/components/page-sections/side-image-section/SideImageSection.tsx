@@ -15,7 +15,7 @@ export interface SideImageSectionInterface {
     h2Heading?: string;
     h3LightHeading?: string;
     h3BoldHeading?: string;
-    descriptions: string[];
+    descriptions?: string[];
     sectionImage: ImageType;
     sectionImageDesktop: ImageType;
     normalLightHeading?: string;
@@ -24,6 +24,7 @@ export interface SideImageSectionInterface {
     sectionClass?: string;
     imageYPosition?: 'top' | 'bottom' | 'center';
     altText?: string;
+    midExtras?: ReactNode;
 }
 
 /**
@@ -56,7 +57,8 @@ const SideImageSection = ({
     positionReversed = false,
     sectionClass,
     imageYPosition = 'center',
-    altText
+    altText,
+    midExtras
 }: SideImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
@@ -72,6 +74,7 @@ const SideImageSection = ({
                     descriptions={descriptions}
                     textColumnExtras={textColumnExtras}
                     h3LightHeading={h3LightHeading}
+                    midExtras={midExtras}
                 />
 
                 {/* Image column */}
