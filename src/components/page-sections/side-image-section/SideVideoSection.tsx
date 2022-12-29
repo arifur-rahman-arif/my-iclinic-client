@@ -1,8 +1,9 @@
 import { Container } from '@/components/container';
 import { H2Variant1, H3Variant2 } from '@/components/headings';
 import { Section } from '@/components/section';
+import { pinAnimation } from '@/utils/gsapFunctions';
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 
 type ImageType = {
     url: string;
@@ -14,14 +15,15 @@ export interface SideVideoSectionInterface {
     h2Heading?: string;
     h3Heading?: string;
     descriptions: string[];
-    sectionImage: ImageType;
-    sectionImageDesktop: ImageType;
+    sectionImage?: ImageType;
+    sectionImageDesktop?: ImageType;
     normalLightHeading?: string;
     textColumnExtras?: ReactNode;
     positionReversed?: boolean;
     sectionClass?: string;
     imageYPosition?: 'top' | 'bottom' | 'center';
     altText?: string;
+    darkPin?: boolean;
 }
 
 /**
@@ -49,23 +51,50 @@ const SideVideoSection = ({
     textColumnExtras,
     positionReversed = false,
     sectionClass,
-    imageYPosition = 'center'
+    imageYPosition = 'center',
+    darkPin
 }: SideVideoSectionInterface): JSX.Element => {
+    const pinRef = useRef<any>(null);
+    const pinAnimationTrigger = useRef<HTMLDivElement>(null);
+
+    pinAnimation({
+        pinRef: pinRef,
+        width: '15rem',
+        trigger: pinAnimationTrigger
+    });
+
     return (
         <Section className={`${sectionClass || ''}`}>
-            <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
+            <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32">
                 {/* Text column */}
                 <div className="grid">
                     <H2Variant1 className="w-full">{h2Heading || ''}</H2Variant1>
 
-                    <Image
-                        src="/images/icons/icon-pin-yellow.svg"
-                        quality={10}
-                        width={150}
-                        height={2}
-                        alt=""
-                        className="mt-6"
-                    />
+                    {darkPin ? (
+                        <div className="h-2 w-full" ref={pinAnimationTrigger}>
+                            <Image
+                                src="/images/icons/icon-pin-dark-150.svg"
+                                quality={10}
+                                width={150}
+                                height={2}
+                                alt=""
+                                className="mt-6 w-0"
+                                ref={pinRef}
+                            />
+                        </div>
+                    ) : (
+                        <div className="h2 w-full" ref={pinAnimationTrigger}>
+                            <Image
+                                src="/images/icons/icon-pin-yellow.svg"
+                                quality={10}
+                                width={150}
+                                height={2}
+                                alt=""
+                                className="mt-6 w-0"
+                                ref={pinRef}
+                            />
+                        </div>
+                    )}
 
                     <H3Variant2 className="mt-12 md:mt-24">{h3Heading || ''}</H3Variant2>
 

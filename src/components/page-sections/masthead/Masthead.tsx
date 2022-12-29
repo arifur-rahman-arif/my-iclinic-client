@@ -24,9 +24,7 @@ const Masthead = ({ mastheadImage, h1Title, h2Title, altText }: MastheadInterfac
                     alt={altText || ''}
                     fill
                     className="object-cover object-[75%_top]"
-                    // Quality={100}
                     priority={true}
-                    // Sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
                 />
             </div>
 

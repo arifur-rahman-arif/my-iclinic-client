@@ -8,18 +8,16 @@ import { TextField } from '@/components/inputs';
 interface PersonalInfoInterface {
     name: string;
     setName: Dispatch<SetStateAction<string>>;
-    nameError: boolean;
-    setNameError: Dispatch<SetStateAction<boolean>>;
+    nameError: string;
+    setNameError: Dispatch<SetStateAction<string>>;
     phone: string;
     setPhone: Dispatch<SetStateAction<string>>;
-    phoneError: boolean;
-    setPhoneError: Dispatch<SetStateAction<boolean>>;
+    phoneError: string;
+    setPhoneError: Dispatch<SetStateAction<string>>;
     email: string;
     setEmail: Dispatch<SetStateAction<string>>;
-    emailError: boolean;
-    setEmailError: Dispatch<SetStateAction<boolean>>;
-    errorText: string;
-    setErrorText: Dispatch<SetStateAction<string>>;
+    emailError: string;
+    setEmailError: Dispatch<SetStateAction<string>>;
     // Coming from the stepper as a extra prop children not from the parent component
     stepperIndex?: number;
     shouldActivateNextStep?: boolean;
@@ -46,7 +44,6 @@ interface PersonalInfoInterface {
  *     emailError,
  *     setEmailError,
  *     errorText,
- *     setErrorText,
  *     stepperIndex,
  *     shouldActivateNextStep,
  *     activateNextStepper,
@@ -67,8 +64,6 @@ const PersonalInfo = ({
     setEmail,
     emailError,
     setEmailError,
-    errorText,
-    setErrorText,
     stepperIndex,
     shouldActivateNextStep,
     activateNextStepper,
@@ -84,7 +79,7 @@ const PersonalInfo = ({
         const value = e.target.value as string;
         setPhone(value);
         formatPhoneNumber(value).then((res) => setPhone(res));
-        setPhoneError(false);
+        setPhoneError('Please provide a valid phone number');
     };
 
     /**
@@ -94,32 +89,27 @@ const PersonalInfo = ({
      */
     const showInputErrors = async (): Promise<boolean> => {
         if (!name) {
-            setErrorText('Please provide your name');
-            setNameError(true);
+            setNameError('Please provide your name');
             return false;
         }
         if (!phone) {
-            setErrorText('Please provide your phone');
-            setPhoneError(true);
+            setPhoneError('Please provide your phone');
             return false;
         }
 
         const numberValid = await validatePhoneNumber(phone);
 
         if (!numberValid) {
-            setErrorText('Please provide a valid phone number');
-            setPhoneError(true);
+            setPhoneError('Please provide a valid phone number');
             return false;
         }
 
         if (!email) {
-            setErrorText('Please provide your email');
-            setEmailError(true);
+            setEmailError('Please provide your email');
             return false;
         }
         if (!validateEmail(email)) {
-            setErrorText('Please provide a valid email address');
-            setEmailError(true);
+            setEmailError('Please provide a valid email address');
             return false;
         }
 
@@ -135,11 +125,10 @@ const PersonalInfo = ({
                     id="request-callback-form-name"
                     placeholder="Your Name"
                     important
-                    error={nameError}
-                    errorText={errorText}
+                    errorText={nameError}
                     onChange={(e) => {
                         setName(e.target.value);
-                        setNameError(false);
+                        setNameError('');
                     }}
                     onClearValue={() => {
                         setName('');
@@ -152,11 +141,11 @@ const PersonalInfo = ({
                     id="request-callback-form-number"
                     placeholder="Phone Number"
                     important
-                    error={phoneError}
-                    errorText={errorText}
+                    errorText={phoneError}
                     onChange={handlePhoneInput}
                     onClearValue={() => {
                         setPhone('');
+                        setPhoneError('');
                     }}
                     randomID={clonedElement == true ? false : true}
                 />
@@ -166,11 +155,10 @@ const PersonalInfo = ({
                     id="request-callback-form-email"
                     placeholder="Email Address"
                     important
-                    error={emailError}
-                    errorText={errorText}
+                    errorText={emailError}
                     onChange={(e) => {
                         setEmail(e.target.value);
-                        setEmailError(false);
+                        setEmailError('');
                         checkInputsForNextStepActivation(stepperIndex || 0, e.target.value);
                     }}
                     onClearValue={() => {

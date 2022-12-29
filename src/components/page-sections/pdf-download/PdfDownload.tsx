@@ -10,12 +10,18 @@ import dynamic from 'next/dynamic';
 const DownloadOnTheWay = dynamic(() => import('./DownloadOnTheWay'));
 const Thankyou = dynamic(() => import('./Thankyou'));
 
+interface PdfDownloadInterface {
+    title: string;
+    list?: string[];
+    description?: string;
+}
+
 /**
  * Pdf download section
  *
  * @returns {*}  {JSX.Element}
  */
-const PdfDownload = (): JSX.Element => {
+const PdfDownload = ({ title, list, description }: PdfDownloadInterface): JSX.Element => {
     const [showForm, setShowForm] = useState<boolean>(true);
     const [showDownloadOnTheWayTemplate, setShowDownloadOnTheWayTemplate] = useState<boolean>(false);
     const [showThankYouTemplate, setShowThankYouTemplate] = useState<boolean>(false);
@@ -32,7 +38,7 @@ const PdfDownload = (): JSX.Element => {
                         quality={1}
                         className="absolute top-0 right-0 -z-[1] hidden h-[61.4rem] w-[28rem] translate-x-[40%] xl:block"
                     />
-                    <div className="flex flex-col items-center justify-start rounded-tl-primary rounded-bl-primary bg-brandLight py-12 px-8 md:max-w-[43.9rem]">
+                    <div className="flex flex-col items-center justify-start gap-12 rounded-tl-primary rounded-bl-primary bg-brandLight py-12 px-8 md:max-w-[43.9rem]">
                         <div>
                             <Image
                                 src="/images/section-images/eye-testing-letters.svg"
@@ -44,15 +50,17 @@ const PdfDownload = (): JSX.Element => {
                             />
                         </div>
 
-                        <h3 className="mt-8 text-center font-mulishBold text-[2.8rem] leading-[3.2rem]">
-                            Get the guide to Modern Cataract Surgery
-                        </h3>
+                        <h3 className="mt-8 text-center font-mulishBold text-[2.8rem] leading-[3.2rem]">{title}</h3>
 
-                        <ul className="mt-12 flex w-full flex-col items-start justify-start gap-[1.5rem] pb-12 md:pl-[7.5rem]">
-                            {pdfList.map((list, index) => (
-                                <PdfList key={index} listText={list} />
-                            ))}
-                        </ul>
+                        {description && <p className="text-center">{description}</p>}
+
+                        {list?.length && (
+                            <ul className="mt-12 flex w-full flex-col items-start justify-start gap-[1.5rem] pb-12 md:pl-[7.5rem]">
+                                {pdfList.map((list, index) => (
+                                    <PdfList key={index} listText={list} />
+                                ))}
+                            </ul>
+                        )}
                     </div>
 
                     {showForm && (

@@ -12,6 +12,10 @@ import DrawLine from './draw-line/DrawLine';
 import FoldSection from './fold-section/FoldSection';
 import FullWidthImageSection from './side-image-section/FullWidthImageSection';
 import FullWidthImageSection2 from './side-image-section/FullWidthImageSection2';
+import FullWidthImageSection3 from './side-image-section/FullWidthImageSection3';
+import BottomBanner2 from './bottom-full-banners/BottomBanner2';
+import GridColumn from './section-parts/GridColumn';
+import StackColumn from './section-parts/StackColumn';
 
 export {
     PersonalInfo,
@@ -27,7 +31,11 @@ export {
     DrawLine,
     FoldSection,
     FullWidthImageSection,
-    FullWidthImageSection2
+    FullWidthImageSection2,
+    FullWidthImageSection3,
+    BottomBanner2,
+    GridColumn,
+    StackColumn
 };
 
 export type { SideImageSectionInterface };

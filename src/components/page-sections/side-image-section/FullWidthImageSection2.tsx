@@ -1,7 +1,7 @@
 import { Container } from '@/components/container';
 import { Section } from '@/components/section';
 import IconEyeBall from '@/icons/icon-eye-ball-outline.svg';
-import LadyWithWallet from '@/sectionImages/lady-with-wallet.png';
+import LadyWithWallet from '@/section-images/lady-with-wallet.png';
 import Image from 'next/image';
 
 /**

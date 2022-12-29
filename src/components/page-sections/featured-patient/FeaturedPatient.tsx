@@ -9,6 +9,7 @@ import BandImage from './BandImage';
 interface FeaturedPatientInterface {
     bandImageTitle: string;
     bandImageURL: string;
+    bandColor?: string;
     h2Title: string;
     h3Title: string;
     bandImageDescription: string[];
@@ -37,6 +38,7 @@ const FeaturedPatient = ({
     h3Title,
     bandImageTitle,
     bandImageURL,
+    bandColor,
     bandImageDescription,
     reviewDescription,
     reviewTitle,
@@ -45,7 +47,7 @@ const FeaturedPatient = ({
     return (
         <Section>
             <Container>
-                <div className="mx-auto grid max-w-[93rem] grid-cols-1 md:grid-cols-2 md:gap-24">
+                <div className="mx-auto grid max-w-[93rem] grid-cols-1 content-start md:grid-cols-2 md:gap-24">
                     <div className="mb-24 grid gap-4 md:hidden">
                         <h2>{h2Title}</h2>
                         <H3Variant1>{h3Title}</H3Variant1>
@@ -53,7 +55,7 @@ const FeaturedPatient = ({
                     </div>
                     {/* Block 1 */}
                     {/* Image with band */}
-                    <BandImage title={bandImageTitle} imageURL={bandImageURL} />
+                    <BandImage title={bandImageTitle} imageURL={bandImageURL} bandColor={bandColor} />
 
                     {/* Block 2 */}
                     <div className="mt-24 grid content-start gap-6 md:-mt-[3.4rem] md:gap-12">

@@ -2,32 +2,18 @@
     :global {
         .original-element {
             position: relative;
-            &:before {
-                content: '';
-                width: 49.9%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                right: 0;
-                background: var(--color-white);
-            }
-        }
-
-        .original-element.original-element-active {
-            &:before {
-                content: '';
-                width: 50%;
-            }
+            clip-path: polygon(100% 0, 50% 0, 50% 100%, 100% 100%);
+            -webkit-clip-path: polygon(100% 0, 50% 0, 50% 100%, 100% 100%);
         }
 
         .clone-element {
             perspective-origin: center;
             width: 100%;
             transform-style: preserve-3d;
-            transform: rotateY(-70deg);
-            left: -1px;
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-            -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+            transform: rotateY(90deg);
+            backface-visibility: hidden;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+            -webkit-clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
         }
     }
 }

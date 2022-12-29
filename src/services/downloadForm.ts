@@ -4,7 +4,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const downloadFormApi = createApi({
     reducerPath: 'downloadFormApi',
     baseQuery: fetchBaseQuery({ baseUrl: `/api` }),
-    // BaseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_WP_URL}/wp-json/wp/v2/` }),
     endpoints: (builder) => ({
         downloadFormSubmission: builder.mutation({
             query: (body) => {
