@@ -88,7 +88,7 @@ export const pinAnimation = ({
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: trigger.current,
-                start: 'top 90%',
+                start: 'top bottom',
                 toggleActions: 'play none none reverse'
             }
         });

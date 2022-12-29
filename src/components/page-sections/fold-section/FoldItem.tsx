@@ -41,10 +41,11 @@ const FoldItem = ({
             duration: 1.5,
             scrollTrigger: {
                 trigger: foldedElement.current,
-                start: deviceSize === 'large' ? 'top 70%' : 'top center',
-                onEnter: () => {
-                    originalElement.current && originalElement.current.classList.add('original-element-active');
-                }
+                start: deviceSize === 'large' ? 'top 70%' : 'top center'
+                // Scrub: true
+                // onEnter: () => {
+                //     originalElement.current && originalElement.current.classList.add('original-element-active');
+                // }
             }
         });
     }, [deviceSize]);

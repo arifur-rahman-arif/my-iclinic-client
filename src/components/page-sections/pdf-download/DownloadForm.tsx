@@ -24,9 +24,8 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [gender, setGender] = useState<string>('male');
-    const [nameError, setNameError] = useState<boolean>(false);
-    const [emailError, setEmailError] = useState<boolean>(false);
-    const [errorText, setErrorText] = useState<string>('');
+    const [nameError, setNameError] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>('');
 
     useEffect(() => {
         try {
@@ -100,20 +99,17 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
         e.preventDefault();
 
         if (!name) {
-            setNameError(true);
-            setErrorText('Please provide your name');
+            setNameError('Please provide your name');
             return;
         }
 
         if (!email) {
-            setEmailError(true);
-            setErrorText('Please provide your email');
+            setEmailError('Please provide your email');
             return;
         }
 
         if (!validateEmail(email)) {
-            setEmailError(true);
-            setErrorText('Please provide a valid email address');
+            setEmailError('Please provide a valid email address');
             return;
         }
 
@@ -158,11 +154,10 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
                     id="download-form-name"
                     placeholder="Your Name"
                     important
-                    error={nameError}
-                    errorText={errorText}
+                    errorText={nameError}
                     onChange={(e) => {
                         setName(e.target.value);
-                        setNameError(false);
+                        setNameError('');
                     }}
                     onClearValue={() => {
                         setName('');
@@ -174,11 +169,10 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
                     id="download-form-email"
                     placeholder="Email Address"
                     important
-                    error={emailError}
-                    errorText={errorText}
+                    errorText={emailError}
                     onChange={(e) => {
                         setEmail(e.target.value);
-                        setEmailError(false);
+                        setEmailError('');
                     }}
                     onClearValue={() => {
                         setEmail('');

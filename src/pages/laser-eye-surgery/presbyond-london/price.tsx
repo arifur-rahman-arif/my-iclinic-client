@@ -14,8 +14,8 @@ import IconEyePlus from '@/icons/icon-eye-plus.svg';
 import IconEyeTesting from '@/icons/icon-eye-testing.svg';
 import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
 import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
-import ShortSightedImageLarge from '@/sectionImages/short-sighted-vision-large.png';
-import ShortSightedImage from '@/sectionImages/short-sighted-vision.png';
+import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
+import ShortSightedImage from '@/section-images/short-sighted-vision.png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
@@ -93,7 +93,7 @@ export default function PresbyondPricing(): JSX.Element {
                 altText="Woman with presbyond blended vision, without needing reading glasses."
                 image={ShortSightedImage}
                 desktopImage={ShortSightedImageLarge}
-                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 pb-24 md:pb-0"
+                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
                 overlayAnimation
             />
 
@@ -182,7 +182,7 @@ export default function PresbyondPricing(): JSX.Element {
                 midExtras={<h4 className="normal-case">Finance available for Presbyond</h4>}
             />
 
-            <div className="mt-48"></div>
+            <div className="md:mt-48"></div>
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>

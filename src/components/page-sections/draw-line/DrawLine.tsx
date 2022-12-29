@@ -11,6 +11,7 @@ type ImageType = {
 interface DrawLineInterface {
     image: ImageType;
     desktopImage: ImageType;
+    altText?: string;
 }
 
 /**
@@ -19,7 +20,7 @@ interface DrawLineInterface {
  * @param {DrawLineInterface} { image, desktopImage }
  * @returns {*}
  */
-const DrawLine = ({ image, desktopImage }: DrawLineInterface) => {
+const DrawLine = ({ image, desktopImage, altText }: DrawLineInterface) => {
     const coverRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +46,7 @@ const DrawLine = ({ image, desktopImage }: DrawLineInterface) => {
         <div className="relative overflow-hidden" ref={triggerRef}>
             <Image
                 src={image.url}
-                alt=""
+                alt={altText || ''}
                 width={image.width}
                 height={image.height}
                 className="mx-auto object-contain md:hidden"
@@ -53,7 +54,7 @@ const DrawLine = ({ image, desktopImage }: DrawLineInterface) => {
             />
             <Image
                 src={desktopImage.url}
-                alt=""
+                alt={altText || ''}
                 width={desktopImage.width}
                 height={desktopImage.height}
                 className="mx-auto hidden object-contain md:block"

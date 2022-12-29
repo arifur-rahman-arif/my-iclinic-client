@@ -11,7 +11,6 @@ interface TextFieldInterface {
     placeholder: string;
     icon?: JSX.Element;
     important?: boolean;
-    error?: boolean;
     errorText?: string;
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onClearValue: () => void;
@@ -28,10 +27,10 @@ interface TextFieldInterface {
  *     placeholder,
  *     icon: Icon,
  *     important,
- *     error,
  *     errorText,
  *     onChange,
- *     onClearValue
+ *     onClearValue,
+ *     randomID
  * }
  * @returns {*}  {JSX.Element}
  */
@@ -42,7 +41,6 @@ const TextField = ({
     placeholder,
     icon: Icon,
     important,
-    error,
     errorText,
     onChange,
     onClearValue,
@@ -69,7 +67,7 @@ const TextField = ({
 
     // Animate the error text
     useEffect(() => {
-        error &&
+        errorText &&
             errorTextRef.current &&
             gsap.to(errorTextRef.current, {
                 transform: 'translateY(100%)',
@@ -80,7 +78,7 @@ const TextField = ({
                 ease: 'expo.inOut'
             });
 
-        !error &&
+        !errorText &&
             errorTextRef.current &&
             gsap.to(errorTextRef.current, {
                 transform: 'translateY(-50%)',
@@ -89,7 +87,7 @@ const TextField = ({
                 scale: 0.5,
                 ease: 'expo.inOut'
             });
-    }, [error]);
+    }, [errorText]);
 
     /**
      * Animate the place holder when input field is focused
@@ -158,7 +156,7 @@ const TextField = ({
                     type={type}
                     id={randomID ? randomString : id}
                     className={`h-full w-full rounded-primary border border-secondary bg-white p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand ${
-                        error ? 'border-red-500' : ''
+                        errorText ? 'border-red-500' : ''
                     }`}
                     onFocus={(e) => {
                         animatePlaceHolder(true);
@@ -174,7 +172,7 @@ const TextField = ({
                     ref={inputRef}
                     id={randomID ? randomString : id}
                     className={`h-full w-full resize-none rounded-primary border border-secondary bg-white p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand ${
-                        error ? 'border-red-500' : ''
+                        errorText ? 'border-red-500' : ''
                     }`}
                     onFocus={(e) => {
                         animatePlaceHolder(true);
@@ -201,7 +199,7 @@ const TextField = ({
                 ref={errorTextRef}
                 className="pointer-events-none absolute left-4 bottom-0 -translate-y-[50%] scale-50 text-[1.4rem] text-red-500 opacity-0"
             >
-                {errorText || 'This is error text'}
+                {errorText || ''}
             </span>
 
             {Icon ? (

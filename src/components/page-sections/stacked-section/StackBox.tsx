@@ -1,4 +1,4 @@
-import { useDeviceSize } from '@/hooks';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { pinAnimation } from '@/utils/gsapFunctions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -41,6 +41,7 @@ const StackBox = ({
     altText
 }: StackBoxInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
+
     const isEven = index % 2 === 0 ? true : false;
 
     const pinRef = useRef<any>(null);
@@ -58,7 +59,7 @@ const StackBox = ({
         <div
             className={`relative grid w-full gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:gap-0 md:p-0 md:shadow-none lg:max-w-[97.5rem]`}
         >
-            {deviceSize === 'small' && (
+            {smallSizes.includes(deviceSize) && (
                 <Image
                     src={image.url}
                     width={image.width}
@@ -70,7 +71,7 @@ const StackBox = ({
                 />
             )}
 
-            {deviceSize === 'large' && (
+            {largeSizes.includes(deviceSize) && (
                 <Image
                     src={desktopImage.url}
                     width={desktopImage.width}

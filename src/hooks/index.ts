@@ -1,5 +1,6 @@
 import useOnScreen from './useOnScreen';
 import useOnclickOutside from './useOnClickOutside/useOnclickOutside';
-import useDeviceSize from './useDeviceSize';
+import useDeviceSize, { AcceptedDeviceSizes, largeSizes, smallSizes } from './useDeviceSize';
 
-export { useOnclickOutside, useOnScreen, useDeviceSize };
+export { useOnclickOutside, useOnScreen, useDeviceSize, smallSizes, largeSizes };
+export type { AcceptedDeviceSizes };

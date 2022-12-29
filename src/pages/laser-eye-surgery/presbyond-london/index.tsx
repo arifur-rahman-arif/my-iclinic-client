@@ -14,9 +14,10 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import LaserTreatment from '@/sectionImages/best-laser-treatment.png';
-import LaserTreatmentDesktop from '@/sectionImages/best-laser-treatment-desktop.png';
+import LaserTreatment from '@/section-images/best-laser-treatment.png';
+import LaserTreatmentDesktop from '@/section-images/best-laser-treatment-desktop.png';
 import { useDeviceSize } from '@/hooks';
+import PresbyondBannerImage from '@/section-images/presbyond-banner-bg.png';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -132,7 +133,9 @@ const leftRightList: Array<LeftRightSectionChildrenInterface> = [
 ];
 
 /**
- * Home/Landing page component for the App
+ * Presbyond page component for the App
+ *
+ * Url: /laser-eye-surgery/presbyond-london/
  *
  * @export
  * @returns {JSX.Element}
@@ -149,7 +152,7 @@ export default function Presbyond(): JSX.Element {
         setTimeout(() => {
             if (deviceSize === 'small') setLoadCallbackSection(true);
         }, 2500);
-    }, []);
+    }, [deviceSize]);
 
     return (
         <Page
@@ -404,7 +407,10 @@ export default function Presbyond(): JSX.Element {
             />
 
             <LazyComponent>
-                <BottomBanner />
+                <BottomBanner
+                    bannerImage={PresbyondBannerImage}
+                    bannerBg="/images/section-images/presbyond-banner-bg-desktop.webp"
+                />
             </LazyComponent>
 
             {/* <Section>
@@ -606,7 +612,7 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload />
+                <PdfDownload title="Presbyond Patient Information" />
             </LazyComponent>
 
             <LazyComponent>

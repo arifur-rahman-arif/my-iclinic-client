@@ -18,10 +18,9 @@ const RequestCallback = (): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-    const [nameError, setNameError] = useState<boolean>(false);
-    const [phoneError, setPhoneError] = useState<boolean>(false);
-    const [emailError, setEmailError] = useState<boolean>(false);
-    const [errorText, setErrorText] = useState<string>('');
+    const [nameError, setNameError] = useState<string>('');
+    const [phoneError, setPhoneError] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>('');
 
     // Date and time components inputs
     const [date, setDate] = useState<Date>(new Date());
@@ -95,8 +94,6 @@ const RequestCallback = (): JSX.Element => {
                 setEmail={setEmail}
                 emailError={emailError}
                 setEmailError={setEmailError}
-                errorText={errorText}
-                setErrorText={setErrorText}
                 checkInputsForNextStepActivation={checkInputsForNextStepActivation}
             />
             <DateAndTime

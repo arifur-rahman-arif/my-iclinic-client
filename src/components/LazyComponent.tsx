@@ -30,7 +30,7 @@ const Fallback = (): JSX.Element => {
  * @returns {*}  {JSX.Element}
  */
 const LazyComponent = ({ children }: LazyComponentInterface): JSX.Element => {
-    const divRef = useRef<HTMLDivElement>(null);
+    const divRef = useRef<HTMLDivElement | null>(null);
     const isElementIntersecting = useOnScreen(divRef);
 
     if (isElementIntersecting) {

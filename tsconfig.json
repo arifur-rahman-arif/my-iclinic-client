@@ -32,6 +32,9 @@
 			"@/components/*": [
 				"src/components/*"
 			],
+			"@/page-sections/*": [
+				"src/components/page-sections/*"
+			],
 			"@/styles/*": [
 				"src/styles/*"
 			],
@@ -53,7 +56,7 @@
 			"@/icons/*": [
 				"public/images/icons/*"
 			],
-			"@/sectionImages/*": [
+			"@/section-images/*": [
 				"public/images/section-images/*"
 			],
 			"@/masthead/*": [

@@ -1,6 +1,7 @@
 import { SideImageSectionInterface } from '@/components/page-sections';
+import TextColumnImage from './TextColumnImage';
 
-interface TextColumnInterface extends Omit<SideImageSectionInterface, 'sectionImage' | 'sectionImageDesktop'> {
+interface TextColumnInterface extends SideImageSectionInterface {
     h2Heading?: string;
 }
 
@@ -23,8 +24,11 @@ const TextColumn = ({
     h3LightHeading,
     h3BoldHeading,
     descriptions,
+    sectionImage,
+    sectionImageDesktop,
     textColumnExtras,
-    midExtras
+    midExtras,
+    textColumnImage
 }: TextColumnInterface): JSX.Element => {
     return (
         <div className="grid gap-12">
@@ -39,9 +43,16 @@ const TextColumn = ({
                     <h3 className="w-full normal-case md:max-w-[55rem]">
                         {h3LightHeading || ''}
                         <br />
-                        <strong className="normal-case">{h3BoldHeading || ''}</strong>
+                        <strong
+                            className="normal-case"
+                            dangerouslySetInnerHTML={{ __html: h3BoldHeading || '' }}
+                        ></strong>
                     </h3>
                 </div>
+            )}
+
+            {textColumnImage && (
+                <TextColumnImage image={sectionImage || null} desktopImage={sectionImageDesktop || null} />
             )}
 
             <div className={`grid gap-12 ${!normalLightHeading ? 'ml-10 md:ml-14' : ''}`}>
@@ -50,7 +61,7 @@ const TextColumn = ({
                 {descriptions?.length && (
                     <div className="flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
                         {descriptions.map((desc, index) => (
-                            <p key={index}>{desc || ''}</p>
+                            <p key={index} dangerouslySetInnerHTML={{ __html: desc || '' }}></p>
                         ))}
                     </div>
                 )}

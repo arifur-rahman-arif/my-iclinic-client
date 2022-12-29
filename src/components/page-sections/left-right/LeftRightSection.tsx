@@ -29,12 +29,12 @@ const LeftRightSection = ({ childrenList }: LeftRightSectionInterface): JSX.Elem
 
     return (
         <>
-            <Section className="grid gap-8 overflow-hidden md:gap-40">
+            <Section className="grid gap-8 overflow-hidden md:gap-40" id="section">
                 {childrenList.map((childrenElement, index) => {
                     if (index % 2 === 0) {
                         return (
                             <Container
-                                className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24"
+                                className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32"
                                 key={index}
                             >
                                 <ImageComponent
@@ -51,7 +51,7 @@ const LeftRightSection = ({ childrenList }: LeftRightSectionInterface): JSX.Elem
                     } else {
                         return (
                             <Container
-                                className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24"
+                                className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32"
                                 key={index}
                             >
                                 <LeftRightTextColumn

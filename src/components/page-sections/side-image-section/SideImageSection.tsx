@@ -1,7 +1,7 @@
 import { Container } from '@/components/container';
 import TextColumn from '@/components/page-sections/section-parts/TextColumn';
 import { Section } from '@/components/section';
-import { useDeviceSize } from '@/hooks';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -16,8 +16,8 @@ export interface SideImageSectionInterface {
     h3LightHeading?: string;
     h3BoldHeading?: string;
     descriptions?: string[];
-    sectionImage: ImageType;
-    sectionImageDesktop: ImageType;
+    sectionImage?: ImageType;
+    sectionImageDesktop?: ImageType;
     normalLightHeading?: string;
     textColumnExtras?: ReactNode;
     positionReversed?: boolean;
@@ -25,6 +25,10 @@ export interface SideImageSectionInterface {
     imageYPosition?: 'top' | 'bottom' | 'center';
     altText?: string;
     midExtras?: ReactNode;
+    customColumn?: ReactNode;
+    textColumnImage?: boolean;
+    defaultContainerClassName?: string;
+    containerClassName?: string;
 }
 
 /**
@@ -42,6 +46,7 @@ export interface SideImageSectionInterface {
  *     positionReversed
  *     sectionClass
  *     imageYPosition
+ *     textColumnImage
  * }
  * @returns {*}  {JSX.Element}
  */
@@ -58,13 +63,17 @@ const SideImageSection = ({
     sectionClass,
     imageYPosition = 'center',
     altText,
-    midExtras
+    midExtras,
+    customColumn,
+    textColumnImage,
+    defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32',
+    containerClassName
 }: SideImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
     return (
         <Section className={`${sectionClass || ''}`}>
-            <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
+            <Container className={`${defaultContainerClassName} ${containerClassName || ''}`}>
                 {/* Text column */}
 
                 <TextColumn
@@ -75,36 +84,43 @@ const SideImageSection = ({
                     textColumnExtras={textColumnExtras}
                     h3LightHeading={h3LightHeading}
                     midExtras={midExtras}
+                    sectionImage={sectionImage}
+                    sectionImageDesktop={sectionImageDesktop}
+                    textColumnImage={textColumnImage}
                 />
 
                 {/* Image column */}
-                <div
-                    className={`row-start-1 justify-self-center md:row-auto md:justify-self-auto ${
-                        positionReversed ? 'md:col-start-1 md:row-start-1' : ''
-                    } ${imageYPosition === 'top' && 'self-start'} ${imageYPosition === 'bottom' && 'self-end'}`}
-                >
-                    {deviceSize === 'small' && (
-                        <Image
-                            src={sectionImage.url}
-                            width={sectionImage.width}
-                            height={sectionImage.height}
-                            quality={70}
-                            className="md:hidden"
-                            alt={altText || ''}
-                        />
-                    )}
+                {customColumn ? (
+                    customColumn
+                ) : (
+                    <div
+                        className={`row-start-1 justify-self-center md:row-auto md:justify-self-auto ${
+                            positionReversed ? 'md:col-start-1 md:row-start-1' : ''
+                        } ${imageYPosition === 'top' && 'self-start'} ${imageYPosition === 'bottom' && 'self-end'}`}
+                    >
+                        {smallSizes.includes(deviceSize) && sectionImage && (
+                            <Image
+                                src={sectionImage.url}
+                                width={sectionImage.width}
+                                height={sectionImage.height}
+                                quality={70}
+                                className="md:hidden"
+                                alt={altText || ''}
+                            />
+                        )}
 
-                    {deviceSize === 'large' && (
-                        <Image
-                            src={sectionImageDesktop.url}
-                            width={sectionImageDesktop.width}
-                            height={sectionImageDesktop.height}
-                            quality={70}
-                            className={`hidden md:block`}
-                            alt={altText || ''}
-                        />
-                    )}
-                </div>
+                        {largeSizes.includes(deviceSize) && sectionImageDesktop && (
+                            <Image
+                                src={sectionImageDesktop.url}
+                                width={sectionImageDesktop.width}
+                                height={sectionImageDesktop.height}
+                                quality={70}
+                                className={`hidden md:block`}
+                                alt={altText || ''}
+                            />
+                        )}
+                    </div>
+                )}
             </Container>
         </Section>
     );
