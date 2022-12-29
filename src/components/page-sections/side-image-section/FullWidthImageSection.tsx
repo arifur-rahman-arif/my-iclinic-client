@@ -16,6 +16,7 @@ interface FullWidthImageSectionInterface {
     containerClass?: string;
     overlayAnimation?: boolean;
     albumAnimation?: boolean;
+    textColumnOverlay?: boolean;
 }
 
 /**
@@ -39,7 +40,8 @@ const FullWidthImageSection = ({
     sectionClass = 'bg-brandLight',
     containerClass = 'grid grid-cols-1 items-center gap-12 py-16 md:grid-cols-2 md:gap-24 md:py-24',
     overlayAnimation,
-    albumAnimation
+    albumAnimation,
+    textColumnOverlay
 }: FullWidthImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
     const imageCover = useRef<HTMLDivElement>(null);
@@ -50,8 +52,7 @@ const FullWidthImageSection = ({
             gsap.to(imageCover.current, {
                 scrollTrigger: {
                     trigger: imageCoverContainer.current,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
+                    start: 'top 70%'
                 },
                 duration: 2.5,
                 width: '20%',
@@ -61,8 +62,13 @@ const FullWidthImageSection = ({
 
     return (
         <Section className={sectionClass}>
+            {textColumnOverlay ? (
+                <div className="absolute left-0 top-0 hidden h-full w-[calc(50%_+_4rem)] bg-white opacity-50 md:block"></div>
+            ) : (
+                <></>
+            )}
             <Container className={containerClass}>
-                <div className="grid">
+                <div className="relative z-[1] grid px-8 xl:px-0">
                     {boldHeading ? (
                         <h3 className="w-full normal-case">
                             {h3Title} <br />{' '}
@@ -79,7 +85,7 @@ const FullWidthImageSection = ({
                 {albumAnimation ? (
                     <AlbumColumn />
                 ) : (
-                    <div className="row-start-1 w-full justify-self-center md:row-auto md:justify-self-end">
+                    <div className="row-start-1 grid w-full justify-self-center md:row-auto md:justify-self-end">
                         {smallSizes.includes(deviceSize) && image && (
                             <div className="relative" ref={imageCoverContainer}>
                                 {overlayAnimation && (
