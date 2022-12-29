@@ -1,11 +1,9 @@
 import { FcGoogle } from 'react-icons/fc';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { annotate } from 'rough-notation';
 import styles from './styles/Heading.module.scss';
 import { MastheadInterface } from './Masthead';
-import { useDeviceSize } from '@/hooks';
+import { annotate } from 'rough-notation';
 
 interface BannerInterface extends Omit<MastheadInterface, 'mastheadImage'> {}
 
@@ -18,33 +16,8 @@ const Banner = ({ h1Title, h2Title }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement>(null);
     const bannerRef = useRef<HTMLDivElement>(null);
     const [startH2Animation, setStartH2Animation] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
 
     useEffect(() => {
-        const h1SpanElements = document.querySelectorAll('#masthead-title > span');
-
-        h1SpanElements &&
-            gsap.to(h1SpanElements, {
-                y: -80,
-                duration: 5,
-                scrollTrigger: {
-                    trigger: bannerRef.current,
-                    start: `top ${deviceSize === 'large' ? '17%' : 'top'}`,
-                    scrub: true
-                }
-            });
-
-        gsap.to('.h2-inner-span', {
-            y: -80,
-            duration: 5,
-            overwrite: true,
-            scrollTrigger: {
-                trigger: bannerRef.current,
-                start: `top ${deviceSize === 'large' ? '17%' : 'top'}`,
-                scrub: true
-            }
-        });
-
         setTimeout(() => {
             setStartH2Animation(true);
         }, 1000);

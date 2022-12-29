@@ -1,11 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { Container } from '@/components/container';
-import styles from './styles/FoldItem.module.scss';
 import gsap from 'gsap';
-import { useDeviceSize } from '@/hooks';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
-export interface FoldItemInterface {
+export interface PriceSectionInterface {
     price: string;
     priceText: string;
     priceDescription: string;
@@ -17,7 +15,7 @@ export interface FoldItemInterface {
 /**
  * FoldItem component
  *
- * @param {FoldItemInterface} { price, priceText, priceDescription, priceDescBoldText }
+ * @param {PriceSectionInterface} { price, priceText, priceDescription, priceDescBoldText }
  * @returns {*}
  */
 const FoldItem = ({
@@ -27,71 +25,106 @@ const FoldItem = ({
     priceDescBoldText,
     firstTopLeftRounded,
     lastBottomLeftRounded
-}: FoldItemInterface) => {
-    const foldedElement = useRef<HTMLDivElement>(null);
-    const originalElement = useRef<HTMLDivElement>(null);
-    const deviceSize = useDeviceSize();
+}: PriceSectionInterface): JSX.Element => {
+    const containerElement = useRef<HTMLDivElement | null>(null);
+    const cardElement = useRef<HTMLDivElement | null>(null);
+    const priceElement = useRef<HTMLSpanElement | null>(null);
+    const priceTextElement = useRef<HTMLSpanElement | null>(null);
+    const descTextElement = useRef<HTMLParagraphElement | null>(null);
+
+    const pinRef = useRef<any>(null);
 
     useEffect(() => {
-        if (!foldedElement.current || deviceSize === '') return;
+        if (!containerElement.current) return;
 
-        gsap.to(foldedElement.current, {
-            transform: 'rotateY(0deg)',
-            left: 0,
-            duration: 1.5,
+        const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: foldedElement.current,
-                start: deviceSize === 'large' ? 'top 70%' : 'top center'
-                // Scrub: true
-                // onEnter: () => {
-                //     originalElement.current && originalElement.current.classList.add('original-element-active');
-                // }
+                start: 'top 70%',
+                trigger: containerElement.current
             }
         });
-    }, [deviceSize]);
+
+        tl.to(cardElement.current, {
+            autoAlpha: 1,
+            duration: 1.5
+        })
+            .to(
+                priceElement.current,
+                {
+                    autoAlpha: 1,
+                    duration: 1,
+                    translateY: 0
+                },
+                '-=1'
+            )
+            .to(
+                priceTextElement.current,
+                {
+                    autoAlpha: 1,
+                    duration: 1,
+                    translateY: 0
+                },
+                '-=1'
+            )
+            .to(
+                pinRef.current,
+                {
+                    duration: 1.5,
+                    width: '15rem'
+                },
+                '-=1'
+            )
+            .to(
+                descTextElement.current,
+                {
+                    autoAlpha: 1,
+                    duration: 1,
+                    translateY: 0
+                },
+                '-=0.5'
+            );
+    }, []);
 
     return (
         <>
-            <div className={`${styles.styles} relative`}>
-                {/* Original element */}
-                <div
-                    ref={originalElement}
-                    className={`original-element flex w-full flex-col items-start justify-start gap-6 px-16 py-[10rem] md:px-32 lg:max-h-[32.5rem] lg:max-w-[56rem] ${
-                        firstTopLeftRounded && 'bg-darkBlue lg:rounded-tl-primary '
-                    } ${lastBottomLeftRounded && 'bg-midDarkBlue lg:rounded-bl-primary'} `}
+            {/* Original element */}
+            <div
+                className={`flex w-full flex-col items-start justify-start gap-6 px-16 py-[10rem] opacity-0 md:px-32 lg:max-h-[32.5rem] lg:max-w-[56rem] ${
+                    firstTopLeftRounded && 'bg-darkBlue lg:rounded-tl-primary'
+                } ${lastBottomLeftRounded && 'bg-midDarkBlue lg:rounded-bl-primary'}`}
+                ref={cardElement}
+            >
+                <span
+                    ref={priceElement}
+                    className="translate-y-2/4 font-latoBold text-[3.2rem] leading-[3.6rem] text-yellow opacity-0 md:text-[4.8rem] md:leading-[4.8rem]"
                 >
-                    <span className="font-latoBold text-[3.2rem] leading-[3.6rem] text-yellow md:text-[4.8rem] md:leading-[4.8rem]">
-                        {price}
-                    </span>
-                    <span className="w-full max-w-[34rem] font-latoBold text-[3.2rem] leading-[3.6rem] text-white">
-                        {priceText}
-                    </span>
-                </div>
-                {/* Clone element to have fold animation */}
-                <div
-                    ref={foldedElement}
-                    className={`clone-element absolute top-0 left-0 flex w-full flex-col items-start justify-start gap-6 px-16 py-[10rem] md:px-32 lg:max-h-[32.5rem] lg:max-w-[56rem] ${
-                        firstTopLeftRounded && 'bg-darkBlue lg:rounded-tl-primary '
-                    } ${lastBottomLeftRounded && 'bg-midDarkBlue lg:rounded-bl-primary'} `}
+                    {price}
+                </span>
+                <span
+                    ref={priceTextElement}
+                    className="card-text w-full max-w-[34rem] translate-y-2/4 font-latoBold text-[3.2rem] leading-[3.6rem] text-white opacity-0"
                 >
-                    <span className="font-latoBold text-[3.2rem] leading-[3.6rem] text-yellow md:text-[4.8rem] md:leading-[4.8rem]">
-                        {price}
-                    </span>
-                    <span className="w-full max-w-[34rem] font-latoBold text-[3.2rem] leading-[3.6rem] text-white">
-                        {priceText}
-                    </span>
-                </div>
+                    {priceText}
+                </span>
             </div>
-            <Container className="flex flex-col items-start justify-start gap-6 md:justify-center">
-                <Image
-                    src="/images/icons/icon-pin-yellow.svg"
-                    quality={10}
-                    width={150}
-                    height={2}
-                    alt=""
-                    className=""
-                />
-                <p className="w-full max-w-[50rem] font-latoLight text-[2.8rem] leading-[3.2rem] md:text-[3.2rem] md:leading-[3.6rem]">
+            <Container
+                className="flex flex-col items-start justify-start gap-6 md:justify-center"
+                ref={containerElement}
+            >
+                <div className="h-4 w-0" ref={pinRef}>
+                    <Image
+                        src="/images/icons/icon-pin-yellow.svg"
+                        quality={10}
+                        width={150}
+                        height={2}
+                        alt=""
+                        className="h-4 w-[15rem]"
+                    />
+                </div>
+                <p
+                    className="w-full max-w-[50rem] translate-y-4 font-latoLight text-[2.8rem] leading-[3.2rem] opacity-0 md:text-[3.2rem] md:leading-[3.6rem]"
+                    ref={descTextElement}
+                >
                     {priceDescription}
                     {priceDescBoldText ? (
                         <strong className="font-latoBold text-[2.8rem] leading-[3.2rem] text-yellow md:text-[3.2rem] md:leading-[3.6rem]">

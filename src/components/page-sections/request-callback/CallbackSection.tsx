@@ -64,7 +64,7 @@ const CallbackSection = (): JSX.Element => {
                     <Image
                         src={RequestCallbackBgPng}
                         alt=""
-                        className="absolute left-0 top-2/4 -z-[1] hidden aspect-auto  h-[calc(100%_+_13rem)] max-h-[63rem] w-auto -translate-y-2/4 md:block md:max-w-[45rem] lg:max-w-max"
+                        className="absolute left-0 top-2/4 -z-[1] hidden aspect-auto  h-[calc(100%_+_13rem)] max-h-[63rem] w-auto -translate-y-2/4 md:block md:max-w-[45rem] lg:max-w-full"
                         quality={70}
                         priority
                     />

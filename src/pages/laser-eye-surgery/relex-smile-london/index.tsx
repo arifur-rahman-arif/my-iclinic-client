@@ -1,4 +1,5 @@
 import {
+    CtaSection,
     DrawLine,
     FullWidthImageSection,
     FullWidthImageSection3,
@@ -42,7 +43,7 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/bottom-full-banners/
 /**
  * Home/Landing page component for the App
  *
- * Url: /laser-eye-surgery/relex-smile-london
+ * * Url: /laser-eye-surgery/relex-smile-london
  *
  * @export
  * @returns {JSX.Element}
@@ -182,6 +183,10 @@ export default function RelexSmileLondon(): JSX.Element {
             />
 
             <FullWidthImageSection3 />
+
+            <CtaSection />
+
+            <div className="md:mt-24"></div>
 
             <LazyComponent>
                 <FeaturedPatient

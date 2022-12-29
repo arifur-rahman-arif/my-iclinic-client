@@ -3,8 +3,7 @@ import {
     FullWidthImageSection,
     FullWidthImageSection2,
     Masthead,
-    SideImageSection,
-    CtaSection
+    SideImageSection
 } from '@/components/page-sections';
 
 import LazyComponent from '@/components/LazyComponent';
@@ -15,14 +14,14 @@ import IconEyePlus from '@/icons/icon-eye-plus.svg';
 import IconEyeTesting from '@/icons/icon-eye-testing.svg';
 import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
 import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
-import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
-import ShortSightedImage from '@/section-images/short-sighted-vision.png';
+import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import { presbyondPriceList } from '@/page-sections/fold-section/priceList';
+import { relexSmilePriceList } from '@/components/page-sections/fold-section/priceList';
+import { CtaSection } from '@/components/page-sections/cta-section';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +32,7 @@ const CallbackSection = dynamic(() => import('@/page-sections/request-callback/C
 /**
  * Home/Landing page component for the App
  *
- * * Url: /laser-eye-surgery/presbyond-london/price
+ * * Url: /laser-eye-surgery/relex-smile-london/price
  *
  * @export
  * @returns {JSX.Element}
@@ -45,21 +44,21 @@ export default function PresbyondPricing(): JSX.Element {
 
     return (
         <Page
-            title="Presbyond Laser eye surgery In London"
-            description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
+            title="ReLEX SMILE Laser eye surgery In London"
+            description="ReLEX SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
         >
             <Masthead
-                mastheadImage="/images/masthead/masthead-presbyond-pricing.png"
+                mastheadImage="/images/masthead/masthead-relex-smile-pricing.png"
                 altText="Woman reading the cost of Presbyond Treatment in London."
                 h1Title={
                     <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ReLEX</span>
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">SMILE</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">laser</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">eye</span>
                         <br />
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">eye</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">surgery</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">cost</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">in</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
                     </h1>
                 }
@@ -87,41 +86,42 @@ export default function PresbyondPricing(): JSX.Element {
 
             <div className="mt-48 w-full sm:mt-36 lg:mt-0"></div>
 
-            <PriceSection priceList={presbyondPriceList} />
+            <PriceSection priceList={relexSmilePriceList} />
 
             <FullWidthImageSection2
-                title="The cost of Presbyond surgery couldn’t be easier!"
-                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare
-                        appointments compared to other eye clinics."
+                title="The cost of ReLEX SMILE surgery couldn’t be easier!"
+                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics."
             />
 
             <CtaSection />
 
             <FullWidthImageSection
                 h3Title="Permanently correct"
-                boldHeading="your short-sighted vision with our all-inclusive cost."
-                altText="Woman with presbyond blended vision, without needing reading glasses."
-                image={ShortSightedImage}
-                desktopImage={ShortSightedImageLarge}
-                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
+                boldHeading="your vision with our all-inclusive cost."
+                altText=""
+                image={InclusiveCostImage}
+                desktopImage={InclusiveCostImage}
+                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
                 overlayAnimation
+                textColumnOverlay
+                sectionClass="bg-brandLight relative"
             />
 
             <SideImageSection
-                h2Heading="Presbyond consultation"
+                h2Heading="Relex smile consultation"
                 h3LightHeading="What’s included in my"
                 h3BoldHeading="private consultation and treatment?"
                 sectionImage={{
-                    url: '/images/section-images/private-consultation.png',
+                    url: '/images/section-images/private-consultation-relex-smile.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/private-consultation-desktop.png',
+                    url: '/images/section-images/private-consultation-relex-smile-desktop.png',
                     width: 616,
                     height: 549
                 }}
-                altText="Woman with presbyond blended vision, without needing reading glasses."
+                altText=""
                 positionReversed
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
@@ -129,7 +129,7 @@ export default function PresbyondPricing(): JSX.Element {
                             <Image src={IconEyeTesting} alt="" className="h-16 w-16" />
                             <p className="">
                                 <strong>A FREE</strong> suitability laser check with our laser specialist (a
-                                comprehensive assessment of your suitability and how presbyond will suit your
+                                comprehensive assessment of your suitability and how ReLEX SMILE will suit your
                                 lifestyle).
                             </p>
                         </li>
@@ -143,7 +143,7 @@ export default function PresbyondPricing(): JSX.Element {
                         <li className="flex items-start justify-start gap-6">
                             <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" />
                             <p className="">
-                                Your Presbyond treatment performed in our private laser suite with your dedicated
+                                Your ReLEX SMILE treatment performed in our private laser suite with your dedicated
                                 specialist and our friendly team.
                             </p>
                         </li>
@@ -159,21 +159,23 @@ export default function PresbyondPricing(): JSX.Element {
             />
 
             <SideImageSection
-                h2Heading="Presbyond finance"
+                h2Heading="Relex smile finance"
                 h3LightHeading="Want to pay for your"
                 h3BoldHeading="treatment each month?"
+                midExtras={<h4 className="normal-case">Finance available for ReLEX SMILE</h4>}
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
                 descriptions={[
-                    `We understand having Presbyond to correct your vision is a great investment in your
-                     eye health and lifestyle. We offer 12 months interest- free finance to help make that investment become a reality!`
+                    `We understand having ReLEX SMILE to correct your vision is a great investment 
+					in your eye health and lifestyle. We offer 12 months interest- free finance to help make
+					 that investment become a reality!`
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/presbyond-finance.png',
+                    url: '/images/section-images/relex-smile-finance.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/presbyond-finance-large.png',
+                    url: '/images/section-images/relex-smile-finance-large.png',
                     width: 574,
                     height: 560
                 }}
@@ -189,7 +191,6 @@ export default function PresbyondPricing(): JSX.Element {
                         </li>
                     </ul>
                 }
-                midExtras={<h4 className="normal-case">Finance available for Presbyond</h4>}
             />
 
             <div className="md:mt-48"></div>
