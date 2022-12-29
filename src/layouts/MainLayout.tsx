@@ -1,11 +1,10 @@
 import { Header } from '@/components/header';
 import LazyComponent from '@/components/LazyComponent';
-import { ReactNode, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { useSelector } from 'react-redux';
 import { AlertInterface } from '@/features/alert/alertSlice';
 import { AppState } from '@/store';
-import { useDeviceSize } from '@/hooks';
+import dynamic from 'next/dynamic';
+import { ReactNode } from 'react';
+import { useSelector } from 'react-redux';
 
 const Footer = dynamic(() => import('@/components/footer/Footer'));
 const Alert = dynamic(() => import('@/components/alert/Alert'));
@@ -23,14 +22,14 @@ interface PropTypes {
  */
 const MainLayout = ({ children }: PropTypes): JSX.Element => {
     const { showAlert } = useSelector((state: AppState) => state.alert as AlertInterface);
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
+    // Const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+    // const deviceSize = useDeviceSize();
 
-    setTimeout(() => {
-        if (deviceSize === 'small') {
-            setLoadCallbackSection(true);
-        }
-    }, 2500);
+    // setTimeout(() => {
+    //     if (smallSizes.includes(deviceSize)) {
+    //         setLoadCallbackSection(true);
+    //     }
+    // }, 2500);
 
     return (
         <>
@@ -40,7 +39,8 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 <Footer />
             </LazyComponent>
             {showAlert && <Alert />}
-            {loadCallbackSection ? <BottomMenu /> : <></>}
+            {/* {loadCallbackSection ? <BottomMenu /> : <></>} */}
+            <BottomMenu />
         </>
     );
 };
