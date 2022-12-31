@@ -16,7 +16,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import LaserTreatment from '@/section-images/best-laser-treatment.png';
 import LaserTreatmentDesktop from '@/section-images/best-laser-treatment-desktop.png';
-import { useDeviceSize } from '@/hooks';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import PresbyondBannerImage from '@/section-images/presbyond-banner-bg.png';
 
 if (typeof window !== 'undefined') {
@@ -147,10 +147,10 @@ export default function Presbyond(): JSX.Element {
     useEffect(() => {
         ScrollTrigger.refresh();
 
-        if (deviceSize === 'large') setLoadCallbackSection(true);
+        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
         setTimeout(() => {
-            if (deviceSize === 'small') setLoadCallbackSection(true);
+            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
 
@@ -356,7 +356,7 @@ export default function Presbyond(): JSX.Element {
                                     height={23}
                                     className="h-[2.4rem] w-[2.4rem]"
                                 />
-                                <p className="font-mulishBold">
+                                <p className="font-mulishBold capitalize">
                                     One dedicated presbyond specialist
                                     <br />
                                     for your treatment
@@ -370,7 +370,7 @@ export default function Presbyond(): JSX.Element {
                                     height={23}
                                     className="h-[2.4rem] w-[2.4rem]"
                                 />
-                                <p className="font-mulishBold">Most affordable price in London</p>
+                                <p className="font-mulishBold capitalize">Most affordable price in London</p>
                             </li>
                         </ul>
                     </div>

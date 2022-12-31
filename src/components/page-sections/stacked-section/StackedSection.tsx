@@ -1,4 +1,5 @@
 import { Container } from '@/components/container';
+import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/section';
 import StackBox from './StackBox';
 import { StackListInterface } from './stackedColumnList';
@@ -7,7 +8,7 @@ interface StackedSectionInterface {
     stackList: StackListInterface[];
     h3LightHeading: string;
     h3BoldHeading: string;
-    descriptions: string[];
+    descriptions?: string[];
 }
 
 /**
@@ -16,10 +17,17 @@ interface StackedSectionInterface {
  * @param {StackedSectionInterface} { stackList, h3LightHeading, h3BoldHeading, descriptions }
  * @returns {*}  {JSX.Element}
  */
-const StackedSection = ({ stackList }: StackedSectionInterface): JSX.Element => {
+const StackedSection = ({
+    stackList,
+    h3LightHeading,
+    h3BoldHeading,
+    descriptions
+}: StackedSectionInterface): JSX.Element => {
     return (
         <Section>
             <Container className="grid gap-12 md:gap-24">
+                <TextColumn h3BoldHeading={h3BoldHeading} descriptions={descriptions} h3LightHeading={h3LightHeading} />
+
                 {stackList.map((stack, index) => (
                     <StackBox
                         key={index}
@@ -38,6 +46,7 @@ const StackedSection = ({ stackList }: StackedSectionInterface): JSX.Element => 
                         descriptions={stack.descriptions}
                         boxWidth={stack.boxWidth}
                         altText={stack.altText}
+                        boxIcon={stack.boxIcon}
                     />
                 ))}
             </Container>

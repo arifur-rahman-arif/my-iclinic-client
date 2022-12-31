@@ -7,6 +7,8 @@ import Image, { StaticImageData } from 'next/image';
 interface BottomBannerInterface {
     bannerImage: StaticImageData;
     bannerBg: string;
+    bannerTitle?: string;
+    bannerDescription?: string;
 }
 
 /**
@@ -14,7 +16,12 @@ interface BottomBannerInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const BottomBanner = ({ bannerImage, bannerBg }: BottomBannerInterface): JSX.Element => {
+const BottomBanner = ({
+    bannerImage,
+    bannerBg,
+    bannerTitle = 'Want to be free from reading glasses?',
+    bannerDescription
+}: BottomBannerInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
     return (
         <Section>
@@ -34,6 +41,12 @@ const BottomBanner = ({ bannerImage, bannerBg }: BottomBannerInterface): JSX.Ele
                             <h2 className="font-latoLight text-[3.2rem] font-light normal-case leading-[3.6rem] text-heading md:col-span-2 md:text-[4.8rem] md:leading-[4.8rem]">
                                 Want to be free from reading glasses?
                             </h2>
+                            {bannerDescription ? (
+                                <p className="mt-12 md:col-span-2 md:-mt-12">{bannerDescription}</p>
+                            ) : (
+                                <></>
+                            )}
+
                             <Button
                                 type="anchor"
                                 text="Book a consultation"

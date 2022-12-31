@@ -420,3 +420,198 @@ export const relexSmileFaqList: FaqListInterface[] = [
         `
     }
 ];
+
+export const iclFaqList: FaqListInterface[] = [
+    {
+        title: 'What does ‘ICL’ stand for?',
+        description: `ICL stands for ‘Implantable collamer lenses’ which we always refer to as ‘Implantable contact
+        lenses.’ No matter the term, ICL is a permanent lens implanted into the eye to correct your
+        astigmatism. If you have a high prescription for glasses and everyday contact lenses, ICL is an
+        excellent vision correction procedure for you! ICL is the best alternative to laser eye surgery
+        and offers clear vision for a lifetime, without needing your glasses or everyday contact lenses
+        ever again.
+        `
+    },
+    {
+        title: 'How do Implantable Contact Lenses work?',
+        shortDescription: `Implantable Contact lenses are the most advanced contact lens procedure`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+                Implantable Contact lenses are the most advanced contact lens procedure to have your vision
+                without needing to wear glasses or disposable contact lenses again.
+            </p>
+            <p>
+                Discuss your options and eligibility for implantable contact lens surgery with one of our ICL
+                specialists here. We will give you clear advice on your suitability and the best vision correctionoptions for your lifestyle.
+            </p>
+        </div>`
+    },
+    {
+        title: `What is the difference between Implantable Contact Lenses and the contact lenses I put in everyday?`,
+        description: `There are three major differences between Implantable Contact Lenses and the contact lenses
+        you currently wear everyday:
+            <ul class="mt-12 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
+                    <p>Implantable contact lenses are gently fixed in your eye for a long period of time.
+                    There is no need to wear glasses or to use plastic lenses in your eyes which risks
+                    infections.
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>Implantable Contact Lenses stop any dry eye symptoms which you may be
+                    experiencing with your everyday disposable contact lenses.
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>Implantable Contact Lenses are not only the best for your eyes health, but a far
+                    better financial investment than spending money on lenses which only last a day.</p>
+                </li>
+            </ul>
+        `
+    },
+    {
+        title: 'What are Implantable Contact Lenses made of?',
+        shortDescription: `The Implantable Contact Lenses we use are EVO Visian.`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+                The Implantable Contact Lenses we use are EVO Visian.
+            </p>
+            <p>
+                EVO Visian is a soft, flexible lens that is gently inserted and positioned in your eye behind the
+                iris (coloured part of the eye) and in front of your natural lens, making it undetectable to any
+                observers. The procedure is completely painless.
+            </p>
+            <p>
+                Unlike other procedures, the EVO Visian implantable contact lens procedure does not touch the
+                corneal tissue in the eye. This lens is in complete harmony with your natural eyes to provide
+                exceptional quality of vision, allowing you to see the world around you in crystal clear clarity.
+            </p>
+        </div>`
+    },
+    {
+        title: 'How will I know if Implantable Contact Lenses will be best for me?',
+        shortDescription: `Adults 21 – 60 years of age with short-sighted and long sighted prescriptions (near and far).`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+                Adults 21 – 60 years of age with short-sighted and long sighted prescriptions (near and far). 
+                If you have a prescription between -0.5D to -20.0D Or A prescription +16D and up to 6.0D of astigmatism
+                you are suitable for Implantable Contact Lenses
+                Unlike laser eye surgery, if you have:
+            </p>
+            <ul class="grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
+                    <p>
+                        Thin or irregular corneas (Keratoconus)
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>
+                        Dry eye
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>
+                        High astigmatism
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>
+                        High myopia
+                    </p>
+                </li>
+                <li class="list-item list-disc">
+                    <p>
+                        High hyperopia
+                    </p>
+                </li>
+            </ul>
+            <p>
+                You are still the most suitable for our Implantable Contact Lens treatment.
+            </p>
+        </div>`
+    },
+    {
+        title: 'I have keratoconus, am I suitable for Implantable Contact Lenses?',
+        shortDescription: `Yes! Many people who have keratoconus (a thin cornea) will not be suitable for laser eye`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+                Yes! Many people who have keratoconus (a thin cornea) will not be suitable for laser eye
+                surgery but are suitable for Implantable Contact Lenses. In fact, the best alternative to laser eyesurgery is to have Implantable Contact Lenses rather than continuing to purchase disposable
+                contact lenses which can damage the health of your eye.
+            </p>
+            <p>
+                Many patients don’t meet the requirements for laser refractive procedures because their
+                prescription is too high, or they have thin corneas. However our Implantable Contact Lenses
+                provide a safe and effective treatment for clear, natural vision.
+            </p>
+        </div>`
+    },
+    {
+        title: 'What if my prescription changes and I already have my contact lenses implanted?',
+        description: `If you find your prescription is changing over the time you have ICL, we are able to change the
+        ICL lenses so you can resume your normal activities by seeing clearly again. The ICL procedure
+        is 100% reversible and if you do find your sight is changing, we can replace your old
+        prescription with your new prescription. You can still continue with long-term sight without
+        worrying about glasses or contact lenses.
+        `
+    },
+    {
+        title: 'How long do Implantable Contact Lenses last?',
+        description: `ICL are designed to be permanent as it is the best vision correction alternative to laser eye
+        surgery! The lenses are designed very differently to hard plastic lenses you would usually
+        purchase for everyday use which is why they last forever.`
+    },
+    {
+        title: 'Are Implantable Contact Lenses Permanent?',
+        description: `ICL is a permanent solution to fix your sight and have clear vision for the long term without the
+        need for purchasing disposable contact lenses or glasses. However, the ICL procedure is not
+        permanent as it can always be reversed if your prescription changes in the future. Think of ICL
+        as permanent contact lenses everyday where you don’t need to.`
+    },
+    {
+        title: 'How much does ICL cost?',
+        description: `Our ICL procedure costs £2,750 per eye. We offer a 0% interest- free finance option for 10
+        months which only requires a deposit of £1,375 (per eye) while the remaining balance can be
+        paid back interest-free! See if you are eligible for our finance options <a href="#" class="font-mulishBold text-[1.6rem] leading-[2.4rem] relative inline-block decoration-brand underline-offset-8 transition-all hover:underline">here.</a>`
+    },
+    {
+        title: 'Is there a chance I will not be suitable for ICL surgery?',
+        description: `Everybody is most likely suitable for ICL treatment! However, if you are pregnant,
+        breastfeeding, or under that age of 21, unfortunately you would not be considered for the
+        treatment at this time. We understand you may be looking for the best treatment to correct your
+        vision already which is why we will still be able to book your private consultation with our
+        specialist in advance. If you are over the age of 45, we would not use ICL as a suitable treatment
+        to correct your vision. Instead, we would propose <a href="/laser-eye-surgery/presbyond-london" class="font-mulishBold text-[1.6rem] leading-[2.4rem] relative inline-block decoration-brand underline-offset-8 transition-all hover:underline">Presbyond</a> as the best treatment for you.
+        `
+    },
+    {
+        title: 'Can I swim, play sports and drive after my ICL surgery?',
+        description: `Yes! The main benefit of having ICL surgery is to be free from any visual limitations in your busy
+        lifestyle! After the surgery, we advise two weeks without swimming or participating in any
+        strenuous activity but after these two weeks you may resume all activities as normal with the
+        crystal clarity of the world around you!`
+    },
+    {
+        title: 'What is the success rate of ICL surgery?',
+        description: `ICL surgery is an incredibly safe and effective treatment with one of the highest success rates
+        for vision correction procedures. The success rate for our ICL is 98 percent and the remaining
+        2% of surgeries that were reversed was completed again with different measurements for the
+        lenses. Because the ICL lens is a biocompatible and stable material, it has been used for many
+        years in ICL surgery and is completely safe.
+        `
+    },
+    {
+        title: 'Can ICL also fix my dry eye syndrome and astigmatism?',
+        description: `Yes! Implantable Contact Lenses can reverse the effects of dry eyes which many people
+        experience when using everyday contact lenses. If you have astigmatism or are Myopic
+        (experiencing near-sightedness), ICL will permanently correct this for you.
+        `
+    },
+    {
+        title: 'What are the potential risks with ICL surgery?',
+        description: `Like any treatment there are potential risks to consider. In the very rare occasion we may have
+        to treat a patient twice to reposition or replace the lens implant. Sometimes if the ICL lens is not
+        positioned or sized correctly it may cause inflammation and irritation but we ensure to remove
+        the lens before this becomes any long-term issue.`
+    }
+];

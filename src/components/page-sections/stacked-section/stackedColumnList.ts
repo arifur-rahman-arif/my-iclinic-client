@@ -1,4 +1,8 @@
 import { StackBoxInterface } from './StackBox';
+import IconGenome from '@/icons/icon-genome.svg';
+import IconEyeDrop from '@/icons/icon-eye-with-drop.svg';
+import IconEyeTime from '@/icons/icon-eye-with-time.svg';
+import IconEyeBandage from '@/icons/icon-eye-with-bandage.svg';
 
 export interface StackListInterface extends Omit<StackBoxInterface, 'index'> {}
 
@@ -80,5 +84,91 @@ export const presbyondStackList: StackListInterface[] = [
         ],
         boxWidth: '48.7rem',
         altText: `Man trying to see his phone with glasses on, suffering from presbyopia.`
+    }
+];
+
+export const iclStackList: StackListInterface[] = [
+    {
+        boxIcon: IconGenome,
+        image: {
+            url: '/images/section-images/biocompatibility.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/biocompatibility-large.png',
+            width: 640,
+            height: 519
+        },
+        title: 'Biocompatibility',
+        descriptions: [
+            `Our Implantable lenses are made of biocompatible Collamer – proprietary material used exclusively by STAAR Surgical.`,
+            `Collamer is a unique material that contains collagen which means the lens is made to naturally harmonize with your eye.`,
+            `The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.`
+        ],
+        boxWidth: '58rem',
+        altText: ``
+    },
+    {
+        boxIcon: IconEyeDrop,
+        image: {
+            url: '/images/section-images/dry-eyes.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/dry-eyes-large.png',
+            width: 658,
+            height: 571
+        },
+        title: 'No more dry eyes',
+        descriptions: [
+            `ICL can be described as additive vision correction.`,
+            `Unlike other procedures, the ICL procedure does not remove corneal tissue, but works in harmony with your natural eyes to provide exceptional quality of vision.`,
+            `Because the cornea is left intact with no reshaping or removal of the corneal tissue it does not induce any dry eye symptoms and can help with any existing dry eye syndrome you may be experiencing from your everyday plastic contact lenses.`
+        ],
+        boxWidth: '51.4rem',
+        altText: ``
+    },
+    {
+        boxIcon: IconEyeTime,
+        image: {
+            url: '/images/section-images/icl-procedure.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/icl-procedure-large.png',
+            width: 608,
+            height: 579
+        },
+        title: 'A quick ICL procedure and recovery',
+        descriptions: [
+            `The procedure lasts between 20-30 minutes.`,
+            `Most people resume their daily activities in just a few days with clearer vision.`,
+            `Many of our patients can sit up from the operating table and see more clearly immediately, even reading their phone screen in the reception waiting area before leaving the clinic.`
+        ],
+        boxWidth: '52rem',
+        altText: ``
+    },
+    {
+        boxIcon: IconEyeBandage,
+        image: {
+            url: '/images/section-images/removability.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/removability-large.png',
+            width: 658,
+            height: 519
+        },
+        title: 'Removability',
+        descriptions: [
+            `Though the ICL is designed to remain in the eye without maintenance, permanently correcting your vision, the lens can be completely removed providing flexibility for the future.`,
+            `In the event of a major prescription change or the availability of new vision correction options, ICL is completely removable. Allowing you to keep pace with advancing technology and your future prescription if needed.`
+        ],
+        boxWidth: '48rem',
+        altText: ``
     }
 ];

@@ -35,9 +35,10 @@ const Faq = ({ faqs, titleLight, titleBold, description }: FaqInterface): JSX.El
         // Regex pattern to match the title
         const regex = new RegExp(filterText, 'gi');
         // Filter the matched faq list
-        const filteredFaqList: FaqListInterface[] = faqs.filter(
-            (faq) => faq.title.match(regex) || faq.description.match(regex)
-        );
+        const filteredFaqList: FaqListInterface[] = faqs.filter((faq) => {
+            const strippedTitle = faq.title.replaceAll(/\,|\.|\‘|\’|\-|\?/gi, '');
+            return strippedTitle.match(regex) || faq.description.match(regex);
+        });
 
         setFaqList([...filteredFaqList]);
     };

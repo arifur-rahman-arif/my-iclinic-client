@@ -15,7 +15,7 @@ export interface SideImageSectionInterface {
     h2Heading?: string;
     h3LightHeading?: string;
     h3BoldHeading?: string;
-    descriptions?: string[];
+    descriptions?: string[] | JSX.Element[];
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: string;
@@ -27,6 +27,7 @@ export interface SideImageSectionInterface {
     midExtras?: ReactNode;
     customColumn?: ReactNode;
     textColumnImage?: boolean;
+    textColumnTopElements?: ReactNode;
     defaultContainerClassName?: string;
     containerClassName?: string;
 }
@@ -66,6 +67,7 @@ const SideImageSection = ({
     midExtras,
     customColumn,
     textColumnImage,
+    textColumnTopElements,
     defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32',
     containerClassName
 }: SideImageSectionInterface): JSX.Element => {
@@ -87,6 +89,7 @@ const SideImageSection = ({
                     sectionImage={sectionImage}
                     sectionImageDesktop={sectionImageDesktop}
                     textColumnImage={textColumnImage}
+                    textColumnTopElements={textColumnTopElements}
                 />
 
                 {/* Image column */}

@@ -8,6 +8,8 @@ export interface MastheadInterface {
     h1Title: JSX.Element;
     h2Title: JSX.Element;
     altText?: string;
+    priceText?: string;
+    priceTextExtra?: JSX.Element;
 }
 
 /**
@@ -15,7 +17,14 @@ export interface MastheadInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const Masthead = ({ mastheadImage, h1Title, h2Title, altText }: MastheadInterface): JSX.Element => {
+const Masthead = ({
+    mastheadImage,
+    h1Title,
+    h2Title,
+    altText,
+    priceText,
+    priceTextExtra
+}: MastheadInterface): JSX.Element => {
     return (
         <Section defaultClassName="mt-24 w-full xl:h-[11.4rem] relative min-h-[56.9rem] md:min-h-[63rem]">
             <div className="absolute right-0 left-auto -z-[1] h-2/4 w-full max-w-[123.1rem] md:h-full">
@@ -29,7 +38,7 @@ const Masthead = ({ mastheadImage, h1Title, h2Title, altText }: MastheadInterfac
             </div>
 
             <Container className="relative grid h-full min-h-[56.9rem] translate-y-[15%] grid-cols-1 items-center justify-start md:min-h-[63rem] md:translate-y-0">
-                <Banner h1Title={h1Title} h2Title={h2Title} />
+                <Banner h1Title={h1Title} h2Title={h2Title} priceText={priceText} priceTextExtra={priceTextExtra} />
             </Container>
         </Section>
     );

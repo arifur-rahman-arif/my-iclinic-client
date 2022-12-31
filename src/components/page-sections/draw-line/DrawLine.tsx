@@ -32,7 +32,7 @@ const DrawLine = ({ image, desktopImage, altText }: DrawLineInterface) => {
                     duration: 2,
                     scrollTrigger: {
                         trigger: triggerRef.current,
-                        start: 'top 90%',
+                        start: 'top 85%',
                         scrub: true
                     }
                 });
