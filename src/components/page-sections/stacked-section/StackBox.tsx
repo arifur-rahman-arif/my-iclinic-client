@@ -1,13 +1,7 @@
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { pinAnimation } from '@/utils/gsapFunctions';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useRef } from 'react';
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 type ImageType = {
     url: string;
@@ -23,6 +17,7 @@ export interface StackBoxInterface {
     boxWidth: string;
     index: number;
     altText?: string;
+    boxIcon?: StaticImageData;
 }
 
 /**
@@ -38,7 +33,8 @@ const StackBox = ({
     descriptions,
     boxWidth,
     index,
-    altText
+    altText,
+    boxIcon
 }: StackBoxInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
@@ -94,9 +90,13 @@ const StackBox = ({
                 }`}
                 ref={pinAnimationTrigger}
             >
+                {/* {boxIcon ? <Image src={boxIcon.url} width={boxIcon.width} height={boxIcon.height} alt="" /> : <></>} */}
+                {boxIcon ? <Image src={boxIcon} alt="" /> : <></>}
+
                 <h3 className="normal-case">
                     <strong className="normal-case">{title}</strong>
                 </h3>
+
                 <div className="h-2 w-full">
                     <Image
                         ref={pinRef}

@@ -28,3 +28,17 @@ export const relexSmilePriceList: PriceSectionInterface[] = [
         priceDescription: `With 12 months interest-free finance available.`
     }
 ];
+
+export const icPriceList: PriceSectionInterface[] = [
+    {
+        price: '£200',
+        priceText: 'The price of your ICL Consultation',
+        priceDescription: `After booking your ICL treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
+        priceDescBoldText: '100% FREE.'
+    },
+    {
+        price: '£2,400 per eye',
+        priceText: 'The price of your ICL Surgery',
+        priceDescription: `With 10 months interest-free finance available!`
+    }
+];

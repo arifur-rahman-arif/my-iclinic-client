@@ -12,7 +12,7 @@ interface BannerInterface extends Omit<MastheadInterface, 'mastheadImage'> {}
  *
  * @returns {*}  {JSX.Element}
  */
-const Banner = ({ h1Title, h2Title }: BannerInterface): JSX.Element => {
+const Banner = ({ h1Title, h2Title, priceText, priceTextExtra }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement>(null);
     const bannerRef = useRef<HTMLDivElement>(null);
     const [startH2Animation, setStartH2Animation] = useState<boolean>(false);
@@ -35,7 +35,7 @@ const Banner = ({ h1Title, h2Title }: BannerInterface): JSX.Element => {
 
     return (
         <div
-            className="grid w-full grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white p-12 md:max-w-[60.5rem] md:grid-cols-[auto_1fr]"
+            className="grid grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white p-12 md:max-w-[62.5rem] md:grid-cols-[auto_1fr]"
             ref={bannerRef}
         >
             {/* Reviews */}
@@ -82,14 +82,15 @@ const Banner = ({ h1Title, h2Title }: BannerInterface): JSX.Element => {
                 />
             </div>
             {/* Price */}
-            <div className="flex items-center justify-start gap-4 md:self-center">
-                <span className="block h-[2.4rem] w-2 bg-heading2"></span>
+            <div className="grid grid-cols-[auto_1fr] justify-items-start gap-4 md:self-center">
+                <span className={`block h-full w-2 bg-heading2 ${priceTextExtra ? 'row-span-2' : 'row-span-1'}`}></span>
                 <span
                     className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2 md:text-[2.4rem] md:uppercase md:leading-[2.4rem]"
                     ref={priceRef}
                 >
-                    £2,400 per eye
+                    {priceText || '£2,400 per eye'}
                 </span>
+                {priceTextExtra || ''}
             </div>
         </div>
     );

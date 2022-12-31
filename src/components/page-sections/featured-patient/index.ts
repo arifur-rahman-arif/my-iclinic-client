@@ -1,4 +1,4 @@
 import FeaturedPatient from './FeaturedPatient';
-import { presbyondSliders } from './sliderList';
+import { presbyondSliders, iclSliders } from './sliderList';
 
-export { FeaturedPatient, presbyondSliders };
+export { FeaturedPatient, presbyondSliders, iclSliders };

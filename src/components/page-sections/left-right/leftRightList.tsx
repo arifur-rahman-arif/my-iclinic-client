@@ -119,3 +119,97 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         ]
     }
 ];
+
+export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/icl-consultation.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/icl-consultation-large.png"
+                width={685}
+                height={587}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `ICL  Consultation`,
+        descriptions: [
+            `An ICL consultation for Implantable contact lenses couldn’t be easier! Our friendly team will guide you through some eye assessments which will take approximately one hour.`,
+            `Once complete, your specialist will advise you on the best lens size for your eyes.`,
+            `During your eye assessments, we will need to dilate your pupil with drops to take detailed measurements of your retina and your exact prescription.`,
+            `Prior to your ICL appointment, we will advise that you do not wear contact lenses for two weeks to ensure your eye is ready for measurements to be taken.`,
+            `None of these measurements are invasive or uncomfortable and our ophthalmic technician will support you through these assessments.`,
+            `The eye drops will make your vision blurry so we advise that you have a friend or family member to help transport you home.`,
+            `Based on your ICL assessments, our specialist will talk with you about proceeding with the treatment and how this treatment can best suit your lifestyle!`
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/icl-treatment.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/icl-treatment-large.png"
+                width={677}
+                height={558}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `ICL Treatment`,
+        descriptions: [
+            `On the day of your ICL treatment, it’s best not to wear eye makeup or to put drops in your eyes.`,
+            `Once arriving at our ICL clinic, our friendly nurse will explain what to expect during and after the procedure. Once ready you will be escorted into the procedure room.`,
+            `A drop of anesthetic is placed on your cornea which also dilates your eyes.`,
+            `The surgeon will be giving you clear and easy instructions to guide you throughout the procedure while they insert the contact lens implant.`,
+            `Once the procedure is finished our nurse will discuss our aftercare advice and how to use your new eye drops before your aftercare appointment with your specialist.`,
+            `Our Implantable contact Lens procedure lasts for two hours from when you arrive and when you return back home.`
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/icl-aftercare.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt="Woman free from glasses rock climbing"
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/icl-aftercare-large.png"
+                width={685}
+                height={587}
+                quality={70}
+                className="hidden md:block"
+                alt="Woman free from glasses rock climbing"
+            />
+        ),
+        title: `ICL Aftercare`,
+        descriptions: [
+            `For Implantable Contact Lens treatment there is a one-week recovery period where minimal activity is required before attending an aftercare appointment with your specialist.`,
+            `During the one week recovery period, our team is always here to answer any other questions you may have so that you can live confidently and comfortably following your ICL surgery.`,
+            `Once you attend an aftercare appointment with the ICL specialist you will be able to begin life without glasses or disposable contact lenses again!`
+        ]
+    }
+];

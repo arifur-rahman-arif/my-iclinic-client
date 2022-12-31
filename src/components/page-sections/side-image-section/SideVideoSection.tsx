@@ -14,7 +14,7 @@ type ImageType = {
 export interface SideVideoSectionInterface {
     h2Heading?: string;
     h3Heading?: string;
-    descriptions: string[];
+    descriptions?: string[];
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: string;
@@ -24,6 +24,7 @@ export interface SideVideoSectionInterface {
     imageYPosition?: 'top' | 'bottom' | 'center';
     altText?: string;
     darkPin?: boolean;
+    noPin?: boolean;
 }
 
 /**
@@ -52,7 +53,8 @@ const SideVideoSection = ({
     positionReversed = false,
     sectionClass,
     imageYPosition = 'center',
-    darkPin
+    darkPin,
+    noPin
 }: SideVideoSectionInterface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);
@@ -68,9 +70,12 @@ const SideVideoSection = ({
             <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32">
                 {/* Text column */}
                 <div className="grid">
-                    <H2Variant1 className="w-full">{h2Heading || ''}</H2Variant1>
+                    <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-12">
+                        <span className="block h-full w-[0.5rem] bg-yellow"></span>
+                        <H2Variant1 className="w-full">{h2Heading || ''}</H2Variant1>
+                    </div>
 
-                    {darkPin ? (
+                    {darkPin && !noPin && (
                         <div className="h-2 w-full" ref={pinAnimationTrigger}>
                             <Image
                                 src="/images/icons/icon-pin-dark-150.svg"
@@ -82,7 +87,9 @@ const SideVideoSection = ({
                                 ref={pinRef}
                             />
                         </div>
-                    ) : (
+                    )}
+
+                    {!darkPin && !noPin && (
                         <div className="h2 w-full" ref={pinAnimationTrigger}>
                             <Image
                                 src="/images/icons/icon-pin-yellow.svg"
@@ -96,14 +103,16 @@ const SideVideoSection = ({
                         </div>
                     )}
 
-                    <H3Variant2 className="mt-12 md:mt-24">{h3Heading || ''}</H3Variant2>
+                    {h3Heading && <H3Variant2 className="mt-12 md:mt-24">{h3Heading}</H3Variant2>}
 
                     <div className={`mt-6 grid gap-12`}>
-                        <div className="flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
-                            {descriptions.map((desc, index) => (
-                                <p key={index}>{desc || ''}</p>
-                            ))}
-                        </div>
+                        {descriptions && (
+                            <div className="flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
+                                {descriptions?.map((desc, index) => (
+                                    <p key={index}>{desc || ''}</p>
+                                ))}
+                            </div>
+                        )}
 
                         {textColumnExtras}
                     </div>
