@@ -203,8 +203,11 @@ export default function Presbyond(): JSX.Element {
                     </h2>
                 }
             />
+            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
 
             <SideImageSection
                 h2Heading="Vision correction treatment"

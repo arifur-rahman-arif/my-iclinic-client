@@ -142,7 +142,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 alt=""
             />
         ),
-        title: `ICL  Consultation`,
+        title: `ICL Consultation`,
         descriptions: [
             `An ICL consultation for Implantable contact lenses couldn’t be easier! Our friendly team will guide you through some eye assessments which will take approximately one hour.`,
             `Once complete, your specialist will advise you on the best lens size for your eyes.`,
@@ -210,6 +210,102 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
             `For Implantable Contact Lens treatment there is a one-week recovery period where minimal activity is required before attending an aftercare appointment with your specialist.`,
             `During the one week recovery period, our team is always here to answer any other questions you may have so that you can live confidently and comfortably following your ICL surgery.`,
             `Once you attend an aftercare appointment with the ICL specialist you will be able to begin life without glasses or disposable contact lenses again!`
+        ]
+    }
+];
+
+export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/lasik-consultation.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/lasik-consultation-large.png"
+                width={687}
+                height={574}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `LASIK Consultation`,
+        descriptions: [
+            `Before arriving at your LASIK consultation, we would ask that you do not wear soft or hard contact lenses for two weeks.`,
+            `This is because contact lenses reshape the surface of your eye and can interfere with the measurements we need to take in order to make sure your vision can be precisely corrected.`,
+            `When you arrive at our LASIK clinic, our friendly technicians will guide you through a number of eye assessments on your cornea in order to determine the best possible outcome LASIK can give you.`,
+            `Once you meet your LASIK specialist, they will be able to assess whether your eyes are suitable for this treatment or if any alternative laser treatments might be better for your eye health, for example, to reduce the risk of unusually dry eyes following the procedure.`,
+            `Because we dilate your pupils to comprehensively assess your eyes, we advise that a friend or family member accompany you to help transport you home.`,
+            `Our private LASIK consultation is completely FREE without any obligation to have treatment if you wish to consider your options.`
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/lasik-treatment.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/lasik-treatment-large.png"
+                width={689}
+                height={558}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `LASIK Treatment`,
+        descriptions: [
+            `When you arrive at our clinic, our friendly nurse will take you to our laser suite, they will talk you through the procedure and answer any questions you may have about your LASIK procedure.`,
+            `They will administer anesthetic eye drops into your eyes to make sure the procedure itself is very easy and completely painless.`,
+            `Our nurse will introduce you to your laser specialist and make you comfortable.`,
+            `Our laser specialist makes a small incision to create a flap on the surface of your eye. The LASIK laser reshapes these exposed layers before the specialist will fold the flap back into position.`,
+            `LASIK reshapes the eye’s cornea and increases the focus of light on your retina.This removes the need for contact lenses or glasses because LASIK changes the focusing power of your cornea and restores natural vision again.`,
+            `Your eye will heal naturally over the following hours and days, and the majority of patients report their vision improves within 24 hours!`
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/lasik-aftercare.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/lasik-aftercare-large.png"
+                width={691}
+                height={558}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `LASIK Aftercare`,
+        descriptions: [
+            `We want nothing more than for you to feel comfortable after your LASIK surgery, which is why our team is always here to answer any questions you may have during your recovery.`,
+            `Before you leave on the day of your LASIK surgery, our friendly nurse will give you aftercare instructions and eye drops to take home.`,
+            `The following day after your LASIK treatment your laser specialist will check your vision and monitor the progress of your vision.`,
+            `After your first day aftercare appointment you will have to have minimal physical activity and rest for 1 week.`,
+            `This is to make sure your eye can heal properly without any possibility of injury. Once your 1 week recovery period is over you laser specialist will check in with you again and carry out some further eye assessments.`,
+            `Following this, you can resume all normal activities again with your natural, clear vision restored!`
         ]
     }
 ];

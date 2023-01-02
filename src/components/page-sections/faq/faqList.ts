@@ -615,3 +615,122 @@ export const iclFaqList: FaqListInterface[] = [
         the lens before this becomes any long-term issue.`
     }
 ];
+
+export const lasikFaqList: FaqListInterface[] = [
+    {
+        title: 'What is LASIK laser eye surgery?',
+        description: `LASIK is a traditional laser eye surgery procedure which can be an excellent option for some
+        patients, depending on your eyes. Our LASIK laser eye surgery reshapes the cornea of the eye to
+        correct your vision and reduce the need for wearing glasses and/or contact lenses. When you
+        book a FREE laser consultation with our laser specialist, they will be able to assess your
+        suitability for LASIK and understand the vision you are needing for the ease of your hobbies and
+        lifestyle.
+        `
+    },
+    {
+        title: 'Is everybody suitable for LASIK surgery?',
+        description: `LASIK is a fantastic procedure for correcting vision. Millions of people have had their vision
+        improved by LASIK eye surgery already. LASIK is considered a traditional laser method but
+        since then we have had break-through innovations with other laser techniques such as: SMILE
+        and Presbyond. You may be suitable for LASIK and you may also be suitable for our other laser
+        treatments which may be better for the quality of vision you require.
+        `
+    },
+    {
+        title: `Who is most suitable for LASIK?`,
+        description: `If your prescription is between +6 to -12 D or up to 6.0D you are most likely suitable to have
+        LASIK surgery with us, provided you are not under that age of 21, pregnant, breastfeeding,
+        using steroid drugs or have a squint/lazy eye.`
+    },
+    {
+        title: 'What is the difference between LASIK and SMILE laser eye surgery?',
+        description: `SMILE treatment is a new iteration of laser vision correction which is less invasive with the
+        same excellent results. The SMILE laser can refocus the cornea without cutting a flap. The
+        cornea is stronger and not vulnerable to injury, and the corneal sensory nerves remain intact.
+        Patients who undergo SMILE and LASIK laser correction achieve excellent vision.
+        `
+    },
+    {
+        title: 'When can I be suitable for LASIK laser eye surgery?',
+        shortDescription: `Those who have myopia (short-sightedness) will experience frequent changes in vision in their`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+            Those who have myopia (short-sightedness) will experience frequent changes in vision in their
+            teenage years, so anyone considering LASIK eye surgery should be over 21. For those who have
+            the need for reading glasses over the age of 40, <strong class="">Presbyond</strong> is a modification of LASIK and is the
+            preferred option for achieving your desired results.
+            </p>
+          
+            <p>
+                There are also a number of circumstances and conditions that may cause your vision to
+                fluctuate, including pregnancy, breastfeeding and steroid drug use. You should wait until these
+                symptoms have subsided before enquiring about LASIK with our laser specialist.
+            </p>
+        </div>`
+    },
+    {
+        title: 'Why may I not be suitable for LASIK laser eye surgery?',
+        shortDescription: `Yes! Many people who have keratoconus (a thin cornea) will not be suitable for laser eye`,
+        description: `If you have a prescription that is stronger than -10 or +5 you would not be considered as a
+        suitable candidate for our LASIK surgery. Unfortunately, If you have a squint or a lazy eye we
+        may not use LASIK as a suitable surgery to correct your vision. In your private consultation, our
+        laser specialist will be able to determine if you are eligible for LASIK or if you are better suited
+        to another vision correction treatment.`
+    },
+    {
+        title: 'How much does LASIK Laser eye surgery cost?',
+        description: `Our LASIK treatment is an all-inclusive fee of £2,400 per eye. This includes a full private
+        consultation, your treatment and your aftercare appointment with our LASIK specialist.`
+    },
+    {
+        title: 'How long does LASIK laser eye surgery take to heal?',
+        description: `Our LASIK surgery usually heals within 3 days of treatment, however, we advise you to rest for
+        1 week before attending your 1 week aftercare appointment with your laser specialist. We will
+        then ask you to attend two more follow up appointments (6 months and 12 months) in the future
+        to monitor how you are with your new, natural vision. We like our patients to feel that their
+        aftercare is important because it is. This is why our specialists will check in with you up to 12
+        months after your treatment.`
+    },
+    {
+        title: 'Can I swim, play sports and drive after my LASIK surgery?',
+        description: `After your LASIK surgery we advise a 1 week recovery period without swimming, playing sports
+        or participating in any strenuous activities. After attending your 1 week follow up with your
+        LASIK specialist, you will be able to swim and enjoy your busy activities again without your
+        glasses!`
+    },
+    {
+        title: 'How long does LASIK last?',
+        description: `Our LASIK laser eye surgery is a permanent vision correction procedure, lasting long term. A
+        small percentage of our patients may need an enhancement laser procedure after LASIK
+        because their eyes have developed a condition called presbyopia (aging of the eyes). Presbyopia
+        can be easily corrected with us when you experience changes in your prescription but this does
+        not usually occur until you are 40 onwards. Lasik is therefore a long term solution to correct
+        your vision.`
+    },
+    {
+        title: 'Is LASIK laser eye surgery safe?',
+        description: `Our LASIK laser eye surgery is very safe and effective in the majority of our patients but like all
+        surgeries there can be some risks. For our LASIK procedure, in very rare cases, glares, halos
+        and starburst can be experienced after treatment and there is a very small risk of infection.
+        `
+    },
+    {
+        title: 'Can there be complications from LASIK eye surgery?',
+        description: `Complications from LASIK surgery occur in less than 1% of our patients. These complications
+        are mostly minimal which varies from the individuality of your eyes. Some patients may
+        experience glares, halos and infections.`
+    },
+    {
+        title: 'I have Keratoconus, am I suitable for LASIK laser eye surgery?',
+        description: `Unfortunately, people who have keratoconus (a thin cornea) are not suitable candidates for our
+        LASIK surgery.`
+    },
+    {
+        title: 'Is LASIK surgery painful?',
+        description: `Our LASIK surgery is not a painful treatment because we give all our patients anesthetic eye
+        drops to numb the eye before their surgery. There may be some slight discomfort such as a
+        temporary itching, a burning sensation and/or dry eyes after your treatment but this is
+        completely normal while the eye begins to heal. Additionally, we provide eye drops for your
+        recovery period to subside any discomfort.`
+    }
+];

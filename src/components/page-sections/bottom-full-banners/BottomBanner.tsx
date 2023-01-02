@@ -39,7 +39,7 @@ const BottomBanner = ({
                         {/* Banner */}
                         <div className="relative z-10 grid max-w-[33.8rem] grid-cols-1 content-start gap-x-6 justify-self-center rounded-primary md:max-w-[56rem] md:grid-cols-[auto_1fr] md:gap-y-24 md:justify-self-start md:bg-brandLight md:py-24 md:px-12 md:shadow-shadow2">
                             <h2 className="font-latoLight text-[3.2rem] font-light normal-case leading-[3.6rem] text-heading md:col-span-2 md:text-[4.8rem] md:leading-[4.8rem]">
-                                Want to be free from reading glasses?
+                                {bannerTitle}
                             </h2>
                             {bannerDescription ? (
                                 <p className="mt-12 md:col-span-2 md:-mt-12">{bannerDescription}</p>

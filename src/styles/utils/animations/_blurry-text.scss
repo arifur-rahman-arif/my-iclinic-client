@@ -11,7 +11,7 @@
         filter: blur(4px);
     }
 
-    @for $i from 1 through 10 {
+    @for $i from 1 through 20 {
         span:nth-child(#{$i}) {
             animation: fadeIn 0.7s #{$i / 10}s forwards cubic-bezier(0.11, 0, 0.5, 0);
         }

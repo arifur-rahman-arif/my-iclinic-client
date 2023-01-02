@@ -2,9 +2,10 @@ import { Container } from '@/components/container';
 import { Section } from '@/components/section';
 import { HorizontalSliderInterface } from '@/components/slider/horizontal-slider/HorizontalSlider';
 import Slide from '@/components/slider/horizontal-slider/Slide';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { sliderList } from './sliderList';
 import RequestCallbackBgPng from '/public/images/section-images/request-callback-bg.png';
@@ -52,6 +53,10 @@ const CallbackSection = (): JSX.Element => {
     //         );
     //     }
     // }, [data, error]);
+
+    useEffect(() => {
+        ScrollTrigger.refresh();
+    }, []);
 
     return (
         <>

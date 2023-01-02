@@ -105,9 +105,11 @@ export default function RelexSmileLondon(): JSX.Element {
                 }
             />
 
+            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
+
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className="w-full md:mt-[24rem]"></div>
+            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
 
             <FullWidthImageSection
                 h3Title="Say hello to clear vision with ReLEX SMILE Laser Eye Surgery!"

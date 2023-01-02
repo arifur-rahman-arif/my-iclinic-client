@@ -109,7 +109,7 @@ const StackBox = ({
                 </div>
                 <div className="grid gap-6">
                     {descriptions.map((desc, index) => (
-                        <p key={index}>{desc}</p>
+                        <p key={index} dangerouslySetInnerHTML={{ __html: desc }}></p>
                     ))}
                 </div>
             </div>

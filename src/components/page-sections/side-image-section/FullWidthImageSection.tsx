@@ -1,10 +1,10 @@
 import { Container } from '@/components/container';
+import AlbumColumn from '@/components/page-sections/section-parts/AlbumColumn';
 import { Section } from '@/components/section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import Image, { StaticImageData } from 'next/image';
 import gsap from 'gsap';
+import Image, { StaticImageData } from 'next/image';
 import { useEffect, useRef } from 'react';
-import AlbumColumn from '@/components/page-sections/section-parts/AlbumColumn';
 
 interface FullWidthImageSectionInterface {
     boldHeading?: string;
@@ -17,6 +17,7 @@ interface FullWidthImageSectionInterface {
     overlayAnimation?: boolean;
     albumAnimation?: boolean;
     textColumnOverlay?: boolean;
+    description?: string[];
 }
 
 /**
@@ -41,11 +42,12 @@ const FullWidthImageSection = ({
     containerClass = 'grid grid-cols-1 items-center gap-12 py-16 md:grid-cols-2 md:gap-24 md:py-24',
     overlayAnimation,
     albumAnimation,
-    textColumnOverlay
+    textColumnOverlay,
+    description
 }: FullWidthImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
     const imageCover = useRef<HTMLDivElement>(null);
-    const imageCoverContainer = useRef<HTMLDivElement>(null);
+    const imageCoverContainer = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         overlayAnimation &&
@@ -78,7 +80,15 @@ const FullWidthImageSection = ({
                             ></strong>
                         </h3>
                     ) : (
-                        <h3 className="w-full max-w-[50rem] normal-case">{h3Title}</h3>
+                        <h3 className="w-full max-w-[55rem] normal-case">{h3Title}</h3>
+                    )}
+
+                    {description && (
+                        <div className="mt-12 grid gap-12">
+                            {description.map((desc, index) => (
+                                <p key={index}>{desc}</p>
+                            ))}
+                        </div>
                     )}
                 </div>
 
@@ -87,7 +97,7 @@ const FullWidthImageSection = ({
                 ) : (
                     <div className="row-start-1 grid w-full justify-self-center md:row-auto md:justify-self-end">
                         {smallSizes.includes(deviceSize) && image && (
-                            <div className="relative" ref={imageCoverContainer}>
+                            <div className="relative px-8" ref={imageCoverContainer}>
                                 {overlayAnimation && (
                                     <div
                                         ref={imageCover}

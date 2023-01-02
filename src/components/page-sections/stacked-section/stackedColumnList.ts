@@ -172,3 +172,82 @@ export const iclStackList: StackListInterface[] = [
         altText: ``
     }
 ];
+
+export const lasikStackList: StackListInterface[] = [
+    {
+        image: {
+            url: '/images/section-images/walking-into-room.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/walking-into-room-large.png',
+            width: 640,
+            height: 519
+        },
+        title: 'Who’s that walking into the room?',
+        descriptions: [
+            `You’re the same person, but your smile and confidence say otherwise.`,
+            `Your glasses are no longer stealing the limelight, and everyone around can finally see the real you.`
+        ],
+        boxWidth: '51rem',
+        altText: ``
+    },
+    {
+        image: {
+            url: '/images/section-images/people-doing-exercise.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/people-doing-exercise-large.png',
+            width: 658,
+            height: 571
+        },
+        title: 'Feel in charge of your life',
+        descriptions: [
+            `You’re able to toss your glasses and contact lenses for good, and it’s a wonderful feeling.`,
+            '<span class="text-[1.8rem] leading-[2.8rem] font-mulishBold uppercase">You’re in control.</span>'
+        ],
+        boxWidth: '43.4rem',
+        altText: ``
+    },
+    {
+        image: {
+            url: '/images/section-images/man-running-in-the-beach.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/man-running-in-the-beach-large.png',
+            width: 608,
+            height: 579
+        },
+        title: 'Feel more confident',
+        descriptions: [
+            `It’s liberating to do whatever you want without dependency on glasses or contact lenses.`,
+            `Worries and insecurities have diminished, and your self-esteem is beaming.`
+        ],
+        boxWidth: '52rem',
+        altText: ``
+    },
+    {
+        image: {
+            url: '/images/section-images/woman-holding-her-baby.png',
+            width: 392,
+            height: 256
+        },
+        desktopImage: {
+            url: '/images/section-images/woman-holding-her-baby-large.png',
+            width: 658,
+            height: 519
+        },
+        title: 'Breeze through life',
+        descriptions: [
+            `Daily routines, active pursuits and social events are a joy.`,
+            `You’re free to run, stretch, jump, lift, or whatever else you like to do, without the need to worry about breaking or losing your specs.`
+        ],
+        boxWidth: '43.4rem',
+        altText: ``
+    }
+];
