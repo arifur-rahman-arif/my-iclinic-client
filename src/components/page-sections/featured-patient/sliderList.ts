@@ -22,3 +22,15 @@ export const iclSliders: CardSlideInterface[] = [
         imageURL: '/images/section-images/elite-slider-image.png'
     }
 ];
+
+export const lasikSliders: CardSlideInterface[] = [
+    {
+        imageURL: '/images/section-images/helen-slider-image.png'
+    },
+    {
+        imageURL: '/images/section-images/helen-slider-image.png'
+    },
+    {
+        imageURL: '/images/section-images/helen-slider-image.png'
+    }
+];

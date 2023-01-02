@@ -69,7 +69,7 @@ const Banner = ({ h1Title, h2Title, priceText, priceTextExtra }: BannerInterface
             </div>
             {/* Headings */}
             <div className="grid w-full max-w-[50.3rem] grid-cols-1 gap-6 md:col-span-2 md:gap-12">
-                <div className={`${styles.styles}`}>{h1Title}</div>
+                <div className={`${styles.styles} blurry-text`}>{h1Title}</div>
                 <div className={`${startH2Animation ? 'blurry-text' : ''}`}>{h2Title}</div>
 
                 <Image

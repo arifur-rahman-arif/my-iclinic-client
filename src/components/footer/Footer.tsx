@@ -8,7 +8,7 @@ import FooterHeader from './FooterHeader';
  */
 const Footer = (): JSX.Element => {
     return (
-        <footer className="mt-24 w-full bg-brandLight pb-12 sm:mt-36 lg:mt-48">
+        <footer className="mt-24 w-full bg-brandLight pb-48 sm:mt-36 sm:pb-16 lg:mt-48">
             <FooterHeader />
             <FooterBody />
         </footer>

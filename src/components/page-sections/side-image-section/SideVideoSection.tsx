@@ -25,6 +25,7 @@ export interface SideVideoSectionInterface {
     altText?: string;
     darkPin?: boolean;
     noPin?: boolean;
+    beforeAttribute?: boolean;
 }
 
 /**
@@ -54,7 +55,8 @@ const SideVideoSection = ({
     sectionClass,
     imageYPosition = 'center',
     darkPin,
-    noPin
+    noPin,
+    beforeAttribute
 }: SideVideoSectionInterface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);
@@ -71,7 +73,7 @@ const SideVideoSection = ({
                 {/* Text column */}
                 <div className="grid">
                     <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-12">
-                        <span className="block h-full w-[0.5rem] bg-yellow"></span>
+                        {beforeAttribute && <span className="block h-full w-[0.5rem] bg-yellow"></span>}
                         <H2Variant1 className="w-full">{h2Heading || ''}</H2Variant1>
                     </div>
 

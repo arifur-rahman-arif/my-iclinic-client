@@ -60,7 +60,7 @@ const FeaturedPatient = ({
                     {/* Block 2 */}
                     <div className="mt-24 grid content-start gap-6 md:-mt-[3.4rem] md:gap-12">
                         <div className="relative hidden gap-4 md:grid">
-                            <h2>{h2Title}</h2>
+                            <h2 className="text-[2rem] leading-[2.8rem]">{h2Title}</h2>
                             <H3Variant1>{h3Title}</H3Variant1>
                             <span
                                 className={`absolute bottom-0 h-[0.3rem] w-[28.6rem] -translate-x-24 translate-y-[calc(100%_+_1.5rem)] md:w-[calc(100%_+_6rem)] md:max-w-none ${

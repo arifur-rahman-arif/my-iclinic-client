@@ -90,8 +90,11 @@ export default function Presbyond(): JSX.Element {
                     </span>
                 }
             />
+            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
 
             <SideImageSection
                 h2Heading="Vision correction treatment"
@@ -279,6 +282,7 @@ export default function Presbyond(): JSX.Element {
                 <SideVideoSection
                     h2Heading="Is ICL for me?"
                     noPin
+                    beforeAttribute
                     textColumnExtras={
                         <div className="mt-20 ml-14 grid gap-6">
                             <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">

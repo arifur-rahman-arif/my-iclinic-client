@@ -42,3 +42,17 @@ export const icPriceList: PriceSectionInterface[] = [
         priceDescription: `With 10 months interest-free finance available!`
     }
 ];
+
+export const lasikPriceList: PriceSectionInterface[] = [
+    {
+        price: '£200',
+        priceText: 'The price of your LASIK consultation',
+        priceDescription: `After booking your LASIK treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
+        priceDescBoldText: '100% FREE.'
+    },
+    {
+        price: '£2,400 per eye',
+        priceText: 'The price of your LASIK surgery',
+        priceDescription: `With 12 months interest-free finance available.`
+    }
+];
