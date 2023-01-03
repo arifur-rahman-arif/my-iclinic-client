@@ -4,11 +4,11 @@ import { Section } from '@/components/section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import gsap from 'gsap';
 import Image, { StaticImageData } from 'next/image';
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 
 interface FullWidthImageSectionInterface {
     boldHeading?: string;
-    h3Title: string;
+    h3Title: string | ReactNode;
     image?: StaticImageData;
     desktopImage?: StaticImageData;
     altText?: string;

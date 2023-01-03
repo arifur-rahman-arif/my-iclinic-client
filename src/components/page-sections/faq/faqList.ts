@@ -734,3 +734,286 @@ export const lasikFaqList: FaqListInterface[] = [
         recovery period to subside any discomfort.`
     }
 ];
+
+export const cataractFaqList: FaqListInterface[] = [
+    {
+        title: 'Why choose cataract surgery?',
+        shortDescription: `  Choose My-iClinic for
+        private cataract surgery and
+        your treating surgeon helps
+        you to make a fully informed
+        decision, ensuring you get
+        the best possible treatment`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+            Choose My-iClinic for
+            private cataract surgery and
+            your treating surgeon helps
+            you to make a fully informed
+            decision, ensuring you get
+            the best possible treatment
+            for your cataracts, allowing
+            you to rediscover a life of
+            clear vision without the
+            need for glasses.
+            </p>
+            <p>
+                Following our 5-star rated
+                service, many patients enjoy
+                better vision than they did
+                before cataracts even
+                developed. Skip long
+                waiting times and return to
+                a normal and full life.
+            </p>
+        </div>`
+    },
+    {
+        title: 'What does my surgery cost include?',
+        shortDescription: `This price covers patients for
+        all surgery costs, including
+        post-operative medication
+        and visits, follow-up
+        appointments (up to 4 weeks
+        after your procedure) and
+        management of any
+        unforeseen complications.`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+            This price covers patients for
+            all surgery costs, including
+            post-operative medication
+            and visits, follow-up
+            appointments (up to 4 weeks
+            after your procedure) and
+            management of any
+            unforeseen complications.
+            </p>
+            <p>
+            Prices vary between your
+            chosen eye surgery specialist.
+            Occasionally it is necessary to
+            charge extra if a patient has a
+            very complicated or advanced
+            cataract. Such extra charges
+            would be discussed before
+            the surgery takes place. It
+            does not include the initial
+            consultation.
+            </p>
+        </div>`
+    },
+    {
+        title: 'I want to be free from glasses after my cataract surgery, what’s the best option for me?',
+        description: `If you wish to be free of glasses for
+        the vast majority of your life
+        looking at near, intermediate and
+        long distances, then Presbyond
+        laser vision correction is the best
+        option for you. The laser
+        procedure is carried out at our
+        clinic 3 to 6 months after the
+        cataract operation. See more
+        about <strong>Presbyond vision correction.</strong>
+        `
+    },
+    {
+        title: `What is a cataract?`,
+        shortDescription: `Just behind the pupil of your
+        eye is the eye’s lens. Usually,
+        the lens of the eye is crystal
+        clear so that when light passes
+        through it easily, you have
+        bright, clear sight. However, if
+        any cloudiness develops in the
+        eye’s lens, its starts to block
+        `,
+        description: `<div class="grid gap-6 content-start">
+        <p>
+            Just behind the pupil of your
+            eye is the eye’s lens. Usually,
+            the lens of the eye is crystal
+            clear so that when light passes
+            through it easily, you have
+            bright, clear sight. However, if
+            any cloudiness develops in the
+            eye’s lens, its starts to block
+            any light passing through. This
+            is a sign you might be
+            developing cataracts which can
+            cause the following symptoms
+            in your everyday sight:
+        </p>
+        <ul class="grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc">
+                <p>
+                    A greenish clouding of the
+                    eye
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    Blurring of vision that 
+                    can’t be corrected with
+                    glasses
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    Colours appearing faded or
+                    washed out, sometimes
+                    with a yellow haze
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    Sensitivity to light, glare
+                    and seeing halos around
+                    lights (especially when
+                    driving at night)
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    Frequent changes in
+                    glasses prescriptions
+                </p>
+            </li>
+        </ul>
+    </div>`
+    },
+    {
+        title: `Why do I have
+        cataracts and when should
+        my cataracts be treated?
+        `,
+        shortDescription: `You may be developing
+        cataracts because of the
+        following reason
+        `,
+        description: `<div class="grid gap-6 content-start">
+        <p>
+            You may be developing
+            cataracts because of the
+            following reasons:
+        </p>
+        <ul class="grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc">
+                <p>
+                    Your family has a
+                    medical history of
+                    cataracts
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    You have a diabetic
+                    condition
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    You smoke and drink
+                    regularly
+                </p>
+            </li>
+            <li class="list-item list-disc">
+                <p>
+                    Ageing (40+) is when
+                    eyes start to change the
+                    most
+                </p>
+            </li>
+        </ul>
+        <p>
+            When your cataract
+            symptoms progress, it
+            identifies that the
+            cloudiness is growing in
+            your sight. Any cataracts
+            developing in the eye can
+            cause severe outcomes
+            with your vision loss, and
+            the best option is to be
+            seen immediately before
+            your vision loss worsens.
+        </p>
+    </div>`
+    },
+    {
+        title: 'What is a Cataract Lens implant?',
+        shortDescription: `When the cataract has been
+        removed from the bag in which it
+        is contained, it is replaced by a
+        synthetic lens implant. This new`,
+        description: `<div class="grid gap-6 content-start">
+            <p>
+                When the cataract has been
+                removed from the bag in which it
+                is contained, it is replaced by a
+                synthetic lens implant. This new
+                lens is implanted into the space
+                which had been occupied by your
+                own natural lens. There are many
+                types of implant, and if you
+                choose My-iClinic for cataract
+                surgery, we will help you choose
+                the one which fits your lifestyle
+                and your needs to the highest
+                possible degree.
+            </p>
+            <p>
+                While removing a cataract, MyiClinic makes it possible to
+                refocus the eye, giving crystal
+                clear distance vision. Many of our
+                patients are able to continue
+                routine daily tasks without the
+                need for spectacles – even those
+                who had previously depended on
+                glasses can have vision restored.
+            </p>
+        </div>`
+    },
+    {
+        title: 'What are the implant options for my cataract treatment?',
+        description: `Depending on the implants you
+        are suitable for, our patients
+        have achieved the best visual
+        outcome for clarity and all
+        distances by having Edof lens
+        implants or Presbyond
+        treatment after their cataract
+        surgery. Each treatment for
+        seeing from near, intermediate,
+        or distance (or all three) can be
+        explained as a part of our
+        Cataracts lens implants page.
+        `
+    },
+    {
+        title: 'How long does LASIK laser eye surgery take to heal?',
+        description: `Our LASIK surgery usually heals within 3 days of treatment, however, we advise you to rest for
+        1 week before attending your 1 week aftercare appointment with your laser specialist. We will
+        then ask you to attend two more follow up appointments (6 months and 12 months) in the future
+        to monitor how you are with your new, natural vision. We like our patients to feel that their
+        aftercare is important because it is. This is why our specialists will check in with you up to 12
+        months after your treatment.`
+    },
+    {
+        title: 'When will I be able to drive, travel and play sports after surgery?',
+        description: `After your surgery day, we
+        advise a two week break
+        from all activities as;
+        driving, travelling,
+        swimming and any other
+        physical exercise. Once
+        your cataract specialist
+        has spoken with you in
+        your follow up
+        appointment, you will then
+        be able to resume all your
+        lifestyle activities, this
+        time with clear, normal
+        vision!`
+    }
+];

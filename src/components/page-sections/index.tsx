@@ -18,6 +18,7 @@ import FullWidthImageSection2 from './side-image-section/FullWidthImageSection2'
 import FullWidthImageSection3 from './side-image-section/FullWidthImageSection3';
 import { SideImageSectionInterface } from './side-image-section/SideImageSection';
 import { StackedSection } from './stacked-section';
+import { HalfRoundedCard } from './cards';
 
 export {
     PersonalInfo,
@@ -39,6 +40,7 @@ export {
     GridColumn,
     StackColumn,
     CtaSection,
-    StackColumnIcl
+    StackColumnIcl,
+    HalfRoundedCard
 };
 export type { SideImageSectionInterface };

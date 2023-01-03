@@ -1,5 +1,6 @@
 import { LeftRightSectionChildrenInterface } from './LeftRightSection';
 import Image from 'next/image';
+import { LinkText } from '@/components/link';
 
 export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterface> = [
     {
@@ -306,6 +307,115 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
             `After your first day aftercare appointment you will have to have minimal physical activity and rest for 1 week.`,
             `This is to make sure your eye can heal properly without any possibility of injury. Once your 1 week recovery period is over you laser specialist will check in with you again and carry out some further eye assessments.`,
             `Following this, you can resume all normal activities again with your natural, clear vision restored!`
+        ]
+    }
+];
+
+export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/cataract-consultation.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/cataract-consultation-large.png"
+                width={696}
+                height={550}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `Your Consultation`,
+        descriptions: [
+            `The first step to living life with clearer vision is a consultation with one of our friendly cataract specialists.`,
+            <>
+                Your cataract consultation will begin with some initial scans so we can examine your eyes and explain
+                the most{' '}
+                <LinkText href="#" indicatorColor="bg-blue" className="!font-mulishBold text-blue">
+                    suitable treatment options
+                </LinkText>{' '}
+                for you.
+            </>,
+            `With our expert technology, our senior technicians will be able to capture how the cataracts are affecting you, your lifestyle and where exactly they are affecting your field of vision.`,
+            <>
+                These assessments will be passed to your cataract specialist, who will meet with you and talk you
+                through the best{' '}
+                <LinkText href="#" indicatorColor="bg-blue" className="!font-mulishBold text-blue">
+                    lens implants options
+                </LinkText>{' '}
+                for your cataract surgery.
+            </>,
+            `Your first cataract consultation and assessment is an all-inclusive £200 fee, with no obligation to have surgery if you wish to have some time to consider    your treatment options. `
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/cataract-surgery.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/cataract-surgery-large.png"
+                width={689}
+                height={558}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `Your Surgery`,
+        descriptions: [
+            `The most comforting part of our care is that our patients know their surgeon from the beginning; they will be your dedicated specialist throughout your consultation, treatment and aftercare.`,
+            `Before your surgery day, our patient care coordinator will reach out and answer any extra information that will be helpful to you before your treatment.`,
+            `On the day of your cataract surgery, our friendly nurse team will be with you before your treatment time and they will answer any questions you may have for your ease, care and comfort.`,
+            `Your cataract surgery will be completely painless and takes just an average of 60 minutes, depending on your lens options.`,
+            `Our nurses will be there after your surgery to help you through our at-home instructions which  will help you in your recovery time.`
+        ]
+    },
+    {
+        mobileImage: (
+            <Image
+                src="/images/section-images/cataract-aftercare.png"
+                width={390}
+                height={390}
+                quality={70}
+                className="md:hidden"
+                alt=""
+            />
+        ),
+        desktopImage: (
+            <Image
+                src="/images/section-images/cataract-aftercare-large.png"
+                width={680}
+                height={550}
+                quality={70}
+                className="hidden md:block"
+                alt=""
+            />
+        ),
+        title: `Your Aftercare`,
+        descriptions: [
+            `There is nothing more important than our patients feeling comfortable after their procedure.`,
+            <>
+                We advise a <strong>two week recovery period</strong> before attending your aftercare appointment with
+                us.
+            </>,
+            `Our team will always be at the end of a phone call throughout your recovery at home to answer any more questions you may have.`,
+            `In your aftercare appointment, your cataract specialist will check the improvement of your vision before you can enjoy your cataract-free vision`
         ]
     }
 ];

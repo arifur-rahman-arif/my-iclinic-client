@@ -48,8 +48,8 @@ const LeftRightTextColumn = ({ index, title, descriptions }: TextColumnInteracti
             </div>
             <div className="grid gap-6">
                 <H4Variant1>{title}</H4Variant1>
-                {descriptions.map((description, index) => (
-                    <p key={index} dangerouslySetInnerHTML={{ __html: description }}></p>
+                {descriptions?.map((description, index) => (
+                    <p key={index}>{description}</p>
                 ))}
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { Container } from '@/components/container';
 import { Section } from '@/components/section';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import ImageComponent from './ImageComponent';
 import LeftRightTextColumn from './LeftRightTextColumn';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -9,7 +9,7 @@ export interface LeftRightSectionChildrenInterface {
     mobileImage: JSX.Element;
     desktopImage: JSX.Element;
     title: string;
-    descriptions: string[];
+    descriptions: string[] | ReactNode[];
 }
 
 interface LeftRightSectionInterface {
