@@ -15,7 +15,7 @@ export interface SideImageSectionInterface {
     h2Heading?: string;
     h3LightHeading?: string;
     h3BoldHeading?: string;
-    descriptions?: string[] | JSX.Element[];
+    descriptions?: string[] | ReactNode[];
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: string;

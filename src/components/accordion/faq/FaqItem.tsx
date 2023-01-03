@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FaqListInterface } from '@/components/page-sections/faq/faqList';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { trimText } from '@/utils/miscellaneous';
+import { getElementTopPosition, trimText } from '@/utils/miscellaneous';
 
 interface AccordionItemInterface {
     index: number;
@@ -77,6 +77,8 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
                     '-=0.4'
                 );
         }
+
+        window.scrollTo(0, getElementTopPosition(descriptionRef.current) - 300);
     }, [expanded]);
 
     return (
