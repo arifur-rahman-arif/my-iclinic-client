@@ -3,5 +3,6 @@
   <component name="TypeScriptCompiler">
     <option name="showAllErrors" value="false" />
     <option name="useService" value="false" />
+    <option name="versionType" value="EMBEDDED" />
   </component>
 </project>

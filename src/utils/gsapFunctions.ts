@@ -1,3 +1,5 @@
+import { smallSizes } from './../hooks/useDeviceSize';
+import { useDeviceSize, useOnScreen } from '@/hooks';
 import gsap from 'gsap';
 import { MutableRefObject, RefObject, useEffect } from 'react';
 
@@ -17,7 +19,7 @@ export const barAnimation = () => {
         gsap.to('.bar-animation', {
             width: '100%',
             duration: 1.5,
-            ease: 'elastic.out(1, 0.3)'
+            ease: 'elastic.out(1, 0.6)'
         });
     }
 };
@@ -38,8 +40,8 @@ export const dotAnimation = () => {
     if (document.querySelector('.dot-animation')) {
         gsap.to('.dot-animation', {
             scale: 1,
-            duration: 1.2,
-            ease: 'elastic.out(1, 0.3)'
+            duration: 2.5,
+            ease: 'back.out(1.1)'
         });
     }
 };
@@ -82,46 +84,68 @@ export const pinAnimation = ({
     width: string;
     trigger: MutableRefObject<any>;
 }) => {
+    const { onEnter } = useOnScreen({ ref: trigger, triggerPosition: -50 });
     useEffect(() => {
-        if (!trigger.current) return;
+        if (!trigger.current || !onEnter) return;
 
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: trigger.current,
-                start: 'top bottom',
-                toggleActions: 'play none none reverse'
-            }
-        });
-
-        timeline.to(pinRef.current, {
+        gsap.to(pinRef.current, {
             width: width,
             duration: 2,
             ease: 'expo.inOut'
         });
-    }, []);
+    }, [onEnter]);
 };
 
 /**
- * Image scale animation that will scale down the initial extra size
+ * Animation for sliding text left to right
  *
  * @param {{ pinRef: MutableRefObject<any> }} { pinRef }
  */
-export const imageScaleAnimation = ({ imageRef }: { imageRef: MutableRefObject<any> }) => {
+export const slideRightAnimation = ({
+    element,
+    trigger
+}: {
+    element: MutableRefObject<any>;
+    trigger: MutableRefObject<any>;
+}) => {
+    const deviceSize = useDeviceSize();
+    const { onEnter } = useOnScreen({ ref: trigger, triggerPosition: smallSizes.includes(deviceSize) ? '80%' : '90%' });
     useEffect(() => {
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: imageRef.current,
-                start: 'top bottom',
-                toggleActions: 'play none none reverse'
-            }
-        });
+        if (!trigger.current || !element.current || !onEnter) return;
 
-        timeline.to(imageRef.current, {
-            scale: 1,
-            duration: 1.5,
-            opacity: 1,
-            marginTop: 0,
-            ease: 'sine.inOut'
+        gsap.to(element.current, {
+            duration: 5,
+            transform: 'translateX(100%)'
         });
-    }, []);
+    }, [deviceSize, onEnter]);
+};
+
+/**
+ * Fade in animation for text and headings
+ *
+ * @params {{
+ *     element: MutableRefObject<any>;
+ *     trigger: MutableRefObject<any>;
+ * }} {
+ *     element,
+ *     trigger
+ * }
+ */
+export const fadeInAnimation = ({
+    element,
+    trigger
+}: {
+    element: MutableRefObject<any>;
+    trigger: MutableRefObject<any>;
+}) => {
+    const { onEnter } = useOnScreen({ ref: trigger, triggerPosition: '85%', markers: true });
+    useEffect(() => {
+        if (!trigger.current || !element.current || !onEnter) return;
+
+        gsap.to(element.current, {
+            autoAlpha: 1,
+            duration: 1,
+            translateY: 0
+        });
+    }, [onEnter]);
 };

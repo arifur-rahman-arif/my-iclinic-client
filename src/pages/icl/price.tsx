@@ -1,4 +1,6 @@
 import {
+    BulletPoint,
+    FinanceList,
     FullWidthImageSection,
     FullWidthImageSection2,
     Masthead,
@@ -8,40 +10,50 @@ import {
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { CtaSection } from '@/components/page-sections/cta-section';
-import { icPriceList } from '@/components/page-sections/fold-section/priceList';
-import IconCalender from '@/icons/icon-calender-15.svg';
-import IconEyeballFocusing from '@/icons/icon-eye-ball-focusing.svg';
-import IconEyePlus from '@/icons/icon-eye-plus.svg';
-import IconEyeTesting from '@/icons/icon-eye-testing.svg';
-import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
-import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
+import { CtaSection } from '@/components/page-sections/CtaSection';
+import { icPriceList } from '@/components/page-sections/PriceCard/priceList';
 import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import { BreadCrumb } from '@/components/Breadcrumb';
+import MastheadImageSmall from '@/masthead/masthead-icl-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-icl-pricing.png';
+import MastheadImageLarge from '@/masthead/masthead-icl-pricing-large.png';
+import { useDeviceSize, largeSizes, smallSizes } from '@/hooks';
+import { useState, useEffect } from 'react';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const CallbackSection = dynamic(() => import('@/page-sections/request-callback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
 /**
  * Home/Landing page component for the App
  *
- * * Url: /laser-eye-surgery/relex-smile-london/price
+ * * Url: /icl/price
  *
  * @export
  * @returns {JSX.Element}
  */
 export default function IclPricing(): JSX.Element {
+    const subheading = 'Save an average of £1,000';
+
+    const deviceSize = useDeviceSize();
+    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
+
+        setTimeout(() => {
+            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
+        }, 2500);
+    }, [deviceSize]);
+
     return (
         <Page title="Implantable Contact Lens cost London" description="">
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-icl-pricing.png"
-                altText="Woman reading the cost of Presbyond Treatment in London."
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
+                altText=""
                 h1Title={
                     <h1 id="masthead-title" className="flex max-w-[43.7rem] flex-wrap items-center justify-start gap-2">
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">Implantable</span>
@@ -55,47 +67,17 @@ export default function IclPricing(): JSX.Element {
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Save
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            an
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            average
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            of
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            {' '}
-                            £1,000
-                        </span>
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
                     </h2>
                 }
-            />
-
-            <div className="mt-48 w-full sm:mt-36 lg:mt-0"></div>
-
-            <PriceSection priceList={icPriceList} />
-
-            <FullWidthImageSection2
-                title="The cost of your ICL eye surgery couldn’t be easier!"
-                description="Our London ICL specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics."
-            />
-
-            <CtaSection />
-
-            <FullWidthImageSection
-                h3Title="Permanently correct"
-                boldHeading="your vision with our all-inclusive cost."
-                altText=""
-                image={InclusiveCostImage}
-                desktopImage={InclusiveCostImage}
-                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
-                overlayAnimation
-                textColumnOverlay
-                sectionClass="bg-brandLight relative"
+                priceText="£2,750 per eye"
             />
 
             <SideImageSection
@@ -117,7 +99,7 @@ export default function IclPricing(): JSX.Element {
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeTesting} alt="" className="h-16 w-16" />
+                            <BulletPoint />
                             <p className="">
                                 <strong>A FREE</strong> suitability check with our ICL specialist (a comprehensive
                                 assessment of your suitability and how implantable contact lenses will suit your
@@ -125,21 +107,21 @@ export default function IclPricing(): JSX.Element {
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconPersonInFrame} alt="" className="h-16 w-16" />
+                            <BulletPoint />
                             <p className="">
                                 A comprehensive consultation with your dedicated ICL specialist (inclusive of all eye
                                 assessment and eye scans).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" />
+                            <BulletPoint />
                             <p className="">
                                 Your Implantable Contact Lens treatment performed in our private suite with your
                                 dedicated specialist and our friendly team.
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyePlus} alt="" className="h-16 w-16" />
+                            <BulletPoint />
                             <p className="">
                                 Up to four FREE aftercare appointments with your dedicated ICL specialist (inclusive of
                                 eye assessments and eye scans).
@@ -149,11 +131,21 @@ export default function IclPricing(): JSX.Element {
                 }
             />
 
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+
+            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+
             <SideImageSection
                 h2Heading="ICL finance"
                 h3LightHeading="Want to pay for your"
                 h3BoldHeading="treatment each month?"
-                midExtras={<h4 className="normal-case">Finance available for Implantable Contact Lenses (ICL)</h4>}
+                midExtras={
+                    <h4 className="text-[2rem] normal-case leading-[2.4rem] sm:max-w-[49.1rem] md:text-[2.8rem] md:leading-[3.2rem]">
+                        Finance available for Implantable Contact Lenses (ICL)
+                    </h4>
+                }
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
                 descriptions={[
                     `We understand having ICL to correct your vision is a great investment in your eye health and lifestyle. We offer 10 months interest- free finance to help make that investment become a reality!`
@@ -169,24 +161,40 @@ export default function IclPricing(): JSX.Element {
                     height: 560
                 }}
                 textColumnExtras={
-                    <ul className="grid w-full gap-6 md:max-w-[43rem]">
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconHandHoldingLove} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">You are eligible for our 10 months interest-free finance</h5>
-                        </li>
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconCalender} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">Calculate your monthly spend for your ICL treatment</h5>
-                        </li>
-                    </ul>
+                    <FinanceList
+                        list={[
+                            'You are eligible for our 10 months interest-free finance',
+                            'Calculate your monthly spend for your ICL treatment'
+                        ]}
+                    />
                 }
             />
 
-            <div className="md:mt-48"></div>
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
-            <div className="md:mt-48"></div>
+            <PriceSection priceList={icPriceList} />
+
+            <FullWidthImageSection2
+                title="ICL eye surgery couldn’t be more cost-effective!"
+                description="Our London ICL specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics."
+            />
+
+            <CtaSection />
+
+            <FullWidthImageSection
+                h3Title={
+                    <>
+                        <strong className="normal-case">Permanently correct your vision</strong> with our all-inclusive
+                        cost.
+                    </>
+                }
+                boldHeading={true}
+                altText=""
+                image={InclusiveCostImage}
+                desktopImage={InclusiveCostImage}
+                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 !pt-0"
+                overlayAnimation
+                textColumnOverlay
+                sectionClass="bg-brandLight relative !mt-0"
+            />
         </Page>
     );
 }

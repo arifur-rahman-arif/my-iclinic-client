@@ -1,0 +1,32 @@
+.styles {
+    h1,
+    h2 {
+        transform: scale(0.94);
+        animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+    }
+
+    & span {
+        display: inline-block;
+        opacity: 0;
+        filter: blur(4px);
+    }
+
+    @for $i from 1 through 20 {
+        span:nth-child(#{$i}) {
+            animation: fadeIn 0.7s #{$i / 10}s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+    }
+
+    @keyframes scale {
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fadeIn {
+        100% {
+            opacity: 1;
+            filter: blur(0);
+        }
+    }
+}

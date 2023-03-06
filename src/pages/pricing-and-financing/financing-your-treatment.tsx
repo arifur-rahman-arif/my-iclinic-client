@@ -1,0 +1,286 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import { H3Variant2 } from '@/components/Headings';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
+import { FinanceCalculator, FullWidthImageSection, Masthead } from '@/components/page-sections';
+import { Section } from '@/components/Section';
+import { getTreatments } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-finance-treatment-large.png';
+import MastheadImageMedium from '@/masthead/masthead-finance-treatment-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-finance-treatment-small.png';
+import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
+import Cta4 from '@/page-sections/SectionParts/Cta4';
+import { DoubleVisionPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
+import { getElementTopPosition } from '@/utils/miscellaneous';
+
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import H3Variant1 from 'src/components/Headings/H3Variant1';
+import H4Variant1 from 'src/components/Headings/H4Variant1';
+
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends DoubleVisionPageContentInterface, PageDataInterface<DoubleVisionPageContentInterface> {}
+
+interface FinancingYourTreatmentInterface {
+    data: DataInterface;
+    treatments: TreatmentInterface[];
+}
+
+/**
+ * Url: /pricing-and-financing/financing-your-treatment
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
+export default function FinancingYourTreatment({ data, treatments }: FinancingYourTreatmentInterface): JSX.Element {
+    const heading = data?.masthead_subheading || 'Finance & health insurance options';
+    const subheading = data?.masthead_subheading || 'Let the cost of clear vision make sense';
+
+    return (
+        <Page title={heading} description={subheading}>
+            <BreadCrumb />
+
+            <Masthead
+                imageSmall={data?.masthead_image.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                altText=""
+                h1Title={
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
+                    </h1>
+                }
+                h2Title={
+                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
+                    </h2>
+                }
+                priceText={<></>}
+                bannerExtraComponents={
+                    <div className="grid place-items-center gap-4">
+                        <Button
+                            type="button"
+                            link="/pricing-and-financing/financing-your-treatment#calculator"
+                            text="Finance calculator"
+                            iconPosition="left"
+                            className="normal-case justify-self-start"
+                            onClick={() => {
+                                window.scrollTo(
+                                    0,
+                                    getElementTopPosition(document.querySelector('#calculator') as HTMLElement) - 150
+                                );
+                            }}
+                            icon={
+                                <Image
+                                    src="/images/icons/icon-chat.svg"
+                                    alt=""
+                                    width={20}
+                                    height={20}
+                                    quality={2}
+                                    className="h-8 w-8"
+                                />
+                            }
+                        />
+
+                        <button
+                            className="flex items-center justify-start gap-4"
+                            onClick={() => {
+                                window.scrollTo(
+                                    0,
+                                    getElementTopPosition(document.querySelector('#insurance') as HTMLElement) - 150
+                                );
+                            }}
+                        >
+                            <Image
+                                src="/images/icons/icon-love.svg"
+                                alt=""
+                                quality={70}
+                                width={20}
+                                height={20}
+                                className="h-8 w-8"
+                            />
+                            <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                                Our insurance partners
+                            </span>
+                        </button>
+                    </div>
+                }
+            />
+
+            <FullWidthImageSection
+                boldHeading={
+                    <div className="md:max-w-[54.4rem]">
+                        {data?.full_width_image_section.heading || 'Correct your vision from just £150 per month'}
+                    </div>
+                }
+                altText=""
+                description={
+                    (data?.full_width_image_section.descriptions?.length &&
+                        data?.full_width_image_section.descriptions) || [
+                        <H3Variant2>How much do you currently spend on your glasses and contact lenses?</H3Variant2>,
+                        'Over time the cost of purchasing glasses and everyday contact lenses add up to a massive, inconvenient spend.'
+                    ]
+                }
+                image={data?.full_width_image_section.image || '/images/section-images/monthly-spending-finance.png'}
+                desktopImage={
+                    data?.full_width_image_section.large_image || '/images/section-images/monthly-spending-finance.png'
+                }
+                containerClass="pb-16 md:!py-0"
+                largeImageClassName="!rounded-none"
+            />
+
+            <Section>
+                <Container className="grid place-items-center">
+                    <H3Variant2 className="!font-mulishLight max-w-[79.7rem] text-center">
+                        Our vision correction treatments provide a{' '}
+                        <strong className="font-latoBold md:text-[3rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[3.6rem]">
+                            24 month finance option from £150/Per eye, per month for permanently clear vision,
+                        </strong>{' '}
+                        without the hassle of glasses and contact lenses.
+                    </H3Variant2>
+                </Container>
+            </Section>
+
+            <FinanceCalculator treatments={treatments} />
+
+            <Section id="insurance">
+                <Container className="grid place-items-center gap-6">
+                    <H3Variant2 className="text-center">Our health insurance partners</H3Variant2>
+                    <p className="text-center">
+                        <strong>Understanding how your health insurance covers your fees:</strong>
+                    </p>
+                    <p className="max-w-[45.4rem] text-center">
+                        You are eligible to use your health insurance with our partnered insurance companies
+                    </p>
+                </Container>
+            </Section>
+
+            <Container>
+                <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14 mt-12 md:mt-24">
+                    <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
+                    <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
+                    <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
+                    <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
+                    <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
+                    <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
+                </div>
+            </Container>
+
+            <Section className="bg-brandLight !mt-12 md:!mt-16">
+                <Container className="grid place-items-center gap-12 py-12 md:py-24 xl:py-32">
+                    <H3Variant1 className="max-w-[89.5rem] text-center block">
+                        It's always best to check with your healthcare insurance provider that they will cover your fees
+                        and provide a pre-authorisation code for you.
+                    </H3Variant1>
+
+                    <H4Variant1 className="text-center">
+                        <span className="text-[#F3411A]">Important:</span> We will require your pre-authorization code
+                        before your consultation
+                    </H4Variant1>
+
+                    {/* Cta section */}
+                    <div className="grid place-items-center md:mt-12 xl:mt-28">
+                        <span>Need help?</span>
+                        <strong className="mt-6">Speak to our friendly team</strong>
+
+                        <Cta4 />
+                    </div>
+
+                    <span
+                        className={`font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:mt-12 xl:mt-24 text-center`}
+                    >
+                        A better quality of life is just around the corner!
+                    </span>
+                </Container>
+            </Section>
+
+            <LazyComponent>
+                <CompanyLogos />
+            </LazyComponent>
+        </Page>
+    );
+}
+
+/**
+ * Fetch the data from WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const pageResponse: Response = await getData({
+            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-double-vision`
+        });
+
+        if (pageResponse.status !== 200) {
+            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
+        }
+
+        const pageJsonResponse: Array<any> = await pageResponse.json();
+
+        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
+
+        const pageID = pageJsonResponse[0].id;
+
+        if (!pageID) throw new Error('Page ID is not found');
+
+        const response = await getData({
+            url: `${process.env.WP_REST_URL}/pages/${pageID}`
+        });
+
+        const data: WpPageResponseInterface<DoubleVisionPageContentInterface> = await response.json();
+        const treatments = await getTreatments();
+
+        return {
+            /* eslint-disable */
+            props: {
+                data: {
+                    ...data.acf,
+                    full_width_image_section: {
+                        ...data.acf.full_width_image_section,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
+                    },
+                    // Symptoms and vision
+                    section_1: {
+                        ...data.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions),
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_1?.list)
+                    },
+                    // Consultation & treatment
+                    section_2: {
+                        ...data.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions)
+                    },
+                    section_3: {
+                        ...data.acf.section_3,
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
+                    }
+                } as DataInterface,
+                treatments
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
+}

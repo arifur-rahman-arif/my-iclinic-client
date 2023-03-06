@@ -11,10 +11,10 @@ const reviewsHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiR
     try {
         if (req.method === 'GET') {
             const result = await getData({
-                url: `${process.env.REST_URL}/get-reviews/?page-url=${req.query['page-url']}`
+                url: `${process.env.CUSTOM_REST_URL}/get-reviews/?page-url=${req.query['page-url']}`
             });
 
-            res.status(200).send(result);
+            res.status(200).send(result.json());
         } else {
             res.status(404).json({ message: 'Request url not found' });
         }

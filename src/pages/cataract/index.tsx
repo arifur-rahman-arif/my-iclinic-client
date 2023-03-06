@@ -1,80 +1,100 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
+import Page from '@/components/Page';
 import {
     CtaSection,
+    CtaSection2,
+    FinanceExtra,
     FullWidthImageSection,
     HalfRoundedCard,
     Masthead,
     SideImageSection
 } from '@/components/page-sections';
+import { cataractFaqList } from '@/components/page-sections/Faq/faqList';
+import { leftRightListCataract } from '@/components/page-sections/LeftRight/leftRightList';
+import { normalSlideListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
+import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
+import MastheadImageMedium from '@/masthead/masthead-cataract.png';
+import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
+import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
+import HTMLReactParser from 'html-react-parser';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 
-import { Button } from '@/components/button';
-import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/link';
-import Page from '@/components/Page';
-import { cataractFaqList } from '@/components/page-sections/faq/faqList';
-import { leftRightListCataract } from '@/components/page-sections/left-right/leftRightList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import CataractCtaBannerImage from '@/section-images/cataract-cta-banner.png';
-import PlaceholderImage from '@/section-images/placeholder-image.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const PdfDownload = dynamic(() => import('@/components/page-sections/pdf-download/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/components/page-sections/company-logos/CompanyLogos'));
-const Faq = dynamic(() => import('@/components/page-sections/faq/Faq'));
-const CallbackSection = dynamic(() => import('@/components/page-sections/request-callback/CallbackSection'));
-const BottomBanner = dynamic(() => import('@/components/page-sections/bottom-full-banners/BottomBanner'));
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/normal-slide/NormalSlideSection'));
-const LeftRightSection = dynamic(() => import('@/components/page-sections/left-right/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/components/page-sections/side-image-section/SideVideoSection'));
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+    loading: () => <ComponentLoader />
+});
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+    loading: () => <ComponentLoader />
+});
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+    loading: () => <ComponentLoader />
+});
+const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
+    loading: () => <ComponentLoader />
+});
+const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'), {
+    loading: () => <ComponentLoader />
+});
 
 /**
  * Lasik page component for the App
  *
- * * Url: /laser-eye-surgery/lasik-london/
+ * * Url: /cataract
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Cataract(): JSX.Element {
+export default function Cataract({ data }: { data: any }): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const mastheadH2Heading = 'We’re here to make cataract surgery easy';
+    const heading = data?.masthead_heading || 'Private Cataract Surgery London';
+    const subheading = data?.masthead_subheading || 'We’re here to make cataract surgery easy';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
         setTimeout(() => {
-            ScrollTrigger.refresh();
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
 
     return (
-        <Page title="Cataract" description="">
+        <Page title="Cataract" description="We’re here to make cataract surgery easy">
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-lasik.png"
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
                 altText=""
                 h1Title={
-                    <h1 className="">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Private</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Cataract</span> <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Surgery</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word: string, index: number) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        {mastheadH2Heading.split(' ').map((word, index) => (
+                        {subheading.split(' ').map((word: string, index: number) => (
                             <span
-                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0`}
                                 key={index}
                             >
                                 {word}
@@ -82,25 +102,38 @@ export default function Cataract(): JSX.Element {
                         ))}
                     </h2>
                 }
-                priceText="£2400 per eye"
+                priceText={data?.masthead_price || '£2,400 per eye'}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">Talk to a CATARACT specialist</strong>
+                </h2>
+            </Container>
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
-            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title={
                     <>
-                        A simple process to
-                        <br /> living cataract-free
+                        {data?.section_1_title ? (
+                            HTMLReactParser(data.section_1_title)
+                        ) : (
+                            <>
+                                A simple process to
+                                <br /> living cataract-free
+                            </>
+                        )}
                     </>
                 }
                 altText=""
-                image={PlaceholderImage}
-                desktopImage={PlaceholderImage}
+                image={SimpleProcessImage}
+                desktopImage={SimpleProcessImageLarge}
+                includeScrollDownButton
             />
 
             <LazyComponent>
@@ -109,7 +142,7 @@ export default function Cataract(): JSX.Element {
 
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our Lasik patients Say After treatment"
+                    h2Heading="What our Cataract patients say after treatment"
                     h3Heading="Hear from a patient"
                     descriptions={[
                         `When you choose My-iClinic’s 5-star rated services, you can rest assured that you’ve made the best possible choice for your eyesight.`,
@@ -118,11 +151,20 @@ export default function Cataract(): JSX.Element {
                 />
             </LazyComponent>
 
-            <CtaSection />
+            <LazyComponent>
+                <NormalSlideSection sliderList={normalSlideListCataract} />
+            </LazyComponent>
+
+            <CtaSection subtitle="Find out your options" />
 
             <SideImageSection
-                h2Heading="Tranparent Price"
-                h3LightHeading="Cataract"
+                h2Heading="Transparent Price"
+                h3LightHeading={
+                    <>
+                        Cataract
+                        <br />
+                    </>
+                }
                 h3BoldHeading="Surgery prices"
                 descriptions={[
                     `We do our best to understand your needs and aims so we can offer you the best vision correction options with a fair, transparent price!`
@@ -139,44 +181,32 @@ export default function Cataract(): JSX.Element {
                 }}
                 altText=""
                 textColumnExtras={
-                    <div className="grid gap-6">
-                        <h2 className="normal-case">£2,400 per Eye</h2>
-                        <ul className="ml-12 mt-12 grid gap-6">
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">
-                                    One dedicated Cataract specialist for your treatment
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">Most affordable price in London</p>
-                            </li>
-                        </ul>
+                    <>
+                        <FinanceExtra
+                            priceText="£2,400 per eye"
+                            list={[
+                                <>
+                                    One dedicated Cataract specialist
+                                    <br />
+                                    for your treatment
+                                </>,
+                                'Most affordable price in London'
+                            ]}
+                        />
                         <span className="mt-12 font-latoBold text-[2.8rem] leading-[3.2rem]">
-                            Looking for finance options?
+                            Looking for insurance options
                         </span>
                         <p className="">We are here to make your treatment easy.</p>
+
                         <Button
-                            type="submit"
+                            type="anchor"
+                            link="/cataract/price"
                             text="Find out more"
                             iconPosition="right"
                             icon={<FaAngleRight className="h-6 w-6 translate-y-[0.1rem]" />}
                             className="mt-6 justify-self-center md:justify-self-start"
                         />
-                    </div>
+                    </>
                 }
             />
 
@@ -235,13 +265,15 @@ export default function Cataract(): JSX.Element {
                 positionReversed={true}
             />
 
-            <LazyComponent>
+            <CtaSection2 title="Book Your Private Cataract Surgery Today" />
+
+            {/* <LazyComponent>
                 <BottomBanner
                     bannerImage={CataractCtaBannerImage}
                     bannerBg="/images/section-images/cataract-banner-bg.png"
                     bannerTitle="Do you think Cataract could be the right treatment for you?"
                 />
-            </LazyComponent>
+            </LazyComponent> */}
 
             <LazyComponent>
                 <CompanyLogos />
@@ -249,13 +281,9 @@ export default function Cataract(): JSX.Element {
 
             <LazyComponent>
                 <PdfDownload
-                    title="Get the guide to cataract treatment"
+                    title="Get the guide to Cataract treatment"
                     description="Robotic laser vision correction"
                 />
-            </LazyComponent>
-
-            <LazyComponent>
-                <NormalSlideSection />
             </LazyComponent>
 
             <LazyComponent>
@@ -263,7 +291,7 @@ export default function Cataract(): JSX.Element {
                     faqs={cataractFaqList}
                     titleLight="Cataract Surgery Frequently"
                     titleBold="Asked Questions"
-                    description="Have a question? We’r here to help."
+                    description="Have a question? We are here to help."
                 />
             </LazyComponent>
         </Page>

@@ -1,0 +1,99 @@
+/**
+ * Stop component until wordpress setup is done
+ *
+ * @returns {JSX.Element}
+ */
+// const noComponent = () => {
+//     return <></>;
+// };
+//
+// export default noComponent;
+
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
+import Page from '@/components/Page';
+import { getCategories, getPost, getPosts } from '@/lib';
+import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
+import { BlogBody, Header } from '@/page-sections/SingleBlogComponents';
+import { PostInterface } from '@/types';
+import { GetStaticPropsContext } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import usePostView from 'src/hooks/usePostView';
+
+interface SinglePostInterface {
+    post: PostInterface;
+    categories: BlogCategoriesInterface[];
+}
+
+/**
+ * Single blog page
+ *
+ * * Url: /blog
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
+export default function SinglePost({ post, categories }: SinglePostInterface): JSX.Element {
+    usePostView({ postID: post.ID });
+
+    return (
+        <Page title={post.title} description={post.title}>
+            <BreadCrumb />
+            <Header
+                image={{
+                    src: post.image.src || '/images/section-images/placeholder-image.png',
+                    width: 1235,
+                    height: 438
+                }}
+                title={post.title || ''}
+                readTime={post.readTime}
+                views={post.views}
+                categories={post.categories || []}
+            />
+
+            <BlogBody post={post} categories={categories} />
+        </Page>
+    );
+}
+
+/**
+ * Fetch all the post slug and defines static page paths
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticPaths() {
+    const posts: Array<GeneralBlogInterface> = await getPosts();
+
+    // Map the slugs to the format required by `getStaticPaths`
+    const paths = posts.map((post) => ({ params: { slug: post.slug } }));
+
+    return {
+        paths,
+        fallback: false
+    };
+}
+
+interface SinglePageParamsInterface extends ParsedUrlQuery {
+    slug: string;
+}
+
+/**
+ * Fetch the data from WordPress database
+ *
+ * @param {GetStaticPropsContext<SinglePageParamsInterface>}ctx
+ * @returns {Promise<{props: {}}>}
+ */
+export async function getStaticProps(ctx: GetStaticPropsContext<SinglePageParamsInterface>) {
+    try {
+        const post: PostInterface = await getPost(ctx?.params?.slug || '');
+        const categories: BlogCategoriesInterface[] = await getCategories();
+
+        return {
+            props: { post, categories },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
+}

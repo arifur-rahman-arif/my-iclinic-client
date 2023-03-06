@@ -1,0 +1,6 @@
+.sticky-nav.sticky-nav {
+  @include media-breakpoint-up(xl) {
+    height: 8rem;
+    box-shadow: var(--shadow1);
+  }
+}

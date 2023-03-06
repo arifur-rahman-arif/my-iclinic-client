@@ -5,6 +5,7 @@ import { requestCallbackApi } from '@/services/requestCallback';
 import { reviewsApi } from '@/services/reviews';
 import { configureStore } from '@reduxjs/toolkit';
 import { CurriedGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 /**
  * Redux make store function to create the store
@@ -32,4 +33,6 @@ export const makeStore = () => {
 const store = makeStore();
 
 export type AppState = ReturnType<typeof store.getState>;
+export const useAppDispatch: () => AppState = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 export default store;

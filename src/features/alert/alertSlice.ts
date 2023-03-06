@@ -23,7 +23,7 @@ const alertSlice = createSlice({
     name: 'alertSlice',
     initialState,
     reducers: {
-        handleAlert: (state, action: PayloadAction<PayloadInterface>) => {
+        handleAlert: (state: AlertInterface, action: PayloadAction<PayloadInterface>) => {
             const { showAlert, alertType, alertMessage, timeout } = action.payload;
 
             state.showAlert = showAlert;
@@ -31,7 +31,7 @@ const alertSlice = createSlice({
             state.alertMessage = alertMessage || state.alertMessage;
             state.timeout = timeout || alertTimeout;
         },
-        closeAlert: (state) => {
+        closeAlert: (state: AlertInterface) => {
             state.showAlert = false;
         }
     }

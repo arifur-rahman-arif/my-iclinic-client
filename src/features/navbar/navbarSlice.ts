@@ -39,15 +39,33 @@ const navbarSlice = createSlice({
         ) => {
             const { menuSlug, isParentMenu } = action.payload;
 
-            state.navMenus = closeOtherSubmenus({
-                navMenus: state.navMenus,
-                menuSlug,
-                isParentMenu: isParentMenu || false
-            });
+            const windowWidth = window.innerWidth;
+            if (windowWidth < 1280) {
+                state.navMenus = closeOtherSubmenus({
+                    navMenus: state.navMenus,
+                    menuSlug,
+                    isParentMenu: isParentMenu || false
+                });
+            }
+
             state.navMenus = openCurrentSubmenu(state.navMenus, menuSlug);
         },
         closeSubmenus: (state: NavbarInterface) => {
             state.navMenus = closeAllSubmenu(state.navMenus);
+        },
+        openSubmenu: (state: NavbarInterface, action: PayloadAction<{ menuSlug: string }>) => {
+            const { menuSlug } = action.payload;
+            state.navMenus = openCurrentSubmenu(state.navMenus, menuSlug);
+        },
+        closeSubmenu: (state: NavbarInterface, action: PayloadAction<{ menuSlug: string }>) => {
+            const { menuSlug } = action.payload;
+            state.navMenus = closeCurrentSubmenu(state.navMenus, menuSlug);
+        },
+        closeParentSubmenus: (state: NavbarInterface) => {
+            state.navMenus = state.navMenus.map((menu) => {
+                menu.subMenuOpen = false;
+                return menu;
+            });
         }
     }
 });
@@ -65,6 +83,25 @@ const openCurrentSubmenu = (navMenus: NavMenuType[], menuSlug: string): NavMenuT
             return (navMenus[index].subMenuOpen = !navMenus[index].subMenuOpen);
         } else {
             navMenu.submenu ? openCurrentSubmenu(navMenu.submenu, menuSlug) : '';
+        }
+    });
+
+    return navMenus;
+};
+
+/**
+ * Close current submenu
+ *
+ * @param {NavMenuType[]} navMenus
+ * @param {string} menuSlug
+ * @returns {*}  {NavMenuType[]}
+ */
+const closeCurrentSubmenu = (navMenus: NavMenuType[], menuSlug: string): NavMenuType[] => {
+    navMenus.forEach((navMenu, index) => {
+        if (navMenu.slug === menuSlug) {
+            return (navMenus[index].subMenuOpen = false);
+        } else {
+            navMenu.submenu ? closeCurrentSubmenu(navMenu.submenu, menuSlug) : '';
         }
     });
 
@@ -119,5 +156,6 @@ const closeAllSubmenu = (navMenus: NavMenuType[]): NavMenuType[] => {
     return navMenus;
 };
 
-export const { toggleNavbar, toggleSubmenu, closeSubmenus } = navbarSlice.actions;
+export const { toggleNavbar, toggleSubmenu, closeSubmenus, openSubmenu, closeSubmenu, closeParentSubmenus } =
+    navbarSlice.actions;
 export default navbarSlice.reducer;

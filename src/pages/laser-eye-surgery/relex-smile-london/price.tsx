@@ -1,33 +1,26 @@
 import {
-    PriceSection,
+    BulletPoint,
     FullWidthImageSection,
     FullWidthImageSection2,
     Masthead,
+    PriceSection,
     SideImageSection
 } from '@/components/page-sections';
 
+import { BreadCrumb } from '@/components/Breadcrumb';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import IconCalender from '@/icons/icon-calender-15.svg';
-import IconEyeballFocusing from '@/icons/icon-eye-ball-focusing.svg';
-import IconEyePlus from '@/icons/icon-eye-plus.svg';
-import IconEyeTesting from '@/icons/icon-eye-testing.svg';
-import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
-import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
+import { CtaSection } from '@/components/page-sections/CtaSection';
+import { relexSmilePriceList } from '@/components/page-sections/PriceCard/priceList';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-relex-smile-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-relex-smile-pricing.png';
 import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { relexSmilePriceList } from '@/components/page-sections/fold-section/priceList';
-import { CtaSection } from '@/components/page-sections/cta-section';
+import { useEffect, useState } from 'react';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const CallbackSection = dynamic(() => import('@/page-sections/request-callback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
 /**
  * Home/Landing page component for the App
@@ -38,21 +31,32 @@ const CallbackSection = dynamic(() => import('@/page-sections/request-callback/C
  * @returns {JSX.Element}
  */
 export default function PresbyondPricing(): JSX.Element {
+    const deviceSize = useDeviceSize();
+    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+
     useEffect(() => {
-        ScrollTrigger.refresh();
-    }, []);
+        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
+
+        setTimeout(() => {
+            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
+        }, 2500);
+    }, [deviceSize]);
 
     return (
         <Page
-            title="ReLEX SMILE Laser eye surgery In London"
-            description="ReLEX SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
+            title="ReLEx SMILE Laser eye surgery In London"
+            description="ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
         >
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-relex-smile-pricing.png"
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
                 altText="Woman reading the cost of Presbyond Treatment in London."
                 h1Title={
                     <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ReLEX</span>
+                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ReLEx</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">SMILE</span>
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">laser</span>
                         <br />
@@ -84,29 +88,6 @@ export default function PresbyondPricing(): JSX.Element {
                 }
             />
 
-            <div className="mt-48 w-full sm:mt-36 lg:mt-0"></div>
-
-            <PriceSection priceList={relexSmilePriceList} />
-
-            <FullWidthImageSection2
-                title="The cost of ReLEX SMILE surgery couldn’t be easier!"
-                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics."
-            />
-
-            <CtaSection />
-
-            <FullWidthImageSection
-                h3Title="Permanently correct"
-                boldHeading="your vision with our all-inclusive cost."
-                altText=""
-                image={InclusiveCostImage}
-                desktopImage={InclusiveCostImage}
-                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
-                overlayAnimation
-                textColumnOverlay
-                sectionClass="bg-brandLight relative"
-            />
-
             <SideImageSection
                 h2Heading="Relex smile consultation"
                 h3LightHeading="What’s included in my"
@@ -126,29 +107,33 @@ export default function PresbyondPricing(): JSX.Element {
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeTesting} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyeTesting} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 <strong>A FREE</strong> suitability laser check with our laser specialist (a
-                                comprehensive assessment of your suitability and how ReLEX SMILE will suit your
+                                comprehensive assessment of your suitability and how ReLEx SMILE will suit your
                                 lifestyle).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconPersonInFrame} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconPersonInFrame} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 A comprehensive consultation with your dedicated laser specialist (inclusive of all eye
                                 assessment and eye scans).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
-                                Your ReLEX SMILE treatment performed in our private laser suite with your dedicated
+                                Your ReLEx SMILE treatment performed in our private laser suite with your dedicated
                                 specialist and our friendly team.
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyePlus} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyePlus} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 Up to four FREE aftercare appointments with your dedicated laser specialist (inclusive
                                 of eye assessments and eye scans)
@@ -158,14 +143,20 @@ export default function PresbyondPricing(): JSX.Element {
                 }
             />
 
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+
+            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+
             <SideImageSection
                 h2Heading="Relex smile finance"
                 h3LightHeading="Want to pay for your"
                 h3BoldHeading="treatment each month?"
-                midExtras={<h4 className="normal-case">Finance available for ReLEX SMILE</h4>}
+                midExtras={<h4 className="normal-case">Finance available for ReLEx SMILE</h4>}
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
                 descriptions={[
-                    `We understand having ReLEX SMILE to correct your vision is a great investment 
+                    `We understand having ReLEx SMILE to correct your vision is a great investment
 					in your eye health and lifestyle. We offer 12 months interest- free finance to help make
 					 that investment become a reality!`
                 ]}
@@ -180,24 +171,57 @@ export default function PresbyondPricing(): JSX.Element {
                     height: 560
                 }}
                 textColumnExtras={
-                    <ul className="grid w-full gap-6 md:max-w-[43rem]">
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconHandHoldingLove} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">You are eligible for our 12 months interest-free finance</h5>
-                        </li>
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconCalender} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">Calculate your monthly spend for your laser treatment</h5>
-                        </li>
-                    </ul>
+                    <div className="md:max-w-[43rem]">
+                        <span className="font-latoBold text-[2.4rem] uppercase leading-[3.2rem]">
+                            You are eligible for our 12 months interest-free finance
+                        </span>
+                        <div className="mt-12 grid grid-cols-[auto_1fr] gap-6">
+                            {/* <Image src={IconCalculator} alt="" className="self-center" /> */}
+                            <BulletPoint />
+                            <span className="font-latoBold text-[2rem] leading-[2.4rem]">
+                                Calculate your monthly spend for your laser treatment
+                            </span>
+                            <p className="col-start-2">
+                                If you’re eligible for our interest-free finance, you can calculate your monthly spend
+                                so you’re always in the know with regard to payments for your laser eye treatment.
+                            </p>
+                            <p className="col-start-2">
+                                If you have any queries regarding pricing, you can get in touch with our specialists for
+                                a consultation today on{' '}
+                                <a href="tel:0208 445 8877">
+                                    <span className="whitespace-nowrap font-mulishBold text-blue">0208 445 8877.</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 }
             />
 
-            <div className="md:mt-48"></div>
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
-            <div className="md:mt-48"></div>
+            <PriceSection priceList={relexSmilePriceList} />
+
+            <FullWidthImageSection2
+                title="ReLEx SMILE surgery couldn’t be more cost-effective!"
+                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics."
+            />
+
+            <CtaSection />
+
+            <FullWidthImageSection
+                h3Title={
+                    <>
+                        <strong className="normal-case">Permanently correct your vision</strong> with our all-inclusive
+                        cost.
+                    </>
+                }
+                boldHeading={true}
+                altText=""
+                image={InclusiveCostImage}
+                desktopImage={InclusiveCostImage}
+                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
+                overlayAnimation
+                textColumnOverlay
+                sectionClass="bg-brandLight relative !mt-0"
+            />
         </Page>
     );
 }

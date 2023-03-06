@@ -1,0 +1,91 @@
+import BlogMeta from './BlogMeta';
+import BlogAuthor from './BlogAuthor';
+import BlogCategories from './BlogCategories';
+import { H3Variant3 } from '@/components/Headings';
+import { LinkText } from '@/components/Link';
+import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
+import { ImageType } from '@/types';
+import { trimText } from '@/utils/miscellaneous';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export interface GeneralBlogInterface {
+    image: ImageType;
+    author?: {
+        logo?: ImageType;
+        name: string;
+    };
+    title: string;
+    categories?: BlogCategoriesInterface[];
+    description: string;
+    views: number;
+    readTime: string;
+    slug?: string;
+    ID?: number;
+}
+
+/**
+ * Blogs page card
+ *
+ * @param {ImageType} image
+ * @param {ImageType | undefined} author
+ * @param {string} title
+ * @param {BlogCategoriesInterface[] | undefined} categories
+ * @param {string} description
+ * @param {number} views
+ * @param {string} readTime
+ * @param {string | undefined} slug
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const BlogCard2 = ({
+    image,
+    author,
+    title,
+    categories,
+    description,
+    views,
+    readTime,
+    slug
+}: GeneralBlogInterface): JSX.Element => {
+    return (
+        <div className="grid pb-12 border-b-4 hover:border-brand items-start max-w-[40rem] rounded-primary shadow-shadow3 transition-all duration-500 hover:shadow-shadow1 group/card overflow-hidden">
+            <Link href={`/blogs/${slug}` || '#'} className="max-h-[19.7rem] overflow-hidden cursor-pointer">
+                <Image
+                    src={image.src}
+                    width={image.width || 401}
+                    height={image.height || 197}
+                    alt=""
+                    className="group-hover/card:scale-105 transition-all object-cover duration-[0.45s]"
+                />
+            </Link>
+
+            <div className="px-10 pt-12">
+                <BlogAuthor author={author} />
+
+                <H3Variant3 className="mt-8">{trimText(title, 30)}</H3Variant3>
+
+                {categories?.length && <BlogCategories categories={categories} />}
+
+                <p className="mt-12">
+                    {trimText(
+                        'Laser eye surgery has become increasingly popular through the years amongst the younger and the older',
+                        100
+                    )}
+                    &nbsp;&nbsp;
+                    <LinkText
+                        href={`/blogs/${slug}` || '#'}
+                        indicatorColor="bg-blue"
+                        className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
+                    >
+                        Read More
+                    </LinkText>
+                </p>
+
+                <BlogMeta views={views} readTime={readTime} />
+            </div>
+        </div>
+    );
+};
+
+export default BlogCard2;

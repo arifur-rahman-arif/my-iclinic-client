@@ -1,0 +1,12 @@
+@import '/src/styles/utils/breakpoints';
+
+.styles {
+    :global {
+        .MuiPaper-root {
+            @include media-breakpoint-up(md) {
+                max-width: 60%;
+                min-height: 60rem;
+            }
+        }
+    }
+}

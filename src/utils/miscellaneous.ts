@@ -1,4 +1,5 @@
 import { CountryCode } from 'libphonenumber-js';
+import { NextRouter } from 'next/router';
 
 /**
  * Trim the text to a specified length with ...
@@ -96,11 +97,14 @@ export const getTheDayName = (day: number): string => {
 /**
  * Get the month in full world
  *
- * @param {number} date
- * @returns {*}  {string}
+ * @param {number | undefined} date
+ * @param {boolean} shortName
+ * @returns {string}
  */
-export const getTheMonthName = (date: number): string => {
-    const days = [
+export const getTheMonthName = (date: number | undefined, shortName: boolean = false): string => {
+    if (date === undefined) return '';
+
+    const months = [
         'January',
         'February',
         'March',
@@ -115,7 +119,11 @@ export const getTheMonthName = (date: number): string => {
         'December'
     ];
 
-    return days[date] || '';
+    const shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    if (shortName) return shortMonths[date] || '';
+
+    return months[date] || '';
 };
 
 /**
@@ -134,4 +142,119 @@ export const getNameAbbreviations = (name: string): string => {
     if (lastNameChar) return lastNameChar;
 
     return '';
+};
+
+interface BreadcrumbInterface {
+    url: string;
+    name: string;
+}
+
+/**
+ * Generate the breadcrumbs for the website
+ *
+ * @param {NextRouter} router
+ * @returns {*}  {BreadcrumbInterface[]}
+ */
+export const generateBreadcrumbs = (router: NextRouter): BreadcrumbInterface[] => {
+    const asPathWithoutQuery = router.asPath.split('?')[0];
+
+    const asPathNestedRoutes = asPathWithoutQuery.split('/').filter((v) => v.length > 0);
+
+    const crumblist: BreadcrumbInterface[] = asPathNestedRoutes.map((subpath, idx) => {
+        return {
+            url: '/' + asPathNestedRoutes.slice(0, idx + 1).join('/'),
+            name: subpath.replaceAll(/\-|\#/gi, ' ')
+        };
+    });
+
+    // Add in a default "Home" crumb for the top-level
+    // return [{ href: '/', text: 'Home' }, ...crumblist];
+    return [...crumblist];
+};
+
+/**
+ * Format a number with comma separated
+ *
+ * @param {(number | null)} number
+ * @returns {*}  {number | null}
+ */
+export const formatNumberWithComma = (number: number | null): string => {
+    if (!number) return '';
+    return number.toLocaleString('en-US');
+};
+
+/**
+ * Split a full name into first name & last name
+ *
+ * @param {string} fullName
+ * @returns {[string, string] | ""}
+ */
+export const splitName = (fullName: string): [string, string] => {
+    if (!fullName) return ['', ''];
+
+    const names = fullName.split(' ');
+    const firstName = names.slice(0, names.length - 1).join(' ');
+    const lastName = names[names.length - 1];
+
+    // If first name is empty than assign the last name to first name variable and reverse the return value array
+    // So that the last name will be the first name last name will be empty
+    if (firstName == '') return [lastName, firstName];
+
+    return [firstName, lastName];
+};
+
+/**
+ * Return the difference between 2 dates
+ *
+ * @param {Date} date1
+ * @param {Date} date2
+ * @returns {number}
+ */
+export const dateDifferenceInDays = (date1: Date, date2: Date): number | boolean => {
+    const now = new Date();
+    if (date1 < now || date2 < now) {
+        return false;
+    }
+
+    // @ts-ignore
+    const diffTime: number = Math.abs(date2 - date1);
+    return diffTime / (1000 * 60 * 60 * 24);
+};
+
+/**
+ * Copy a text to clipboard
+ *
+ * @param {string} text
+ * @returns {Promise<void>}
+ */
+export const copyToClipboard = async (text: string) => {
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+    }
+};
+
+/**
+ * Check if user local storage is available or not
+ *
+ * @returns {boolean}
+ */
+export const isLocalStorageEnabled = (): boolean => {
+    let localStorageEnabled = true;
+
+    if (typeof window !== 'undefined') {
+        try {
+            window.localStorage.setItem('test', 'test');
+            window.localStorage.removeItem('test');
+            localStorageEnabled = true;
+        } catch (e) {
+            console.warn('Local storage is disabled');
+            localStorageEnabled = false;
+        }
+    } else {
+        console.warn('Window object is not defined');
+    }
+
+    return localStorageEnabled;
 };

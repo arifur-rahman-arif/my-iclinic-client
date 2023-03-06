@@ -1,15 +1,29 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true',
-});
-
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//     enabled: process.env.ANALYZE === 'true'
+// });
+//
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    // images: {
-    //     formats: ['image/avif', 'image/webp'],
-    // },
+    images: {
+        // formats: ['image/avif', 'image/webp'],
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'localhost'
+            },
+            {
+                protocol: 'http',
+                hostname: 'my-iclinic.local'
+            },
+            {
+                protocol: 'https',
+                hostname: 'stg-myicliniccouk-dev.kinsta.cloud'
+            }
+        ]
+    },
     i18n: {
         // These are all the locales you want to support in
         // your application
@@ -38,11 +52,19 @@ const nextConfig = {
         //   },
         // ],
     },
-    // webpack(config) {
+    async rewrites() {
+        return [
+            {
+                source: '/robots.txt',
+                destination: '/api/robots'
+            }
+        ];
+    }
+    // webpack(config, options) {
     //     config.module.rules.push({
     //         test: /\.svg$/i,
     //         issuer: /\.[jt]sx?$/,
-    //         use: ['@svgr/webpack'],
+    //         use: ['@svgr/webpack', 'url-loader']
     //     });
 
     //     return config;
@@ -51,8 +73,20 @@ const nextConfig = {
     // trailingSlash: true,
     // experimental:{appDir: true}
     // assetPrefix: './' // Turn off this option if next static export is needed
-}
+    // typescript: {
+    //     // !! WARN !!
+    //     // Dangerously allow production builds to successfully complete even if
+    //     // your project has type errors.
+    //     // !! WARN !!
+    //     ignoreBuildErrors: true,
+    // },
+    // eslint: {
+    //     // Warning: This allows production builds to successfully complete even if
+    //     // your project has ESLint errors.
+    //     ignoreDuringBuilds: true,
+    // },
+};
 
-// module.exports = nextConfig
+module.exports = nextConfig;
 
-module.exports = withBundleAnalyzer(nextConfig);
+// module.exports = withBundleAnalyzer(nextConfig);

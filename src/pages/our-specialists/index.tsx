@@ -1,0 +1,98 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import { ConsultantCard, consultantCardList } from '@/components/Card';
+import Page from '@/components/Page';
+import { Masthead, SideImageSection } from '@/components/page-sections';
+import MastheadImageLarge from '@/masthead/masthead-home-large.png';
+import MastheadImageSmall from '@/masthead/masthead-home-small.png';
+import MastheadImageMedium from '@/masthead/masthead-home.png';
+import Image from 'next/image';
+
+/**
+ * Home page component for the App
+ *
+ * * Url: /our-specialists
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
+export default function OurSpecialists(): JSX.Element {
+    const heading = 'Our Consultants';
+    const subheading = "North London's Eye Hospital";
+
+    return (
+        <Page
+            title="Our specialists"
+            description="Our commitment to the highest possible care standards are reflected in the dedicated practice from our care specialists."
+        >
+            <BreadCrumb />
+
+            <Masthead
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
+                altText=""
+                imagePosition="2xl:object-[0rem_-3rem] !object-contain"
+                h1Title={
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0 " key={index}>
+                                {word}
+                            </span>
+                        ))}
+                    </h1>
+                }
+                h2Title={
+                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
+                    </h2>
+                }
+                bannerExtraComponents={
+                    <>
+                        <Button
+                            type="button"
+                            text="Chat with us"
+                            iconPosition="left"
+                            className="normal-case justify-self-start"
+                            icon={
+                                <Image
+                                    src="/images/icons/icon-chat.svg"
+                                    alt=""
+                                    width={20}
+                                    height={20}
+                                    quality={2}
+                                    className="h-8 w-8"
+                                />
+                            }
+                        />
+                    </>
+                }
+            />
+
+            <SideImageSection
+                h3LightHeading={
+                    <>
+                        Qualified and experienced
+                        <br />
+                    </>
+                }
+                h3BoldHeading="Consultants"
+                containerClassName="md:!grid-cols-1 md:!gap-12"
+                customColumn={
+                    <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,_minmax(37.5rem,_1fr))] gap-x-12 md:gap-y-24 gap-y-12 justify-items-center">
+                        {consultantCardList.map((item, index) => (
+                            <ConsultantCard key={index} {...item} />
+                        ))}
+                    </div>
+                }
+            />
+        </Page>
+    );
+}

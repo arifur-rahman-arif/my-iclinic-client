@@ -1,0 +1,22 @@
+// font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline
+
+.styles {
+    a {
+        font-family: var(--mulish-bold);
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: var(--color-brand);
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        text-decoration-color: var(--color-brand);
+        text-underline-offset: 4px;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+
+        &:hover {
+            text-decoration-line: underline;
+        }
+    }
+}
