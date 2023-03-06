@@ -34,22 +34,22 @@ export const navMenuList: NavMenuType[] = [
             {
                 type: 'text',
                 name: (
-                    <>
+                    <span className="block">
                         Freedom from glasses
                         <br /> after cataract surgery
-                    </>
+                    </span>
                 ),
-                url: '/cataract/freedom-from-glasses-after-cataract-surgery',
-                slug: 'cataract/freedom-from-glasses-after-cataract-surgery',
+                url: '/cataract/premium-lenses',
+                slug: 'cataract/premium-lenses',
                 dotAnimation: true
             },
             {
                 type: 'text',
                 name: (
-                    <>
+                    <span className="block">
                         YAG Capsulotomy
                         <br /> for PCO
-                    </>
+                    </span>
                 ),
                 url: '/cataract/yag-capsulotomy-for-pco',
                 slug: 'cataract/yag-capsulotomy-for-pco',
@@ -201,27 +201,27 @@ export const navMenuList: NavMenuType[] = [
                     }
                 ]
             },
-            {
-                type: 'text',
-                name: (
-                    <>
-                        Retinal Diseases &<br /> treatments
-                    </>
-                ),
-                url: '/retinal-diseases-treatments',
-                slug: 'retinal-diseases-treatments',
-                dotAnimation: true,
-                subMenuOpen: true,
-                submenu: [
-                    {
-                        type: 'text',
-                        name: 'Retinal Treatments',
-                        url: '/retinal-treatments',
-                        slug: 'retinal-treatments',
-                        dotAnimation: true
-                    }
-                ]
-            },
+            // {
+            //     type: 'text',
+            //     name: (
+            //         <>
+            //             Retinal Diseases &<br /> treatments
+            //         </>
+            //     ),
+            //     url: '/retinal-diseases-treatments',
+            //     slug: 'retinal-diseases-treatments',
+            //     dotAnimation: true,
+            //     subMenuOpen: true,
+            //     submenu: [
+            //         {
+            //             type: 'text',
+            //             name: 'Retinal Treatments',
+            //             url: '/retinal-treatments',
+            //             slug: 'retinal-treatments',
+            //             dotAnimation: true
+            //         }
+            //     ]
+            // },
             {
                 type: 'text',
                 name: (
@@ -272,20 +272,20 @@ export const navMenuList: NavMenuType[] = [
                         slug: 'eye-treatments/other-eye-conditions/astigmatism',
                         dotAnimation: true
                     },
-                    {
-                        type: 'text',
-                        name: 'Short sightedness',
-                        url: '/eye-treatments/short-sightedness',
-                        slug: 'eye-treatments/short-sightedness',
-                        dotAnimation: true
-                    },
-                    {
-                        type: 'text',
-                        name: 'Long sightedness',
-                        url: '/eye-treatments/long-sightedness',
-                        slug: 'eye-treatments/long-sightedness',
-                        dotAnimation: true
-                    },
+                    // {
+                    //     type: 'text',
+                    //     name: 'Short sightedness',
+                    //     url: '/eye-treatments/short-sightedness',
+                    //     slug: 'eye-treatments/short-sightedness',
+                    //     dotAnimation: true
+                    // },
+                    // {
+                    //     type: 'text',
+                    //     name: 'Long sightedness',
+                    //     url: '/eye-treatments/long-sightedness',
+                    //     slug: 'eye-treatments/long-sightedness',
+                    //     dotAnimation: true
+                    // },
                     {
                         type: 'text',
                         name: 'Flashes & Floaters',
@@ -307,13 +307,13 @@ export const navMenuList: NavMenuType[] = [
                         slug: 'eye-treatments/other-eye-conditions/dry-eyes',
                         dotAnimation: true
                     },
-                    {
-                        type: 'text',
-                        name: 'Diabetic eye disease',
-                        url: '/eye-treatments/diabetic-eye-disease',
-                        slug: 'eye-treatments/diabetic-eye-disease',
-                        dotAnimation: true
-                    },
+                    // {
+                    //     type: 'text',
+                    //     name: 'Diabetic eye disease',
+                    //     url: '/eye-treatments/diabetic-eye-disease',
+                    //     slug: 'eye-treatments/diabetic-eye-disease',
+                    //     dotAnimation: true
+                    // },
                     {
                         type: 'text',
                         name: 'Double Vision',
