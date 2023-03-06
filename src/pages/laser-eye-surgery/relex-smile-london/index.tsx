@@ -1,45 +1,46 @@
 import {
+    ClimateChange,
     CtaSection,
-    DrawLine,
     FullWidthImageSection,
     FullWidthImageSection3,
     GridColumn,
     Masthead,
+    PlasticFree,
     SideImageSection,
     StackColumn
 } from '@/components/page-sections';
 
-import { Container } from '@/components/container';
+import { Button } from '@/components/Button';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { relexSmileFaqList } from '@/components/page-sections/faq/faqList';
-import { presbyondSliders } from '@/components/page-sections/featured-patient';
-import { leftRightListRelexSmileLondon } from '@/components/page-sections/left-right/leftRightList';
-import { Section } from '@/components/section';
+import { relexSmileFaqList } from '@/components/page-sections/Faq/faqList';
+import { relexSliders } from '@/components/page-sections/FeaturedPatient';
+import { leftRightListRelexSmileLondon } from '@/components/page-sections/LeftRight/leftRightList';
+import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { default as LaserEyeSurgery, default as LaserEyeSurgeryLarge } from '@/section-images/laser-eye-surgery.png';
-import BannerImage from '@/section-images/relex-banner-bg.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
+// Import BannerImage from '@/section-images/relex-banner-bg.png';
+import { BreadCrumb } from '@/components/Breadcrumb';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import MastheadImageLarge from '@/masthead/masthead-relex-smile-large.png';
+import MastheadImageSmall from '@/masthead/masthead-relex-smile-small.png';
+import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Container } from '@/components/Container';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const PdfDownload = dynamic(() => import('@/page-sections/pdf-download/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/page-sections/company-logos/CompanyLogos'));
-const Faq = dynamic(() => import('@/page-sections/faq/Faq'));
-const CallbackSection = dynamic(() => import('@/page-sections/request-callback/CallbackSection'));
-const FeaturedPatient = dynamic(() => import('@/page-sections/featured-patient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/page-sections/normal-slide/NormalSlideSection'));
-const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
-const LeftRightSection = dynamic(() => import('@/page-sections/left-right/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/page-sections/side-image-section/SideVideoSection'));
-const BottomBanner2 = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner2'));
-
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'));
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'));
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'));
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'));
+// Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
+const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'));
+const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'));
+const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'));
 /**
  * Home/Landing page component for the App
  *
@@ -51,10 +52,10 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/bottom-full-banners/
 export default function RelexSmileLondon(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
+    const heading = 'ReLEx SMILE Laser Eye Surgery London';
+    const subheading = 'London’s latest laser vision correction procedure';
 
     useEffect(() => {
-        ScrollTrigger.refresh();
-
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
         setTimeout(() => {
@@ -64,58 +65,62 @@ export default function RelexSmileLondon(): JSX.Element {
 
     return (
         <Page
-            title="ReLEX SMILE Laser eye surgery In London"
-            description="ReLEX SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
+            title="ReLEx SMILE Laser eye surgery In London"
+            description="ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
         >
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-relex-smile.png"
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
                 altText="Man travelling without glasses for vision correction"
                 h1Title={
-                    <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ReLEX</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">SMILE</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Laser</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Eye</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Surgery</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            London’s
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            latest
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            laser
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            vision
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            correction
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            procedure
-                        </span>
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
                     </h2>
                 }
             />
 
-            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">Talk to a ReLEx specialist</strong>
+                </h2>
+            </Container>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
-                h3Title="Say hello to clear vision with ReLEX SMILE Laser Eye Surgery!"
+                h3Title={
+                    <>
+                        Say hello to clear vision <br /> with ReLEx SMILE Laser
+                        <br /> Eye Surgery!
+                    </>
+                }
                 altText="Man with luggage at airport"
                 image={LaserEyeSurgery}
                 desktopImage={LaserEyeSurgeryLarge}
+                includeScrollDownButton
+                videoUrl="/videos/relex-smile-vision-correction-treatment-explained.mp4"
+                videoPoster="D7qX9brFvCw"
             />
 
             <LazyComponent>
@@ -124,7 +129,7 @@ export default function RelexSmileLondon(): JSX.Element {
 
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our ReLEX patients Say After treatment "
+                    h2Heading="What our ReLEx patients say after treatment"
                     h3Heading="Hear from a patient"
                     darkPin
                     descriptions={[
@@ -133,6 +138,8 @@ export default function RelexSmileLondon(): JSX.Element {
                           optometrists carefully work with you to evaluate your eyes to offer you the best
                            possible course of treatment – allowing you to re-discover a life of normal vision.`
                     ]}
+                    videoUrl="/videos/relex-smile.mp4"
+                    videoPoster="e3z34A3mmeI"
                 />
             </LazyComponent>
 
@@ -140,9 +147,15 @@ export default function RelexSmileLondon(): JSX.Element {
                 <BottomBanner2 />
             </LazyComponent>
 
+            <CtaSection subtitle="Vision correction options" />
+
             <SideImageSection
                 h2Heading="Why RELEX SMILE"
-                h3LightHeading="The benefits of ReLEX"
+                h3LightHeading={
+                    <>
+                        The benefits of ReLEx <br />
+                    </>
+                }
                 h3BoldHeading="Smile laser eye surgery!"
                 descriptions={[
                     `When you choose My-iClinic’s 5-star rated services, you can rest assured that
@@ -156,11 +169,16 @@ export default function RelexSmileLondon(): JSX.Element {
 
             <SideImageSection
                 h2Heading="improve your life's quality"
-                h3LightHeading="Step closer to a life of"
+                h3LightHeading={
+                    <>
+                        Step closer to a life of
+                        <br />
+                    </>
+                }
                 h3BoldHeading="Clear, natural vision!"
                 descriptions={[
                     `Have you or one of your loved ones finally decided to do something about being short-sighted or
-                     having astigmatism? To begin the ReLEX SMILE process, give us a call or book a consultation with
+                     having astigmatism? To begin the ReLEx SMILE process, give us a call or book a consultation with
                       our friendly team today.`
                 ]}
                 sectionImage={{
@@ -177,25 +195,28 @@ export default function RelexSmileLondon(): JSX.Element {
                 altText="Two friends travelling with clear vision"
                 textColumnExtras={
                     <p className="font-mulishBold text-[2rem] leading-[2.4rem]">
-                        A better quality of life is just around
-                        <br />
-                        the corner.
+                        A better quality of life is just <br />
+                        around the corner.
                     </p>
                 }
             />
 
-            <FullWidthImageSection3 />
-
-            <CtaSection />
+            <FullWidthImageSection3
+                title1="97% of people"
+                title2="From our clinic are extremely happy with their vision after laser eye surgery."
+                descriptions={[
+                    'Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.'
+                ]}
+            />
 
             <div className="md:mt-24"></div>
 
             <LazyComponent>
                 <FeaturedPatient
                     h2Title="Relex SMILE Patient"
-                    h3Title="Life after ReLEX SMILE Treatment"
+                    h3Title="Life after ReLEx SMILE Treatment"
                     bandImageDescription={[
-                        `It has been two months since my ReLEX SMILE eye surgery at My-iClinic,
+                        `It has been two months since my ReLEx SMILE eye surgery at My-iClinic,
                         and my vision is better than 20/20 (~20/10), with only minor and receding eye dryness. `,
                         'In the past, I was a regular contact lens user with a -4.25 prescription in both eyes.',
                         `Dr John Bolger has taken great care in assessing my vision and health, and explaining the surgery.
@@ -210,23 +231,37 @@ export default function RelexSmileLondon(): JSX.Element {
                           I don't know what is!`
                     ]}
                     reviewTitle="Thank you My-iClinic"
-                    sliders={presbyondSliders}
+                    sliders={relexSliders}
                     bandColor="bg-[#FF5C00]"
                 />
             </LazyComponent>
 
+            <LazyComponent>
+                <NormalSlideSection sliderList={normalSlideListRelexSmile} />
+            </LazyComponent>
+
             <FullWidthImageSection
                 h3Title="Whatever the view,"
-                boldHeading={`Remember it with <br/> Clear vision`}
+                boldHeading={
+                    <>
+                        Remember it with <br /> Clear vision
+                    </>
+                }
                 altText=""
                 albumAnimation
                 containerClass="grid grid-cols-1 items-center justify-center py-12 sm:py-16 lg:py-0 gap-12 lg:grid-cols-[auto_1fr] xl:grid-cols-2  lg:gap-24"
+                includeCta
             />
 
             <SideImageSection
                 h2Heading="Why laser Relex smile"
-                h3LightHeading="Why consider our ReLEX SMILE Laser eye surgery"
-                h3BoldHeading="When you already have Glasses or contact lenses?"
+                h3LightHeading={
+                    <>
+                        Why consider our ReLEx SMILE Laser eye surgery
+                        <br />
+                    </>
+                }
+                h3BoldHeading="When you already have glasses or contact lenses?"
                 sectionImage={{
                     url: '/images/section-images/laser-relex-smile.png',
                     width: 370,
@@ -245,12 +280,19 @@ export default function RelexSmileLondon(): JSX.Element {
 
             <SideImageSection
                 h2Heading="Right treatment for you"
-                h3LightHeading="Do you think ReLEX SMILE could"
+                h3LightHeading={
+                    <>
+                        Do you think ReLEx
+                        <br /> SMILE could
+                        <br />
+                    </>
+                }
                 h3BoldHeading="Be the right treatment for you?"
                 descriptions={[
-                    `To begin the ReLEx SMILE process, give us a call on
-                    <br />
-                    <strong>020 8445 8877</strong> or book your free consultation with our friendly team today.`
+                    <>
+                        To begin the ReLEx SMILE process, give us a call or book your <strong>free consultation</strong>{' '}
+                        with our friendly team today.
+                    </>
                 ]}
                 sectionImage={{
                     url: '/images/section-images/right-treatment.png',
@@ -264,19 +306,52 @@ export default function RelexSmileLondon(): JSX.Element {
                 }}
                 altText="Woman smiling without needing glasses for short-sightedness"
                 textColumnExtras={
-                    <span className="font-latoBold text-[2.8rem] leading-[3.2rem]">
-                        A better quality of life is just
-                        <br />
-                        around the corner!
-                    </span>
+                    <>
+                        <div className="flex flex-wrap items-center justify-start gap-6">
+                            <Button
+                                type="anchor"
+                                text="Book a consultation"
+                                iconPosition="left"
+                                icon={
+                                    <Image
+                                        src="/images/icons/icon-calendar-outline-darker.svg"
+                                        alt=""
+                                        width={20}
+                                        height={20}
+                                        quality={2}
+                                        className="h-8 w-8"
+                                    />
+                                }
+                            />
+                            <Button
+                                type="anchor"
+                                text="0208 445 8877"
+                                iconPosition="left"
+                                className="!min-w-[18.6rem] place-content-center border !bg-transparent md:min-w-[23.3rem]"
+                                icon={
+                                    <Image
+                                        src="/images/icons/icon-phone-dark.svg"
+                                        alt=""
+                                        width={20}
+                                        height={20}
+                                        quality={2}
+                                        className="h-8 w-8"
+                                    />
+                                }
+                            />
+                        </div>
+                        <span className="font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:max-w-[38.7rem]">
+                            A better quality of life is just around the corner!
+                        </span>
+                    </>
                 }
             />
 
-            <LazyComponent>
+            {/* <LazyComponent>
                 <BottomBanner bannerImage={BannerImage} bannerBg="/images/section-images/relex-banner-bg-large.webp" />
-            </LazyComponent>
+            </LazyComponent> */}
 
-            <DrawLine
+            {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -287,65 +362,29 @@ export default function RelexSmileLondon(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                sectionClass="!mt-0"
-                h2Heading="plastic free life"
-                h3LightHeading="Presbyond is the key to living"
-                h3BoldHeading="a sustainable, plastic free life!"
-                descriptions={[
-                    `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
-                    free of plastic waste from your glasses and contact lenses!`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/plastic-free-life.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/plastic-free-life-desktop.png',
-                    width: 685,
-                    height: 587
-                }}
-                altText="Beautiful lake and mountains. Climate change awareness from plastic glasses and
-                contact lenses."
-                positionReversed={true}
-                textColumnExtras={
-                    <div className="grid gap-6">
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Hard to swallow facts about wearing Glasses and Contact lenses:
-                        </span>
-                        <ul className="ml-6 grid gap-6">
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>Almost 800 million plastic contact lenses are used by 4 million people each year.</p>
-                            </li>
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>100,000 tons of plastic are wasted from glasses.</p>
-                            </li>
-                        </ul>
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Saving more than just expenses, time and compromise, but saving the planet!
-                        </span>
-                    </div>
-                }
-            />
+            <LazyComponent>
+                <SustainableSlider>
+                    <PlasticFree
+                        h2Heading="plastic free life"
+                        h3LightHeading={
+                            <>
+                                ReLEx SMILE is the key
+                                <br /> to living
+                            </>
+                        }
+                        h3BoldHeading={
+                            <>
+                                a sustainable, <br /> plastic free life!
+                            </>
+                        }
+                        descriptions={[
+                            `The most sustainable, green lifestyle to have is when you have a plastic free eye-style, free of plastic waste from your glasses and contact lenses!`
+                        ]}
+                    />
 
-            <DrawLine
+                    {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -357,9 +396,9 @@ export default function RelexSmileLondon(): JSX.Element {
                     height: 234
                 }}
                 altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
-            />
+            /> */}
 
-            <Section className="!mt-4">
+                    {/* <Section className="!mt-4">
                 <Container>
                     <Image
                         src="/images/section-images/mountain-image-2.png"
@@ -383,96 +422,62 @@ export default function RelexSmileLondon(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                h2Heading="gift of a tree"
-                sectionClass="!mt-0"
-                h3LightHeading="Saving the planet"
-                h3BoldHeading="One eye at a time!"
-                descriptions={[
-                    `When undergoing laser eye surgery, you may not realize it but you are already making a positive
+                    <SideImageSection
+                        h2Heading="gift of a tree"
+                        h3LightHeading={
+                            <>
+                                Saving the planet
+                                <br />
+                            </>
+                        }
+                        h3BoldHeading="One eye at a time!"
+                        descriptions={[
+                            `When undergoing laser eye surgery, you may not realize it but you are already making a positive
                      difference to the environment. For every 10 years of contact lens wearing the amount of plastic
                       that ends up in the ocean is roughly the same as your own body weight.`,
-                    `<span class='font-latoBold text-[2rem] normal-case leading-[2.4rem]'>
-                        Our gift to you…
-                    </span>`,
-                    `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                    `<span class='font-latoBold text-[2rem] normal-case leading-[2.4rem]'>
-                        Here at My-iClinic we give all of our laser patients a real forest tree!
-                    </span>`,
-                    `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
+                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                Our gift to you…
+                            </span>,
+                            `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
+                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                Here at My-iClinic we give all of our laser patients a real forest tree!
+                            </span>,
+                            `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
                      value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
                       contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
                       to replace it.`,
-                    `This is our big thank you for choosing a natural, green living eye-style.`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/gift-of-a-tree.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/gift-of-a-tree-desktop.png',
-                    width: 554,
-                    height: 496
-                }}
-                altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
-            />
-
-            <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-4-desktop.svg',
-                    width: 232,
-                    height: 234
-                }}
-            />
-
-            <SideImageSection
-                h2Heading="Clearer vision makes a clearer climate"
-                sectionClass="!mt-0"
-                h3LightHeading="How restoring your natural sight with vision correction"
-                h3BoldHeading="treatment is helping the climate change crisis"
-                sectionImage={{
-                    url: '/images/section-images/clearer-climate.png',
-                    width: 370,
-                    height: 352
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/clearer-climate-desktop.png',
-                    width: 675,
-                    height: 642
-                }}
-                imageYPosition="bottom"
-                textColumnExtras={
-                    <div className="grid gap-6 md:mt-32">
-                        <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Did you know that blurry vision is rapidly rising?
-                        </span>
-                        <p>We call this ‘Myopia’ but you might already know Myopia as ‘Nearsightedness’.</p>
-                        <p>
-                            By 2050 the World Health Organization predicts 4.9 million people will suffer from Myopia
-                            which not only affects people's natural sight and quality of life, but also contributes to
-                            the masses of plastic waste in our climate.
-                        </p>
-                        <span className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            All of our My-iClinic
-                            <br />
-                            specialists are very climate
-                        </span>
-                        <p>
-                            We understand how vision correction treatment is a healthier and natural way to not only
-                            restore your clear vision, but as an opportunity to see our climate become clean and bright
-                            for future generations to come!
-                        </p>
-                    </div>
-                }
-            />
+                            `This is our big thank you for choosing a natural, green living eye-style.`
+                        ]}
+                        sectionImage={{
+                            url: '/images/section-images/gift-of-a-tree.png',
+                            width: 390,
+                            height: 390
+                        }}
+                        sectionImageDesktop={{
+                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            width: 554,
+                            height: 496
+                        }}
+                        altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
+                    />
+                    {/*
+                    <DrawLine
+                        image={{
+                            url: '/images/section-images/draw-line-2-mobile.svg',
+                            width: 63,
+                            height: 62
+                        }}
+                        desktopImage={{
+                            url: '/images/section-images/draw-line-4-desktop.svg',
+                            width: 232,
+                            height: 234
+                        }}
+                    /> */}
+                    <ClimateChange />
+                </SustainableSlider>
+            </LazyComponent>
 
             <LazyComponent>
                 <CompanyLogos />
@@ -480,21 +485,17 @@ export default function RelexSmileLondon(): JSX.Element {
 
             <LazyComponent>
                 <PdfDownload
-                    title="Get the guide to ReLEX laser surgery"
+                    title="Get the guide to ReLEx laser surgery"
                     description="Robotic laser vision correction"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection />
-            </LazyComponent>
-
-            <LazyComponent>
                 <Faq
                     faqs={relexSmileFaqList}
-                    titleLight="ReLEX SMILE Laser"
+                    titleLight="ReLEx SMILE Laser"
                     titleBold="Treatment FAQ’s"
-                    description="Have a question? We’r here to help."
+                    description="Have a question? We are here to help."
                 />
             </LazyComponent>
         </Page>

@@ -21,22 +21,27 @@ module.exports = {
                 midDarkBlue: 'var(--color-mid-dark-blue)',
                 lightOrange: 'var(--color-light-orange)',
                 lightViolet: 'var(--color-light-violet)',
-                lightYellow: 'var(--color-light-yellow)'
+                lightYellow: 'var(--color-light-yellow)',
+                teal: 'var(--color-teal)',
+                orange: 'var(--color-orange)'
             },
             fontFamily: {
                 mulishLight: 'var(--mulish-light)',
                 mulishMedium: 'var(--mulish-medium)',
                 mulishBold: 'var(--mulish-bold)',
+                mulishExtraBold: 'var(--mulish-extra-bold)',
                 latoLight: 'var(--lato-light)',
                 latoMedium: 'var(--lato-medium)',
-                latoBold: 'var(--lato-bold)'
+                latoBold: 'var(--lato-bold)',
+                latoExtraBold: 'var(--lato-extra-bold)'
             },
             borderRadius: {
                 primary: 'var(--border-radius)'
             },
             boxShadow: {
                 'shadow1': 'var(--shadow1)',
-                'shadow2': 'var(--shadow2)'
+                'shadow2': 'var(--shadow2)',
+                'shadow3': 'var(--shadow3)'
             }
         }
     },

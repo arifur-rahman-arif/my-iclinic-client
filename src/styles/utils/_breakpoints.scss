@@ -19,12 +19,12 @@
         @media (min-width: 1280px) {
             @content;
         }
-    } @else if $break-points == 2xl {
+    } @else if $break-points == '2xl' {
         @media (min-width: 1536px) {
             @content;
         }
     } @else {
-        @warn "Breakpoint mixin supports: xs, sm, md, lg, xl, 2xl";
+        @warn "Breakpoint mixin supports: xs, sm, md, lg, xl, '2xl'";
     }
 }
 

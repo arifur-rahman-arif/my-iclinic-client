@@ -1,0 +1,22 @@
+.style {
+    overflow: hidden;
+
+    & * {
+        transition: 2s all;
+        transform: translateY(100%) scale(0.95);
+        opacity: 0;
+    }
+
+    :global {
+        .link-bar {
+            transition: none;
+        }
+    }
+}
+
+.active {
+    & * {
+        transform: translateY(0%) scale(1);
+        opacity: 1;
+    }
+}

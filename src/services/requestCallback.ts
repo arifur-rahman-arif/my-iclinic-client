@@ -3,18 +3,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // Define a service using a base URL and expected endpoints
 export const requestCallbackApi = createApi({
     reducerPath: 'requestCallbackApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_REST_URL}` }),
-    endpoints: (builder) => ({
+    baseQuery: fetchBaseQuery({ baseUrl: `/api` }),
+    endpoints: (builder: any) => ({
         requestCallbackSubmit: builder.mutation({
-            query: (body) => {
+            query: (body: any) => {
                 return {
                     url: `/request-callback`,
                     method: 'POST',
-                    body,
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_WP_JWT_TOKEN}`
-                    }
+                    body
                 };
             }
         })

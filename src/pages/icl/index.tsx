@@ -1,42 +1,50 @@
-import { CtaSection, DrawLine, Masthead, SideImageSection, StackColumnIcl } from '@/components/page-sections';
+import {
+    BulletPoint,
+    CtaSection,
+    CtaSection2,
+    FinanceExtra,
+    Masthead,
+    PlasticFree,
+    SideImageSection,
+    StackColumnIcl
+} from '@/components/page-sections';
 
-import { Container } from '@/components/container';
+import { FaPoundSign } from 'react-icons/fa';
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/link';
+import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
-import { iclFaqList } from '@/components/page-sections/faq/faqList';
-import { iclSliders } from '@/components/page-sections/featured-patient';
-import { leftRightListIcl } from '@/components/page-sections/left-right/leftRightList';
-import { iclStackList } from '@/components/page-sections/stacked-section';
-import { Section } from '@/components/section';
+import { iclFaqList } from '@/components/page-sections/Faq/faqList';
+import { iclSliders } from '@/components/page-sections/FeaturedPatient';
+import { leftRightListIcl } from '@/components/page-sections/LeftRight/leftRightList';
+import { iclStackList } from '@/components/page-sections/StackedSection';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconPin from '@/icons/icon-pin-small.svg';
-import IclBannerImage from '@/section-images/icl-banner.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import MastheadImageLarge from '@/masthead/masthead-icl-large.png';
+import MastheadImageSmall from '@/masthead/masthead-icl-small.png';
+import MastheadImageMedium from '@/masthead/masthead-icl.png';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const PdfDownload = dynamic(() => import('@/components/page-sections/pdf-download/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/components/page-sections/company-logos/CompanyLogos'));
-const Faq = dynamic(() => import('@/components/page-sections/faq/Faq'));
-const CallbackSection = dynamic(() => import('@/components/page-sections/request-callback/CallbackSection'));
-const BottomBanner = dynamic(() => import('@/components/page-sections/bottom-full-banners/BottomBanner'));
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/featured-patient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/normal-slide/NormalSlideSection'));
-const StackedSection = dynamic(() => import('@/components/page-sections/stacked-section/StackedSection'));
-const LeftRightSection = dynamic(() => import('@/components/page-sections/left-right/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/components/page-sections/side-image-section/SideVideoSection'));
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'));
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'));
+const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'));
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'));
+const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'));
+const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'));
+const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
 
 /**
  * Presbyond page component for the App
  *
- * * Url: /laser-eye-surgery/presbyond-london/
+ * * Url: /icl
  *
  * @export
  * @returns {JSX.Element}
@@ -45,9 +53,10 @@ export default function Presbyond(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
 
-    useEffect(() => {
-        ScrollTrigger.refresh();
+    const heading = 'ICL Surgery in London';
+    const subheading = 'Implantable Contact Lenses';
 
+    useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
         setTimeout(() => {
@@ -56,45 +65,53 @@ export default function Presbyond(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="ICL Surgery in London" description="">
+        <Page title={heading} description={subheading}>
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-icl.png"
-                altText="Presbyopic woman reading a book with her glasses on."
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
+                altText=""
                 h1Title={
-                    <h1 className="">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ICL</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Surgery</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">in</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex max-w-[43.7rem] flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Implantable
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Contact
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Lenses
-                        </span>
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
                     </h2>
                 }
-                priceText="£2750 per eye"
+                priceText="£2,750 per eye"
                 priceTextExtra={
-                    <span className="font-mulishBold text-[1.8rem] normal-case leading-[2.4rem] text-heading2">
+                    <span className="font-mulishBold text-[1.8rem] lowercase leading-[2.4rem] text-heading2 first-letter:uppercase">
                         With 10 Months Interest
                         <br /> Free Finance available!
                     </span>
                 }
             />
-            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
+
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">Talk to a ICL specialist</strong>
+                </h2>
+            </Container>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 h2Heading="Vision correction treatment"
@@ -132,8 +149,13 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
 
             <SideImageSection
-                h2Heading="Life quality improvment"
-                h3LightHeading="Life after Implantable"
+                h2Heading="Life quality improvement"
+                h3LightHeading={
+                    <>
+                        Life after Implantable
+                        <br />
+                    </>
+                }
                 h3BoldHeading="Contact Lenses!"
                 sectionImage={{
                     url: '/images/section-images/icl-quality-improvement.png',
@@ -151,33 +173,16 @@ export default function Presbyond(): JSX.Element {
                 textColumnTopElements={
                     <ul className="ml-16 mt-12 grid gap-6">
                         <li className="flex items-start justify-start gap-4">
-                            <Image
-                                src="/images/icons/icon-blue-and-outline-circle.svg"
-                                alt=""
-                                width={35}
-                                height={23}
-                                className="h-[2.4rem] w-[2.4rem]"
-                            />
+                            <BulletPoint />
                             <p className="font-mulishBold">99.4% of people would choose to have ICL again</p>
                         </li>
                         <li className="flex items-start justify-start gap-4">
-                            <Image
-                                src="/images/icons/icon-blue-and-outline-circle.svg"
-                                alt=""
-                                width={35}
-                                height={23}
-                                className="h-[2.4rem] w-[2.4rem]"
-                            />
+                            <BulletPoint />
+
                             <p className="font-mulishBold">2,000,000+ ICL procedures worldwide</p>
                         </li>
                         <li className="flex items-start justify-start gap-4">
-                            <Image
-                                src="/images/icons/icon-blue-and-outline-circle.svg"
-                                alt=""
-                                width={35}
-                                height={23}
-                                className="h-[2.4rem] w-[2.4rem]"
-                            />
+                            <BulletPoint />
                             <p className="font-mulishBold">20+ years of premium ICL performance</p>
                         </li>
                     </ul>
@@ -185,8 +190,13 @@ export default function Presbyond(): JSX.Element {
             />
 
             <SideImageSection
-                h3LightHeading="Our Implantable <br/>Contact Lenses"
-                h3BoldHeading="Are transparent in <br/>price too!"
+                h3LightHeading={
+                    <>
+                        Our Implantable Contact Lenses
+                        <br />
+                    </>
+                }
+                h3BoldHeading={<>Are transparent in price too!</>}
                 sectionImage={{
                     url: '/images/section-images/icl-transparent-price.png',
                     width: 390,
@@ -199,61 +209,73 @@ export default function Presbyond(): JSX.Element {
                 }}
                 altText="Happy couple on a hike in the mountains after correcting their long-sighted vision."
                 textColumnExtras={
-                    <div className="grid gap-6">
-                        <h2 className="normal-case">
-                            £2750 per Eye
-                            <br /> With 10 Months Interest-Free Finance available!
-                        </h2>
-                        <p>
-                            The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
-                            come to My-iClinic.
-                        </p>
-
-                        <ul className="ml-12 grid gap-6">
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">
+                    <>
+                        <FinanceExtra
+                            priceText="£2750 per eye"
+                            priceDescription="With 10 Months Interest-Free Finance available!"
+                            paragraphs={[
+                                `The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
+                            come to My-iClinic.`
+                            ]}
+                            list={[
+                                '0% finance available',
+                                <>
                                     One dedicated ICL specialist
                                     <br />
                                     for your treatment
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">Most affordable price in London</p>
-                            </li>
-                        </ul>
-                    </div>
+                                </>,
+                                'Most affordable price in London'
+                            ]}
+                        />
+                        <Button
+                            type="anchor"
+                            link="/icl/price"
+                            icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
+                            text="Pricing & Financing"
+                            iconPosition="left"
+                            className="mt-6 !gap-2 justify-self-center md:justify-self-start"
+                        />
+                    </>
                 }
             />
 
-            <LazyComponent>
+            <CtaSection2
+                title="Book a consultation today to see if ICL eye surgery is right for you"
+                descriptions={[
+                    <>
+                        Discuss your options and eligibility for implantable contact lens surgery with one of our
+                        experts. We will give you clear advice on your suitability and best vision correction options
+                        for your circumstances.
+                    </>
+                ]}
+            />
+
+            {/* <LazyComponent>
                 <BottomBanner
                     bannerImage={IclBannerImage}
+                    bannerTitle="Book a consultation today to see if ICL eye surgery is right for you"
                     bannerBg="/images/section-images/icl-banner-bg-large.png"
-                    bannerDescription="Discuss your options and eligibility for implantable contact lens surgery with one of
-                our experts. We will give you clear advice on your suitability and best vision
-                correction options for your circumstances."
+                    bannerDescription="Discuss your options and eligibility for implantable contact lens surgery with one of our experts. We will give you clear advice on your suitability and best vision correction options for your circumstances."
                 />
-            </LazyComponent>
+            </LazyComponent> */}
 
             <LazyComponent>
                 <StackedSection
                     stackList={iclStackList}
-                    h3LightHeading="The benefits of Implantable Contact"
-                    h3BoldHeading="Lenses for Clear, long-term vision!"
+                    h3LightHeading={
+                        <>
+                            The benefits of
+                            <br /> Implantable Contact
+                            <br />
+                        </>
+                    }
+                    h3BoldHeading={
+                        <>
+                            Lenses for Clear, long-
+                            <br />
+                            term vision!
+                        </>
+                    }
                 />
             </LazyComponent>
 
@@ -270,7 +292,7 @@ export default function Presbyond(): JSX.Element {
                         `I just feel a lot more confident. I feel as though I have my eyes, not some plastic thing on my face.`
                     ]}
                     bandImageTitle="Elite"
-                    bandImageURL="/images/section-images/elite.png"
+                    bandImageURL="/images/section-images/placeholder-image.png"
                     reviewDescription={[`It’s just been amazing and I would do it again…`]}
                     reviewTitle="Thank you My-iClinic"
                     sliders={iclSliders}
@@ -279,10 +301,16 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
+                <NormalSlideSection sliderList={iclListCataract} />
+            </LazyComponent>
+
+            <LazyComponent>
                 <SideVideoSection
                     h2Heading="Is ICL for me?"
                     noPin
                     beforeAttribute
+                    videoUrl="/videos/icl.mp4"
+                    videoPoster="txmJk2sY-yI"
                     textColumnExtras={
                         <div className="mt-20 ml-14 grid gap-6">
                             <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">
@@ -305,7 +333,7 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
 
             <CtaSection />
-
+            {/*
             <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
@@ -317,75 +345,33 @@ export default function Presbyond(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                sectionClass="!mt-0"
-                h2Heading="plastic free life"
-                h3LightHeading="Green living with"
-                h3BoldHeading="Implantable Contact Lenses"
-                descriptions={[
-                    `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/plastic-free-life.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/plastic-free-life-desktop.png',
-                    width: 685,
-                    height: 587
-                }}
-                positionReversed={true}
-                textColumnExtras={
-                    <div className="grid gap-6">
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Hard to swallow facts about wearing Glasses and Contact lenses:
-                        </span>
-                        <ul className="ml-6 grid gap-6">
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>Almost 800 million plastic contact lenses are used by 4 million people each year.</p>
-                            </li>
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>100,000 tons of plastic are wasted from glasses.</p>
-                            </li>
-                        </ul>
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Saving more than just expenses, time and compromise, but saving the planet!
-                        </span>
-                    </div>
-                }
-            />
+            <LazyComponent>
+                <SustainableSlider>
+                    <PlasticFree
+                        h2Heading="plastic free life"
+                        h3LightHeading="Green living with"
+                        h3BoldHeading="Implantable Contact Lenses"
+                        descriptions={[
+                            `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
+                        ]}
+                    />
 
-            <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-2.svg',
-                    width: 232,
-                    height: 234
-                }}
-            />
+                    {/* <DrawLine
+                        image={{
+                            url: '/images/section-images/draw-line-2-mobile.svg',
+                            width: 63,
+                            height: 62
+                        }}
+                        desktopImage={{
+                            url: '/images/section-images/draw-line-2.svg',
+                            width: 232,
+                            height: 234
+                        }}
+                    /> */}
 
-            <Section className="!mt-4">
+                    {/* <Section className="!mt-4">
                 <Container>
                     <Image
                         src="/images/section-images/mountain-image-2.png"
@@ -409,39 +395,45 @@ export default function Presbyond(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                h2Heading="gift of a tree"
-                sectionClass="!mt-0"
-                h3LightHeading="Saving the planet"
-                h3BoldHeading="One eye at a time!"
-                descriptions={[
-                    `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes, 
+                    <SideImageSection
+                        h2Heading="gift of a tree"
+                        h3LightHeading={
+                            <>
+                                Saving the planet
+                                <br />
+                            </>
+                        }
+                        h3BoldHeading="One eye at a time!"
+                        descriptions={[
+                            `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
                     a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
-                    `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/gift-of-a-tree.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/gift-of-a-tree-desktop.png',
-                    width: 554,
-                    height: 496
-                }}
-                textColumnExtras={
-                    <div className="grid gap-6">
-                        <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            We want to take our impact on the environment a step further and this is where the gift of a
-                            tree comes in!
-                        </span>
-                    </div>
-                }
-            />
+                            `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
+                        ]}
+                        sectionImage={{
+                            url: '/images/section-images/gift-of-a-tree.png',
+                            width: 390,
+                            height: 390
+                        }}
+                        sectionImageDesktop={{
+                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            width: 554,
+                            height: 496
+                        }}
+                        textColumnExtras={
+                            <div className="grid gap-6">
+                                <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    We want to take our impact on the environment a step further and this is where the
+                                    gift of a tree comes in!
+                                </span>
+                            </div>
+                        }
+                    />
+                </SustainableSlider>
+            </LazyComponent>
 
-            <DrawLine
+            {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -452,18 +444,14 @@ export default function Presbyond(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
             <LazyComponent>
                 <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title="Presbyond Patient Information" />
-            </LazyComponent>
-
-            <LazyComponent>
-                <NormalSlideSection />
+                <PdfDownload title="ICL Patient Information" />
             </LazyComponent>
 
             <LazyComponent>
@@ -471,7 +459,7 @@ export default function Presbyond(): JSX.Element {
                     faqs={iclFaqList}
                     titleLight="Implantable Contact Lenses"
                     titleBold="FAQ’s"
-                    description="Have a question? We’r here to help."
+                    description="Have a question? We are here to help."
                 />
             </LazyComponent>
         </Page>

@@ -2,11 +2,11 @@ FROM node:18-alpine3.15
 
 WORKDIR /app
 
-RUN apk update && apk upgrade && apk add bash && apk add yarn
+RUN apk update && apk upgrade && apk add bash && wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
 COPY ./package.json ./yarn.lock ./
 
-RUN yarn install
+RUN pnpm install
 
 COPY . .
 
@@ -16,5 +16,5 @@ RUN chmod 777 -R build && chmod 777 -R .next
 
 EXPOSE 3000
 
-CMD ["yarn", "dev"]
+CMD ["pnpm", "dev"]
 

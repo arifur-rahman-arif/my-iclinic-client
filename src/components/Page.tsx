@@ -27,6 +27,10 @@ const Page = ({ children, title, description, ...other }: PropInterface): JSX.El
                         rel: 'icon',
                         href: '/favicon.ico'
                     }
+                    // {
+                    //     rel: 'manifest',
+                    //     href: '/manifest.json'
+                    // }
                 ]}
             />
 

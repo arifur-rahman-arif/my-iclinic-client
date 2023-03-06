@@ -1,45 +1,52 @@
-import { DrawLine, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
+import {
+    ClimateChange,
+    CtaSection2,
+    FinanceExtra,
+    FullWidthImageSection,
+    Masthead,
+    PlasticFree,
+    SideImageSection
+} from '@/components/page-sections';
+import { FaPoundSign } from 'react-icons/fa';
 
-import { Button } from '@/components/button';
-import { Container } from '@/components/container';
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/link';
+import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
-import { lasikFaqList } from '@/components/page-sections/faq/faqList';
-import { lasikSliders } from '@/components/page-sections/featured-patient';
-import { leftRightListLasik } from '@/components/page-sections/left-right/leftRightList';
-import { lasikStackList } from '@/components/page-sections/stacked-section';
-import { Section } from '@/components/section';
+import { lasikFaqList } from '@/components/page-sections/Faq/faqList';
+import { lasikSliders } from '@/components/page-sections/FeaturedPatient';
+import { leftRightListLasik } from '@/components/page-sections/LeftRight/leftRightList';
+import { lasikStackList } from '@/components/page-sections/StackedSection';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
-import LasikCtaBannerImage from '@/section-images/lasik-cta-banner.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { Container } from '@/components/Container';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
+import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
+import MastheadImageMedium from '@/masthead/masthead-lasik.png';
+import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/pdf-download/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/components/page-sections/company-logos/CompanyLogos'));
-const Faq = dynamic(() => import('@/components/page-sections/faq/Faq'));
-const CallbackSection = dynamic(() => import('@/components/page-sections/request-callback/CallbackSection'));
-const BottomBanner = dynamic(() => import('@/components/page-sections/bottom-full-banners/BottomBanner'));
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/featured-patient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/normal-slide/NormalSlideSection'));
-const StackedSection = dynamic(() => import('@/components/page-sections/stacked-section/StackedSection'));
-const LeftRightSection = dynamic(() => import('@/components/page-sections/left-right/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/components/page-sections/side-image-section/SideVideoSection'));
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'));
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'));
+const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'));
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'));
+const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'));
+const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'));
+const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
 
 /**
- * Lasik page component for the App
+ * LASIK page component for the App
  *
- * * Url: /laser-eye-surgery/lasik-london/
+ * * Url: /laser-eye-surgery/lasik-london
  *
  * @export
  * @returns {JSX.Element}
@@ -47,36 +54,42 @@ const SideVideoSection = dynamic(() => import('@/components/page-sections/side-i
 export default function Lasik(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const mastheadH2Heading =
+    const heading = 'LASIK Laser Eye Surgery London';
+    const subheading =
         'The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
         setTimeout(() => {
-            ScrollTrigger.refresh();
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
 
     return (
-        <Page title="ICL Surgery in London" description="">
+        <Page
+            title="LASIK Laser Eye Surgery London"
+            description="The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!"
+        >
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-lasik.png"
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
                 altText=""
                 h1Title={
-                    <h1 className="">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">LASIK</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Laser</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Eye</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Surgery</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        {mastheadH2Heading.split(' ').map((word, index) => (
+                        {subheading.split(' ').map((word, index) => (
                             <span
                                 className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
                                 key={index}
@@ -86,20 +99,24 @@ export default function Lasik(): JSX.Element {
                         ))}
                     </h2>
                 }
-                priceText="£2400 per eye"
+                priceText="£2,400 per eye"
             />
 
-            <div className="w-full md:mt-[calc(6rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">Talk to a LASIK specialist</strong>
+                </h2>
+            </Container>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className="w-full md:mt-[calc(12rem_-_0.1rem)] md:h-[0.1rem]"></div>
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title="LASIK may be the suitable alternative to correct your vision"
                 description={[
                     `Do you own multiple pairs of reading glasses or varifocals? While they’re a fact of aging, you most likely feel you shouldn't need them yet. Our lifestyles shouldn't be compromised by the limitations of our vision.`,
-                    ` If You’d really like to get rid of your glasses, but you’re not sure where to begin, our LASIK procedure is safe and effective for someone like you.`
+                    ` If you’d really like to get rid of your glasses, but you’re not sure where to begin, our LASIK procedure is safe and effective for someone like you.`
                 ]}
                 altText=""
                 image={LasikImage}
@@ -112,24 +129,32 @@ export default function Lasik(): JSX.Element {
 
             <FullWidthImageSection
                 h3Title="Whatever the view,"
-                boldHeading="Remember it with Clear vision"
+                boldHeading={
+                    <>
+                        Remember it with
+                        <br />
+                        Clear vision
+                    </>
+                }
                 altText=""
                 image={ClearVisionImage}
                 desktopImage={ClearVisionImage}
-                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
-                overlayAnimation
+                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 md:!py-0"
+                overlayAnimation={true}
                 textColumnOverlay
                 sectionClass="bg-brandLight relative"
             />
 
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our Lasik patients Say After treatment"
+                    h2Heading="What our Lasik patients say after treatment"
                     h3Heading="Hear from a patient"
                     descriptions={[
                         `When you choose My-iClinic’s 5-star rated services, you can rest assured that you’ve made the best possible choice for your eyesight.`,
                         `Our specialist optometrists carefully work with you to evaluate your eyes to offer you the best possible course of treatment – allowing you to re-discover a life of normal vision.`
                     ]}
+                    videoUrl="/videos/lasik.mp4"
+                    videoPoster="oO_Sh8m3fIE"
                 />
             </LazyComponent>
 
@@ -143,14 +168,23 @@ export default function Lasik(): JSX.Element {
                     bandImageTitle="Helen"
                     bandImageURL="/images/section-images/helen.png"
                     reviewDescription={[`Absolutely phenomenal.`]}
-                    reviewTitle="I take every opportunity to recommend this Clinic"
+                    reviewTitle={
+                        <>
+                            I take every opportunity to
+                            <br /> recommend this Clinic
+                        </>
+                    }
                     sliders={lasikSliders}
                     bandColor="bg-[#FF5C00]"
                 />
             </LazyComponent>
 
+            <LazyComponent>
+                <NormalSlideSection sliderList={liskListCataract} />
+            </LazyComponent>
+
             <SideImageSection
-                h2Heading="Tranparent Price"
+                h2Heading="Transparent Price"
                 h3LightHeading="LASIK Laser eye surgery"
                 h3BoldHeading="cost"
                 descriptions={[
@@ -168,40 +202,30 @@ export default function Lasik(): JSX.Element {
                 }}
                 altText=""
                 textColumnExtras={
-                    <div className="grid gap-6">
-                        <h2 className="normal-case">
-                            £2,400 per Eye
-                            <br /> With 12 Months Interest-Free Finance available!
-                        </h2>
-                        <p>
-                            The best laser eye surgery price in London, saving an average of £1,000 for your treatment
-                            when you come to My-iClinic.
-                        </p>
-                        <ul className="ml-12 grid gap-6">
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">
+                    <>
+                        <FinanceExtra
+                            priceText="£2,400 per eye"
+                            priceDescription="With 12 Months Interest-Free Finance available!"
+                            paragraphs={[
+                                `The best laser eye surgery price in London, saving an average of £1,000 for your treatment
+                        when you come to My-iClinic.`
+                            ]}
+                            list={[
+                                <>
                                     One dedicated Lasik specialist for <br /> your treatment
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-blue-and-outline-circle.svg"
-                                    alt=""
-                                    width={35}
-                                    height={23}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p className="font-mulishBold capitalize">Most affordable price in London</p>
-                            </li>
-                        </ul>
-                    </div>
+                                </>,
+                                'Most affordable price in London'
+                            ]}
+                        />
+                        <Button
+                            type="anchor"
+                            link="/laser-eye-surgery/lasik-london/price"
+                            icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
+                            text="Pricing & Financing"
+                            iconPosition="left"
+                            className="mt-6 !gap-2 justify-self-center md:justify-self-start"
+                        />
+                    </>
                 }
             />
 
@@ -297,15 +321,17 @@ export default function Lasik(): JSX.Element {
                 />
             </LazyComponent>
 
-            <LazyComponent>
+            <CtaSection2 title="Do you think LASIK could be the right treatment for you?" />
+
+            {/* <LazyComponent>
                 <BottomBanner
                     bannerImage={LasikCtaBannerImage}
                     bannerBg="/images/section-images/lasik-banner-bg.png"
-                    bannerTitle="Do you think Lasik could be the right treatment for you?"
+                    bannerTitle="Do you think LASIK could be the right treatment for you?"
                 />
-            </LazyComponent>
+            </LazyComponent> */}
 
-            <DrawLine
+            {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -316,62 +342,20 @@ export default function Lasik(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                sectionClass="!mt-0"
-                h2Heading="plastic free life"
-                h3LightHeading="Green living with"
-                h3BoldHeading="Implantable Contact Lenses"
-                descriptions={[
-                    `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/plastic-free-life.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/plastic-free-life-desktop.png',
-                    width: 685,
-                    height: 587
-                }}
-                positionReversed={true}
-                textColumnExtras={
-                    <div className="grid gap-6">
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Hard to swallow facts about wearing Glasses and Contact lenses:
-                        </span>
-                        <ul className="ml-6 grid gap-6">
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>Almost 800 million plastic contact lenses are used by 4 million people each year.</p>
-                            </li>
-                            <li className="flex items-center justify-start gap-4">
-                                <Image
-                                    src="/images/icons/icon-meh.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="h-[2.4rem] w-[2.4rem]"
-                                />
-                                <p>100,000 tons of plastic are wasted from glasses.</p>
-                            </li>
-                        </ul>
-                        <span className="max-w-[36.7rem] font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Saving more than just expenses, time and compromise, but saving the planet!
-                        </span>
-                    </div>
-                }
-            />
+            <LazyComponent>
+                <SustainableSlider>
+                    <PlasticFree
+                        h2Heading="plastic free life"
+                        h3LightHeading="LASIK is the biggest step in living"
+                        h3BoldHeading="a sustainable, plastic free life!"
+                        descriptions={[
+                            `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
+                        ]}
+                    />
 
-            <DrawLine
+                    {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -382,9 +366,9 @@ export default function Lasik(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <Section className="!mt-4">
+                    {/* <Section className="!mt-4">
                 <Container>
                     <Image
                         src="/images/section-images/mountain-image-2.png"
@@ -408,48 +392,52 @@ export default function Lasik(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                h2Heading="gift of a tree"
-                sectionClass="!mt-0"
-                h3LightHeading="Saving the planet"
-                h3BoldHeading="One eye at a time!"
-                descriptions={[
-                    <>
-                        When undergoing laser eye surgery, you may not realize it but you are already making a positive
-                        difference to the environment. For every 10 years of contact lens wearing the amount of plastic
-                        that ends up in the ocean is roughly the same as your own body weight.
-                    </>,
-                    <strong className="font-latoBold text-[2rem] leading-[2.4rem]">Our gift to you…</strong>,
-                    <>
-                        We want to take our impact on the environment a step further and this is where the gift of a
-                        tree comes in!
-                    </>,
-                    <strong className="font-latoBold text-[2rem] leading-[2.4rem]">
-                        Here at My-iClinic we give all of our laser patients a real forest tree!
-                    </strong>,
-                    <>
-                        Over your tree’s long life, you can visit it, introduce it to your family and track its growth
-                        and value! Over the lifetime of the tree, it will more than offset the carbon you've used with
-                        your contacts/glasses. When the tree is harvested, its value will be yours and new trees are
-                        planted to replace it.
-                    </>,
-                    <>This is our big thank you for choosing a natural, green living eye-style.</>
-                ]}
-                sectionImage={{
-                    url: '/images/section-images/gift-of-a-tree.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/gift-of-a-tree-desktop.png',
-                    width: 554,
-                    height: 496
-                }}
-            />
+                    <SideImageSection
+                        h2Heading="gift of a tree"
+                        h3LightHeading={
+                            <>
+                                Saving the planet
+                                <br />
+                            </>
+                        }
+                        h3BoldHeading="One eye at a time!"
+                        descriptions={[
+                            <>
+                                When undergoing laser eye surgery, you may not realize it but you are already making a
+                                positive difference to the environment. For every 10 years of contact lens wearing the
+                                amount of plastic that ends up in the ocean is roughly the same as your own body weight.
+                            </>,
+                            <strong className="font-latoBold text-[2rem] leading-[2.4rem]">Our gift to you…</strong>,
+                            <>
+                                We want to take our impact on the environment a step further and this is where the gift
+                                of a tree comes in!
+                            </>,
+                            <strong className="font-latoBold text-[2rem] leading-[2.4rem]">
+                                Here at My-iClinic we give all of our laser patients a real forest tree!
+                            </strong>,
+                            <>
+                                Over your tree’s long life, you can visit it, introduce it to your family and track its
+                                growth and value! Over the lifetime of the tree, it will more than offset the carbon
+                                you've used with your contacts/glasses. When the tree is harvested, its value will be
+                                yours and new trees are planted to replace it.
+                            </>,
+                            <>This is our big thank you for choosing a natural, green living eye-style.</>
+                        ]}
+                        sectionImage={{
+                            url: '/images/section-images/gift-of-a-tree.png',
+                            width: 390,
+                            height: 390
+                        }}
+                        sectionImageDesktop={{
+                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            width: 554,
+                            height: 496
+                        }}
+                    />
 
-            <DrawLine
+                    {/* <DrawLine
                 image={{
                     url: '/images/section-images/draw-line-2-mobile.svg',
                     width: 63,
@@ -460,59 +448,27 @@ export default function Lasik(): JSX.Element {
                     width: 232,
                     height: 234
                 }}
-            />
+            /> */}
 
-            <SideImageSection
-                h2Heading="Clearer vision makes a clearer climate"
-                sectionClass="!mt-0"
-                h3LightHeading="How restoring your natural sight with vision correction"
-                h3BoldHeading="treatment is helping the climate change crisis"
-                sectionImage={{
-                    url: '/images/section-images/clearer-climate.png',
-                    width: 370,
-                    height: 352
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/clearer-climate-desktop.png',
-                    width: 675,
-                    height: 642
-                }}
-                imageYPosition="bottom"
-                textColumnExtras={
-                    <div className="grid gap-6 md:mt-32">
-                        <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            Did you know that blurry vision is rapidly rising?
-                        </span>
-                        <p>We call this ‘Myopia’ but you might already know Myopia as ‘Nearsightedness’.</p>
-                        <p>
-                            By 2050 the World Health Organization predicts 4.9 million people will suffer from Myopia
-                            which not only affects people's natural sight and quality of life, but also contributes to
-                            the masses of plastic waste in our climate.
-                        </p>
-                        <span className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                            All of our My-iClinic
-                            <br />
-                            specialists are very climate
-                        </span>
-                        <p>
-                            We understand how vision correction treatment is a healthier and natural way to not only
-                            restore your clear vision, but as an opportunity to see our climate become clean and bright
-                            for future generations to come!
-                        </p>
-                    </div>
-                }
-            />
+                    <ClimateChange />
+                </SustainableSlider>
+            </LazyComponent>
 
             <LazyComponent>
                 <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title="Presbyond Patient Information" />
-            </LazyComponent>
-
-            <LazyComponent>
-                <NormalSlideSection />
+                <PdfDownload
+                    title={
+                        <>
+                            Get the guide to
+                            <br />
+                            LASIK treatment
+                        </>
+                    }
+                    description="Robotic laser vision correction"
+                />
             </LazyComponent>
 
             <LazyComponent>
@@ -520,7 +476,7 @@ export default function Lasik(): JSX.Element {
                     faqs={lasikFaqList}
                     titleLight="LASIK Frequently"
                     titleBold="asked Questions"
-                    description="Have a question? We’r here to help."
+                    description="Have a question? We are here to help."
                 />
             </LazyComponent>
         </Page>

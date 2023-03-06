@@ -1,34 +1,28 @@
 import {
-    PriceSection,
+    BulletPoint,
+    CtaSection,
+    FinanceList,
     FullWidthImageSection,
     FullWidthImageSection2,
     Masthead,
-    SideImageSection,
-    CtaSection
+    PriceSection,
+    SideImageSection
 } from '@/components/page-sections';
 
+import { BreadCrumb } from '@/components/Breadcrumb';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import IconCalender from '@/icons/icon-calender-15.svg';
-import IconEyeballFocusing from '@/icons/icon-eye-ball-focusing.svg';
-import IconEyePlus from '@/icons/icon-eye-plus.svg';
-import IconEyeTesting from '@/icons/icon-eye-testing.svg';
-import IconHandHoldingLove from '@/icons/icon-hand-holding-love.svg';
-import IconPersonInFrame from '@/icons/icon-person-in-frame.svg';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
+import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
 import ShortSightedImage from '@/section-images/short-sighted-vision.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { presbyondPriceList } from '@/page-sections/fold-section/priceList';
+import { useEffect, useState } from 'react';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-const CallbackSection = dynamic(() => import('@/page-sections/request-callback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
 /**
  * Home/Landing page component for the App
@@ -39,72 +33,50 @@ const CallbackSection = dynamic(() => import('@/page-sections/request-callback/C
  * @returns {JSX.Element}
  */
 export default function PresbyondPricing(): JSX.Element {
+    const heading = 'Presbyond laser eye surgery cost in London';
+    const subheading = 'Save an average of £1,000';
+
+    const deviceSize = useDeviceSize();
+    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+
     useEffect(() => {
-        ScrollTrigger.refresh();
-    }, []);
+        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
+
+        setTimeout(() => {
+            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
+        }, 2500);
+    }, [deviceSize]);
 
     return (
-        <Page
-            title="Presbyond Laser eye surgery In London"
-            description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
-        >
+        <Page title={heading} description={subheading}>
+            <BreadCrumb />
+
             <Masthead
-                mastheadImage="/images/masthead/masthead-presbyond-pricing.png"
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
+                imageLarge={MastheadImageLarge}
                 altText="Woman reading the cost of Presbyond Treatment in London."
                 h1Title={
-                    <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Presbyond</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">laser</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">eye</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">surgery</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">cost</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">in</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Save
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            an
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            average
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            of
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            {' '}
-                            £1,000
-                        </span>
+                        {subheading.split(' ').map((word, index) => (
+                            <span
+                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
+                                key={index}
+                            >
+                                {word}
+                            </span>
+                        ))}
                     </h2>
                 }
-            />
-
-            <div className="mt-48 w-full sm:mt-36 lg:mt-0"></div>
-
-            <PriceSection priceList={presbyondPriceList} />
-
-            <FullWidthImageSection2
-                title="The cost of Presbyond surgery couldn’t be easier!"
-                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare
-                        appointments compared to other eye clinics."
-            />
-
-            <CtaSection />
-
-            <FullWidthImageSection
-                h3Title="Permanently correct"
-                boldHeading="your short-sighted vision with our all-inclusive cost."
-                altText="Woman with presbyond blended vision, without needing reading glasses."
-                image={ShortSightedImage}
-                desktopImage={ShortSightedImageLarge}
-                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
-                overlayAnimation
             />
 
             <SideImageSection
@@ -126,7 +98,8 @@ export default function PresbyondPricing(): JSX.Element {
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeTesting} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyeTesting} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 <strong>A FREE</strong> suitability laser check with our laser specialist (a
                                 comprehensive assessment of your suitability and how presbyond will suit your
@@ -134,21 +107,24 @@ export default function PresbyondPricing(): JSX.Element {
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconPersonInFrame} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconPersonInFrame} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 A comprehensive consultation with your dedicated laser specialist (inclusive of all eye
                                 assessment and eye scans).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 Your Presbyond treatment performed in our private laser suite with your dedicated
                                 specialist and our friendly team.
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            <Image src={IconEyePlus} alt="" className="h-16 w-16" />
+                            {/* <Image src={IconEyePlus} alt="" className="h-16 w-16" /> */}
+                            <BulletPoint />
                             <p className="">
                                 Up to four FREE aftercare appointments with your dedicated laser specialist (inclusive
                                 of eye assessments and eye scans)
@@ -157,6 +133,12 @@ export default function PresbyondPricing(): JSX.Element {
                     </ul>
                 }
             />
+
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+
+            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
 
             <SideImageSection
                 h2Heading="Presbyond finance"
@@ -178,25 +160,42 @@ export default function PresbyondPricing(): JSX.Element {
                     height: 560
                 }}
                 textColumnExtras={
-                    <ul className="grid w-full gap-6 md:max-w-[43rem]">
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconHandHoldingLove} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">You are eligible for our 12 months interest-free finance</h5>
-                        </li>
-                        <li className="flex items-start justify-start gap-6">
-                            <Image src={IconCalender} alt="" className="h-16 w-16" />
-                            <h5 className="normal-case">Calculate your monthly spend for your laser treatment</h5>
-                        </li>
-                    </ul>
+                    <FinanceList
+                        list={[
+                            'You are eligible for our 12 months interest-free finance',
+                            'Calculate your monthly spend for your laser treatment'
+                        ]}
+                    />
                 }
                 midExtras={<h4 className="normal-case">Finance available for Presbyond</h4>}
             />
 
-            <div className="md:mt-48"></div>
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
-            <div className="md:mt-48"></div>
+            <PriceSection priceList={presbyondPriceList} />
+
+            <FullWidthImageSection2
+                title="PRESBYOND surgery couldn’t be more cost-effective!"
+                description="Our London laser specialists save you an average of £1,000 for your treatment and aftercare
+                        appointments compared to other eye clinics."
+            />
+
+            <CtaSection />
+
+            <FullWidthImageSection
+                sectionClass="!mt-0"
+                h3Title={
+                    <>
+                        <strong className="normal-case">Permanently correct your short-sighted vision</strong> with our
+                        all-inclusive cost.
+                    </>
+                }
+                boldHeading={true}
+                altText="Woman with presbyond blended vision, without needing reading glasses."
+                image={ShortSightedImage}
+                desktopImage={ShortSightedImageLarge}
+                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 mx-0 !w-full"
+                smallImageClassName="!w-auto"
+                overlayAnimation
+            />
         </Page>
     );
 }

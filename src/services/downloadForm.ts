@@ -4,9 +4,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const downloadFormApi = createApi({
     reducerPath: 'downloadFormApi',
     baseQuery: fetchBaseQuery({ baseUrl: `/api` }),
-    endpoints: (builder) => ({
+    endpoints: (builder: any) => ({
         downloadFormSubmission: builder.mutation({
-            query: (body) => {
+            query: (body: any) => {
                 return {
                     url: `/pdf-download`,
                     method: 'POST',

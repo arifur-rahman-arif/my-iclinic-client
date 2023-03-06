@@ -1,71 +1,83 @@
 {
   "compilerOptions": {
     "target": "es5",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext",
-			"es6"
-		],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"incremental": true,
-		"noImplicitAny": true,
-		"noImplicitThis": true,
-		"strictNullChecks": true,
-		"baseUrl": ".",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es6"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-			"@/components/*": [
-				"src/components/*"
-			],
-			"@/page-sections/*": [
-				"src/components/page-sections/*"
-			],
-			"@/styles/*": [
-				"src/styles/*"
-			],
-			"@/utils/*": [
-				"src/utils/*"
-			],
-			"@/store": [
-				"src/store/store.ts"
-			],
-			"@/features/*": [
-				"src/features/*"
-			],
-			"@/services/*": [
-				"src/services/*"
-			],
-			"@/hooks": [
-				"src/hooks/index.ts"
-			],
-			"@/icons/*": [
-				"public/images/icons/*"
-			],
-			"@/section-images/*": [
-				"public/images/section-images/*"
-			],
-			"@/masthead/*": [
-				"public/images/masthead/*"
-			],
-			"@/lottie/*": [
-				"public/images/lottie/*"
-			],
-		}
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/animations/*": [
+        "src/components/animations/*"
+      ],
+      "@/page-sections/*": [
+        "src/components/page-sections/*"
+      ],
+      "@/styles/*": [
+        "src/styles/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/store": [
+        "src/store/store.ts"
+      ],
+      "@/features/*": [
+        "src/features/*"
+      ],
+      "@/services/*": [
+        "src/services/*"
+      ],
+      "@/hooks": [
+        "src/hooks/index.ts"
+      ],
+      "@/icons/*": [
+        "public/images/icons/*"
+      ],
+      "@/section-images/*": [
+        "public/images/section-images/*"
+      ],
+      "@/masthead/*": [
+        "public/images/masthead/*"
+      ],
+      "@/lottie/*": [
+        "public/images/lottie/*"
+      ],
+      "@/logos/*": [
+        "public/images/logos/*"
+      ],
+      "@/types": [
+        "src/types/index.d.ts"
+      ],
+      "@/lib": [
+        "src/lib/index.ts"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",

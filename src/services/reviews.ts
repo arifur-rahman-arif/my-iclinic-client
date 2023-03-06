@@ -1,10 +1,12 @@
-import { HorizontalSliderInterface } from '@/components/slider/horizontal-slider/HorizontalSlider';
+// @ts-nocheck
+import { HorizontalSliderInterface } from '@/components/Slider/HorizontalSlider/HorizontalSlider';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const reviewsApi = createApi({
     reducerPath: 'reviewsApi',
     baseQuery: fetchBaseQuery({ baseUrl: `/api` }), // Uncomment for brokenness repro ur welcome :)
     endpoints: (builder) => ({
+        // @ts-ignore
         getReviews: builder.query<{ data: { data: HorizontalSliderInterface[] } }, string>({
             query: (args) => `reviews/${args}`
         })

@@ -1,0 +1,430 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
+import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/components/page-sections';
+import { lazyEyesFaqList } from '@/components/page-sections/Faq/faqList';
+import { Section } from '@/components/Section';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import IconArrow from '@/icons/icon-angle-right.svg';
+import MastheadImageLarge from '@/masthead/masthead-lazy-eyes-large.png';
+import MastheadImageMedium from '@/masthead/masthead-lazy-eyes-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-lazy-eyes-small.png';
+import { LazyEyesPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, getData, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+    loading: () => <ComponentLoader />
+});
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+    loading: () => <ComponentLoader />
+});
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {}
+
+/**
+ * Lazy Eyes page component for the App
+ *
+ * * Url: /eye-treatments/other-eye-conditions/lazy-eyes
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
+export default function LazyEyes({ data }: { data: DataInterface }): JSX.Element {
+    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+    const deviceSize = useDeviceSize();
+    const heading = data?.masthead_heading || 'Lazy eyes in adults & children (amblyopia)';
+
+    useEffect(() => {
+        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
+
+        setTimeout(() => {
+            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
+        }, 2500);
+    }, [deviceSize]);
+
+    return (
+        <Page
+            title="Lazy Eye treatment in London"
+            description="My-iClinic offers experienced and comprehensive treatment for Lazy eyes in adults and children (amblyopia). Get in touch with us to learn how we can help."
+        >
+            <BreadCrumb />
+
+            <Masthead
+                imageSmall={data?.masthead_image.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                altText=""
+                h1Title={
+                    <h1 className="flex flex-wrap gap-4">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
+                    </h1>
+                }
+                priceText={<></>}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
+            />
+
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">
+                        {data?.request_callback_title ? (
+                            HTMLReactParser(data.request_callback_title)
+                        ) : (
+                            <>Talk to a specialist</>
+                        )}
+                    </strong>
+                </h2>
+            </Container>
+
+            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
+
+            <SideImageSection
+                h2Heading={data?.section_1.subheading || 'Correct your vision'}
+                h3LightHeading={
+                    <>
+                        {data?.section_1.heading.light_heading || 'Lazy eyes (amblyopia)'}
+                        <br />
+                    </>
+                }
+                h3BoldHeading={data?.section_1.heading.bold_heading || 'in children and adults'}
+                descriptions={
+                    (data?.section_1.descriptions.length &&
+                        stringArrayToElementArray(data?.section_1.descriptions)) || [
+                        "A lazy eye (amblyopia) appears as an eye which turns inward or outward, usually occurring in a child's early development.",
+                        'This lazy eye causes vision problems and potential vision loss in the future and can be caused by a family history of amblyopia, a refractive error and/or an imbalance in the eye muscles (misalignment of the eyes).'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_1.image || '/images/section-images/vision-correction-lazy-eyes.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_1.large_image || '/images/section-images/vision-correction-lazy-eyes-large.png',
+                    width: 659,
+                    height: 477
+                }}
+            />
+
+            <SideImageSection
+                h2Heading={data?.section_2.subheading || 'amblyopia Diagnosis'}
+                h3LightHeading={
+                    <>
+                        {data?.section_2.heading.light_heading || 'Diagnosis and treatment'}
+                        <br />
+                    </>
+                }
+                h3BoldHeading={data?.section_2.heading.bold_heading || 'for a Lazy eye'}
+                descriptions={
+                    (data?.section_2.descriptions.length &&
+                        stringArrayToElementArray(data?.section_2.descriptions)) || [
+                        'If your child has a lazy eye, you may be experiencing the following symptoms:'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_2.image || '/images/section-images/amblyopia-diagnosis.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_2.large_image || '/images/section-images/amblyopia-diagnosis-large.png',
+                    width: 664,
+                    height: 562
+                }}
+                positionReversed
+                textColumnExtras={
+                    <div className="grid gap-12">
+                        <BulletList
+                            list={
+                                (data?.section_2.list.length && data.section_2.list) || [
+                                    'Blurry and distorted vision',
+                                    'Deficient depth perception',
+                                    'Double vision',
+                                    'Tired, heavy eyes',
+                                    'Eye squinting and/or head tilting to view objects',
+                                    'Excessive blinking'
+                                ]
+                            }
+                            listClassName="!gap-6"
+                            bulletPoint={
+                                <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                            }
+                        />
+
+                        <p>
+                            {data?.section_2.extra_description ||
+                                'We offer a private consultation with our lazy eye specialist to check your current eye condition and to advise on the best treatment to prevent any further vision loss.'}
+                        </p>
+                    </div>
+                }
+            />
+
+            <SideImageSection
+                h2Heading={data?.section_3.subheading || 'amblyopia consultation'}
+                h3LightHeading={
+                    <>
+                        {data?.section_3.heading.light_heading || 'Lazy eye treatment'}
+                        <br />
+                    </>
+                }
+                h3BoldHeading={data?.section_3.heading.bold_heading || 'for adults & children'}
+                descriptions={
+                    (data?.section_3.descriptions.length &&
+                        stringArrayToElementArray(data?.section_3.descriptions)) || [
+                        <>
+                            A private consultation with our ophthalmologist is an all-inclusive{' '}
+                            <strong>cost of £200</strong>
+                        </>,
+                        'This includes:'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_3.image || '/images/section-images/amblyopia-consultation.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_3.large_image || '/images/section-images/amblyopia-consultation-large.png',
+                    width: 649,
+                    height: 552
+                }}
+                textColumnExtras={
+                    <BulletList
+                        list={
+                            (data?.section_3.list.length && data.section_2.list) || [
+                                'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
+                                'A medical diagnosis of your eye condition with treatment planning.',
+                                'A referral for surgical treatment and/or a signed prescription (if required).',
+                                'A dedicated eye care team to support you throughout your eye care journey'
+                            ]
+                        }
+                        listClassName="!gap-6"
+                        bulletPoint={
+                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                        }
+                    />
+                }
+            />
+
+            <Section>
+                <Container className="grid gap-12 justify-items-center">
+                    <h2 className="w-full normal-case text-center max-w-[64rem]">
+                        {data?.section_4.heading || 'Private consultation'}
+                    </h2>
+                    <p className="text-center max-w-[53rem]">
+                        {data?.section_4.description ||
+                            'Book a private consultation today with our specialist for all-inclusive eye assessments and treatment planning.'}
+                    </p>
+                </Container>
+            </Section>
+
+            <LazyComponent>
+                <NormalSlideSection />
+            </LazyComponent>
+
+            <CtaSection
+                title={data?.cta_section.heading}
+                description={data?.cta_section.description}
+                subtitle={data?.cta_section.subheading}
+            />
+
+            <SideImageSection
+                h2Heading={data?.section_5.subheading || 'Lazy eye treatment'}
+                h3LightHeading={
+                    <>
+                        {data?.section_5.heading.light_heading || 'Lazy eye treatment for'}
+                        <br />
+                    </>
+                }
+                h3BoldHeading={data?.section_5.heading.bold_heading || 'adults & children'}
+                descriptions={
+                    (data?.section_5.descriptions.length &&
+                        stringArrayToElementArray(data?.section_5.descriptions)) || [
+                        'Our ophthalmologist will use occlusion therapy to help your vision. Eye patches are used by our ophthalmologist to stimulate the weaker eye and improve vision overtime.',
+                        'Other treatments such as: eye drops, corrective glasses and contact lenses may be prescribed or recommended as the best treatment for your lazy eye condition.'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_5.image || '/images/section-images/lazy-eye-treatment-large.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_5.large_image || '/images/section-images/lazy-eye-treatment-large.png',
+                    width: 647,
+                    height: 503
+                }}
+            />
+
+            <SideImageSection
+                sectionClass="bg-lightOrange py-12 md:py-24"
+                normalLightHeading={
+                    <strong className="normal-case text-center md:text-left block">
+                        {data?.section_6.heading || 'Visit our Lazy eye specialist for diagnosis and treatment'}
+                    </strong>
+                }
+                descriptions={
+                    (data?.section_6.descriptions.length &&
+                        stringArrayToElementArray(data?.section_6.descriptions)) || [
+                        <span className="block text-center md:text-left">
+                            Book a private consultation today with our ophthalmologist for all-inclusive eye assessments
+                            and treatment planning.
+                        </span>
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_6.image || '/images/section-images/tedy-bear.png',
+                    width: 390,
+                    height: 390
+                }}
+                largeImageClassName="mx-auto"
+                sectionImageDesktop={{
+                    url: data?.section_6.large_image || '/images/section-images/tedy-bear.png',
+                    width: 412,
+                    height: 439
+                }}
+                textColumnExtras={
+                    <div className="grid grid-cols-1 justify-items-center md:justify-items-start gap-6 md:grid-cols-[auto_1fr]">
+                        <BookConsultation buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
+
+                        <Button
+                            type="phone"
+                            text={data?.section_6.phone || '0208 445 8877'}
+                            iconPosition="left"
+                            className="!min-w-[18.6rem] md:min-w-[23.3rem] place-content-center border-orange !bg-transparent"
+                            icon={
+                                <Image
+                                    src="/images/icons/icon-phone-dark.svg"
+                                    alt=""
+                                    width={20}
+                                    height={20}
+                                    quality={2}
+                                    className="h-8 w-8"
+                                />
+                            }
+                        />
+                    </div>
+                }
+            />
+
+            <LazyComponent>
+                <CompanyLogos />
+            </LazyComponent>
+
+            <LazyComponent>
+                <PdfDownload
+                    title={
+                        <>
+                            Get the guide to
+                            <br />
+                            Lazy eye treatment
+                        </>
+                    }
+                />
+            </LazyComponent>
+
+            <LazyComponent>
+                <Faq
+                    faqs={lazyEyesFaqList}
+                    titleLight="Lazy Eyes Frequently"
+                    titleBold="Asked Questions"
+                    description="Have a question? We are here to help."
+                />
+            </LazyComponent>
+        </Page>
+    );
+}
+
+/**
+ * Fetch the data from WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const pageResponse: Response = await getData({
+            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-other-eye-conditions-lazy-eyes`
+        });
+
+        if (pageResponse.status !== 200) {
+            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
+        }
+
+        const pageJsonResponse: Array<any> = await pageResponse.json();
+
+        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
+
+        const pageID = pageJsonResponse[0].id;
+
+        if (!pageID) throw new Error('Page ID is not found');
+
+        const response = await getData({
+            url: `${process.env.WP_REST_URL}/pages/${pageID}`
+        });
+
+        const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await response.json();
+
+        return {
+            /* eslint-disable */
+            props: {
+                data: {
+                    ...data.acf,
+                    // Correct your vision Lazy eyes (amblyopia)
+                    section_1: {
+                        ...data.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions)
+                    },
+                    // Amblyopia Diagnosis
+                    section_2: {
+                        ...data.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions),
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_2?.list)
+                    },
+                    // Amblyopia Consultation
+                    section_3: {
+                        ...data.acf.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_3?.descriptions),
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
+                    },
+                    // Lazy Eye Treatment
+                    section_5: {
+                        ...data.acf.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_5?.descriptions)
+                    },
+                    // Lazy Eye Specialist Banner
+                    section_6: {
+                        ...data.acf.section_6,
+                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_6?.descriptions)
+                    }
+                } as DataInterface
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
+}
