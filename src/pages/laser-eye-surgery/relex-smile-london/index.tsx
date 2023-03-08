@@ -115,6 +115,7 @@ export default function RelexSmileLondon(): JSX.Element {
                         <br /> Eye Surgery!
                     </>
                 }
+                containerClass="md:!grid-cols-[1fr_auto]"
                 altText="Man with luggage at airport"
                 image={LaserEyeSurgery}
                 desktopImage={LaserEyeSurgeryLarge}

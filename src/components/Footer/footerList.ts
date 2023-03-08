@@ -31,31 +31,6 @@ const footerList: FooterListInterface[] = [
         ]
     },
     {
-        listHeading: 'Eyelid surgery',
-        listLinks: [
-            {
-                text: 'Entropia',
-                url: '#'
-            },
-            {
-                text: 'Presbyond',
-                url: '#'
-            },
-            {
-                text: 'Blepharoplasty',
-                url: '#'
-            },
-            {
-                text: 'Droopy Eyelid (Ptosis)',
-                url: '#'
-            },
-            {
-                text: 'Eye Bags',
-                url: '#'
-            }
-        ]
-    },
-    {
         listHeading: 'Eye treatments',
         listLinks: [
             {
@@ -63,21 +38,25 @@ const footerList: FooterListInterface[] = [
                 url: '/cataract'
             },
             {
-                text: 'Myopia Control clinic',
-                url: '#'
+                text: 'Myopia Control Clinic',
+                url: '/eye-treatments/childrens-eyes/myopia'
             },
             {
-                text: 'ICL eye surgery',
+                text: 'ICL Eye Surgery',
                 url: '/icl'
             },
             {
                 text: 'Eyelid Cysts Chalazion and Styes',
-                url: '#'
+                url: '/eye-treatments/eyelid-surgery'
             },
             {
-                text: 'Glaucoma Care',
-                url: '/eye-treatments/glaucoma'
+                text: 'Paediatric Eye Care',
+                url: '/eye-treatments/childrens-eyes/paediatric-eye-care'
             }
+            // {
+            //     text: 'Glaucoma Care',
+            //     url: '/eye-treatments/glaucoma'
+            // }
         ]
     },
     {
@@ -101,6 +80,27 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Care Quality Commission',
+                url: '#'
+            }
+        ]
+    },
+    {
+        listHeading: 'Eyelid surgery',
+        listLinks: [
+            {
+                text: 'Entropia',
+                url: '#'
+            },
+            {
+                text: 'Blepharoplasty',
+                url: '/eye-treatments/blepharitis'
+            },
+            {
+                text: 'Droopy Eyelid (Ptosis)',
+                url: '/eye-treatments/eyelid-surgery'
+            },
+            {
+                text: 'Eye Bags',
                 url: '#'
             }
         ]

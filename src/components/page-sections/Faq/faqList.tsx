@@ -51,12 +51,12 @@ export const presbyondFaqList: FaqListInterface[] = [
         you get older you may experience changes in your vision and you may not realize that you have
         presbyopia. The best way to understand if you are experiencing presbyopia is to ask yourself a
         few questions:
-        <ul class='mt-12 grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'><p>Do I experience blurry vision without your reading glasses on?</p></li>
-            <li class='list-item list-disc'><p>Do I have to move things into the light to see them properly?</p></li>
-            <li class='list-item list-disc'><p>Can I only see up close when I put my reading glasses on?</p></li>
+        <ul class="mt-12 grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc"><p>Do I experience blurry vision without your reading glasses on?</p></li>
+            <li class="list-item list-disc"><p>Do I have to move things into the light to see them properly?</p></li>
+            <li class="list-item list-disc"><p>Can I only see up close when I put my reading glasses on?</p></li>
         </ul>
-        <p class='mt-12'>
+        <p class="mt-12">
             If yes, our Presbyond surgery may be the perfect solution for you. Correct your vision to see
             better at all distances and reduce the need for wearing glasses by booking your free
             consultation with our laser specialist.
@@ -92,7 +92,7 @@ export const presbyondFaqList: FaqListInterface[] = [
         title: 'I have cataracts, can I still have presbyond surgery to stop wearing my glasses?',
         shortDescription: `Yes, you may be very suitable for Presbyond if you are suffering from cataracts. It is best to wait
         at least 3 to 6 months`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Yes, you may be very suitable for Presbyond if you are suffering from cataracts. It is best to wait
                 at least 3 to 6 months after having your cataract surgery before proceeding with Presbyond
@@ -120,14 +120,14 @@ export const presbyondFaqList: FaqListInterface[] = [
     {
         title: 'Are there any side effects after having Presbyond laser treatment?',
         description: `Immediately after your presbyond surgery you may experience the following symptoms:
-        <ul class='mt-12 grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'><p>Slight discomfort</p></li>
-            <li class='list-item list-disc'><p>Dry eye sensation</p></li>
-            <li class='list-item list-disc'><p>Night vision halos</p></li>
-            <li class='list-item list-disc'><p>Slight blurring</p></li>
-            <li class='list-item list-disc'><p>Visual fluctuations</p></li>
+        <ul class="mt-12 grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc"><p>Slight discomfort</p></li>
+            <li class="list-item list-disc"><p>Dry eye sensation</p></li>
+            <li class="list-item list-disc"><p>Night vision halos</p></li>
+            <li class="list-item list-disc"><p>Slight blurring</p></li>
+            <li class="list-item list-disc"><p>Visual fluctuations</p></li>
         </ul>
-        <p class='mt-12'>
+        <p class="mt-12">
             These symptoms occur because the eyes are healing but any immediate symptoms usually
             reduce within 1-2 weeks. In your 1 day and 1 week aftercare appointments, your specialist will
             be able to assess the progression and clarity of your vision to make sure your symptoms
@@ -165,7 +165,7 @@ export const presbyondFaqList: FaqListInterface[] = [
         title: 'Do you offer finance options for Presbyond Laser Eye Surgery?',
         description: `Yes. We do offer finance for Presbyond laser treatment and because we know Presbyond is a
         great investment for achieving long-term sight, we offer a 0% interest free finance option for 12
-        months. Find out if you are eligible for our <a href='#' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>laser eye surgery finance.</a>
+        months. Find out if you are eligible for our <a href="#" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">laser eye surgery finance.</a>
         `
     },
     {
@@ -238,7 +238,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
         title: 'Can I drive, play sports and work after my ReLEx SMILE treatment?',
         description: `After having ReLEx SMILE laser treatment your vision will already be 80% clearer within a few
         hours! You will be able to drive, play sports and resume life as normal once you have attended
-        an aftercare appointment with your laser specialist, which is 1 week after your treatment date.
+        an aftercare appointment with your laser specialist, which is <strong>1 week</strong> after your treatment date.
         We advise a one week recovery period after your SMILE treatment to ensure your eyes are
         healed and assessed, ready for seeing the world again without glasses and contact lenses!
         `
@@ -285,7 +285,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
     {
         title: 'Why is ReLEx SMILE better than wearing my glasses and/or contact lenses?',
         shortDescription: 'ReLEx SMILE is not only better for your eye health but',
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 ReLEx SMILE is not only better for your eye health but it is the best laser eye surgery to
                 permanently achieve the clear vision you want for your lifestyle. Wearing glasses and/or contact
@@ -295,16 +295,16 @@ export const relexSmileFaqList: FaqListInterface[] = [
             <p>
                 Here are the key benefits of having your ReLEx SMILE treatment with our London specialists:
             </p>
-            <ul class='grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Saving Your Vision</p></li>
-                <li class='list-item list-disc'><p>No risk of infections, dry eyes or blindness.</p></li>
-                <li class='list-item list-disc'>
+            <ul class="grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Saving Your Vision</p></li>
+                <li class="list-item list-disc"><p>No risk of infections, dry eyes or blindness.</p></li>
+                <li class="list-item list-disc">
                     <p>
                         Our ReLEx SMILE treatment in London protects the health of your eyes both now and in the future.
                     </p>
                 </li>
-                <li class='list-item list-disc'><p>Saving Your Money</p></li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc"><p>Saving Your Money</p></li>
+                <li class="list-item list-disc">
                     <p>
                         One vision correction treatment means only investing in one all-time purchase.
                     </p>
@@ -361,7 +361,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
         title: 'How will I be able to see without wearing my soft/hard contact lenses?',
         shortDescription: 'Soft contact lens wearers can replace their lenses by temporarily wearing glasses',
         description: `
-        <div class='grid gap-6 content-start'>
+        <div class="grid gap-6 content-start">
             <p>
                 Soft contact lens wearers can replace their lenses by temporarily wearing glasses for 2 weeks to
                 make sure their eye is ready for measurements to be accurately taken for treatment. We
@@ -378,7 +378,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
             <p>
                 Unsure about lens requirements before your consultation and treatment? Our friendly team will
                 be happy to explain how long you will need to stop using your soft/hard lenses and for how long
-                temporary glasses are to be worn. To find out more please call us on <a href='tel:0208 445 8877' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>0208 445 8877</a>.
+                temporary glasses are to be worn. To find out more please call us on <a href="tel:0208 445 8877" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">0208 445 8877</a>.
             </p>
         </div>
         `
@@ -405,7 +405,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
         `
     },
     {
-        title: 'How long does ReLEx SMILE surgery take to heal?',
+        title: 'Is ReLEx SMILE surgery painful?',
         description: `Our ReLEx smile surgery is not painful or uncomfortable during the treatment because we use
         anesthetic eye drops before the laser corrects your vision. Some patients describe an itchy
         sensation after their treatment but this lasts only a few hours.
@@ -427,7 +427,7 @@ export const iclFaqList: FaqListInterface[] = [
     {
         title: 'How do Implantable Contact Lenses work?',
         shortDescription: `Implantable Contact lenses are the most advanced contact lens procedure`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Implantable Contact lenses are the most advanced contact lens procedure to have your vision
                 without needing to wear glasses or disposable contact lenses again.
@@ -442,19 +442,19 @@ export const iclFaqList: FaqListInterface[] = [
         title: `What is the difference between Implantable Contact Lenses and the contact lenses I put in everyday?`,
         description: `There are three major differences between Implantable Contact Lenses and the contact lenses
         you currently wear everyday:
-            <ul class='mt-12 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+            <ul class="mt-12 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>Implantable contact lenses are gently fixed in your eye for a long period of time.
                     There is no need to wear glasses or to use plastic lenses in your eyes which risks
                     infections.
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>Implantable Contact Lenses stop any dry eye symptoms which you may be
                     experiencing with your everyday disposable contact lenses.
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>Implantable Contact Lenses are not only the best for your eyes health, but a far
                     better financial investment than spending money on lenses which only last a day.</p>
                 </li>
@@ -464,7 +464,7 @@ export const iclFaqList: FaqListInterface[] = [
     {
         title: 'What are Implantable Contact Lenses made of?',
         shortDescription: `The Implantable Contact Lenses we use are EVO Visian.`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 The Implantable Contact Lenses we use are EVO Visian.
             </p>
@@ -483,35 +483,35 @@ export const iclFaqList: FaqListInterface[] = [
     {
         title: 'How will I know if Implantable Contact Lenses will be best for me?',
         shortDescription: `Adults 21 – 60 years of age with short-sighted and long sighted prescriptions (near and far).`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Adults 21 – 60 years of age with short-sighted and long sighted prescriptions (near and far).
                 If you have a prescription between -0.5D to -20.0D Or A prescription +16D and up to 6.0D of astigmatism
                 you are suitable for Implantable Contact Lenses
                 Unlike laser eye surgery, if you have:
             </p>
-            <ul class='grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+            <ul class="grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>
                         Thin or irregular corneas (Keratoconus)
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>
                         Dry eye
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>
                         High astigmatism
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>
                         High myopia
                     </p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>
                         High hyperopia
                     </p>
@@ -525,7 +525,7 @@ export const iclFaqList: FaqListInterface[] = [
     {
         title: 'I have keratoconus, am I suitable for Implantable Contact Lenses?',
         shortDescription: `Yes! Many people who have keratoconus (a thin cornea) will not be suitable for laser eye`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Yes! Many people who have keratoconus (a thin cornea) will not be suitable for laser eye
                 surgery but are suitable for Implantable Contact Lenses. In fact, the best alternative to laser eyesurgery is to have Implantable Contact Lenses rather than continuing to purchase disposable
@@ -564,7 +564,7 @@ export const iclFaqList: FaqListInterface[] = [
         title: 'How much does ICL cost?',
         description: `Our ICL procedure costs £2,750 per eye. We offer a 0% interest- free finance option for 10
         months which only requires a deposit of £1,375 (per eye) while the remaining balance can be
-        paid back interest-free! See if you are eligible for our finance options <a href='#' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>here.</a>`
+        paid back interest-free! See if you are eligible for our finance options <a href="#" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">here.</a>`
     },
     {
         title: 'Is there a chance I will not be suitable for ICL surgery?',
@@ -573,7 +573,7 @@ export const iclFaqList: FaqListInterface[] = [
         treatment at this time. We understand you may be looking for the best treatment to correct your
         vision already which is why we will still be able to book your private consultation with our
         specialist in advance. If you are over the age of 45, we would not use ICL as a suitable treatment
-        to correct your vision. Instead, we would propose <a href='/laser-eye-surgery/presbyond-london' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>Presbyond</a> as the best treatment for you.
+        to correct your vision. Instead, we would propose <a href="/laser-eye-surgery/presbyond-london" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">Presbyond</a> as the best treatment for you.
         `
     },
     {
@@ -654,11 +654,11 @@ export const lasikFaqList: FaqListInterface[] = [
     {
         title: 'When can I be suitable for LASIK laser eye surgery?',
         shortDescription: `Those who have myopia (short-sightedness) will experience frequent changes in vision in their`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
             Those who have myopia (short-sightedness) will experience frequent changes in vision in their
             teenage years, so anyone considering LASIK eye surgery should be over 21. For those who have
-            the need for reading glasses over the age of 40, <strong class=''>Presbyond</strong> is a modification of LASIK and is the
+            the need for reading glasses over the age of 40, <strong class="">Presbyond</strong> is a modification of LASIK and is the
             preferred option for achieving your desired results.
             </p>
           
@@ -745,7 +745,7 @@ export const cataractFaqList: FaqListInterface[] = [
         you to make a fully informed
         decision, ensuring you get
         the best possible treatment`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
             Choose My-iClinic for
             private cataract surgery and
@@ -779,7 +779,7 @@ export const cataractFaqList: FaqListInterface[] = [
         after your procedure) and
         management of any
         unforeseen complications.`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
             This price covers patients for
             all surgery costs, including
@@ -829,7 +829,7 @@ export const cataractFaqList: FaqListInterface[] = [
         any cloudiness develops in the
         eye’s lens, its starts to block
         `,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
         <p>
             Just behind the pupil of your
             eye is the eye’s lens. Usually,
@@ -845,28 +845,28 @@ export const cataractFaqList: FaqListInterface[] = [
             cause the following symptoms
             in your everyday sight:
         </p>
-        <ul class='grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'>
+        <ul class="grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc">
                 <p>
                     A greenish clouding of the
                     eye
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     Blurring of vision that
                     can’t be corrected with
                     glasses
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     Colours appearing faded or
                     washed out, sometimes
                     with a yellow haze
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     Sensitivity to light, glare
                     and seeing halos around
@@ -874,7 +874,7 @@ export const cataractFaqList: FaqListInterface[] = [
                     driving at night)
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     Frequent changes in
                     glasses prescriptions
@@ -892,33 +892,33 @@ export const cataractFaqList: FaqListInterface[] = [
         cataracts because of the
         following reason
         `,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
         <p>
             You may be developing
             cataracts because of the
             following reasons:
         </p>
-        <ul class='grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'>
+        <ul class="grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc">
                 <p>
                     Your family has a
                     medical history of
                     cataracts
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     You have a diabetic
                     condition
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     You smoke and drink
                     regularly
                 </p>
             </li>
-            <li class='list-item list-disc'>
+            <li class="list-item list-disc">
                 <p>
                     Ageing (40+) is when
                     eyes start to change the
@@ -947,7 +947,7 @@ export const cataractFaqList: FaqListInterface[] = [
         removed from the bag in which it
         is contained, it is replaced by a
         synthetic lens implant. This new`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 When the cataract has been
                 removed from the bag in which it
@@ -981,14 +981,14 @@ export const cataractFaqList: FaqListInterface[] = [
         are suitable for, our patients
         have achieved the best visual
         outcome for clarity and all
-        distances by having <a href='#' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>Edof lens
-        implants</a> or <a class='font-mulishBold cursor-pointer text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 transition-all hover:underline'>Presbyond
+        distances by having <a href="#" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">Edof lens
+        implants</a> or <a class="font-mulishBold cursor-pointer text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 transition-all hover:underline">Presbyond
         treatment</a> after their cataract
         surgery. Each treatment for
         seeing from near, intermediate,
         or distance (or all three) can be
         explained as a part of our
-        <a href='#' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>Cataracts lens implants page.</a>
+        <a href="#" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">Cataracts lens implants page.</a>
         `
     },
     {
@@ -1022,7 +1022,7 @@ export const premiumLensesFaqList: FaqListInterface[] = [
     },
     {
         title: 'What do lenses do after having cataract surgery?',
-        description: `Lens replacement surgery after having your cataracts removed requires an artificial lens to be implanted in your eyes to improve your vision. Lenses we provide improve refractive errors such as: nearsightedness, farsightedness, and astigmatism. If you would like to know more information about lenses for cataract surgery, please call our specialist team on <a href='tel:0208 445 8877' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>0208 445 8877</a>`
+        description: `Lens replacement surgery after having your cataracts removed requires an artificial lens to be implanted in your eyes to improve your vision. Lenses we provide improve refractive errors such as: nearsightedness, farsightedness, and astigmatism. If you would like to know more information about lenses for cataract surgery, please call our specialist team on <a href="tel:0208 445 8877" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">0208 445 8877</a>`
     },
     {
         title: `Which premium lenses have the best success rate at improving vision after cataracts are removed?`,
@@ -1030,17 +1030,17 @@ export const premiumLensesFaqList: FaqListInterface[] = [
     },
     {
         title: `How do I know which lens is the best option for me?`,
-        description: `We understand that choosing the right lenses is important. Our expert ophthalmologist will advise you on the best lens options that will best suit you and your lifestyle. If you are interested in booking an appointment, our specialist team will be able to book you in with our cataract consultant today. Please contact <a href='tel:0208 445 8877' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>0208 445 8877</a> to book your appointment. `
+        description: `We understand that choosing the right lenses is important. Our expert ophthalmologist will advise you on the best lens options that will best suit you and your lifestyle. If you are interested in booking an appointment, our specialist team will be able to book you in with our cataract consultant today. Please contact <a href="tel:0208 445 8877" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">0208 445 8877</a> to book your appointment. `
     },
     {
         title: 'Can I get laser eye surgery after cataract surgery?',
-        description: `Yes, if you are suitable for laser eye surgery we can provide laser treatment after cataract surgery as an alternative to artificial lens implantation. This laser treatment is called <a href='/laser-eye-surgery/presbyond-london' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>Presbyond</a> and has a 97% success rate in achieving clear vision for all distances in your vision.`
+        description: `Yes, if you are suitable for laser eye surgery we can provide laser treatment after cataract surgery as an alternative to artificial lens implantation. This laser treatment is called <a href="/laser-eye-surgery/presbyond-london" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">Presbyond</a> and has a 97% success rate in achieving clear vision for all distances in your vision.`
     },
     {
         title: 'How successful is Presbyond laser eye surgery after having cataract surgery?',
         shortDescription:
             'Presbyond laser eye surgery has a 97% success rate in achieving clear vision for all points of sight (near, intermediate and distance). Our patients report that they are less dependent on their glasses, and after adjusting back to normal vision, they can resume all their lifestyle activities without needing to worry about glasses and/or contact',
-        description: `<a href='/laser-eye-surgery/presbyond-london' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>Presbyond</a> laser eye surgery has a 97% success rate in achieving clear vision for all points of sight (near, intermediate and distance). Our patients report that they are less dependent on their glasses, and after adjusting back to normal vision, they can resume all their lifestyle activities without needing to worry about glasses and/or contact lenses.`
+        description: `<a href="/laser-eye-surgery/presbyond-london" class="font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline">Presbyond</a> laser eye surgery has a 97% success rate in achieving clear vision for all points of sight (near, intermediate and distance). Our patients report that they are less dependent on their glasses, and after adjusting back to normal vision, they can resume all their lifestyle activities without needing to worry about glasses and/or contact lenses.`
     },
     {
         title: 'How does Presbyond laser eye surgery compare with premium lenses after having cataract surgery?',
@@ -1064,13 +1064,13 @@ export const blepharitisFaqList: FaqListInterface[] = [
     {
         title: 'How do I know if I have blepharitis?',
         description: `At My-iClinic we can check if your symptoms are blepharitis and help you get treated quickly. The most common symptoms of blepharitis are:
-        <ul class='mt-12 grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'><p>The inflammation of eyelids</p></li>
-            <li class='list-item list-disc'><p>Redness and soreness of eyes</p></li>
-            <li class='list-item list-disc'><p>Frequent occurrence of styes</p></li>
-            <li class='list-item list-disc'><p>Lash follicles such as: Flakes and crusting around eyelashes</p></li>
-            <li class='list-item list-disc'><p>Eyelids sticking together when opening eyes</p></li>
-            <li class='list-item list-disc'><p>An uncomfortable itching in and around the eyes</p></li>
+        <ul class="mt-12 grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc"><p>The inflammation of eyelids</p></li>
+            <li class="list-item list-disc"><p>Redness and soreness of eyes</p></li>
+            <li class="list-item list-disc"><p>Frequent occurrence of styes</p></li>
+            <li class="list-item list-disc"><p>Lash follicles such as: Flakes and crusting around eyelashes</p></li>
+            <li class="list-item list-disc"><p>Eyelids sticking together when opening eyes</p></li>
+            <li class="list-item list-disc"><p>An uncomfortable itching in and around the eyes</p></li>
         </ul>
         `
     },
@@ -1085,11 +1085,11 @@ export const blepharitisFaqList: FaqListInterface[] = [
     {
         title: 'Why do I have blepharitis and can it be treated?',
         description: `Blepharitis can be caused by a number of potential factors such as:
-        <ul class='mt-12 grid gap-8 list-disc pl-12'>
-            <li class='list-item list-disc'><p>Too much bacteria growing in and around your eyelids resulting in a Bacterial infection (such as: staphylococcal).</p></li>
-            <li class='list-item list-disc'><p>Poor eyelid hygiene that can result in bacteria.</p></li>
-            <li class='list-item list-disc'><p>An allergic reaction or a dermatitis condition.</p></li>
-            <li class='list-item list-disc'><p>Blepharitis is more uncomfortable and unpleasant than it is painful. These symptoms can negatively impact your daily routine and we have a dedicated blepharitis specialist who can check your eyes and imminently start your treatment to help.</p></li>
+        <ul class="mt-12 grid gap-8 list-disc pl-12">
+            <li class="list-item list-disc"><p>Too much bacteria growing in and around your eyelids resulting in a Bacterial infection (such as: staphylococcal).</p></li>
+            <li class="list-item list-disc"><p>Poor eyelid hygiene that can result in bacteria.</p></li>
+            <li class="list-item list-disc"><p>An allergic reaction or a dermatitis condition.</p></li>
+            <li class="list-item list-disc"><p>Blepharitis is more uncomfortable and unpleasant than it is painful. These symptoms can negatively impact your daily routine and we have a dedicated blepharitis specialist who can check your eyes and imminently start your treatment to help.</p></li>
         </ul>
         `
     },
@@ -1100,7 +1100,7 @@ export const blepharitisFaqList: FaqListInterface[] = [
     {
         title: `Why should I treat my blepharitis?`,
         shortDescription: `Blepharitis is a chronic condition and if left untreated, you may experience more complicated eye conditions and corneal problems in the future such`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Blepharitis is a chronic condition and if left untreated, you may experience more complicated eye conditions and corneal problems in the future such as: intraocular inflammation, meningeal irritation, light sensitivity and blepharospasm.
             </p>
@@ -1120,16 +1120,16 @@ export const keratoconusFaqList: FaqListInterface[] = [
     {
         title: 'How do I know if I am suffering from Kerataconus?',
         description: `When you visit your local opticians you will be told of your keratoconus condition if it is identified. Kerataconus can cause:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-12 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Frequent changes in glasses prescription</p></li>
-                <li class='list-item list-disc'><p>Blurry, distorted or cloudy vision</p></li>
-                <li class='list-item list-disc'><p>Sensitivity to light</p></li>
-                <li class='list-item list-disc'><p>Glares, Halos and starbursts around lights</p></li>
-                <li class='list-item list-disc'><p>Headaches associated with eye pain</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-12 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Frequent changes in glasses prescription</p></li>
+                <li class="list-item list-disc"><p>Blurry, distorted or cloudy vision</p></li>
+                <li class="list-item list-disc"><p>Sensitivity to light</p></li>
+                <li class="list-item list-disc"><p>Glares, Halos and starbursts around lights</p></li>
+                <li class="list-item list-disc"><p>Headaches associated with eye pain</p></li>
             </ul>
             <p>
-                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href=''>corneal-cross linking</a> to strengthen your corneal tissue. When <a href=''>booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
+                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href="">corneal-cross linking</a> to strengthen your corneal tissue. When <a href="">booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
             </p>
         </div>
         `
@@ -1185,22 +1185,22 @@ export const doubleVisionFaqList: FaqListInterface[] = [
         title: `What are the common symptoms of Double vision?`,
         shortDescription: 'Patients who have double vision express their symptoms as:',
         description: `Patients who have double vision express their symptoms as:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Seeing a duplicate of one image in your vision</p></li>
-                <li class='list-item list-disc'><p>Headaches, dizziness & nausea</p></li>
-                <li class='list-item list-disc'><p>Painful eye movements and/or weak sensation of the eyes</p></li>
-                <li class='list-item list-disc'><p>Difficulty reading, driving & performing daily routine tasks</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Seeing a duplicate of one image in your vision</p></li>
+                <li class="list-item list-disc"><p>Headaches, dizziness & nausea</p></li>
+                <li class="list-item list-disc"><p>Painful eye movements and/or weak sensation of the eyes</p></li>
+                <li class="list-item list-disc"><p>Difficulty reading, driving & performing daily routine tasks</p></li>
             </ul>
             <p>
-                If you are experiencing any of the symptoms above and you are seeking a diagnosis and treatment for your double vision symptoms, you can speak to our friendly specialists on <a href='tel:0208 445 8877'>0208 445 8877</a> for more information about booking a consultation.
+                If you are experiencing any of the symptoms above and you are seeking a diagnosis and treatment for your double vision symptoms, you can speak to our friendly specialists on <a href="tel:0208 445 8877">0208 445 8877</a> for more information about booking a consultation.
             </p>
         </div>
         `
     },
     {
         title: `What happens if I don’t seek treatment for double vision?`,
-        description: `Double vision may go away on its own. The condition can be easily corrected if the cause is a refractive error (corrected by glasses for double vision, contact lenses or vision correction treatment). If, however, your double vision is not caused by a typical refractive error, there may be a more serious cause and it is best to have an eye assessment to investigate the issue. If you are concerned with any double vision symptoms, please contact our specialist on <a href='tel:0208 445 8877'>0208 445 8877</a> for more information about an assessment.`
+        description: `Double vision may go away on its own. The condition can be easily corrected if the cause is a refractive error (corrected by glasses for double vision, contact lenses or vision correction treatment). If, however, your double vision is not caused by a typical refractive error, there may be a more serious cause and it is best to have an eye assessment to investigate the issue. If you are concerned with any double vision symptoms, please contact our specialist on <a href="tel:0208 445 8877">0208 445 8877</a> for more information about an assessment.`
     },
     {
         title: `How can I treat my double vision (diplopia) if the cause is neurological?`,
@@ -1222,24 +1222,24 @@ export const lasekFaqList: FaqListInterface[] = [
         shortDescription:
             'LASEK eye surgery (Laser Assisted Epithelial Keratomileusis) is a traditional laser refractive treatment which corrects short-sightedness (myopia) , long sig',
         description: `Patients who have double vision express their symptoms as:
-        <div class='grid gap-6 content-start mt-6'>
+        <div class="grid gap-6 content-start mt-6">
             <p>
                 <strong>LASEK eye surgery (Laser Assisted Epithelial Keratomileusis)</strong> is a traditional laser refractive treatment which corrects short-sightedness (myopia) , long sightedness (hyperopia) and astigmatism. A Common alternative to LASIK surgery and can be used to treat all the common refractive errors, including
             </p>
             <p><strong>PRK eye surgery (Photorefractive keratectomy)</strong> is a laser treatment which requires removing parts of the cornea in order to reshape the eye with our laser machine. PRK is a traditional procedure correcting short-sightedness, far-sightedness and astigmatism. </p>
-            <p><strong>PTK eye surgery (Photo-Therapeutic Keratectomy)</strong> is a surgical treatment best suited to people who already have complicated eye conditions which affect their cornea, such as corneal dystrophy. Our PTK specialist uses this treatment for complex eyes and is medically required in order to achieve clearer vision. If you do not require PTK medically, it is most likely that our other laser eye treatments are suitable for our other vision correction treatments, <a href='/laser-eye-surgery/relex-smile-london'>ReLEX SMILE</a>, <a href='/laser-eye-surgery/presbyond-london'>Presbyond</a> or <a href='/laser-eye-surgery/lasik-london'>LASIK</a> treatment.</p>
+            <p><strong>PTK eye surgery (Photo-Therapeutic Keratectomy)</strong> is a surgical treatment best suited to people who already have complicated eye conditions which affect their cornea, such as corneal dystrophy. Our PTK specialist uses this treatment for complex eyes and is medically required in order to achieve clearer vision. If you do not require PTK medically, it is most likely that our other laser eye treatments are suitable for our other vision correction treatments, <a href="/laser-eye-surgery/relex-smile-london">ReLEx SMILE</a>, <a href="/laser-eye-surgery/presbyond-london">Presbyond</a> or <a href="/laser-eye-surgery/lasik-london">LASIK</a> treatment.</p>
         </div>
         `
     },
     {
         title: 'Am I suitable for LASEK or PRK eye surgery?',
-        description: `If however, you have a prescription between -.50D to -10D and up to 5.0D you will be best suited to our most modern laser treatment, <a href='/laser-eye-surgery/relex-smile-london'>Relex Smile</a>.`
+        description: `If however, you have a prescription between -.50D to -10D and up to 5.0D you will be best suited to our most modern laser treatment, <a href="/laser-eye-surgery/relex-smile-london">ReLEx Smile</a>.`
     },
     {
         title: `What is the difference between LASEK, PRK & PTK?`,
         shortDescription:
             'LASEK and PRK are essentially the same laser treatments but they require different methods of laser to reach the part of the eye that needs correcting. ',
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
                 LASEK and PRK are essentially the same laser treatments but they require different methods of laser to reach the part of the eye that needs correcting.
             </p>
@@ -1256,10 +1256,10 @@ export const lasekFaqList: FaqListInterface[] = [
         `
     },
     {
-        title: `What happens if I don’t seek treatment for double vision?`,
+        title: `Is LASEK, PRK & PTK successful?`,
         shortDescription:
-            'Dating back to the 1980s, thousands of patients have been successfully treated using LASEK & PRK prior to the invention of LASIK. Due to recent medical advancements, ReLEX SMILE',
-        description: `<div class='grid gap-6 content-start'>
+            'Dating back to the 1980s, thousands of patients have been successfully treated using LASEK & PRK',
+        description: `<div class="grid gap-6 content-start">
             <p>
                 Dating back to the 1980s, thousands of patients have been successfully treated using LASEK & PRK prior to the invention of LASIK. Due to recent medical advancements, ReLEX SMILE is now usually the preferred option for people wanting clear and natural vision without glasses or contacts.
             </p>
@@ -1283,7 +1283,7 @@ export const lasekFaqList: FaqListInterface[] = [
     },
     {
         title: `What is the recovery period for LASEK, PRK or PTK laser eye surgery?`,
-        description: `Whether you have LASEK, PRK or PTK laser eye treatment, we recommend a 1 week recovery period. After your treatment, you will be given eye drops and detailed aftercare instructions from our friendly nurse which you will need to complete at home while your eyes heal and adjust. We advise resting for this 1 week period and not to not participate in swimming, sports and any other strenuous activity until you attend your aftercare appointment with your laser specialist. Our friendly team is always here to help answer any questions you may have about your recovery after treatment. Please call us on <a href='tel:0208 445 8877'>0208 445 8877</a> and our patient care coordinator will be able to help you with any questions.`
+        description: `Whether you have LASEK, PRK or PTK laser eye treatment, we recommend a 1 week recovery period. After your treatment, you will be given eye drops and detailed aftercare instructions from our friendly nurse which you will need to complete at home while your eyes heal and adjust. We advise resting for this 1 week period and not to not participate in swimming, sports and any other strenuous activity until you attend your aftercare appointment with your laser specialist. Our friendly team is always here to help answer any questions you may have about your recovery after treatment. Please call us on <a href="tel:0208 445 8877">0208 445 8877</a> and our patient care coordinator will be able to help you with any questions.`
     }
 ];
 
@@ -1302,19 +1302,19 @@ export const glaucomaFaqList: FaqListInterface[] = [
         title: `Am I at risk of Glaucoma and how can I check for Glaucoma?`,
         shortDescription: 'You are most likely at risk of Glaucoma if you are:',
         description: `You are most likely at risk of Glaucoma if you are:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>60 years old or over</p></li>
-                <li class='list-item list-disc'><p>Of African descent</p></li>
-                <li class='list-item list-disc'><p>Have a positive family history of Glaucoma</p></li>
-                <li class='list-item list-disc'><p>Have reduced corneal thickness</p></li>
-                <li class='list-item list-disc'><p>Are very short-sighted or very long-sighted</p></li>
-                <li class='list-item list-disc'><p>Have had prolonged use of steroid eye drops</p></li>
-                <li class='list-item list-disc'><p>Have Diabetes</p></li>
-                <li class='list-item list-disc'><p>Have high pressure in the eyes (High intraocular pressure)</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>60 years old or over</p></li>
+                <li class="list-item list-disc"><p>Of African descent</p></li>
+                <li class="list-item list-disc"><p>Have a positive family history of Glaucoma</p></li>
+                <li class="list-item list-disc"><p>Have reduced corneal thickness</p></li>
+                <li class="list-item list-disc"><p>Are very short-sighted or very long-sighted</p></li>
+                <li class="list-item list-disc"><p>Have had prolonged use of steroid eye drops</p></li>
+                <li class="list-item list-disc"><p>Have Diabetes</p></li>
+                <li class="list-item list-disc"><p>Have high pressure in the eyes (High intraocular pressure)</p></li>
             </ul>
             <p>
-                If you have one or more of the above risks, you should regularly visit your local opticians to monitor any changes to your eyes. If your opticians have confirmed you have Glaucoma, you can book a specialist Glaucoma appointment with our Glaucoma specialist to find the best treatment options suitable for your Glaucoma type. <a target='_blank' href='https://connect.pabau.com/bookings.php?compid=11842'>Book your private consultation</a>
+                If you have one or more of the above risks, you should regularly visit your local opticians to monitor any changes to your eyes. If your opticians have confirmed you have Glaucoma, you can book a specialist Glaucoma appointment with our Glaucoma specialist to find the best treatment options suitable for your Glaucoma type. <a target="_blank" href="https://connect.pabau.com/bookings.php?compid=11842">Book your private consultation</a>
             </p>
         </div>
         `
@@ -1324,11 +1324,11 @@ export const glaucomaFaqList: FaqListInterface[] = [
         shortDescription:
             'You will be suitable for all Glaucoma treatments depending on the type of Glaucoma you have.',
         description: `You will be suitable for all Glaucoma treatments depending on the type of Glaucoma you have. We provide a comprehensive range of Glaucoma treatments for slight to severe Glaucoma cases:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Glaucoma Eye drops</p></li>
-                <li class='list-item list-disc'><p>Glaucoma Laser Treatment</p></li>
-                <li class='list-item list-disc'><p>Glaucoma Eye Surgery</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Glaucoma Eye drops</p></li>
+                <li class="list-item list-disc"><p>Glaucoma Laser Treatment</p></li>
+                <li class="list-item list-disc"><p>Glaucoma Eye Surgery</p></li>
             </ul>
         </div>
         `
@@ -1337,12 +1337,12 @@ export const glaucomaFaqList: FaqListInterface[] = [
         title: `Are your Glaucoma Treatments safe?`,
         shortDescription: 'Our Glaucoma treatment options are safe but there is always a chance there can be side',
         description: `Our Glaucoma treatment options are safe but there is always a chance there can be side effects and/or risks. Depending on the type of Glaucoma treatment you are suitable for some of the risks may include:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Scarring on the eyeball</p></li>
-                <li class='list-item list-disc'><p>Infection in the eye</p></li>
-                <li class='list-item list-disc'><p>Cataract (when the naturally clear lens in your eye gets cloudy)</p></li>
-                <li class='list-item list-disc'><p>Need for a second Glaucoma surgery or removal of the implant</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Scarring on the eyeball</p></li>
+                <li class="list-item list-disc"><p>Infection in the eye</p></li>
+                <li class="list-item list-disc"><p>Cataract (when the naturally clear lens in your eye gets cloudy)</p></li>
+                <li class="list-item list-disc"><p>Need for a second Glaucoma surgery or removal of the implant</p></li>
             </ul>
             <p>
                 Not treating Glaucoma almost always leads to irreversible blindness which means not having treatment is always the greatest risk to losing your sight.
@@ -1360,12 +1360,13 @@ export const glaucomaFaqList: FaqListInterface[] = [
     },
     {
         title: `What is included in your Glaucoma management packages and why might I need one?`,
-        shortDescription: 'Our Glaucoma management clinic provides two annual packages for comprehensive',
-        description: `Our Glaucoma management clinic provides two annual packages for comprehensive Glaucoma checkups, assessment and any further checks needed when we monitor your Glaucoma and treatment. These packages include unlimited pressure checks, visual fields and OCT scans. Because Glaucoma is an ongoing disease of the eye, we will need to monitor your progress at a minimum of twice a year to understand the health of your eye and your Glaucoma symptoms after treatment.
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Glaucoma Annual Management Package</p></li>
-                <li class='list-item list-disc'><p>Glaucoma Annual Screening Package</p></li>
+        shortDescription:
+            'Our Glaucoma management clinic provides two annual packages for comprehensive Glaucoma checkups, assessment and any further checks needed when we monitor your',
+        description: `Our Glaucoma management clinic provides two annual packages for comprehensive Glaucoma checkups, assessment and any further checks needed when we monitor your Glaucoma and treatment. These packages include unlimited pressure checks, visual fields and OCT scans. Because Glaucoma is an ongoing disease of the eye, we will need to monitor your progress at a <b>minimum of twice a year</b> to understand the health of your eye and your Glaucoma symptoms after treatment.
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Glaucoma Annual Management Package</p></li>
+                <li class="list-item list-disc"><p>Glaucoma Annual Screening Package</p></li>
             </ul>
         </div>
         `
@@ -1373,13 +1374,6 @@ export const glaucomaFaqList: FaqListInterface[] = [
     {
         title: 'How can My-iClinic determine the type and stage of my Glaucoma?',
         description: `At our London Glaucoma clinic, we use various scanning equipment and technology to investigate and capture the back of your eyes, this includes seeing any vision loss you might be experiencing without knowing. Our equipment is highly advanced in capturing the stage of your Glaucoma and how your Glaucoma may get worse without a particular treatment. `
-    },
-    {
-        title: 'How long will Presbyond vision take to fully adapt to see at all distances without my glasses?',
-        description: `Adapting to Presbyond takes an average of 4 months but it may take from as little as a few
-        weeks to as long as a year depending on your eyes. Our laser specialist will continuously
-        monitor the progression of your vision and your independence from glasses. 97% of our patients
-        immediately see the improvement and clarity after having their Presbyond treatment.`
     },
     {
         title: 'Can Glaucoma be completely cured?',
@@ -1464,13 +1458,13 @@ export const yagFaqList: FaqListInterface[] = [
         title: 'Why might I need YAG Laser eye surgery?',
         shortDescription: 'You might need YAG laser eye surgery if you are experiencing the following symptoms after',
         description: `You might need YAG laser eye surgery if you are experiencing the following symptoms after your cataract surgery:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Cloudy, distorted vision</p></li>
-                <li class='list-item list-disc'><p>Blurriness</p></li>
-                <li class='list-item list-disc'><p>Dim colours</p></li>
-                <li class='list-item list-disc'><p>Glares and Halos around lights</p></li>
-                <li class='list-item list-disc'><p>Difficulty reading</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Cloudy, distorted vision</p></li>
+                <li class="list-item list-disc"><p>Blurriness</p></li>
+                <li class="list-item list-disc"><p>Dim colours</p></li>
+                <li class="list-item list-disc"><p>Glares and Halos around lights</p></li>
+                <li class="list-item list-disc"><p>Difficulty reading</p></li>
             </ul>
             <p>
             If you experience any of these symptoms after cataract surgery you are most likely experiencing PCO. To get back to clear vision again and eliminate any PCO symptoms you will need our YAG Laser Treatment to see clearly. Overtime, PCO symptoms can get worse and your vision can become just as bad as your vision was with your original cataracts. This is why it is always best to get one easy treatment which will permanently get rid of these symptoms.
@@ -1499,11 +1493,6 @@ export const yagFaqList: FaqListInterface[] = [
             'We advise a break from all screens 24 hours after your YAG laser surgery to reduce any dry eyes after the treatment. Naturally, all screens cause our eyes to strain and this can result in dry eyes.'
     },
     {
-        title: 'How much does Blepharoplasty treatment cost?',
-        description:
-            'At My-iClinic, we offer cosmetic blepharoplasty treatment (eyelid reduction) from £3,000. If you would like to know more about our cosmetic eye treatments, please call <a href="tel:0208 445 8877">0208 445 8877</a> today to speak to a specialist. '
-    },
-    {
         title: 'Is YAG Laser surgery safe and painless?',
         description:
             'Yes, our YAG Laser Treatment after cataract surgery is a very safe and painless procedure. YAG laser is a minimally invasive laser eye surgery which means there are fewer risks than conventional laser eye surgery methods because this laser only corrects vision'
@@ -1530,17 +1519,17 @@ export const paediatricFaqList: FaqListInterface[] = [
         title: 'What are the most common eye problems in children?',
         shortDescription: 'There are a wide range of eye conditions that children may develop as they grow. The most',
         description: `There are a wide range of eye conditions that children may develop as they grow. The most common eye problems in children tend to be:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Lazy Eyes (Amblyopia)</p></li>
-                <li class='list-item list-disc'><p>Early refractive errors: Astigmatism, Farsightedness, Nearsightedness</p></li>
-                <li class='list-item list-disc'><p>Childhood Tearing/Epiphora</p></li>
-                <li class='list-item list-disc'><p>Double Vision.</p></li>
-                <li class='list-item list-disc'><p>Squints (Strabismus).</p></li>
-                <li class='list-item list-disc'><p>Genetic Eye Disease.</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Lazy Eyes (Amblyopia)</p></li>
+                <li class="list-item list-disc"><p>Early refractive errors: Astigmatism, Farsightedness, Nearsightedness</p></li>
+                <li class="list-item list-disc"><p>Childhood Tearing/Epiphora</p></li>
+                <li class="list-item list-disc"><p>Double Vision.</p></li>
+                <li class="list-item list-disc"><p>Squints (Strabismus).</p></li>
+                <li class="list-item list-disc"><p>Genetic Eye Disease.</p></li>
             </ul>
             <p>
-            There are many eye conditions which a child may develop. iIf you would like your child to have an in-depth ophthalmic assessment with a Paediatric eye specialist, please call <a href='tel:0208 445 8877'>0208 445 8877</a> today for your child's booking.
+            There are many eye conditions which a child may develop. iIf you would like your child to have an in-depth ophthalmic assessment with a Paediatric eye specialist, please call <a href="tel:0208 445 8877">0208 445 8877</a> today for your child's booking.
             </p>
         </div>`
     },
@@ -1587,11 +1576,11 @@ export const astigmatismFaqList: FaqListInterface[] = [
         shortDescription:
             'If you are over the age of 21 years old, we will check if your prescription is stable with a FREE',
         description: `If you are over the age of 21 years old, we will check if your prescription is stable with a FREE suitability check for our vision correction procedures:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><strong><a href="/laser-eye-surgery/relex-smile-london">ReLEx SMILE:</a> Correcting vision for ages 21-39</strong></li>
-                <li class='list-item list-disc'><strong><a href="/laser-eye-surgery/presbyond-london">Presbyond:</a> Correcting vision for ages 40+</strong></li>
-                <li class='list-item list-disc'><strong><a href="/laser-eye-surgery/lasek-prk">LASIK, LASEK, PRK & PTK:</a> correcting vision for all ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery and/or with an existing, complicated eye condition.</strong></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><strong><a href="/laser-eye-surgery/relex-smile-london">ReLEx SMILE:</a> Correcting vision for ages 21-39</strong></li>
+                <li class="list-item list-disc"><strong><a href="/laser-eye-surgery/presbyond-london">Presbyond:</a> Correcting vision for ages 40+</strong></li>
+                <li class="list-item list-disc"><strong><a href="/laser-eye-surgery/lasek-prk">LASIK, LASEK, PRK & PTK:</a> correcting vision for all ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery and/or with an existing, complicated eye condition.</strong></li>
             </ul>
         </div>`
     },
@@ -1601,19 +1590,9 @@ export const astigmatismFaqList: FaqListInterface[] = [
             'Astigmatism is caused by a refractive error (the shape of your eyes). Our laser eye surgery procedures will correct this refractive error to fix astigmatism for clearer, focused eyesight.'
     },
     {
-        title: 'Can I watch screens (TV, Phone, Laptop) after my YAG laser treatment?',
-        description:
-            'We advise a break from all screens 24 hours after your YAG laser surgery to reduce any dry eyes after the treatment. Naturally, all screens cause our eyes to strain and this can result in dry eyes.'
-    },
-    {
         title: 'Can astigmatism in children & adults get worse?',
         description:
             'Astigmatism can get worse over time. If you notice a frequent change in your prescription for glasses, we recommend visiting our ophthalmologist to get a comprehensive understanding of your eyes’ health and the condition of your astigmatism.'
-    },
-    {
-        title: 'Is YAG Laser surgery safe and painless?',
-        description:
-            'Yes, our YAG Laser Treatment after cataract surgery is a very safe and painless procedure. YAG laser is a minimally invasive laser eye surgery which means there are fewer risks than conventional laser eye surgery methods because this laser only corrects vision'
     },
     {
         title: 'Does astigmatism get worse with age?',
@@ -1697,7 +1676,7 @@ export const lazyEyesFaqList: FaqListInterface[] = [
         shortDescription:
             'Yes, your vision with a lazy eye can be treated with glasses, eye drops, occlusion therapy and lazy eye surgery. Each treatment is suitable depending on the condition of your eyes.',
         description: `
-        <div class='grid gap-6 content-start'>
+        <div class="grid gap-6 content-start">
             <p>
                 Yes, your vision with a lazy eye can be treated with glasses, eye drops, occlusion therapy and lazy eye surgery. Each treatment is suitable depending on the condition of your eyes.
             </p>
@@ -1728,33 +1707,28 @@ export const conjunctivitisFaqList: FaqListInterface[] = [
             'Conjunctivitis is an inflammation of the conjunctiva. The conjunctiva is the outermost coat of your eye. It covers all of the white part and the back of the eyelids and the condition is a common, typically self-limiting inflammation and has many causes.'
     },
     {
-        title: 'What causes a lazy eye in children?',
-        description:
-            'A lazy eye in children occurs when the muscles of an eye are undeveloped, causing an imbalance between the two eyes.'
-    },
-    {
         title: 'What are the symptoms of conjunctivitis?',
         shortDescription:
             'You may be experiencing conjunctivitis if you feel the following symptoms in one or both eyes:',
         description: `You may be experiencing conjunctivitis if you feel the following symptoms in one or both eyes:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>
                         Red swelling
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       Itching, irritation & inflammation
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       Increased tear production (watery eyes)
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       A burning or gritty sensation
                     </p>
@@ -1770,24 +1744,24 @@ export const conjunctivitisFaqList: FaqListInterface[] = [
         shortDescription:
             'Conjunctivitis may be caused by a bacterial infection, a viral infection or an allergic reaction.',
         description: `Conjunctivitis may be caused by a bacterial infection, a viral infection or an allergic reaction. Conjunctivitis is usually quickly eliminated by antibiotics which treat each cause.
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>
                        <strong>Bacterial infections</strong> can cause conjunctivitis when people with the infection and/or contaminated objects make contact with the eyes.
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       <strong>Viruses</strong> are also common causes of conjunctivitis, but it takes longer for the body’s immune system to remove them.
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       <strong>Pollen, chemicals and other irritants</strong> can cause conjunctivitis. Allergens can cause allergic conjunctivitis.
                     </p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>
                       A burning or gritty sensation
                     </p>
@@ -1805,7 +1779,7 @@ export const conjunctivitisFaqList: FaqListInterface[] = [
         shortDescription:
             'Pterygium (PTE) is an overgrowth of the conjunctiva which forms extra scar tissue on the surface of your',
         description:
-            '<strong>Pterygium (PTE)</strong> is an overgrowth of the conjunctiva which forms extra scar tissue on the surface of your eye and at the front of the cornea. In extreme cases, this can cause vision loss. If you are experiencing a pterygium growing, you may be experiencing irritation and inflammation of your eye. We offer our Pterygium removal treatment to reduce symptoms and prevent future vision loss. Please call <a href="tel:0208 445 8877">0208 445 8877</a> to book a consultation with our private specialist for diagnosis and treatment.'
+            '<strong>Pterygium (PTE)</strong> is an overgrowth of the conjunctiva which forms extra scar tissue on the surface of your eye and at the front of the cornea. In extreme cases, this can cause vision loss. If you are experiencing a pterygium growing, you may be experiencing irritation and inflammation of your eye.'
     }
 ];
 
@@ -1838,20 +1812,20 @@ export const myopiaFaqList: FaqListInterface[] = [
     {
         title: 'Does Myopia worsen with age?',
         shortDescription: 'Myopia is a condition which can be maintained with treatment. If you are over the age',
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
         <p>Myopia is a condition which can be maintained with treatment. If you are over the age of 21, we can use vision correction treatment to stop your short sightedness. However, the main complications that Myopia can cause later in life cannot be prevented by Vision correction treatment.</p>
         <p>The potential complications of Myopia for your eyes in the future are:</p>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>Macular degeneration (MMD),</p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>Retinal detachment (RD),</p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>Cataracts</p>
                 </li>
-                <li class='list-item list-disc'>
+                <li class="list-item list-disc">
                     <p>Open angle glaucoma (OAG)</p>
                 </li>
             </ul>
@@ -1886,7 +1860,7 @@ export const myopiaFaqList: FaqListInterface[] = [
         title: 'Can I become legally blind from Myopia?',
         shortDescription:
             'If your Myopia causes your field of vision to be less than 20 degrees, you would be considered',
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>If your Myopia causes your field of vision to be less than 20 degrees, you would be considered legally blind in the UK. If an object is 200 feet away, you have to stand 20 feet from it in order to see it clearly, this means your visual impairment would be best treated with vision correction.</p>
             <p>If your child myopia gets worse there is a possibility it progresses to High Myopia (Hyperioa) and can lead to Macular Degeneration and retinal detachments.</p>
         </div>`
@@ -1900,15 +1874,15 @@ export const myopiaFaqList: FaqListInterface[] = [
         title: 'How can I improve my short-sightedness?',
         shortDescription: 'Short-sightedness can be improved by contact lenses or glasses. You can also prevent its',
         description: `Short-sightedness can be improved by contact lenses or glasses. You can also prevent its worsening through:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc">
                     <p>Reduction of digital screens.</p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>Avoiding reading or working in dark surroundings.</p>
                 </li>
-                 <li class='list-item list-disc'>
+                 <li class="list-item list-disc">
                     <p>Regular interval breaks to relax eye muscles.</p>
                 </li>
             </ul>
@@ -1925,14 +1899,14 @@ export const maculerDegenerationFaqList: FaqListInterface[] = [
         title: `What are the symptoms of macular degeneration?`,
         shortDescription: 'You may be experiencing the following symptoms from macular degeneration:',
         description: `You may be experiencing the following symptoms from macular degeneration:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Reduced and/or distorted areas in your central vision</p></li>
-                <li class='list-item list-disc'><p>Difficulty with close-up work such as reading and driving.</p></li>
-                <li class='list-item list-disc'><p>Difficulty seeing in low light environments</p></li>
-                <li class='list-item list-disc'><p>Blank or dark spots in your field of vision</p></li>
-                <li class='list-item list-disc'><p>Straight lines looking wavy or crooked</p></li>
-                <li class='list-item list-disc'><p>Reduced intensity of brightness and colours</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Reduced and/or distorted areas in your central vision</p></li>
+                <li class="list-item list-disc"><p>Difficulty with close-up work such as reading and driving.</p></li>
+                <li class="list-item list-disc"><p>Difficulty seeing in low light environments</p></li>
+                <li class="list-item list-disc"><p>Blank or dark spots in your field of vision</p></li>
+                <li class="list-item list-disc"><p>Straight lines looking wavy or crooked</p></li>
+                <li class="list-item list-disc"><p>Reduced intensity of brightness and colours</p></li>
             </ul>
             <p>If you are experiencing any of the symptoms above, please contact <a href="tel:0208 445 8877">0208 445 8877</a> for a private eye assessment and consultation with our ophthalmologist.</p>
         </div>
@@ -1954,7 +1928,7 @@ export const maculerDegenerationFaqList: FaqListInterface[] = [
         title: `What causes macular degeneration (MDD)?`,
         shortDescription: 'The onset of macular degeneration usually occurs from 50 to 60 years of age. During this',
         description: `
-        <div class='grid gap-6 content-start'>
+        <div class="grid gap-6 content-start">
             <p>The onset of macular degeneration usually occurs from 50 to 60 years of age. During this period, you may start to experience early warning signs of macular degeneration.</p>
             <p>The exact cause of macular degeneration is unknown; however, lifestyle choices such as smoking, poor diet, high blood pressure and a family history of macular degeneration can put you at risk of the condition. It is always best to have routine eye checks with your local opticians and our ophthalmologist to monitor any early macular degeneration symptoms.</p>
         </div>
@@ -1991,14 +1965,14 @@ export const dryEyeFaqList: FaqListInterface[] = [
         title: `What are the common symptoms of dry eyes?`,
         shortDescription: 'Patients who have dry eyes express their symptoms as:',
         description: `Patients who have dry eyes express their symptoms as:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><p>Blurry vision</p></li>
-                <li class='list-item list-disc'><p>Excessive watering in their eyes</p></li>
-                <li class='list-item list-disc'><p>Itchy vision</p></li>
-                <li class='list-item list-disc'><p>Sensitivity to light</p></li>
-                <li class='list-item list-disc'><p>Painful eyes</p></li>
-                <li class='list-item list-disc'><p>Difficulty reading, driving & performing daily routine tasks</p></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><p>Blurry vision</p></li>
+                <li class="list-item list-disc"><p>Excessive watering in their eyes</p></li>
+                <li class="list-item list-disc"><p>Itchy vision</p></li>
+                <li class="list-item list-disc"><p>Sensitivity to light</p></li>
+                <li class="list-item list-disc"><p>Painful eyes</p></li>
+                <li class="list-item list-disc"><p>Difficulty reading, driving & performing daily routine tasks</p></li>
             </ul>
             <p>If you are experiencing any of the symptoms above and you are seeking a diagnosis and treatment for your dry eye symptoms, you can speak to our friendly specialists on <a href="tel:0208 445 8877">0208 445 8877</a> for more information about booking a consultation.</p>
         </div>

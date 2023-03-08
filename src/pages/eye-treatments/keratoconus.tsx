@@ -26,9 +26,6 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { normalSlideListKeratoconus } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -100,9 +97,7 @@ export default function KeratoconusPage(): JSX.Element {
 
             <Container className="mt-28">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        Speak to a <span className="font-latoBold uppercase">Keratoconus</span> specialist
-                    </strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -245,10 +240,6 @@ export default function KeratoconusPage(): JSX.Element {
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload title="Get the guide to Keratoconus treatment" />
             </LazyComponent>
 
             <LazyComponent>

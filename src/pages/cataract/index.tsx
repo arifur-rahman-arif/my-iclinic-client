@@ -194,7 +194,7 @@ export default function Cataract({ data }: { data: any }): JSX.Element {
                             ]}
                         />
                         <span className="mt-12 font-latoBold text-[2.8rem] leading-[3.2rem]">
-                            Looking for insurance options
+                            Looking for insurance options?
                         </span>
                         <p className="">We are here to make your treatment easy.</p>
 

@@ -21,9 +21,6 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -124,7 +121,7 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
             </LazyComponent>
 
             <Section>
-                <Container className="grid grid-cols-1 gap-12 md:gap-0 grid-cols-[auto_6rem_auto] lg:grid-cols-[auto_10rem_auto] items-center">
+                <Container className="grid grid-cols-1 gap-12 md:gap-0 md:grid-cols-[auto_6rem_auto] lg:grid-cols-[1fr_10rem_auto] items-center">
                     <div className="rounded-primary bg-white md:col-start-1 md:col-span-2 md:py-12 lg:py-24 md:pl-12 md:pr-24 md:row-start-1 relative z-[2]">
                         <H3Variant3>
                             <strong>
@@ -207,18 +204,6 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br />
-                            Paediatric treatment
-                        </>
-                    }
-                />
             </LazyComponent>
 
             <LazyComponent>

@@ -185,11 +185,11 @@ export default function LazyEyes({ data }: { data: DataInterface }): JSX.Element
                 h2Heading={data?.section_3.subheading || 'amblyopia consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_3.heading.light_heading || 'Lazy eye treatment'}
+                        {data?.section_3.heading.light_heading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_3.heading.bold_heading || 'for adults & children'}
+                h3BoldHeading={data?.section_3.heading.bold_heading || 'private consultation?'}
                 descriptions={
                     (data?.section_3.descriptions.length &&
                         stringArrayToElementArray(data?.section_3.descriptions)) || [

@@ -12,21 +12,17 @@ import {
     Masthead,
     PlasticFree,
     SideImageSection,
-    SideVideoSection2,
-    UspSection
+    SideVideoSection2
 } from '@/components/page-sections';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import MastheadImageLarge from '@/masthead/masthead-home-large.png';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
-import { homeUspList } from '@/page-sections/Usp/uspList';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -49,18 +45,8 @@ const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSl
  * @returns {JSX.Element}
  */
 export default function Home(): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
     const heading = "North London's Eye Hospital";
     const subheading = 'Premium eye care for all the family';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
 
     return (
         <Page
@@ -118,7 +104,7 @@ export default function Home(): JSX.Element {
                 }
             />
 
-            <UspSection list={homeUspList} />
+            {/* <UspSection list={homeUspList} /> */}
 
             <SideImageSection
                 h3LightHeading={
@@ -146,7 +132,7 @@ export default function Home(): JSX.Element {
                 }
                 descriptions={[
                     'We have the latest vision correction treatments to achieve clear vision at all distances for all ages.',
-                    'Book your FREE suitability check today to find out if you are suitable for our ReLEX SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.'
+                    'Book your FREE suitability check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.'
                 ]}
                 containerClassName="md:!pl-[15rem]"
                 textColor="!text-white"
@@ -186,22 +172,6 @@ export default function Home(): JSX.Element {
                 <OffScreenSliderSection sliderList={offScreenSliderList} />
             </LazyComponent>
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
-
-            {/* <Section> */}
-            {/*     <Container className=""> */}
-            {/*         <LazyComponent> */}
-            {/*             <GridSlider> */}
-            {/*                 {card2List.map((list, index) => ( */}
-            {/*                     <Card2 key={index} {...list} /> */}
-            {/*                 ))} */}
-            {/*             </GridSlider> */}
-            {/*         </LazyComponent> */}
-            {/*     </Container> */}
-            {/* </Section> */}
-
             <SideImageSection
                 h3LightHeading={
                     <>
@@ -217,6 +187,26 @@ export default function Home(): JSX.Element {
                     </LazyComponent>
                 }
             />
+
+            <div className="w-full md:h-[0.1rem] lg:mt-16"></div>
+
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
+
+            <div className="w-full md:h-[0.1rem] lg:mt-12"></div>
+
+            {/* <Section> */}
+            {/*     <Container className=""> */}
+            {/*         <LazyComponent> */}
+            {/*             <GridSlider> */}
+            {/*                 {card2List.map((list, index) => ( */}
+            {/*                     <Card2 key={index} {...list} /> */}
+            {/*                 ))} */}
+            {/*             </GridSlider> */}
+            {/*         </LazyComponent> */}
+            {/*     </Container> */}
+            {/* </Section> */}
 
             <SideImageSection
                 h3LightHeading={

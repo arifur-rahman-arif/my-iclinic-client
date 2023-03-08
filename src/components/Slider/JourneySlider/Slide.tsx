@@ -1,7 +1,8 @@
 import { smallSizes, useDeviceSize } from '@/hooks';
 import { MutableRefObject, ReactNode } from 'react';
 import StepHeader from 'src/components/Slider/JourneySlider/StepHeader';
-import IconArrow from '@/icons/icon-arrow-right.svg';
+// Import IconArrow from '@/icons/icon-arrow-right.svg';
+import IconArrow from '@/icons/icon-check-grey.svg';
 import Image from 'next/image';
 import { SwiperRef } from 'swiper/react';
 
@@ -70,7 +71,8 @@ const Slide = ({ index, title, active, image, list, swiperRef, sliderListLength 
                 <div className="flex flex-col gap-6 items-start justify-start mt-12 md:mt-0">
                     {list.map((item, index) => (
                         <div className="flex items-start justify-start gap-4" key={index}>
-                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.6rem]" />
+                            {/* <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.6rem]" /> */}
+                            <Image src={IconArrow} alt="" className="h-7 w-7 translate-y-[0.4rem]" />
                             <p>{item}</p>
                         </div>
                     ))}

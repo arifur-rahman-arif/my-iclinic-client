@@ -20,9 +20,6 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -337,18 +334,6 @@ export default function Astigmatism({ data }: { data: DataInterface }): JSX.Elem
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br />
-                            Astigmatism treatment
-                        </>
-                    }
-                />
             </LazyComponent>
 
             <LazyComponent>

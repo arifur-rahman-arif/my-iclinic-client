@@ -1,3 +1,10 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
+import Page from '@/components/Page';
 import {
     ClimateChange,
     CtaSection,
@@ -6,16 +13,8 @@ import {
     FullWidthImageSection,
     Masthead,
     PlasticFree,
-    SideImageSection,
-    UspSection
+    SideImageSection
 } from '@/components/page-sections';
-import { presbyondUspList } from '@/page-sections/Usp/uspList';
-import { FaPoundSign } from 'react-icons/fa';
-import { BreadCrumb } from '@/components/Breadcrumb';
-import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
-import Page from '@/components/Page';
 import { presbyondFaqList } from '@/components/page-sections/Faq/faqList';
 import { presbyondSliders } from '@/components/page-sections/FeaturedPatient';
 import { leftRightListPresbyond } from '@/components/page-sections/LeftRight/leftRightList';
@@ -27,27 +26,41 @@ import MastheadImageSmall from '@/masthead/masthead-presbyond-small.png';
 import MastheadImageMedium from '@/masthead/masthead-presbyond.png';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/Button';
+import { FaPoundSign } from 'react-icons/fa';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'));
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'));
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'));
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+    loading: () => <ComponentLoader />
+});
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+    loading: () => <ComponentLoader />
+});
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
+    loading: () => <ComponentLoader />
+});
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+    loading: () => <ComponentLoader />
+});
 const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
-    ssr: true
+    loading: () => <ComponentLoader />
 });
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
-    ssr: true
+    loading: () => <ComponentLoader />
 });
-const LottieSection = dynamic(() => import('@/components/page-sections/LottieSection/LottieSection'));
-const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'));
+const LottieSection = dynamic(() => import('@/components/page-sections/LottieSection/LottieSection'), {
+    loading: () => <ComponentLoader />
+});
+const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
+    loading: () => <ComponentLoader />
+});
 
 /**
- * Presbyond page component for the App
- *
- * * Url: /laser-eye-surgery/presbyond-london
+ * Url: /laser-eye-surgery/presbyond-london
  *
  * @export
  * @returns {JSX.Element}
@@ -103,7 +116,7 @@ export default function Presbyond(): JSX.Element {
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a PRESBYOND specialist</strong>
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 
@@ -111,7 +124,7 @@ export default function Presbyond(): JSX.Element {
 
             <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
-            <UspSection list={presbyondUspList} />
+            {/* <UspSection list={presbyondUspList} /> */}
 
             <SideImageSection
                 h2Heading="Vision correction treatment"
@@ -160,16 +173,11 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
 
             <FullWidthImageSection
-                boldHeading="What our Presbyond patients say after treatment"
+                boldHeading="What to expect after your Presbyond Treatment with our London specialists."
                 altText="Older man with clear vision looking at his fit bit after running a marathon."
                 description={[
-                    `Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!`,
-                    `Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.`,
-                    `When you choose My-iClinic’s 5-star rated services, you can rest assured that
-                    you’ve made the best possible choice for your eyesight. Our specialist
-                    optometrists carefully work with you to evaluate your eyes to offer you the best
-                    possible course of treatment – allowing you to re-discover a life of normal
-                    vision.`
+                    'Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!',
+                    'Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.'
                 ]}
                 videoUrl="/videos/presbyond.mp4"
                 videoPoster="IEVaY-Rj4RA"

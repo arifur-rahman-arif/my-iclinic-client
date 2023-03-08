@@ -23,9 +23,6 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { normalSlideListBlepharitis } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -91,7 +88,7 @@ export default function BlepharitisPage(): JSX.Element {
                         ))}
                     </h2>
                 }
-                priceText="From £200"
+                priceText="From £350"
             />
 
             <Container className="mt-24">
@@ -239,10 +236,6 @@ export default function BlepharitisPage(): JSX.Element {
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload title="Get the guide to Blepharitis treatment" />
             </LazyComponent>
 
             <LazyComponent>

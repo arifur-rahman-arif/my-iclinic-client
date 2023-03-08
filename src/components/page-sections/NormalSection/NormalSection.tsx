@@ -36,7 +36,7 @@ const NormalSection = ({ heading, description, bannerText, list }: NormalSection
                     <H4Variant1>This includes:</H4Variant1>
                     <BulletList
                         list={
-                            list || [
+                            (list?.length && list) || [
                                 'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessments and eye scans)',
                                 'A medical diagnosis of your eye condition with treatment planning',
                                 'A referral for surgical treatment and/or a signed prescription (if required).',
