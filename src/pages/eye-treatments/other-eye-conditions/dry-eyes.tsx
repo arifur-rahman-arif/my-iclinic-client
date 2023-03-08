@@ -24,9 +24,6 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -211,17 +208,6 @@ export default function DryEyes(): JSX.Element {
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br /> Dry eye treatment
-                        </>
-                    }
-                />
             </LazyComponent>
 
             <LazyComponent>

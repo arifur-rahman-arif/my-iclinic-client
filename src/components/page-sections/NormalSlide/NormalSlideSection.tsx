@@ -17,7 +17,7 @@ interface NormalSlideSectionInterface {
 const NormalSlideSection = ({ sliderList }: NormalSlideSectionInterface): JSX.Element => {
     return (
         <Section>
-            <ContainerFluid className="overflow-hidden px-0">
+            <ContainerFluid className="overflow-hidden !px-0">
                 <NormalSlide sliderList={sliderList || normalSlideList} />
             </ContainerFluid>
         </Section>

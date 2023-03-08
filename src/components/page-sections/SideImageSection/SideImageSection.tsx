@@ -35,6 +35,7 @@ export interface SideImageSectionInterface {
     textColumnClassName?: string;
     dynamicTextColumn?: ReactNode;
     largeImageClassName?: string;
+    smallImageClassName?: string;
 }
 
 /**
@@ -79,7 +80,8 @@ const SideImageSection = ({
     textColumnDefaultClassName,
     textColumnClassName,
     dynamicTextColumn,
-    largeImageClassName
+    largeImageClassName,
+    smallImageClassName
 }: SideImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
@@ -123,7 +125,7 @@ const SideImageSection = ({
                                 width={sectionImage.width}
                                 height={sectionImage.height}
                                 quality={70}
-                                className="md:hidden"
+                                className={`md:hidden ${smallImageClassName}`}
                                 alt={altText || ''}
                             />
                         )}

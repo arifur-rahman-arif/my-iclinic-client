@@ -34,7 +34,8 @@ const glaucomaPackageList: GlaucomaPackageInterface[] = [
         descriptions: [
             <>
                 This includes <strong>two Glaucoma investigations with our specialist,</strong> plus free unlimited
-                pressure checks.
+                pressure checks. This package will begin on your second visit with us (after your initial Glaucoma
+                consultation).
             </>
         ]
     },

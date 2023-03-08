@@ -146,7 +146,14 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
                 title: 'New Myopia Control Consultation',
                 price: '£350',
                 description: [
-                    'An initial Myopia consultation with our specialists is £350 (non-refundable). If you would like to change your appointment after booking, please inform the clinic 72 hours before your appointment time to ensure you do not lose your appointment fee.',
+                    <>
+                        An initial Myopia consultation with our specialists is £350 (non-refundable). If you would like
+                        to change your appointment after booking,{' '}
+                        <b>
+                            please inform the clinic 24 hours before your appointment time to ensure you do not lose
+                            your appointment fee.
+                        </b>
+                    </>,
                     'Any cancellations that are not communicated before after our 72 hour period policy is subject to be held by the clinic and any new appointment will need to be a new booking.'
                 ]
             },
@@ -205,10 +212,10 @@ export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
                 <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
                     treatments
                 </strong>
-                <br />
-                <span className="text-[2rem] leadign-[2.8rem] font-mulishBold text-white capitalize">
-                    (laser eye surgery)
-                </span>
+                {/* <br /> */}
+                {/* <span className="text-[2rem] leadign-[2.8rem] font-mulishBold text-white capitalize"> */}
+                {/*     (laser eye surgery) */}
+                {/* </span> */}
             </>
         ),
         packageList: [

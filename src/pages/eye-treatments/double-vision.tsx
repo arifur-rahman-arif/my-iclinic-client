@@ -26,9 +26,6 @@ import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -74,6 +71,7 @@ export default function DoubleVisionPage({ data }: { data: DataInterface }): JSX
                 imageSmall={data?.masthead_image.image || MastheadImageSmall}
                 imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
                 imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imagePosition="object-[-3rem_0rem]"
                 altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -96,7 +94,7 @@ export default function DoubleVisionPage({ data }: { data: DataInterface }): JSX
                         ))}
                     </h2>
                 }
-                priceText="From £200"
+                priceText={data?.masthead_price || <></>}
             />
 
             <Container className="mt-28">
@@ -236,7 +234,7 @@ export default function DoubleVisionPage({ data }: { data: DataInterface }): JSX
             />
 
             <CtaSection
-                title={data?.cta_section.heading || 'Book a private consultatio'}
+                title={data?.cta_section.heading || 'Book a private consultation'}
                 description={data?.cta_section.description}
                 subtitle={data?.cta_section.subheading}
             />
@@ -249,9 +247,9 @@ export default function DoubleVisionPage({ data }: { data: DataInterface }): JSX
                 <CompanyLogos />
             </LazyComponent>
 
-            <LazyComponent>
-                <PdfDownload title="Get the guide to Keratoconus treatment" />
-            </LazyComponent>
+            {/* <LazyComponent> */}
+            {/*     <PdfDownload title="Get the guide to Keratoconus treatment" /> */}
+            {/* </LazyComponent> */}
 
             <LazyComponent>
                 <Faq

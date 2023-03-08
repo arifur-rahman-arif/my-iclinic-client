@@ -1,4 +1,5 @@
 import { H3Variant3 } from '@/components/Headings';
+import LinkStyle from '@/components/Link/LinkStyle';
 import { BulletList } from '@/components/page-sections';
 import PaediatricHeading from './PaediatricHeading';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
@@ -741,7 +742,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
                 alt=""
             />
         ),
-        alternativeHeading: <H3Variant3>Glaucoma Laser</H3Variant3>,
+        alternativeHeading: <H3Variant3>Glaucoma Laser Treatment</H3Variant3>,
         descriptions: [
             <>
                 <strong>Selective Laser Trabeculoplasty (SLT)</strong> uses a gentle laser light to clean up the natural
@@ -994,11 +995,9 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             'We offer Ectropion surgery to correct drooping eyelids that turn inside and/ or expose the outside of the eye. Ectropion is a condition caused by weakening tendons and muscle tissue which will under and/or overexpose the eyelid.',
             'Our oculoplastic surgeon will relieve discomfort and side effects of Ectropion (such as soreness, irritation and blockage of tears) by removing excess skin and strengthening the muscle to rest normally on your eye.',
             'Our private consultation is all-inclusive of eye scans and assessments, which will help your consultant diagnose your Ectropion condition and prepare you for your treatment day.',
-            'If you have been diagnosed with Entropion, we can book you a private consultation to see our oculoplastic specialist.',
-            'This consultation is an all-inclusive assessment to understand the condition of your eyes and your specialist will be your surgeon on your day of treatment.',
-            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Entropion treatment today</strong>,
+            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Ectropion treatment today</strong>,
             <strong>Private Consultation Cost £200</strong>,
-            <strong>Chalazion Removal Treatment Cost From £3,000</strong>,
+            <strong>Ectropion Treatment Cost From £3,000</strong>,
             <div className="mt-6">
                 <BookConsultation />
             </div>
@@ -1033,11 +1032,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                     <span className="text-[1.8rem] leading-[2.8rem]">(removing a cyst from the eyelid)</span>
                 </H3Variant3>
             </>,
-            'We offer Ectropion surgery to correct drooping eyelids that turn inside and/ or expose the outside of the eye. Ectropion is a condition caused by weakening tendons and muscle tissue which will under and/or overexpose the eyelid.',
-            'Our oculoplastic surgeon will relieve discomfort and side effects of Ectropion (such as soreness, irritation and blockage of tears) by removing excess skin and strengthening the muscle to rest normally on your eye.',
-            'Our private consultation is all-inclusive of eye scans and assessments, which will help your consultant diagnose your Ectropion condition and prepare you for your treatment day.',
+            "Removing a cyst on an eyelid couldn't be easier with our oculoplastic surgeon. We offer a private consultation which is all-inclusive of eye scans and assessments which inform your consultant of your cysts condition and prepare you for your treatment day.",
+            'An eyelid cyst is a fairly common eye condition that is caused by a blockage in your eyelid oil glands. To ease your symptoms of discomfort and irritation, our surgeon will remove the cyst and correct your eyelid malposition, which will prevent irritation, further infection and future vision loss. You can learn more about our cyst eyelid treatment below.',
             <strong className="text-[1.8rem] leading-[2.8rem]">
-                Find out more about our Entropion treatment today
+                Find out more about our cyst removal treatment today
             </strong>,
             <>
                 <BulletList
@@ -1056,7 +1054,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£3,500</strong>
+                            Eyelid Cyst Removal Treatment Cost From <strong className="text-[2rem]">£350</strong>
                         </strong>
                     ]}
                 />
@@ -1098,7 +1096,9 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             'Treatment for a Chalazion removal with our oculoplastic surgeon is a simple and stress-free procedure to prevent discomfort and prolonged irritation of your condition.',
             'A Chalazion is identified as a red bump that swells on your eyelid. This can develop as a result of an untreated cyst and is caused by chronic inflammation from an oil gland (meibomian) being blocked in your eyelid.',
             'Our oculoplastic surgeon specializes in Chalazion removal treatment and easing any symptoms of irritation you are experiencing. We offer a private consultation with our specialist, which is all-inclusive of eye scans and assessments to understand the condition of your Chalazion and prepare for your treatment day.',
-            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Entropion treatment today</strong>,
+            <strong className="text-[2rem] leading-[2.8rem]">
+                Find out more about our Chalazion removal treatment today
+            </strong>,
             <strong>Private Consultation Cost £200</strong>,
             <strong>Chalazion Removal Treatment Cost From £350</strong>,
             <div className="mt-6">
@@ -1139,7 +1139,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             'If you are experiencing pain, irritation, swelling and discomfort, we offer an all-inclusive private consultation where our specialist will diagnose your stye condition by carrying out relevant eye scans and assessments.',
             'Your specialist will prepare you for your treatment day and will answer any questions you may have about your condition and treatment.',
             <strong className="text-[1.8rem] leading-[2.8rem]">
-                Find out more about our Entropion treatment today
+                Find out more about our stye removal treatment today
             </strong>,
             <>
                 <BulletList
@@ -1158,7 +1158,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£350</strong>
+                            Stye Removal Treatment Cost From <strong className="text-[2rem]">£350</strong>
                         </strong>
                     ]}
                 />
@@ -1199,9 +1199,9 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             'Ptosis is identified as a condition which causes the upper eyelid to droop, sometimes blocking and restricting vision. This is commonly caused by nerve damage in the eye, which can affect the eye’s muscle strength.',
             'If you can identify with Ptosis or have been already diagnosed with the condition, our oculoplastic surgeon can relieve your symptoms and correct the excess skin by shortening the muscles and tendons to raise the eyelid, restoring your ability to see and restore the symmetry between your upper eyelids.',
             'We provide a private consultation with our specialist, inclusive of all relevant eye scans and assessments with a confirmed diagnosis of your condition. Once you are seen by our specialist, they will answer and advise you on any questions you may have and will prepare you for your treatment day. Your specialist will be dedicated to your consultation and surgery, and will answer any questions you may have about your condition and treatment.',
-            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Entropion treatment today</strong>,
+            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Ptosis surgery today</strong>,
             <strong>Private Consultation Cost £200</strong>,
-            <strong>Chalazion Removal Treatment Cost From £3,500</strong>,
+            <strong>Ptosis Treatment Cost From £3,500</strong>,
             <div className="mt-6">
                 <BookConsultation />
             </div>
@@ -1241,9 +1241,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             'We offer Pterygium surgery to remove the overgrowth of the conjunctiva tissue, which develops at the front of the eye’s surface. In extreme cases, Pterygium can cause vision loss if left untreated and is generally experienced with irritation, inflammation and continual growth of the tissue.',
             'Our oculoplastic surgeon will remove the overgrown tissue on the eye’s surface and permanently implant a healthy graft of tissue in order to prevent any future growth of eye tissue.',
             'At our clinic, we offer a private consultation, all-inclusive of relevant eye scans and assessments, for our specialist to diagnose your condition and prepare you for your treatment day. Your specialist will be dedicated to your consultation and surgery and will answer any questions you may have about your condition and treatment.',
-            <strong className="text-[1.8rem] leading-[2.8rem]">
-                Find out more about our Entropion treatment today
-            </strong>,
+            <strong className="text-[1.8rem] leading-[2.8rem]">Find out more about our Pterygium surgery today</strong>,
             <>
                 <BulletList
                     className="!ml-0 mt-6"
@@ -1261,7 +1259,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£1,900</strong>
+                            Pterygium Treatment Cost From <strong className="text-[2rem]">£1,900</strong>
                         </strong>
                     ]}
                 />
@@ -1309,7 +1307,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             'Eyebrow lifts are a painless cosmetic procedure that will restore a natural, beautiful and symmetrical appearance. Our oculoplastic surgeon will make a small incision in the temporal side of your eye hidden inside the hairline to lift the temporal part of the brow.',
             'An eyebrow lift is a stress-free procedure which our specialist will discuss with you at your private consultation to prepare you for your treatment day.',
             <strong className="text-[1.8rem] leading-[2.8rem]">
-                Find out more about our Entropion treatment today
+                Find out more about our eyebrow lift treatment today
             </strong>,
             <>
                 <BulletList
@@ -1328,7 +1326,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£3,500</strong>
+                            Eyebrow Lift Treatment Cost From <strong className="text-[2rem]">£3,500</strong>
                         </strong>
                     ]}
                 />
@@ -1369,9 +1367,11 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             'Blepharoplasty is a surgical procedure we offer at our clinic to reduce excess sagging, wrinkles and baggy skin which develops under the eyes. This cosmetic treatment is very common and reshapes the eyelids for a healthy, natural and refreshed appearance.',
             'We offer an all-inclusive, private consultation with our specialist, who will advise and talk you through the cosmetic treatment.',
             'They will talk you through your expectations, your preparations for treatment and what to expect on the surgery day.',
-            <strong className="text-[2rem] leading-[2.8rem]">Find out more about our Entropion treatment today</strong>,
+            <strong className="text-[2rem] leading-[2.8rem]">
+                Find out more about our eyelid reduction treatment today
+            </strong>,
             <strong className="text-[1.8rem] leading-[2.8rem]">Private Consultation Cost £200</strong>,
-            <strong className="text-[1.8rem] leading-[2.8rem]">Chalazion Removal Treatment Cost From £3,000</strong>,
+            <strong className="text-[1.8rem] leading-[2.8rem]">Blepharoplasty Treatment Cost From £3,000</strong>,
             <>
                 <strong>Ptosis surgery</strong> (shortening the muscles or tendons that raise the eyelid)
             </>,
@@ -1413,7 +1413,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             'Squints can be caused by many reasons, which vary from previous surgery, trauma to the eyes, previous illness, developmental complications, uncorrected longsightedness (hyperopia), nearsightedness, myopia or astigmatism and/or weak muscles and nerves. Squints can cause headaches, double vision and an appearance of misaligning (crossed) eyes.',
             'By choosing to correct your squint through blepharospasm injections, our oculoplastic surgeon will help reduce any symptoms that are causing you irritation such as: Double vision, eye strain, headaches, difficulty in peripheral vision and eye appearance.',
             <strong className="text-[1.8rem] leading-[2.8rem]">
-                Find out more about our Entropion treatment today
+                Find out more about our Blepharospasm injections today
             </strong>,
             <>
                 <BulletList
@@ -1432,7 +1432,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£550</strong>
+                            Blepharospasm botox injections From <strong className="text-[2rem]">£550</strong>
                         </strong>
                     ]}
                 />
@@ -1468,7 +1468,10 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         title: `Consultation`,
         descriptions: [
-            `After having your cataract surgery, some people may experience PCO symptoms 1-5 years after treatment. This is completely normal and nothing to worry about. `,
+            <>
+                After having your <LinkStyle url="/cataract">cataract surgery,</LinkStyle> some people may experience
+                PCO symptoms 1-5 years after treatment. This is completely normal and nothing to worry about.
+            </>,
             'Once you have had treatment to permanently get rid of any blurry vision, your natural vision will restore and PCO will never return again. This is due to the thickening of the capsule in your eye. This haze can be removed by the use of our YAG Laser treatment in just 60 seconds!'
         ]
     },
@@ -1495,8 +1498,9 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         title: `Treatment`,
         descriptions: [
-            'Our YAG laser is a completely painless treatment. This laser is used to create a visual pathway in the center of the capsule that is thickening and clouding your vision. This will support the lens implant again, restoring the vision you had previously.',
-            'This laser is attached to a slit-lamp microscope and is used to divide the thickened membranes in your eye. Apart from affecting your vision (blurriness, glare), the thickening does not damage the eye in any way. The laser is also harmless, you may only experience blurred vision after the procedure which is completely normal. This can take up to a few hours to clear.'
+            'Our YAG laser eye surgery is a completely painless treatment which takes 5-10 minutes in total. When you come for your treatment, this laser is used to create a visual pathway in the center of the capsule that is thickening and clouding your vision. This will support the lens implant again, restoring the vision you had previously.',
+            'When you arrive at our clinic, our friendly nurse will speak with you before the treatment in case you have any questions. They will apply anaesthetic eye drops into your eyes to dilate your pupils to make sure your eyes are completely numb, making our YAG laser treatment completely painless.',
+            'Our nurse will welcome you into our laser suite where you will meet the laser specialist who will perform your treatment. Our YAG laser is attached to a slit-lamp microscope and is used to divide the thickened membranes in your eye. This is considered a very minimally invasive surgery because our laser does not damage the eye in any way and you may only experience blurred vision after the YAG procedure which is completely normal. This post-procedure blurriness can take up to a few hours to clear which is why you will need to arrange transport home as you will not be able to drive until your vision is clear again.'
         ]
     },
     {
@@ -1522,7 +1526,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         title: `Aftercare`,
         descriptions: [
-            `Because YAG Laser treatment is very efficient a follow-up appointment with our specialists is not required unless you are having treatment for another eye condition. Once you have had the procedure you will have a recovery period of 1-2 days.`
+            `We want nothing more than for you to feel comfortable after your laser surgery! Yag Laser capsulotomy treatment is one of our easiest laser procedures to recover from as we do not require you to attend any follow-up appointments unless you are having treatment for another eye condition. YAG laser eye surgery is also very efficient because once you have had the procedure you will have a short recovery period of 1-2 days. During this time, our team is always here to help with any other questions you may have about life after your surgery.`
         ]
     }
 ];

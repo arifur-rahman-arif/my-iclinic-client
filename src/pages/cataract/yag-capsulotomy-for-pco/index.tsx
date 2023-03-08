@@ -47,8 +47,8 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
 export default function YagCapsulotomyForPco({ data }: { data: any }): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'YAG Capsulotomy Laser Treatment';
-    const subheading = 'Reducing PCO after Cataract Surgery';
+    const heading = 'YAG Capsulotomy Laser Treatment London';
+    const subheading = 'Reducing PCO symptoms after Cataract Surgery.';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);

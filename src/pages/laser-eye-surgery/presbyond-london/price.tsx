@@ -181,7 +181,7 @@ export default function PresbyondPricing(): JSX.Element {
             <CtaSection />
 
             <FullWidthImageSection
-                sectionClass="!mt-0"
+                sectionClass="!mt-0 bg-brandLight"
                 h3Title={
                     <>
                         <strong className="normal-case">Permanently correct your short-sighted vision</strong> with our
@@ -192,8 +192,9 @@ export default function PresbyondPricing(): JSX.Element {
                 altText="Woman with presbyond blended vision, without needing reading glasses."
                 image={ShortSightedImage}
                 desktopImage={ShortSightedImageLarge}
-                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 mx-0 !w-full"
+                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 smallImageClassName="!w-auto"
+                largeImageClassName="!rounded-none"
                 overlayAnimation
             />
         </Page>

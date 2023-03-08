@@ -134,7 +134,7 @@ export default function Conjunctivitis({ data }: { data: DataInterface }): JSX.E
             <SideImageSection
                 normalLightHeading={<strong>{data?.section_1.heading || 'Conjunctivitis Consultation'}</strong>}
                 descriptions={
-                    data?.section_1.descriptions || [
+                    (data?.section_1.descriptions.length && data?.section_1.descriptions) || [
                         'When you visit our clinic, we use our special imaging technology to carry out in-depth eye assessments to capture the health of your eyes, particularly the surface of the conjunctiva.',
                         'Our friendly technicians will guide you through these easy assessments to appropriately diagnose your conjunctivitis before meeting your ophthalmologist.',
                         'In your private consultation, your ophthalmologist will talk you through your diagnosis and conjunctivitis treatment.'

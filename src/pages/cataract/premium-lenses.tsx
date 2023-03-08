@@ -117,7 +117,7 @@ export default function PremiumLenses(): JSX.Element {
 
             <Container className="mt-36">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a PREMIUM LENS specialist</strong>
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 

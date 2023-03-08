@@ -42,14 +42,12 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
 const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
 
 /**
- * Presbyond page component for the App
- *
- * * Url: /icl
+ * Url: /icl
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Presbyond(): JSX.Element {
+export default function Icl(): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
 
@@ -292,7 +290,7 @@ export default function Presbyond(): JSX.Element {
                         `I just feel a lot more confident. I feel as though I have my eyes, not some plastic thing on my face.`
                     ]}
                     bandImageTitle="Elite"
-                    bandImageURL="/images/section-images/placeholder-image.png"
+                    bandImageURL="/images/section-images/eliete.png"
                     reviewDescription={[`It’s just been amazing and I would do it again…`]}
                     reviewTitle="Thank you My-iClinic"
                     sliders={iclSliders}

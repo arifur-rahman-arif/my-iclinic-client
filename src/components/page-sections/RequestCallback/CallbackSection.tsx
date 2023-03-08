@@ -57,7 +57,7 @@ const CallbackSection = (): JSX.Element => {
         <>
             <Section className="relative mt-12 overflow-hidden before:left-0 before:-z-[1] before:h-[calc(100%_+_13rem)] before:w-[30%] before:-translate-y-[6.5rem] before:md:max-h-[63rem] before:bg-[#ccf6fe] md:overflow-visible xl:before:absolute md:before:top-2/4 md:before:-translate-y-2/4 xl:before:content-['']">
                 <Container
-                    className={`relative grid grid-cols-1 gap-12 px-0 md:grid-cols-[auto_1fr] md:px-8 md:py-0 lg:grid-cols-[1fr_auto] ${
+                    className={`!px-0 relative grid grid-cols-1 gap-12 px-0 md:grid-cols-[auto_1fr] md:px-8 md:py-0 lg:grid-cols-[1fr_auto] ${
                         sliders.length ? 'xl:grid-cols-[auto_1fr_auto]' : 'xl:grid-cols-[auto_1fr_1fr]'
                     }`}
                 >
@@ -72,7 +72,7 @@ const CallbackSection = (): JSX.Element => {
                         Request a call back
                     </h2>
                     <div className="bg-brandLight py-12 px-8 md:bg-transparent md:px-0 md:py-0 self-center">
-                        <h2 className="leading-16 mb-12 text-left font-latoBold normal-case sm:text-center md:hidden md:text-[4rem]">
+                        <h2 className="leading-16 mb-12 text-left font-latoBold normal-case sm:text-center md:hidden md:text-[4rem] text-center">
                             Request a call back
                         </h2>
                         <RequestCallback />

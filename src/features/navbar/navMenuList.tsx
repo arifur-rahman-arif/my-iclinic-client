@@ -68,7 +68,7 @@ export const navMenuList: NavMenuType[] = [
         submenu: [
             {
                 type: 'text',
-                name: 'ReLEX SMILE',
+                name: 'ReLEx SMILE',
                 url: '/laser-eye-surgery/relex-smile-london',
                 slug: 'laser-eye-surgery/relex-smile-london',
                 dotAnimation: true
@@ -76,10 +76,10 @@ export const navMenuList: NavMenuType[] = [
             {
                 type: 'text',
                 name: (
-                    <>
+                    <span className="block">
                         Implantable Contact <br />
                         Lenses
-                    </>
+                    </span>
                 ),
                 url: '/icl',
                 slug: 'icl',
@@ -190,10 +190,10 @@ export const navMenuList: NavMenuType[] = [
                     {
                         type: 'text',
                         name: (
-                            <>
+                            <span className="block">
                                 Eyelid Surgery
                                 <br /> (cosmetic & medical treatments)
-                            </>
+                            </span>
                         ),
                         url: '/eye-treatments/eyelid-surgery',
                         slug: 'eye-treatments/eyelid-surgery-surgery',
@@ -225,9 +225,9 @@ export const navMenuList: NavMenuType[] = [
             {
                 type: 'text',
                 name: (
-                    <>
+                    <span className="block">
                         Corneal Diseases &<br /> Treatments
-                    </>
+                    </span>
                 ),
                 url: '/corneal-diseases-treatments',
                 slug: 'corneal-diseases-treatments',
@@ -351,9 +351,9 @@ export const navMenuList: NavMenuType[] = [
             {
                 type: 'text',
                 name: (
-                    <>
+                    <span className="block">
                         Our eye diagnostics &<br /> technology
-                    </>
+                    </span>
                 ),
                 url: '/our-specialists/our-eye-diagnostics-technology',
                 slug: 'our-specialists/our-eye-diagnostics-technology',

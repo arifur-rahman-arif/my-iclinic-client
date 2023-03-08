@@ -23,9 +23,6 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -220,18 +217,6 @@ export default function MacularDegeneration(): JSX.Element {
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br /> Macular Degeneration
-                            <br /> treatment
-                        </>
-                    }
-                />
             </LazyComponent>
 
             <LazyComponent>

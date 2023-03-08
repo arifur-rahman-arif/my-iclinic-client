@@ -20,12 +20,10 @@ const GlaucomaSection: FC = (): JSX.Element => {
                 <div className="grid gap-12 md:max-w-[46.7rem]">
                     <H2Variant1>Glaucoma Conditions</H2Variant1>
 
+                    <strong>There are two main types of Glaucoma:</strong>
                     <BulletList
                         className="!ml-12 md:max-w-[32.3rem]"
-                        list={[
-                            'One dedicated presbyond specialist for your treatment',
-                            'Most affordable price in London'
-                        ]}
+                        list={['Open angle glaucoma', 'Closed angle glaucoma']}
                         listItemClassName="md:text-[1.7rem] font-mulishMedium"
                         bulletPoint={
                             <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
@@ -33,9 +31,8 @@ const GlaucomaSection: FC = (): JSX.Element => {
                     />
 
                     <p>
-                        Glaucoma tends to run in families and certain groups are more at risk than others. We understand
-                        this can be worrying, which is why our Glaucoma specialists are here to help manage and treat
-                        your Glaucoma for a better and happier quality of life!
+                        These glaucoma conditions differ in how they present and how they are managed to help remission
+                        your symptoms and prevent the potential risk of blindness.
                     </p>
 
                     <div className="grid gap-6">

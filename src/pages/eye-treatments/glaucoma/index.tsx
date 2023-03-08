@@ -13,8 +13,7 @@ import {
     GlaucomaSection,
     Masthead,
     PlasticFree,
-    SideImageSection,
-    UspSection
+    SideImageSection
 } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
@@ -28,7 +27,6 @@ import { leftRightListGlaucoma, leftRightListGlaucomma } from '@/page-sections/L
 import { StarComponent } from '@/page-sections/SectionParts/StarComponent';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { glaucomaStackList } from '@/page-sections/StackedSection';
-import { homeUspList } from '@/page-sections/Usp/uspList';
 import ImprovedVisionLarge from '@/section-images/improved-vision-large.png';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
@@ -121,9 +119,7 @@ export default function GlaucomaPage(): JSX.Element {
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        Speak to a <span className="font-latoBold uppercase">Glaucoma</span> specialist
-                    </strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -131,7 +127,7 @@ export default function GlaucomaPage(): JSX.Element {
 
             <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
-            <UspSection list={homeUspList} />
+            {/* <UspSection list={homeUspList} /> */}
 
             <SideImageSection
                 h2Heading={
@@ -140,7 +136,7 @@ export default function GlaucomaPage(): JSX.Element {
                     </div>
                 }
                 h3LightHeading="Manage and Treat your glaucoma"
-                h3BoldHeading="with our 5-star Glaucoma clinic"
+                h3BoldHeading="with our 5-star Glaucoma clinic in London"
                 altText=""
                 descriptions={[
                     'Glaucoma is a chronic eye condition which is detected by our Glaucoma specialists after careful and regular assessments for your eyes.',

@@ -25,7 +25,7 @@ const BandImage = ({ title, imageURL, bandColor }: BandImageInterface): JSX.Elem
                         height={244}
                         quality={70}
                         alt=""
-                        className={`object-cover md:h-[22rem] md:w-[28rem] 2xl:h-auto 2xl:w-auto`}
+                        className={`object-cover md:h-full md:min-w-[33.2rem] lg:w-full lg:h-full`}
                     />
                 </div>
 

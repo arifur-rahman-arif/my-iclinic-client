@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import Image, { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import Banner from './Banner';
 
 export interface MastheadInterface {
@@ -48,6 +48,7 @@ const Masthead = ({
     smallImageDefaultClassName = 'w-full object-cover md:hidden',
     smallImageClassName
 }: MastheadInterface): JSX.Element => {
+    const [imageLoaded, setImageLoaded] = useState<boolean>(false);
     return (
         <Section defaultClassName="mt-12 md:mt-24 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative">
             <div className="absolute right-0 left-auto -z-[1] min-h-[30rem] w-full max-w-[123.1rem] sm:hidden md:h-full">
@@ -55,11 +56,10 @@ const Masthead = ({
                     src={imageSmall}
                     alt={altText || ''}
                     className={`${smallImageDefaultClassName} ${smallImageClassName}`}
-                    priority={true}
                     quality={70}
                     placeholder={typeof imageSmall === 'string' ? 'empty' : 'blur'}
-                    width={433}
-                    height={334}
+                    fill
+                    onLoadingComplete={() => setImageLoaded(true)}
                 />
             </div>
             <div
@@ -71,6 +71,7 @@ const Masthead = ({
                     fill
                     className={`object-cover object-center`}
                     placeholder={typeof imageMedium === 'string' ? 'empty' : 'blur'}
+                    onLoadingComplete={() => setImageLoaded(true)}
                 />
             </div>
             <Image
@@ -78,10 +79,20 @@ const Masthead = ({
                 alt={altText || ''}
                 fill
                 className={`${imagePosition} absolute left-0 hidden h-2/4 w-full object-contain md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]`}
-                priority={true}
                 quality={100}
                 placeholder={typeof imageLarge === 'string' ? 'empty' : 'blur'}
+                onLoadingComplete={() => setImageLoaded(true)}
             />
+
+            {/* Code experiment */}
+
+            {!imageLoaded ? (
+                <div className="bg-gray-200 animate-pulse w-full absolute left-0 min-h-[30rem]  md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]"></div>
+            ) : (
+                <></>
+            )}
+
+            {/* End code experiment */}
             <Container className="relative z-[2] grid h-full min-h-[50rem] translate-y-[15%] grid-cols-1 items-center justify-start md:min-h-[63rem] md:translate-y-0">
                 <Banner
                     h1Title={h1Title}

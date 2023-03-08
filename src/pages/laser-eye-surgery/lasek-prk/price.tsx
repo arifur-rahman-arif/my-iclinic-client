@@ -54,7 +54,7 @@ export default function LasekPricing(): JSX.Element {
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 altText=""
-                imagePosition="object-[-30rem_center] 2xl:object-[-20rem_center]"
+                imagePosition="!object-cover object-[-35rem_center]"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (

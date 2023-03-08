@@ -56,7 +56,7 @@ const FullWidthImageSection = ({
     desktopImage,
     altText,
     sectionClass = 'md:bg-brandLight',
-    defaultContainerClass = 'grid grid-cols-1 items-center px-0 mx-8 pb-12 md:py-24 md:mx-auto w-[calc(100%_-_4rem)] md:w-full rounded-tl-primary rounded-tr-primary md:rounded-none gap-12 md:grid-cols-2 md:gap-24 xl:gap-32 bg-brandLight md:bg-none',
+    defaultContainerClass = 'grid grid-cols-1 items-center !px-0 mx-8 pb-12 md:py-24 md:mx-auto w-[calc(100%_-_4rem)] md:w-full rounded-tl-primary rounded-tr-primary md:rounded-none gap-12 md:grid-cols-2 md:gap-24 xl:gap-32 bg-brandLight md:bg-none',
     containerClass,
     overlayAnimation,
     albumAnimation,

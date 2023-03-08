@@ -19,9 +19,7 @@ import { useEffect, useState } from 'react';
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
+
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
@@ -133,17 +131,6 @@ export default function EyeLidPage(): JSX.Element {
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br /> Eyelid surgery
-                        </>
-                    }
-                />
             </LazyComponent>
 
             <LazyComponent>
