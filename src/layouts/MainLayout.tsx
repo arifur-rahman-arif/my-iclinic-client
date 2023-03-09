@@ -44,7 +44,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatbot && <Script src="//fw-cdn.com/2445648/3022574.js" chat="true" strategy="lazyOnload" />}
+            {loadChatbot && <Script src="//fw-cdn.com/3699003/3133103.js" chat="true" strategy="lazyOnload" />}
             <Header />
             {children}
             <LazyComponent>
