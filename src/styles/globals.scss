@@ -264,9 +264,9 @@ body {
     }
 
     #fc_frame {
-        display: none !important;
-        @include media-breakpoint-up(sm) {
-            display: block !important;
+        @include media-breakpoint-down(sm) {
+            bottom: 85px !important;
+            right: 10px !important;
         }
     }
 }

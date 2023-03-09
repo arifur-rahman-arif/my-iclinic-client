@@ -68,7 +68,7 @@ const OffscreenSlider = ({ sliderList }: OffscreenSliderInterface): JSX.Element 
             }}
         >
             {sliderList.map((item, index) => (
-                <SwiperSlide className="w-full pb-0 pl-8 md:pl-16 md:pb-0">
+                <SwiperSlide className="w-full pb-0 pl-8 md:pl-16 md:pb-0" key={index}>
                     <Slide {...item} />
                 </SwiperSlide>
             ))}
