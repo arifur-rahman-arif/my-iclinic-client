@@ -26,7 +26,7 @@ const MobileNavbar = (): JSX.Element => {
     return (
         <>
             <div
-                className={`fixed top-0 left-0 z-[999] h-screen -translate-x-full bg-white transition-all duration-[400] ${
+                className={`fixed top-0 left-0 z-[999] h-screen -translate-x-full bg-white transition-all duration-[400] xl:hidden ${
                     navbarPositionState[anchorPosition] ? 'translate-x-0 shadow-shadow1' : ''
                 }`}
             >

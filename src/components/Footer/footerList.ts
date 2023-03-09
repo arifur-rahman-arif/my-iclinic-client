@@ -68,19 +68,19 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: '5 star technology and treatment',
-                url: '#'
+                url: '/our-specialists/our-eye-diagnostics-technology'
             },
             {
                 text: 'Conveniently located in North London',
-                url: '#'
+                url: ''
             },
             {
                 text: 'Top visual outcomes',
-                url: '#'
+                url: ''
             },
             {
                 text: 'Care Quality Commission',
-                url: '#'
+                url: ''
             }
         ]
     },

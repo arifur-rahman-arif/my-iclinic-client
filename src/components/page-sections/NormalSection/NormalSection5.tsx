@@ -3,7 +3,7 @@ import { Section } from '@/components/Section';
 
 interface NormalSection5Interface {
     heading: string;
-    description: string;
+    description?: string;
 }
 
 /**
@@ -18,12 +18,8 @@ const NormalSection5 = ({ heading, description }: NormalSection5Interface): JSX.
     return (
         <Section>
             <Container className="grid gap-12 justify-items-center">
-                <h2 className="w-full normal-case text-center max-w-[64rem]">
-                    {heading}
-                </h2>
-                <p className="text-center max-w-[53rem]">
-                    {description}
-                </p>
+                <h2 className="w-full normal-case text-center max-w-[64rem]">{heading}</h2>
+                {description && <p className="text-center max-w-[53rem]">{description}</p>}
             </Container>
         </Section>
     );

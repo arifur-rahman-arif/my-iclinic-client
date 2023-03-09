@@ -1,10 +1,10 @@
 import { NavLinkInterface } from '@/components/Header/NavLink';
 import {
-    NavbarInterface,
-    toggleNavbar,
     anchorPosition,
+    closeParentSubmenus,
     closeSubmenus,
-    closeParentSubmenus
+    NavbarInterface,
+    toggleNavbar
 } from '@/features/navbar/navbarSlice';
 import { AppState } from '@/store';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
                             {menu.name || ''}
                         </span>
                     ) : (
-                        <span className="xl:whitespace-nowrap font-mulishBold text-[1.6rem] leading-8 cursor-pointer">
+                        <span className="xl:whitespace-nowrap font-mulishBold text-[1.6rem] xl:text-[1.8rem] leading-8 cursor-pointer">
                             {menu.name || ''}
                         </span>
                     )}
@@ -64,13 +64,13 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
             )}
 
             {/* Indicator */}
-            {/* {!menu.parentMenu && ( */}
-            {/*     <span */}
-            {/*         className={`w-4 h-4 bg-brand rounded-full transition-all duration-700 absolute left-0 top-2/4 -translate-y-[45%] -translate-x-8 ${ */}
-            {/*             isMenuActive && !menu.parentMenu ? 'scale-100' : 'scale-0' */}
-            {/*         } block`} */}
-            {/*     ></span> */}
-            {/* )} */}
+            {!menu.parentMenu && (
+                <span
+                    className={`w-4 h-4 bg-brand rounded-full transition-all duration-700 absolute left-0 top-2/4 -translate-y-[35%] -translate-x-8 ${
+                        isMenuActive && !menu.parentMenu ? 'scale-100' : 'scale-0'
+                    } block`}
+                ></span>
+            )}
             {!menu.parentMenu && menu.submenu && (
                 <span
                     className={`${

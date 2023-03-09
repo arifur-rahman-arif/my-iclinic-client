@@ -232,7 +232,11 @@ export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
             },
             {
                 title: 'Refractive lens exchange',
-                price: 'From £2,750 per eye',
+                price: (
+                    <>
+                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £2,750 per eye
+                    </>
+                ),
                 description:
                     'Correcting your vision with artificial lenses. Our refractive specialist will discuss suitable lens options and lens prices in your private consultation.'
             }

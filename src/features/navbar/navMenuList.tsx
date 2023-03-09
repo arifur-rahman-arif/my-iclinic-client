@@ -12,6 +12,7 @@ export interface NavMenuType {
     barAnimation?: boolean;
     dotAnimation?: boolean;
     subMenuOpen?: boolean;
+    megaMenu?: boolean;
 }
 
 export const navMenuList: NavMenuType[] = [
@@ -116,6 +117,7 @@ export const navMenuList: NavMenuType[] = [
         slug: 'eye-Treatments',
         parentSubmenu: true,
         subMenuOpen: false,
+        megaMenu: true,
         submenu: [
             {
                 type: 'text',
@@ -225,9 +227,9 @@ export const navMenuList: NavMenuType[] = [
             {
                 type: 'text',
                 name: (
-                    <span className="block">
+                    <>
                         Corneal Diseases &<br /> Treatments
-                    </span>
+                    </>
                 ),
                 url: '/corneal-diseases-treatments',
                 slug: 'corneal-diseases-treatments',

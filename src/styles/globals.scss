@@ -267,6 +267,7 @@ body {
         @include media-breakpoint-down(sm) {
             bottom: 85px !important;
             right: 10px !important;
+            z-index: 99 !important;
         }
     }
 }

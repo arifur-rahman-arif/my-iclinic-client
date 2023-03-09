@@ -1,0 +1,14 @@
+@import '/src/styles/utils/breakpoints';
+
+.styles {
+    :global {
+        .submenu {
+            //display: none;
+            ul {
+                @include media-breakpoint-up('xl') {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

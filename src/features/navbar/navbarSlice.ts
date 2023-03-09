@@ -40,6 +40,7 @@ const navbarSlice = createSlice({
             const { menuSlug, isParentMenu } = action.payload;
 
             const windowWidth = window.innerWidth;
+
             if (windowWidth < 1280) {
                 state.navMenus = closeOtherSubmenus({
                     navMenus: state.navMenus,
@@ -47,7 +48,6 @@ const navbarSlice = createSlice({
                     isParentMenu: isParentMenu || false
                 });
             }
-
             state.navMenus = openCurrentSubmenu(state.navMenus, menuSlug);
         },
         closeSubmenus: (state: NavbarInterface) => {
@@ -75,13 +75,23 @@ const navbarSlice = createSlice({
  *
  * @param {NavMenuType[]} navMenus
  * @param {string} menuSlug
- * @returns {*}  {NavMenuType[]}
+ * @param {string} device
+ * @returns {NavMenuType[]}
  */
-const openCurrentSubmenu = (navMenus: NavMenuType[], menuSlug: string): NavMenuType[] => {
+const openCurrentSubmenu = (
+    navMenus: NavMenuType[],
+    menuSlug: string,
+    device: 'mobile' | 'desktop' = 'mobile'
+): NavMenuType[] => {
+    const windowWidth = window.innerWidth;
+
     navMenus.forEach((navMenu, index) => {
         if (navMenu.slug === menuSlug) {
-            return (navMenus[index].subMenuOpen = !navMenus[index].subMenuOpen);
+            return (navMenus[index].subMenuOpen = true);
         } else {
+            if (windowWidth >= 1280) {
+                if (navMenus[index].parentSubmenu) navMenus[index].subMenuOpen = false;
+            }
             navMenu.submenu ? openCurrentSubmenu(navMenu.submenu, menuSlug) : '';
         }
     });

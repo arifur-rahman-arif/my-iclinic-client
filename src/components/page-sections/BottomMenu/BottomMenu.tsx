@@ -21,6 +21,8 @@ const BottomMenu = (): JSX.Element => {
     const handleClick = () => {
         setIsZoomed(!isZoomed);
         const body = document.querySelector('body');
+        if (!body) return;
+
         if (isZoomed) {
             body.style.transform = 'scale(1)';
         } else {

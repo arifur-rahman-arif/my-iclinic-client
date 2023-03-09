@@ -12,9 +12,10 @@ import { IconButton } from '@mui/material';
 import gsap from 'gsap';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleLink from './SingleLink';
+import styles from './styles/menu.module.scss';
 
 export interface NavLinkInterface {
     index: number;
@@ -26,6 +27,7 @@ export interface NavLinkInterface {
 /**
  * Navigation link component
  *
+ * @param {number} index
  * @param {NavMenuType} menu
  * @param {boolean} isMenuActive
  * @param {boolean | undefined} closeMobileMenu
@@ -37,11 +39,11 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
     const dispatch = useDispatch();
     const routerObject = useRouter();
     const deviceSize = useDeviceSize();
-    const [lastY, setLastY] = useState<number>(0);
+    // Const [lastY, setLastY] = useState<number>(0);
 
     const submenuRef = useRef<HTMLDivElement | null>(null);
     const iconRef = useRef<HTMLButtonElement | null>(null);
-    const [menuStateClass, setMenuStateClass] = useState<string>('overflow-hidden');
+    // Const [menuStateClass, setMenuStateClass] = useState<string>('overflow-hidden');
 
     /**
      * Toggle the submenu state
@@ -59,6 +61,8 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
     };
 
     useEffect(() => {
+        if (!submenuRef.current) return;
+
         if (menu.subMenuOpen) {
             // Rotate -90deg the submenu icon
             iconRef.current &&
@@ -69,124 +73,115 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                 });
             // Open the submenu
             if (deviceSize === 'xl') {
-                submenuRef.current &&
-                    gsap.to(submenuRef.current, {
-                        maxHeight: '80vh',
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: 'expo.inOut'
-                    });
+                gsap.to(submenuRef.current, {
+                    maxHeight: 'fit-content',
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: 'expo.inOut',
+                    pointerEvents: 'auto'
+                });
             } else {
-                submenuRef.current &&
-                    gsap.to(submenuRef.current, {
-                        maxHeight: 'max-content',
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: 'expo.inOut'
-                    });
-            }
-        } else {
-            // Rotate 0deg the submenu icon
-            iconRef.current &&
-                gsap.to(iconRef.current, {
-                    rotate: 0,
+                gsap.to(submenuRef.current, {
+                    maxHeight: '500rem',
+                    opacity: 1,
                     duration: 0.8,
                     ease: 'expo.inOut'
                 });
+            }
+        } else {
+            // Rotate 0deg the submenu icon
+            gsap.to(iconRef.current, {
+                rotate: 0,
+                duration: 0.8,
+                ease: 'expo.inOut'
+            });
             // Close the submenu
-            submenuRef.current &&
+            if (deviceSize === 'xl') {
+                gsap.to(submenuRef.current, {
+                    duration: 0.8,
+                    opacity: 0,
+                    ease: 'expo.inOut'
+                });
+            } else {
                 gsap.to(submenuRef.current, {
                     maxHeight: 0,
                     duration: 0.8,
                     opacity: 0,
                     ease: 'expo.inOut'
                 });
+            }
         }
 
-        if (menu.subMenuOpen) {
-            setTimeout(() => {
-                setMenuStateClass('overflow-y-auto');
-            }, 500);
-        } else {
-            setMenuStateClass('overflow-hidden');
-        }
+        // If (menu.subMenuOpen) {
+        //     setTimeout(() => {
+        //         setMenuStateClass('overflow-y-auto');
+        //     }, 500);
+        // } else {
+        //     setMenuStateClass('overflow-hidden');
+        // }
     }, [navMenus]);
 
     // Preserve the submenu open style based on state when page loads first time
-    useEffect(() => {
-        if (menu.subMenuOpen) {
-            // Rotate -90deg the submenu icon
-            iconRef.current &&
-                gsap.to(iconRef.current, {
-                    rotate: -90,
-                    duration: 0,
-                    ease: 'expo.inOut'
-                });
-            // Open the submenu
-            submenuRef.current &&
-                gsap.to(submenuRef.current, {
-                    maxHeight: '200rem',
-                    duration: 0,
-                    ease: 'expo.inOut'
-                });
-        } else {
-            // Rotate 0deg the submenu icon
-            iconRef.current &&
-                gsap.to(iconRef.current, {
-                    rotate: 0,
-                    duration: 0,
-                    ease: 'expo.inOut'
-                });
-            // Close the submenu
-            submenuRef.current &&
-                gsap.to(submenuRef.current, {
-                    maxHeight: 0,
-                    duration: 0,
-                    ease: 'expo.inOut'
-                });
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (menu.subMenuOpen) {
+    //         // Rotate -90deg the submenu icon
+    //         iconRef.current &&
+    //             gsap.to(iconRef.current, {
+    //                 rotate: -90,
+    //                 duration: 0,
+    //                 ease: 'expo.inOut'
+    //             });
+    //         // Open the submenu
+    //         submenuRef.current &&
+    //             gsap.to(submenuRef.current, {
+    //                 maxHeight: '200rem',
+    //                 duration: 0,
+    //                 ease: 'expo.inOut'
+    //             });
+    //     } else {
+    //         // Rotate 0deg the submenu icon
+    //         iconRef.current &&
+    //             gsap.to(iconRef.current, {
+    //                 rotate: 0,
+    //                 duration: 0,
+    //                 ease: 'expo.inOut'
+    //             });
+    //         // Close the submenu
+    //         submenuRef.current &&
+    //             gsap.to(submenuRef.current, {
+    //                 maxHeight: 0,
+    //                 duration: 0,
+    //                 ease: 'expo.inOut'
+    //             });
+    //     }
+    // }, []);
 
-    /**
-     * Move the menu to vertical way when user cursor moves over the submenu
-     *
-     * @param {React.MouseEvent<HTMLDivElement>} event
-     */
-    const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-        event.preventDefault();
-        const { current } = submenuRef;
-
-        if (!current) return;
-
-        const { clientY } = event;
-        const deltaY = (clientY - lastY) / 1.5;
-
-        setLastY(clientY);
-
-        current.scrollTop += deltaY;
-    };
+    // /**
+    //  * Move the menu to vertical way when user cursor moves over the submenu
+    //  *
+    //  * @param {React.MouseEvent<HTMLDivElement>} event
+    //  */
+    // const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    //     event.preventDefault();
+    //     const { current } = submenuRef;
+    //
+    //     if (!current) return;
+    //
+    //     const { clientY } = event;
+    //     const deltaY = (clientY - lastY) / 1.5;
+    //
+    //     setLastY(clientY);
+    //
+    //     current.scrollTop += deltaY;
+    // };
 
     return (
         <>
             {menu?.submenu ? (
                 <li
-                    className={`relative flex w-full flex-col items-start justify-center xl:w-auto group/menu-list ${
+                    className={`flex w-full flex-col items-start justify-center xl:w-auto group/menu-list ${
                         menu.parentMenu && 'parent-menu'
-                    }`}
-                    onMouseEnter={(e) => {
-                        if (deviceSize === 'xl') {
-                            menu.parentMenu && dispatch(openSubmenu({ menuSlug: menu.slug }));
-                        }
-                    }}
-                    onMouseLeave={() => {
-                        if (deviceSize === 'xl') {
-                            if (submenuRef.current) {
-                                submenuRef.current.scrollTop = 0;
-                            }
-
-                            menu.parentMenu && dispatch(closeSubmenu({ menuSlug: menu.slug }));
-                        }
-                    }}
+                    } ${menu.megaMenu ? styles.styles : 'relative'}`}
                     onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -197,6 +192,11 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         className={`relative flex ${
                             menu.parentMenu ? 'items-center' : 'items-start'
                         } justify-between xl:justify-start xl:gap-0`}
+                        onMouseEnter={(e) => {
+                            if (deviceSize === 'xl') {
+                                menu.parentMenu && dispatch(openSubmenu({ menuSlug: menu.slug }));
+                            }
+                        }}
                     >
                         <SingleLink
                             menu={menu}
@@ -208,7 +208,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         <IconButton
                             ref={iconRef}
                             className={`absolute right-0 top-0 xl:relative ${
-                                menu.parentMenu ? 'xl:translate-y-[0.1rem]' : 'xl:-translate-y-[0.1rem]'
+                                menu.parentMenu ? 'xl:translate-y-[0.1rem]' : 'xl:-translate-y-[0.1rem] xl:!hidden'
                             }`}
                             title="Dropdown"
                             onClick={(e) => {
@@ -219,7 +219,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         >
                             <Image
                                 src="/images/icons/icon-arrow-down.svg"
-                                className="h-[1.4rem] w-[1.4rem]"
+                                className="h-[1.2rem] w-[1.2rem] xl:h-[1.4rem] xl:w-[1.4rem]"
                                 alt=""
                                 width={14}
                                 height={14}
@@ -229,15 +229,30 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
 
                     <div
                         ref={submenuRef}
-                        className={`submenu left-0 opacity-0 max-h-0 rounded-bl-primary rounded-br-primary ${menuStateClass} xl:top-full xl:bg-white  ${
+                        className={`submenu left-0 opacity-0 max-h-0 rounded-bl-primary rounded-br-primary xl:top-full xl:bg-white xl:pointer-events-none ${
                             menu.parentSubmenu ? `xl:absolute xl:pl-6 xl:left-0` : ''
-                        } ${menu.parentMenu && 'xl:mt-10'}`}
-                        onMouseMove={handleMouseMove}
+                        } ${menu.parentMenu && 'xl:mt-10'} ${
+                            menu.megaMenu && 'xl:w-full xl:shadow-shadow2 xl:!mt-0 xl:!pl-0'
+                        }`}
+                        onMouseLeave={() => {
+                            if (deviceSize === 'xl') {
+                                if (submenuRef.current?.style) {
+                                    // @ts-ignore
+                                    submenuRef.current.style.pointerEvents = 'none';
+                                }
+
+                                menu.parentMenu && dispatch(closeSubmenu({ menuSlug: menu.slug }));
+                            }
+                        }}
                     >
                         <ul
-                            className={`ml-8 flex mt-8 xl:mt-0 xl:gap-6 items-start flex-col justify-start gap-8 xl:ml-0 xl:pl-8 xl:pr-14 ${
+                            className={`ml-8 flex mt-8 xl:mt-0 xl:gap-6 items-start flex-col justify-start gap-8 xl:ml-0 ${
                                 menu.parentSubmenu ? 'xl:py-8' : ''
-                            } ${!menu.parentMenu && '!mt-6'}`}
+                            } ${!menu.parentMenu && '!mt-6'} xl:pl-8 ${
+                                menu.megaMenu ?
+                                    `xl:flex-wrap xl:flex-row xl:gap-16 xl:!py-16 xl:!px-16 xl:grid xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]` :
+                                    'xl:pr-14 '
+                            }`}
                         >
                             {menu.submenu.map((menu: NavMenuType, index: number) => (
                                 <NavLink
@@ -251,13 +266,13 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         </ul>
                     </div>
 
-                    {menu.parentMenu && (
-                        <span
-                            className={`hidden xl:inline-block ${
-                                isMenuActive ? 'w-full' : 'w-0'
-                            } group-hover/menu-list:w-full transition-all duration-300 h-2 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
-                        ></span>
-                    )}
+                    {/* {menu.parentMenu && ( */}
+                    {/*     <span */}
+                    {/*         className={`hidden xl:inline-block ${ */}
+                    {/*             isMenuActive ? 'w-full' : 'w-0' */}
+                    {/*         } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`} */}
+                    {/*     ></span> */}
+                    {/* )} */}
                 </li>
             ) : (
                 <li>

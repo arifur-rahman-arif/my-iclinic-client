@@ -3,7 +3,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { AdvanceEyeCare, Masthead, SideImageSection } from '@/components/page-sections';
+import { AdvanceEyeCare, CtaSection2, Masthead, SideImageSection } from '@/components/page-sections';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-large.png';
 import MastheadImageMedium from '@/masthead/masthead-eye-diagnostics-technology-medium.png';
@@ -13,6 +13,7 @@ import { EyeDiagnosticsPageContentInterface, PageDataInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import NormalSection5 from 'src/components/page-sections/NormalSection/NormalSection5';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -29,8 +30,7 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 
 interface DataInterface
     extends EyeDiagnosticsPageContentInterface,
-        PageDataInterface<EyeDiagnosticsPageContentInterface> {
-}
+        PageDataInterface<EyeDiagnosticsPageContentInterface> {}
 
 /**
  * Url: /eye-treatments/other-eye-conditions/conjunctivitis
@@ -119,8 +119,7 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                             descriptions={[
                                 'Every pair of eyes are unique and different. We understand that every patient needs careful and precise attention to detail in their eye health to find the best treatment plan for them.',
                                 'Our ophthalmic technology and equipment facilities are highly advanced in the private eye care industry, achieving accurate and comprehensive screening assessments.',
-                                'The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare.',
-                                'Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children\'s pediatric eye care and more.'
+                                "Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children's pediatric eye care and more."
                             ]}
                         />
                     </>
@@ -137,6 +136,8 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 }}
             />
 
+            <NormalSection5 heading="The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare." />
+
             <SideImageSection
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 h3LightHeading={
@@ -148,6 +149,8 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 h3BoldHeading="assessment & scanning"
                 customColumn={<AdvanceEyeCare />}
             />
+
+            <CtaSection2 title="Interested in working with us?" excludeSloganText />
 
             <LazyComponent>
                 <CompanyLogos />

@@ -67,7 +67,7 @@ const Header = (): JSX.Element => {
                 ref={headerRef}
                 className="fixed overflow-y-auto xl:overflow-visible top-0 left-0 z-[99] h-24 w-full bg-white shadow-shadow1 transition-all duration-500 xl:h-[11.4rem] shadow-none hover:xl:shadow-none xl:shadow-none"
             >
-                <Container className="grid h-full grid-cols-1 items-center gap-12 xl:grid-cols-[1fr_auto]">
+                <Container className="grid h-full grid-cols-1 items-center gap-12 xl:grid-cols-[1fr_auto] relative">
                     <div className="grid h-full grid-cols-[auto_1fr] items-center bg-white xl:grid-cols-[auto_1fr_auto]">
                         <Link href="/" className="">
                             <Image

@@ -1,3 +1,7 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
 import {
     BulletPoint,
     CompanyLogos2,
@@ -7,25 +11,15 @@ import {
     PriceSection,
     SideImageSection
 } from '@/components/page-sections';
-
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { cataractPriceList } from '@/components/page-sections/PriceCard/priceList';
-import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import dynamic from 'next/dynamic';
-import { BreadCrumb } from '@/components/Breadcrumb';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import MastheadImageLarge from '@/masthead/masthead-cataract-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract-pricing.png';
-import MastheadImageLarge from '@/masthead/masthead-cataract-pricing-large.png';
+import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
