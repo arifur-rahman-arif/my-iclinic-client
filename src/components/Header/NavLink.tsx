@@ -188,6 +188,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         toggleSubmenu(menu.slug, menu.parentMenu || false);
                     }}
                 >
+                    {/* The parent menu text */}
                     <div
                         className={`relative flex ${
                             menu.parentMenu ? 'items-center' : 'items-start'
@@ -225,6 +226,14 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                                 height={14}
                             />
                         </IconButton>
+
+                        {menu.parentMenu && (
+                            <span
+                                className={`hidden xl:inline-block ${isMenuActive ? 'w-full' : 'w-0'} ${
+                                    menu.subMenuOpen && 'w-full'
+                                } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
+                            ></span>
+                        )}
                     </div>
 
                     <div
@@ -265,14 +274,6 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                             ))}
                         </ul>
                     </div>
-
-                    {/* {menu.parentMenu && ( */}
-                    {/*     <span */}
-                    {/*         className={`hidden xl:inline-block ${ */}
-                    {/*             isMenuActive ? 'w-full' : 'w-0' */}
-                    {/*         } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`} */}
-                    {/*     ></span> */}
-                    {/* )} */}
                 </li>
             ) : (
                 <li>
