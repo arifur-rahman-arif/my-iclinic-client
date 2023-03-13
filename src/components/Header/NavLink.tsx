@@ -77,8 +77,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                     maxHeight: 'fit-content',
                     opacity: 1,
                     duration: 0.8,
-                    ease: 'expo.inOut',
-                    pointerEvents: 'auto'
+                    ease: 'expo.inOut'
                 });
             } else {
                 gsap.to(submenuRef.current, {
@@ -238,18 +237,13 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
 
                     <div
                         ref={submenuRef}
-                        className={`submenu left-0 opacity-0 max-h-0 rounded-bl-primary rounded-br-primary xl:top-full xl:bg-white xl:pointer-events-none ${
+                        className={`submenu left-0 opacity-0 max-h-0 rounded-bl-primary rounded-br-primary xl:top-full xl:bg-white  ${
                             menu.parentSubmenu ? `xl:absolute xl:pl-6 xl:left-0` : ''
                         } ${menu.parentMenu && 'xl:mt-10'} ${
                             menu.megaMenu && 'xl:w-full xl:shadow-shadow2 xl:!mt-0 xl:!pl-0'
-                        }`}
+                        } ${menu.subMenuOpen ? styles.activeSubmenu : styles.disabledSubmenu}`}
                         onMouseLeave={() => {
                             if (deviceSize === 'xl') {
-                                if (submenuRef.current?.style) {
-                                    // @ts-ignore
-                                    submenuRef.current.style.pointerEvents = 'none';
-                                }
-
                                 menu.parentMenu && dispatch(closeSubmenu({ menuSlug: menu.slug }));
                             }
                         }}

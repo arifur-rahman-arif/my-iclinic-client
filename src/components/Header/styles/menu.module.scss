@@ -12,3 +12,19 @@
         }
     }
 }
+
+.activeSubmenu {
+    pointer-events: auto !important;
+
+    * {
+        pointer-events: auto !important;
+    }
+}
+
+.disabledSubmenu {
+    pointer-events: none !important;
+
+    * {
+        pointer-events: none !important;
+    }
+}

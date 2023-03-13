@@ -73,7 +73,7 @@ const DateAndTime = ({
                     handleAlert({
                         showAlert: true,
                         alertType: 'error',
-                        alertMessage: (response.error as any).error
+                        alertMessage: (response.error as any).data.message
                     })
                 );
 
@@ -85,7 +85,7 @@ const DateAndTime = ({
                     handleAlert({
                         showAlert: true,
                         alertType: 'error',
-                        alertMessage: (response.error as any)?.data.data.message
+                        alertMessage: (response.error as any)?.data.message
                     })
                 );
                 return;

@@ -26,6 +26,7 @@ export const getData = async ({ url }: GetDataInterface): Promise<Response> => {
 interface PostDataInterface {
     url: string;
     body: any;
+    headers?: any;
 }
 
 /**
@@ -33,14 +34,15 @@ interface PostDataInterface {
  *
  * @param {string} url
  * @param {any} body
+ * @param {Headers | undefined} headers
  * @returns {Promise<Response>}
  */
-export const postData = async ({ url, body }: PostDataInterface): Promise<Response> => {
+export const postData = async ({ url, body, headers }: PostDataInterface): Promise<Response> => {
     try {
         return await fetch(url, {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: {
+            headers: headers || {
                 'Content-Type': 'application/json; charset=UTF-8',
                 Authorization: `Bearer ${process.env.WP_JWT_TOKEN}`
             }
