@@ -1,9 +1,12 @@
-import { NextSeo } from 'next-seo';
+import Head from 'next/head';
+import * as process from 'process';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
     title: string;
     description?: string;
+    seo: any;
+    yoastJson: any;
 }
 
 /**
@@ -12,27 +15,34 @@ interface PropInterface {
  * @param {JSX.Element | JSX.Element[] | undefined} children
  * @param {string} title
  * @param {string | undefined} description
- * @param {Pick<PropInterface, never>} other
+ * @param {any} seo
+ * @param {any} yoastJson
+ * @param {Omit<PropInterface, "description" | "title" | "seo" | "children" | "yoastJson">} other
  * @returns {JSX.Element}
  * @constructor
  */
-const Page = ({ children, title, description, ...other }: PropInterface): JSX.Element => {
+const Page = ({ children, title, description, seo, yoastJson, ...other }: PropInterface): JSX.Element => {
     return (
         <>
-            <NextSeo
-                title={`${title} | My-iClinic`}
-                description={description || ''}
-                additionalLinkTags={[
-                    {
-                        rel: 'icon',
-                        href: '/favicon.ico'
-                    }
-                    // {
-                    //     rel: 'manifest',
-                    //     href: '/manifest.json'
-                    // }
-                ]}
-            />
+            {/* <NextSeo */}
+            {/*     title={`${title} | My-iClinic`} */}
+            {/*     description={description || ''} */}
+            {/*     additionalLinkTags={[ */}
+            {/*         { */}
+            {/*             rel: 'icon', */}
+            {/*             href: '/favicon.ico' */}
+            {/*         } */}
+            {/*         // { */}
+            {/*         //     rel: 'manifest', */}
+            {/*         //     href: '/manifest.json' */}
+            {/*         // } */}
+            {/*     ]} */}
+            {/* /> */}
+
+            <Head>
+                <title>{yoastJson?.title || title}</title>
+                <div dangerouslySetInnerHTML={{ __html: seo.replaceAll(process.env.WP_URL, process.env.SITE_URL) }} />
+            </Head>
 
             {children}
         </>

@@ -14,6 +14,7 @@ import MastheadImageMedium from '@/masthead/masthead-astigmatism-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-astigmatism-small.png';
 import { AstigmatismPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
+import { getCurrentFileName, wordpressPageFields } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -35,15 +36,19 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 
 interface DataInterface extends AstigmatismPageContentInterface, PageDataInterface<AstigmatismPageContentInterface> {}
 
+interface AstigmatismProps {
+    data: DataInterface;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Lasik page component for the App
- *
- * * Url: /cataract
+ * * Url: /eye-treatments/other-eye-conditions/astigmatism
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Astigmatism({ data }: { data: DataInterface }): JSX.Element {
+export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Correcting your Astigmatism with Vision Correction Treatment';
@@ -60,6 +65,8 @@ export default function Astigmatism({ data }: { data: DataInterface }): JSX.Elem
         <Page
             title="Astigmatism and Vision Correction Treatment in London"
             description="Get the correct vision treatment needed for your eyes. Learn about our personalised care to help restore perfect vision and improve your quality of life."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -356,26 +363,16 @@ export default function Astigmatism({ data }: { data: DataInterface }): JSX.Elem
 export async function getStaticProps() {
     try {
         const pageResponse: Response = await getData({
-            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-other-eye-conditions-astigmatism`
+            url: `${process.env.WP_REST_URL}/pages?slug=${getCurrentFileName(
+                __filename
+            )}&_fields=${wordpressPageFields()}`
         });
 
-        if (pageResponse.status !== 200) {
+        if (!pageResponse.ok) {
             throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
         }
 
-        const pageJsonResponse: Array<any> = await pageResponse.json();
-
-        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
-
-        const pageID = pageJsonResponse[0].id;
-
-        if (!pageID) throw new Error('Page ID is not found');
-
-        const response = await getData({
-            url: `${process.env.WP_REST_URL}/pages/${pageID}`
-        });
-
-        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await response.json();
+        const [data]: WpPageResponseInterface<AstigmatismPageContentInterface> = await pageResponse.json();
 
         return {
             /* eslint-disable */
@@ -405,11 +402,15 @@ export async function getStaticProps() {
                         ...data.acf.section_5,
                         descriptions: convertArrayOfObjectsToStrings(data.acf.section_5?.descriptions)
                     }
-                } as DataInterface
+                } as DataInterface,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
         };
+
+        return { props: {} };
     } catch (error: any) {
         console.error(error);
         return { props: {} };

@@ -1,5 +1,6 @@
 import { CountryCode } from 'libphonenumber-js';
 import { NextRouter } from 'next/router';
+import path from 'path';
 
 /**
  * Trim the text to a specified length with ...
@@ -257,4 +258,22 @@ export const isLocalStorageEnabled = (): boolean => {
     }
 
     return localStorageEnabled;
+};
+
+/**
+ * Get the current file name without extension
+ *
+ * @param {string} filename
+ * @returns {string}
+ */
+export const getCurrentFileName = (filename: string): string => {
+    return path.basename(filename, path.extname(filename));
+};
+
+/**
+ * Get the page fields from wordpress api response
+ * @returns {string}
+ */
+export const wordpressPageFields = (): string => {
+    return 'title,acf,yoast_head,yoast_head_json';
 };
