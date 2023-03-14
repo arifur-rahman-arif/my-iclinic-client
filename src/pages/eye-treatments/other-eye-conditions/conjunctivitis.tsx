@@ -15,11 +15,12 @@ import {
 import { conjunctivitisFaqList } from '@/components/page-sections/Faq/faqList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-conjunctivitis-large.png';
 import MastheadImageMedium from '@/masthead/masthead-conjunctivitis-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-conjunctivitis-small.png';
 import { ConjunctivitisPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -45,13 +46,19 @@ interface DataInterface
     extends ConjunctivitisPageContentInterface,
         PageDataInterface<ConjunctivitisPageContentInterface> {}
 
+interface ConjunctivitisProps {
+    data: DataInterface;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Url: /eye-treatments/other-eye-conditions/conjunctivitis
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Conjunctivitis({ data }: { data: DataInterface }): JSX.Element {
+export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Conjunctivitis Treatment London';
@@ -68,6 +75,8 @@ export default function Conjunctivitis({ data }: { data: DataInterface }): JSX.E
         <Page
             title="Conjunctivitis Treatment in London"
             description="Our team of ophthalmologists are experienced in diagnosing and treating your conjunctivitis. Contact us to begin your journey towards improved vision."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -272,27 +281,7 @@ export default function Conjunctivitis({ data }: { data: DataInterface }): JSX.E
  */
 export async function getStaticProps() {
     try {
-        const pageResponse: Response = await getData({
-            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-other-eye-conditions-conjunctivitis`
-        });
-
-        if (pageResponse.status !== 200) {
-            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
-        }
-
-        const pageJsonResponse: Array<any> = await pageResponse.json();
-
-        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
-
-        const pageID = pageJsonResponse[0].id;
-
-        if (!pageID) throw new Error('Page ID is not found');
-
-        const response = await getData({
-            url: `${process.env.WP_REST_URL}/pages/${pageID}`
-        });
-
-        const data: WpPageResponseInterface<ConjunctivitisPageContentInterface> = await response.json();
+        const data: WpPageResponseInterface<ConjunctivitisPageContentInterface> = await getPageData();
 
         return {
             /* eslint-disable */
@@ -323,7 +312,9 @@ export async function getStaticProps() {
                             };
                         })
                     }
-                } as DataInterface
+                } as DataInterface,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

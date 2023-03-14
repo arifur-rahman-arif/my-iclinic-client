@@ -13,9 +13,11 @@ import {
 } from '@/components/page-sections/LeftRight/leftRightList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-paediatric-large.png';
 import MastheadImageMedium from '@/masthead/masthead-paediatric-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-paediatric-small.png';
+import { WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -37,6 +39,12 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
     loading: () => <ComponentLoader />
 });
 
+interface PaediatricEyeCareProps {
+    data: any;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Paediatric eye care page
  *
@@ -45,7 +53,7 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
  * @export
  * @returns {JSX.Element}
  */
-export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element {
+export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEyeCareProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = "Children's Eye Care London";
@@ -62,6 +70,8 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
         <Page
             title="Paediatric Eye Care Services"
             description="Our trusted paediatric ophthalmologists deliver the best treatment for any eye problems in children. Learn more about our paediatric eye care services."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -216,4 +226,28 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

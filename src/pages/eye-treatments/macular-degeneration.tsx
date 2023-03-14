@@ -15,9 +15,11 @@ import { maculerDegenerationFaqList } from '@/components/page-sections/Faq/faqLi
 import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconAngle from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-macular-degeneration-large.png';
 import MastheadImageMedium from '@/masthead/masthead-macular-degeneration-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-macular-degeneration-small.png';
+import { WpPageResponseInterface } from '@/types';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -37,13 +39,18 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface MacularDegenerationProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  *  Url: /eye-treatments/macular-degeneration
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function MacularDegeneration(): JSX.Element {
+export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerationProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Macular Degeneration Treatment London';
@@ -61,6 +68,8 @@ export default function MacularDegeneration(): JSX.Element {
         <Page
             title="Macular Degeneration Treatment in London"
             description="Our Macular Degeneration specialists are experienced in treating and providing patients with the efficient care they need. Contact us today to book an appointment."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -229,4 +238,28 @@ export default function MacularDegeneration(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

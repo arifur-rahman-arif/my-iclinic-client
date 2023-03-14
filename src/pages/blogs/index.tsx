@@ -15,13 +15,16 @@ import { Container } from '@/components/Container';
 import Page from '@/components/Page';
 import { BlogList, TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/Section';
-import { getCategories, getPosts, getPostsPerPageValue } from '@/lib';
+import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/lib';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
+import { WpPageResponseInterface } from '@/types';
 
-interface BlogPagePropsInterface {
+interface BlogPageProps {
     posts: GeneralBlogInterface[];
     categories: BlogCategoriesInterface[];
     postsPerPageValue: number;
+    seo: any;
+    yoastJson: any;
 }
 
 /**
@@ -32,9 +35,9 @@ interface BlogPagePropsInterface {
  * @export
  * @returns {JSX.Element}
  */
-export default function Blogs({ posts, categories, postsPerPageValue }: BlogPagePropsInterface): JSX.Element {
+export default function Blogs({ posts, categories, postsPerPageValue, seo, yoastJson }: BlogPageProps): JSX.Element {
     return (
-        <Page title="Blogs" description="List of all blogs">
+        <Page title="Blogs" description="List of all blogs" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
             {posts?.length > 0 ? (
                 <BlogList blogList={posts} categoryList={categories} postsPerPageValue={postsPerPageValue} />
@@ -73,11 +76,15 @@ export async function getStaticProps() {
         const categories: BlogCategoriesInterface[] = await getCategories();
         const postsPerPageValue: number = await getPostsPerPageValue();
 
+        const data: WpPageResponseInterface<any> = await getPageData();
+
         return {
             props: {
                 posts,
                 categories,
-                postsPerPageValue
+                postsPerPageValue,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };

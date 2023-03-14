@@ -4,18 +4,18 @@ import { RecentArticlesInterface } from '@/page-sections/SingleBlogComponents/Bl
 import { ImageType } from '@/types';
 
 export default interface PostInterface {
-	ID: number;
-	slug: string;
-	image: ImageType;
-	author?: {
-		logo?: ImageType;
-		name: string;
-	};
-	title: string;
-	categories: BlogCategoriesInterface[];
-	description: string;
-	views: number;
-	readTime: string;
-	recentPosts: Array<RecentArticlesInterface>;
-	relatedPosts: Omit<GeneralBlogInterface, 'description'>[];
+    ID: number;
+    slug: string;
+    image: ImageType;
+    author?: {
+        logo?: ImageType;
+        name: string;
+    };
+    title: string;
+    categories: BlogCategoriesInterface[];
+    description: string;
+    views: number;
+    readTime: string;
+    recentPosts: Array<RecentArticlesInterface>;
+    relatedPosts: Omit<GeneralBlogInterface, 'description'>[];
 }

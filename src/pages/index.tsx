@@ -16,11 +16,13 @@ import {
 } from '@/components/page-sections';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-home-large.png';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -36,15 +38,21 @@ const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/Jo
 const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection'), {
     loading: () => <ComponentLoader />
 });
+
+interface HomeProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Home page component for the App
  *
- * * Url: /
+ * Url: /
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Home(): JSX.Element {
+export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
     const heading = "North London's Eye Hospital";
     const subheading = 'Premium eye care for all the family';
 
@@ -52,6 +60,8 @@ export default function Home(): JSX.Element {
         <Page
             title="Top Rated Eye Surgery Specialists London"
             description="Our specialist consultants offer a selection of laser eye surgery and lens surgery treatments that allow you to discover crystal clear vision."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -59,12 +69,11 @@ export default function Home(): JSX.Element {
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4 sm:max-w-[35rem]">
                         {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0 " key={index}>
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}
                             </span>
                         ))}
@@ -295,4 +304,28 @@ export default function Home(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'home' });
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

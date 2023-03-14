@@ -1,3 +1,9 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
+import Page from '@/components/Page';
 import {
     BulletPoint,
     CtaSection,
@@ -8,28 +14,24 @@ import {
     SideImageSection,
     StackColumnIcl
 } from '@/components/page-sections';
-
-import { FaPoundSign } from 'react-icons/fa';
-import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
-import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
 import { leftRightListIcl } from '@/components/page-sections/LeftRight/leftRightList';
 import { iclStackList } from '@/components/page-sections/StackedSection';
+import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconPin from '@/icons/icon-pin-small.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-icl-large.png';
 import MastheadImageSmall from '@/masthead/masthead-icl-small.png';
 import MastheadImageMedium from '@/masthead/masthead-icl.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+
+import { FaPoundSign } from 'react-icons/fa';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
@@ -41,13 +43,18 @@ const StackedSection = dynamic(() => import('@/components/page-sections/StackedS
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'));
 const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
 
+interface IclProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Url: /icl
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Icl(): JSX.Element {
+export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
 
@@ -63,7 +70,7 @@ export default function Icl(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -462,4 +469,28 @@ export default function Icl(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

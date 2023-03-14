@@ -267,7 +267,8 @@ export const isLocalStorageEnabled = (): boolean => {
  * @returns {string}
  */
 export const getCurrentFileName = (filename: string): string => {
-    return path.basename(filename, path.extname(filename));
+    const name = path.basename(filename, path.extname(filename));
+    return name === 'index' ? path.basename(path.dirname(filename)) : name;
 };
 
 /**

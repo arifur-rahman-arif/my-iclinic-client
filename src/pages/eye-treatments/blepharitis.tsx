@@ -1,3 +1,9 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
+import Page from '@/components/Page';
 import {
     CtaSection2,
     FullWidthImageSection,
@@ -5,23 +11,18 @@ import {
     SideImageSection,
     StackColumn2
 } from '@/components/page-sections';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
-import Page from '@/components/Page';
 import { blepharitisFaqList } from '@/components/page-sections/Faq/faqList';
+import { normalSlideListBlepharitis } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import MastheadImageSmall from '@/masthead/masthead-blepharitis-small.png';
-import MastheadImageMedium from '@/masthead/masthead-blepharitis-medium.png';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-blepharitis-large.png';
+import MastheadImageMedium from '@/masthead/masthead-blepharitis-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-blepharitis-small.png';
 import { blepharitisList } from '@/page-sections/SectionParts/stack-column/list';
 import FullWidthImage from '@/section-images/blepharitis.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { normalSlideListBlepharitis } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -36,6 +37,11 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface BlepharitisPageProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Presbyond page component for the App
  *
@@ -44,7 +50,7 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
  * @export
  * @returns {JSX.Element}
  */
-export default function BlepharitisPage(): JSX.Element {
+export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Blepharitis treatment in London';
@@ -59,7 +65,7 @@ export default function BlepharitisPage(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -248,4 +254,28 @@ export default function BlepharitisPage(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

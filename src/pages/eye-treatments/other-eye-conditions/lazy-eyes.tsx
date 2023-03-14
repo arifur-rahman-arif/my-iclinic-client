@@ -9,11 +9,12 @@ import { lazyEyesFaqList } from '@/components/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lazy-eyes-large.png';
 import MastheadImageMedium from '@/masthead/masthead-lazy-eyes-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-lazy-eyes-small.png';
 import { LazyEyesPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, getData, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -37,6 +38,12 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 
 interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {}
 
+interface LazyEyesProps {
+    data: DataInterface;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Lazy Eyes page component for the App
  *
@@ -45,7 +52,7 @@ interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<
  * @export
  * @returns {JSX.Element}
  */
-export default function LazyEyes({ data }: { data: DataInterface }): JSX.Element {
+export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Lazy eyes in adults & children (amblyopia)';
@@ -62,6 +69,8 @@ export default function LazyEyes({ data }: { data: DataInterface }): JSX.Element
         <Page
             title="Lazy Eye treatment in London"
             description="My-iClinic offers experienced and comprehensive treatment for Lazy eyes in adults and children (amblyopia). Get in touch with us to learn how we can help."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -364,28 +373,8 @@ export default function LazyEyes({ data }: { data: DataInterface }): JSX.Element
  */
 export async function getStaticProps() {
     try {
-        const pageResponse: Response = await getData({
-            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-other-eye-conditions-lazy-eyes`
-        });
-
-        if (pageResponse.status !== 200) {
-            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
-        }
-
-        const pageJsonResponse: Array<any> = await pageResponse.json();
-
-        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
-
-        const pageID = pageJsonResponse[0].id;
-
-        if (!pageID) throw new Error('Page ID is not found');
-
-        const response = await getData({
-            url: `${process.env.WP_REST_URL}/pages/${pageID}`
-        });
-
-        const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await response.json();
-
+        const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await getPageData();
+        k;
         return {
             /* eslint-disable */
             props: {
@@ -418,7 +407,9 @@ export async function getStaticProps() {
                         ...data.acf.section_6,
                         descriptions: convertArrayOfObjectsToStrings(data.acf.section_6?.descriptions)
                     }
-                } as DataInterface
+                } as DataInterface,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

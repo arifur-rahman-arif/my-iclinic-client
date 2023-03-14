@@ -16,9 +16,11 @@ import {
 import { flashesFaqList } from '@/components/page-sections/Faq/faqList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-flashes-floaters-large.png';
 import MastheadImageMedium from '@/masthead/masthead-flashes-floaters-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-flashes-floaters-small.png';
+import { WpPageResponseInterface } from '@/types';
 import { stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -38,13 +40,19 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface FlashesFloatersProps {
+    data: any;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Url: /eye-treatments/other-eye-conditions/conjunctivitis
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function FlashesFloaters({ data }: { data: any }): JSX.Element {
+export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloatersProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Eye Flashes & Floaters Symptoms & Treatment';
@@ -62,6 +70,8 @@ export default function FlashesFloaters({ data }: { data: any }): JSX.Element {
         <Page
             title="Eye Flashes & Floaters Treatment in London"
             description="Get help with understanding and managing the symptoms of eye flashes and floaters with our professional team at My-iClinic."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -301,4 +311,28 @@ export default function FlashesFloaters({ data }: { data: any }): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

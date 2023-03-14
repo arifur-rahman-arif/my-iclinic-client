@@ -11,12 +11,19 @@ import {
 } from '@/components/page-sections';
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { yagPriceList } from '@/components/page-sections/PriceCard/priceList';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-yag-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-yag-pricing-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-yag-pricing-small.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+
+interface IclPricingProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
  * Url: cataract/yag-capsulotomy-for-pco/price
@@ -24,12 +31,12 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
  * @export
  * @returns {JSX.Element}
  */
-export default function IclPricing(): JSX.Element {
+export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Element {
     const heading = 'YAG laser Capsulotomy surgery cost London';
     const subheading = 'Save an average of £1,000';
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -120,4 +127,28 @@ export default function IclPricing(): JSX.Element {
             <CtaSection />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

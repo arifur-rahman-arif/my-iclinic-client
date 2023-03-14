@@ -14,27 +14,35 @@ import {
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { cataractPriceList } from '@/components/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-cataract-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract-pricing.png';
 import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
+interface CataractPriceProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home/Landing page component for the App
- *
- * * Url: /cataract/price
+ * Url: /cataract/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function CataractPrice(): JSX.Element {
-    const mastheadH2Heading = 'Save you an average of £1,000 for your cataract treatment';
+export default function CataractPrice({ seo, yoastJson }: CataractPriceProps): JSX.Element {
+    const heading = 'Cataract surgery cost in London';
+    const subheading = 'Save you an average of £1,000 for your cataract treatment';
+
     const deviceSize = useDeviceSize();
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
 
@@ -47,6 +55,8 @@ export default function CataractPrice(): JSX.Element {
         <Page
             title="Cataract surgery cost in London"
             description="Save you an average of £1,000 for your cataract treatment"
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -54,20 +64,18 @@ export default function CataractPrice(): JSX.Element {
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 h1Title={
-                    <h1 id="masthead-title" className="flex max-w-[43.7rem] flex-wrap items-center justify-start gap-4">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Cataract</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">surgery</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">cost</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">in</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
+                    <h1 className="flex flex-wrap gap-4 sm:max-w-[35rem]">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
                     <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        {mastheadH2Heading.split(' ').map((word, index) => (
+                        {subheading.split(' ').map((word, index) => (
                             <span
                                 className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
                                 key={index}
@@ -199,4 +207,28 @@ export default function CataractPrice(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

@@ -12,17 +12,19 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import Page from '@/components/Page';
-import { getCategories, getPost, getPosts } from '@/lib';
+import { getCategories, getPageData, getPost, getPosts } from '@/lib';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { BlogBody, Header } from '@/page-sections/SingleBlogComponents';
-import { PostInterface } from '@/types';
+import { PostInterface, WpPageResponseInterface } from '@/types';
 import { GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import usePostView from 'src/hooks/usePostView';
 
-interface SinglePostInterface {
+interface SinglePostProps {
     post: PostInterface;
     categories: BlogCategoriesInterface[];
+    seo: any;
+    yoastJson: any;
 }
 
 /**
@@ -33,11 +35,11 @@ interface SinglePostInterface {
  * @export
  * @returns {JSX.Element}
  */
-export default function SinglePost({ post, categories }: SinglePostInterface): JSX.Element {
+export default function SinglePost({ post, categories, seo, yoastJson }: SinglePostProps): JSX.Element {
     usePostView({ postID: post.ID });
 
     return (
-        <Page title={post.title} description={post.title}>
+        <Page title={post.title} description={post.title} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
             <Header
                 image={{
@@ -88,8 +90,18 @@ export async function getStaticProps(ctx: GetStaticPropsContext<SinglePageParams
         const post: PostInterface = await getPost(ctx?.params?.slug || '');
         const categories: BlogCategoriesInterface[] = await getCategories();
 
+        const data: WpPageResponseInterface<any> = await getPageData({
+            slug: ctx?.params?.slug,
+            fields: 'yoast_head,yoast_head_json'
+        });
+
         return {
-            props: { post, categories },
+            props: {
+                post,
+                categories,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };
     } catch (error: any) {

@@ -17,6 +17,7 @@ import {
 } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-glaucoma-large.png';
 import MastheadImageMedium from '@/masthead/masthead-glaucoma-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-glaucoma-small.png';
@@ -28,6 +29,7 @@ import { StarComponent } from '@/page-sections/SectionParts/StarComponent';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { glaucomaStackList } from '@/page-sections/StackedSection';
 import ImprovedVisionLarge from '@/section-images/improved-vision-large.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
@@ -59,6 +61,11 @@ const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/Compar
     loading: () => <ComponentLoader />
 });
 
+interface GlaucomaPageProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Home page component for the App
  *
@@ -67,7 +74,7 @@ const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/Compar
  * @export
  * @returns {JSX.Element}
  */
-export default function GlaucomaPage(): JSX.Element {
+export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const subheading = 'Affordable management and treatment for your Glaucoma!';
@@ -84,6 +91,8 @@ export default function GlaucomaPage(): JSX.Element {
         <Page
             title="Glaucoma Treatment London"
             description="Glaucoma is an eye condition where the optic nerve connecting the eye to the brain becomes damaged. Find out about our glaucoma treatment here."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -373,4 +382,28 @@ export default function GlaucomaPage(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

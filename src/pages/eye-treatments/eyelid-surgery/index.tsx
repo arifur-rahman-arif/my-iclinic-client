@@ -6,6 +6,7 @@ import Page from '@/components/Page';
 import { CtaSection, ImageGallery, Masthead } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-eyelid-large.png';
 import MastheadImageMedium from '@/masthead/masthead-eyelid-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-eyelid-small.png';
@@ -13,6 +14,7 @@ import { eyelidFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListEyelid } from '@/page-sections/ImageGallery';
 import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListCosmeticEyelid, leftRightListEyelid } from '@/page-sections/LeftRight/leftRightList';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
@@ -30,6 +32,11 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface EyeLidPageProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Home page component for the App
  *
@@ -38,7 +45,7 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
  * @export
  * @returns {JSX.Element}
  */
-export default function EyeLidPage(): JSX.Element {
+export default function EyeLidPage({ seo, yoastJson }: EyeLidPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Eyelid surgery London';
@@ -56,6 +63,8 @@ export default function EyeLidPage(): JSX.Element {
         <Page
             title="Specialist Eyelid Surgery in London"
             description="Our trusted oculoplastic surgeons deliver the best treatment for eyelid conditions. Find out more about our treatments and how we can help you."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -63,7 +72,6 @@ export default function EyeLidPage(): JSX.Element {
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 smallImageClassName={'object-[center_-3rem]'}
                 h1Title={
@@ -147,4 +155,28 @@ export default function EyeLidPage(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

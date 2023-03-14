@@ -6,11 +6,13 @@ import Page from '@/components/Page';
 import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-corneal-large.png';
 import MastheadImageMedium from '@/masthead/masthead-corneal-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-corneal-small.png';
 import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListCornealTreatments } from '@/page-sections/LeftRight/leftRightList';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -25,6 +27,11 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface CornealTreatmentsProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Home page component for the App
  *
@@ -33,7 +40,7 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
  * @export
  * @returns {JSX.Element}
  */
-export default function CornealTreatments(): JSX.Element {
+export default function CornealTreatments({ seo, yoastJson }: CornealTreatmentsProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Cornea specialists in London';
@@ -48,14 +55,13 @@ export default function CornealTreatments(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 smallImageClassName={'object-[center_-3rem]'}
                 h1Title={
@@ -172,4 +178,28 @@ export default function CornealTreatments(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

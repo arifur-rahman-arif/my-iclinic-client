@@ -1,3 +1,8 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
 import {
     CtaSection2,
     FullWidthImageSection,
@@ -5,26 +10,22 @@ import {
     SideImageSection,
     StackColumn2
 } from '@/components/page-sections';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
 import { keratoconusFaqList } from '@/components/page-sections/Faq/faqList';
+import { normalSlideListKeratoconus } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-keratoconus-large.jpg';
 import MastheadImageMedium from '@/masthead/masthead-keratoconus-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-keratoconus-small.png';
+
+import { keratoconusList } from '@/page-sections/SectionParts/stack-column/list';
 import CornealImageLarge from '@/section-images/cross-linking-surgery-large.png';
 import CornealImage from '@/section-images/cross-linking-surgery.png';
 import FullWidthImageLarge from '@/section-images/keratoconus-large.png';
 import FullWidthImage from '@/section-images/keratoconus.png';
-
-import { keratoconusList } from '@/page-sections/SectionParts/stack-column/list';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { normalSlideListKeratoconus } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -40,15 +41,19 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface KeratoconusPageProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Presbyond page component for the App
  *
- * * Url: /eye-treatments/keratoconus
+ * Url: /eye-treatments/keratoconus
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function KeratoconusPage(): JSX.Element {
+export default function KeratoconusPage({ seo, yoastJson }: KeratoconusPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Keratoconus treatment London';
@@ -63,7 +68,7 @@ export default function KeratoconusPage(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -252,4 +257,28 @@ export default function KeratoconusPage(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

@@ -9,12 +9,12 @@ import { astigmatismFaqList } from '@/components/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-astigmatism-large.png';
 import MastheadImageMedium from '@/masthead/masthead-astigmatism-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-astigmatism-small.png';
 import { AstigmatismPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
-import { getCurrentFileName, wordpressPageFields } from '@/utils/miscellaneous';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -43,7 +43,7 @@ interface AstigmatismProps {
 }
 
 /**
- * * Url: /eye-treatments/other-eye-conditions/astigmatism
+ * Url: /eye-treatments/other-eye-conditions/astigmatism
  *
  * @export
  * @returns {JSX.Element}
@@ -356,23 +356,13 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
 }
 
 /**
- * Fetch the data from WordPress database
+ * Fetch the data from the WordPress database
  *
  * @returns {Promise<{props: {posts: any}}>}
  */
 export async function getStaticProps() {
     try {
-        const pageResponse: Response = await getData({
-            url: `${process.env.WP_REST_URL}/pages?slug=${getCurrentFileName(
-                __filename
-            )}&_fields=${wordpressPageFields()}`
-        });
-
-        if (!pageResponse.ok) {
-            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
-        }
-
-        const [data]: WpPageResponseInterface<AstigmatismPageContentInterface> = await pageResponse.json();
+        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData();
 
         return {
             /* eslint-disable */
@@ -409,8 +399,6 @@ export async function getStaticProps() {
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
         };
-
-        return { props: {} };
     } catch (error: any) {
         console.error(error);
         return { props: {} };

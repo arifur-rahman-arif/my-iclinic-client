@@ -1,9 +1,19 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import { H4Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
+import { PercentageRounded } from '@/components/Progressbar';
+import { premiumListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-premium-lenses-large.png';
+import MastheadImageSmall from '@/masthead/masthead-premium-lenses-small.png';
+import MastheadImageMedium from '@/masthead/masthead-premium-lenses.png';
+import { premiumLensesFaqList } from '@/page-sections/Faq/faqList';
+import { galleryListPremiumLens } from '@/page-sections/ImageGallery';
 import {
     BulletPoint,
     CtaSection2,
@@ -12,24 +22,16 @@ import {
     SideImageSection,
     SideVideoSection2
 } from '@/page-sections/index';
-import { premiumLensesFaqList } from '@/page-sections/Faq/faqList';
 import { leftRightListPremiumLenses } from '@/page-sections/LeftRight/leftRightList';
-import { PercentageRounded } from '@/components/Progressbar';
-import { premiumListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import MastheadImageLarge from '@/masthead/masthead-premium-lenses-large.png';
-import MastheadImageSmall from '@/masthead/masthead-premium-lenses-small.png';
-import MastheadImageMedium from '@/masthead/masthead-premium-lenses.png';
-import { galleryListPremiumLens } from '@/page-sections/ImageGallery';
 import PremiumLense1 from '@/section-images/premium-lense-1.png';
 import PremiumLense2 from '@/section-images/premium-lense-2.png';
 import PremiumLense3 from '@/section-images/premium-lense-3.png';
 import PremiumLense4 from '@/section-images/premium-lense-4.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
-import ComponentLoader from '@/components/ComponentLoader';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -56,15 +58,19 @@ const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/Compar
     loading: () => <ComponentLoader />
 });
 
+interface PremiumLensesProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Lasik page component for the App
  *
- * * Url: /premium-lenses
+ * Url: /premium-lenses
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function PremiumLenses(): JSX.Element {
+export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Independence from glasses after Cataract surgery London';
@@ -79,7 +85,12 @@ export default function PremiumLenses(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="Premium Lenses" description="Be independent from wearing glasses after your cataract surgery">
+        <Page
+            title="Premium Lenses"
+            description="Be independent from wearing glasses after your cataract surgery"
+            seo={seo}
+            yoastJson={yoastJson}
+        >
             <BreadCrumb />
 
             <Masthead
@@ -267,4 +278,28 @@ export default function PremiumLenses(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

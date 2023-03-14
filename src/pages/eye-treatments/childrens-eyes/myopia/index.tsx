@@ -18,12 +18,14 @@ import {
 import { myopiaFaqList } from '@/components/page-sections/Faq/faqList';
 import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
 import IconAngle from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-myopia-large.png';
 import MastheadImageMedium from '@/masthead/masthead-myopia-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
 import { galleryListMyopia } from '@/page-sections/ImageGallery';
 import BulletList from '@/page-sections/SectionParts/BulletList';
 import { StackedSection2 } from '@/page-sections/StackedSection';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,15 +44,20 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface PaediatricEyeCareProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Myopia page
  *
- * * Url: /eye-treatments/childrens-eyes/myopia
+ * Url: /eye-treatments/childrens-eyes/myopia
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element {
+export default function PaediatricEyeCare({ seo, yoastJson }: PaediatricEyeCareProps): JSX.Element {
     const heading = 'Myopia Mitigation Clinic for Children London';
     const subheading = 'Manage your child’s short sightedness with our Myopia treatment & management clinic';
 
@@ -58,6 +65,8 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
         <Page
             title="Myopia Treatment In London"
             description="Our specialists can provide you with the appropriate treatment for mitigating your Myopia, no matter how severe. Find out more about our services here."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -547,4 +556,28 @@ export default function PaediatricEyeCare({ data }: { data: any }): JSX.Element 
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

@@ -1,3 +1,8 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
+
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
 import {
     BulletPoint,
     FinanceList,
@@ -7,31 +12,35 @@ import {
     PriceSection,
     SideImageSection
 } from '@/components/page-sections';
-
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { icPriceList } from '@/components/page-sections/PriceCard/priceList';
-import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.png';
-import dynamic from 'next/dynamic';
-import { BreadCrumb } from '@/components/Breadcrumb';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-icl-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-icl-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-icl-pricing.png';
-import MastheadImageLarge from '@/masthead/masthead-icl-pricing-large.png';
-import { useDeviceSize, largeSizes, smallSizes } from '@/hooks';
-import { useState, useEffect } from 'react';
+import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.png';
+import { WpPageResponseInterface } from '@/types';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface IclPricingProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
- * Home/Landing page component for the App
  *
- * * Url: /icl/price
+ * Url: /icl/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function IclPricing(): JSX.Element {
+export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Element {
     const subheading = 'Save an average of £1,000';
 
     const deviceSize = useDeviceSize();
@@ -46,14 +55,13 @@ export default function IclPricing(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="Implantable Contact Lens cost London" description="">
+        <Page title="Implantable Contact Lens cost London" description="" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 h1Title={
                     <h1 id="masthead-title" className="flex max-w-[43.7rem] flex-wrap items-center justify-start gap-2">
                         <span className="h1-inner-span inline-block opacity-0 blur-sm">Implantable</span>
@@ -197,4 +205,28 @@ export default function IclPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

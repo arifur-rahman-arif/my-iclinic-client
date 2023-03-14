@@ -14,10 +14,12 @@ import {
 import { dryEyeFaqList } from '@/components/page-sections/Faq/faqList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconAngle from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-dry-eyes-large.png';
 import MastheadImageMedium from '@/masthead/masthead-dry-eyes-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-dry-eyes-small.png';
 import { lazyEyesList } from '@/page-sections/SectionParts/stack-column/list';
+import { WpPageResponseInterface } from '@/types';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -38,13 +40,18 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
     loading: () => <ComponentLoader />
 });
 
+interface DryEyesProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- *  Url: /eye-treatments/macular-degeneration
+ * Url: /eye-treatments/macular-degeneration
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function DryEyes(): JSX.Element {
+export default function DryEyes({ seo, yoastJson }: DryEyesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Dry Eyes';
@@ -62,6 +69,8 @@ export default function DryEyes(): JSX.Element {
         <Page
             title="Dry Eye Treatment Specialists In London"
             description="Our clinic provides an all-inclusive private consultation for investigating and treating symptoms of dry eyes. Get in touch with us to learn more!."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -220,4 +229,28 @@ export default function DryEyes(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

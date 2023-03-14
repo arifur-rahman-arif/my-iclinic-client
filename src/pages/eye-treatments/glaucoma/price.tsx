@@ -1,16 +1,26 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/components/page-sections';
 import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-glaucoma-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-glaucoma-pricing-medium.png';
 import { GlaucomaPackages3 } from '@/page-sections/SectionParts/GlaucomaPackages';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface PriceProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
  * Home/Landing page component for the App
@@ -20,12 +30,12 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
  * @export
  * @returns {JSX.Element}
  */
-export default function IclPricing(): JSX.Element {
+export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
     const heading = 'Glaucoma treatment and management cost London';
     const subheading = 'Reducing PCO after Cataract Surgery';
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
             <Masthead
                 imageSmall={MastheadImageMedium}
@@ -164,4 +174,28 @@ export default function IclPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

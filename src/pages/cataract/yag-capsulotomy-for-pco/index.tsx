@@ -8,11 +8,13 @@ import { yagFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListYag } from '@/components/page-sections/LeftRight/leftRightList';
 import { normalSlideListYag } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-yag-large.png';
 import MastheadImageMedium from '@/masthead/masthead-yag-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-yag-small.png';
 import SimpleProcessImageLarge from '@/section-images/yag-laser-treatment-large.png';
 import SimpleProcessImage from '@/section-images/yag-laser-treatment.png';
+import { WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
@@ -36,15 +38,20 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
     loading: () => <ComponentLoader />
 });
 
+interface YagCapsulotomyForPcoProps {
+    data: any;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Lasik page component for the App
  *
- * * Url: /cataract
+ * Url: /cataract/yag-capsulotomy-for-pco
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function YagCapsulotomyForPco({ data }: { data: any }): JSX.Element {
+export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsulotomyForPcoProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'YAG Capsulotomy Laser Treatment London';
@@ -62,6 +69,8 @@ export default function YagCapsulotomyForPco({ data }: { data: any }): JSX.Eleme
         <Page
             title="YAG Laser Treatment in London"
             description="YAG Laser Treatment is a procedure to remove any symptoms that occur after having your cataracts removed. Learn more about the procedure here."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -171,4 +180,28 @@ export default function YagCapsulotomyForPco({ data }: { data: any }): JSX.Eleme
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

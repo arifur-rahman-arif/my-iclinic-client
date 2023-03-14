@@ -18,11 +18,13 @@ import { cataractFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListCataract } from '@/components/page-sections/LeftRight/leftRightList';
 import { normalSlideListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract.png';
 import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
 import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
+import { WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
@@ -50,6 +52,12 @@ const SideVideoSection = dynamic(() => import('@/components/page-sections/SideIm
     loading: () => <ComponentLoader />
 });
 
+interface CataractProps {
+    data: any;
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Lasik page component for the App
  *
@@ -58,7 +66,7 @@ const SideVideoSection = dynamic(() => import('@/components/page-sections/SideIm
  * @export
  * @returns {JSX.Element}
  */
-export default function Cataract({ data }: { data: any }): JSX.Element {
+export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Private Cataract Surgery London';
@@ -73,7 +81,7 @@ export default function Cataract({ data }: { data: any }): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="Cataract" description="We’re here to make cataract surgery easy">
+        <Page title="Cataract" description="We’re here to make cataract surgery easy" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -296,4 +304,28 @@ export default function Cataract({ data }: { data: any }): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

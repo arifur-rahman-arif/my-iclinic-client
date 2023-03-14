@@ -1,27 +1,37 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { Cta3, FullWidthImageSection2, Masthead, PriceSection, SideImageSection } from '@/components/page-sections';
 import { myopiaPriceList } from '@/components/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-myopia-pricing-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-myopia-pricing-small.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface PriceProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
  * Home/Landing page component for the App
  *
- * * Url: /eye-treatments/childrens-eyes/myopia/price
+ * Url: /eye-treatments/childrens-eyes/myopia/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Price(): JSX.Element {
+export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
     const heading = 'Myopia control management & treatment cost London';
     const subheading = 'Save you an average of £500';
 
@@ -37,7 +47,7 @@ export default function Price(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="Implantable Contact Lens cost London" description="">
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -148,4 +158,28 @@ export default function Price(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }
