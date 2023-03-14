@@ -1,3 +1,4 @@
+import ComponentLoader from '@/components/ComponentLoader';
 import {
     BulletPoint,
     FullWidthImageSection,
@@ -13,14 +14,23 @@ import Page from '@/components/Page';
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { relexSmilePriceList } from '@/components/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-relex-smile-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-relex-smile-pricing.png';
 import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface PresbyondPricingProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
  * Home/Landing page component for the App
@@ -30,7 +40,7 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
  * @export
  * @returns {JSX.Element}
  */
-export default function PresbyondPricing(): JSX.Element {
+export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingProps): JSX.Element {
     const deviceSize = useDeviceSize();
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
 
@@ -46,6 +56,8 @@ export default function PresbyondPricing(): JSX.Element {
         <Page
             title="ReLEx SMILE Laser eye surgery In London"
             description="ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -224,4 +236,28 @@ export default function PresbyondPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

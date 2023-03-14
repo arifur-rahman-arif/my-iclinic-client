@@ -7,14 +7,13 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { FinanceCalculator, FullWidthImageSection, Masthead } from '@/components/page-sections';
 import { Section } from '@/components/Section';
-import { getTreatments } from '@/lib';
+import { getPageData, getTreatments } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-finance-treatment-large.png';
 import MastheadImageMedium from '@/masthead/masthead-finance-treatment-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-finance-treatment-small.png';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
 import Cta4 from '@/page-sections/SectionParts/Cta4';
-import { DoubleVisionPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
+import { WpPageResponseInterface } from '@/types';
 import { getElementTopPosition } from '@/utils/miscellaneous';
 
 import dynamic from 'next/dynamic';
@@ -26,11 +25,11 @@ const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLog
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends DoubleVisionPageContentInterface, PageDataInterface<DoubleVisionPageContentInterface> {}
-
-interface FinancingYourTreatmentInterface {
-    data: DataInterface;
+interface FinancingYourTreatmentProps {
+    data: any;
     treatments: TreatmentInterface[];
+    seo: any;
+    yoastJson: any;
 }
 
 /**
@@ -39,12 +38,17 @@ interface FinancingYourTreatmentInterface {
  * @export
  * @returns {JSX.Element}
  */
-export default function FinancingYourTreatment({ data, treatments }: FinancingYourTreatmentInterface): JSX.Element {
+export default function FinancingYourTreatment({
+    data,
+    treatments,
+    seo,
+    yoastJson
+}: FinancingYourTreatmentProps): JSX.Element {
     const heading = data?.masthead_subheading || 'Finance & health insurance options';
     const subheading = data?.masthead_subheading || 'Let the cost of clear vision make sense';
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -226,55 +230,15 @@ export default function FinancingYourTreatment({ data, treatments }: FinancingYo
  */
 export async function getStaticProps() {
     try {
-        const pageResponse: Response = await getData({
-            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-double-vision`
-        });
-
-        if (pageResponse.status !== 200) {
-            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
-        }
-
-        const pageJsonResponse: Array<any> = await pageResponse.json();
-
-        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
-
-        const pageID = pageJsonResponse[0].id;
-
-        if (!pageID) throw new Error('Page ID is not found');
-
-        const response = await getData({
-            url: `${process.env.WP_REST_URL}/pages/${pageID}`
-        });
-
-        const data: WpPageResponseInterface<DoubleVisionPageContentInterface> = await response.json();
+        const data: WpPageResponseInterface<any> = await getPageData();
         const treatments = await getTreatments();
 
         return {
             /* eslint-disable */
             props: {
-                data: {
-                    ...data.acf,
-                    full_width_image_section: {
-                        ...data.acf.full_width_image_section,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
-                    },
-                    // Symptoms and vision
-                    section_1: {
-                        ...data.acf.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions),
-                        list: convertArrayOfObjectsToStrings(data?.acf.section_1?.list)
-                    },
-                    // Consultation & treatment
-                    section_2: {
-                        ...data.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions)
-                    },
-                    section_3: {
-                        ...data.acf.section_3,
-                        list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
-                    }
-                } as DataInterface,
-                treatments
+                treatments,
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

@@ -21,9 +21,11 @@ import { leftRightListPresbyond } from '@/components/page-sections/LeftRight/lef
 import { presbyondStackList } from '@/components/page-sections/StackedSection';
 import { normalSlideListPresbyond } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-presbyond-large.png';
 import MastheadImageSmall from '@/masthead/masthead-presbyond-small.png';
 import MastheadImageMedium from '@/masthead/masthead-presbyond.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
@@ -59,13 +61,18 @@ const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableS
     loading: () => <ComponentLoader />
 });
 
+interface PresbyondProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * Url: /laser-eye-surgery/presbyond-london
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Presbyond(): JSX.Element {
+export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Presbyond Laser Treatment London';
@@ -83,6 +90,8 @@ export default function Presbyond(): JSX.Element {
         <Page
             title="Presbyond Laser eye surgery In London"
             description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -537,4 +546,28 @@ export default function Presbyond(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

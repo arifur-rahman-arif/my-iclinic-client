@@ -3,20 +3,25 @@ import { Button } from '@/components/Button';
 import { ConsultantCard, consultantCardList } from '@/components/Card';
 import Page from '@/components/Page';
 import { Masthead, SideImageSection } from '@/components/page-sections';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-home-large.png';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
+import { WpPageResponseInterface } from '@/types';
 import Image from 'next/image';
 
+interface OurSpecialistsProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home page component for the App
- *
- * * Url: /our-specialists
+ * Url: /our-specialists
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function OurSpecialists(): JSX.Element {
+export default function OurSpecialists({ seo, yoastJson }: OurSpecialistsProps): JSX.Element {
     const heading = 'Our Consultants';
     const subheading = "North London's Eye Hospital";
 
@@ -24,6 +29,8 @@ export default function OurSpecialists(): JSX.Element {
         <Page
             title="Our specialists"
             description="Our commitment to the highest possible care standards are reflected in the dedicated practice from our care specialists."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -95,4 +102,28 @@ export default function OurSpecialists(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

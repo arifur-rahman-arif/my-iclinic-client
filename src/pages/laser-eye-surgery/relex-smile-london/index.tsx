@@ -1,3 +1,11 @@
+// Import BannerImage from '@/section-images/relex-banner-bg.png';
+import { BreadCrumb } from '@/components/Breadcrumb';
+
+import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
 import {
     ClimateChange,
     CtaSection,
@@ -9,47 +17,63 @@ import {
     SideImageSection,
     StackColumn
 } from '@/components/page-sections';
-
-import { Button } from '@/components/Button';
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
 import { relexSmileFaqList } from '@/components/page-sections/Faq/faqList';
 import { relexSliders } from '@/components/page-sections/FeaturedPatient';
 import { leftRightListRelexSmileLondon } from '@/components/page-sections/LeftRight/leftRightList';
 import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { default as LaserEyeSurgery, default as LaserEyeSurgeryLarge } from '@/section-images/laser-eye-surgery.png';
-
-// Import BannerImage from '@/section-images/relex-banner-bg.png';
-import { BreadCrumb } from '@/components/Breadcrumb';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-relex-smile-large.png';
 import MastheadImageSmall from '@/masthead/masthead-relex-smile-small.png';
 import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
+import { default as LaserEyeSurgery, default as LaserEyeSurgeryLarge } from '@/section-images/laser-eye-surgery.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { Container } from '@/components/Container';
 
-const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'));
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'));
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
-const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'));
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
+    loading: () => <ComponentLoader />
+});
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
+    loading: () => <ComponentLoader />
+});
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
+    loading: () => <ComponentLoader />
+});
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
+    loading: () => <ComponentLoader />
+});
 // Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
-const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'));
-const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'));
+const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
+    loading: () => <ComponentLoader />
+});
+const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'), {
+    loading: () => <ComponentLoader />
+});
+const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'), {
+    loading: () => <ComponentLoader />
+});
+
+interface RelexSmileLondonProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home/Landing page component for the App
- *
- * * Url: /laser-eye-surgery/relex-smile-london
+ * Url: /laser-eye-surgery/relex-smile-london
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function RelexSmileLondon(): JSX.Element {
+export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'ReLEx SMILE Laser Eye Surgery London';
@@ -67,6 +91,8 @@ export default function RelexSmileLondon(): JSX.Element {
         <Page
             title="ReLEx SMILE Laser eye surgery In London"
             description="ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -501,4 +527,28 @@ export default function RelexSmileLondon(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

@@ -19,18 +19,22 @@ import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 // import MastheadImageSmall from '@/masthead/masthead-price-small.png';
 import Image from 'next/image';
 
+interface OurPricesProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Url: cataract/yag-capsulotomy-for-pco/price
- *
+ * Our prices pages
  * @export
  * @returns {JSX.Element}
  */
-export default function IclPricing(): JSX.Element {
+export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Element {
     const heading = 'Our private consultation and treatment prices';
     const subheading = 'Our leading specialists';
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead

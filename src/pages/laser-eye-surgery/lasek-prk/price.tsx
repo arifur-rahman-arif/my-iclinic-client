@@ -1,4 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
@@ -13,25 +14,32 @@ import {
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { lasekPriceList } from '@/components/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasek-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasek-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasek-pricing.png';
 import { NormalSection4 } from '@/page-sections/NormalSection';
 import InclusiveCostImage from '@/section-images/lasek-inclusive-cost-image.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface LasekPricingProps {
+    seo: any;
+    yoastJson: any;
+}
 
 /**
- * Home/Landing page component for the App
- *
- * * Url: /laser-eye-surgery/lasek-prk/price
+ * Url: /laser-eye-surgery/lasek-prk/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function LasekPricing(): JSX.Element {
+export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX.Element {
     const deviceSize = useDeviceSize();
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const heading = 'LASEK, PRK & PTK laser surgery cost London';
@@ -46,7 +54,7 @@ export default function LasekPricing(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -234,4 +242,28 @@ export default function LasekPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

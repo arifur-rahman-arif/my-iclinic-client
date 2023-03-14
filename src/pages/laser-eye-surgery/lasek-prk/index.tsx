@@ -23,10 +23,12 @@ import { leftRightListLasek } from '@/components/page-sections/LeftRight/leftRig
 import { lasekStackList } from '@/components/page-sections/StackedSection';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasek-smile-large.png';
 import MastheadImageMedium from '@/masthead/masthead-lasek-smile-medium.png';
 import FullWidthImageLarge from '@/section-images/lasek-doctor-large.png';
 import FullWidthImage from '@/section-images/lasek-doctor.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
@@ -60,15 +62,19 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/Bo
 const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
+
+interface LasekPageProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home/Landing page component for the App
- *
- * * Url: /laser-eye-surgery/lasek-prk
+ * Url: /laser-eye-surgery/lasek-prk
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function LasekPage(): JSX.Element {
+export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'LASEK, PRK & PTK laser eye surgery London';
@@ -85,6 +91,8 @@ export default function LasekPage(): JSX.Element {
         <Page
             title="Laser Eye Surgery Specialists in London"
             description="At My-iClinic, we offer a range of laser eye surgery procedures to correct common vision problems. Contact us today for a consultation with a specialist."
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -332,4 +340,28 @@ export default function LasekPage(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

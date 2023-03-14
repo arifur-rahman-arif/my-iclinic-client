@@ -1,3 +1,6 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
 import {
     BulletPoint,
     CtaSection,
@@ -8,31 +11,32 @@ import {
     PriceSection,
     SideImageSection
 } from '@/components/page-sections';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
 import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
 import ShortSightedImage from '@/section-images/short-sighted-vision.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
+interface PresbyondPricingProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home/Landing page component for the App
- *
  * * Url: /laser-eye-surgery/presbyond-london/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function PresbyondPricing(): JSX.Element {
+export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingProps): JSX.Element {
     const heading = 'Presbyond laser eye surgery cost in London';
     const subheading = 'Save an average of £1,000';
 
@@ -48,7 +52,7 @@ export default function PresbyondPricing(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -199,4 +203,28 @@ export default function PresbyondPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

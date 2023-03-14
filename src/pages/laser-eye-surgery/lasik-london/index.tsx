@@ -1,3 +1,10 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button } from '@/components/Button';
+
+import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
+import Page from '@/components/Page';
 import {
     ClimateChange,
     CtaSection2,
@@ -7,31 +14,25 @@ import {
     PlasticFree,
     SideImageSection
 } from '@/components/page-sections';
-import { FaPoundSign } from 'react-icons/fa';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
-import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
-import Page from '@/components/Page';
 import { lasikFaqList } from '@/components/page-sections/Faq/faqList';
 import { lasikSliders } from '@/components/page-sections/FeaturedPatient';
 import { leftRightListLasik } from '@/components/page-sections/LeftRight/leftRightList';
 import { lasikStackList } from '@/components/page-sections/StackedSection';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
-import LasikImageLarge from '@/section-images/lasik-banner-large.png';
-import LasikImage from '@/section-images/lasik-banner.png';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
-import { Container } from '@/components/Container';
+import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasik.png';
-import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
+import LasikImageLarge from '@/section-images/lasik-banner-large.png';
+import LasikImage from '@/section-images/lasik-banner.png';
+import { WpPageResponseInterface } from '@/types';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { FaPoundSign } from 'react-icons/fa';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
@@ -43,15 +44,20 @@ const StackedSection = dynamic(() => import('@/components/page-sections/StackedS
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'));
 const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
 
+interface LasikProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
  * LASIK page component for the App
  *
- * * Url: /laser-eye-surgery/lasik-london
+ * Url: /laser-eye-surgery/lasik-london
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Lasik(): JSX.Element {
+export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'LASIK Laser Eye Surgery London';
@@ -70,6 +76,8 @@ export default function Lasik(): JSX.Element {
         <Page
             title="LASIK Laser Eye Surgery London"
             description="The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!"
+            seo={seo}
+            yoastJson={yoastJson}
         >
             <BreadCrumb />
 
@@ -481,4 +489,28 @@ export default function Lasik(): JSX.Element {
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

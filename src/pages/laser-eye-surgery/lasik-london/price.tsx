@@ -13,25 +13,30 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { CtaSection } from '@/components/page-sections/CtaSection';
 import { lasikPriceList } from '@/components/page-sections/PriceCard/priceList';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasik-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-pricing-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasik-pricing.png';
 import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.png';
+import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useDeviceSize, largeSizes, smallSizes } from '@/hooks';
 import { useState, useEffect } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
 
+interface LasikPricingProps {
+    seo: any;
+    yoastJson: any;
+}
+
 /**
- * Home/Landing page component for the App
- *
- * * Url: /laser-eye-surgery/lasik-london/price
+ * Url: /laser-eye-surgery/lasik-london/price
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function LasikPricing(): JSX.Element {
+export default function LasikPricing({ seo, yoastJson }: LasikPricingProps): JSX.Element {
     const heading = 'LASIK laser eye surgery cost London';
     const subheading = 'Save you an average of £1,000';
 
@@ -47,7 +52,7 @@ export default function LasikPricing(): JSX.Element {
     }, [deviceSize]);
 
     return (
-        <Page title="LASIK laser eye surgery cost London" description="Save you an average of £1,000">
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
@@ -204,4 +209,28 @@ export default function LasikPricing(): JSX.Element {
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }
