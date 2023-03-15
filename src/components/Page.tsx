@@ -41,7 +41,11 @@ const Page = ({ children, title, description, seo, yoastJson, ...other }: PropIn
 
             <Head>
                 <title>{yoastJson?.title || title}</title>
-                <div dangerouslySetInnerHTML={{ __html: seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL) }} />
+                {seo && (
+                    <div
+                        dangerouslySetInnerHTML={{ __html: seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL) }}
+                    />
+                )}
                 <meta name="twitter:card" content={yoastJson?.twitter_card || 'summary_large_image'} />
                 <meta name="twitter:image" content={yoastJson?.twitter_image || ''} />
             </Head>

@@ -65,36 +65,90 @@ const Header = (): JSX.Element => {
             {loadMobileMenu && <MobileNavbar />}
             <header
                 ref={headerRef}
-                className="fixed overflow-y-auto xl:overflow-visible top-0 left-0 z-[99] h-24 w-full bg-white shadow-shadow1 transition-all duration-500 xl:h-[11.4rem] shadow-none hover:xl:shadow-none xl:shadow-none"
+                className="fixed overflow-y-auto xl:overflow-visible top-0 left-0 z-[99] h-24 w-full bg-white shadow-shadow1 transition-all duration-500 xl:h-[12rem] shadow-none hover:xl:shadow-none xl:shadow-none"
             >
-                <Container className="grid h-full grid-cols-1 items-center gap-12 xl:grid-cols-[1fr_auto] relative">
-                    <div className="grid h-full grid-cols-[auto_1fr] items-center bg-white xl:grid-cols-[auto_1fr_auto]">
-                        <Link href="/" className="">
+                <Container className="grid h-full gap-8 grid-cols-[auto_1fr] relative items-center xl:pt-4 nav-wrapper">
+                    <Link href="/" className="">
+                        <Image
+                            src="/images/logos/logo-iclinic-desktop.png"
+                            alt="My-iClinic"
+                            width={154}
+                            height={36}
+                            quality={100}
+                            priority
+                            className="non-sticky-logo"
+                        />
+                        <Image
+                            src="/images/logos/iclinic-rounded.png"
+                            alt="My-iClinic"
+                            width={65}
+                            height={48}
+                            unoptimized={true}
+                            className="sticky-logo hidden"
+                        />
+                    </Link>
+
+                    {/* Nav contact details */}
+                    <div className="items-center justify-start gap-24 xl:justify-self-end hidden xl:flex contact-details">
+                        <div className="flex items-center justify-start gap-4">
                             <Image
-                                src="/images/logos/logo-iclinic-desktop.png"
-                                alt="My-iClinic"
-                                width={154}
-                                height={36}
-                                quality={100}
-                                priority
+                                src="/images/icons/icon-telephone-outline.svg"
+                                alt=""
+                                quality={70}
+                                width={20}
+                                height={20}
+                                className="h-8 w-8"
                             />
-                        </Link>
+                            <a href="tel:0208 445 8877">
+                                <span className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                                    (+44) 0208 445 8877
+                                </span>
+                            </a>
+                        </div>
 
-                        {/*  Navigation links  */}
+                        <div className="flex items-center justify-start gap-4">
+                            <Image
+                                src="/images/icons/icon-mail-outline-dark.svg"
+                                alt=""
+                                quality={70}
+                                width={20}
+                                height={20}
+                                className="h-8 w-8"
+                            />
+                            <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                                reception@my-iclinic.co.uk
+                            </span>
+                        </div>
+
+                        <div className="flex items-center justify-start gap-4">
+                            <Image
+                                src="/images/icons/icon-map-outline.svg"
+                                alt=""
+                                quality={70}
+                                width={20}
+                                height={20}
+                                className="h-8 w-8"
+                            />
+                            <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                                960 High Rd, London N12 9RY
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="col-span-full items-center justify-end gap-6 h hidden xl:flex desktop-nav-menu">
                         {loadDesktopMenu && <NavMenu />}
-
-                        {/*    Round box */}
-                        {/* <div className="hidden h-[5.8rem] w-[5.8rem] cursor-pointer items-center justify-center gap-[0.06rem] rounded-full border-2 border-brand bg-brand transition-all duration-300 hover:bg-transparent xl:flex">
-                            <span className="relative -top-1 font-latoBold text-[2.8rem] capitalize">A</span>
-                            <span className="relative top-1 font-latoBold text-[2.8rem]">a</span>
-                        </div> */}
-
-                        <Hamburger />
+                        <div className="hidden place-items-end xl:grid">
+                            <BookConsultation />
+                        </div>
                     </div>
 
-                    <div className="hidden place-items-end xl:grid">
-                        <BookConsultation />
-                    </div>
+                    <Hamburger />
+
+                    {/* <div className="grid h-full grid-cols-[auto_1fr] items-center bg-white xl:grid-cols-[auto_1fr]"> */}
+
+                    {/*     /!*  Navigation links  *!/ */}
+
+                    {/* </div> */}
                 </Container>
             </header>
         </>

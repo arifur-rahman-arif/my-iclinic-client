@@ -31,18 +31,18 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
             {menu.submenu ? (
                 <>
                     {menu.parentMenu ? (
-                        <span className="xl:whitespace-nowrap font-mulishBold text-[1.6rem] leading-8 cursor-pointer">
+                        <span className="xl:whitespace-nowrap font-mulishMedium text-[1.6rem] leading-8 cursor-pointer">
                             {menu.name || ''}
                         </span>
                     ) : (
-                        <span className="xl:whitespace-nowrap font-mulishBold text-[1.6rem] xl:text-[1.8rem] leading-8 cursor-pointer">
+                        <span className="xl:whitespace-nowrap font-mulishMedium text-[1.6rem] xl:text-[1.8rem] leading-8 cursor-pointer">
                             {menu.name || ''}
                         </span>
                     )}
                 </>
             ) : (
                 <Link
-                    className="xl:whitespace-nowrap font-mulishMedium text-[1.6rem] leading-[2.4rem] cursor-pointer"
+                    className={`xl:whitespace-nowrap font-mulishMedium text-[1.6rem] leading-[2.4rem] cursor-pointer`}
                     href={menu.url}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -76,6 +76,15 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
                     className={`${
                         isMenuActive ? 'w-full' : 'w-0'
                     } group-hover/menu-item:w-full transition-all duration-500 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
+                ></span>
+            )}
+
+            {/* Underline bar for parent menu */}
+            {menu.parentMenu && (
+                <span
+                    className={`hidden xl:inline-block ${isMenuActive ? 'w-full' : 'w-0'} ${
+                        menu.subMenuOpen && 'w-full'
+                    } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
                 ></span>
             )}
         </div>

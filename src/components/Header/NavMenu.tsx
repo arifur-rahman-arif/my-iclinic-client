@@ -27,8 +27,8 @@ const NavMenu = (): JSX.Element => {
     });
 
     return (
-        <nav className="hidden h-full w-full pl-[6rem] xl:block" ref={ref}>
-            <ul className="flex h-full w-full items-center justify-end gap-10">
+        <nav className="hidden h-full w-full xl:block" ref={ref}>
+            <ul className="flex h-full w-full items-center justify-end gap-8">
                 {navMenus.map((menu: NavMenuType, index: number) => {
                     return (
                         <NavLink index={index} key={index} menu={menu} isMenuActive={router.pathname === menu.url} />

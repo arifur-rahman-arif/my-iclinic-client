@@ -387,5 +387,26 @@ export const navMenuList: NavMenuType[] = [
                 dotAnimation: true
             }
         ]
+    },
+    {
+        type: 'text',
+        name: 'About us',
+        url: '/about-us',
+        slug: 'about-us',
+        parentMenu: true
+    },
+    {
+        type: 'text',
+        name: 'Contact us',
+        url: '/contact-us',
+        slug: 'contact-us',
+        parentMenu: true
+    },
+    {
+        type: 'text',
+        name: 'Articles',
+        url: '/articles',
+        slug: 'articles',
+        parentMenu: true
     }
 ];

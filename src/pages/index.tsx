@@ -69,7 +69,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                imagePosition="2xl:object-[0rem_-3rem] !object-contain"
+                imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4 sm:max-w-[35rem]">
                         {heading.split(' ').map((word, index) => (

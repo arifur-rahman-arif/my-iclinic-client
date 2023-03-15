@@ -209,7 +209,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                             ref={iconRef}
                             className={`absolute right-0 top-0 xl:relative ${
                                 menu.parentMenu ? 'xl:translate-y-[0.1rem]' : 'xl:-translate-y-[0.1rem] xl:!hidden'
-                            }`}
+                            } xl:!px-1`}
                             title="Dropdown"
                             onClick={(e) => {
                                 e.preventDefault();
@@ -219,20 +219,12 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                         >
                             <Image
                                 src="/images/icons/icon-arrow-down.svg"
-                                className="h-[1.2rem] w-[1.2rem] xl:h-[1.4rem] xl:w-[1.4rem]"
+                                className="h-[1.2rem] w-[1.2rem]"
                                 alt=""
                                 width={14}
                                 height={14}
                             />
                         </IconButton>
-
-                        {menu.parentMenu && (
-                            <span
-                                className={`hidden xl:inline-block ${isMenuActive ? 'w-full' : 'w-0'} ${
-                                    menu.subMenuOpen && 'w-full'
-                                } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
-                            ></span>
-                        )}
                     </div>
 
                     <div
@@ -270,7 +262,7 @@ const NavLink = ({ index, menu, isMenuActive, closeMobileMenu }: NavLinkInterfac
                     </div>
                 </li>
             ) : (
-                <li>
+                <li className="group/menu-list">
                     <SingleLink
                         menu={menu}
                         isMenuActive={isMenuActive}
