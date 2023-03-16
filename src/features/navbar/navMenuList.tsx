@@ -319,8 +319,8 @@ export const navMenuList: NavMenuType[] = [
                     {
                         type: 'text',
                         name: 'Double Vision',
-                        url: '/eye-treatments/double-vision',
-                        slug: 'eye-treatments/double-vision',
+                        url: '/eye-treatments/other-eye-conditions/double-vision',
+                        slug: 'eye-treatments/other-eye-conditions/double-vision',
                         dotAnimation: true
                     },
                     {

@@ -314,8 +314,8 @@ export async function getStaticProps() {
                         })
                     }
                 } as DataInterface,
-                seo: data.yoast_head,
-                yoastJson: data.yoast_head_json
+                seo: data?.yoast_head || '',
+                yoastJson: data?.yoast_head_json || ''
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

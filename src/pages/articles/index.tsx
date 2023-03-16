@@ -55,7 +55,8 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                             />
                         </div>
 
-                        <span className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
+                        <span
+                            className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
                             No articles published yet
                         </span>
                     </Container>
@@ -83,8 +84,8 @@ export async function getStaticProps() {
                 posts,
                 categories,
                 postsPerPageValue,
-                seo: data.yoast_head,
-                yoastJson: data.yoast_head_json
+                seo: data?.yoast_head || '',
+                yoastJson: data?.yoast_head_json || ''
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };

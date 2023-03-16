@@ -10,8 +10,8 @@ import {
     Masthead,
     NormalSection,
     SideImageSection
-} from '@/components/page-sections';
-import { doubleVisionFaqList } from '@/components/page-sections/Faq/faqList';
+} from '@/page-sections/index';
+import { doubleVisionFaqList } from '@/page-sections/Faq/faqList';
 import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
@@ -27,17 +27,17 @@ import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
 
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -304,8 +304,8 @@ export async function getStaticProps() {
                         list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
                     }
                 } as DataInterface,
-                seo: data.yoast_head,
-                yoastJson: data.yoast_head_json
+                seo: data?.yoast_head || '',
+                yoastJson: data?.yoast_head_json || ''
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
