@@ -35,7 +35,7 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                     {articles.map((article, index) => (
                         <Link
                             key={index}
-                            href={`/blogs/${article.slug}`}
+                            href={`/articles/${article.slug}`}
                             className="grid grid-cols-[auto_1fr] gap-10 shadow-md md:shadow-none transition-all duration-500 hover:shadow-shadow1 md:hover:shadow-none rounded-primary md:p-0"
                         >
                             <div className="md:w-[9.1rem] md:h-[7.8rem] overflow-hidden rounded-primary">

@@ -82,7 +82,7 @@ export async function getStaticProps() {
         return {
             /* eslint-disable */
             props: {
-                data: { content: data.content.rendered, ...data.acf } as DataInterface,
+                data: { content: data?.content.rendered || null, ...data?.acf } as DataInterface,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

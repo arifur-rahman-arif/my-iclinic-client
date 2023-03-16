@@ -71,9 +71,9 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -106,14 +106,14 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
             <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
-                h2Heading={data?.section_1.subheading || 'Correct your vision'}
+                h2Heading={data?.section_1?.subheading || 'Correct your vision'}
                 h3LightHeading={
                     <>
-                        {data?.section_1.heading.light_heading || 'Astigmatism in'}
+                        {data?.section_1?.heading?.light_heading || 'Astigmatism in'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_1.heading.bold_heading || 'children and adults'}
+                h3BoldHeading={data?.section_1.heading?.bold_heading || 'children and adults'}
                 descriptions={
                     (data?.section_1.descriptions.length && data?.section_1.descriptions) || [
                         'Astigmatism is a condition which causes blurry vision. Astigmatism develops when the shape of your eye (your cornea or lens) isn’t perfectly round.',
@@ -122,39 +122,40 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1.image || '/images/section-images/vision-correction-astigmatism.png',
+                    url: data?.section_1?.image || '/images/section-images/vision-correction-astigmatism.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_1.large_image || '/images/section-images/vision-correction-astigmatism-large.png',
+                        data?.section_1?.large_image ||
+                        '/images/section-images/vision-correction-astigmatism-large.png',
                     width: 659,
                     height: 477
                 }}
             />
 
             <SideImageSection
-                h2Heading={data?.section_2.subheading || 'astigmatism Diagnosis'}
+                h2Heading={data?.section_2?.subheading || 'astigmatism Diagnosis'}
                 h3LightHeading={
                     <>
-                        {data?.section_2.heading.light_heading || 'Diagnosis and vision'}
+                        {data?.section_2.heading?.light_heading || 'Diagnosis and vision'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_2.heading.bold_heading || 'correction for astigmatism'}
+                h3BoldHeading={data?.section_2.heading?.bold_heading || 'correction for astigmatism'}
                 descriptions={
                     (data?.section_2.descriptions.length && data?.section_2.descriptions) || [
                         'If you or your child is experiencing the following symptoms, you may be experiencing astigmatism:'
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/astigmatism-diagnosis.png',
+                    url: data?.section_2?.image || '/images/section-images/astigmatism-diagnosis.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2.large_image || '/images/section-images/astigmatism-diagnosis-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/astigmatism-diagnosis-large.png',
                     width: 659,
                     height: 562
                 }}
@@ -195,11 +196,11 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                 h2Heading={data?.section_3.subheading || 'astigmatism consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_3.heading.light_heading || 'What is included in my'}
+                        {data?.section_3?.heading?.light_heading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_3.heading.bold_heading || 'private consultation?'}
+                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'private consultation?'}
                 descriptions={
                     (data?.section_3.descriptions.length && data?.section_3.descriptions) || [
                         <>
@@ -210,12 +211,12 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3.image || '/images/section-images/astigmatism-consultation.png',
+                    url: data?.section_3?.image || '/images/section-images/astigmatism-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3.large_image || '/images/section-images/astigmatism-consultation-large.png',
+                    url: data?.section_3?.large_image || '/images/section-images/astigmatism-consultation-large.png',
                     width: 649,
                     height: 552
                 }}
@@ -271,9 +272,9 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                         </>
                     ]
                 }
-                image={data?.full_width_image_section.image || '/images/section-images/eye-assessments.png'}
+                image={data?.full_width_image_section?.image || '/images/section-images/eye-assessments.png'}
                 desktopImage={
-                    data?.full_width_image_section.large_image || '/images/section-images/eye-assessments-large.png'
+                    data?.full_width_image_section?.large_image || '/images/section-images/eye-assessments-large.png'
                 }
                 containerClass="md:!grid-cols-[1fr_auto] !mx-auto !w-full md:!w-[var(--container-width)] pt-12"
                 smallImageClassName="!px-8 md:!px-auto"
@@ -282,10 +283,10 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
             <Section>
                 <Container className="grid gap-12 justify-items-center">
                     <h2 className="w-full normal-case text-center max-w-[64rem]">
-                        {data?.section_4.heading || 'Visit our eye specialist to correct your astigmatism today'}
+                        {data?.section_4?.heading || 'Visit our eye specialist to correct your astigmatism today'}
                     </h2>
                     <p className="text-center max-w-[53rem]">
-                        {data?.section_4.description ||
+                        {data?.section_4?.description ||
                             'Book a private consultation today with our specialist to discuss the best astigmatism treatment options to correct your astigmatism.'}
                     </p>
                 </Container>
@@ -296,20 +297,20 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
             </LazyComponent>
 
             <CtaSection
-                title={data?.cta_section.heading}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <SideImageSection
-                h2Heading={data?.section_5.subheading || 'children Astigmatism'}
+                h2Heading={data?.section_5?.subheading || 'children Astigmatism'}
                 h3LightHeading={
                     <>
-                        {data?.section_5.heading.light_heading || 'Astigmatism treatment'}
+                        {data?.section_5.heading?.light_heading || 'Astigmatism treatment'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_5.heading.bold_heading || 'for children'}
+                h3BoldHeading={data?.section_5.heading?.bold_heading || 'for children'}
                 descriptions={
                     (data?.section_5.descriptions.length && data?.section_5.descriptions) || [
                         "Our children's paediatrician will carry out comprehensive eye assessments to diagnose the cause of your child's astigmatism.",
@@ -328,12 +329,12 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5.image || '/images/section-images/children-astigmatism.png',
+                    url: data?.section_5?.image || '/images/section-images/children-astigmatism.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5.large_image || '/images/section-images/children-astigmatism-large.png',
+                    url: data?.section_5?.large_image || '/images/section-images/children-astigmatism-large.png',
                     width: 647,
                     height: 503
                 }}
@@ -368,29 +369,29 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 data: {
-                    ...data.acf,
+                    ...data?.acf,
                     section_1: {
-                        ...data.acf.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions)
+                        ...data?.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
                     },
                     section_2: {
-                        ...data.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions),
+                        ...data?.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_2?.list)
                     },
                     section_3: {
-                        ...data.acf.section_3,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_3?.descriptions),
+                        ...data?.acf.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
                     },
                     full_width_image_section: {
-                        ...data.acf.full_width_image_section,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
+                        ...data?.acf.full_width_image_section,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.full_width_image_section?.descriptions)
                     },
                     // Children Astigmatism
                     section_5: {
-                        ...data.acf.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_5?.descriptions)
+                        ...data?.acf.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions)
                     }
                 } as DataInterface,
                 seo: data?.yoast_head || '',

@@ -13,7 +13,7 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
-import { BlogList, TextColumn } from '@/components/page-sections';
+import { BlogList, TextColumn } from '@/page-sections/index';
 import { Section } from '@/components/Section';
 import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/lib';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
@@ -55,8 +55,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                             />
                         </div>
 
-                        <span
-                            className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
+                        <span className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
                             No articles published yet
                         </span>
                     </Container>

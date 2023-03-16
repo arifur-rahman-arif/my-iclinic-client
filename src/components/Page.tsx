@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import * as process from 'process';
+import HTMLReactParser from 'html-react-parser';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
@@ -41,13 +42,19 @@ const Page = ({ children, title, description, seo, yoastJson, ...other }: PropIn
 
             <Head>
                 <title>{yoastJson?.title || title}</title>
-                {seo && (
-                    <div
-                        dangerouslySetInnerHTML={{ __html: seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL) }}
-                    />
+                {/* {seo && ( */}
+                {/*     <div */}
+                {/*         dangerouslySetInnerHTML={{ __html: seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL) }} */}
+                {/*     /> */}
+                {/*      */}
+                {/* )} */}
+                {seo && HTMLReactParser(seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL))}
+                {yoastJson && (
+                    <>
+                        <meta name="twitter:card" content={yoastJson?.twitter_card || 'summary_large_image'} />
+                        <meta name="twitter:image" content={yoastJson?.twitter_image || ''} />
+                    </>
                 )}
-                <meta name="twitter:card" content={yoastJson?.twitter_card || 'summary_large_image'} />
-                <meta name="twitter:image" content={yoastJson?.twitter_image || ''} />
             </Head>
 
             {children}

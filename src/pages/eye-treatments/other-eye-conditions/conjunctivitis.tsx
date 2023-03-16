@@ -81,9 +81,9 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -118,7 +118,7 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
             <FullWidthImageSection
                 h3Title={
                     <>
-                        {data?.full_width_image_section.heading ? (
+                        {data?.full_width_image_section?.heading ? (
                             HTMLReactParser(data.full_width_image_section.heading)
                         ) : (
                             <>
@@ -128,20 +128,20 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
                     </>
                 }
                 description={
-                    (data?.full_width_image_section.descriptions?.length &&
+                    (data?.full_width_image_section?.descriptions?.length &&
                         data?.full_width_image_section.descriptions) || [
                         'If you have conjunctivitis (also known as ‘Pink Eye’), having the correct diagnosis is essential before treating and managing your symptoms.'
                     ]
                 }
                 altText=""
-                image={data?.full_width_image_section.image || '/images/section-images/conjunctivitis.png'}
+                image={data?.full_width_image_section?.image || '/images/section-images/conjunctivitis.png'}
                 desktopImage={
-                    data?.full_width_image_section.large_image || '/images/section-images/conjunctivitis-large.png'
+                    data?.full_width_image_section?.large_image || '/images/section-images/conjunctivitis-large.png'
                 }
             />
 
             <SideImageSection
-                normalLightHeading={<strong>{data?.section_1.heading || 'Conjunctivitis Consultation'}</strong>}
+                normalLightHeading={<strong>{data?.section_1?.heading || 'Conjunctivitis Consultation'}</strong>}
                 descriptions={
                     (data?.section_1.descriptions.length && data?.section_1.descriptions) || [
                         'When you visit our clinic, we use our special imaging technology to carry out in-depth eye assessments to capture the health of your eyes, particularly the surface of the conjunctiva.',
@@ -150,12 +150,12 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1.image || '/images/section-images/conjunctivitis-consultation.png',
+                    url: data?.section_1?.image || '/images/section-images/conjunctivitis-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1.large_image || '/images/section-images/conjunctivitis-consultation-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/conjunctivitis-consultation-large.png',
                     width: 677,
                     height: 484
                 }}
@@ -167,20 +167,20 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
             </LazyComponent>
 
             <CtaSection
-                title={data?.cta_section.heading}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <SideImageSection
-                h2Heading={data?.section_2.subheading || 'Conjunctivitis consultation'}
+                h2Heading={data?.section_2?.subheading || 'Conjunctivitis consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_2.heading.light_heading || 'What is included in my'}
+                        {data?.section_2?.heading?.light_heading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_2.heading.bold_heading || 'private consultation?'}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'private consultation?'}
                 descriptions={
                     (data?.section_2.descriptions.length && data?.section_2.descriptions) || [
                         <>
@@ -191,13 +191,13 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/conjunctivitis-private-consultation.png',
+                    url: data?.section_2?.image || '/images/section-images/conjunctivitis-private-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_2.large_image ||
+                        data?.section_2?.large_image ||
                         '/images/section-images/conjunctivitis-private-consultation-large.png',
                     width: 649,
                     height: 552
@@ -228,22 +228,22 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
                                 'Our ophthalmologist can provide different antibiotics to treat conjunctivitis, depending on the cause of your condition. If you have conjunctivitis, having the correct diagnosis is essential.'
                             ]
                 }
-                heading={data?.section_3.heading}
-                list={data?.section_3.card_list}
+                heading={data?.section_3?.heading}
+                list={data?.section_3?.card_list}
             />
 
             <NormalSection5
-                heading={data?.section_4.heading || 'Relieve your symptoms with treatment for conjunctivitis'}
+                heading={data?.section_4?.heading || 'Relieve your symptoms with treatment for conjunctivitis'}
                 description={
-                    data?.section_4.description ||
+                    (data?.section_4?.description.length && data?.section_4?.description) ||
                     'If you are experiencing conjunctivitis, our specialist team will book a private consultation.'
                 }
             />
 
             <CtaSection
-                title={data?.cta_section.heading}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <LazyComponent>
@@ -288,23 +288,23 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 data: {
-                    ...data.acf,
+                    ...data?.acf,
                     full_width_image_section: {
-                        ...data.acf.full_width_image_section,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
+                        ...data?.acf.full_width_image_section,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.full_width_image_section?.descriptions)
                     },
                     section_1: {
-                        ...data.acf.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions)
+                        ...data?.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
                     },
                     section_2: {
-                        ...data.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions),
+                        ...data?.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_2?.list)
                     },
                     section_3: {
-                        ...data.acf.section_3,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_3?.descriptions),
+                        ...data?.acf.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions),
                         card_list: (data?.acf.section_3?.card_list || [])?.map((item) => {
                             return {
                                 ...item,

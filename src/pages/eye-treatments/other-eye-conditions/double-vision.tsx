@@ -75,9 +75,9 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 imagePosition="object-[-3rem_0rem]"
                 altText=""
                 h1Title={
@@ -124,7 +124,7 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 boldHeading={
                     <div className="md:max-w-[54.4rem]">
                         <strong className="normal-case">
-                            {data?.full_width_image_section.heading ||
+                            {data?.full_width_image_section?.heading ||
                                 'In most cases double vision is usually a temporary and uncommon issue'}
                         </strong>
                     </div>
@@ -137,8 +137,8 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                         'However, if you are still experiencing double vision, a comprehensive eye assessment with our ophthalmologist is recommended to determine the health of your eyes.'
                     ]
                 }
-                image={data?.full_width_image_section.image || FullWidthImage}
-                desktopImage={data?.full_width_image_section.large_image || FullWidthImageLarge}
+                image={data?.full_width_image_section?.image || FullWidthImage}
+                desktopImage={data?.full_width_image_section?.large_image || FullWidthImageLarge}
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
@@ -147,11 +147,11 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 h2Heading={data?.section_1.subheading || 'symptoms and vision'}
                 h3LightHeading={
                     <>
-                        {data?.section_1.heading.light_heading || 'Double vision symptoms'}
+                        {data?.section_1?.heading?.light_heading || 'Double vision symptoms'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_1.heading.bold_heading || 'and vision testing'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'and vision testing'}
                 descriptions={
                     (data?.section_1.descriptions.length &&
                         stringArrayToElementArray(data?.section_1.descriptions)) || [
@@ -189,7 +189,7 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                         />
 
                         <p>
-                            {data?.section_1.extra_description || (
+                            {data?.section_1?.extra_description || (
                                 <>
                                     If you see two distinct images side-by-side or one above the other, and one of the
                                     images disappears when one eye is covered, then there may be a neurological problem
@@ -205,11 +205,11 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 h2Heading={data?.section_2.subheading || 'consultation & treatment'}
                 h3LightHeading={
                     <>
-                        {data?.section_2.heading.light_heading || 'Private consultation &'}
+                        {data?.section_2?.heading?.light_heading || 'Private consultation &'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_2.heading.bold_heading || 'treatment for double vision'}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'treatment for double vision'}
                 descriptions={
                     (data?.section_2.descriptions.length &&
                         stringArrayToElementArray(data?.section_2.descriptions)) || [
@@ -219,13 +219,13 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/consultation-&-treatment-double-vision.png',
+                    url: data?.section_2?.image || '/images/section-images/consultation-&-treatment-double-vision.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_2.large_image ||
+                        data?.section_2?.large_image ||
                         '/images/section-images/consultation-&-treatment-double-vision-large.png',
                     width: 643,
                     height: 461
@@ -234,16 +234,16 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
             />
 
             <NormalSection
-                heading={data?.section_3.heading}
-                description={data?.section_3.description}
-                bannerText={data?.section_3.bannerText}
+                heading={data?.section_3?.heading}
+                description={data?.section_3?.description}
+                bannerText={data?.section_3?.bannerText}
                 list={stringArrayToElementArray(data?.section_3.list)}
             />
 
             <CtaSection
-                title={data?.cta_section.heading || 'Book a private consultation'}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading || 'Book a private consultation'}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <LazyComponent>
@@ -283,24 +283,24 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 data: {
-                    ...data.acf,
+                    ...data?.acf,
                     full_width_image_section: {
-                        ...data.acf.full_width_image_section,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
+                        ...data?.acf.full_width_image_section,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.full_width_image_section?.descriptions)
                     },
                     // Symptoms and vision
                     section_1: {
-                        ...data.acf.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions),
+                        ...data?.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_1?.list)
                     },
                     // Consultation & treatment
                     section_2: {
-                        ...data.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions)
+                        ...data?.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions)
                     },
                     section_3: {
-                        ...data.acf.section_3,
+                        ...data?.acf.section_3,
                         list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
                     }
                 } as DataInterface,

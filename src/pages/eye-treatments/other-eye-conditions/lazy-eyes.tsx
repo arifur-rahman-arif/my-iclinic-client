@@ -75,9 +75,9 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -110,14 +110,14 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
-                h2Heading={data?.section_1.subheading || 'Correct your vision'}
+                h2Heading={data?.section_1?.subheading || 'Correct your vision'}
                 h3LightHeading={
                     <>
-                        {data?.section_1.heading.light_heading || 'Lazy eyes (amblyopia)'}
+                        {data?.section_1?.heading?.light_heading || 'Lazy eyes (amblyopia)'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_1.heading.bold_heading || 'in children and adults'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'in children and adults'}
                 descriptions={
                     (data?.section_1.descriptions.length &&
                         stringArrayToElementArray(data?.section_1.descriptions)) || [
@@ -126,39 +126,39 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1.image || '/images/section-images/vision-correction-lazy-eyes.png',
+                    url: data?.section_1?.image || '/images/section-images/vision-correction-lazy-eyes.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1.large_image || '/images/section-images/vision-correction-lazy-eyes-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-lazy-eyes-large.png',
                     width: 659,
                     height: 477
                 }}
             />
 
             <SideImageSection
-                h2Heading={data?.section_2.subheading || 'amblyopia Diagnosis'}
+                h2Heading={data?.section_2?.subheading || 'amblyopia Diagnosis'}
                 h3LightHeading={
                     <>
-                        {data?.section_2.heading.light_heading || 'Diagnosis and treatment'}
+                        {data?.section_2?.heading?.light_heading || 'Diagnosis and treatment'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_2.heading.bold_heading || 'for a Lazy eye'}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'for a Lazy eye'}
                 descriptions={
-                    (data?.section_2.descriptions.length &&
+                    (data?.section_2?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_2.descriptions)) || [
                         'If your child has a lazy eye, you may be experiencing the following symptoms:'
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/amblyopia-diagnosis.png',
+                    url: data?.section_2?.image || '/images/section-images/amblyopia-diagnosis.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2.large_image || '/images/section-images/amblyopia-diagnosis-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/amblyopia-diagnosis-large.png',
                     width: 664,
                     height: 562
                 }}
@@ -167,7 +167,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     <div className="grid gap-12">
                         <BulletList
                             list={
-                                (data?.section_2.list.length && data.section_2.list) || [
+                                (data?.section_2?.list.length && data.section_2.list) || [
                                     'Blurry and distorted vision',
                                     'Deficient depth perception',
                                     'Double vision',
@@ -183,7 +183,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                         />
 
                         <p>
-                            {data?.section_2.extra_description ||
+                            {data?.section_2?.extra_description ||
                                 'We offer a private consultation with our lazy eye specialist to check your current eye condition and to advise on the best treatment to prevent any further vision loss.'}
                         </p>
                     </div>
@@ -191,16 +191,16 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             />
 
             <SideImageSection
-                h2Heading={data?.section_3.subheading || 'amblyopia consultation'}
+                h2Heading={data?.section_3?.subheading || 'amblyopia consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_3.heading.light_heading || 'What is included in my'}
+                        {data?.section_3?.heading?.light_heading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_3.heading.bold_heading || 'private consultation?'}
+                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'private consultation?'}
                 descriptions={
-                    (data?.section_3.descriptions.length &&
+                    (data?.section_3.descriptions?.length &&
                         stringArrayToElementArray(data?.section_3.descriptions)) || [
                         <>
                             A private consultation with our ophthalmologist is an all-inclusive{' '}
@@ -210,19 +210,19 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3.image || '/images/section-images/amblyopia-consultation.png',
+                    url: data?.section_3?.image || '/images/section-images/amblyopia-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3.large_image || '/images/section-images/amblyopia-consultation-large.png',
+                    url: data?.section_3?.large_image || '/images/section-images/amblyopia-consultation-large.png',
                     width: 649,
                     height: 552
                 }}
                 textColumnExtras={
                     <BulletList
                         list={
-                            (data?.section_3.list.length && data.section_2.list) || [
+                            (data?.section_3?.list.length && data.section_2.list) || [
                                 'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
                                 'A medical diagnosis of your eye condition with treatment planning.',
                                 'A referral for surgical treatment and/or a signed prescription (if required).',
@@ -240,10 +240,10 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             <Section>
                 <Container className="grid gap-12 justify-items-center">
                     <h2 className="w-full normal-case text-center max-w-[64rem]">
-                        {data?.section_4.heading || 'Private consultation'}
+                        {data?.section_4?.heading || 'Private consultation'}
                     </h2>
                     <p className="text-center max-w-[53rem]">
-                        {data?.section_4.description ||
+                        {data?.section_4?.description ||
                             'Book a private consultation today with our specialist for all-inclusive eye assessments and treatment planning.'}
                     </p>
                 </Container>
@@ -254,34 +254,34 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             </LazyComponent>
 
             <CtaSection
-                title={data?.cta_section.heading}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <SideImageSection
-                h2Heading={data?.section_5.subheading || 'Lazy eye treatment'}
+                h2Heading={data?.section_5?.subheading || 'Lazy eye treatment'}
                 h3LightHeading={
                     <>
-                        {data?.section_5.heading.light_heading || 'Lazy eye treatment for'}
+                        {data?.section_5?.heading?.light_heading || 'Lazy eye treatment for'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_5.heading.bold_heading || 'adults & children'}
+                h3BoldHeading={data?.section_5?.heading?.bold_heading || 'adults & children'}
                 descriptions={
-                    (data?.section_5.descriptions.length &&
+                    (data?.section_5?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_5.descriptions)) || [
                         'Our ophthalmologist will use occlusion therapy to help your vision. Eye patches are used by our ophthalmologist to stimulate the weaker eye and improve vision overtime.',
                         'Other treatments such as: eye drops, corrective glasses and contact lenses may be prescribed or recommended as the best treatment for your lazy eye condition.'
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5.image || '/images/section-images/lazy-eye-treatment-large.png',
+                    url: data?.section_5?.image || '/images/section-images/lazy-eye-treatment-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5.large_image || '/images/section-images/lazy-eye-treatment-large.png',
+                    url: data?.section_5?.large_image || '/images/section-images/lazy-eye-treatment-large.png',
                     width: 647,
                     height: 503
                 }}
@@ -291,11 +291,11 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                 sectionClass="bg-lightOrange py-12 md:py-24"
                 normalLightHeading={
                     <strong className="normal-case text-center md:text-left block">
-                        {data?.section_6.heading || 'Visit our Lazy eye specialist for diagnosis and treatment'}
+                        {data?.section_6?.heading || 'Visit our Lazy eye specialist for diagnosis and treatment'}
                     </strong>
                 }
                 descriptions={
-                    (data?.section_6.descriptions.length &&
+                    (data?.section_6?.descriptions.length &&
                         stringArrayToElementArray(data?.section_6.descriptions)) || [
                         <span className="block text-center md:text-left">
                             Book a private consultation today with our ophthalmologist for all-inclusive eye assessments
@@ -304,13 +304,13 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6.image || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.image || '/images/section-images/tedy-bear.png',
                     width: 390,
                     height: 390
                 }}
                 largeImageClassName="mx-auto"
                 sectionImageDesktop={{
-                    url: data?.section_6.large_image || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.large_image || '/images/section-images/tedy-bear.png',
                     width: 412,
                     height: 439
                 }}
@@ -320,7 +320,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
 
                         <Button
                             type="phone"
-                            text={data?.section_6.phone || '0208 445 8877'}
+                            text={data?.section_6?.phone || '0208 445 8877'}
                             iconPosition="left"
                             className="!min-w-[18.6rem] md:min-w-[23.3rem] place-content-center border-orange !bg-transparent"
                             icon={
@@ -379,33 +379,33 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 data: {
-                    ...data.acf,
+                    ...data?.acf,
                     // Correct your vision Lazy eyes (amblyopia)
                     section_1: {
-                        ...data.acf.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions)
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
                     },
                     // Amblyopia Diagnosis
                     section_2: {
-                        ...data.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions),
+                        ...data?.acf?.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_2?.list)
                     },
                     // Amblyopia Consultation
                     section_3: {
-                        ...data.acf.section_3,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_3?.descriptions),
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf.section_3?.list)
                     },
                     // Lazy Eye Treatment
                     section_5: {
-                        ...data.acf.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_5?.descriptions)
+                        ...data?.acf?.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions)
                     },
                     // Lazy Eye Specialist Banner
                     section_6: {
-                        ...data.acf.section_6,
-                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_6?.descriptions)
+                        ...data?.acf?.section_6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_6?.descriptions)
                     }
                 } as DataInterface,
                 seo: data?.yoast_head || '',

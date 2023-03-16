@@ -29,7 +29,7 @@ const BlogRelatedCard = ({
 }: BlogRelatedCardInterface): JSX.Element => {
     return (
         <Link
-            href={`/blogs/${slug}` || '#'}
+            href={`/articles/${slug}` || '#'}
             className="grid pr-4 sm:pr-8 sm:h-[18rem] grid-cols-[auto_1fr] gap-10 border-b-4 hover:border-brand items-start max-w-[36.6rem] rounded-primary shadow-shadow3 transition-all duration-500 hover:shadow-shadow1 group/card overflow-hidden"
         >
             <div className="overflow-hidden cursor-pointer max-w-[14.3rem] h-full">

@@ -50,7 +50,7 @@ const BlogCard2 = ({
 }: GeneralBlogInterface): JSX.Element => {
     return (
         <div className="grid pb-12 border-b-4 hover:border-brand items-start max-w-[40rem] rounded-primary shadow-shadow3 transition-all duration-500 hover:shadow-shadow1 group/card overflow-hidden">
-            <Link href={`/blogs/${slug}` || '#'} className="max-h-[19.7rem] overflow-hidden cursor-pointer">
+            <Link href={`/articles/${slug}` || '#'} className="max-h-[19.7rem] overflow-hidden cursor-pointer">
                 <Image
                     src={image.src}
                     width={image.width || 401}
@@ -74,7 +74,7 @@ const BlogCard2 = ({
                     )}
                     &nbsp;&nbsp;
                     <LinkText
-                        href={`/blogs/${slug}` || '#'}
+                        href={`/articles/${slug}` || '#'}
                         indicatorColor="bg-blue"
                         className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
                     >

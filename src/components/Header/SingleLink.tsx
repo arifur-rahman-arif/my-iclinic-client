@@ -64,14 +64,14 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
             )}
 
             {/* Indicator */}
-            {!menu.parentMenu && (
+            {!menu.parentMenu && !menu.submenu && (
                 <span
                     className={`w-4 h-4 bg-brand rounded-full transition-all duration-700 absolute left-0 top-2/4 -translate-y-[35%] -translate-x-8 ${
                         isMenuActive && !menu.parentMenu ? 'scale-100' : 'scale-0'
                     } block`}
                 ></span>
             )}
-            {!menu.parentMenu && menu.submenu && (
+            {!menu.parentMenu && menu.submenu && !isMenuActive && (
                 <span
                     className={`${
                         isMenuActive ? 'w-full' : 'w-0'

@@ -40,8 +40,8 @@ const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSl
 });
 
 interface HomeProps {
-    seo: any;
-    yoastJson: any;
+    seo?: any;
+    yoastJson?: any;
 }
 
 /**
@@ -318,8 +318,8 @@ export async function getStaticProps() {
         return {
             /* eslint-disable */
             props: {
-                seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                seo: data?.yoast_head || null,
+                yoastJson: data?.yoast_head_json || null
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
