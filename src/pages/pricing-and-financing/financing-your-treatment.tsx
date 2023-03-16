@@ -44,8 +44,8 @@ export default function FinancingYourTreatment({
     seo,
     yoastJson
 }: FinancingYourTreatmentProps): JSX.Element {
-    const heading = data?.masthead_subheading || 'Finance & health insurance options';
-    const subheading = data?.masthead_subheading || 'Let the cost of clear vision make sense';
+    const heading: string = data?.masthead_subheading || 'Finance & health insurance options';
+    const subheading: string = data?.masthead_subheading || 'Let the cost of clear vision make sense';
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>

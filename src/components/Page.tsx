@@ -5,8 +5,8 @@ interface PropInterface {
     children?: JSX.Element | JSX.Element[];
     title: string;
     description?: string;
-    seo: any;
-    yoastJson: any;
+    seo?: any;
+    yoastJson?: any;
 }
 
 /**

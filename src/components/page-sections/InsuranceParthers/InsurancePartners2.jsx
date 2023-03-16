@@ -5,7 +5,7 @@ import { LinkStyle } from '@/components/Link';
 import { BiRightArrowAlt } from 'react-icons/bi';
 
 /**
- * Health & insurance partners component
+ * Insurance partners component
  *
  * @returns {JSX.Element}
  * @constructor

@@ -12,7 +12,7 @@ const Page404: NextPage = (): JSX.Element => {
     const router = useRouter();
 
     return (
-        <Page title="Page not found">
+        <Page title="Page not found" seo={null} yoastJson={null}>
             <div className="grid h-screen w-full place-items-center content-center bg-brandLight">
                 <div>
                     <Image src="/images/section-images/404.png" alt="404" width={723} height={427} quality={70} />

@@ -39,18 +39,17 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             };
 
             const freshdeskApiResponse = await postData({
-                url: `https://test8147.freshdesk.com/api/v2/tickets`,
+                url: `https://myiclinic-help.freshdesk.com/api/v2/tickets`,
                 body: payload,
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Basic ${btoa(process.env.FRESHDESK_API_KEY)}`
+                    Authorization: `Basic ${btoa(process.env.FRESHDESK_API_KEY || '')}`
                 }
             });
 
             if (!freshdeskApiResponse.ok) {
                 const freshdeskResponse = await freshdeskApiResponse.json();
-                console.log(freshdeskResponse);
-                throw new Error(`API error: ${freshdeskApiResponse.status} ${freshdeskApiResponse.statusText}`);
+                throw new Error(`API error: ${freshdeskResponse.status} ${freshdeskResponse.statusText}`);
             }
 
             // Pabau integration

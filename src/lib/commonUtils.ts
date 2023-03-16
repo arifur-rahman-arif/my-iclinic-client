@@ -22,7 +22,7 @@ export const getPageData = async ({ slug, fields }: GetPageDataProps = {}): Prom
         throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
     }
 
-    const [data]: WpPageResponseInterface<any> = await pageResponse.json();
+    const [data]: [WpPageResponseInterface<any>] = await pageResponse.json();
 
     return data;
 };

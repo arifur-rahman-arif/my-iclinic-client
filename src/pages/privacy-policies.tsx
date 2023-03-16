@@ -45,6 +45,7 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                                     text="Download"
                                     iconPosition="left"
                                     loadingIconPosition="right"
+                                    // @ts-ignore
                                     download={true}
                                     link={data?.guide_file || ''}
                                     icon={

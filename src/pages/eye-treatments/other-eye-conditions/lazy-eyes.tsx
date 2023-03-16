@@ -375,7 +375,6 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await getPageData();
-        k;
         return {
             /* eslint-disable */
             props: {

@@ -47,6 +47,7 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 interface PaediatricEyeCareProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -57,7 +58,7 @@ interface PaediatricEyeCareProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function PaediatricEyeCare({ seo, yoastJson }: PaediatricEyeCareProps): JSX.Element {
+export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEyeCareProps): JSX.Element {
     const heading = 'Myopia Mitigation Clinic for Children London';
     const subheading = 'Manage your child’s short sightedness with our Myopia treatment & management clinic';
 
