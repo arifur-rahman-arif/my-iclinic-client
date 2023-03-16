@@ -167,6 +167,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                             YAG laser treatment
                         </>
                     }
+                    pageSlug="yag-capsulotomy-for-pco"
                 />
             </LazyComponent>
 

@@ -10,6 +10,7 @@ import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
 interface DownloadFormInterface {
     setShowDownloadOnTheWayTemplate: Dispatch<SetStateAction<boolean>>;
     setShowForm: Dispatch<SetStateAction<boolean>>;
+    pageSlug?: string;
 }
 
 /**
@@ -17,7 +18,11 @@ interface DownloadFormInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: DownloadFormInterface): JSX.Element => {
+const DownloadForm = ({
+    setShowDownloadOnTheWayTemplate,
+    setShowForm,
+    pageSlug
+}: DownloadFormInterface): JSX.Element => {
     const dispatch = useAppDispatch();
     const [submitForm, response] = useDownloadFormSubmissionMutation();
     const [name, setName] = useState<string>('');
@@ -123,10 +128,22 @@ const DownloadForm = ({ setShowDownloadOnTheWayTemplate, setShowForm }: Download
             );
         }
 
+        if (!pageSlug) {
+            return dispatch(
+                handleAlert({
+                    showAlert: true,
+                    alertType: 'error',
+                    alertMessage: 'Page slug parameter is not found',
+                    timeout: 4000
+                })
+            );
+        }
+
         const payload = {
             name,
             email,
-            gender
+            gender,
+            pageSlug
         };
 
         submitForm(payload);

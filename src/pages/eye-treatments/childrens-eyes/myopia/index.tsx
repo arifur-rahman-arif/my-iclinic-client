@@ -539,6 +539,7 @@ export default function PaediatricEyeCare({ seo, yoastJson }: PaediatricEyeCareP
                             Patient Information
                         </>
                     }
+                    pageSlug="myopia"
                 />
             </LazyComponent>
 

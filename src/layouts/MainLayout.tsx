@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 const Footer = dynamic(() => import('@/components/Footer/Footer'));
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
 const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'));
+const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
 
 interface PropTypes {
     children: ReactNode;
@@ -52,6 +53,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             </LazyComponent>
             {showAlert && <Alert />}
             {loadCallbackSection ? <BottomMenu /> : <></>}
+            {loadChatbot && <CookieConsent />}
         </>
     );
 };

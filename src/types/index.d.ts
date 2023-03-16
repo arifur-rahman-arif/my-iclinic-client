@@ -1,3 +1,4 @@
+import PrivacyPolicyPageContentInterface from './pages/privacyPolicy';
 import PostInterface from './api/single-post';
 import WPSettings from './api/wp-settings';
 import DoubleVisionPageContentInterface from './pages/doubleVision';
@@ -9,15 +10,16 @@ import EyeDiagnosticsPageContentInterface from './pages/eyeDiagnostics';
 import LazyEyesPageContentInterface from './pages/lazyEyes';
 
 export type {
-	PostInterface,
-	WPSettings,
-	DoubleVisionPageContentInterface,
-	EyeDiagnosticsPageContentInterface,
-	ImageType,
-	ImageType2,
-	WpPageResponseInterface,
-	PageDataInterface,
-	ConjunctivitisPageContentInterface,
-	AstigmatismPageContentInterface,
-	LazyEyesPageContentInterface
+    PostInterface,
+    WPSettings,
+    DoubleVisionPageContentInterface,
+    EyeDiagnosticsPageContentInterface,
+    ImageType,
+    ImageType2,
+    WpPageResponseInterface,
+    PageDataInterface,
+    ConjunctivitisPageContentInterface,
+    AstigmatismPageContentInterface,
+    LazyEyesPageContentInterface,
+    PrivacyPolicyPageContentInterface
 };

@@ -533,7 +533,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title="Presbyond Patient Information" />
+                <PdfDownload title="Presbyond Patient Information" pageSlug="presbyond-london" />
             </LazyComponent>
 
             <LazyComponent>

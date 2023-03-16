@@ -514,6 +514,7 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                 <PdfDownload
                     title="Get the guide to ReLEx laser surgery"
                     description="Robotic laser vision correction"
+                    pageSlug="relex-smile-london"
                 />
             </LazyComponent>
 

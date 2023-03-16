@@ -390,14 +390,14 @@ export const navMenuList: NavMenuType[] = [
     },
     {
         type: 'text',
-        name: 'About us',
+        name: 'About Us',
         url: '/about-us',
         slug: 'about-us',
         parentMenu: true
     },
     {
         type: 'text',
-        name: 'Contact us',
+        name: 'Contact Us',
         url: '/contact-us',
         slug: 'contact-us',
         parentMenu: true

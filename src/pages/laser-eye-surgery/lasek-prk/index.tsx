@@ -327,6 +327,7 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
                 <PdfDownload
                     title="Get the guide to LASEK, PRK & PTK laser surgery"
                     description="Robotic laser vision correction"
+                    pageSlug="lasek-prk"
                 />
             </LazyComponent>
 

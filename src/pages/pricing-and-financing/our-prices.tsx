@@ -14,9 +14,13 @@ import {
     pricePageList1,
     visionCorrectionPriceList
 } from '@/components/page-sections/SectionParts/GlaucomaPackages/GlaucomaPackages3';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-price-large.png';
-// Import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
-// import MastheadImageSmall from '@/masthead/masthead-price-small.png';
+import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-price-small.png';
+import { InsurancePartners2 } from '@/page-sections/InsuranceParthers';
+import { AstigmatismPageContentInterface, WpPageResponseInterface } from '@/types';
+
 import Image from 'next/image';
 
 interface OurPricesProps {
@@ -38,8 +42,8 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageLarge}
-                imageMedium={MastheadImageLarge}
+                imageSmall={MastheadImageSmall}
+                imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 imagePosition="object-[-14rem_0] !object-cover"
                 h1Title={
@@ -99,6 +103,26 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                 titleClassName="sticky top-[14rem]"
             />
 
+            <InsurancePartners2 />
+
+            <GlaucomaPackages3
+                packageContainerClassName="md:!ml-0"
+                packageList={cataractPriceList}
+                itemClassName="!items-stretch"
+                dynamicSectionHead={
+                    <div className="px-8 xl:px-0">
+                        <TextColumn h3LightHeading="Our treatment" h3BoldHeading="prices" />
+                    </div>
+                }
+            />
+
+            <GlaucomaPackages3
+                packageContainerClassName="md:!ml-0"
+                dynamicSectionHead={<></>}
+                packageList={visionCorrectionPriceList}
+                itemClassName="!items-stretch"
+            />
+
             <SideImageSection
                 h3LightHeading={
                     <>
@@ -155,20 +179,6 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={cataractPriceList}
-                itemClassName="!items-stretch"
-            />
-
-            <GlaucomaPackages3
-                packageContainerClassName="md:!ml-0"
-                dynamicSectionHead={<></>}
-                packageList={visionCorrectionPriceList}
-                itemClassName="!items-stretch"
-            />
-
-            <GlaucomaPackages3
-                packageContainerClassName="md:!ml-0"
-                dynamicSectionHead={<></>}
                 packageList={glaucomaPriceList}
                 itemClassName="!items-stretch"
             />
@@ -214,4 +224,28 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
             />
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData();
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data.yoast_head,
+                yoastJson: data.yoast_head_json
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

@@ -259,6 +259,7 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
                             Conjunctivitis treatment
                         </>
                     }
+                    pageSlug="conjunctivitis"
                 />
             </LazyComponent>
 

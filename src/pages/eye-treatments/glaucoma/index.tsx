@@ -368,6 +368,7 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
                     <PdfDownload
                         title="Get the guide to Glaucoma treatment"
                         description="Robotic laser vision correction"
+                        pageSlug="glaucoma"
                     />
                 </LazyComponent>
 

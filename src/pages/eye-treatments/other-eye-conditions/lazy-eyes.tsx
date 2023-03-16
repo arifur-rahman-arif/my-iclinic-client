@@ -351,6 +351,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                             Lazy eye treatment
                         </>
                     }
+                    pageSlug="lazy-eyes"
                 />
             </LazyComponent>
 

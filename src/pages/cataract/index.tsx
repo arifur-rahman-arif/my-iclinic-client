@@ -291,6 +291,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 <PdfDownload
                     title="Get the guide to Cataract treatment"
                     description="Robotic laser vision correction"
+                    pageSlug="cataract"
                 />
             </LazyComponent>
 

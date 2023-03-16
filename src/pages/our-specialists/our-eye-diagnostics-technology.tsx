@@ -30,7 +30,8 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 
 interface DataInterface
     extends EyeDiagnosticsPageContentInterface,
-        PageDataInterface<EyeDiagnosticsPageContentInterface> {}
+        PageDataInterface<EyeDiagnosticsPageContentInterface> {
+}
 
 /**
  * Url: /eye-treatments/other-eye-conditions/conjunctivitis
@@ -119,7 +120,7 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                             descriptions={[
                                 'Every pair of eyes are unique and different. We understand that every patient needs careful and precise attention to detail in their eye health to find the best treatment plan for them.',
                                 'Our ophthalmic technology and equipment facilities are highly advanced in the private eye care industry, achieving accurate and comprehensive screening assessments.',
-                                "Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children's pediatric eye care and more."
+                                'Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children\'s pediatric eye care and more.'
                             ]}
                         />
                     </>
@@ -136,7 +137,8 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 }}
             />
 
-            <NormalSection5 heading="The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare." />
+            <NormalSection5
+                heading="The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare." />
 
             <SideImageSection
                 containerClassName="md:!grid-cols-1 md:!gap-12"
@@ -167,6 +169,7 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                             treatment
                         </>
                     }
+                    pageSlug="our-eye-diagnostics-technology"
                 />
             </LazyComponent>
 

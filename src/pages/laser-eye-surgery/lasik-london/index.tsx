@@ -1,5 +1,6 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button } from '@/components/Button';
+import ComponentLoader from '@/components/ComponentLoader';
 
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -34,15 +35,33 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'));
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'));
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'));
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'));
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'));
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'));
-const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'));
-const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'));
-const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'));
+const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+    loading: () => <ComponentLoader />
+});
+const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+    loading: () => <ComponentLoader />
+});
+const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
+    loading: () => <ComponentLoader />
+});
+const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+    loading: () => <ComponentLoader />
+});
+const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
+    loading: () => <ComponentLoader />
+});
+const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
+    loading: () => <ComponentLoader />
+});
+const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'), {
+    loading: () => <ComponentLoader />
+});
 
 interface LasikProps {
     seo: any;
@@ -476,6 +495,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                         </>
                     }
                     description="Robotic laser vision correction"
+                    pageSlug="lasik-london"
                 />
             </LazyComponent>
 

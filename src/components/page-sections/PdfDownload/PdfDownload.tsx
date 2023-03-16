@@ -15,6 +15,7 @@ interface PdfDownloadInterface {
     title: ReactNode;
     list?: ReactNode[];
     description?: string;
+    pageSlug?: string;
 }
 
 /**
@@ -22,7 +23,7 @@ interface PdfDownloadInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const PdfDownload = ({ title, list, description }: PdfDownloadInterface): JSX.Element => {
+const PdfDownload = ({ title, list, description, pageSlug }: PdfDownloadInterface): JSX.Element => {
     const [showForm, setShowForm] = useState<boolean>(true);
     const [showDownloadOnTheWayTemplate, setShowDownloadOnTheWayTemplate] = useState<boolean>(false);
     const [showThankYouTemplate, setShowThankYouTemplate] = useState<boolean>(false);
@@ -76,6 +77,7 @@ const PdfDownload = ({ title, list, description }: PdfDownloadInterface): JSX.El
                         <DownloadForm
                             setShowForm={setShowForm}
                             setShowDownloadOnTheWayTemplate={setShowDownloadOnTheWayTemplate}
+                            pageSlug={pageSlug}
                         />
                     )}
 

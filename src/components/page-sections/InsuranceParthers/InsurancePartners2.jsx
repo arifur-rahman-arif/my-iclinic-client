@@ -1,0 +1,42 @@
+import { Container } from '@/components/Container';
+import { Section } from '@/components/Section';
+import Image from 'next/image';
+import { LinkStyle } from '@/components/Link';
+import { BiRightArrowAlt } from 'react-icons/bi';
+
+/**
+ * Health & insurance partners component
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const InsurancePartners2 = () => {
+    return (
+        <Section>
+            <Container className="grid place-items-center gap-12 md:gap-24">
+                <div className="grid gap-6">
+                    <h2 className="normal-case">
+                        Our health <strong className="normal-case">insurance partners</strong>
+                    </h2>
+                    <LinkStyle
+                        url="/pricing-and-financing/financing-your-treatment#insurance"
+                        className="group/link flex item-center justify-center gap-1"
+                    >
+                        Fund your treatment with our health insurance partners
+                        <BiRightArrowAlt className="fill-blue w-10 h-10" />
+                    </LinkStyle>
+                </div>
+                <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14">
+                    <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
+                    <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
+                    <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
+                    <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
+                    <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
+                    <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
+                </div>
+            </Container>
+        </Section>
+    );
+};
+
+export default InsurancePartners2;

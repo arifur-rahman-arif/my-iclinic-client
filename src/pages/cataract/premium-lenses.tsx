@@ -265,7 +265,7 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title={<>Get the guide to Premium lenses treatment</>} />
+                <PdfDownload title={<>Get the guide to Premium lenses treatment</>} pageSlug="premium-lenses" />
             </LazyComponent>
 
             <LazyComponent>
