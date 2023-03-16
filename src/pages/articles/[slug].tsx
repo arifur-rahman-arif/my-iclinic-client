@@ -92,7 +92,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext<SinglePageParams
 
         const data: WpPageResponseInterface<any> = await getPageData({
             slug: ctx?.params?.slug,
-            fields: 'yoast_head,yoast_head_json'
+            url: `${process.env.WP_REST_URL}/posts?slug=${ctx?.params?.slug}&_fields=yoast_head,yoast_head_json`
         });
 
         return {

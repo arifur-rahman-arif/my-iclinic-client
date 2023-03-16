@@ -5,17 +5,22 @@ import { getCurrentFileName, wordpressPageFields } from '@/utils/miscellaneous';
 interface GetPageDataProps {
     slug?: string;
     fields?: string;
+    url?: string;
 }
 
 /**
  * Get the page data from WordPress API
  * @returns {WpPageResponseInterface<any>}
  */
-export const getPageData = async ({ slug, fields }: GetPageDataProps = {}): Promise<WpPageResponseInterface<any>> => {
+export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}): Promise<
+    WpPageResponseInterface<any>
+> => {
     const pageResponse: Response = await getData({
-        url: `${process.env.WP_REST_URL}/pages?slug=${slug || getCurrentFileName(__filename)}&_fields=${
-            fields || wordpressPageFields()
-        }`
+        url:
+            url ||
+            `${process.env.WP_REST_URL}/pages?slug=${slug || getCurrentFileName(__filename)}&_fields=${
+                fields || wordpressPageFields()
+            }`
     });
 
     if (!pageResponse.ok) {
