@@ -25,29 +25,8 @@ interface PropInterface {
 const Page = ({ children, title, description, seo, yoastJson, ...other }: PropInterface): JSX.Element => {
     return (
         <>
-            {/* <NextSeo */}
-            {/*     title={`${title} | My-iClinic`} */}
-            {/*     description={description || ''} */}
-            {/*     additionalLinkTags={[ */}
-            {/*         { */}
-            {/*             rel: 'icon', */}
-            {/*             href: '/favicon.ico' */}
-            {/*         } */}
-            {/*         // { */}
-            {/*         //     rel: 'manifest', */}
-            {/*         //     href: '/manifest.json' */}
-            {/*         // } */}
-            {/*     ]} */}
-            {/* /> */}
-
             <Head>
                 <title>{yoastJson?.title || title}</title>
-                {/* {seo && ( */}
-                {/*     <div */}
-                {/*         dangerouslySetInnerHTML={{ __html: seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL) }} */}
-                {/*     /> */}
-                {/*      */}
-                {/* )} */}
                 {seo && HTMLReactParser(seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL))}
                 {yoastJson && (
                     <>

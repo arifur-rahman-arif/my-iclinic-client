@@ -117,7 +117,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a CATARACT specialist</strong>
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 

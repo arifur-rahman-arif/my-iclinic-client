@@ -129,7 +129,7 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a ICL specialist</strong>
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 

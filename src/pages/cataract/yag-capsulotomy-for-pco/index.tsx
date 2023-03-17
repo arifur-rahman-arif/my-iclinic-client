@@ -107,7 +107,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a YAG specialist</strong>
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 
