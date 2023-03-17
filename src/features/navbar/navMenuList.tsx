@@ -185,7 +185,7 @@ export const navMenuList: NavMenuType[] = [
                 type: 'text',
                 name: 'Eye Lid surgery',
                 url: '/eye-treatments/eyelid-surgery',
-                slug: 'eye-treatments/eyelid-surgery-surgery',
+                slug: 'eye-treatments/eyelid-surgery',
                 dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
@@ -198,7 +198,7 @@ export const navMenuList: NavMenuType[] = [
                             </span>
                         ),
                         url: '/eye-treatments/eyelid-surgery',
-                        slug: 'eye-treatments/eyelid-surgery-surgery',
+                        slug: 'eye-treatments/eyelid-surgery',
                         dotAnimation: true
                     }
                 ]
