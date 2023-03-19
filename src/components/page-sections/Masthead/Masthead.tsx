@@ -54,7 +54,7 @@ const Masthead = ({
     const deviceSize = useDeviceSize();
 
     return (
-        <Section defaultClassName="mt-12 md:mt-24 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative">
+        <Section defaultClassName="mt-12 xl:mt-20 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative">
             {smallSizes.includes(deviceSize) ? (
                 <div className="absolute right-0 left-auto -z-[1] min-h-[30rem] w-full max-w-[123.1rem] sm:hidden md:h-full">
                     <Image

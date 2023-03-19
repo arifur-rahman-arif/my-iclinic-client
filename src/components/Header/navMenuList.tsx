@@ -1,167 +1,125 @@
 import { ReactNode } from 'react';
 
 export interface NavMenuType {
-    type: 'icon' | 'text';
     name: ReactNode;
     url: string;
     slug: string;
-    icon?: JSX.Element;
-    parentMenu?: boolean;
-    parentSubmenu?: boolean;
     submenu?: Array<NavMenuType>;
-    barAnimation?: boolean;
-    dotAnimation?: boolean;
     subMenuOpen?: boolean;
     megaMenu?: boolean;
 }
 
 export const navMenuList: NavMenuType[] = [
     {
-        type: 'text',
         name: 'Cataract',
         url: '/cataract',
         slug: 'cataract',
-        parentMenu: true,
-        parentSubmenu: true,
         subMenuOpen: false,
         submenu: [
             {
-                type: 'text',
                 name: 'Cataract Surgery',
                 url: '/cataract',
-                slug: 'cataract',
-                dotAnimation: true
+                slug: 'cataract'
             },
             {
-                type: 'text',
                 name: (
-                    <span className="block">
+                    <>
                         Freedom from glasses
                         <br /> after cataract surgery
-                    </span>
+                    </>
                 ),
                 url: '/cataract/premium-lenses',
-                slug: 'cataract/premium-lenses',
-                dotAnimation: true
+                slug: 'cataract/premium-lenses'
             },
             {
-                type: 'text',
                 name: (
-                    <span className="block">
+                    <>
                         YAG Capsulotomy
                         <br /> for PCO
-                    </span>
+                    </>
                 ),
                 url: '/cataract/yag-capsulotomy-for-pco',
-                slug: 'cataract/yag-capsulotomy-for-pco',
-                dotAnimation: true
+                slug: 'cataract/yag-capsulotomy-for-pco'
             }
         ]
     },
     {
-        type: 'text',
         name: 'Vision Correction',
         url: '/vision-correction',
         slug: 'vision-correction',
-        parentMenu: true,
-        parentSubmenu: true,
         subMenuOpen: false,
         submenu: [
             {
-                type: 'text',
                 name: 'ReLEx SMILE',
                 url: '/laser-eye-surgery/relex-smile-london',
-                slug: 'laser-eye-surgery/relex-smile-london',
-                dotAnimation: true
+                slug: 'laser-eye-surgery/relex-smile-london'
             },
             {
-                type: 'text',
                 name: (
-                    <span className="block">
+                    <>
                         Implantable Contact <br />
                         Lenses
-                    </span>
+                    </>
                 ),
                 url: '/icl',
-                slug: 'icl',
-                dotAnimation: true
+                slug: 'icl'
             },
             {
-                type: 'text',
                 name: 'Presbyond',
                 url: '/laser-eye-surgery/presbyond-london',
-                slug: 'laser-eye-surgery/presbyond-london',
-                dotAnimation: true
+                slug: 'laser-eye-surgery/presbyond-london'
             },
             {
-                type: 'text',
                 name: 'Lasik',
                 url: '/laser-eye-surgery/lasik-london',
-                slug: 'laser-eye-surgery/lasik-london',
-                dotAnimation: true
+                slug: 'laser-eye-surgery/lasik-london'
             },
             {
-                type: 'text',
                 name: 'Lasek, PRK, PTK',
                 url: '/laser-eye-surgery/lasek-prk',
-                slug: 'laser-eye-surgery/lasek-prk',
-                dotAnimation: true
+                slug: 'laser-eye-surgery/lasek-prk'
             }
         ]
     },
     {
-        type: 'text',
         name: 'Eye Treatments',
         url: '/eye-Treatments',
-        parentMenu: true,
         slug: 'eye-Treatments',
-        parentSubmenu: true,
         subMenuOpen: false,
         megaMenu: true,
         submenu: [
             {
-                type: 'text',
                 name: 'Glaucoma care',
                 url: '/eye-treatments/glaucoma',
                 slug: 'eye-treatments/glaucoma',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: 'Glaucoma Care clinic',
                         url: '/eye-treatments/glaucoma',
-                        slug: 'eye-treatments/glaucoma',
-                        dotAnimation: true
+                        slug: 'eye-treatments/glaucoma'
                     }
                 ]
             },
             {
-                type: 'text',
                 name: "Children's Eyes",
                 url: '/childrens-eyes',
                 slug: 'childrens-eyes',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: 'Myopia Control',
                         url: '/eye-treatments/childrens-eyes/myopia',
-                        slug: 'eye-treatments/childrens-eyes/myopia',
-                        dotAnimation: true
+                        slug: 'eye-treatments/childrens-eyes/myopia'
                     },
                     {
-                        type: 'text',
                         name: 'Paediatric eye care',
                         url: '/eye-treatments/childrens-eyes/paediatric-eye-care',
-                        slug: 'eye-treatments/childrens-eyes/paediatric-eye-care',
-                        dotAnimation: true
+                        slug: 'eye-treatments/childrens-eyes/paediatric-eye-care'
                     }
                 ]
             },
             {
-                type: 'text',
                 name: (
                     <>
                         Macular diseases &<br /> treatments
@@ -169,42 +127,34 @@ export const navMenuList: NavMenuType[] = [
                 ),
                 url: '/macular-diseases-treatments',
                 slug: 'macular-diseases-treatments',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: 'Macular degeneration',
                         url: '/eye-treatments/macular-degeneration',
-                        slug: 'eye-treatments/macular-degeneration',
-                        dotAnimation: true
+                        slug: 'eye-treatments/macular-degeneration'
                     }
                 ]
             },
             {
-                type: 'text',
                 name: 'Eye Lid surgery',
                 url: '/eye-treatments/eyelid-surgery',
                 slug: 'eye-treatments/eyelid-surgery',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: (
-                            <span className="block">
+                            <>
                                 Eyelid Surgery
                                 <br /> (cosmetic & medical treatments)
-                            </span>
+                            </>
                         ),
                         url: '/eye-treatments/eyelid-surgery',
-                        slug: 'eye-treatments/eyelid-surgery',
-                        dotAnimation: true
+                        slug: 'eye-treatments/eyelid-surgery'
                     }
                 ]
             },
             {
-                type: 'text',
                 name: (
                     <>
                         Corneal Diseases &<br /> Treatments
@@ -212,159 +162,118 @@ export const navMenuList: NavMenuType[] = [
                 ),
                 url: '/corneal-diseases-treatments',
                 slug: 'corneal-diseases-treatments',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: 'Corneal Treatments',
                         url: '/eye-treatments/corneal-treatments',
-                        slug: 'eye-treatments/corneal-treatments',
-                        dotAnimation: true
+                        slug: 'eye-treatments/corneal-treatments'
                     },
                     {
-                        type: 'text',
                         name: 'Keratoconus',
                         url: '/eye-treatments/keratoconus',
-                        slug: 'eye-treatments/keratoconus',
-                        dotAnimation: true
+                        slug: 'eye-treatments/keratoconus'
                     },
                     {
-                        type: 'text',
                         name: 'Blepharitis',
                         url: '/eye-treatments/blepharitis',
-                        slug: 'eye-treatments/blepharitis',
-                        dotAnimation: true
+                        slug: 'eye-treatments/blepharitis'
                     }
                 ]
             },
             {
-                type: 'text',
                 name: 'Other Eye Conditions',
                 url: '/other-eye-conditions',
                 slug: 'other-eye-conditions',
-                dotAnimation: true,
                 subMenuOpen: true,
                 submenu: [
                     {
-                        type: 'text',
                         name: 'Astigmatism',
                         url: '/eye-treatments/other-eye-conditions/astigmatism',
-                        slug: 'eye-treatments/other-eye-conditions/astigmatism',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/astigmatism'
                     },
                     {
-                        type: 'text',
                         name: 'Flashes & Floaters',
                         url: '/eye-treatments/other-eye-conditions/flashes-floaters',
-                        slug: 'eye-treatments/other-eye-conditions/flashes-floaters',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/flashes-floaters'
                     },
                     {
-                        type: 'text',
                         name: 'Conjunctivitis',
                         url: '/eye-treatments/other-eye-conditions/conjunctivitis',
-                        slug: 'eye-treatments/other-eye-conditions/conjunctivitis',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/conjunctivitis'
                     },
                     {
-                        type: 'text',
                         name: 'Dry eyes',
                         url: '/eye-treatments/other-eye-conditions/dry-eyes',
-                        slug: 'eye-treatments/other-eye-conditions/dry-eyes',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/dry-eyes'
                     },
                     {
-                        type: 'text',
                         name: 'Double Vision',
                         url: '/eye-treatments/other-eye-conditions/double-vision',
-                        slug: 'eye-treatments/other-eye-conditions/double-vision',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/double-vision'
                     },
                     {
-                        type: 'text',
                         name: 'Lazy eyes',
                         url: '/eye-treatments/other-eye-conditions/lazy-eyes',
-                        slug: 'eye-treatments/other-eye-conditions/lazy-eyes',
-                        dotAnimation: true
+                        slug: 'eye-treatments/other-eye-conditions/lazy-eyes'
                     }
                 ]
             }
         ]
     },
     {
-        type: 'text',
         name: 'Our Specialists',
         url: '/our-specialists',
         slug: 'our-specialists',
-        parentMenu: true,
-        parentSubmenu: true,
         subMenuOpen: false,
         submenu: [
             {
-                type: 'text',
                 name: 'Our specialist team',
                 url: '/our-specialists',
-                slug: 'our-specialists',
-                dotAnimation: true
+                slug: 'our-specialists'
             },
             {
-                type: 'text',
                 name: (
-                    <span className="block">
+                    <>
                         Our eye diagnostics &<br /> technology
-                    </span>
+                    </>
                 ),
                 url: '/our-specialists/our-eye-diagnostics-technology',
-                slug: 'our-specialists/our-eye-diagnostics-technology',
-                dotAnimation: true
+                slug: 'our-specialists/our-eye-diagnostics-technology'
             }
         ]
     },
     {
-        type: 'text',
         name: 'Pricing & Financing',
         url: '/pricing-and-financing',
         slug: 'pricing-and-financing',
-        parentMenu: true,
-        parentSubmenu: true,
         subMenuOpen: false,
         submenu: [
             {
-                type: 'text',
                 name: 'Our prices',
                 url: '/pricing-and-financing/our-prices',
-                slug: 'pricing-and-financing/our-prices',
-                dotAnimation: true
+                slug: 'pricing-and-financing/our-prices'
             },
             {
-                type: 'text',
                 name: 'Financing your treatment',
                 url: '/pricing-and-financing/financing-your-treatment',
-                slug: 'pricing-and-financing/financing-your-treatment',
-                dotAnimation: true
+                slug: 'pricing-and-financing/financing-your-treatment'
             }
         ]
     },
     {
-        type: 'text',
         name: 'About Us',
         url: '/about-us',
-        slug: 'about-us',
-        parentMenu: true
+        slug: 'about-us'
     },
     {
-        type: 'text',
         name: 'Contact Us',
         url: '/contact-us',
-        slug: 'contact-us',
-        parentMenu: true
+        slug: 'contact-us'
     },
     {
-        type: 'text',
         name: 'Articles',
         url: '/articles',
-        slug: 'articles',
-        parentMenu: true
+        slug: 'articles'
     }
 ];

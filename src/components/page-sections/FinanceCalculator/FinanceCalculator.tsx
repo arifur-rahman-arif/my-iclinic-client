@@ -61,13 +61,13 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
                     <TreatmentTypes treatmentList={treatmentList} setTreatmentList={setTreatmentList} />
                 </div>
 
-                {treatmentList.length
-                    ? treatmentList.map((treatment, index) => {
-                          if (!treatment.active) return null;
+                {treatmentList.length ?
+                    treatmentList.map((treatment, index) => {
+                        if (!treatment.active) return null;
 
-                          return <Treatment key={index} {...treatment} />;
-                      })
-                    : null}
+                        return <Treatment key={index} {...treatment} />;
+                    }) :
+                    null}
             </Container>
         </Section>
     );

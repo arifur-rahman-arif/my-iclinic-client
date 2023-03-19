@@ -1,4 +1,4 @@
-import { alertSlice, navbarSlice } from '@/features/index';
+import { alertSlice } from '@/features/index';
 
 import { downloadFormApi } from '@/services/downloadForm';
 import { requestCallbackApi } from '@/services/requestCallback';
@@ -14,7 +14,6 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            navbar: navbarSlice,
             alert: alertSlice,
             // API Reducer's
             [downloadFormApi.reducerPath]: downloadFormApi.reducer,

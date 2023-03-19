@@ -18,7 +18,7 @@ const BreadCrumb = (): JSX.Element => {
 
     return (
         <>
-            <div className="mt-36 mt-40 w-full md:h-[0.1rem] xl:mt-[14rem]"></div>
+            <div className="mt-12 w-full md:h-[0.1rem] xl:mt-10"></div>
 
             <Container className="flex flex-wrap items-center justify-start gap-4">
                 {router.pathname === '/' ? (
