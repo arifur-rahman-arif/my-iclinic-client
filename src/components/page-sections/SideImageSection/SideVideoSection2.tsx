@@ -98,7 +98,7 @@ const SideVideoSection2 = ({
                             alt=""
                             width={sectionImage.width}
                             height={sectionImage.height}
-                            className="object-contain translate-x-[13rem]"
+                            className="translate-x-[13rem] object-contain"
                         />
                     </div>
                 )}
@@ -109,7 +109,7 @@ const SideVideoSection2 = ({
                             alt=""
                             width={sectionImageLarge.width}
                             height={sectionImageLarge.height}
-                            className="absolute top-2/4 right-0 -translate-y-2/4 max-h-[35rem] object-contain translate-x-[7.5rem]"
+                            className="absolute top-2/4 right-0 max-h-[35rem] -translate-y-2/4 translate-x-[7.5rem] object-contain"
                         />
                     </div>
                 )}

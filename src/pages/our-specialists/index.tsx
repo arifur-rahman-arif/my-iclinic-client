@@ -67,7 +67,7 @@ export default function OurSpecialists({ seo, yoastJson }: OurSpecialistsProps):
                             type="button"
                             text="Chat with us"
                             iconPosition="left"
-                            className="normal-case justify-self-start"
+                            className="justify-self-start normal-case"
                             icon={
                                 <Image
                                     src="/images/icons/icon-chat.svg"
@@ -93,7 +93,7 @@ export default function OurSpecialists({ seo, yoastJson }: OurSpecialistsProps):
                 h3BoldHeading="Consultants"
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
-                    <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,_minmax(37.5rem,_1fr))] gap-x-12 md:gap-y-24 gap-y-12 justify-items-center">
+                    <div className="grid grid-cols-1 justify-items-center gap-x-12 gap-y-12 sm:grid-cols-[repeat(auto-fit,_minmax(37.5rem,_1fr))] md:gap-y-24">
                         {consultantCardList.map((item, index) => (
                             <ConsultantCard key={index} {...item} />
                         ))}

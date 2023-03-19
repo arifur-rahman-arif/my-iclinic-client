@@ -65,13 +65,13 @@ const CoverFlowSlider = ({ sliderList }: CoverFlowSliderInterface): JSX.Element 
             ref={swiperRef}
         >
             {sliderList.map((slider, index) => (
-                <SwiperSlide className="w-full max-w-[40.2rem] h-[22rem]" key={index}>
+                <SwiperSlide className="h-[22rem] w-full max-w-[40.2rem]" key={index}>
                     <Image
                         src={slider}
                         alt=""
                         width={402}
                         height={220}
-                        className="w-full max-w-[40.2rem] h-[22rem] object-cover"
+                        className="h-[22rem] w-full max-w-[40.2rem] object-cover"
                     />
                 </SwiperSlide>
             ))}

@@ -31,11 +31,11 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
     };
 
     return (
-        <div className="flex flex-wrap gap-8 sm:gap-12 items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
             {treatmentList.map((treatment, index) => (
                 <button
                     key={index}
-                    className="bg-darkBlue flex items-center justify-center gap-4 rounded-primary p-6"
+                    className="flex items-center justify-center gap-4 rounded-primary bg-darkBlue p-6"
                     onClick={() => activateTreatmentCalculator({ activeIndex: index })}
                 >
                     {treatment.active ? (
@@ -44,7 +44,7 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
                             width={26}
                             height={26}
                             alt=""
-                            className="md:w-[2.6rem] w-8 h-8 md:h-[2.6rem] translate-y-[0.1rem]"
+                            className="h-8 w-8 translate-y-[0.1rem] md:h-[2.6rem] md:w-[2.6rem]"
                         />
                     ) : (
                         <Image
@@ -52,11 +52,11 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
                             width={26}
                             height={26}
                             alt=""
-                            className="md:w-[2.6rem] w-8 h-8 md:h-[2.6rem] opacity-70"
+                            className="h-8 w-8 opacity-70 md:h-[2.6rem] md:w-[2.6rem]"
                         />
                     )}
                     <span
-                        className={`md:text-[2rem] md:leading-[2.8rem] text-white font-mulishBold capitalize transition-all duration-500 ${
+                        className={`font-mulishBold capitalize text-white transition-all duration-500 md:text-[2rem] md:leading-[2.8rem] ${
                             !treatment.active && 'opacity-70'
                         }`}
                     >

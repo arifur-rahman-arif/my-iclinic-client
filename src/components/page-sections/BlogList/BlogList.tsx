@@ -152,9 +152,9 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
 
     return (
         <Section>
-            <Container className="grid gap-16 md:gap-32 grid-cols-1 md:grid-cols-2" ref={containerRef}>
+            <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-32" ref={containerRef}>
                 {/* Section title & search box */}
-                <div className="flex items-center flex-wrap justify-between gap-12 col-span-2">
+                <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
                     <TextColumn
                         h3LightHeading={
                             <>
@@ -183,12 +183,12 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
                 />
 
                 {/*  Blogs  */}
-                <div className="grid col-span-2 justify-items-center grid-cols-1 sm:grid-cols-[repeat(auto-fit,_minmax(40rem,_1fr))] gap-x-8 gap-y-12 md:gap-y-20">
+                <div className="col-span-2 grid grid-cols-1 justify-items-center gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fit,_minmax(40rem,_1fr))] md:gap-y-20">
                     {currentPosts.length ? (
                         currentPosts.map((list, index) => <BlogCard2 key={index} {...list} />)
                     ) : (
-                        <Container className="grid gap-16 md:gap-32 grid-cols-1 md:grid-cols-2">
-                            <span className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
+                        <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-32">
+                            <span className="col-span-2 justify-self-center rounded-primary bg-brandLight p-8 font-mulishBold text-[2rem] shadow-shadow1">
                                 No articles available
                             </span>
                         </Container>

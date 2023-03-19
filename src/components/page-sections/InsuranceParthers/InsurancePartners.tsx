@@ -11,11 +11,11 @@ import Image from 'next/image';
 const InsurancePartners = (): JSX.Element => {
     return (
         <Section>
-            <Container className="bg-brandLight py-12 md:py-24 !px-0 grid place-items-center gap-12 md:gap-24 rounded-primary">
+            <Container className="grid place-items-center gap-12 rounded-primary bg-brandLight py-12 !px-0 md:gap-24 md:py-24">
                 <h2 className="normal-case">
                     Our health <strong className="normal-case">insurance partners</strong>
                 </h2>
-                <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14">
+                <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:gap-14">
                     <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
                     <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
                     <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />

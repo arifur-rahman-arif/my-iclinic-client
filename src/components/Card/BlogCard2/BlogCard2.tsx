@@ -49,14 +49,14 @@ const BlogCard2 = ({
     slug
 }: GeneralBlogInterface): JSX.Element => {
     return (
-        <div className="grid pb-12 border-b-4 hover:border-brand items-start max-w-[40rem] rounded-primary shadow-shadow3 transition-all duration-500 hover:shadow-shadow1 group/card overflow-hidden">
-            <Link href={`/articles/${slug}` || '#'} className="max-h-[19.7rem] overflow-hidden cursor-pointer">
+        <div className="group/card grid max-w-[40rem] items-start overflow-hidden rounded-primary border-b-4 pb-12 shadow-shadow3 transition-all duration-500 hover:border-brand hover:shadow-shadow1">
+            <Link href={`/articles/${slug}` || '#'} className="max-h-[19.7rem] cursor-pointer overflow-hidden">
                 <Image
                     src={image.src}
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""
-                    className="group-hover/card:scale-105 transition-all object-cover duration-[0.45s]"
+                    className="object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
                 />
             </Link>
 

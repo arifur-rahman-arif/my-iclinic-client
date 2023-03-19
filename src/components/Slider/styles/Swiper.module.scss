@@ -24,7 +24,8 @@
             }
         }
 
-        .swiper-button-prev, .swiper-button-next {
+        .swiper-button-prev,
+        .swiper-button-next {
             transition: all 0.5s ease-in-out;
             border-radius: 50%;
             width: 40px;
@@ -254,7 +255,6 @@
     }
 }
 
-
 .journeySlider {
     :global {
         @include slider-style-1;
@@ -375,7 +375,7 @@
             transform: translateX(-8rem);
 
             &:before {
-                content: "Page";
+                content: 'Page';
                 position: absolute;
                 transform: translateX(-4rem);
             }

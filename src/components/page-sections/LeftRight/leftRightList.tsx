@@ -945,7 +945,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[
@@ -1046,7 +1046,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[
@@ -1150,7 +1150,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[
@@ -1251,7 +1251,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[
@@ -1318,7 +1318,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[
@@ -1424,7 +1424,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                             alt=""
                             width={24}
                             height={24}
-                            className="w-[1.4rem] h-[1.4rem] translate-y-3"
+                            className="h-[1.4rem] w-[1.4rem] translate-y-3"
                         />
                     }
                     list={[

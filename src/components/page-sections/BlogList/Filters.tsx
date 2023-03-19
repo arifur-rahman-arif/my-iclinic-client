@@ -48,10 +48,10 @@ const Filters = ({
     };
 
     return (
-        <div className="col-span-2 flex-wrap justify-self-center flex gap-8 md:gap-12 items-center justify-center">
+        <div className="col-span-2 flex flex-wrap items-center justify-center gap-8 justify-self-center md:gap-12">
             {filterList.map((filter, index) => (
                 <button
-                    className={`cursor-pointer font-mulishBold transition-all duration-500 hover:text-brand capitalize ${
+                    className={`cursor-pointer font-mulishBold capitalize transition-all duration-500 hover:text-brand ${
                         filter.active && 'text-brand'
                     }`}
                     key={index}

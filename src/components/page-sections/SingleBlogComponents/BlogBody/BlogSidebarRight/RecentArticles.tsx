@@ -27,8 +27,8 @@ interface RecentArticlesPropsInterface {
  */
 const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element => {
     return (
-        <div className="md:shadow-md transition-all duration-500 md:hover:shadow-shadow1 md:rounded-primary grid gap-14 p-6 content-start">
-            <span className="text-[2.4rem] leading-[3.2rem] font-latoBold mb-2">Recent Articles:</span>
+        <div className="grid content-start gap-14 p-6 transition-all duration-500 md:rounded-primary md:shadow-md md:hover:shadow-shadow1">
+            <span className="mb-2 font-latoBold text-[2.4rem] leading-[3.2rem]">Recent Articles:</span>
 
             {articles.length ? (
                 <div className="flex flex-wrap gap-12">
@@ -36,24 +36,24 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                         <Link
                             key={index}
                             href={`/articles/${article.slug}`}
-                            className="grid grid-cols-[auto_1fr] gap-10 shadow-md md:shadow-none transition-all duration-500 hover:shadow-shadow1 md:hover:shadow-none rounded-primary md:p-0"
+                            className="grid grid-cols-[auto_1fr] gap-10 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:p-0 md:shadow-none md:hover:shadow-none"
                         >
-                            <div className="md:w-[9.1rem] md:h-[7.8rem] overflow-hidden rounded-primary">
+                            <div className="overflow-hidden rounded-primary md:h-[7.8rem] md:w-[9.1rem]">
                                 <Image
                                     src={article.image.src || '/images/section-images/placeholder-image.png'}
                                     width={91}
                                     height={78}
                                     alt=""
-                                    className="md:rounded-primary h-full w-full object-cover"
+                                    className="h-full w-full object-cover md:rounded-primary"
                                 />
                             </div>
-                            <div className="grid gap-4 grid-cols-1 pr-8 py-4 md:!p-0">
+                            <div className="grid grid-cols-1 gap-4 py-4 pr-8 md:!p-0">
                                 <span className="transition-all duration-500 hover:text-blue">
                                     {trimText(article.title, 30)}
                                 </span>
                                 <div className="font-mulishLight">
-                                    <span className="italic text-[1.4rem] leading-8">By</span>{' '}
-                                    <span className="text-[1.4rem] leading-8 font-mulishBold">
+                                    <span className="text-[1.4rem] italic leading-8">By</span>{' '}
+                                    <span className="font-mulishBold text-[1.4rem] leading-8">
                                         {article.author.name}
                                     </span>
                                 </div>

@@ -72,7 +72,7 @@ const JourneySlider = ({ sliderList }: StackSliderInterface): JSX.Element => {
             }}
         >
             {sliderList.map((item, index) => (
-                <SwiperSlide className="w-full sm:px-12 pb-12 md:pb-0" key={index}>
+                <SwiperSlide className="w-full pb-12 sm:px-12 md:pb-0" key={index}>
                     <Slide
                         {...item}
                         index={index}

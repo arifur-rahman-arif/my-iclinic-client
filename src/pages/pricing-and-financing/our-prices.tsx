@@ -76,7 +76,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                             type="button"
                             text="Chat with us"
                             iconPosition="left"
-                            className="normal-case justify-self-start"
+                            className="justify-self-start normal-case"
                             icon={
                                 <Image
                                     src="/images/icons/icon-chat.svg"
@@ -92,7 +92,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                 }
             />
 
-            <div className="mt-24 w-full block h-[0.1rem] md:hidden"></div>
+            <div className="mt-24 block h-[0.1rem] w-full md:hidden"></div>
 
             {/* <UspSection list={homeUspList} /> */}
 
@@ -113,13 +113,13 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                         </h2>
                         <LinkStyle
                             url="/pricing-and-financing/financing-your-treatment#insurance"
-                            className="group/link flex item-center justify-center gap-1"
+                            className="group/link item-center flex justify-center gap-1"
                         >
                             Fund your treatment with our health insurance partners
-                            <BiRightArrowAlt className="fill-blue w-10 h-10" />
+                            <BiRightArrowAlt className="h-10 w-10 fill-blue" />
                         </LinkStyle>
                     </div>
-                    <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14">
+                    <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:gap-14">
                         <Image
                             src="/images/logos/healthcare-practice.png"
                             width={185}
@@ -191,7 +191,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                             link="/pricing-and-financing/financing-your-treatment#calculator"
                             text="Calculate your monthly spend"
                             iconPosition="left"
-                            className="!bg-orange !border-orange hover:!bg-transparent !text-heading"
+                            className="!border-orange !bg-orange !text-heading hover:!bg-transparent"
                             icon={
                                 <Image
                                     src="/images/icons/icon-calculator-dark.svg"

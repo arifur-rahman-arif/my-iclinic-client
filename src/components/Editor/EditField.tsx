@@ -62,7 +62,7 @@ const EditField = ({ index, name, value, defaultValue, setFormValues, formReset 
     };
 
     return (
-        <div className="grid gap-6 grid-cols-[1fr_auto]">
+        <div className="grid grid-cols-[1fr_auto] gap-6">
             <TextField
                 value={value}
                 type="textarea"
@@ -74,8 +74,8 @@ const EditField = ({ index, name, value, defaultValue, setFormValues, formReset 
             />
             <Button
                 type="button"
-                className="!font-latoBold !uppercase !bg-transparent hover:!bg-brand rounded-full !w-auto !h-auto !p-2 self-center"
-                text={<RxReset className="w-8 h-8" />}
+                className="!h-auto !w-auto self-center rounded-full !bg-transparent !p-2 !font-latoBold !uppercase hover:!bg-brand"
+                text={<RxReset className="h-8 w-8" />}
                 onClick={() => {
                     updateFormValue(defaultValue);
                     setAnimateInput(Date.now());

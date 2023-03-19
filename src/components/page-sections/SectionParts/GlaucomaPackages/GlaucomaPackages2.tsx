@@ -57,7 +57,7 @@ const GlaucomaPackages2 = (): JSX.Element => {
                     h3BoldHeading="with our all-inclusive packages"
                 />
 
-                <div className="grid gap-12 md:gap-28 max-w-[95rem] md:ml-14">
+                <div className="grid max-w-[95rem] gap-12 md:ml-14 md:gap-28">
                     {packageList.map((item, index) => (
                         <Package {...item} key={index} />
                     ))}
@@ -83,8 +83,8 @@ const Package = ({ title, price, description }: GlaucomaPackageInterface) => {
         <div className="grid gap-6">
             <div className="flex items-center justify-start gap-4 md:gap-10">
                 <H3Variant3 className="">{title}</H3Variant3>
-                <div className="bg-yellow w-full max-w-[5rem]  md:max-w-[41.7rem] h-[0.2rem]"></div>
-                <span className="text-[2rem] leading-[2.8rem] font-mulishBold">{price}</span>
+                <div className="h-[0.2rem] w-full max-w-[5rem]  bg-yellow md:max-w-[41.7rem]"></div>
+                <span className="font-mulishBold text-[2rem] leading-[2.8rem]">{price}</span>
             </div>
             <div className="col-span-full max-w-[51.6rem]">{description}</div>
         </div>

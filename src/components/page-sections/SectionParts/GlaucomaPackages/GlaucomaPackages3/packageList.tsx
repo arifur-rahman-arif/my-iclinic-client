@@ -6,7 +6,7 @@ export const defaultList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Glaucoma{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Laser Surgery
                 </strong>
             </>
@@ -26,7 +26,7 @@ export const defaultList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Glaucoma{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Eye Surgery
                 </strong>
             </>
@@ -57,7 +57,7 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Our consultation{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     prices
                 </strong>
             </>
@@ -73,7 +73,7 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
                 title: 'Cataract Consultation',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £200
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £200
                     </>
                 )
             },
@@ -81,7 +81,7 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
                 title: 'Glaucoma Consultation',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £400
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £400
                     </>
                 ),
                 description:
@@ -114,7 +114,7 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
                 title: 'Refractive Consultation',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £200
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £200
                     </>
                 ),
                 description: (
@@ -178,7 +178,7 @@ export const cataractPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Cataract{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     surgery
                 </strong>
             </>
@@ -188,7 +188,7 @@ export const cataractPriceList: GlaucomaPackageInterface[] = [
                 title: 'Cataract surgery',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £2,400 per eye
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £2,400 per eye
                     </>
                 ),
                 description:
@@ -209,7 +209,7 @@ export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Vision Correction{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     treatments
                 </strong>
                 {/* <br /> */}
@@ -234,7 +234,7 @@ export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
                 title: 'Refractive lens exchange',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £2,750 per eye
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £2,750 per eye
                     </>
                 ),
                 description:
@@ -249,7 +249,7 @@ export const glaucomaPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Glaucoma{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     surgery
                 </strong>
             </>
@@ -288,7 +288,7 @@ export const maculerDegenerationPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Macular Degeneration{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Treatment
                 </strong>
             </>
@@ -315,7 +315,7 @@ export const keratoconusTreatmentPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Keratoconus{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Treatment
                 </strong>
             </>
@@ -346,7 +346,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Eyelid{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Surgery
                 </strong>
             </>
@@ -356,7 +356,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Ectropion treatment',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £3,000
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £3,000
                     </>
                 )
             },
@@ -364,7 +364,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Entropion treatment',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £3,000
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £3,000
                     </>
                 )
             },
@@ -372,7 +372,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Blepharoplasty',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £3,000
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £3,000
                     </>
                 )
             },
@@ -380,7 +380,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Eyelid cyst, chalazion & stye removal',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £350
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £350
                     </>
                 )
             },
@@ -392,7 +392,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Ptosis surgery (drooping eyelids)',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £3,500
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £3,500
                     </>
                 )
             },
@@ -400,7 +400,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
                 title: 'Blepharospasm injections (botox)',
                 price: (
                     <>
-                        <span className="text-[1.6rem] leading-[2.4rem] font-mulishBold">From</span> £550
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £550
                     </>
                 )
             }
@@ -413,7 +413,7 @@ export const diagnosisPriceList: GlaucomaPackageInterface[] = [
         title: (
             <>
                 Diagnostics{' '}
-                <strong className="text-white font-latoBold md:text-[3.6rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[4rem]">
+                <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-white md:text-[3.6rem] md:leading-[4rem]">
                     Fees
                 </strong>
             </>

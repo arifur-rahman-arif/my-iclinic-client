@@ -131,8 +131,8 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             </LazyComponent>
 
             <Section>
-                <Container className="grid grid-cols-1 gap-12 md:gap-0 md:grid-cols-[auto_6rem_auto] lg:grid-cols-[1fr_10rem_auto] items-center">
-                    <div className="rounded-primary bg-white md:col-start-1 md:col-span-2 md:py-12 lg:py-24 md:pl-12 md:pr-24 md:row-start-1 relative z-[2]">
+                <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_6rem_auto] md:gap-0 lg:grid-cols-[1fr_10rem_auto]">
+                    <div className="relative z-[2] rounded-primary bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-24">
                         <H3Variant3>
                             <strong>
                                 We specialise in treating children with a wide range of eye care conditions. Our team
@@ -141,13 +141,13 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                             </strong>
                         </H3Variant3>
                     </div>
-                    <div className="row-start-1 md:row-start-1 md:col-start-2 md:col-span-2 h-full">
+                    <div className="row-start-1 h-full md:col-span-2 md:col-start-2 md:row-start-1">
                         <Image
                             src="/images/section-images/paediatric-banner.png"
                             alt=""
                             width={619}
                             height={316}
-                            className="w-full h-full"
+                            className="h-full w-full"
                         />
                     </div>
                 </Container>

@@ -30,7 +30,7 @@ const MobileNavbar = (): JSX.Element => {
                     navbarPositionState[anchorPosition] ? 'translate-x-0 shadow-shadow1' : ''
                 }`}
             >
-                <div className="grid w-full min-w-[30rem] grid-cols-1 grid-rows-[auto_1fr_auto] justify-items-center gap-16 py-8 max-h-screen overflow-y-auto">
+                <div className="grid max-h-screen w-full min-w-[30rem] grid-cols-1 grid-rows-[auto_1fr_auto] justify-items-center gap-16 overflow-y-auto py-8">
                     <div className="flex w-full items-center justify-between px-8">
                         <Link
                             href="/"

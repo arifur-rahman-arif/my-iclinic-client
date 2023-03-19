@@ -27,12 +27,12 @@ const OnScreenSliderSection = ({ sliderList }: OnScreenSliderSectionInterface) =
     return (
         <Section>
             <Container className="grid gap-12">
-                <div className="grid grid-cols-[auto_1fr] gap-x-10 gap-y-12 items-center">
-                    <h2 className="normal-case w-full max-w-[51.2rem] col-span-2">
+                <div className="grid grid-cols-[auto_1fr] items-center gap-x-10 gap-y-12">
+                    <h2 className="col-span-2 w-full max-w-[51.2rem] normal-case">
                         Want to know more information about Myopia?
                     </h2>
                     <Image src={IconAngle} alt="" />
-                    <span className="text-[2rem] leading-[2.8rem] font-latoBold uppercase">Check out our blogs</span>
+                    <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem]">Check out our blogs</span>
                 </div>
                 <div className="relative overflow-hidden">
                     <LazyComponent>

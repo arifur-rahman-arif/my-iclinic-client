@@ -20,7 +20,7 @@ const RelatedPosts = ({ posts }: RelatedPostsInterface): JSX.Element => {
     });
 
     return (
-        <div className="col-span-full mt-12 md:mt-24 grid gap-12 md:gap-24">
+        <div className="col-span-full mt-12 grid gap-12 md:mt-24 md:gap-24">
             <div className="grid gap-12">
                 <h2>
                     <strong className="normal-case">You may also like</strong>
@@ -28,10 +28,10 @@ const RelatedPosts = ({ posts }: RelatedPostsInterface): JSX.Element => {
                 <Image src="/images/icons/icon-pin-yellow.svg" width={198} height={2} alt="" />
             </div>
 
-            <div className="gap-12  grid justify-items-start grid-cols-1 sm:grid-cols-[repeat(auto-fit,_minmax(auto,_36.6rem))]">
-                {currentPosts.length > 0 ?
-                    currentPosts.map((post, index) => <BlogRelatedCard key={index} {...post} />) :
-                    null}
+            <div className="grid  grid-cols-1 justify-items-start gap-12 sm:grid-cols-[repeat(auto-fit,_minmax(auto,_36.6rem))]">
+                {currentPosts.length > 0
+                    ? currentPosts.map((post, index) => <BlogRelatedCard key={index} {...post} />)
+                    : null}
 
                 {currentPosts.length && totalPage !== 1 ? (
                     <Pagination

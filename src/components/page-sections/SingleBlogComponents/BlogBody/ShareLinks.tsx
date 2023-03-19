@@ -28,8 +28,8 @@ const ShareLinks = ({}: ShareLinksInterface): JSX.Element => {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
     return (
-        <div className="flex md:flex-col gap-8 flex-wrap items-center">
-            <span className="text-[2rem] leading-[2.8rem] font-mulishBold md:mb-4">Share</span>
+        <div className="flex flex-wrap items-center gap-8 md:flex-col">
+            <span className="font-mulishBold text-[2rem] leading-[2.8rem] md:mb-4">Share</span>
 
             <Link
                 href="#"

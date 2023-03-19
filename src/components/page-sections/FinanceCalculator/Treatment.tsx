@@ -58,9 +58,9 @@ const Treatment = ({
     });
 
     return (
-        <div className="grid gap-12 md:gap-28 md:grid-cols-[1fr_auto] grid-cols-1">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:gap-28">
             {/* Left column */}
-            <div className="grid gap-12 md:gap-24 content-start">
+            <div className="grid content-start gap-12 md:gap-24">
                 <div>
                     <strong>
                         Total cost of <strong className="capitalize">{name}</strong> is: {(cost / 2).toLocaleString()}{' '}
@@ -109,11 +109,11 @@ const Treatment = ({
             {/* Right column */}
             <div className="grid gap-12 md:max-w-[40.1rem]">
                 {/* Calculation result */}
-                <div className="grid gap-16 bg-brandLight rounded-primary py-8 md:py-16 px-8 md:px-12">
-                    <div className="justify-self-center grid gap-12">
-                        <span className="text-[2.4rem] leading-[3.2rem] font-mulishBold">Your monthly payment</span>
-                        <div className="justify-self-center grid gap-4 place-items-center">
-                            <span className="text-[3.6rem] leading-[4.8rem] md:text-[4.8rem] md:leading-[4.8rem] font-latoExtraBold text-heading">
+                <div className="grid gap-16 rounded-primary bg-brandLight py-8 px-8 md:py-16 md:px-12">
+                    <div className="grid gap-12 justify-self-center">
+                        <span className="font-mulishBold text-[2.4rem] leading-[3.2rem]">Your monthly payment</span>
+                        <div className="grid place-items-center gap-4 justify-self-center">
+                            <span className="font-latoExtraBold text-[3.6rem] leading-[4.8rem] text-heading md:text-[4.8rem] md:leading-[4.8rem]">
                                 £{monthlyPayment}
                             </span>
                             <span>Per eye</span>
@@ -122,12 +122,12 @@ const Treatment = ({
 
                     <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} />
 
-                    <span className="text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem] font-latoBold text-center">
+                    <span className="text-center font-latoBold text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem]">
                         Total cost of vision correction treatment
                     </span>
 
-                    <div className="grid place-items-center grid-flow-col gap-4 justify-self-center">
-                        <span className="text-[3rem] leading-[3.6rem] md:text-[6.4rem] md:leading-[6.4rem] font-latoBold">
+                    <div className="grid grid-flow-col place-items-center gap-4 justify-self-center">
+                        <span className="font-latoBold text-[3rem] leading-[3.6rem] md:text-[6.4rem] md:leading-[6.4rem]">
                             {(cost / 2).toLocaleString()}
                         </span>
                         <span className="font-mulishMedium">/Per eye</span>

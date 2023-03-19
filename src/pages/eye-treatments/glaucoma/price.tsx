@@ -74,7 +74,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                 }
                 h3BoldHeading="Glaucoma management"
                 descriptions={[
-                    <strong className="text-[2rem] leading-[2.8rem] font-mulishBold sm:max-w-[37.1rem] block">
+                    <strong className="block font-mulishBold text-[2rem] leading-[2.8rem] sm:max-w-[37.1rem]">
                         The price of your private glaucoma consultation
                     </strong>,
                     <div className="grid gap-6">
@@ -144,7 +144,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                                 <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
                             }
                         />
-                        <div className="flex gap-6 items-center justify-start flex-wrap">
+                        <div className="flex flex-wrap items-center justify-start gap-6">
                             <Image src="/images/logos/aviva.png" width={55} height={29} alt="Aviva" />
                             <Image
                                 src="/images/logos/healthcare-practice.png"

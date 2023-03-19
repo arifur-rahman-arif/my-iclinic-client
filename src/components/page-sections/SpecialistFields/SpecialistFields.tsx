@@ -19,10 +19,10 @@ interface SpecialistFieldsInterface {
 const SpecialistFields = ({ title, fieldList }: SpecialistFieldsInterface): JSX.Element => {
     return (
         <div className="ml-6">
-            <span className="text-[2rem] leading-[2.8rem] font-mulishBold block">{title}</span>
+            <span className="block font-mulishBold text-[2rem] leading-[2.8rem]">{title}</span>
             {fieldList && (
                 <BulletList
-                    className="!gap-2 mt-6 !ml-8"
+                    className="mt-6 !ml-8 !gap-2"
                     list={fieldList}
                     listItemClassName="md:text-[1.7rem] font-mulishMedium"
                     bulletPoint={

@@ -135,7 +135,7 @@ export const yagPriceList: PriceSectionInterface[] = [
         price: '£395 per eye',
         priceText: 'The price of your laser consultation & surgery',
         priceDescription: (
-            <div className="text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem] font-latoBold max-w-[45rem]">
+            <div className="max-w-[45rem] font-latoBold text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem]">
                 Permanently correct your PCO symptoms with our all-inclusive cost.
             </div>
         )

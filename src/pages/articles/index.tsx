@@ -43,8 +43,8 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                 <BlogList blogList={posts} categoryList={categories} postsPerPageValue={postsPerPageValue} />
             ) : (
                 <Section>
-                    <Container className="grid gap-16 md:gap-32 grid-cols-1 md:grid-cols-2">
-                        <div className="flex items-center flex-wrap justify-between gap-12 col-span-2">
+                    <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-32">
+                        <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
                             <TextColumn
                                 h3LightHeading={
                                     <>
@@ -55,7 +55,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                             />
                         </div>
 
-                        <span className="bg-brandLight rounded-primary p-8 shadow-shadow1 text-[2rem] font-mulishBold justify-self-center col-span-2">
+                        <span className="col-span-2 justify-self-center rounded-primary bg-brandLight p-8 font-mulishBold text-[2rem] shadow-shadow1">
                             No articles published yet
                         </span>
                     </Container>

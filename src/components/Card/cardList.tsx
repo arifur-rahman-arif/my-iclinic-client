@@ -68,7 +68,7 @@ export const cardList: CardInterface[] = [
             <>
                 Glaucoma Care
                 <br />
-                <span className="hidden md:block md:invisible">Glaucoma Care</span>
+                <span className="hidden md:invisible md:block">Glaucoma Care</span>
             </>
         ),
         pillText: 'Age 40+',

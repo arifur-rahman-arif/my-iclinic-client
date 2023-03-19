@@ -15,10 +15,10 @@ interface GlaucomaPackageInterface {
  */
 const PackageItem = ({ title, priceImage, descriptions }: GlaucomaPackageInterface): JSX.Element => {
     return (
-        <div className="grid gap-x-8 gap-y-10 grid-cols-[28rem_auto] items-center">
-            <span className="text-[2.8rem] leading-[3.2rem] font-latoBold">{title}</span>
+        <div className="grid grid-cols-[28rem_auto] items-center gap-x-8 gap-y-10">
+            <span className="font-latoBold text-[2.8rem] leading-[3.2rem]">{title}</span>
             <Image src={priceImage} alt="" width={80} height={80} className="justify-self-end" />
-            <div className="grid gap-6 col-span-2">
+            <div className="col-span-2 grid gap-6">
                 {descriptions.map((description, index) => (
                     <p key={index}>{description}</p>
                 ))}

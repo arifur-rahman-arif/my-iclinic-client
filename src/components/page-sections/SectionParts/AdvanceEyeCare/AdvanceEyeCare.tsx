@@ -19,7 +19,7 @@ interface CardInterface {
  */
 const InnerCard = ({ title, description, image }: CardInterface): JSX.Element => {
     return (
-        <div className="border-2 hover:border-brand shadow-md transition-all duration-500 hover:shadow-shadow1 rounded-primary sm:max-w-[38.3rem] py-6 px-12 grid gap-12 md:gap-16 items-start">
+        <div className="grid items-start gap-12 rounded-primary border-2 py-6 px-12 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:max-w-[38.3rem] md:gap-16">
             <H3Variant3>{title}</H3Variant3>
             <p>{description}</p>
             <Image {...image} alt="" className="self-end" />
@@ -128,7 +128,7 @@ const cardList: CardInterface[] = [
  */
 const AdvanceEyeCare = (): JSX.Element => {
     return (
-        <div className="grid grid-cols-1 mt-0 md:mt-12 gap-12 md:gap-x-16 md:gap-y-24 sm:grid-cols-[repeat(auto-fit,_minmax(38.3rem,_1fr))] items-stretch">
+        <div className="mt-0 grid grid-cols-1 items-stretch gap-12 sm:grid-cols-[repeat(auto-fit,_minmax(38.3rem,_1fr))] md:mt-12 md:gap-x-16 md:gap-y-24">
             {cardList.map((card, index) => (
                 <InnerCard key={index} {...card} />
             ))}

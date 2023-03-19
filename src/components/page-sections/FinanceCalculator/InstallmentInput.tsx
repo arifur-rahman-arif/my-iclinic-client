@@ -40,7 +40,7 @@ const InstallmentInput = ({
     }, [installment]);
 
     return (
-        <div className="grid gap-3 relative">
+        <div className="relative grid gap-3">
             <input
                 type="number"
                 id={id}
@@ -63,7 +63,7 @@ const InstallmentInput = ({
             />
 
             {invalidInput && (
-                <span className="text-[1.4rem] leading-[1.4rem] whitespace-nowrap font-mulishBold text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
+                <span className="whitespace-nowrap font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
                     Invalid monthly instalment
                 </span>
             )}

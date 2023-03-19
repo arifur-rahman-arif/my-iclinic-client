@@ -32,24 +32,24 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
     return (
         <Section>
             <Container className="grid">
-                <div className="max-h-[43.8rem] overflow-hidden group/header rounded-primary">
+                <div className="group/header max-h-[43.8rem] overflow-hidden rounded-primary">
                     <Image
                         {...image}
                         alt={title}
                         quality={100}
-                        className="group-hover/header:scale-105 transition-all object-cover duration-[0.45s] rounded-primary object-cover max-h-[43.8rem]"
+                        className="max-h-[43.8rem] rounded-primary object-cover object-cover transition-all duration-[0.45s] group-hover/header:scale-105"
                     />
                 </div>
 
                 {/*  Title  */}
-                <div className="md:max-w-[calc(100%_-_8rem)] md:ml-32 mt-12 md:mt-24">
-                    {title && <H2Variant1 className="normal-case max-w-[64rem]">{title}</H2Variant1>}
+                <div className="mt-12 md:ml-32 md:mt-24 md:max-w-[calc(100%_-_8rem)]">
+                    {title && <H2Variant1 className="max-w-[64rem] normal-case">{title}</H2Variant1>}
 
                     <Image src="/images/icons/icon-pin-yellow.svg" width={154} height={2} alt="" className="mt-12" />
 
                     {categories?.length && <BlogCategories categories={categories} className="!mt-12  w-full" />}
 
-                    <div className="flex items-center justify-between flex-col md:flex-row gap-12 mt-8">
+                    <div className="mt-8 flex flex-col items-center justify-between gap-12 md:flex-row">
                         {/* Blog meta data */}
                         <div className="flex items-center justify-start gap-6">
                             <div className="flex items-center justify-start gap-4">
@@ -58,9 +58,9 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                                     width={author?.logo?.width || 32}
                                     height={author?.logo?.height || 32}
                                     alt=""
-                                    className="rounded-full overflow-hidden object-cover"
+                                    className="overflow-hidden rounded-full object-cover"
                                 />
-                                <span className="text-[1.4rem] leading-8 font-mulishBold">
+                                <span className="font-mulishBold text-[1.4rem] leading-8">
                                     {author?.name || 'My Iclinic'}
                                 </span>
                             </div>
@@ -76,7 +76,7 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                                     alt=""
                                     className="mt-1"
                                 />
-                                <span className="text-[1.4rem] leading-8 font-mulishBold">{readTime}</span>
+                                <span className="font-mulishBold text-[1.4rem] leading-8">{readTime}</span>
                             </div>
                             |{/* Post views */}
                             <div className="flex items-center justify-start gap-4" title={`Total View: ${views || 0}`}>
@@ -87,7 +87,7 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                                     alt=""
                                     className="mt-1"
                                 />
-                                <span className="text-[1.4rem] leading-8 font-mulishBold">{views || 0}</span>
+                                <span className="font-mulishBold text-[1.4rem] leading-8">{views || 0}</span>
                             </div>
                         </div>
                     </div>

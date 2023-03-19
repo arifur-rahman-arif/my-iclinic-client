@@ -221,7 +221,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                     sectionClassName="lg:!mt-36"
                     galleryList={galleryListMyopia}
                     dynamicHeading={
-                        <Container className="grid gap-12 !max-w-[106.2rem] mb-12 md:mb-24">
+                        <Container className="mb-12 grid !max-w-[106.2rem] gap-12 md:mb-24">
                             <H3Variant3 className="!uppercase">Changing our indoor lifestyles</H3Variant3>
                             <Image
                                 src="/images/icons/icon-pin-dark-horizontal-extra-large.svg"
@@ -358,13 +358,13 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                 boldHeading={<div className="md:max-w-[54.4rem]">Booking your child’s Myopia consultation</div>}
                 description={[
                     "If you think your child is ready for Myopia treatment, we can help. With our Atropine eye drops we can slow down the progression of your Myopia and manage your Atropine treatment to check the effectiveness and benefits for your child's future vision.",
-                    <span className="block max-w-[40.8rem] text-[2rem] leading-[2.8rem] font-mulishLight">
+                    <span className="block max-w-[40.8rem] font-mulishLight text-[2rem] leading-[2.8rem]">
                         Do you want a friendly information pack for your child to understand Myopia?
                     </span>,
-                    <span className="text-[2rem] leading-[2.8rem] font-mulishBold text-center block max-w-[34.5rem] mx-auto md:mt-12">
+                    <span className="mx-auto block max-w-[34.5rem] text-center font-mulishBold text-[2rem] leading-[2.8rem] md:mt-12">
                         Download our Children friendly Myopia pack.
                     </span>,
-                    <div className="grid mt-12 md:mt-12">
+                    <div className="mt-12 grid md:mt-12">
                         <Button
                             type="anchor"
                             link="/pdf/myopia.pdf"
@@ -429,7 +429,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                                 <p className="text-blue">(ReLEX SMILE, LASIK, LASEK & PRK)</p>
                             </Link>,
                             'Refractive lens exchange',
-                            <Link href="/icl" className="text-[2rem] leading-[2.8rem] text-blue font-mulishBold">
+                            <Link href="/icl" className="font-mulishBold text-[2rem] leading-[2.8rem] text-blue">
                                 Implantable Contact Lenses
                             </Link>
                         ]}
@@ -454,11 +454,11 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                     height: 413
                 }}
                 textColumnExtras={
-                    <div className="mt-12 md:mt-16 grid gap-6">
-                        <span className="text-[2rem] leading-[2.8rem] md:text-[2.8rem] md:leading-[3.2rem] uppercase font-mulishBold">
+                    <div className="mt-12 grid gap-6 md:mt-16">
+                        <span className="font-mulishBold text-[2rem] uppercase leading-[2.8rem] md:text-[2.8rem] md:leading-[3.2rem]">
                             we can offer you a
                         </span>
-                        <span className="md:text-[2rem] md:leading-[2.8rem] text-[1.8rem] leading-[2.8rem] max-w-[40.8rem] font-mulishBold">
+                        <span className="max-w-[40.8rem] font-mulishBold text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[2.8rem]">
                             FREE suitability check for our vision correction treatments.
                         </span>
                         <BookConsultation buttonClassName="!normal-case">
@@ -479,7 +479,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                                 className="justify-self-center"
                             />
                         </BookConsultation>
-                        <span className="text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[3.2rem] font-mulishMedium max-w-[38.6rem] mt-10">
+                        <span className="mt-10 max-w-[38.6rem] font-mulishMedium text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[3.2rem]">
                             Enjoy life at all distances again, free from visual aids.
                         </span>
                     </div>

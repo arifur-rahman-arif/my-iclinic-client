@@ -107,7 +107,7 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 containerClassName="md:!gap-x-32 md:!gap-y-12"
                 dynamicTextColumn={
                     <>
-                        <h2 className="w-full normal-case col-span-2 max-w-[79.3rem]">
+                        <h2 className="col-span-2 w-full max-w-[79.3rem] normal-case">
                             <strong className="normal-case">
                                 Achieving accurate and comprehensive screening assessments to provide the best treatment
                                 plan for our patients.

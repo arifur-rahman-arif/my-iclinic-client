@@ -157,7 +157,7 @@ export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerat
                 positionReversed={true}
                 altText=""
                 textColumnExtras={
-                    <div className="grid gap-6 ml-12">
+                    <div className="ml-12 grid gap-6">
                         <span className="font-mulishBold">Dry age-related macular degeneration:</span>
                         <BulletList
                             className="!ml-0"
@@ -165,14 +165,14 @@ export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerat
                                 <>
                                     Have a transient (or intermittent) diplopia condition
                                     <br />
-                                    <span className="text-[1.4rem] leading-8 font-mulishBold">
+                                    <span className="font-mulishBold text-[1.4rem] leading-8">
                                         A progression of vision loss over a period of time.
                                     </span>
                                 </>,
                                 <>
                                     Wet age-related macular degeneration
                                     <br />
-                                    <span className="text-[1.4rem] leading-8 font-mulishBold">
+                                    <span className="font-mulishBold text-[1.4rem] leading-8">
                                         A sudden and rapid progression of vision loss.
                                     </span>
                                 </>

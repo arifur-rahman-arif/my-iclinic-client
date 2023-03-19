@@ -35,7 +35,7 @@ const BlogCategories = ({
                                 {index < categoriesLength && (
                                     <div className="flex items-center justify-start gap-2">
                                         <span
-                                            className="text-[1.4rem] leading-8 font-mulishBold capitalize"
+                                            className="font-mulishBold text-[1.4rem] capitalize leading-8"
                                             key={index}
                                         >
                                             {category.name}
@@ -48,7 +48,7 @@ const BlogCategories = ({
                                 )}
                             </>
                         ) : (
-                            <span className="text-[1.4rem] leading-8 font-mulishBold capitalize" key={index}>
+                            <span className="font-mulishBold text-[1.4rem] capitalize leading-8" key={index}>
                                 {category.name}
                                 {index !== categories?.length - 1 && ','}
                             </span>

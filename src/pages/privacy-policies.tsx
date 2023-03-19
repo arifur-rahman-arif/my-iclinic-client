@@ -31,7 +31,7 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
 
             <Section>
                 <Container>
-                    <div className="grid gap-12 md:gap-24 xl:gap-32 !max-w-[112.1rem]">
+                    <div className="grid !max-w-[112.1rem] gap-12 md:gap-24 xl:gap-32">
                         <h2>
                             <b>Our policies & complaints procedure</b>
                         </h2>

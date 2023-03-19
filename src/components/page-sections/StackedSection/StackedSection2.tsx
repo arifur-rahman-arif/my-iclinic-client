@@ -39,7 +39,7 @@ const StackedSection2 = ({
             <Container className={`${defaultContainerClassName} ${containerClassName}`}>
                 <TextColumn h3BoldHeading={h3BoldHeading} descriptions={descriptions} h3LightHeading={h3LightHeading} />
 
-                <div className="grid gap-12 md:gap-24 mt-12 md:mt-24">
+                <div className="mt-12 grid gap-12 md:mt-24 md:gap-24">
                     {(stackList || myopiaStackList).map((item, index) => (
                         <StackBox key={index} {...item} index={index} />
                     ))}

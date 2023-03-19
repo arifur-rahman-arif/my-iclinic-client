@@ -80,7 +80,7 @@ const RequestCallback = (): JSX.Element => {
     ]);
 
     return (
-        <Stepper stepperList={stepperList} className="min-h-[50rem] max-w-[45rem] !w-full bg-white">
+        <Stepper stepperList={stepperList} className="min-h-[50rem] !w-full max-w-[45rem] bg-white">
             <PersonalInfo
                 name={name}
                 setName={setName}

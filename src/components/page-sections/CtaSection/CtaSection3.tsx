@@ -9,21 +9,21 @@ import Image from 'next/image';
  */
 const CtaSection3 = (): JSX.Element => {
     return (
-        <div className="mt-6 md:mt-[4.5rem] bg-[#004574] rounded-primary relative overflow-hidden grid grid-cols-1 md:md:grid-cols-[1fr_6rem_auto] lg:grid-cols-[auto_6rem_1fr]">
+        <div className="relative mt-6 grid grid-cols-1 overflow-hidden rounded-primary bg-[#004574] md:mt-[4.5rem] md:md:grid-cols-[1fr_6rem_auto] lg:grid-cols-[auto_6rem_1fr]">
             <Image
                 src="/images/section-images/blog-cta-consultation.png"
                 alt=""
                 width={387}
                 height={352}
-                className="object-cover -translate-x-1 w-full md:col-start-1 md:col-span-2 h-full md:row-start-1 md:min-w-[35rem] lg:min-w-[38.8rem]"
+                className="h-full w-full -translate-x-1 object-cover md:col-span-2 md:col-start-1 md:row-start-1 md:min-w-[35rem] lg:min-w-[38.8rem]"
             />
 
-            <div className="grid gap-12 md:gap-24 p-12 md:p-24 md:col-start-2 md:col-span-2 md:row-start-1 relative z-[1] place-items-center md:place-items-center">
-                <H2Variant1 className="normal-case !text-white max-w-[36.9rem]">
+            <div className="relative z-[1] grid place-items-center gap-12 p-12 md:col-span-2 md:col-start-2 md:row-start-1 md:place-items-center md:gap-24 md:p-24">
+                <H2Variant1 className="max-w-[36.9rem] normal-case !text-white">
                     Find out more by Speaking to our team
                 </H2Variant1>
 
-                <div className="md:ml-12 max-w-[46.8rem] mt-12 md:mt-[4.5rem] grid gap-12">
+                <div className="mt-12 grid max-w-[46.8rem] gap-12 md:ml-12 md:mt-[4.5rem]">
                     <Cta2
                         className="flex-col"
                         excludeSloganText

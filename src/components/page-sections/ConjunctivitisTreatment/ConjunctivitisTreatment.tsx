@@ -19,9 +19,9 @@ interface InfoBoxInterface {
  */
 const InfoBox = ({ image, title, descriptions, index }: InfoBoxInterface): JSX.Element => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 md:gap-24 lg:gap-44 items-center w-full">
+        <div className="grid w-full grid-cols-1 items-center gap-12 md:grid-cols-[auto_1fr] md:gap-24 lg:gap-44">
             <Image alt={title} {...image} className={`${index % 2 === 1 && 'md:col-start-2 md:row-start-1'}`} />
-            <div className="grid gap-6 md:gap-12 content-start md:max-w-[50rem]">
+            <div className="grid content-start gap-6 md:max-w-[50rem] md:gap-12">
                 <H3Variant2>{title}</H3Variant2>
                 {descriptions.map((item, index) => (
                     <p key={index}>{item}</p>
@@ -86,8 +86,8 @@ interface ConjunctivitisTreatmentInterface {
 const ConjunctivitisTreatment = ({ list, heading, descriptions }: ConjunctivitisTreatmentInterface): JSX.Element => {
     return (
         <Section className="bg-brandLight py-12 md:py-24">
-            <Container className="grid gap-12 md:gap-24 justify-items-center">
-                <div className="md:max-w-[50rem] grid grid-cols-1 gap-12 w-full">
+            <Container className="grid justify-items-center gap-12 md:gap-24">
+                <div className="grid w-full grid-cols-1 gap-12 md:max-w-[50rem]">
                     <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-8">
                         <span className="h-full w-[0.5rem] bg-yellow"></span>
                         <h2 className="w-full normal-case md:max-w-[55rem]">
@@ -106,9 +106,9 @@ const ConjunctivitisTreatment = ({ list, heading, descriptions }: Conjunctivitis
                     </div>
                 </div>
 
-                <div className="w-full max-w-[27rem] md:max-w-[53rem] h-1 bg-[#9B9FA1]"></div>
+                <div className="h-1 w-full max-w-[27rem] bg-[#9B9FA1] md:max-w-[53rem]"></div>
 
-                <div className="max-w-[106rem] grid gap-12 md:gap-24">
+                <div className="grid max-w-[106rem] gap-12 md:gap-24">
                     {((list?.length && list) || conjunctivitisTreatmentList).map((item, index) => (
                         <InfoBox key={index} {...item} index={index} />
                     ))}

@@ -20,13 +20,13 @@ const InsurancePartners2 = () => {
                     </h2>
                     <LinkStyle
                         url="/pricing-and-financing/financing-your-treatment#insurance"
-                        className="group/link flex item-center justify-center gap-1"
+                        className="group/link item-center flex justify-center gap-1"
                     >
                         Fund your treatment with our health insurance partners
-                        <BiRightArrowAlt className="fill-blue w-10 h-10" />
+                        <BiRightArrowAlt className="h-10 w-10 fill-blue" />
                     </LinkStyle>
                 </div>
-                <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14">
+                <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:gap-14">
                     <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
                     <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
                     <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />

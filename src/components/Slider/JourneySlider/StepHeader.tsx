@@ -22,13 +22,13 @@ interface StepHeaderInterface {
 const StepHeader = ({ index, title, active, swiperRef }: StepHeaderInterface): JSX.Element => {
     return (
         <div
-            className="grid gap-4 items-start"
+            className="grid items-start gap-4"
             // OnClick={() => {
             //     !active && swiperRef.current?.swiper.slideNext();
             //     active && swiperRef.current?.swiper.slidePrev();
             // }}
         >
-            <div className="flex flex-col gap-2 md:gap-6 items-start">
+            <div className="flex flex-col items-start gap-2 md:gap-6">
                 {/* <div className="col-span-1 flex items-center justify-start md:block gap-4 row-start-1 md:row-start-auto md:col-span-full"> */}
                 {/*     <span */}
                 {/*         className={`font-mulishExtraBold text-[2.4rem] leading-[2.4rem] transition-all duration-400 md:text-[3.6rem] md:leading-[4.8rem] ${ */}
@@ -40,7 +40,7 @@ const StepHeader = ({ index, title, active, swiperRef }: StepHeaderInterface): J
                 {/*     /!* {smallSizes.includes(deviceSize) && <Image src={IconLineHorizontal} alt="" />} *!/ */}
                 {/* </div> */}
                 <span
-                    className={`font-mulishExtraBold text-[2.4rem] leading-[2.4rem] transition-all duration-400 md:text-[3.6rem] md:leading-0 ${
+                    className={`duration-400 md:leading-0 font-mulishExtraBold text-[2.4rem] leading-[2.4rem] transition-all md:text-[3.6rem] ${
                         active ? 'text-[#CDCFD0]' : 'text-[#E6E7E8]'
                     }`}
                 >
@@ -48,7 +48,7 @@ const StepHeader = ({ index, title, active, swiperRef }: StepHeaderInterface): J
                 </span>
 
                 <span
-                    className={`font-mulishBold uppercase block max-w-[17.8rem] text-[1.8rem] leading-[2.8rem] ${
+                    className={`block max-w-[17.8rem] font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] ${
                         !active && 'text-[#CDCFD0]'
                     }`}
                 >

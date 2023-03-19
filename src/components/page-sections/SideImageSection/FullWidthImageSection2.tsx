@@ -48,7 +48,7 @@ const FullWidthImageSection2 = ({
                         width={590}
                         height={394}
                         alt=""
-                        className="rounded-primary hidden md:block"
+                        className="hidden rounded-primary md:block"
                     />
                 </div>
             </Container>

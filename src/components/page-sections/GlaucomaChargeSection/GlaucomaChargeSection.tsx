@@ -12,9 +12,9 @@ import { FC } from 'react';
 const GlaucomaChargeSection: FC = (): JSX.Element => {
     return (
         <Section>
-            <Container className="grid grid-cols-1 gap-12 md:gap-0 justify-items-center lg:grid-cols-[auto_8rem_1fr]">
-                <div className="bg-[#004574] relative z-[1] rounded-[7.6rem_1.5rem] grid gap-14 max-w-[50.7rem] px-12 sm:px-16 py-16 content-center md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-full">
-                    <span className="text-[3rem] leading-[3rem] md:text-[4rem] md:leading-[4rem] font-latoBold text-white">
+            <Container className="grid grid-cols-1 justify-items-center gap-12 md:gap-0 lg:grid-cols-[auto_8rem_1fr]">
+                <div className="relative z-[1] grid max-w-[50.7rem] content-center gap-14 rounded-[7.6rem_1.5rem] bg-[#004574] px-12 py-16 sm:px-16 md:col-span-2 md:col-start-1 md:row-span-full md:row-start-1">
+                    <span className="font-latoBold text-[3rem] leading-[3rem] text-white md:text-[4rem] md:leading-[4rem]">
                         Taking charge of your Glaucoma!
                     </span>
                     <div className="grid gap-6">
@@ -34,7 +34,7 @@ const GlaucomaChargeSection: FC = (): JSX.Element => {
                     alt=""
                     width={816}
                     height={565}
-                    className="md:col-span-2 md:col-start-2 md:row-start-1 md:row-span-full"
+                    className="md:col-span-2 md:col-start-2 md:row-span-full md:row-start-1"
                 />
             </Container>
         </Section>

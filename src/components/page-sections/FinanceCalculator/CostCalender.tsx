@@ -47,17 +47,17 @@ const CostCalender = ({ installmentTime, monthlyPayment }: CostCalenderInterface
     return (
         <div className="grid gap-12">
             <strong>Cost break down</strong>
-            <div className="overflow-y-auto max-h-[25rem]" id="cost-calculator">
-                <table className="w-full pr-12 max-w-[97%]">
-                    <thead className="sticky top-0 bg-brandLight relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-[0.1rem] before:block before:bg-heading">
+            <div className="max-h-[25rem] overflow-y-auto" id="cost-calculator">
+                <table className="w-full max-w-[97%] pr-12">
+                    <thead className="relative sticky top-0 bg-brandLight before:absolute before:bottom-0 before:left-0 before:block before:h-[0.1rem] before:w-full before:bg-heading before:content-['']">
                         <tr className="">
-                            <th className="text-left w-[calc(100%_/_3)] pb-2 text-center">
+                            <th className="w-[calc(100%_/_3)] pb-2 text-left text-center">
                                 <strong className="text-[1.4rem] leading-8">Year</strong>
                             </th>
-                            <th className="text-left w-[calc(100%_/_3)] pb-2 text-center">
+                            <th className="w-[calc(100%_/_3)] pb-2 text-left text-center">
                                 <strong className="text-[1.4rem] leading-8">Month</strong>
                             </th>
-                            <th className="text-left w-[calc(100%_/_3)] pb-2 text-center">
+                            <th className="w-[calc(100%_/_3)] pb-2 text-left text-center">
                                 <strong className="text-[1.4rem] leading-8">Amount</strong>
                             </th>
                         </tr>
@@ -67,17 +67,17 @@ const CostCalender = ({ installmentTime, monthlyPayment }: CostCalenderInterface
                         {costingCalender.map((costDateTime, index) => (
                             <tr key={index}>
                                 <td className="py-2 text-center">
-                                    <strong className="text-[1.4rem] font-mulishMedium leading-8">
+                                    <strong className="font-mulishMedium text-[1.4rem] leading-8">
                                         {costDateTime.year}
                                     </strong>
                                 </td>
                                 <td className="py-2 text-center">
-                                    <strong className="text-[1.4rem] font-mulishMedium leading-8">
+                                    <strong className="font-mulishMedium text-[1.4rem] leading-8">
                                         {costDateTime.month}
                                     </strong>
                                 </td>
                                 <td className="py-2 text-center">
-                                    <strong className="text-[1.4rem] font-mulishMedium leading-8">
+                                    <strong className="font-mulishMedium text-[1.4rem] leading-8">
                                         £{monthlyPayment}
                                     </strong>
                                 </td>

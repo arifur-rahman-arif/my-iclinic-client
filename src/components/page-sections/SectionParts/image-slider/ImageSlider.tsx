@@ -27,11 +27,11 @@ const ImageSliderSectionPart = ({ sliderList }: ImageSliderInterface): JSX.Eleme
     const deviceSize = useDeviceSize();
 
     return (
-        <div className="row-start-1 md:row-auto md:justify-self-auto h-full">
+        <div className="row-start-1 h-full md:row-auto md:justify-self-auto">
             <LazyComponent>
                 <ImageSlider>
                     {sliderList.map((slider, index) => (
-                        <SwiperSlide className="w-full h-full" key={index}>
+                        <SwiperSlide className="h-full w-full" key={index}>
                             {smallSizes.includes(deviceSize) && (
                                 <Image
                                     src={slider.image.url}
@@ -48,7 +48,7 @@ const ImageSliderSectionPart = ({ sliderList }: ImageSliderInterface): JSX.Eleme
                                     width={slider.largeImage.width}
                                     height={slider.largeImage.height}
                                     quality={70}
-                                    className="hidden md:block md:scale-90 2xl:scale-100 h-full object-cover min-h-[48.5rem]"
+                                    className="hidden h-full min-h-[48.5rem] object-cover md:block md:scale-90 2xl:scale-100"
                                     alt=""
                                 />
                             )}

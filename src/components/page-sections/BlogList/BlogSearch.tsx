@@ -56,7 +56,7 @@ const BlogSearch = ({
     }, []);
 
     return (
-        <div className="relative h-[6.4rem] w-full max-w-[44rem] mx-auto sm:mx-0">
+        <div className="relative mx-auto h-[6.4rem] w-full max-w-[44rem] sm:mx-0">
             <TextField
                 value={searchValue}
                 type="text"

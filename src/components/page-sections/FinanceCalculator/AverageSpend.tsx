@@ -44,30 +44,29 @@ const AverageSpend = (): JSX.Element => {
                 {averageCostList.map((item, index) => (
                     <div
                         key={index}
-                        className="bg-darkBlue rounded-primary px-10 py-10 md:py-12 grid grid-cols-1 xl:grid-cols-[auto_1fr_16.1rem] gap-8 overflow-hidden xl:items-center"
+                        className="grid grid-cols-1 gap-8 overflow-hidden rounded-primary bg-darkBlue px-10 py-10 md:py-12 xl:grid-cols-[auto_1fr_16.1rem] xl:items-center"
                     >
-                        <span
-                            className="text-[2rem] leading-[2.8rem] font-mulishBold max-w-[24.6rem] block capitalize text-white">
+                        <span className="block max-w-[24.6rem] font-mulishBold text-[2rem] capitalize leading-[2.8rem] text-white">
                             {item.title}
                         </span>
 
-                        <div className="gap-4 md:gap-[1.2rem] flex justify-center items-center w-full xl:justify-start">
-                            <div className="bg-yellow h-1 flex-grow"></div>
-                            <span className="text-[2rem] leading-[2.8rem] text-white font-mulishBold">
+                        <div className="flex w-full items-center justify-center gap-4 md:gap-[1.2rem] xl:justify-start">
+                            <div className="h-1 flex-grow bg-yellow"></div>
+                            <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-white">
                                 {item.price}
                             </span>
                         </div>
 
-                        <Image {...item.image} alt="" className="justify-self-end translate-x-10" />
+                        <Image {...item.image} alt="" className="translate-x-10 justify-self-end" />
                     </div>
                 ))}
             </div>
 
-            <div className="max-w-[54.7rem] grid gap-12">
-                <span className="text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem] font-latoBold">
+            <div className="grid max-w-[54.7rem] gap-12">
+                <span className="font-latoBold text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem]">
                     How much will you spend for glasses and contact lenses over 30 years?
                 </span>
-                <span className="text-[3rem] leading-[3.6rem] md:text-[4.8rem] md:leading-[4.8rem] font-latoExtraBold">
+                <span className="font-latoExtraBold text-[3rem] leading-[3.6rem] md:text-[4.8rem] md:leading-[4.8rem]">
                     Total cost: £24,000+
                 </span>
             </div>

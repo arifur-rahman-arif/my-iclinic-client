@@ -24,7 +24,7 @@ const Editor = ({ fields }: EditorInterface): JSX.Element => {
     const [formReset, setFormReset] = useState<number>(Date.now());
 
     return (
-        <div className="z-[999] grid gap-12 fixed top-2/4 -translate-y-2/4 left-4 shadow-shadow1 bg-white sm:min-w-[50rem] rounded-primary px-8 pl-10 py-12">
+        <div className="fixed top-2/4 left-4 z-[999] grid -translate-y-2/4 gap-12 rounded-primary bg-white px-8 py-12 pl-10 shadow-shadow1 sm:min-w-[50rem]">
             {formValues.map((field, index) => (
                 <EditField
                     key={index}
@@ -37,13 +37,13 @@ const Editor = ({ fields }: EditorInterface): JSX.Element => {
                 />
             ))}
 
-            <div className="justify-self-center flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4 justify-self-center">
                 <Button
                     type="button"
-                    className="!font-latoBold !uppercase !bg-transparent hover:!bg-brand"
+                    className="!bg-transparent !font-latoBold !uppercase hover:!bg-brand"
                     text="Reset"
                     iconPosition="left"
-                    icon={<RxReset className="w-8 h-8" />}
+                    icon={<RxReset className="h-8 w-8" />}
                     onClick={() => {
                         setFormValues(fields);
                         setFormReset(Date.now());
@@ -54,7 +54,7 @@ const Editor = ({ fields }: EditorInterface): JSX.Element => {
                     className="!font-latoBold !uppercase"
                     text="Save Changes"
                     iconPosition="left"
-                    icon={<FiSave className="w-8 h-8" />}
+                    icon={<FiSave className="h-8 w-8" />}
                     onClick={() => {
                         console.log(formValues);
                     }}

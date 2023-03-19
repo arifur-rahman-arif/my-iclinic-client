@@ -107,7 +107,7 @@ const Masthead = ({
             {/* Code experiment */}
 
             {!imageLoaded ? (
-                <div className="bg-gray-200 animate-pulse w-full absolute left-0 min-h-[30rem]  md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]"></div>
+                <div className="absolute left-0 min-h-[30rem] w-full animate-pulse bg-gray-200  md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]"></div>
             ) : (
                 <></>
             )}

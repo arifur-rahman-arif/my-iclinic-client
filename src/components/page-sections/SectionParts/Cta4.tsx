@@ -9,7 +9,7 @@ import Image from 'next/image';
  */
 const Cta4 = (): JSX.Element => {
     return (
-        <div className="flex flex-wrap items-center justify-start gap-12 mt-6">
+        <div className="mt-6 flex flex-wrap items-center justify-start gap-12">
             <Button
                 type="phone"
                 text="0208 445 8877"

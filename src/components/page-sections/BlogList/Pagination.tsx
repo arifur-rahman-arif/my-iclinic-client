@@ -46,7 +46,7 @@ const Pagination = ({
     return (
         <div
             className={`${
-                defaultClassName || 'flex items-center gap-12 sm:gap-24 justify-between col-span-2 justify-self-end'
+                defaultClassName || 'col-span-2 flex items-center justify-between gap-12 justify-self-end sm:gap-24'
             } ${className}`}
         >
             {/* <div className="h-1 w-[5.2rem] bg-secondary"></div> */}
@@ -54,7 +54,7 @@ const Pagination = ({
                 <div className="h-1 w-[5.2rem] bg-secondary"></div>
             ) : (
                 <button
-                    className="transition-all duration-500 hover:bg-brandLight p-4 rounded-full hover:scale-125"
+                    className="rounded-full p-4 transition-all duration-500 hover:scale-125 hover:bg-brandLight"
                     onClick={handlePreviousPage}
                 >
                     <Image
@@ -62,7 +62,7 @@ const Pagination = ({
                         width={24}
                         height={24}
                         alt=""
-                        className="w-[1.8rem] h-[1.8rem] rotate-180"
+                        className="h-[1.8rem] w-[1.8rem] rotate-180"
                     />
                 </button>
             )}
@@ -77,7 +77,7 @@ const Pagination = ({
                 <div className="h-1 w-[5.2rem] bg-secondary"></div>
             ) : (
                 <button
-                    className="transition-all duration-500 hover:bg-brandLight p-4 rounded-full hover:scale-125"
+                    className="rounded-full p-4 transition-all duration-500 hover:scale-125 hover:bg-brandLight"
                     onClick={handleNextPage}
                 >
                     <Image
@@ -85,7 +85,7 @@ const Pagination = ({
                         width={24}
                         height={24}
                         alt=""
-                        className="w-[1.8rem] h-[1.8rem]"
+                        className="h-[1.8rem] w-[1.8rem]"
                     />
                 </button>
             )}

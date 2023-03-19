@@ -38,7 +38,7 @@ const Controller = ({
     valueLabelFormat
 }: ControllerInterface): JSX.Element => {
     return (
-        <div className="grid grid-cols-[auto_1fr_auto] gap-8 items-center justify-start self-end row-start-2 md:row-start-auto mt-16 md:mt-0">
+        <div className="row-start-2 mt-16 grid grid-cols-[auto_1fr_auto] items-center justify-start gap-8 self-end md:row-start-auto md:mt-0">
             <span className="font-mulishBold text-[1.6rem]">
                 {minValue}
                 {appendValueText}

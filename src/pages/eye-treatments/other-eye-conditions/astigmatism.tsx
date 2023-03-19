@@ -281,11 +281,11 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
             />
 
             <Section>
-                <Container className="grid gap-12 justify-items-center">
-                    <h2 className="w-full normal-case text-center max-w-[64rem]">
+                <Container className="grid justify-items-center gap-12">
+                    <h2 className="w-full max-w-[64rem] text-center normal-case">
                         {data?.section_4?.heading || 'Visit our eye specialist to correct your astigmatism today'}
                     </h2>
-                    <p className="text-center max-w-[53rem]">
+                    <p className="max-w-[53rem] text-center">
                         {data?.section_4?.description ||
                             'Book a private consultation today with our specialist to discuss the best astigmatism treatment options to correct your astigmatism.'}
                     </p>
@@ -321,9 +321,9 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                         'Children with myopia (nearsightedness) or hyperopia (farsightedness) are more likely to have astigmatism.',
                         <span className="flex items-center justify-start gap-4">
                             <strong>Read more about </strong>
-                            <span className="flex items-center justify-start gap-4 group/link">
+                            <span className="group/link flex items-center justify-start gap-4">
                                 <LinkStyle>Myopia Control for Children</LinkStyle>
-                                <AiOutlineArrowRight className="fill-blue w-8 h-8 transition-all duration-500 group-hover/link:translate-x-4" />
+                                <AiOutlineArrowRight className="h-8 w-8 fill-blue transition-all duration-500 group-hover/link:translate-x-4" />
                             </span>
                         </span>
                     ]

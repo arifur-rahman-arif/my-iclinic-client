@@ -110,7 +110,7 @@ export default function EyeLidPage({ seo, yoastJson }: EyeLidPageProps): JSX.Ele
 
             <Section>
                 <Container>
-                    <h2 className="text-center md:max-w-[79.8rem] mx-auto">
+                    <h2 className="mx-auto text-center md:max-w-[79.8rem]">
                         Our UK’s top oculoplastic surgeons treat and correct your eyelid conditions with our easy and
                         stress-free treatment options.
                     </h2>

@@ -42,7 +42,7 @@ const VideoPlayer = ({ videoUrl, videoPoster, localPoster }: VideoPlayerInterfac
     }, []);
     return (
         <div
-            className={`row-start-1 mb-4 md:max-w-[65rem] w-full overflow-hidden rounded-primary md:row-start-auto md:mb-0 md:min-w-[40rem] lg:justify-self-auto`}
+            className={`row-start-1 mb-4 w-full overflow-hidden rounded-primary md:row-start-auto md:mb-0 md:min-w-[40rem] md:max-w-[65rem] lg:justify-self-auto`}
         >
             <video
                 ref={videoPlayer}

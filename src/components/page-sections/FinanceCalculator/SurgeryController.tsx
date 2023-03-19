@@ -54,19 +54,19 @@ const SurgeryController = ({
         'bg-darkBlue rounded-primary text-white font-mulishBold py-4 px-6 max-w-[15.7rem] text-center';
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-8 md:gap-x-12 items-center justify-start">
-            <span className="col-span-full text-[2rem] leading-[2.8rem] md:text-[2.4rem] md:leading-[3.2rem] font-latoBold underline decoration-2 underline-offset-8 decoration-darkBlue">
+        <div className="grid grid-cols-1 items-center justify-start gap-x-8 md:grid-cols-[auto_1fr] md:gap-x-12">
+            <span className="col-span-full font-latoBold text-[2rem] leading-[2.8rem] underline decoration-darkBlue decoration-2 underline-offset-8 md:text-[2.4rem] md:leading-[3.2rem]">
                 {title}
             </span>
 
-            <span className="text-[1.4rem] leading-[1.4rem] font-mulishMedium col-span-full mt-8 md:mt-12">
+            <span className="col-span-full mt-8 font-mulishMedium text-[1.4rem] leading-[1.4rem] md:mt-12">
                 {inputLabel}{' '}
                 <span className="font-mulishBold text-[1.6rem] leading-[1.6rem]">
                     ({id === 'upfront-payment' ? '£' : 'months'})
                 </span>
             </span>
 
-            <div className="grid gap-6 mt-6">
+            <div className="mt-6 grid gap-6">
                 {id === 'upfront-payment' ? (
                     <UpfrontAmountInput
                         upfrontAmount={upfrontAmount || null}

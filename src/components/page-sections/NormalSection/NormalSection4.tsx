@@ -10,11 +10,11 @@ import { Section } from '@/components/Section';
 const NormalSection4 = (): JSX.Element => {
     return (
         <Section className="bg-[#F1E5FF] py-24 md:py-32">
-            <Container className="flex flex-col items-center justify-center gap-6 max-w-[51.8rem]">
-                <h2 className="normal-case md:max-w-[56.6rem] justify-self-end">
+            <Container className="flex max-w-[51.8rem] flex-col items-center justify-center gap-6">
+                <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">
                     <strong>PTK eye surgery cost</strong>
                 </h2>
-                <div className="grid gap-6 items-center justify-center">
+                <div className="grid items-center justify-center gap-6">
                     <p className="text-center">
                         Our PTK eye surgery cost is best suited to patients with special eye conditions needing vision
                         correction.

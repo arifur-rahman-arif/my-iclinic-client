@@ -1,13 +1,14 @@
 import { Container } from '@/components/Container';
 import Hamburger from '@/components/Header/Hamburger/Hamburger';
+import NavMenu from './NavMenu';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-
-const MobileNavbar = dynamic(() => import('@/components/Header/MobileNavbar'));
-const NavMenu = dynamic(() => import('@/components/Header/NavMenu'));
+// Import { useEffect, useRef, useState } from 'react';
+//
+// const MobileNavbar = dynamic(() => import('@/components/Header/MobileNavbar'));
+// const NavMenu = dynamic(() => import('@/components/Header/NavMenu'));
 
 /**
  * Header component for the app
@@ -15,59 +16,56 @@ const NavMenu = dynamic(() => import('@/components/Header/NavMenu'));
  * @constructor
  */
 const Header = (): JSX.Element => {
-    const [loadMobileMenu, setLoadMobileMenu] = useState<boolean>(false);
-    const [loadDesktopMenu, setLoadDesktopMenu] = useState<boolean>(false);
-    const headerRef = useRef<HTMLElement | null>(null);
-
-    useEffect(() => {
-        loadMenu();
-
-        window.addEventListener('resize', () => {
-            loadMenu();
-        });
-
-        // When user start scrolling make the header slide down from top and make it sticky
-        window.addEventListener('scroll', () => {
-            if (!headerRef.current) return;
-
-            const clientRect = headerRef.current?.getBoundingClientRect();
-
-            if (!clientRect) return;
-
-            const activePosition = clientRect?.height - 80;
-
-            const currentScrollPosition = window.pageYOffset;
-
-            // If body tag current position is more that active position than active, the header slide down animation
-            if (currentScrollPosition > activePosition) {
-                headerRef.current?.classList.add('sticky-nav');
-            } else {
-                headerRef.current?.classList.remove('sticky-nav');
-            }
-        });
-    }, []);
-
-    /**
-     * Load the menu for either desktop or for mobile based on screen size
-     */
-    const loadMenu = () => {
-        const windowWidth = window.innerWidth;
-
-        if (windowWidth < 1280) {
-            !loadMobileMenu && setLoadMobileMenu(true);
-        } else {
-            !loadDesktopMenu && setLoadDesktopMenu(true);
-        }
-    };
+    // Const [loadMobileMenu, setLoadMobileMenu] = useState<boolean>(false);
+    // const [loadDesktopMenu, setLoadDesktopMenu] = useState<boolean>(false);
+    // const headerRef = useRef<HTMLElement | null>(null);
+    //
+    // useEffect(() => {
+    //     loadMenu();
+    //
+    //     window.addEventListener('resize', () => {
+    //         loadMenu();
+    //     });
+    //
+    //     // When user start scrolling make the header slide down from top and make it sticky
+    //     window.addEventListener('scroll', () => {
+    //         if (!headerRef.current) return;
+    //
+    //         const clientRect = headerRef.current?.getBoundingClientRect();
+    //
+    //         if (!clientRect) return;
+    //
+    //         const activePosition = clientRect?.height - 80;
+    //
+    //         const currentScrollPosition = window.pageYOffset;
+    //
+    //         // If body tag current position is more that active position than active, the header slide down animation
+    //         if (currentScrollPosition > activePosition) {
+    //             headerRef.current?.classList.add('sticky-nav');
+    //         } else {
+    //             headerRef.current?.classList.remove('sticky-nav');
+    //         }
+    //     });
+    // }, []);
+    //
+    // /**
+    //  * Load the menu for either desktop or for mobile based on screen size
+    //  */
+    // const loadMenu = () => {
+    //     const windowWidth = window.innerWidth;
+    //
+    //     if (windowWidth < 1280) {
+    //         !loadMobileMenu && setLoadMobileMenu(true);
+    //     } else {
+    //         !loadDesktopMenu && setLoadDesktopMenu(true);
+    //     }
+    // };
 
     return (
         <>
-            {loadMobileMenu && <MobileNavbar />}
-            <header
-                ref={headerRef}
-                className="fixed overflow-y-auto xl:overflow-visible top-0 left-0 z-[99] h-24 w-full bg-white shadow-shadow1 transition-all duration-500 xl:h-[12rem] shadow-none hover:xl:shadow-none xl:shadow-none"
-            >
-                <Container className="grid h-full gap-8 grid-cols-[auto_1fr] relative items-center xl:pt-4 nav-wrapper">
+            {/* {loadMobileMenu && <MobileNavbar />} */}
+            <header className="sticky top-0 left-0 z-[99] w-full bg-white">
+                <Container className="grid grid-cols-[auto_1fr] py-4">
                     <Link href="/" className="">
                         <Image
                             src="/images/logos/logo-iclinic-desktop.png"
@@ -89,7 +87,7 @@ const Header = (): JSX.Element => {
                     </Link>
 
                     {/* Nav contact details */}
-                    <div className="items-center justify-start gap-24 xl:justify-self-end hidden xl:flex contact-details">
+                    <div className="contact-details hidden items-center justify-start gap-24 xl:flex xl:justify-self-end">
                         <div className="flex items-center justify-start gap-4">
                             <Image
                                 src="/images/icons/icon-telephone-outline.svg"
@@ -135,20 +133,14 @@ const Header = (): JSX.Element => {
                         </div>
                     </div>
 
-                    <div className="col-span-full items-center justify-end gap-6 h hidden xl:flex desktop-nav-menu">
-                        {loadDesktopMenu && <NavMenu />}
+                    <div className="col-span-full grid grid-cols-[1fr_auto] gap-8">
+                        <NavMenu />
                         <div className="hidden place-items-end xl:grid">
                             <BookConsultation />
                         </div>
                     </div>
 
                     <Hamburger />
-
-                    {/* <div className="grid h-full grid-cols-[auto_1fr] items-center bg-white xl:grid-cols-[auto_1fr]"> */}
-
-                    {/*     /!*  Navigation links  *!/ */}
-
-                    {/* </div> */}
                 </Container>
             </header>
         </>

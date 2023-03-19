@@ -222,11 +222,11 @@ export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisP
 
             <ConjunctivitisTreatment
                 descriptions={
-                    data?.section_3.descriptions.length ?
-                        data?.section_3.descriptions :
-                            [
-                                'Our ophthalmologist can provide different antibiotics to treat conjunctivitis, depending on the cause of your condition. If you have conjunctivitis, having the correct diagnosis is essential.'
-                            ]
+                    data?.section_3.descriptions.length
+                        ? data?.section_3.descriptions
+                        : [
+                              'Our ophthalmologist can provide different antibiotics to treat conjunctivitis, depending on the cause of your condition. If you have conjunctivitis, having the correct diagnosis is essential.'
+                          ]
                 }
                 heading={data?.section_3?.heading}
                 list={data?.section_3?.card_list}

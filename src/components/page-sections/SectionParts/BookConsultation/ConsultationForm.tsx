@@ -35,7 +35,7 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
             }}
             className={styles.styles}
         >
-            <div className="w-full sm:min-h-[60rem] relative">
+            <div className="relative w-full sm:min-h-[60rem]">
                 <IoIosCloseCircleOutline
                     className="absolute top-0 right-0 h-12 w-12 translate-y-3 -translate-x-3 cursor-pointer fill-secondary"
                     onClick={() => {
@@ -46,7 +46,7 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
                     src="https://connect.pabau.com/bookings.php?compid=11842"
                     width={600}
                     height={600}
-                    className="w-full min-h-[60rem] pt-16"
+                    className="min-h-[60rem] w-full pt-16"
                 ></iframe>
             </div>
         </Dialog>

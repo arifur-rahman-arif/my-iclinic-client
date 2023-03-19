@@ -77,7 +77,7 @@ const FeaturedPatient = ({
                     <div>
                         <FeatureSlider>
                             {[{ imageURL: bandImageURL, title: bandImageTitle }, ...sliders].map((slider, index) => (
-                                <SwiperSlide className="w-full p-8 py-16 grid place-items-center" key={index}>
+                                <SwiperSlide className="grid w-full place-items-center p-8 py-16" key={index}>
                                     <BandImage title={slider.title} imageURL={slider.imageURL} bandColor={bandColor} />
                                 </SwiperSlide>
                             ))}

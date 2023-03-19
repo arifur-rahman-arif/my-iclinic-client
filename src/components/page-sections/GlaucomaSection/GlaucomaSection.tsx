@@ -15,7 +15,7 @@ import IconArrow from '@/icons/icon-arrow-right.svg';
 const GlaucomaSection: FC = (): JSX.Element => {
     return (
         <Section>
-            <Container className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32">
+            <Container className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-32">
                 {/* Grid item 1 */}
                 <div className="grid gap-12 md:max-w-[46.7rem]">
                     <H2Variant1>Glaucoma Conditions</H2Variant1>
@@ -37,7 +37,7 @@ const GlaucomaSection: FC = (): JSX.Element => {
 
                     <div className="grid gap-6">
                         <div className="grid gap-6">
-                            <span className="text-[2.4rem] leading-[3.2rem] font-mulishBold">
+                            <span className="font-mulishBold text-[2.4rem] leading-[3.2rem]">
                                 Acute open angle glaucoma
                             </span>
                             <p>
@@ -51,7 +51,7 @@ const GlaucomaSection: FC = (): JSX.Element => {
                         </div>
 
                         <div className="grid gap-6">
-                            <span className="text-[2.4rem] leading-[3.2rem] font-mulishBold">
+                            <span className="font-mulishBold text-[2.4rem] leading-[3.2rem]">
                                 Closed angle glaucoma <span>(narrow angle glaucoma) </span>
                             </span>
                             <p>is commonly presented as a sudden change in vision impairment.</p>
@@ -63,7 +63,7 @@ const GlaucomaSection: FC = (): JSX.Element => {
                     </div>
                 </div>
                 {/* Grid item 2 */}
-                <div className="grid place-items-center row-start-1 md:row-start-auto">
+                <div className="row-start-1 grid place-items-center md:row-start-auto">
                     <Image src="/images/section-images/glaucoma-conditions.png" alt="" width={562} height={576} />
                 </div>
             </Container>

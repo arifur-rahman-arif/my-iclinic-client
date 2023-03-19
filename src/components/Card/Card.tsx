@@ -26,24 +26,24 @@ export interface CardInterface {
  */
 const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JSX.Element => {
     return (
-        <div className="grid gap-6 shadow-md rounded-primary overflow-hidden max-w-[37rem] md:max-w-none pb-6 h-full content-start grid-rows-[auto_auto_1fr] group/card items-start">
-            <div className="px-4 pt-[1.2rem] flex items-center justify-between">
+        <div className="group/card grid h-full max-w-[37rem] grid-rows-[auto_auto_1fr] content-start items-start gap-6 overflow-hidden rounded-primary pb-6 shadow-md md:max-w-none">
+            <div className="flex items-center justify-between px-4 pt-[1.2rem]">
                 <span className="font-latoBold text-[2.4rem] leading-[3.2rem]">{title}</span>
-                <span className="text-[1.4rem] self-start justify-self-end leading-[2rem] font-mulishExtraBold uppercase bg-brandLight py-[0.4rem] px-[0.8rem] rounded-primary ">
+                <span className="self-start justify-self-end rounded-primary bg-brandLight py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] ">
                     {pillText}
                 </span>
             </div>
 
-            <div className="bg-brandLight p-[1.2rem] group-hover/card:p-0 group-hover/card:m-[1.2rem] group-hover/card:rounded-primary transition-all duration-500 overflow-hidden max-w-full">
+            <div className="max-w-full overflow-hidden bg-brandLight p-[1.2rem] transition-all duration-500 group-hover/card:m-[1.2rem] group-hover/card:rounded-primary group-hover/card:p-0">
                 <Image
                     src={image}
                     alt=""
                     width={346}
                     height={176}
-                    className="rounded-primary w-full transition-all duration-[0.45s] will-change-auto group-hover/card:scale-105 overflow-hidden"
+                    className="w-full overflow-hidden rounded-primary transition-all duration-[0.45s] will-change-auto group-hover/card:scale-105"
                 />
             </div>
-            <div className="grid gap-10 px-6 items-start mt-6 h-full pb-8">
+            <div className="mt-6 grid h-full items-start gap-10 px-6 pb-8">
                 <BulletList
                     className="!ml-6 !gap-2"
                     list={cardList}
@@ -55,10 +55,10 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
                 <Link
                     title="Learn more"
                     href={cardLink}
-                    className="flex items-center justify-center gap-4 justify-self-end self-end group/link"
+                    className="group/link flex items-center justify-center gap-4 self-end justify-self-end"
                 >
-                    <span className="text-heading2 font-latoBold text-[1.4rem] leading-[1.9rem]">Learn More</span>
-                    <AiOutlineArrowRight className="w-[2.4rem] h-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
+                    <span className="font-latoBold text-[1.4rem] leading-[1.9rem] text-heading2">Learn More</span>
+                    <AiOutlineArrowRight className="h-[2.4rem] w-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
                 </Link>
             </div>
         </div>

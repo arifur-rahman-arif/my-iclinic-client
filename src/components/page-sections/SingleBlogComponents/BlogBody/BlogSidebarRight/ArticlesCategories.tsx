@@ -15,19 +15,19 @@ interface ArticlesCategoriesInterface {
  */
 const ArticlesCategories = ({ categories }: ArticlesCategoriesInterface): JSX.Element => {
     return (
-        <div className="shadow-md transition-all duration-500 hover:shadow-shadow1 rounded-primary grid gap-x-12 gap-y-6 p-6 content-start">
-            <span className="text-[2.4rem] leading-[3.2rem] font-latoBold mb-2">Articles Categories:</span>
+        <div className="grid content-start gap-x-12 gap-y-6 rounded-primary p-6 shadow-md transition-all duration-500 hover:shadow-shadow1">
+            <span className="mb-2 font-latoBold text-[2.4rem] leading-[3.2rem]">Articles Categories:</span>
 
             {categories.length ? (
                 <>
                     {categories.map((category, index) => (
                         <Link
                             href={`/articles?category=${category.slug}`}
-                            className="flex items-center justify-start gap-8 group/category"
+                            className="group/category flex items-center justify-start gap-8"
                             key={index}
                         >
-                            <FiArrowRight className="w-8 h-8 group-hover/category:translate-x-4 transition-all duration-500" />
-                            <span className="text-[1.6rem] leading-[2.2rem] font-mulishBold capitalize">
+                            <FiArrowRight className="h-8 w-8 transition-all duration-500 group-hover/category:translate-x-4" />
+                            <span className="font-mulishBold text-[1.6rem] capitalize leading-[2.2rem]">
                                 {category.name}
                             </span>
                         </Link>

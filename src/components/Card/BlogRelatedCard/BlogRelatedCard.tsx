@@ -30,21 +30,21 @@ const BlogRelatedCard = ({
     return (
         <Link
             href={`/articles/${slug}` || '#'}
-            className="grid pr-4 sm:pr-8 sm:h-[18rem] grid-cols-[auto_1fr] gap-10 border-b-4 hover:border-brand items-start max-w-[36.6rem] rounded-primary shadow-shadow3 transition-all duration-500 hover:shadow-shadow1 group/card overflow-hidden"
+            className="group/card grid max-w-[36.6rem] grid-cols-[auto_1fr] items-start gap-10 overflow-hidden rounded-primary border-b-4 pr-4 shadow-shadow3 transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:h-[18rem] sm:pr-8"
         >
-            <div className="overflow-hidden cursor-pointer max-w-[14.3rem] h-full">
+            <div className="h-full max-w-[14.3rem] cursor-pointer overflow-hidden">
                 <Image
                     src={image.src}
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""
-                    className="group-hover/card:scale-105 transition-all object-cover duration-[0.45s] h-full"
+                    className="h-full object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
                 />
             </div>
-            <div className="grid gap-6 py-6 content-start">
+            <div className="grid content-start gap-6 py-6">
                 <BlogAuthor author={author} />
 
-                <span className="text-[2rem] leading-[2.4rem] font-mulishBold overflow-ellipsis overflow-hidden whitespace-nowrap">
+                <span className="overflow-hidden overflow-ellipsis whitespace-nowrap font-mulishBold text-[2rem] leading-[2.4rem]">
                     {title}
                 </span>
 

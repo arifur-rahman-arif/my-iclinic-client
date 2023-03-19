@@ -42,7 +42,7 @@ const Cta2 = ({
                     iconPosition="left"
                     className={
                         button2ClassName ||
-                        '!min-w-[18.6rem] place-content-center border !bg-transparent md:min-w-[23.3rem] hover:!bg-brand'
+                        '!min-w-[18.6rem] place-content-center border !bg-transparent hover:!bg-brand md:min-w-[23.3rem]'
                     }
                     icon={
                         button2Icon || (

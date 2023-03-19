@@ -54,20 +54,20 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
 
     return (
         <Section id="calculator">
-            <Container className="grid gap-12 md:gap-28 md:grid-cols-[1fr_auto] grid-cols-1">
-                <div className="justify-self-center grid gap-12 col-span-full">
-                    <H3Variant2 className="normal-case text-center">Select your treatment</H3Variant2>
+            <Container className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:gap-28">
+                <div className="col-span-full grid gap-12 justify-self-center">
+                    <H3Variant2 className="text-center normal-case">Select your treatment</H3Variant2>
                     {/* Treatment types */}
                     <TreatmentTypes treatmentList={treatmentList} setTreatmentList={setTreatmentList} />
                 </div>
 
-                {treatmentList.length ?
-                    treatmentList.map((treatment, index) => {
-                        if (!treatment.active) return null;
+                {treatmentList.length
+                    ? treatmentList.map((treatment, index) => {
+                          if (!treatment.active) return null;
 
-                        return <Treatment key={index} {...treatment} />;
-                    }) :
-                    null}
+                          return <Treatment key={index} {...treatment} />;
+                      })
+                    : null}
             </Container>
         </Section>
     );

@@ -51,7 +51,7 @@ export const offScreenSliderList: SlideInterface[] = [
             '16,000 million tonnes of plastic is wasted by wearing glasses and disposable contact lenses. Our vision correction treatments are a great long-term investment for permanently clear vision without any more plastic waste.',
         image: '/images/section-images/offscreen-slider-image-4.png',
         extraElements: (
-            <span className="text-[2rem] leading-[2.8rem] font-mulishBold mt-12">Reducing our carbon footprint</span>
+            <span className="mt-12 font-mulishBold text-[2rem] leading-[2.8rem]">Reducing our carbon footprint</span>
         )
     }
 ];

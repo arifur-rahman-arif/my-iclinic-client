@@ -21,10 +21,10 @@ export default function Radwan(): JSX.Element {
         <Page title="Mr. Radwan Almousa" description="Mr. Radwan Almousa is a consultant and Surgeon">
             <BreadCrumb />
 
-            <Section className="lg:!mt-32 py-4 specialist-single-post">
-                <Container className="grid grid-rows-1 md:grid-cols-[auto_1fr] gap-12 md:gap-24">
+            <Section className="specialist-single-post py-4 lg:!mt-32">
+                <Container className="grid grid-rows-1 gap-12 md:grid-cols-[auto_1fr] md:gap-24">
                     <div>
-                        <div className="grid bg-white shadow-md rounded-primary overflow-hidden pb-12 group/card transition-all duration-500 hover:shadow-shadow1">
+                        <div className="group/card grid overflow-hidden rounded-primary bg-white pb-12 shadow-md transition-all duration-500 hover:shadow-shadow1">
                             <div className="max-h-[37.5rem] overflow-hidden">
                                 <Image
                                     src={'/images/avaters/mr-radwan-almousa.png'}
@@ -32,27 +32,27 @@ export default function Radwan(): JSX.Element {
                                     width={500}
                                     height={375}
                                     quality={100}
-                                    className="rounded-tl-primary rounded-tr-primary group-hover/card:scale-110 transition-all duration-500"
+                                    className="rounded-tl-primary rounded-tr-primary transition-all duration-500 group-hover/card:scale-110"
                                 />
                             </div>
 
-                            <div className="grid mt-16 px-12">
+                            <div className="mt-16 grid px-12">
                                 <H4Variant1>{'Mr. Radwan Almousa'}</H4Variant1>
-                                <span className="text-[1.4rem] leading-[2rem] font-mulishBold text-[#51585B] mt-2 uppercase">
+                                <span className="mt-2 font-mulishBold text-[1.4rem] uppercase leading-[2rem] text-[#51585B]">
                                     MD FRCOphth CertLRS
                                 </span>
                                 <span className="mt-6 font-mulishBold text-[1.6rem] leading-[2.4rem]">
                                     Consultant and Surgeon
                                 </span>
                             </div>
-                            <div className="px-12 mt-16">
+                            <div className="mt-16 px-12">
                                 <BookConsultation buttonClassName="w-full place-content-center" />
                             </div>
                         </div>
                     </div>
 
-                    <div className="shadow-md transition-all duration-500 hover:shadow-shadow1 rounded-primary p-12 grid gap-12 md:gap-24">
-                        <div className="gap-12 grid content-start">
+                    <div className="grid gap-12 rounded-primary p-12 shadow-md transition-all duration-500 hover:shadow-shadow1 md:gap-24">
+                        <div className="grid content-start gap-12">
                             <H2Variant1>Specialties</H2Variant1>
 
                             <SpecialistFields
@@ -103,7 +103,7 @@ export default function Radwan(): JSX.Element {
                             />
                         </div>
 
-                        <div className="gap-12 grid content-start">
+                        <div className="grid content-start gap-12">
                             <H2Variant1>Education & Training</H2Variant1>
 
                             <div className="grid gap-6">
@@ -149,7 +149,7 @@ export default function Radwan(): JSX.Element {
                             </div>
                         </div>
 
-                        <div className="gap-12 grid content-start">
+                        <div className="grid content-start gap-12">
                             <H2Variant1 className="normal-case">Awards and publications</H2Variant1>
 
                             <div className="grid gap-6">
@@ -199,7 +199,7 @@ export default function Radwan(): JSX.Element {
                             </div>
                         </div>
 
-                        <div className="gap-12 grid content-start">
+                        <div className="grid content-start gap-12">
                             <H2Variant1>In The Media</H2Variant1>
 
                             <div className="grid gap-6">
@@ -216,7 +216,7 @@ export default function Radwan(): JSX.Element {
                             </div>
                         </div>
 
-                        <div className="gap-12 grid content-start">
+                        <div className="grid content-start gap-12">
                             <SpecialistFields
                                 title="Fellowships and Memberships in Professional Societies"
                                 fieldList={[
@@ -233,7 +233,7 @@ export default function Radwan(): JSX.Element {
                             />
                         </div>
 
-                        <div className="gap-12 grid content-start">
+                        <div className="grid content-start gap-12">
                             <H2Variant1>What you didn’t know…</H2Variant1>
 
                             <div className="grid gap-6">

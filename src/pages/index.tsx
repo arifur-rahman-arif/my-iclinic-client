@@ -97,7 +97,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                             type="button"
                             text="Chat with us"
                             iconPosition="left"
-                            className="normal-case justify-self-start"
+                            className="justify-self-start normal-case"
                             icon={
                                 <Image
                                     src="/images/icons/icon-chat.svg"
@@ -125,7 +125,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 h3BoldHeading="Care Services"
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
-                    <div className="grid lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))] grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] gap-x-12 gap-y-6 justify-items-center">
+                    <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
                         {cardList.map((list, index) => (
                             <Card key={index} {...list} />
                         ))}
@@ -135,7 +135,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
 
             <SideVideoSection2
                 title={
-                    <strong className="text-white block sm:max-w-[58.2rem]">
+                    <strong className="block text-white sm:max-w-[58.2rem]">
                         Are you considering Vision Correction Treatment?
                     </strong>
                 }

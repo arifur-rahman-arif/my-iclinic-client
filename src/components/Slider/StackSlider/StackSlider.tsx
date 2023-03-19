@@ -84,7 +84,7 @@ const StackSlider = ({ sliderList, noImages }: StackSliderInterface): JSX.Elemen
             }}
         >
             {sliderList.map((stack, index) => (
-                <SwiperSlide className="w-full sm:p-12 pb-20 md:pb-0" key={index}>
+                <SwiperSlide className="w-full pb-20 sm:p-12 md:pb-0" key={index}>
                     <Slide index={index} {...stack} />
                 </SwiperSlide>
             ))}

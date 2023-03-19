@@ -207,7 +207,7 @@ export default function KeratoconusPage({ seo, yoastJson }: KeratoconusPageProps
                 h2Heading="cross-linking"
                 containerClassName="md:!grid-cols-1 md:!gap-24"
                 h3LightHeading={
-                    <span className="block md:max-w-[44.6rem] normal-case">
+                    <span className="block normal-case md:max-w-[44.6rem]">
                         Why you should consider <strong className="normal-case">cross-linking at My-iClinic</strong>
                     </span>
                 }

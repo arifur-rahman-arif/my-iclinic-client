@@ -26,7 +26,7 @@ export interface ConsultantCardInterface {
  */
 const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInterface): JSX.Element => {
     return (
-        <div className="grid w-full bg-white shadow-md rounded-primary overflow-hidden pb-6 group/card transition-all duration-500 hover:shadow-shadow1">
+        <div className="group/card grid w-full overflow-hidden rounded-primary bg-white pb-6 shadow-md transition-all duration-500 hover:shadow-shadow1">
             <div className="max-h-[24.5rem] overflow-hidden">
                 <Image
                     src={image}
@@ -34,24 +34,24 @@ const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInter
                     width={370}
                     height={245}
                     quality={100}
-                    className="rounded-tl-primary rounded-tr-primary group-hover/card:scale-110 transition-all duration-500 w-full"
+                    className="w-full rounded-tl-primary rounded-tr-primary transition-all duration-500 group-hover/card:scale-110"
                 />
             </div>
 
-            <div className="grid mt-6 px-6">
+            <div className="mt-6 grid px-6">
                 <H4Variant1>{name}</H4Variant1>
-                <span className="text-[1.4rem] leading-[2rem] font-mulishBold text-[#51585B] mt-2 uppercase">
+                <span className="mt-2 font-mulishBold text-[1.4rem] uppercase leading-[2rem] text-[#51585B]">
                     {degree}
                 </span>
                 <span className="mt-6 font-mulishBold text-[1.6rem] leading-[2.4rem]">{title}</span>
             </div>
-            <div className="flex items-center justify-between px-6 mt-[4.5rem]">
+            <div className="mt-[4.5rem] flex items-center justify-between px-6">
                 <BookConsultation buttonClassName="normal-case">
                     <Button type="button" text="Book a consultation" iconPosition="left" />
                 </BookConsultation>
-                <Link title="Learn more" href={url} className="flex items-center justify-center gap-4 group/link">
-                    <span className="text-heading2 font-latoBold text-[1.4rem] leading-[1.9rem]">Learn More</span>
-                    <AiOutlineArrowRight className="w-[2.4rem] h-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
+                <Link title="Learn more" href={url} className="group/link flex items-center justify-center gap-4">
+                    <span className="font-latoBold text-[1.4rem] leading-[1.9rem] text-heading2">Learn More</span>
+                    <AiOutlineArrowRight className="h-[2.4rem] w-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
                 </Link>
             </div>
         </div>

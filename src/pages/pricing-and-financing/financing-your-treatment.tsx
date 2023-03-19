@@ -85,7 +85,7 @@ export default function FinancingYourTreatment({
                             link="/pricing-and-financing/financing-your-treatment#calculator"
                             text="Finance calculator"
                             iconPosition="left"
-                            className="normal-case justify-self-start"
+                            className="justify-self-start normal-case"
                             onClick={() => {
                                 window.scrollTo(
                                     0,
@@ -153,9 +153,9 @@ export default function FinancingYourTreatment({
 
             <Section>
                 <Container className="grid place-items-center">
-                    <H3Variant2 className="!font-mulishLight max-w-[79.7rem] text-center">
+                    <H3Variant2 className="max-w-[79.7rem] text-center !font-mulishLight">
                         Our vision correction treatments provide a{' '}
-                        <strong className="font-latoBold md:text-[3rem] text-[2.4rem] leading-[3.2rem] normal-case md:leading-[3.6rem]">
+                        <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[3rem] md:leading-[3.6rem]">
                             24 month finance option from £150/Per eye, per month for permanently clear vision,
                         </strong>{' '}
                         without the hassle of glasses and contact lenses.
@@ -178,7 +178,7 @@ export default function FinancingYourTreatment({
             </Section>
 
             <Container>
-                <div className="flex flex-col sm:flex-wrap sm:flex-row items-center justify-center gap-12 md:gap-14 mt-12 md:mt-24">
+                <div className="mt-12 flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:mt-24 md:gap-14">
                     <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
                     <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
                     <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
@@ -188,9 +188,9 @@ export default function FinancingYourTreatment({
                 </div>
             </Container>
 
-            <Section className="bg-brandLight !mt-12 md:!mt-16">
+            <Section className="!mt-12 bg-brandLight md:!mt-16">
                 <Container className="grid place-items-center gap-12 py-12 md:py-24 xl:py-32">
-                    <H3Variant1 className="max-w-[89.5rem] text-center block">
+                    <H3Variant1 className="block max-w-[89.5rem] text-center">
                         It's always best to check with your healthcare insurance provider that they will cover your fees
                         and provide a pre-authorisation code for you.
                     </H3Variant1>
@@ -209,7 +209,7 @@ export default function FinancingYourTreatment({
                     </div>
 
                     <span
-                        className={`font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:mt-12 xl:mt-24 text-center`}
+                        className={`text-center font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:mt-12 xl:mt-24`}
                     >
                         A better quality of life is just around the corner!
                     </span>

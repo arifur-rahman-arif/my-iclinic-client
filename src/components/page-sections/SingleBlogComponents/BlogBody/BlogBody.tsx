@@ -21,7 +21,7 @@ interface BlogBodyInterface {
  */
 const BlogBody = ({ post, categories }: BlogBodyInterface): JSX.Element => {
     return (
-        <Container className="mt-24 md:mt-32 grid grid-cols-1 md:grid-cols-[auto_1fr] xl:grid-cols-[auto_1fr_30rem] gap-12 content-start">
+        <Container className="mt-24 grid grid-cols-1 content-start gap-12 md:mt-32 md:grid-cols-[auto_1fr] xl:grid-cols-[auto_1fr_30rem]">
             <ShareLinks />
             <BodyContent content={post.description} includeCta />
             <BlogSidebarRight recentArticles={post.recentPosts} categories={categories} />

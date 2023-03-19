@@ -79,7 +79,7 @@ const OnScreenSlider = ({ sliderList }: OnScreenSliderInterface): JSX.Element =>
             ref={swiperRef}
         >
             {sliderList.map((slider, index) => (
-                <SwiperSlide className="max-w-[26.9rem] w-full" key={index}>
+                <SwiperSlide className="w-full max-w-[26.9rem]" key={index}>
                     <BlogCard {...slider} />
                 </SwiperSlide>
             ))}

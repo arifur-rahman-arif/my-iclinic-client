@@ -24,9 +24,9 @@ const BlogAuthor = ({ author }: BlogAuthorInterface): JSX.Element => {
                 width={author?.logo?.width || 32}
                 height={author?.logo?.height || 32}
                 alt=""
-                className="rounded-full overflow-hidden object-cover"
+                className="overflow-hidden rounded-full object-cover"
             />
-            <span className="text-[1.4rem] leading-8 font-mulishBold">{author?.name || 'My iClinic'}</span>
+            <span className="font-mulishBold text-[1.4rem] leading-8">{author?.name || 'My iClinic'}</span>
         </div>
     );
 };

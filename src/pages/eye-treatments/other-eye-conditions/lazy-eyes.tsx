@@ -238,11 +238,11 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             />
 
             <Section>
-                <Container className="grid gap-12 justify-items-center">
-                    <h2 className="w-full normal-case text-center max-w-[64rem]">
+                <Container className="grid justify-items-center gap-12">
+                    <h2 className="w-full max-w-[64rem] text-center normal-case">
                         {data?.section_4?.heading || 'Private consultation'}
                     </h2>
-                    <p className="text-center max-w-[53rem]">
+                    <p className="max-w-[53rem] text-center">
                         {data?.section_4?.description ||
                             'Book a private consultation today with our specialist for all-inclusive eye assessments and treatment planning.'}
                     </p>
@@ -290,7 +290,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
             <SideImageSection
                 sectionClass="bg-lightOrange py-12 md:py-24"
                 normalLightHeading={
-                    <strong className="normal-case text-center md:text-left block">
+                    <strong className="block text-center normal-case md:text-left">
                         {data?.section_6?.heading || 'Visit our Lazy eye specialist for diagnosis and treatment'}
                     </strong>
                 }
@@ -315,14 +315,14 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     height: 439
                 }}
                 textColumnExtras={
-                    <div className="grid grid-cols-1 justify-items-center md:justify-items-start gap-6 md:grid-cols-[auto_1fr]">
+                    <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
                         <BookConsultation buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
 
                         <Button
                             type="phone"
                             text={data?.section_6?.phone || '0208 445 8877'}
                             iconPosition="left"
-                            className="!min-w-[18.6rem] md:min-w-[23.3rem] place-content-center border-orange !bg-transparent"
+                            className="!min-w-[18.6rem] place-content-center border-orange !bg-transparent md:min-w-[23.3rem]"
                             icon={
                                 <Image
                                     src="/images/icons/icon-phone-dark.svg"

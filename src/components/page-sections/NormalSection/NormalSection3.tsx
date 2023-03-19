@@ -10,12 +10,12 @@ import { Section } from '@/components/Section';
 const NormalSection3 = (): JSX.Element => {
     return (
         <Section>
-            <Container className="grid grid-cols-1 gap-12 md:gap-24 xl:gap-32 max-w-[111.3rem] md:grid-cols-2">
-                <h2 className="normal-case md:max-w-[56.6rem] justify-self-end">
+            <Container className="grid max-w-[111.3rem] grid-cols-1 gap-12 md:grid-cols-2 md:gap-24 xl:gap-32">
+                <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">
                     Don’t let your existing eye conditions limit your freedom. Our PTK surgery can achieve clear vision
                     without needing glasses and contact lenses.
                 </h2>
-                <div className="justify-self-start grid gap-6">
+                <div className="grid gap-6 justify-self-start">
                     <p>
                         <strong>PTK (Photo-Therapeutic Keratectomy)</strong> is a surgical treatment best suited to
                         people who need vision correction but already have complicated eye conditions that affect their

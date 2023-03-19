@@ -27,22 +27,22 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
     const { navbarPositionState } = useSelector((state: AppState) => state.navbar as NavbarInterface);
 
     return (
-        <div className={`pr-3 xl:pr-0 group/menu-item relative`}>
+        <div className={`group/menu-item relative pr-3 xl:pr-0`}>
             {menu.submenu ? (
                 <>
                     {menu.parentMenu ? (
-                        <span className="xl:whitespace-nowrap font-mulishMedium text-[1.6rem] leading-8 cursor-pointer">
+                        <span className="cursor-pointer font-mulishMedium text-[1.6rem] leading-8 xl:whitespace-nowrap">
                             {menu.name || ''}
                         </span>
                     ) : (
-                        <span className="xl:whitespace-nowrap font-mulishMedium text-[1.6rem] xl:text-[1.8rem] leading-8 cursor-pointer">
+                        <span className="cursor-pointer font-mulishMedium text-[1.6rem] leading-8 xl:whitespace-nowrap xl:text-[1.8rem]">
                             {menu.name || ''}
                         </span>
                     )}
                 </>
             ) : (
                 <Link
-                    className={`xl:whitespace-nowrap font-mulishMedium text-[1.6rem] leading-[2.4rem] cursor-pointer`}
+                    className={`cursor-pointer font-mulishMedium text-[1.6rem] leading-[2.4rem] xl:whitespace-nowrap`}
                     href={menu.url}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -66,7 +66,7 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
             {/* Indicator */}
             {!menu.parentMenu && !menu.submenu && (
                 <span
-                    className={`w-4 h-4 bg-brand rounded-full transition-all duration-700 absolute left-0 top-2/4 -translate-y-[35%] -translate-x-8 ${
+                    className={`absolute left-0 top-2/4 h-4 w-4 -translate-y-[35%] -translate-x-8 rounded-full bg-brand transition-all duration-700 ${
                         isMenuActive && !menu.parentMenu ? 'scale-100' : 'scale-0'
                     } block`}
                 ></span>
@@ -75,7 +75,7 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
                 <span
                     className={`${
                         isMenuActive ? 'w-full' : 'w-0'
-                    } group-hover/menu-item:w-full transition-all duration-500 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
+                    } absolute bottom-0 left-0 z-[99] h-1 translate-y-3 rounded-full bg-brand transition-all duration-500 group-hover/menu-item:w-full`}
                 ></span>
             )}
 
@@ -84,7 +84,7 @@ const SingleLink = ({ menu, isMenuActive, closeMobileMenu }: SingleLinkInterface
                 <span
                     className={`hidden xl:inline-block ${isMenuActive ? 'w-full' : 'w-0'} ${
                         menu.subMenuOpen && 'w-full'
-                    } group-hover/menu-list:w-full transition-all duration-300 h-1 bg-brand rounded-full absolute bottom-0 left-0 translate-y-3 z-[99]`}
+                    } absolute bottom-0 left-0 z-[99] h-1 translate-y-3 rounded-full bg-brand transition-all duration-300 group-hover/menu-list:w-full`}
                 ></span>
             )}
         </div>

@@ -41,7 +41,7 @@ const Slide = ({ desktopImage, title, descriptions, altText, boxIcon }: StackSli
                         width={desktopImage.width}
                         height={desktopImage.height}
                         alt={altText || ''}
-                        className="h-full w-full min-h-[30rem] object-cover"
+                        className="h-full min-h-[30rem] w-full object-cover"
                         quality={70}
                     />
                 </div>

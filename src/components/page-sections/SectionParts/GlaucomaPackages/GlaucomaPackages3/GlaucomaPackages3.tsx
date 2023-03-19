@@ -46,7 +46,7 @@ const GlaucomaPackages3 = ({
 }: GlaucomaPackages3Interface): JSX.Element => {
     return (
         <Section>
-            <Container className="grid gap-12 md:gap-40 !px-0">
+            <Container className="grid gap-12 !px-0 md:gap-40">
                 {dynamicSectionHead ? (
                     dynamicSectionHead
                 ) : (
@@ -62,7 +62,7 @@ const GlaucomaPackages3 = ({
                     />
                 )}
 
-                <div className={`grid gap-12 md:gap-28 md:ml-14 ${packageContainerClassName}`}>
+                <div className={`grid gap-12 md:ml-14 md:gap-28 ${packageContainerClassName}`}>
                     {(packageList || defaultList).map((item, index) => (
                         <Package key={index} {...item} {...other} />
                     ))}
@@ -92,14 +92,14 @@ const Package = ({
 }: GlaucomaPackageInterface): JSX.Element => {
     return (
         <div
-            className={`grid gap-12 md:gap-24 lg:gap-32 grid-cols-1 lg:grid-cols-[45.5rem_1fr] items-center ${itemClassName}`}
+            className={`grid grid-cols-1 items-center gap-12 md:gap-24 lg:grid-cols-[45.5rem_1fr] lg:gap-32 ${itemClassName}`}
         >
             <div
-                className={`bg-darkBlue rounded-tl-primary rounded-tr-primary md:rounded-tr-none md:rounded-bl-primary grid place-items-center p-12 sm:p-32 min-h-[25.7rem] lg:max-w-[45.5rem] ${cardClassName}`}
+                className={`grid min-h-[25.7rem] place-items-center rounded-tl-primary rounded-tr-primary bg-darkBlue p-12 sm:p-32 md:rounded-tr-none md:rounded-bl-primary lg:max-w-[45.5rem] ${cardClassName}`}
             >
-                <H3Variant1 className={`text-white !font-latoLight ${titleClassName}`}>{title}</H3Variant1>
+                <H3Variant1 className={`!font-latoLight text-white ${titleClassName}`}>{title}</H3Variant1>
             </div>
-            <div className="grid gap-12 px-8 xl:px-0 content-center">
+            <div className="grid content-center gap-12 px-8 xl:px-0">
                 {packageList.map((item, index) => (
                     <Item key={index} {...item} />
                 ))}
@@ -119,10 +119,10 @@ const Item = ({ title, price, description }: ItemInterface): JSX.Element => {
     const { onEnter } = useOnScreen({ ref: containerRef, triggerPosition: '90%' });
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-2 md:gap-10 items-center" ref={containerRef}>
+        <div className="grid grid-cols-1 items-center gap-2 md:grid-cols-[auto_1fr_auto] md:gap-10" ref={containerRef}>
             <H3Variant3>{title}</H3Variant3>
             <div className={`bg-yellow transition-all duration-[2.5s] ${onEnter ? 'w-full' : 'w-0'} h-[0.2rem]`}></div>
-            <span className="text-[2rem] leading-[2.8rem] font-mulishBold">{price}</span>
+            <span className="font-mulishBold text-[2rem] leading-[2.8rem]">{price}</span>
             {description && (
                 <div className="md:col-span-2">
                     {Array.isArray(description) ? (

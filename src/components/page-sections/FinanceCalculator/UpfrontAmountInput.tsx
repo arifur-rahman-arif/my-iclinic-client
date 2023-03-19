@@ -57,7 +57,7 @@ const UpfrontAmountInput = ({
     };
 
     return (
-        <div className="grid gap-3 relative">
+        <div className="relative grid gap-3">
             <input
                 type="number"
                 id="upfront-payment"
@@ -80,7 +80,7 @@ const UpfrontAmountInput = ({
                 }}
             />
             {invalidAmount && (
-                <span className="text-[1.4rem] leading-[1.4rem] font-mulishBold text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
+                <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
                     Invalid amount
                 </span>
             )}

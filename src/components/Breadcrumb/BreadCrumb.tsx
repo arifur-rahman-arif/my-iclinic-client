@@ -18,14 +18,14 @@ const BreadCrumb = (): JSX.Element => {
 
     return (
         <>
-            <div className="mt-36 w-full mt-40 xl:mt-[14rem] md:h-[0.1rem]"></div>
+            <div className="mt-36 mt-40 w-full md:h-[0.1rem] xl:mt-[14rem]"></div>
 
             <Container className="flex flex-wrap items-center justify-start gap-4">
                 {router.pathname === '/' ? (
                     <Link href="/" aria-label="Home" className="flex items-center justify-start gap-6">
                         <IconHome active={true} />
                         <span
-                            className={`cursor-pointer whitespace-nowrap font-mulishBold translate-y-[0.1rem] text-[1.5rem] capitalize leading-[1.6rem] text-brand`}
+                            className={`translate-y-[0.1rem] cursor-pointer whitespace-nowrap font-mulishBold text-[1.5rem] capitalize leading-[1.6rem] text-brand`}
                         >
                             Home
                         </span>

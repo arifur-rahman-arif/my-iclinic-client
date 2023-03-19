@@ -156,7 +156,7 @@ export default function DryEyes({ seo, yoastJson }: DryEyesProps): JSX.Element {
                 positionReversed={true}
                 altText=""
                 textColumnExtras={
-                    <div className="grid gap-6 ml-12">
+                    <div className="ml-12 grid gap-6">
                         <BulletList
                             className="!ml-0"
                             list={[
