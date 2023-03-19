@@ -1,5 +1,4 @@
-import { navMenuList } from '@/components/Header/navMenuList';
-import { NavMenuType } from '@/features/navbar/navMenuList';
+import { navMenuList, NavMenuType } from '@/components/Header/navMenuList';
 import { useRouter } from 'next/router';
 import NavLink from './NavLink';
 

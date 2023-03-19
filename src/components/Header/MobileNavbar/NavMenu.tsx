@@ -28,7 +28,7 @@ const NavMenu = ({ openMobileMenu, setOpenMobileMenu }: NavMenuProps): JSX.Eleme
     // });
 
     return (
-        <div className="overflow-y-scroll">
+        <div className="mobile-navbar overflow-y-scroll">
             <ul className="grid w-full content-start justify-items-start">
                 {appCtx?.navMenus.map((menu: NavMenuType, index) => (
                     <li

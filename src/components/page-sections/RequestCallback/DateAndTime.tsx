@@ -73,7 +73,7 @@ const DateAndTime = ({
                     handleAlert({
                         showAlert: true,
                         alertType: 'error',
-                        alertMessage: (response.error as any).data.message
+                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
                     })
                 );
 
@@ -85,7 +85,7 @@ const DateAndTime = ({
                     handleAlert({
                         showAlert: true,
                         alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message
+                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
                     })
                 );
                 return;
@@ -105,7 +105,7 @@ const DateAndTime = ({
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
-                    alertMessage: err.message
+                    alertMessage: err.message || 'Something went wrong. Please try again'
                 })
             );
         }
@@ -128,7 +128,7 @@ const DateAndTime = ({
      */
     const formSubmit = async (): Promise<any> => {
         if (!name) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -136,10 +136,11 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         if (!phone) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -147,12 +148,13 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         const numberValid = await validatePhoneNumber(phone);
 
         if (!numberValid) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -160,10 +162,11 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         if (!email) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -171,10 +174,11 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         if (!validateEmail(email)) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -182,12 +186,13 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         const internationalPhoneNumber = await formatNumberToInternational(phone);
 
         if (!dateDifferenceInDays(new Date(), date)) {
-            return dispatch(
+            dispatch(
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
@@ -195,6 +200,7 @@ const DateAndTime = ({
                     timeout: 4000
                 })
             );
+            return;
         }
 
         const payload = {
@@ -217,6 +223,7 @@ const DateAndTime = ({
                         className="calender max-h-[26.5rem] overflow-x-auto overflow-y-auto"
                         onChange={setDate}
                         value={date}
+                        minDate={new Date()}
                     />
                 ) : (
                     <div className="min-h-[26.4rem] w-full"></div>

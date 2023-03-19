@@ -295,7 +295,8 @@ body {
     height: 0px;
 }
 
-#cost-calculator::-webkit-scrollbar {
+#cost-calculator::-webkit-scrollbar,
+.mobile-navbar::-webkit-scrollbar {
     width: 4px;
     height: 3px;
 }

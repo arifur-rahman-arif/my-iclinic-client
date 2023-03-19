@@ -4,7 +4,7 @@ import { createContext, Dispatch, SetStateAction, useState } from 'react';
 export interface AppContextInterface {
     navMenus: NavMenuType[];
     setNavMenus: Dispatch<SetStateAction<NavMenuType[]>>;
-    toggleSubmenu: ({ index: number }) => void;
+    toggleSubmenu: ({ index }: { index: number }) => void;
 }
 
 interface PropInterface {

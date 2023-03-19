@@ -48,6 +48,7 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             });
 
             if (!freshdeskApiResponse.ok) {
+                console.log(freshdeskApiResponse);
                 const freshdeskResponse = await freshdeskApiResponse.json();
                 throw new Error(`API error: ${freshdeskResponse.status} ${freshdeskResponse.statusText}`);
             }
