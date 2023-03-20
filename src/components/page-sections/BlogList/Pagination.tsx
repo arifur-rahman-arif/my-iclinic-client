@@ -5,7 +5,6 @@ interface PaginationInterface {
     totalPage: number;
     currentPage: number;
     setCurrentPage: Dispatch<SetStateAction<number>>;
-    setPostInView?: () => void;
     defaultClassName?: string;
     className?: string;
 }
@@ -21,7 +20,6 @@ const Pagination = ({
     totalPage,
     currentPage,
     setCurrentPage,
-    setPostInView,
     defaultClassName,
     className
 }: PaginationInterface): JSX.Element => {
@@ -31,7 +29,7 @@ const Pagination = ({
     const handlePreviousPage = () => {
         if (currentPage === 1) return;
         setCurrentPage((currentPage -= 1));
-        typeof setPostInView === 'function' && setPostInView();
+        // Typeof setPostInView === 'function' && setPostInView();
     };
 
     /**
@@ -40,7 +38,7 @@ const Pagination = ({
     const handleNextPage = () => {
         if (currentPage === totalPage) return;
         setCurrentPage((currentPage += 1));
-        typeof setPostInView === 'function' && setPostInView();
+        // Typeof setPostInView === 'function' && setPostInView();
     };
 
     return (

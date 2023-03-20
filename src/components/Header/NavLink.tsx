@@ -100,34 +100,45 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
 
     return (
         <span className="flex items-center justify-center gap-1">
-            <span
-                className={`cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-brand ${
-                    isMenuActive && 'text-brand'
-                }`}
-            >
-                {menu.name}
-            </span>
-
-            {menu.submenu && (
-                <svg
-                    width="14"
-                    height="8"
-                    viewBox="0 0 14 8"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90"
-                >
-                    <path
-                        d="M1 1L7 7L13 1"
-                        stroke="#222D30"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className={`transition-all duration-500 group-hover/menu-item:!stroke-brand ${
-                            isMenuActive && '!stroke-brand'
+            {menu.submenu ? (
+                <>
+                    <span
+                        className={`cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-brand ${
+                            isMenuActive && 'text-brand'
                         }`}
-                    />
-                </svg>
+                    >
+                        {menu.name}
+                    </span>
+
+                    <svg
+                        width="14"
+                        height="8"
+                        viewBox="0 0 14 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90"
+                    >
+                        <path
+                            d="M1 1L7 7L13 1"
+                            stroke="#222D30"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={`transition-all duration-500 group-hover/menu-item:!stroke-brand ${
+                                isMenuActive && '!stroke-brand'
+                            }`}
+                        />
+                    </svg>
+                </>
+            ) : (
+                <Link
+                    href={menu.url}
+                    className={`cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-brand ${
+                        isMenuActive && 'text-brand'
+                    }`}
+                >
+                    {menu.name}
+                </Link>
             )}
         </span>
     );

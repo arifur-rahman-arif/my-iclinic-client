@@ -5,7 +5,6 @@ import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import Filters, { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { useBlogPageHooks } from '@/page-sections/BlogList/index';
-import { getElementTopPosition } from '@/utils/miscellaneous';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import BlogSearch from './BlogSearch';
@@ -108,16 +107,16 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
         setPostsList({ blogs: filteredPosts });
     };
 
-    /**
-     * Set the blog posts section in user view whenever blog list changes
-     */
-    const setPostInView = () => {
-        if (!containerRef.current) return;
-
-        setTimeout(() => {
-            window.scrollTo(0, getElementTopPosition(containerRef.current as HTMLElement) - 100);
-        }, 50);
-    };
+    // /**
+    //  * Set the blog posts section in user view whenever blog list changes
+    //  */
+    // const setPostInView = () => {
+    //     if (!containerRef.current) return;
+    //
+    //     setTimeout(() => {
+    //         window.scrollTo(0, getElementTopPosition(containerRef.current as HTMLElement) - 100);
+    //     }, 50);
+    // };
 
     /**
      * Filter the blog list by search term
@@ -125,6 +124,16 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
      * @param {GeneralBlogInterface[] | []} filteredBlogs
      */
     const filterBlogsBySearch = (filteredBlogs: GeneralBlogInterface[] | []) => {
+        // Set the categories filter to all whenever user search for something
+        setFilters((currentFilters) => {
+            return currentFilters.map((filter, index) => {
+                if (index === 0) {
+                    return { ...filter, active: true };
+                }
+                return { ...filter, active: false };
+            });
+        });
+
         if (filteredBlogs.length < 1) {
             setTotalPage(0);
             setPostsList({ blogs: [] });
@@ -152,7 +161,7 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
 
     return (
         <Section>
-            <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-32" ref={containerRef}>
+            <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24" ref={containerRef}>
                 {/* Section title & search box */}
                 <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
                     <TextColumn
@@ -197,12 +206,7 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
 
                 {/*  Pagination  */}
                 {currentPosts.length && totalPage !== 1 ? (
-                    <Pagination
-                        totalPage={totalPage}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                        setPostInView={setPostInView}
-                    />
+                    <Pagination totalPage={totalPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 ) : null}
             </Container>
         </Section>
