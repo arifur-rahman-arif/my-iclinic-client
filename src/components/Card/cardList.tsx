@@ -95,7 +95,7 @@ export const cardList: CardInterface[] = [
             </>,
             'Atropine eye drops available.'
         ],
-        cardLink: '/#'
+        cardLink: '/eye-treatments/childrens-eyes/myopia'
     }
 ];
 
