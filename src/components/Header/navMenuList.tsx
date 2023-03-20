@@ -263,12 +263,14 @@ export const navMenuList: NavMenuType[] = [
     },
     {
         name: 'About Us',
-        url: '/about-us',
+        // Url: '/about-us',
+        url: '#',
         slug: 'about-us'
     },
     {
         name: 'Contact Us',
-        url: '/contact-us',
+        // Url: '/contact-us',
+        url: '#',
         slug: 'contact-us'
     },
     {
