@@ -23,11 +23,11 @@ const ArticlesCategories = ({ categories }: ArticlesCategoriesInterface): JSX.El
                     {categories.map((category, index) => (
                         <Link
                             href={`/articles?category=${category.slug}`}
-                            className="group/category flex items-center justify-start gap-8"
+                            className="group/category flex items-center justify-start gap-2"
                             key={index}
                         >
-                            <FiArrowRight className="h-8 w-8 transition-all duration-500 group-hover/category:translate-x-4" />
-                            <span className="font-mulishBold text-[1.6rem] capitalize leading-[2.2rem]">
+                            <FiArrowRight className="h-[1.6rem] w-[1.6rem] transition-all duration-500 group-hover/category:stroke-brand" />
+                            <span className="font-mulishBold text-[1.6rem] capitalize leading-[2.2rem] transition-all duration-500 group-hover/category:text-brand">
                                 {category.name}
                             </span>
                         </Link>
