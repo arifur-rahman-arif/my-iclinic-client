@@ -6,6 +6,7 @@ import { useDeviceSize, smallSizes, largeSizes } from '@/hooks';
 interface LottieComponentInterface {
     startAnimation: boolean;
 }
+
 /**
  * Lottie component
  *

@@ -116,9 +116,7 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        Speak to a <span className="font-latoBold uppercase">LASEK, PRK & PTK</span> specialist
-                    </strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 

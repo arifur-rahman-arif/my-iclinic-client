@@ -316,13 +316,16 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                         "Our children's paediatrician will carry out comprehensive eye assessments to diagnose the cause of your child's astigmatism.",
                         <>
                             Astigmatism may be present on its own but is typically associated with{' '}
-                            <LinkStyle>Myopia.</LinkStyle> or <LinkStyle>Hyperopia.</LinkStyle>
+                            <LinkStyle url="/eye-treatments/childrens-eyes/myopia">Myopia.</LinkStyle> or{' '}
+                            <strong>Hyperopia.</strong>
                         </>,
                         'Children with myopia (nearsightedness) or hyperopia (farsightedness) are more likely to have astigmatism.',
                         <span className="flex items-center justify-start gap-4">
                             <strong>Read more about </strong>
                             <span className="group/link flex items-center justify-start gap-4">
-                                <LinkStyle>Myopia Control for Children</LinkStyle>
+                                <LinkStyle url="/eye-treatments/childrens-eyes/myopia">
+                                    Myopia Control for Children
+                                </LinkStyle>
                                 <AiOutlineArrowRight className="h-8 w-8 fill-blue transition-all duration-500 group-hover/link:translate-x-4" />
                             </span>
                         </span>

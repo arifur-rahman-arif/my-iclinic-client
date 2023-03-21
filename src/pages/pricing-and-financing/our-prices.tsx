@@ -21,6 +21,7 @@ import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-price-small.png';
 import { AstigmatismPageContentInterface, WpPageResponseInterface } from '@/types';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 
 import Image from 'next/image';
 import { BiRightArrowAlt } from 'react-icons/bi';
@@ -87,6 +88,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                                     className="h-8 w-8"
                                 />
                             }
+                            onClick={openFreshdeskChat}
                         />
                     </>
                 }

@@ -358,17 +358,17 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
             `The first step to living life with clearer vision is a consultation with one of our friendly cataract specialists.`,
             <>
                 Your cataract consultation will begin with some initial scans so we can examine your eyes and explain
-                the most{' '}
-                <LinkText href="#" indicatorColor="bg-blue" className="!font-mulishBold text-blue">
-                    suitable treatment options
-                </LinkText>{' '}
-                for you.
+                the most <span className="!font-mulishBold">suitable treatment options</span> for you.
             </>,
             `With our expert technology, our senior technicians will be able to capture how the cataracts are affecting you, your lifestyle and where exactly they are affecting your field of vision.`,
             <>
                 These assessments will be passed to your cataract specialist, who will meet with you and talk you
                 through the best{' '}
-                <LinkText href="#" indicatorColor="bg-blue" className="!font-mulishBold text-blue">
+                <LinkText
+                    href="/cataract/premium-lenses"
+                    indicatorColor="bg-blue"
+                    className="!font-mulishBold text-blue"
+                >
                     lens implants options
                 </LinkText>{' '}
                 for your cataract surgery.

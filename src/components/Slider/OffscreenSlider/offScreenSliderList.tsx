@@ -27,7 +27,7 @@ export const offScreenSliderList: SlideInterface[] = [
         ),
         extraElements: (
             <div className="mt-12">
-                <LinkStyle url="#" excludeAnimation={true}>
+                <LinkStyle url="/pricing-and-financing/financing-your-treatment#calculator" excludeAnimation={true}>
                     Calculate your treatment with our 24 months finance calculator
                 </LinkStyle>
             </div>

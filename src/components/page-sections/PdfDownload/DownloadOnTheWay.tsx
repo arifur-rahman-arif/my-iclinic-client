@@ -46,7 +46,10 @@ const DownloadOnTheWay = ({
                 Need some help with your download?
             </span>
             <p className="mt-6">Please call for any further help</p>
-            <span className="font-mulishBold text-[2rem] leading-[2.4rem]">0208 445 8877</span>
+
+            <a href="tel:0208 445 8877" className="font-mulishBold text-[2rem] leading-[2.4rem]">
+                0208 445 8877
+            </a>
 
             <p className="mt-12 text-center">
                 If download is not starting{' '}

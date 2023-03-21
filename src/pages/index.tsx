@@ -23,6 +23,7 @@ import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
 import { WpPageResponseInterface } from '@/types';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -112,6 +113,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                                     className="h-8 w-8"
                                 />
                             }
+                            onClick={openFreshdeskChat}
                         />
                     </>
                 }
@@ -163,6 +165,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                         className="h-8 w-8"
                     />
                 }
+                hoverIcon={<Image src="/images/icons/icon-calendar-outline-white.svg" alt="" width={20} height={20} />}
                 sectionImage={{
                     url: '/images/section-images/image-eye-outline.png',
                     width: 364,

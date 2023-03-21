@@ -141,7 +141,7 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                         <br /> Eye Surgery!
                     </>
                 }
-                containerClass="md:!grid-cols-[1fr_auto]"
+                containerClass="md:!grid-cols-1 lg:!grid-cols-[1fr_auto] md:!py-0 lg:!py-24"
                 altText="Man with luggage at airport"
                 image={LaserEyeSurgery}
                 desktopImage={LaserEyeSurgeryLarge}

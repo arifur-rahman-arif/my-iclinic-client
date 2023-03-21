@@ -3,7 +3,6 @@ import { Button } from '@/components/Button';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
 import {
     CtaSection,
@@ -251,13 +250,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                     <>
                         Implants, like glasses, come in different strengths and we will measure your eye to find the
                         strength of the{' '}
-                        <LinkText
-                            href="#"
-                            indicatorColor="bg-blue"
-                            className="font-mulishBold font-extrabold text-blue"
-                        >
-                            implant most suitable for you.
-                        </LinkText>
+                        <span className="font-mulishBold font-extrabold">implant most suitable for you.</span>
                     </>
                 ]}
                 sectionImage={{

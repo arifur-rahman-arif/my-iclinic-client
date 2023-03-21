@@ -23,6 +23,7 @@ interface SideVideoSection2Interface {
     containerClassName?: string;
     sectionImage?: ImageType2;
     sectionImageLarge?: ImageType2;
+    hoverIcon?: ReactNode;
 }
 
 /**
@@ -42,7 +43,8 @@ const SideVideoSection2 = ({
     containerDefaultClassName,
     containerClassName,
     sectionImage,
-    sectionImageLarge
+    sectionImageLarge,
+    hoverIcon
 }: SideVideoSection2Interface): JSX.Element => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const animationRef = useRef<HTMLDivElement | null>(null);
@@ -86,6 +88,7 @@ const SideVideoSection2 = ({
                         }`}
                         sloganTextColor={sloganTextColor}
                         button2Icon={button2Icon}
+                        hoverIcon={hoverIcon}
                     />
                 </div>
                 {/* <div className="">

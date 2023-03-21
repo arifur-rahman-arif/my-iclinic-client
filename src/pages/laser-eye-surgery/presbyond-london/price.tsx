@@ -1,4 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
@@ -18,12 +19,13 @@ import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png'
 import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
 import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
-import ShortSightedImage from '@/section-images/short-sighted-vision.png';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
 
 interface PresbyondPricingProps {
     seo: any;
@@ -185,7 +187,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
             <CtaSection />
 
             <FullWidthImageSection
-                sectionClass="!mt-0 bg-brandLight"
+                sectionClass="lg:!mt-0 bg-brandLight"
                 h3Title={
                     <>
                         <strong className="normal-case">Permanently correct your short-sighted vision</strong> with our
@@ -194,7 +196,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
                 }
                 boldHeading={true}
                 altText="Woman with presbyond blended vision, without needing reading glasses."
-                image={ShortSightedImage}
+                image={ShortSightedImageLarge}
                 desktopImage={ShortSightedImageLarge}
                 containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 smallImageClassName="!w-auto"

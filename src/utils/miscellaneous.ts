@@ -278,3 +278,20 @@ export const getCurrentFileName = (filename: string): string => {
 export const wordpressPageFields = (): string => {
     return 'title,acf,yoast_head,yoast_head_json';
 };
+
+/**
+ * Open the freshChat options
+ * @returns {Element | null}
+ */
+export const openFreshdeskChat = (): Element | null => {
+    const freshChatIcon = document.getElementById('fc_frame');
+
+    if (!freshChatIcon) return null;
+    freshChatIcon.style.opacity = '1';
+
+    if (window?.fcWidget) {
+        window?.fcWidget.open();
+    }
+
+    return freshChatIcon;
+};

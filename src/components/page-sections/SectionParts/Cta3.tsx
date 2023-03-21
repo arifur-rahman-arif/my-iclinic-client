@@ -1,4 +1,5 @@
 import { BookConsultation } from '@/page-sections/index';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
 /**
@@ -21,7 +22,12 @@ const Cta3 = (): JSX.Element => {
                     height={20}
                     className="h-8 w-8"
                 />
-                <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">Chat with us</span>
+                <button
+                    className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                    onClick={openFreshdeskChat}
+                >
+                    Chat with us
+                </button>
             </div>
         </div>
     );

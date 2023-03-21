@@ -1,4 +1,5 @@
 import { BookConsultation } from '@/components/page-sections';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
 interface CtaInterface {
@@ -43,7 +44,12 @@ const Cta = ({
                     height={20}
                     className="h-8 w-8"
                 />
-                <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">Chat with us</span>
+                <button
+                    className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                    onClick={openFreshdeskChat}
+                >
+                    Chat with us
+                </button>
             </div>
             <div className="mt-4 grid place-items-start">
                 <BookConsultation buttonClassName={buttonClassName} />
