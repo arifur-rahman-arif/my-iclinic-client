@@ -80,8 +80,6 @@ export async function getStaticProps() {
             slug: 'privacy-policies'
         });
 
-        console.log(data);
-
         return {
             /* eslint-disable */
             props: {

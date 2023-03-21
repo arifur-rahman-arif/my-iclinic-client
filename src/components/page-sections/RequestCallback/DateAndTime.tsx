@@ -119,7 +119,6 @@ const DateAndTime = ({
         setEmail('');
         setPhone('');
         setOptionalMessage('');
-        setDate(new Date());
     };
 
     /**

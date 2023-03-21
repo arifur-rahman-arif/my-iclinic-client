@@ -39,9 +39,9 @@ const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSl
     loading: () => <ComponentLoader />
 });
 
-export const config = {
-    unstable_JsPreload: false
-};
+// export const config = {
+//     unstable_JsPreload: false
+// };
 
 interface HomeProps {
     seo?: any;

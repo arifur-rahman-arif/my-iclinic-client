@@ -1,7 +1,6 @@
 import { postData } from '@/utils/apiHelpers';
 import { splitName } from '@/utils/miscellaneous';
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import * as process from 'process';
 
 /**
  * Api route for getting the review data URL: '/api/request-callback
@@ -27,11 +26,8 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
                 description: req.body.optionalMessage,
                 email: req.body.email,
                 phone: req.body.phone,
-                // eslint-disable-next-line camelcase
                 custom_fields: {
-                    // eslint-disable-next-line camelcase
                     cf_full_name: `${firstName} ${lastName}`,
-                    // eslint-disable-next-line camelcase
                     cf_callback_date: formattedDate
                 },
                 priority: 1,
