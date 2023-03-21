@@ -24,7 +24,7 @@ const Filters = ({
     setSearchValue
 }: FilterInterface): JSX.Element => {
     const filterRef = useRef<HTMLDivElement | null>(null);
-    const [lastX, setLastX] = useState<number>(0);
+    // const [lastX, setLastX] = useState<number>(0);
     const [isLeftDisabled, setIsLeftDisabled] = useState<boolean>(true);
     const [isRightDisabled, setIsRightDisabled] = useState<boolean>(false);
 
@@ -128,15 +128,15 @@ const Filters = ({
             <div
                 className="blog-filters overflow-x-auto md:overflow-x-hidden"
                 ref={filterRef}
-                onMouseMove={(event) => {
-                    event.preventDefault();
-                    const { clientX } = event;
-                    const deltaX = (clientX - lastX) / 3;
-
-                    setLastX(clientX);
-
-                    handleMouseMove(deltaX);
-                }}
+                // onMouseMove={(event) => {
+                //     event.preventDefault();
+                //     const { clientX } = event;
+                //     const deltaX = (clientX - lastX) / 3;
+                //
+                //     setLastX(clientX);
+                //
+                //     handleMouseMove(deltaX);
+                // }}
             >
                 <div className="relative flex min-w-max items-center justify-center gap-8 justify-self-center py-2 md:gap-12 md:py-0">
                     {filterList.map((filter, index) => (

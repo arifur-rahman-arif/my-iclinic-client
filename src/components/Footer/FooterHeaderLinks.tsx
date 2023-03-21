@@ -1,6 +1,7 @@
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import Image from 'next/image';
 import { LinkText } from '@/components/Link';
+import Link from 'next/link';
 
 /**
  * Footer header links component
@@ -33,9 +34,13 @@ const FooterHeaderLinks = (): JSX.Element => {
                     height={20}
                     className="h-8 w-8"
                 />
-                <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                <Link
+                    className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                    href="https://www.google.com/maps/place/960+High+Rd,+London+N12+8FA,+UK/@51.6220441,-0.1783466,17z/data=!3m1!4b1!4m5!3m4!1s0x487619c2ce086057:0xb2604f94b7bbeecd!8m2!3d51.6220441!4d-0.1761579"
+                    target="_blank"
+                >
                     960 High Rd, London N12 9RY
-                </span>
+                </Link>
             </div>
 
             <div className="flex items-center justify-start gap-4">

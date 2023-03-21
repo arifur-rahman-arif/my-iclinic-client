@@ -42,16 +42,19 @@ const VideoPlayer = ({ videoUrl, videoPoster, localPoster }: VideoPlayerInterfac
     }, []);
     return (
         <div
-            className={`row-start-1 mb-4 w-full overflow-hidden rounded-primary md:row-start-auto md:mb-0 md:min-w-[40rem] md:max-w-[65rem] lg:justify-self-auto`}
+            className={`row-start-1 mb-4 w-full overflow-hidden md:mb-0 md:min-w-[40rem] lg:row-start-auto lg:max-w-[65rem] lg:justify-self-auto lg:pr-8`}
         >
-            <video
-                ref={videoPlayer}
-                playsInline
-                controls
-                data-poster={localPoster || `https://img.youtube.com/vi/${videoPoster}/maxresdefault.jpg`}
-            >
-                <source src={videoUrl} type="video/mp4" />
-            </video>
+            <div className="overflow-hidden lg:rounded-primary">
+                <video
+                    ref={videoPlayer}
+                    playsInline
+                    controls
+                    data-poster={localPoster || `https://img.youtube.com/vi/${videoPoster}/maxresdefault.jpg`}
+                    className="xl:min-w-[75rem]"
+                >
+                    <source src={videoUrl} type="video/mp4" />
+                </video>
+            </div>
         </div>
     );
 };

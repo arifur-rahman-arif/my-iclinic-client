@@ -36,8 +36,8 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 setLoadCallbackSection(true);
             }
             setLoadChatbot(true);
-        }, 2500);
-    }, []);
+        }, 3000);
+    }, [deviceSize]);
 
     return (
         <>
@@ -54,7 +54,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 <Footer />
             </LazyComponent>
             {showAlert && <Alert />}
-            {loadCallbackSection ? <BottomMenu /> : <></>}
+            {loadCallbackSection && <BottomMenu />}
             {loadChatbot && <CookieConsent />}
         </>
     );

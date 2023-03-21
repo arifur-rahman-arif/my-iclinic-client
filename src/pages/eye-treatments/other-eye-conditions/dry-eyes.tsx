@@ -102,7 +102,7 @@ export default function DryEyes({ seo, yoastJson }: DryEyesProps): JSX.Element {
                 priceText={<></>}
             />
 
-            <Container className="mt-28">
+            <Container className="mt-12 md:mt-24">
                 <h2 className="w-full text-center normal-case">
                     <strong className="normal-case">Speak to a specialist</strong>
                 </h2>

@@ -99,9 +99,7 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        Speak to a <span className="font-latoBold uppercase">Blepharitis</span> specialist
-                    </strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -198,15 +196,7 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
                         >
                             call
                         </LinkText>{' '}
-                        or{' '}
-                        <LinkText
-                            href="#"
-                            className="font-mulishBold font-extrabold text-blue"
-                            indicatorColor="bg-blue"
-                        >
-                            book a consultation
-                        </LinkText>{' '}
-                        with our lovely team today.
+                        or with our lovely team today.
                     </>
                 ]}
                 image={{

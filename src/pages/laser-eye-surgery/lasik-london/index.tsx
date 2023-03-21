@@ -26,10 +26,12 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasik.png';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
 import { WpPageResponseInterface } from '@/types';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -264,21 +266,15 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                     <>
                         If you’ve made the decision to improve your eyesight – whether you currently have{' '}
                         <LinkText
-                            href="#"
+                            href="/eye-treatments/childrens-eyes/myopia"
                             indicatorColor="bg-blue"
                             className="font-mulishBold font-extrabold text-blue"
                         >
                             Myopia,
                         </LinkText>{' '}
+                        <span className="font-mulishBold font-extrabold">Hyperopia</span>{' '}
                         <LinkText
-                            href="#"
-                            indicatorColor="bg-blue"
-                            className="font-mulishBold font-extrabold text-blue"
-                        >
-                            Hyperopia
-                        </LinkText>{' '}
-                        <LinkText
-                            href="#"
+                            href="/eye-treatments/other-eye-conditions/astigmatism"
                             indicatorColor="bg-blue"
                             className="font-mulishBold font-extrabold text-blue"
                         >
@@ -304,21 +300,9 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                 positionReversed={true}
                 textColumnExtras={
                     <div className="flex flex-col items-center justify-start gap-12 sm:flex-row">
-                        <Button
-                            type="anchor"
-                            text="Book a consultation"
-                            iconPosition="left"
-                            icon={
-                                <Image
-                                    src="/images/icons/icon-calendar-outline-darker.svg"
-                                    alt=""
-                                    width={20}
-                                    height={20}
-                                    quality={2}
-                                    className="h-8 w-8"
-                                />
-                            }
-                        />
+                        <div className="place-items-end xl:grid">
+                            <BookConsultation />
+                        </div>
 
                         <div className="flex items-center justify-start gap-4">
                             <Image
@@ -329,9 +313,12 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                                 height={20}
                                 className="h-8 w-8"
                             />
-                            <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                            <button
+                                className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                                onClick={openFreshdeskChat}
+                            >
                                 Chat with us
-                            </span>
+                            </button>
                         </div>
                     </div>
                 }

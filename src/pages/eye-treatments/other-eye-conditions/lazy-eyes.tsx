@@ -78,7 +78,7 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                 imageSmall={data?.masthead_image?.image || MastheadImageSmall}
                 imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
                 imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                altText=""
+                imagePosition="2xl:object-[-25rem_top] xl:object-[-20rem_top]"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (

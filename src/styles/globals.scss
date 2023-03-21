@@ -1,18 +1,18 @@
-:root {
-    font-size: 62.5%;
-}
-
 // Load utilities
 // @import 'utils/fonts';
 @import 'utils/variables';
 @import 'utils/breakpoints';
 @import '../components/Header/styles/header';
 
+:root {
+    font-size: var(--root-font-size);
+}
+
 * {
     border: none;
     box-sizing: border-box;
     color: var(--color-secondary);
-    font-size: 62.5%;
+    font-size: 68.5%;
     list-style-type: none;
     margin: 0;
     outline: none;
@@ -266,6 +266,7 @@ body {
     #fc_frame {
         @include media-breakpoint-down(sm) {
             bottom: 85px !important;
+            opacity: 0;
             right: 10px !important;
             z-index: 99 !important;
         }
@@ -286,24 +287,24 @@ body {
 }
 
 #stepper-indicator::-webkit-scrollbar {
-    width: 5px;
     height: 3px;
+    width: 5px;
 }
 
 .submenu::-webkit-scrollbar {
-    width: 0px;
     height: 0px;
+    width: 0px;
 }
 
 #cost-calculator::-webkit-scrollbar,
 .mobile-navbar::-webkit-scrollbar {
-    width: 4px;
     height: 3px;
+    width: 4px;
 }
 
 .specialist-single-post::-webkit-scrollbar {
-    width: 0px;
     height: 0px;
+    width: 0px;
 }
 
 .blog-filters::-webkit-scrollbar {

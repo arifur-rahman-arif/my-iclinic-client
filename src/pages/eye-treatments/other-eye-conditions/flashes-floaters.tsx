@@ -106,7 +106,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
+            <Container className="mt-32 sm:mt-24">
                 <h2 className="w-full text-center normal-case">
                     <strong className="normal-case">
                         {data?.request_callback_title ? (

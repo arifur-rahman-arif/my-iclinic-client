@@ -1,4 +1,5 @@
 import { Button } from '@/components/Button';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
 /**
@@ -9,7 +10,7 @@ import Image from 'next/image';
  */
 const Cta4 = (): JSX.Element => {
     return (
-        <div className="mt-6 flex flex-wrap items-center justify-start gap-12">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <Button
                 type="phone"
                 text="0208 445 8877"
@@ -35,7 +36,12 @@ const Cta4 = (): JSX.Element => {
                     height={20}
                     className="h-8 w-8"
                 />
-                <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">Chat with us</span>
+                <button
+                    className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                    onClick={openFreshdeskChat}
+                >
+                    Chat with us
+                </button>
             </div>
         </div>
     );

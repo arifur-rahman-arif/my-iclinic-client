@@ -30,7 +30,9 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
             sx={{
                 '.MuiPaper-root': {
                     borderRadius: 'var(--border-radius)',
-                    width: '100%'
+                    width: '100%',
+                    marginLeft: '5px !important',
+                    marginRight: '5px !important'
                 }
             }}
             className={styles.styles}

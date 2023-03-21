@@ -68,10 +68,10 @@ const CallbackSection = (): JSX.Element => {
                         quality={70}
                         priority
                     />
-                    <h2 className="leading-16 hidden self-center font-latoBold text-[4rem] normal-case md:col-span-2 md:block xl:col-span-1 xl:ml-[4.5rem] xl:max-w-[21.4rem]">
+                    <h2 className="leading-16 hidden self-center font-latoBold text-[4rem] normal-case md:col-span-2 md:block md:pl-8 xl:col-span-1 xl:ml-[4.5rem] xl:max-w-[21.4rem]">
                         Request a call back
                     </h2>
-                    <div className="self-center bg-brandLight py-12 px-8 md:bg-transparent md:px-0 md:py-0">
+                    <div className="self-center bg-brandLight py-12 px-8 md:bg-transparent md:py-0 md:pr-0 md:pl-8 xl:pl-0">
                         <h2 className="leading-16 mb-12 text-left text-center font-latoBold normal-case sm:text-center md:hidden md:text-[4rem]">
                             Request a call back
                         </h2>

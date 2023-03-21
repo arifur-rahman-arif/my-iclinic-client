@@ -3,7 +3,6 @@ import { Button } from '@/components/Button';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
 import {
     BulletPoint,
@@ -145,15 +144,8 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
                 descriptions={[
                     <>
                         If you are ready to break from compromising with your everyday contact lenses or glasses, take a
-                        look at our{' '}
-                        <LinkText
-                            href="#"
-                            indicatorColor="bg-blue"
-                            className="font-mulishBold font-extrabold text-blue"
-                        >
-                            biocompatible ICL
-                        </LinkText>{' '}
-                        lenses made by EVO Visian - a groundbreaking Evolution in Visual Freedom!
+                        look at our <span className="font-mulishBold font-extrabold ">biocompatible ICL</span> lenses
+                        made by EVO Visian - a groundbreaking Evolution in Visual Freedom!
                     </>
                 ]}
                 sectionImage={{

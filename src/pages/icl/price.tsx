@@ -201,7 +201,7 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 !pt-0"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="bg-brandLight relative !mt-0"
+                sectionClass="lg:!mt-0 bg-brandLight"
             />
         </Page>
     );

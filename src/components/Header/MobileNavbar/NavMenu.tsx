@@ -129,7 +129,9 @@ const ParentMenuItem = ({ menu, router, openMobileMenu, setOpenMobileMenu }: Par
                         viewBox="0 0 14 8"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90"
+                        className={`h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90 ${
+                            menu.subMenuOpen && '-rotate-90'
+                        }`}
                     >
                         <path
                             d="M1 1L7 7L13 1"

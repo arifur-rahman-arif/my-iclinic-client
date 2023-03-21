@@ -152,7 +152,11 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
                     `Presbyond uses a blend zone technology which corrects the near, intermediate and distance sight and helps cataract patients adjust to all points of sight after their surgery.`,
                     `This option is best suited to people with cataracts who have a very active lifestyle and want to continue their work, hobbies and driving without compromising their vision with glasses.`,
                     <span className="flex items-center justify-start gap-4">
-                        <LinkText href="#" indicatorColor="bg-blue" className="!font-mulishBold text-blue">
+                        <LinkText
+                            href="/laser-eye-surgery/presbyond-london"
+                            indicatorColor="bg-blue"
+                            className="!font-mulishBold text-blue"
+                        >
                             See Presbyond treatment
                         </LinkText>
                         <BsArrowRightShort className="h-10 w-10 translate-y-[0.1rem] fill-blue text-blue" />

@@ -31,7 +31,7 @@ const BottomBanner2 = ({
 
     return (
         <Section>
-            <ContainerFluid className="z-[2] bg-brandLight bg-[auto_100%] bg-[right_center] bg-no-repeat px-0 md:bg-transparent md:bg-[url(/images/section-images/bottom-banner2-bg.png)]">
+            <ContainerFluid className="z-[2] bg-brandLight bg-[auto_100%] bg-[right_center] bg-no-repeat !px-0 md:bg-transparent md:bg-[url(/images/section-images/bottom-banner2-bg.png)]">
                 <Container className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-[auto_1fr_auto] md:gap-24 md:py-0">
                     {/* Grid item 1 */}
                     <div className="row-start-1 grid place-items-end justify-self-center md:row-auto">

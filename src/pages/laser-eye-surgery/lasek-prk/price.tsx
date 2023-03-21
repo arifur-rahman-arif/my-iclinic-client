@@ -199,7 +199,7 @@ export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="bg-brandLight relative !mt-0"
+                sectionClass="relative lg:!mt-0 bg-brandLight"
             />
 
             <NormalSection4 />
