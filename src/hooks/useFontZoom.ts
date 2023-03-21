@@ -18,7 +18,7 @@ const useFontZoom = (): UseFontZoomReturnProps => {
     const handleZoomToggle = () => {
         setIsZoomed(!isZoomed);
 
-        const rootElement: Element | null = document.querySelector(':root');
+        const rootElement: HTMLElement | null = document.querySelector(':root');
         if (rootElement) {
             rootElement.style.setProperty('--root-font-size', isZoomed ? '62.5%' : '70%');
         }

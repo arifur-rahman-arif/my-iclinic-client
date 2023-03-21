@@ -289,7 +289,9 @@ export const openFreshdeskChat = (): Element | null => {
     if (!freshChatIcon) return null;
     freshChatIcon.style.opacity = '1';
 
+    // @ts-ignore
     if (window?.fcWidget) {
+        // @ts-ignore
         window?.fcWidget.open();
     }
 

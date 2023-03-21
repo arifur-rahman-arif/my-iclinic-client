@@ -19,11 +19,13 @@ const BottomMenu = (): JSX.Element => {
     const { handleZoomToggle } = useFontZoom();
 
     useEffect(() => {
+        // @ts-ignore
         if (window?.fcWidget) {
+            // @ts-ignore
             window.fcWidget.on('widget:closed', function (resp) {
                 const freshChatIcon = document.getElementById('fc_frame');
 
-                freshChatIcon.style.opacity = '0';
+                if (freshChatIcon) freshChatIcon.style.opacity = '0';
             });
         }
     }, []);
