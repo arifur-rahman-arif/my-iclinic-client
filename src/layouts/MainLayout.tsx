@@ -5,7 +5,7 @@ import { smallSizes, useDeviceSize } from '@/hooks';
 import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Footer = dynamic(() => import('@/components/Footer/Footer'));
@@ -30,12 +30,14 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
     const [loadChatbot, setLoadChatbot] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
 
-    setTimeout(() => {
-        if (smallSizes.includes(deviceSize)) {
-            setLoadCallbackSection(true);
-        }
-        setLoadChatbot(true);
-    }, 2500);
+    useEffect(() => {
+        setTimeout(() => {
+            if (smallSizes.includes(deviceSize)) {
+                setLoadCallbackSection(true);
+            }
+            setLoadChatbot(true);
+        }, 2500);
+    }, []);
 
     return (
         <>
@@ -45,7 +47,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatbot && <Script src="//fw-cdn.com/3699003/3133103.js" chat="true" strategy="lazyOnload" />}
+            {loadChatbot && <Script src="//eu.fw-cdn.com/10828756/380235.js" chat="true" strategy="lazyOnload" />}
             <Header />
             {children}
             <LazyComponent>

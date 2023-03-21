@@ -27,7 +27,8 @@ const nextConfig = {
     i18n: {
         // These are all the locales you want to support in
         // your application
-        locales: ['en-US', 'fr', 'nl-NL'],
+        // locales: ['en-US', 'fr', 'nl-NL'],
+        locales: ['en-US'],
         // This is the default locale you want to be used when visiting
         // a non-locale prefixed path e.g. `/hello`
         defaultLocale: 'en-US'
@@ -78,13 +79,13 @@ const nextConfig = {
     //     // Dangerously allow production builds to successfully complete even if
     //     // your project has type errors.
     //     // !! WARN !!
-    //     ignoreBuildErrors: true,
+    //     ignoreBuildErrors: true
     // },
     // eslint: {
     //     // Warning: This allows production builds to successfully complete even if
     //     // your project has ESLint errors.
-    //     ignoreDuringBuilds: true,
-    // },
+    //     ignoreDuringBuilds: true
+    // }
 };
 
 module.exports = nextConfig;

@@ -95,7 +95,7 @@
         "allow": [
           "^UNSAFE_"
         ],
-        "properties": "always",
+        "properties": "never",
         "ignoreGlobals": true,
         "ignoreDestructuring": false
       }
@@ -152,15 +152,6 @@
           ],
           "balanced": true
         }
-      }
-    ],
-    "capitalized-comments": [
-      "error",
-      "always",
-      {
-        "ignorePattern": "pragma|ignored",
-        "ignoreInlineComments": true,
-        "ignoreConsecutiveComments": true
       }
     ],
     "no-self-compare": "error",

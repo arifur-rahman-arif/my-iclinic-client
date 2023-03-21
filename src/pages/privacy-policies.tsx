@@ -76,13 +76,16 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<PrivacyPolicyPageContentInterface> = await getPageData({
-            fields: 'title,content,acf,yoast_head,yoast_head_json'
+            fields: 'title,content,acf,yoast_head,yoast_head_json',
+            slug: 'privacy-policies'
         });
+
+        console.log(data);
 
         return {
             /* eslint-disable */
             props: {
-                data: { content: data?.content.rendered || null, ...data?.acf } as DataInterface,
+                data: { content: data?.content?.rendered || null, ...data?.acf } as DataInterface,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

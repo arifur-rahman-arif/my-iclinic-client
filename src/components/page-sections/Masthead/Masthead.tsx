@@ -1,6 +1,5 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
-import { smallSizes, useDeviceSize } from '@/hooks';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useState } from 'react';
 import Banner from './Banner';
@@ -51,58 +50,44 @@ const Masthead = ({
 }: MastheadInterface): JSX.Element => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-    const deviceSize = useDeviceSize();
-
     return (
         <Section defaultClassName="mt-12 xl:mt-20 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative">
-            {smallSizes.includes(deviceSize) ? (
-                <div className="absolute right-0 left-auto -z-[1] min-h-[30rem] w-full max-w-[123.1rem] sm:hidden md:h-full">
-                    <Image
-                        src={imageSmall}
-                        alt={altText || ''}
-                        className={`${smallImageDefaultClassName} ${smallImageClassName}`}
-                        quality={100}
-                        placeholder={typeof imageSmall === 'string' ? 'empty' : 'blur'}
-                        fill
-                        priority={true}
-                        onLoadingComplete={() => setImageLoaded(true)}
-                    />
-                </div>
-            ) : (
-                <></>
-            )}
-
-            {['medium', 'large'].includes(deviceSize) ? (
-                <div
-                    className={`${imagePosition} absolute right-0 left-auto -z-[1] hidden h-2/4 w-full max-w-[123.1rem] sm:block md:block md:h-full xl:hidden`}
-                >
-                    <Image
-                        src={imageMedium}
-                        alt={altText || ''}
-                        fill
-                        className={`object-cover object-center`}
-                        placeholder={typeof imageMedium === 'string' ? 'empty' : 'blur'}
-                        onLoadingComplete={() => setImageLoaded(true)}
-                    />
-                </div>
-            ) : (
-                <></>
-            )}
-
-            {deviceSize === 'xl' ? (
+            <div className="absolute right-0 left-auto -z-[1] min-h-[30rem] w-full max-w-[123.1rem] sm:hidden md:h-full">
                 <Image
-                    src={imageLarge}
+                    src={imageSmall}
                     alt={altText || ''}
-                    fill
-                    className={`${imagePosition} absolute left-0 hidden h-2/4 w-full object-cover md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]`}
+                    className={`${smallImageDefaultClassName} ${smallImageClassName}`}
                     quality={100}
-                    placeholder={typeof imageLarge === 'string' ? 'empty' : 'blur'}
+                    placeholder={typeof imageSmall === 'string' ? 'empty' : 'blur'}
+                    fill
                     priority={true}
                     onLoadingComplete={() => setImageLoaded(true)}
                 />
-            ) : (
-                <></>
-            )}
+            </div>
+
+            <div
+                className={`${imagePosition} absolute right-0 left-auto -z-[1] hidden h-2/4 w-full max-w-[123.1rem] sm:block md:block md:h-full xl:hidden`}
+            >
+                <Image
+                    src={imageMedium}
+                    alt={altText || ''}
+                    fill
+                    className={`object-cover object-center`}
+                    placeholder={typeof imageMedium === 'string' ? 'empty' : 'blur'}
+                    onLoadingComplete={() => setImageLoaded(true)}
+                />
+            </div>
+
+            <Image
+                src={imageLarge}
+                alt={altText || ''}
+                fill
+                className={`${imagePosition} absolute left-0 hidden h-2/4 w-full object-cover md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]`}
+                quality={100}
+                placeholder={typeof imageLarge === 'string' ? 'empty' : 'blur'}
+                priority={true}
+                onLoadingComplete={() => setImageLoaded(true)}
+            />
 
             {/* Code experiment */}
 
