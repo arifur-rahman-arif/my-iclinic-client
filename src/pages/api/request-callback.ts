@@ -11,7 +11,6 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
     try {
         if (req.method === 'POST') {
             // const [firstName, lastName] = splitName(req.body.name);
-
             const dateObject = new Date(req.body.dateOriginal);
 
             const formattedDate = `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
