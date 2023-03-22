@@ -237,12 +237,12 @@ const DateAndTime = ({
                 {indicatorActive === true ? (
                     <Calendar
                         className="calender max-h-[26.5rem] overflow-x-auto overflow-y-auto"
-                        onChange={(dateValue) => {
+                        onChange={(dateValue: Date) => {
                             setDate(dateValue);
                         }}
                         value={date}
                         minDate={today}
-                        tileDisabled={({ date, view }) => {
+                        tileDisabled={({ date }: { date: Date }) => {
                             // Disable weekends
                             return date.getDay() === 6 || date.getDay() === 0;
                         }}
