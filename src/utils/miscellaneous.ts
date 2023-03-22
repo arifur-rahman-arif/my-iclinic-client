@@ -287,12 +287,12 @@ export const openFreshdeskChat = (): Element | null => {
     const freshChatIcon = document.getElementById('fc_frame');
 
     if (!freshChatIcon) return null;
-    freshChatIcon.style.opacity = '1';
 
     // @ts-ignore
     if (window?.fcWidget) {
         // @ts-ignore
         window?.fcWidget.open();
+        freshChatIcon.style.opacity = '1';
     }
 
     return freshChatIcon;

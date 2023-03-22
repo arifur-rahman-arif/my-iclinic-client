@@ -20,7 +20,7 @@ const BreadCrumb = (): JSX.Element => {
         <>
             <div className="mt-12 w-full md:h-[0.1rem] xl:mt-10"></div>
 
-            <Container className="flex flex-wrap items-center justify-start gap-4">
+            <Container className="breadcrumb-container flex items-center justify-start gap-4 overflow-x-auto overflow-y-hidden pb-4 md:pb-0">
                 {router.pathname === '/' ? (
                     <Link href="/" aria-label="Home" className="flex items-center justify-start gap-6">
                         <IconHome active={true} />
@@ -37,7 +37,7 @@ const BreadCrumb = (): JSX.Element => {
                 )}
 
                 {paths.map((path, index) => (
-                    <div className="flex items-center justify-start gap-2" key={index}>
+                    <div className="flex min-w-max items-center justify-start gap-2" key={index}>
                         <Image src={IconArrow} alt="" className="translate-y-[0.1rem]" />
                         <Link href={!excludeUrls.includes(path.url) ? path.url : '/'}>
                             <span

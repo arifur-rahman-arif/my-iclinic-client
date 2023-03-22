@@ -13,7 +13,6 @@
     box-sizing: border-box;
     color: var(--color-secondary);
     font-size: 68.5%;
-    list-style-type: none;
     margin: 0;
     outline: none;
     padding: 0;
@@ -307,7 +306,8 @@ body {
     width: 0px;
 }
 
-.blog-filters::-webkit-scrollbar {
+.blog-filters::-webkit-scrollbar,
+.breadcrumb-container::-webkit-scrollbar {
     height: 4px;
 }
 

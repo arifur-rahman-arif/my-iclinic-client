@@ -25,7 +25,7 @@ const ShareLinks = ({}: ShareLinksInterface): JSX.Element => {
     const router = useRouter();
     const dispatch = useAppDispatch();
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/articles`;
 
     return (
         <div className="flex flex-wrap items-center gap-8 md:flex-col">

@@ -1,5 +1,4 @@
 import { ImageType } from '@/types';
-import { trimText } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -48,12 +47,12 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                                 />
                             </div>
                             <div className="grid grid-cols-1 gap-4 py-4 pr-8 md:!p-0">
-                                <span className="transition-all duration-500 hover:text-blue">
-                                    {trimText(article.title, 30)}
+                                <span className="block overflow-hidden text-ellipsis whitespace-nowrap transition-all duration-500 hover:text-blue ">
+                                    {article.title}
                                 </span>
                                 <div className="font-mulishLight">
                                     <span className="text-[1.4rem] italic leading-8">By</span>{' '}
-                                    <span className="font-mulishBold text-[1.4rem] leading-8">
+                                    <span className="block overflow-hidden text-ellipsis whitespace-nowrap font-mulishBold text-[1.4rem] leading-8">
                                         {article.author.name}
                                     </span>
                                 </div>

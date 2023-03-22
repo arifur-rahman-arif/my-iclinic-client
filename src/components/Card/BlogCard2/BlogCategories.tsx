@@ -27,29 +27,34 @@ const BlogCategories = ({
     return (
         <div className={`${defaultClassName} ${className}`}>
             <Image src="/images/icons/icon-pin-yellow-small.svg" width={36} height={2} alt="" className="mt-3" />
-            <div className="flex flex-wrap gap-2">
+            <div className="flex gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
                 {categories.map((category, index) => (
-                    <div key={index}>
+                    <div key={index} className="overflow-hidden text-ellipsis whitespace-nowrap">
                         {categoriesLength && categoriesLength !== categories.length ? (
                             <>
                                 {index < categoriesLength && (
-                                    <div className="flex items-center justify-start gap-2">
+                                    <div className="flex flex-wrap items-center justify-start gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
                                         <span
-                                            className="font-mulishBold text-[1.4rem] capitalize leading-8"
+                                            className="overflow-hidden text-ellipsis whitespace-nowrap font-mulishBold text-[1.4rem] capitalize leading-8"
                                             key={index}
                                         >
                                             {category.name}
                                             {index !== categories?.length - 1 && ','}
                                         </span>
-                                        <span className="text-[1rem] leading-4 sm:text-[1.4rem] sm:leading-[1.2rem]">
+                                        <span className="overflow-hidden text-ellipsis whitespace-nowrap text-[1rem] leading-4 sm:text-[1.4rem] sm:leading-[1.2rem]">
                                             ...{categories.length - categoriesLength} more
                                         </span>
                                     </div>
                                 )}
                             </>
                         ) : (
-                            <span className="font-mulishBold text-[1.4rem] capitalize leading-8" key={index}>
-                                {category.name}
+                            <span
+                                className="block max-w-full font-mulishBold text-[1.4rem] capitalize leading-8"
+                                key={index}
+                            >
+                                <span className="block overflow-hidden text-ellipsis whitespace-nowrap font-mulishBold text-[1.4rem] capitalize leading-8">
+                                    {category.name}
+                                </span>
                                 {index !== categories?.length - 1 && ','}
                             </span>
                         )}

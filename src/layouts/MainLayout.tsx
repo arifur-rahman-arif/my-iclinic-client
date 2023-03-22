@@ -36,7 +36,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 setLoadCallbackSection(true);
             }
             setLoadChatbot(true);
-        }, 3000);
+        }, 3500);
     }, [deviceSize]);
 
     return (

@@ -18,7 +18,7 @@ import {
 import { myopiaFaqList } from '@/components/page-sections/Faq/faqList';
 import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
 import IconAngle from '@/icons/icon-angle-right.svg';
-import { getPageData } from '@/lib';
+import { getLatestPosts, getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-myopia-large.png';
 import MastheadImageMedium from '@/masthead/masthead-myopia-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
@@ -48,6 +48,7 @@ interface PaediatricEyeCareProps {
     seo: any;
     yoastJson: any;
     data: any;
+    blogPosts: any;
 }
 
 /**
@@ -58,7 +59,7 @@ interface PaediatricEyeCareProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEyeCareProps): JSX.Element {
+export default function PaediatricEyeCare({ seo, yoastJson, data, blogPosts }: PaediatricEyeCareProps): JSX.Element {
     const heading = 'Myopia Mitigation Clinic for Children London';
     const subheading = 'Manage your child’s short sightedness with our Myopia treatment & management clinic';
 
@@ -165,7 +166,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
                 }}
             />
 
-            <OnScreenSliderSection />
+            <OnScreenSliderSection sliderList={blogPosts} />
 
             <SideImageSection
                 containerClassName="md:!grid-cols-[auto_1fr]"
@@ -568,12 +569,14 @@ export default function PaediatricEyeCare({ seo, yoastJson, data }: PaediatricEy
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData();
+        const blogPosts = await getLatestPosts();
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                blogPosts
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
