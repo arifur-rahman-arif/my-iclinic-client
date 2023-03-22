@@ -292,7 +292,10 @@ export const openFreshdeskChat = (): Element | null => {
     if (window?.fcWidget) {
         // @ts-ignore
         window?.fcWidget.open();
-        freshChatIcon.style.opacity = '1';
+
+        setTimeout(() => {
+            freshChatIcon.style.opacity = '1';
+        }, 500);
     }
 
     return freshChatIcon;
