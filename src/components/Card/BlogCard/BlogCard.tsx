@@ -2,6 +2,7 @@ import { getTheMonthName, trimText } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import HTMLReactParser from 'html-react-parser';
 
 export interface BlogCardInterface {
     image: string;
@@ -47,8 +48,7 @@ const BlogCard = ({ image, backgroundImage, postingDate, title, url }: BlogCardI
                     Posted: {date?.getDate()}-{getTheMonthName(date?.getMonth())}-{date?.getFullYear()}
                 </span>
                 <span className="mt-6 block w-full max-w-[20.9rem] font-mulishBold text-[1.8rem] leading-[2.8rem]">
-                    {trimText(title, 40)}
-                    {/* {title} */}
+                    {HTMLReactParser(trimText(title, 40))}
                 </span>
                 <Link
                     title="Learn more"
