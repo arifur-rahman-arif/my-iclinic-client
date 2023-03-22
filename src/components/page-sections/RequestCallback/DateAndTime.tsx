@@ -212,7 +212,7 @@ const DateAndTime = ({
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
-                    alertMessage: 'Please leave a comment related to your request',
+                    alertMessage: 'Please leave us a message about your request',
                     timeout: 4000
                 })
             );

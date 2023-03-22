@@ -72,7 +72,7 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText="Presbyopic woman reading a book with her glasses on."
+                imagePosition="2xl:object-[-40rem_center]"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (
