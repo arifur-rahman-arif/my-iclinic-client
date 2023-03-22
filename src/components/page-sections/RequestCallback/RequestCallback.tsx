@@ -23,8 +23,12 @@ const RequestCallback = (): JSX.Element => {
     const [emailError, setEmailError] = useState<string>('');
 
     // Date and time components inputs
-    const [date, setDate] = useState<Date>(new Date());
+    const today = new Date();
+    // Set the date one day ahead of the current date
+    today.setDate(today.getDate() + 1);
+    const [date, setDate] = useState<Date>(today);
     const [optionalMessage, setOptionalMessage] = useState<string>('');
+
     const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
     /**

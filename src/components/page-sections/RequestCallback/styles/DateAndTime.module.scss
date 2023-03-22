@@ -76,6 +76,15 @@
                 opacity: 0.5 !important;
                 cursor: not-allowed !important;
             }
+
+            // Style the month name of the calendar
+            &__month-view__weekdays__weekday {
+                * {
+                    font-size: 1.4rem !important;
+                    text-decoration: none !important;
+                    font-family: var(--mulish-bold);
+                }
+            }
         }
     }
 }

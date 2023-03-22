@@ -12,8 +12,6 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
         if (req.method === 'POST') {
             // const [firstName, lastName] = splitName(req.body.name);
 
-            console.log(req.body.dateOriginal);
-
             const dateObject = new Date(req.body.dateOriginal);
 
             const formattedDate = `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
@@ -34,9 +32,6 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
                 priority: 1,
                 status: 2
             };
-
-            console.log(payload);
-            console.log(req.body.dateOriginal, req.body.date);
 
             const freshdeskApiResponse = await postData({
                 url: `https://myiclinic-help.freshdesk.com/api/v2/tickets`,
@@ -76,10 +71,10 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // End of pabau integration
 
             // Send the data to WordPress API
-            // postData({
-            //     url: `${process.env.CUSTOM_REST_URL}/request-callback`,
-            //     body: req.body
-            // });
+            postData({
+                url: `${process.env.CUSTOM_REST_URL}/request-callback`,
+                body: req.body
+            });
 
             res.status(200).json({ message: 'Form submitted successfully' });
         } else {

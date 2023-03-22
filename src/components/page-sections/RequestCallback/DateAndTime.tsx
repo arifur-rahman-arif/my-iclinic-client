@@ -65,6 +65,11 @@ const DateAndTime = ({
     const dispatch = useDispatch();
     const [submitForm, response] = useRequestCallbackSubmitMutation();
 
+    // Date and time components inputs
+    const today = new Date();
+    // Set the date one day ahead of the current date
+    today.setDate(today.getDate() + 1);
+
     useEffect(() => {
         try {
             // If it's a fetch error
@@ -195,7 +200,19 @@ const DateAndTime = ({
                 handleAlert({
                     showAlert: true,
                     alertType: 'error',
-                    alertMessage: 'Please select a valid date for your request',
+                    alertMessage: 'Please select one day ahead of the current date',
+                    timeout: 4000
+                })
+            );
+            return;
+        }
+
+        if (!optionalMessage) {
+            dispatch(
+                handleAlert({
+                    showAlert: true,
+                    alertType: 'error',
+                    alertMessage: 'Please leave a comment related to your request',
                     timeout: 4000
                 })
             );
@@ -207,7 +224,7 @@ const DateAndTime = ({
             phone: internationalPhoneNumber,
             email,
             date: date.toDateString(),
-            dateOriginal: date,
+            dateOriginal: `${date}`,
             optionalMessage
         };
 
@@ -220,9 +237,15 @@ const DateAndTime = ({
                 {indicatorActive === true ? (
                     <Calendar
                         className="calender max-h-[26.5rem] overflow-x-auto overflow-y-auto"
-                        onChange={setDate}
+                        onChange={(dateValue) => {
+                            setDate(dateValue);
+                        }}
                         value={date}
-                        minDate={new Date()}
+                        minDate={today}
+                        tileDisabled={({ date, view }) => {
+                            // Disable weekends
+                            return date.getDay() === 6 || date.getDay() === 0;
+                        }}
                     />
                 ) : (
                     <div className="min-h-[26.4rem] w-full"></div>
@@ -234,7 +257,8 @@ const DateAndTime = ({
                     value={optionalMessage}
                     type="textarea"
                     id="request-callback-form-message"
-                    placeholder="Your message (Optional)"
+                    placeholder="Your message"
+                    important
                     onChange={(e) => {
                         setOptionalMessage(e.target.value);
                     }}
