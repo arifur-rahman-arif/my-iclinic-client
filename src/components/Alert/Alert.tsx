@@ -32,7 +32,7 @@ const Alert = (): JSX.Element => {
     return (
         <div
             ref={alertRef}
-            className={`fixed bottom-0 left-2/4 z-10 grid w-[95%] max-w-max translate-y-full -translate-x-2/4 grid-cols-[auto_1fr] items-center justify-start gap-6 rounded-primary sm:w-auto ${
+            className={`fixed bottom-0 left-2/4 z-[999] grid w-[95%] max-w-max translate-y-full -translate-x-2/4 grid-cols-[auto_1fr] items-center justify-start gap-6 rounded-primary sm:w-auto ${
                 alertType === 'error' ? 'bg-red-300' : 'bg-green-300'
             } py-6 px-8 shadow-shadow1`}
         >

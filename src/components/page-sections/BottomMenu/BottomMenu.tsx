@@ -28,7 +28,7 @@ const BottomMenu = (): JSX.Element => {
                 if (freshChatIcon) freshChatIcon.style.opacity = '0';
             });
         }
-    }, []);
+    });
 
     return (
         <div className="fixed bottom-0 left-0 z-10 h-32 w-full overflow-hidden bg-white py-12 px-20 shadow-shadow1 sm:hidden">

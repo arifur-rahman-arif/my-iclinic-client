@@ -25,6 +25,9 @@ interface HeaderInterface {
  * @param {ImageType} image
  * @param {string} title
  * @param {{logo?: ImageType, name: string} | undefined} author
+ * @param {string} readTime
+ * @param {number} views
+ * @param {BlogCategoriesInterface[]} categories
  * @returns {JSX.Element}
  * @constructor
  */
@@ -37,6 +40,7 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                         {...image}
                         alt={title}
                         quality={100}
+                        priority={true}
                         className="max-h-[43.8rem] rounded-primary object-cover object-cover transition-all duration-[0.45s] group-hover/header:scale-105"
                     />
                 </div>
