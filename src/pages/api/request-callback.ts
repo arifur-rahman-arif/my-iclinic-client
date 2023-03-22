@@ -1,5 +1,4 @@
 import { postData } from '@/utils/apiHelpers';
-import { splitName } from '@/utils/miscellaneous';
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 /**
@@ -11,7 +10,9 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
-            const [firstName, lastName] = splitName(req.body.name);
+            // const [firstName, lastName] = splitName(req.body.name);
+
+            console.log(req.body.dateOriginal);
 
             const dateObject = new Date(req.body.dateOriginal);
 
@@ -22,17 +23,20 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
 
             // Ticket data to be created
             const payload = {
-                subject: `Request callback from ${firstName} ${lastName}`,
+                subject: `Request callback from ${req.body.name}`,
                 description: req.body.optionalMessage,
                 email: req.body.email,
                 phone: req.body.phone,
                 custom_fields: {
-                    cf_full_name: `${firstName} ${lastName}`,
+                    cf_full_name: req.body.name,
                     cf_callback_date: formattedDate
                 },
                 priority: 1,
                 status: 2
             };
+
+            console.log(payload);
+            console.log(req.body.dateOriginal, req.body.date);
 
             const freshdeskApiResponse = await postData({
                 url: `https://myiclinic-help.freshdesk.com/api/v2/tickets`,
@@ -72,10 +76,10 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // End of pabau integration
 
             // Send the data to WordPress API
-            postData({
-                url: `${process.env.CUSTOM_REST_URL}/request-callback`,
-                body: req.body
-            });
+            // postData({
+            //     url: `${process.env.CUSTOM_REST_URL}/request-callback`,
+            //     body: req.body
+            // });
 
             res.status(200).json({ message: 'Form submitted successfully' });
         } else {

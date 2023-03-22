@@ -187,7 +187,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
             <CtaSection />
 
             <FullWidthImageSection
-                sectionClass="lg:!mt-0 bg-brandLight"
+                sectionClass="lg:!mt-0 bg-brandLight relative"
                 h3Title={
                     <>
                         <strong className="normal-case">Permanently correct your short-sighted vision</strong> with our

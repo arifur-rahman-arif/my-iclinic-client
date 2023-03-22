@@ -232,7 +232,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="lg:!mt-0 bg-brandLight"
+                sectionClass="lg:!mt-0 bg-brandLight relative"
             />
         </Page>
     );
