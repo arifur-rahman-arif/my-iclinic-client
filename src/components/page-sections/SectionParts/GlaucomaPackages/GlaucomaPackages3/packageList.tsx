@@ -120,11 +120,11 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
                 description: (
                     <>
                         To assess the most suitable vision correction treatment for you:{' '}
-                        <LinkStyle url="/laser-eye-surgery/relex-smile-london">ReLEx SMILE</LinkStyle>,{' '}
-                        <LinkStyle url="/laser-eye-surgery/presbyond-london">Presbyond</LinkStyle>,{' '}
-                        <LinkStyle url="/laser-eye-surgery/lasik-london">LASIK</LinkStyle>,{' '}
-                        <LinkStyle url="/laser-eye-surgery/lasek-prk">LASEK, PRK & PTK</LinkStyle> Laser eye surgery and
-                        Implantable Contact Lenses.
+                        <LinkStyle url="/relex-smile-london">ReLEx SMILE</LinkStyle>,{' '}
+                        <LinkStyle url="/presbyond-london">Presbyond</LinkStyle>,{' '}
+                        <LinkStyle url="/lasik-london">LASIK</LinkStyle>,{' '}
+                        <LinkStyle url="/lasek-prk">LASEK, PRK & PTK</LinkStyle> Laser eye surgery and Implantable
+                        Contact Lenses.
                     </>
                 )
             },

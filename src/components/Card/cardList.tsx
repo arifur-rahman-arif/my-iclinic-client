@@ -21,7 +21,7 @@ export const cardList: CardInterface[] = [
             </>,
             'No more compromise.'
         ],
-        cardLink: '/laser-eye-surgery/relex-smile-london'
+        cardLink: '/relex-smile-london'
     },
     {
         image: '/images/section-images/eye-care-service-card-2.png',
@@ -43,7 +43,7 @@ export const cardList: CardInterface[] = [
             'The best treatment for freedom from spectacles. See at all distances without glasses',
             'Be free from glasses after cataract surgery'
         ],
-        cardLink: '/laser-eye-surgery/presbyond-london'
+        cardLink: '/presbyond-london'
     },
     {
         image: '/images/section-images/eye-care-service-card-4.png',
@@ -78,7 +78,7 @@ export const cardList: CardInterface[] = [
             </>,
             'Get bespoke treatment to manage your glaucoma.'
         ],
-        cardLink: '/eye-treatments/glaucoma'
+        cardLink: '/glaucoma-treatment'
     },
     {
         image: '/images/section-images/eye-care-service-card-6.png',
@@ -95,7 +95,7 @@ export const cardList: CardInterface[] = [
             </>,
             'Atropine eye drops available.'
         ],
-        cardLink: '/eye-treatments/childrens-eyes/myopia'
+        cardLink: '/myopia'
     }
 ];
 

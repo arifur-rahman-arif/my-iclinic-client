@@ -25,9 +25,9 @@ const NormalSection3 = (): JSX.Element => {
                     <p>
                         If you do not require PTK medically, it is most likely that our other laser eye treatments are
                         suitable for you such as: our{' '}
-                        <LinkStyle url="/laser-eye-surgery/relex-smile-london">ReLEX SMILE</LinkStyle>,{' '}
-                        <LinkStyle url="/laser-eye-surgery/presbyond-london">Presbyond</LinkStyle> and{' '}
-                        <LinkStyle url="/laser-eye-surgery/lasik-london">LASIK treatment</LinkStyle>.
+                        <LinkStyle url="/relex-smile-london">ReLEX SMILE</LinkStyle>,{' '}
+                        <LinkStyle url="/presbyond-london">Presbyond</LinkStyle> and{' '}
+                        <LinkStyle url="/lasik-london">LASIK treatment</LinkStyle>.
                     </p>
                 </div>
             </Container>

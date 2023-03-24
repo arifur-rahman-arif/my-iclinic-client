@@ -14,8 +14,8 @@ import {
     MyopiaControl,
     OnScreenSliderSection,
     SideImageSection
-} from '@/components/page-sections';
-import { myopiaFaqList } from '@/components/page-sections/Faq/faqList';
+} from '@/page-sections/index';
+import { myopiaFaqList } from '@/page-sections/Faq/faqList';
 import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
 import IconAngle from '@/icons/icon-angle-right.svg';
 import { getLatestPosts, getPageData } from '@/lib';
@@ -29,18 +29,18 @@ import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import H3Variant3 from 'src/components/Headings/H3Variant3';
+import H3Variant3 from '@/components/Headings/H3Variant3';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -54,7 +54,7 @@ interface PaediatricEyeCareProps {
 /**
  * Myopia page
  *
- * Url: /eye-treatments/childrens-eyes/myopia
+ * Url: /myopia
  *
  * @export
  * @returns {JSX.Element}
@@ -425,7 +425,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data, blogPosts }: P
                         listItemClassName="text-blue text-[2rem] leading-[2.8rem]"
                         bold
                         list={[
-                            <Link href="/laser-eye-surgery/lasek-prk" className="">
+                            <Link href="/lasek-prk" className="">
                                 <strong className="text-[2rem] leading-[2.8rem] text-blue">Laser eye surgery</strong>
                                 <p className="text-blue">(ReLEX SMILE, LASIK, LASEK & PRK)</p>
                             </Link>,

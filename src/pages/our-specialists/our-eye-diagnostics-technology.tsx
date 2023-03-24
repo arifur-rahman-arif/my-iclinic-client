@@ -33,7 +33,7 @@ interface DataInterface
         PageDataInterface<EyeDiagnosticsPageContentInterface> {}
 
 /**
- * Url: /eye-treatments/other-eye-conditions/conjunctivitis
+ * Url: /conjuctivitis-treatment-london
  *
  * @export
  * @returns {JSX.Element}

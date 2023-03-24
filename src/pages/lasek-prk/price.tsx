@@ -10,9 +10,9 @@ import {
     Masthead,
     PriceSection,
     SideImageSection
-} from '@/components/page-sections';
-import { CtaSection } from '@/components/page-sections/CtaSection';
-import { lasekPriceList } from '@/components/page-sections/PriceCard/priceList';
+} from '@/page-sections/index';
+import { CtaSection } from '@/page-sections/CtaSection';
+import { lasekPriceList } from '@/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasek-pricing-large.png';
@@ -34,7 +34,7 @@ interface LasekPricingProps {
 }
 
 /**
- * Url: /laser-eye-surgery/lasek-prk/price
+ * Url: /lasek-prk/price
  *
  * @export
  * @returns {JSX.Element}
@@ -251,7 +251,7 @@ export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'lasek-prk-price' });
 
         return {
             /* eslint-disable */

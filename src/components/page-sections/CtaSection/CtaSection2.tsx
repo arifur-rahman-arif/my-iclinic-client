@@ -41,6 +41,7 @@ const CtaSection2 = ({
             h3BoldHeading={h3BoldHeading}
             descriptions={descriptions}
             largeImageClassName="!rounded-primary"
+            smallImageClassName="!rounded-primary"
             sectionImage={
                 image || {
                     url: '/images/section-images/glasses-free-presbyond-large.png',

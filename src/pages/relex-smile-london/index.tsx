@@ -16,10 +16,10 @@ import {
     PlasticFree,
     SideImageSection,
     StackColumn
-} from '@/components/page-sections';
-import { relexSmileFaqList } from '@/components/page-sections/Faq/faqList';
-import { relexSliders } from '@/components/page-sections/FeaturedPatient';
-import { leftRightListRelexSmileLondon } from '@/components/page-sections/LeftRight/leftRightList';
+} from '@/page-sections/index';
+import { relexSmileFaqList } from '@/page-sections/Faq/faqList';
+import { relexSliders } from '@/page-sections/FeaturedPatient';
+import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
 import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
@@ -68,7 +68,7 @@ interface RelexSmileLondonProps {
 }
 
 /**
- * Url: /laser-eye-surgery/relex-smile-london
+ * Url: /relex-smile-london
  *
  * @export
  * @returns {JSX.Element}

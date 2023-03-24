@@ -153,7 +153,7 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
                     `This option is best suited to people with cataracts who have a very active lifestyle and want to continue their work, hobbies and driving without compromising their vision with glasses.`,
                     <span className="flex items-center justify-start gap-4">
                         <LinkText
-                            href="/laser-eye-surgery/presbyond-london"
+                            href="/presbyond-london"
                             indicatorColor="bg-blue"
                             className="!font-mulishBold text-blue"
                         >

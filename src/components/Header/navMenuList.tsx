@@ -51,8 +51,8 @@ export const navMenuList: NavMenuType[] = [
         submenu: [
             {
                 name: 'ReLEx SMILE',
-                url: '/laser-eye-surgery/relex-smile-london',
-                slug: 'laser-eye-surgery/relex-smile-london'
+                url: '/relex-smile-london',
+                slug: 'relex-smile-london'
             },
             {
                 name: (
@@ -66,18 +66,18 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: 'Presbyond',
-                url: '/laser-eye-surgery/presbyond-london',
-                slug: 'laser-eye-surgery/presbyond-london'
+                url: '/presbyond-london',
+                slug: 'presbyond-london'
             },
             {
                 name: 'Lasik',
-                url: '/laser-eye-surgery/lasik-london',
-                slug: 'laser-eye-surgery/lasik-london'
+                url: '/lasik-london',
+                slug: 'lasik-london'
             },
             {
                 name: 'Lasek, PRK, PTK',
-                url: '/laser-eye-surgery/lasek-prk',
-                slug: 'laser-eye-surgery/lasek-prk'
+                url: '/lasek-prk',
+                slug: 'lasek-prk'
             }
         ]
     },
@@ -90,14 +90,14 @@ export const navMenuList: NavMenuType[] = [
         submenu: [
             {
                 name: 'Glaucoma care',
-                url: '/eye-treatments/glaucoma',
-                slug: 'eye-treatments/glaucoma',
+                url: '/glaucoma-treatment',
+                slug: 'glaucoma-treatment',
                 subMenuOpen: true,
                 submenu: [
                     {
                         name: 'Glaucoma Care clinic',
-                        url: '/eye-treatments/glaucoma',
-                        slug: 'eye-treatments/glaucoma'
+                        url: '/glaucoma-treatment',
+                        slug: 'glaucoma-treatment'
                     }
                 ]
             },
@@ -109,13 +109,13 @@ export const navMenuList: NavMenuType[] = [
                 submenu: [
                     {
                         name: 'Myopia Control',
-                        url: '/eye-treatments/childrens-eyes/myopia',
-                        slug: 'eye-treatments/childrens-eyes/myopia'
+                        url: '/myopia',
+                        slug: 'myopia'
                     },
                     {
                         name: 'Paediatric eye care',
-                        url: '/eye-treatments/childrens-eyes/paediatric-eye-care',
-                        slug: 'eye-treatments/childrens-eyes/paediatric-eye-care'
+                        url: '/paediatric-eye-care',
+                        slug: 'paediatric-eye-care'
                     }
                 ]
             },
@@ -131,15 +131,15 @@ export const navMenuList: NavMenuType[] = [
                 submenu: [
                     {
                         name: 'Macular degeneration',
-                        url: '/eye-treatments/macular-degeneration',
-                        slug: 'eye-treatments/macular-degeneration'
+                        url: '/macular-degeneration',
+                        slug: 'macular-degeneration'
                     }
                 ]
             },
             {
                 name: 'Eye Lid surgery',
-                url: '/eye-treatments/eyelid-surgery',
-                slug: 'eye-treatments/eyelid-surgery',
+                url: '/eyelid-surgery-london',
+                slug: 'eyelid-surgery-london',
                 subMenuOpen: true,
                 submenu: [
                     {
@@ -149,8 +149,8 @@ export const navMenuList: NavMenuType[] = [
                                 <br /> (cosmetic & medical treatments)
                             </>
                         ),
-                        url: '/eye-treatments/eyelid-surgery',
-                        slug: 'eye-treatments/eyelid-surgery'
+                        url: '/eyelid-surgery-london',
+                        slug: 'eyelid-surgery-london'
                     }
                 ]
             },
@@ -171,13 +171,13 @@ export const navMenuList: NavMenuType[] = [
                     },
                     {
                         name: 'Keratoconus',
-                        url: '/eye-treatments/keratoconus',
-                        slug: 'eye-treatments/keratoconus'
+                        url: '/keratoconus',
+                        slug: 'keratoconus'
                     },
                     {
                         name: 'Blepharitis',
-                        url: '/eye-treatments/blepharitis',
-                        slug: 'eye-treatments/blepharitis'
+                        url: '/blepharitis-treatment',
+                        slug: 'blepharitis-treatment'
                     }
                 ]
             },
@@ -189,33 +189,33 @@ export const navMenuList: NavMenuType[] = [
                 submenu: [
                     {
                         name: 'Astigmatism',
-                        url: '/eye-treatments/other-eye-conditions/astigmatism',
-                        slug: 'eye-treatments/other-eye-conditions/astigmatism'
+                        url: '/astigmatism-treatment',
+                        slug: 'astigmatism-treatment'
                     },
                     {
                         name: 'Flashes & Floaters',
-                        url: '/eye-treatments/other-eye-conditions/flashes-floaters',
-                        slug: 'eye-treatments/other-eye-conditions/flashes-floaters'
+                        url: '/flashes-floaters',
+                        slug: 'flashes-floaters'
                     },
                     {
                         name: 'Conjunctivitis',
-                        url: '/eye-treatments/other-eye-conditions/conjunctivitis',
-                        slug: 'eye-treatments/other-eye-conditions/conjunctivitis'
+                        url: '/conjuctivitis-treatment-london',
+                        slug: 'conjuctivitis-treatment-london'
                     },
                     {
                         name: 'Dry eyes',
-                        url: '/eye-treatments/other-eye-conditions/dry-eyes',
-                        slug: 'eye-treatments/other-eye-conditions/dry-eyes'
+                        url: '/dry-eyes-treatment-london',
+                        slug: 'dry-eyes-treatment-london'
                     },
                     {
                         name: 'Double Vision',
-                        url: '/eye-treatments/other-eye-conditions/double-vision',
-                        slug: 'eye-treatments/other-eye-conditions/double-vision'
+                        url: '/double-vision-treatment-london',
+                        slug: 'double-vision-treatment-london'
                     },
                     {
                         name: 'Lazy eyes',
-                        url: '/eye-treatments/other-eye-conditions/lazy-eyes',
-                        slug: 'eye-treatments/other-eye-conditions/lazy-eyes'
+                        url: '/lazy-eyes-treatement',
+                        slug: 'lazy-eyes-treatement'
                     }
                 ]
             }

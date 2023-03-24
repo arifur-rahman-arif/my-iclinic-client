@@ -216,7 +216,7 @@ export default function CataractPrice({ seo, yoastJson }: CataractPriceProps): J
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cataract-price' });
 
         return {
             /* eslint-disable */

@@ -3,7 +3,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/components/page-sections';
+import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/page-sections/index';
 import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-glaucoma-pricing-large.png';
@@ -25,7 +25,7 @@ interface PriceProps {
 /**
  * Home/Landing page component for the App
  *
- * * Url: /eye-treatments/glaucoma/price
+ * * Url: /glaucoma-treatment/price
  *
  * @export
  * @returns {JSX.Element}
@@ -183,7 +183,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'glaucoma-treatment-price' });
 
         return {
             /* eslint-disable */
