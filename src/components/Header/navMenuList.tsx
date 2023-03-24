@@ -166,8 +166,8 @@ export const navMenuList: NavMenuType[] = [
                 submenu: [
                     {
                         name: 'Corneal Treatments',
-                        url: '/eye-treatments/corneal-treatments',
-                        slug: 'eye-treatments/corneal-treatments'
+                        url: '/corneal-treatments',
+                        slug: 'corneal-treatments'
                     },
                     {
                         name: 'Keratoconus',
