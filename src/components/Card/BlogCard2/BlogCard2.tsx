@@ -8,6 +8,7 @@ import { ImageType } from '@/types';
 import { trimText } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
+import HTMLReactParser from 'html-react-parser';
 
 export interface GeneralBlogInterface {
     image: ImageType;
@@ -68,10 +69,7 @@ const BlogCard2 = ({
                 {categories?.length && <BlogCategories categories={categories} />}
 
                 <p className="mt-12">
-                    {trimText(
-                        'Laser eye surgery has become increasingly popular through the years amongst the younger and the older',
-                        100
-                    )}
+                    {HTMLReactParser(trimText(description || '', 100))}
                     &nbsp;&nbsp;
                     <LinkText
                         href={`/articles/${slug}` || '#'}

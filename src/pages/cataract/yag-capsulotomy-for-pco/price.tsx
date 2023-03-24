@@ -136,7 +136,7 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'yag-capsulotomy-for-pco-price' });
 
         return {
             /* eslint-disable */

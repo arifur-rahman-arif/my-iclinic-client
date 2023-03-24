@@ -6,13 +6,13 @@ import {
     Masthead,
     PriceSection,
     SideImageSection
-} from '@/components/page-sections';
+} from '@/page-sections/index';
 
 import { BreadCrumb } from '@/components/Breadcrumb';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { CtaSection } from '@/components/page-sections/CtaSection';
-import { relexSmilePriceList } from '@/components/page-sections/PriceCard/priceList';
+import { CtaSection } from '@/page-sections/CtaSection';
+import { relexSmilePriceList } from '@/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
@@ -35,7 +35,7 @@ interface PresbyondPricingProps {
 /**
  * Home/Landing page component for the App
  *
- * * Url: /laser-eye-surgery/relex-smile-london/price
+ * * Url: /relex-smile-london/price
  *
  * @export
  * @returns {JSX.Element}
@@ -245,7 +245,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'relex-smile-london-price' });
 
         return {
             /* eslint-disable */

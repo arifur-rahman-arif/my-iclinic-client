@@ -11,8 +11,8 @@ import {
     Masthead,
     NormalSection5,
     SideImageSection
-} from '@/components/page-sections';
-import { conjunctivitisFaqList } from '@/components/page-sections/Faq/faqList';
+} from '@/page-sections/index';
+import { conjunctivitisFaqList } from '@/page-sections/Faq/faqList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
@@ -26,19 +26,19 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -53,12 +53,12 @@ interface ConjunctivitisProps {
 }
 
 /**
- * Url: /eye-treatments/other-eye-conditions/conjunctivitis
+ * Url: /conjuctivitis-treatment-london
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Conjunctivitis({ data, seo, yoastJson }: ConjunctivitisProps): JSX.Element {
+export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: ConjunctivitisProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Conjunctivitis Treatment London';

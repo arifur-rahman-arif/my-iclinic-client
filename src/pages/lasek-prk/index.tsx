@@ -16,11 +16,11 @@ import {
     NormalSection3,
     PlasticFree,
     SideImageSection
-} from '@/components/page-sections';
-import { lasekFaqList } from '@/components/page-sections/Faq/faqList';
-import { lasekSliders } from '@/components/page-sections/FeaturedPatient';
-import { leftRightListLasek } from '@/components/page-sections/LeftRight/leftRightList';
-import { lasekStackList } from '@/components/page-sections/StackedSection';
+} from '@/page-sections/index';
+import { lasekFaqList } from '@/page-sections/Faq/faqList';
+import { lasekSliders } from '@/page-sections/FeaturedPatient';
+import { leftRightListLasek } from '@/page-sections/LeftRight/leftRightList';
+import { lasekStackList } from '@/page-sections/StackedSection';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
@@ -59,7 +59,7 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/Bo
     loading: () => <ComponentLoader />
 });
 
-const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
+const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -69,7 +69,7 @@ interface LasekPageProps {
 }
 
 /**
- * Url: /laser-eye-surgery/lasek-prk
+ * Url: /lasek-prk
  *
  * @export
  * @returns {JSX.Element}

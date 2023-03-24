@@ -4,8 +4,8 @@ import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
-import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
-import { astigmatismFaqList } from '@/components/page-sections/Faq/faqList';
+import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
+import { astigmatismFaqList } from '@/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
@@ -21,16 +21,16 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -43,12 +43,12 @@ interface AstigmatismProps {
 }
 
 /**
- * Url: /eye-treatments/other-eye-conditions/astigmatism
+ * Url: /astigmatism-treatment
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps): JSX.Element {
+export default function AstigmatismTreatment({ data, seo, yoastJson }: AstigmatismProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Correcting your Astigmatism with Vision Correction Treatment';
@@ -258,17 +258,17 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                         'Our eye assessments & scans include a Keratometry test, a visual acuity test, a refraction test and any additional scanning required to accurately measure the shape of your cornea, the axial length of your eye and your prescription.',
                         'These assessments will check the health of your eye and your suitability for our vision correction procedures:',
                         <>
-                            <LinkStyle url="/laser-eye-surgery/relex-smile-london">ReLEx SMILE:</LinkStyle> Correcting
-                            vision for <strong>ages 21-39</strong>
+                            <LinkStyle url="/relex-smile-london">ReLEx SMILE:</LinkStyle> Correcting vision for{' '}
+                            <strong>ages 21-39</strong>
                         </>,
                         <>
-                            <LinkStyle url="/laser-eye-surgery/presbyond-london">Presbyond:</LinkStyle> Correcting
-                            vision for <strong>ages 40+</strong>
+                            <LinkStyle url="/presbyond-london">Presbyond:</LinkStyle> Correcting vision for{' '}
+                            <strong>ages 40+</strong>
                         </>,
                         <>
-                            <LinkStyle url="/laser-eye-surgery/lasek-prk">LASIK, LASEK, PRK & PTK:</LinkStyle>{' '}
-                            Correcting vision for all ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery
-                            and/or with an existing, complicated eye condition.
+                            <LinkStyle url="/lasek-prk">LASIK, LASEK, PRK & PTK:</LinkStyle> Correcting vision for all
+                            ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery and/or with an existing,
+                            complicated eye condition.
                         </>
                     ]
                 }
@@ -316,16 +316,13 @@ export default function Astigmatism({ data, seo, yoastJson }: AstigmatismProps):
                         "Our children's paediatrician will carry out comprehensive eye assessments to diagnose the cause of your child's astigmatism.",
                         <>
                             Astigmatism may be present on its own but is typically associated with{' '}
-                            <LinkStyle url="/eye-treatments/childrens-eyes/myopia">Myopia.</LinkStyle> or{' '}
-                            <strong>Hyperopia.</strong>
+                            <LinkStyle url="/myopia">Myopia.</LinkStyle> or <strong>Hyperopia.</strong>
                         </>,
                         'Children with myopia (nearsightedness) or hyperopia (farsightedness) are more likely to have astigmatism.',
                         <span className="flex items-center justify-start gap-4">
                             <strong>Read more about </strong>
                             <span className="group/link flex items-center justify-start gap-4">
-                                <LinkStyle url="/eye-treatments/childrens-eyes/myopia">
-                                    Myopia Control for Children
-                                </LinkStyle>
+                                <LinkStyle url="/myopia">Myopia Control for Children</LinkStyle>
                                 <AiOutlineArrowRight className="h-8 w-8 fill-blue transition-all duration-500 group-hover/link:translate-x-4" />
                             </span>
                         </span>

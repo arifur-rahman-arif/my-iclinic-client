@@ -11,7 +11,7 @@ import {
     Masthead,
     PriceSection,
     SideImageSection
-} from '@/components/page-sections';
+} from '@/page-sections/index';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
@@ -33,7 +33,7 @@ interface PresbyondPricingProps {
 }
 
 /**
- * * Url: /laser-eye-surgery/presbyond-london/price
+ * * Url: /presbyond-london/price
  *
  * @export
  * @returns {JSX.Element}
@@ -214,7 +214,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'presbyond-london-price' });
 
         return {
             /* eslint-disable */

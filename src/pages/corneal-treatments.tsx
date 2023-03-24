@@ -3,7 +3,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/components/page-sections';
+import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
@@ -17,13 +17,13 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 

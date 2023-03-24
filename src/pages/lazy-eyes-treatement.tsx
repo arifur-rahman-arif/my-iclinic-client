@@ -4,8 +4,8 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/components/page-sections';
-import { lazyEyesFaqList } from '@/components/page-sections/Faq/faqList';
+import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/page-sections/index';
+import { lazyEyesFaqList } from '@/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
@@ -20,23 +20,24 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {}
+interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {
+}
 
 interface LazyEyesProps {
     data: DataInterface;
@@ -47,12 +48,12 @@ interface LazyEyesProps {
 /**
  * Lazy Eyes page component for the App
  *
- * * Url: /eye-treatments/other-eye-conditions/lazy-eyes
+ * * Url: /lazy-eyes-treatement
  *
  * @export
  * @returns {JSX.Element}
  */
-export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.Element {
+export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Lazy eyes in adults & children (amblyopia)';
@@ -315,8 +316,10 @@ export default function LazyEyes({ data, seo, yoastJson }: LazyEyesProps): JSX.E
                     height: 439
                 }}
                 textColumnExtras={
-                    <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
-                        <BookConsultation buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
+                    <div
+                        className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
+                        <BookConsultation
+                            buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
 
                         <Button
                             type="phone"

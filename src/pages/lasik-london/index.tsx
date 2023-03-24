@@ -14,11 +14,11 @@ import {
     Masthead,
     PlasticFree,
     SideImageSection
-} from '@/components/page-sections';
-import { lasikFaqList } from '@/components/page-sections/Faq/faqList';
-import { lasikSliders } from '@/components/page-sections/FeaturedPatient';
-import { leftRightListLasik } from '@/components/page-sections/LeftRight/leftRightList';
-import { lasikStackList } from '@/components/page-sections/StackedSection';
+} from '@/page-sections/index';
+import { lasikFaqList } from '@/page-sections/Faq/faqList';
+import { lasikSliders } from '@/page-sections/FeaturedPatient';
+import { leftRightListLasik } from '@/page-sections/LeftRight/leftRightList';
+import { lasikStackList } from '@/page-sections/StackedSection';
 import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
@@ -37,31 +37,31 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
+const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
-const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
+const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
-const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
+const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
-const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'), {
+const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -73,7 +73,7 @@ interface LasikProps {
 /**
  * LASIK page component for the App
  *
- * Url: /laser-eye-surgery/lasik-london
+ * Url: /lasik-london
  *
  * @export
  * @returns {JSX.Element}
@@ -248,7 +248,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                         />
                         <Button
                             type="anchor"
-                            link="/laser-eye-surgery/lasik-london/price"
+                            link="/lasik-london/price"
                             icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
                             text="Pricing & Financing"
                             iconPosition="left"
@@ -266,7 +266,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                     <>
                         If you’ve made the decision to improve your eyesight – whether you currently have{' '}
                         <LinkText
-                            href="/eye-treatments/childrens-eyes/myopia"
+                            href="/myopia"
                             indicatorColor="bg-blue"
                             className="font-mulishBold font-extrabold text-blue"
                         >
@@ -274,7 +274,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                         </LinkText>{' '}
                         <span className="font-mulishBold font-extrabold">Hyperopia</span>{' '}
                         <LinkText
-                            href="/eye-treatments/other-eye-conditions/astigmatism"
+                            href="/astigmatism-treatment"
                             indicatorColor="bg-blue"
                             className="font-mulishBold font-extrabold text-blue"
                         >

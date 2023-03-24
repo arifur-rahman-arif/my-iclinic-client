@@ -14,11 +14,11 @@ import {
     Masthead,
     PlasticFree,
     SideImageSection
-} from '@/components/page-sections';
-import { presbyondFaqList } from '@/components/page-sections/Faq/faqList';
-import { presbyondSliders } from '@/components/page-sections/FeaturedPatient';
-import { leftRightListPresbyond } from '@/components/page-sections/LeftRight/leftRightList';
-import { presbyondStackList } from '@/components/page-sections/StackedSection';
+} from '@/page-sections/index';
+import { presbyondFaqList } from '@/page-sections/Faq/faqList';
+import { presbyondSliders } from '@/page-sections/FeaturedPatient';
+import { leftRightListPresbyond } from '@/page-sections/LeftRight/leftRightList';
+import { presbyondStackList } from '@/page-sections/StackedSection';
 import { normalSlideListPresbyond } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
@@ -30,31 +30,31 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
+const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
+const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
+const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
-const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
+const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
-const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
+const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
-const LottieSection = dynamic(() => import('@/components/page-sections/LottieSection/LottieSection'), {
+const LottieSection = dynamic(() => import('@/page-sections/LottieSection/LottieSection'), {
     loading: () => <ComponentLoader />
 });
 const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
@@ -67,7 +67,7 @@ interface PresbyondProps {
 }
 
 /**
- * Url: /laser-eye-surgery/presbyond-london
+ * Url: /presbyond-london
  *
  * @export
  * @returns {JSX.Element}
@@ -306,7 +306,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
 
                         <Button
                             type="anchor"
-                            link="/laser-eye-surgery/presbyond-london/price"
+                            link="/presbyond-london/price"
                             icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
                             text="Pricing & Financing"
                             iconPosition="left"
@@ -443,7 +443,8 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                         }}
                         textColumnExtras={
                             <div className="grid gap-6">
-                                <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                <span
+                                    className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
                                     We want to take our impact on the environment a step further and this is where the
                                     gift of a tree comes in!
                                 </span>

@@ -6,13 +6,13 @@ import {
     Masthead,
     PriceSection,
     SideImageSection
-} from '@/components/page-sections';
+} from '@/page-sections/index';
 
 import { BreadCrumb } from '@/components/Breadcrumb';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { CtaSection } from '@/components/page-sections/CtaSection';
-import { lasikPriceList } from '@/components/page-sections/PriceCard/priceList';
+import { CtaSection } from '@/page-sections/CtaSection';
+import { lasikPriceList } from '@/page-sections/PriceCard/priceList';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasik-pricing-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-pricing-small.png';
@@ -31,7 +31,7 @@ interface LasikPricingProps {
 }
 
 /**
- * Url: /laser-eye-surgery/lasik-london/price
+ * Url: /lasik-london/price
  *
  * @export
  * @returns {JSX.Element}
@@ -218,7 +218,7 @@ export default function LasikPricing({ seo, yoastJson }: LasikPricingProps): JSX
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'lasik-london-price' });
 
         return {
             /* eslint-disable */

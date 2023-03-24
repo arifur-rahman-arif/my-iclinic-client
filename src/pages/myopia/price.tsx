@@ -3,8 +3,8 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { Cta3, FullWidthImageSection2, Masthead, PriceSection, SideImageSection } from '@/components/page-sections';
-import { myopiaPriceList } from '@/components/page-sections/PriceCard/priceList';
+import { Cta3, FullWidthImageSection2, Masthead, PriceSection, SideImageSection } from '@/page-sections/index';
+import { myopiaPriceList } from '@/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.png';
@@ -26,7 +26,7 @@ interface PriceProps {
 /**
  * Home/Landing page component for the App
  *
- * Url: /eye-treatments/childrens-eyes/myopia/price
+ * Url: /myopia/price
  *
  * @export
  * @returns {JSX.Element}
@@ -167,7 +167,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'myopia-price' });
 
         return {
             /* eslint-disable */

@@ -14,19 +14,19 @@ const footerList: FooterListInterface[] = [
         listLinks: [
             {
                 text: 'ReLEx Smile',
-                url: '/laser-eye-surgery/relex-smile-london'
+                url: '/relex-smile-london'
             },
             {
                 text: 'Presbyond',
-                url: '/laser-eye-surgery/presbyond-london'
+                url: '/presbyond-london'
             },
             {
                 text: 'LASIK',
-                url: '/laser-eye-surgery/lasik-london'
+                url: '/lasik-london'
             },
             {
                 text: 'LASEK, PRK & PTK',
-                url: '/laser-eye-surgery/lasek-prk'
+                url: '/lasek-prk'
             }
         ]
     },
@@ -39,7 +39,7 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Myopia Control Clinic',
-                url: '/eye-treatments/childrens-eyes/myopia'
+                url: '/myopia'
             },
             {
                 text: 'ICL Eye Surgery',
@@ -47,15 +47,15 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Eyelid Cysts Chalazion and Styes',
-                url: '/eye-treatments/eyelid-surgery'
+                url: '/eyelid-surgery-london'
             },
             {
                 text: 'Paediatric Eye Care',
-                url: '/eye-treatments/childrens-eyes/paediatric-eye-care'
+                url: '/paediatric-eye-care'
             }
             // {
             //     text: 'Glaucoma Care',
-            //     url: '/eye-treatments/glaucoma'
+            //     url: '/glaucoma-treatment'
             // }
         ]
     },
@@ -93,11 +93,11 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Blepharoplasty',
-                url: '/eye-treatments/blepharitis'
+                url: '/blepharitis-treatment'
             },
             {
                 text: 'Droopy Eyelid (Ptosis)',
-                url: '/eye-treatments/eyelid-surgery'
+                url: '/eyelid-surgery-london'
             },
             {
                 text: 'Eye Bags',
