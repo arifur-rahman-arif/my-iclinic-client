@@ -2,6 +2,11 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
 import {
     BulletPoint,
     CtaSection,
@@ -12,11 +17,6 @@ import {
     PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
 import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
 import { WpPageResponseInterface } from '@/types';

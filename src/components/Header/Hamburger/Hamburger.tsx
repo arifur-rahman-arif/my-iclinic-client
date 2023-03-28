@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { MouseEvent } from 'react';
+import IconHamburger from '@/icons/icon-hamburger.svg';
 
 interface HamburgerProps {
     onClick: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -14,14 +16,9 @@ interface HamburgerProps {
  */
 const Hamburger = ({ onClick }: HamburgerProps) => {
     return (
-        <button
-            onClick={onClick}
-            className={`flex w-[3.3rem] cursor-pointer flex-col items-end justify-start gap-[0.5rem] justify-self-end transition-all duration-500 xl:hidden `}
-        >
-            <span className="h-[0.2rem] w-full rounded-primary bg-secondary transition-all duration-500"></span>
-            <span className="h-[0.2rem] w-10 rounded-primary bg-secondary transition-all duration-500"></span>
-            <span className="h-[0.2rem] w-full rounded-primary bg-secondary transition-all duration-500"></span>
-            <span className="h-[0.2rem] w-10 rounded-primary bg-secondary transition-all duration-500"></span>
+        <button onClick={onClick} className={`flex items-center justify-center gap-4 justify-self-end xl:hidden`}>
+            <Image src={IconHamburger} alt="Menu" />
+            <span className="font-mulishBold text-[1.6rem] leading-8">Menu</span>
         </button>
     );
 };

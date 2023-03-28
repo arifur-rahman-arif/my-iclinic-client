@@ -1,6 +1,6 @@
+import HTMLReactParser from 'html-react-parser';
 import Head from 'next/head';
 import * as process from 'process';
-import HTMLReactParser from 'html-react-parser';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
@@ -22,7 +22,7 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const Page = ({ children, title, description, seo, yoastJson, ...other }: PropInterface): JSX.Element => {
+const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
     return (
         <>
             <Head>

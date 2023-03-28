@@ -1,26 +1,32 @@
-.sticky-nav.sticky-nav {
+//.sticky-nav.sticky-nav {
+//    @include media-breakpoint-up(xl) {
+//        box-shadow: var(--shadow1);
+//        height: 8rem;
+//
+//        .contact-details {
+//            display: none;
+//        }
+//
+//        .desktop-nav-menu {
+//            grid-column: auto;
+//        }
+//
+//        .nav-wrapper {
+//            padding-top: 0;
+//        }
+//
+//        .sticky-logo {
+//            display: block;
+//        }
+//
+//        .non-sticky-logo {
+//            display: none;
+//        }
+//    }
+//}
+
+.add-shadow {
     @include media-breakpoint-up(xl) {
-        box-shadow: var(--shadow1);
-        height: 8rem;
-
-        .contact-details {
-            display: none;
-        }
-
-        .desktop-nav-menu {
-            grid-column: auto;
-        }
-
-        .nav-wrapper {
-            padding-top: 0;
-        }
-
-        .sticky-logo {
-            display: block;
-        }
-
-        .non-sticky-logo {
-            display: none;
-        }
+        box-shadow: var(--shadow3) !important;
     }
 }

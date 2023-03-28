@@ -3,14 +3,14 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { CtaSection2, FullWidthImageSection, Masthead, SideImageSection, StackColumn2 } from '@/page-sections/index';
-import { keratoconusFaqList } from '@/page-sections/Faq/faqList';
 import { normalSlideListKeratoconus } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-keratoconus-large.jpg';
 import MastheadImageMedium from '@/masthead/masthead-keratoconus-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-keratoconus-small.png';
+import { keratoconusFaqList } from '@/page-sections/Faq/faqList';
+import { CtaSection2, FullWidthImageSection, Masthead, SideImageSection, StackColumn2 } from '@/page-sections/index';
 
 import { keratoconusList } from '@/page-sections/SectionParts/stack-column/list';
 import CornealImageLarge from '@/section-images/cross-linking-surgery-large.png';

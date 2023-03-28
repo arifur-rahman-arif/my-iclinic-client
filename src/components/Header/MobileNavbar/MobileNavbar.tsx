@@ -1,9 +1,11 @@
-import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import ComponentLoader from '@/components/ComponentLoader';
+import MenuCta from '@/components/Header/MenuCta';
+import { useGetMenuDataQuery } from '@/services/navMenuData';
 import { IconButton } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dispatch, SetStateAction } from 'react';
-import { BsArrowLeftCircle } from 'react-icons/bs';
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { BiLeftArrowCircle } from 'react-icons/bi';
 import Context from 'src/components/Header/Context';
 import NavMenu from './NavMenu';
 
@@ -11,6 +13,15 @@ interface MobileNavbarProps {
     openMobileMenu: boolean;
     setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
 }
+
+export interface InnerAppContext {
+    setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+}
+
+// Create a new inner context context
+export const MobileNavbarContext = createContext<InnerAppContext>({
+    setOpenMobileMenu: () => {}
+});
 
 /**
  * Mobile navbar component
@@ -22,34 +33,39 @@ const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu }: MobileNavbarProps):
     return (
         <>
             <Context>
-                <div
-                    className={`fixed top-0 left-0 z-[100] grid h-screen w-[95%] -translate-x-full grid-rows-[auto_1fr_auto] gap-16 bg-white p-6 shadow-shadow2 transition-all duration-500 sm:w-[85%] md:w-[40rem] xl:hidden ${
-                        openMobileMenu && '!translate-x-0'
-                    }`}
-                >
-                    <div className="flex items-center justify-between">
-                        <Link href="/" className="" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
-                            <Image
-                                src="/images/logos/logo-iclinic-desktop.png"
-                                alt="My-iClinic"
-                                width={154}
-                                height={36}
-                                quality={100}
-                                priority
-                            />
-                        </Link>
+                <MobileNavbarContext.Provider value={{ setOpenMobileMenu }}>
+                    <div
+                        className={`fixed top-0 left-0 z-[101] grid max-h-screen w-full -translate-y-full grid-rows-[auto_1fr] gap-16 overflow-y-auto bg-white pt-6 shadow-shadow2 transition-all duration-500 xl:hidden ${
+                            openMobileMenu && '!translate-y-0'
+                        }`}
+                    >
+                        <div className="flex items-center justify-between px-6">
+                            <Link href="/" className="" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
+                                <Image
+                                    src="/images/logos/logo-iclinic-desktop.png"
+                                    alt="My-iClinic"
+                                    width={154}
+                                    height={36}
+                                    quality={100}
+                                    priority
+                                />
+                            </Link>
 
-                        <IconButton aria-label="Close navigation" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
-                            <BsArrowLeftCircle className="text-[2.5rem]" />
-                        </IconButton>
+                            <IconButton
+                                aria-label="Close navigation"
+                                onClick={() => setOpenMobileMenu(!openMobileMenu)}
+                                className="flex items-center justify-center gap-4"
+                            >
+                                <BiLeftArrowCircle className="text-[2.5rem]" />
+                                <span className="font-mulishBold text-[1.4rem] leading-[2.4rem]">Back</span>
+                            </IconButton>
+                        </div>
+
+                        <NavMenu />
+
+                        <MenuCta setOpenMobileMenu={setOpenMobileMenu} />
                     </div>
-
-                    <NavMenu setOpenMobileMenu={setOpenMobileMenu} openMobileMenu={openMobileMenu} />
-
-                    <div className="grid place-items-end justify-self-center">
-                        <BookConsultation />
-                    </div>
-                </div>
+                </MobileNavbarContext.Provider>
             </Context>
 
             {/* The overlay */}

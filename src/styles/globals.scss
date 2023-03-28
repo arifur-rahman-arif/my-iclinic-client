@@ -263,17 +263,17 @@ body {
     }
 
     #fc_frame {
+        z-index: 101 !important;
         @include media-breakpoint-down(sm) {
             bottom: 85px !important;
             opacity: 0;
             right: 10px !important;
-            z-index: 99 !important;
         }
     }
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -296,6 +296,7 @@ body {
 }
 
 #cost-calculator::-webkit-scrollbar,
+.mega-submenu::-webkit-scrollbar,
 .mobile-navbar::-webkit-scrollbar {
     height: 3px;
     width: 4px;
@@ -317,4 +318,8 @@ input:-webkit-autofill {
 
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 50px white inset; /*your box-shadow*/
+}
+
+#calculator {
+    scroll-margin-top: 20rem; /* or any other value */
 }

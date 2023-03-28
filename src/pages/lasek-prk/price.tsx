@@ -2,6 +2,12 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-lasek-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-lasek-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-lasek-pricing.png';
+import { CtaSection } from '@/page-sections/CtaSection';
 import {
     BulletList,
     BulletPoint,
@@ -11,14 +17,8 @@ import {
     PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-import { CtaSection } from '@/page-sections/CtaSection';
-import { lasekPriceList } from '@/page-sections/PriceCard/priceList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasek-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-lasek-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-lasek-pricing.png';
 import { NormalSection4 } from '@/page-sections/NormalSection';
+import { lasekPriceList } from '@/page-sections/PriceCard/priceList';
 import InclusiveCostImage from '@/section-images/lasek-inclusive-cost-image.png';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';

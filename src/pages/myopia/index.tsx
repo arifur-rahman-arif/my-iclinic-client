@@ -2,8 +2,17 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button } from '@/components/Button';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
+import H3Variant3 from '@/components/Headings/H3Variant3';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
+import IconAngle from '@/icons/icon-angle-right.svg';
+import { getLatestPosts, getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-myopia-large.png';
+import MastheadImageMedium from '@/masthead/masthead-myopia-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
+import { myopiaFaqList } from '@/page-sections/Faq/faqList';
+import { galleryListMyopia } from '@/page-sections/ImageGallery';
 import {
     BookConsultation,
     CoverFlowSliderSection,
@@ -15,21 +24,12 @@ import {
     OnScreenSliderSection,
     SideImageSection
 } from '@/page-sections/index';
-import { myopiaFaqList } from '@/page-sections/Faq/faqList';
-import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
-import IconAngle from '@/icons/icon-angle-right.svg';
-import { getLatestPosts, getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-myopia-large.png';
-import MastheadImageMedium from '@/masthead/masthead-myopia-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
-import { galleryListMyopia } from '@/page-sections/ImageGallery';
 import BulletList from '@/page-sections/SectionParts/BulletList';
 import { StackedSection2 } from '@/page-sections/StackedSection';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import H3Variant3 from '@/components/Headings/H3Variant3';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />

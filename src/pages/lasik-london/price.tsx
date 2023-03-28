@@ -1,3 +1,13 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-lasik-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-lasik-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-lasik-pricing.png';
+import { CtaSection } from '@/page-sections/CtaSection';
 import {
     BulletPoint,
     FinanceList,
@@ -7,23 +17,15 @@ import {
     PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
-import { CtaSection } from '@/page-sections/CtaSection';
 import { lasikPriceList } from '@/page-sections/PriceCard/priceList';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasik-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-lasik-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-lasik-pricing.png';
 import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.png';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
-import { useDeviceSize, largeSizes, smallSizes } from '@/hooks';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
 
 interface LasikPricingProps {
     seo: any;

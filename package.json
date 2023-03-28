@@ -11,7 +11,7 @@
     "start": "next start",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint",
-    "code-check": "npx eslint . --ext .ts --ext .tsx --fix",
+    "code-check": "npx eslint . --ext .ts --ext .tsx --fix && npx tsc",
     "format": "npx prettier --write \"**/*.+(html|css|scss|sass|less|js|jsx|ts|tsx|json|php)\"",
     "prepare": "husky install"
   },
@@ -22,6 +22,7 @@
     "@mui/material": "^5.11.10",
     "@next/font": "^13.2.1",
     "@reduxjs/toolkit": "^1.9.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "gsap": "^3.11.4",
     "html-react-parser": "^3.0.9",
     "js-search": "^2.0.0",

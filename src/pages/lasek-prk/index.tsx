@@ -5,6 +5,13 @@ import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-lasek-smile-large.png';
+import MastheadImageMedium from '@/masthead/masthead-lasek-smile-medium.png';
+import { lasekFaqList } from '@/page-sections/Faq/faqList';
+import { lasekSliders } from '@/page-sections/FeaturedPatient';
 import {
     ClimateChange,
     Cta2,
@@ -17,15 +24,8 @@ import {
     PlasticFree,
     SideImageSection
 } from '@/page-sections/index';
-import { lasekFaqList } from '@/page-sections/Faq/faqList';
-import { lasekSliders } from '@/page-sections/FeaturedPatient';
 import { leftRightListLasek } from '@/page-sections/LeftRight/leftRightList';
 import { lasekStackList } from '@/page-sections/StackedSection';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasek-smile-large.png';
-import MastheadImageMedium from '@/masthead/masthead-lasek-smile-medium.png';
 import FullWidthImageLarge from '@/section-images/lasek-doctor-large.png';
 import FullWidthImage from '@/section-images/lasek-doctor.png';
 import { WpPageResponseInterface } from '@/types';

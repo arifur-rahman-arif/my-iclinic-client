@@ -1,6 +1,7 @@
 import { alertSlice } from '@/features/index';
 
 import { downloadFormApi } from '@/services/downloadForm';
+import { navMenuApi } from '@/services/navMenuData';
 import { requestCallbackApi } from '@/services/requestCallback';
 import { reviewsApi } from '@/services/reviews';
 import { configureStore } from '@reduxjs/toolkit';
@@ -18,13 +19,15 @@ export const makeStore = () => {
             // API Reducer's
             [downloadFormApi.reducerPath]: downloadFormApi.reducer,
             [requestCallbackApi.reducerPath]: requestCallbackApi.reducer,
-            [reviewsApi.reducerPath]: reviewsApi.reducer
+            [reviewsApi.reducerPath]: reviewsApi.reducer,
+            [navMenuApi.reducerPath]: navMenuApi.reducer
         },
         middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware) =>
             getDefaultMiddleware().concat(
                 reviewsApi.middleware,
                 downloadFormApi.middleware,
-                requestCallbackApi.middleware
+                requestCallbackApi.middleware,
+                navMenuApi.middleware
             )
     });
 };

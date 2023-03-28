@@ -4,8 +4,6 @@ import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
-import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
-import { astigmatismFaqList } from '@/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
@@ -13,6 +11,8 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-astigmatism-large.png';
 import MastheadImageMedium from '@/masthead/masthead-astigmatism-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-astigmatism-small.png';
+import { astigmatismFaqList } from '@/page-sections/Faq/faqList';
+import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { AstigmatismPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -363,7 +363,9 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData();
+        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData({
+            slug: 'astigmatism-treatment'
+        });
 
         return {
             /* eslint-disable */
