@@ -3,6 +3,13 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-conjunctivitis-large.png';
+import MastheadImageMedium from '@/masthead/masthead-conjunctivitis-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-conjunctivitis-small.png';
+import { conjunctivitisFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
     ConjunctivitisTreatment,
@@ -12,13 +19,6 @@ import {
     NormalSection5,
     SideImageSection
 } from '@/page-sections/index';
-import { conjunctivitisFaqList } from '@/page-sections/Faq/faqList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconArrow from '@/icons/icon-angle-right.svg';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-conjunctivitis-large.png';
-import MastheadImageMedium from '@/masthead/masthead-conjunctivitis-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-conjunctivitis-small.png';
 import { ConjunctivitisPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -282,7 +282,9 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<ConjunctivitisPageContentInterface> = await getPageData();
+        const data: WpPageResponseInterface<ConjunctivitisPageContentInterface> = await getPageData({
+            slug: 'conjuctivitis-treatment-london'
+        });
 
         return {
             /* eslint-disable */

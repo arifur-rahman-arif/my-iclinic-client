@@ -8,6 +8,8 @@ import BookConsultation from '@/page-sections/SectionParts/BookConsultation/Book
 import Image from 'next/image';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
 
+interface JhonBolgerProps {}
+
 /**
  * Home page component for the App
  *
@@ -16,7 +18,7 @@ import H2Variant1 from 'src/components/Headings/H2Variant1';
  * @export
  * @returns {JSX.Element}
  */
-export default function JhonBolger(): JSX.Element {
+export default function JhonBolger({}: JhonBolgerProps): JSX.Element {
     return (
         <Page title="Mr. John Bolger" description="Mr. John Bolger is a consultant and Surgeon">
             <BreadCrumb />
@@ -217,4 +219,23 @@ export default function JhonBolger(): JSX.Element {
             </Section>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        return {
+            /* eslint-disable */
+            props: {},
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

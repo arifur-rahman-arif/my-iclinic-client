@@ -6,6 +6,15 @@ import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
+import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
+import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
+import MastheadImageMedium from '@/masthead/masthead-lasik.png';
+import { lasikFaqList } from '@/page-sections/Faq/faqList';
+import { lasikSliders } from '@/page-sections/FeaturedPatient';
 import {
     ClimateChange,
     CtaSection2,
@@ -15,18 +24,9 @@ import {
     PlasticFree,
     SideImageSection
 } from '@/page-sections/index';
-import { lasikFaqList } from '@/page-sections/Faq/faqList';
-import { lasikSliders } from '@/page-sections/FeaturedPatient';
 import { leftRightListLasik } from '@/page-sections/LeftRight/leftRightList';
-import { lasikStackList } from '@/page-sections/StackedSection';
-import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
-import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
-import MastheadImageMedium from '@/masthead/masthead-lasik.png';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { lasikStackList } from '@/page-sections/StackedSection';
 import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';

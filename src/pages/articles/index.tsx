@@ -13,10 +13,10 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
-import { BlogList, TextColumn } from '@/page-sections/index';
 import { Section } from '@/components/Section';
 import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/lib';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
+import { BlogList, TextColumn } from '@/page-sections/index';
 import { WpPageResponseInterface } from '@/types';
 
 interface BlogPageProps {

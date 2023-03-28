@@ -3,6 +3,14 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import IconAngle from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-macular-degeneration-large.png';
+import MastheadImageMedium from '@/masthead/masthead-macular-degeneration-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-macular-degeneration-small.png';
+import { maculerDegenerationFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
     CtaSection,
@@ -11,14 +19,6 @@ import {
     NormalSection5,
     SideImageSection
 } from '@/page-sections/index';
-import { maculerDegenerationFaqList } from '@/page-sections/Faq/faqList';
-import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconAngle from '@/icons/icon-angle-right.svg';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-macular-degeneration-large.png';
-import MastheadImageMedium from '@/masthead/masthead-macular-degeneration-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-macular-degeneration-small.png';
 import { WpPageResponseInterface } from '@/types';
 
 import dynamic from 'next/dynamic';

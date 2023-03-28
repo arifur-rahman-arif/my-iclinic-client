@@ -5,15 +5,15 @@ import { H3Variant3 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
-import { CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
-import { paediatricFaqList } from '@/page-sections/Faq/faqList';
-import { leftRightListPaediatric, leftRightListPaediatricAftercare } from '@/page-sections/LeftRight/leftRightList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-paediatric-large.png';
 import MastheadImageMedium from '@/masthead/masthead-paediatric-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-paediatric-small.png';
+import { paediatricFaqList } from '@/page-sections/Faq/faqList';
+import { CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
+import { leftRightListPaediatric, leftRightListPaediatricAftercare } from '@/page-sections/LeftRight/leftRightList';
 import { WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -128,10 +128,8 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             </LazyComponent>
 
             <Section>
-                <Container
-                    className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_6rem_auto] md:gap-0 lg:grid-cols-[1fr_10rem_auto]">
-                    <div
-                        className="relative z-[2] rounded-primary bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-24">
+                <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_6rem_auto] md:gap-0 lg:grid-cols-[1fr_10rem_auto]">
+                    <div className="relative z-[2] rounded-primary bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-24">
                         <H3Variant3>
                             <strong>
                                 We specialise in treating children with a wide range of eye care conditions. Our team

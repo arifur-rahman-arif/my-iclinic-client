@@ -2,13 +2,14 @@ interface ComponentLoaderInterface {
     defaultClassName?: string;
     className?: string;
 }
+
 /**
  * Section loading component while a section is included through next dynamic
  *
  * @returns {*}  {JSX.Element}
  */
 const ComponentLoader = ({
-    defaultClassName = 'relative grid min-h-[30rem] w-full place-items-center md:min-h-[45rem]',
+    defaultClassName = 'relative grid min-h-[30rem] w-full place-items-center h-full',
     className
 }: ComponentLoaderInterface): JSX.Element => {
     return (

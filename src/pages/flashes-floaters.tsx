@@ -5,6 +5,13 @@ import { H3Variant3 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import IconArrow from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-flashes-floaters-large.png';
+import MastheadImageMedium from '@/masthead/masthead-flashes-floaters-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-flashes-floaters-small.png';
+import { flashesFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
     CtaSection,
@@ -13,13 +20,6 @@ import {
     Masthead,
     SideImageSection
 } from '@/page-sections/index';
-import { flashesFaqList } from '@/page-sections/Faq/faqList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconArrow from '@/icons/icon-angle-right.svg';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-flashes-floaters-large.png';
-import MastheadImageMedium from '@/masthead/masthead-flashes-floaters-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-flashes-floaters-small.png';
 import { WpPageResponseInterface } from '@/types';
 import { stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';

@@ -3,11 +3,11 @@ import { Container } from '@/components/Container';
 import Page from '@/components/Page';
 import { BulletList } from '@/components/page-sections';
 import { Section } from '@/components/Section';
+import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
 import { WpPageResponseInterface } from '@/types';
 import Image from 'next/image';
 import H3Variant3 from 'src/components/Headings/H3Variant3';
-import IconArrow from '@/icons/icon-angle-right.svg';
 
 interface CookiePolicyProps {
     seo: any;

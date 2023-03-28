@@ -3,11 +3,11 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/page-sections/index';
 import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-glaucoma-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-glaucoma-pricing-medium.png';
+import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/page-sections/index';
 import { GlaucomaPackages3 } from '@/page-sections/SectionParts/GlaucomaPackages';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';

@@ -1,4 +1,13 @@
+import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
+import LazyComponent from '@/components/LazyComponent';
+import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
+import MastheadImageSmall from '@/masthead/masthead-relex-smile-pricing-small.png';
+import MastheadImageMedium from '@/masthead/masthead-relex-smile-pricing.png';
+import { CtaSection } from '@/page-sections/CtaSection';
 import {
     BulletPoint,
     FullWidthImageSection,
@@ -7,17 +16,7 @@ import {
     PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-
-import { BreadCrumb } from '@/components/Breadcrumb';
-import LazyComponent from '@/components/LazyComponent';
-import Page from '@/components/Page';
-import { CtaSection } from '@/page-sections/CtaSection';
 import { relexSmilePriceList } from '@/page-sections/PriceCard/priceList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-relex-smile-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-relex-smile-pricing.png';
 import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';

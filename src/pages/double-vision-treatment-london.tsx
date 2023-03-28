@@ -3,6 +3,13 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-double-vision-large.png';
+import MastheadImageMedium from '@/masthead/masthead-double-vision-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-double-vision-small.png';
+import { doubleVisionFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
     CtaSection,
@@ -11,13 +18,6 @@ import {
     NormalSection,
     SideImageSection
 } from '@/page-sections/index';
-import { doubleVisionFaqList } from '@/page-sections/Faq/faqList';
-import { normalSlideListDoubleVision } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-double-vision-large.png';
-import MastheadImageMedium from '@/masthead/masthead-double-vision-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-double-vision-small.png';
 import FullWidthImageLarge from '@/section-images/double-vision-large.png';
 import FullWidthImage from '@/section-images/double-vision.png';
 import { DoubleVisionPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
@@ -277,7 +277,9 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<DoubleVisionPageContentInterface> = await getPageData();
+        const data: WpPageResponseInterface<DoubleVisionPageContentInterface> = await getPageData({
+            slug: 'double-vision-treatment-london'
+        });
 
         return {
             /* eslint-disable */

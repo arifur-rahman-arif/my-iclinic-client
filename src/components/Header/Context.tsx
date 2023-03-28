@@ -21,7 +21,26 @@ export const AppCtx = createContext<AppContextInterface | null>(null);
  * @constructor
  */
 const Context = ({ children }: PropInterface): JSX.Element => {
-    const [navMenus, setNavMenus] = useState<NavMenuType[]>(navMenuList);
+    const [navMenus, setNavMenus] = useState<NavMenuType[]>([
+        ...navMenuList,
+        {
+            name: 'Articles',
+            url: '/articles',
+            slug: 'articles',
+            subMenuOpen: false,
+            submenu: []
+        },
+        {
+            name: 'About Us',
+            url: '#',
+            slug: 'about-us'
+        },
+        {
+            name: 'Contact Us',
+            url: '#',
+            slug: 'contact-us'
+        }
+    ]);
 
     /**
      * Toggle the parent submenus

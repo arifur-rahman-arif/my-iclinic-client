@@ -3,13 +3,13 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { Cta3, FullWidthImageSection2, Masthead, PriceSection, SideImageSection } from '@/page-sections/index';
-import { myopiaPriceList } from '@/page-sections/PriceCard/priceList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-myopia-pricing-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-myopia-pricing-small.png';
+import { Cta3, FullWidthImageSection2, Masthead, PriceSection, SideImageSection } from '@/page-sections/index';
+import { myopiaPriceList } from '@/page-sections/PriceCard/priceList';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';

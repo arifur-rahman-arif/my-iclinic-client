@@ -8,6 +8,8 @@ import BookConsultation from '@/page-sections/SectionParts/BookConsultation/Book
 import Image from 'next/image';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
 
+interface MsYvonneLuoProps {}
+
 /**
  * Home page component for the App
  *
@@ -16,7 +18,7 @@ import H2Variant1 from 'src/components/Headings/H2Variant1';
  * @export
  * @returns {JSX.Element}
  */
-export default function MsYvonneLuo(): JSX.Element {
+export default function MsYvonneLuo({}: MsYvonneLuoProps): JSX.Element {
     return (
         <Page title="Ms. Yvonne Luo" description="Ms. Yvonne Luo is a consultant and Surgeon">
             <BreadCrumb />
@@ -243,4 +245,23 @@ export default function MsYvonneLuo(): JSX.Element {
             </Section>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        return {
+            /* eslint-disable */
+            props: {},
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }

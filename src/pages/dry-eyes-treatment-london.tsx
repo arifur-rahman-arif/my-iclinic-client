@@ -1,8 +1,16 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
+import H2Variant1 from '@/components/Headings/H2Variant1';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import IconAngle from '@/icons/icon-angle-right.svg';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-dry-eyes-large.png';
+import MastheadImageMedium from '@/masthead/masthead-dry-eyes-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-dry-eyes-small.png';
+import { dryEyeFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
     CtaSection2,
@@ -11,20 +19,12 @@ import {
     SideImageSection,
     StackColumn2
 } from '@/page-sections/index';
-import { dryEyeFaqList } from '@/page-sections/Faq/faqList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconAngle from '@/icons/icon-angle-right.svg';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-dry-eyes-large.png';
-import MastheadImageMedium from '@/masthead/masthead-dry-eyes-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-dry-eyes-small.png';
 import { lazyEyesList } from '@/page-sections/SectionParts/stack-column/list';
 import { WpPageResponseInterface } from '@/types';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import H2Variant1 from '@/components/Headings/H2Variant1';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />

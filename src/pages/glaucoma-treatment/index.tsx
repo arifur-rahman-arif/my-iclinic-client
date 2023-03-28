@@ -4,6 +4,14 @@ import { Container } from '@/components/Container';
 import { SpanVariant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { Section } from '@/components/Section';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-glaucoma-large.png';
+import MastheadImageMedium from '@/masthead/masthead-glaucoma-medium.png';
+import MastheadImageSmall from '@/masthead/masthead-glaucoma-small.png';
+import { glaucomaFaqList } from '@/page-sections/Faq/faqList';
+import { glaucomaSliders } from '@/page-sections/FeaturedPatient';
 import {
     ClimateChange,
     CtaSection,
@@ -15,14 +23,6 @@ import {
     PlasticFree,
     SideImageSection
 } from '@/page-sections/index';
-import { Section } from '@/components/Section';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-glaucoma-large.png';
-import MastheadImageMedium from '@/masthead/masthead-glaucoma-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-glaucoma-small.png';
-import { glaucomaFaqList } from '@/page-sections/Faq/faqList';
-import { glaucomaSliders } from '@/page-sections/FeaturedPatient';
 import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListGlaucoma, leftRightListGlaucomma } from '@/page-sections/LeftRight/leftRightList';
 import { StarComponent } from '@/page-sections/SectionParts/StarComponent';

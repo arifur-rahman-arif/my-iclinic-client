@@ -5,11 +5,12 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { AdvanceEyeCare, CtaSection2, Masthead, SideImageSection } from '@/components/page-sections';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-large.png';
 import MastheadImageMedium from '@/masthead/masthead-eye-diagnostics-technology-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-eye-diagnostics-technology-small.png';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
-import { EyeDiagnosticsPageContentInterface, PageDataInterface } from '@/types';
+import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
@@ -30,7 +31,14 @@ const NormalSlideSection = dynamic(() => import('@/components/page-sections/Norm
 
 interface DataInterface
     extends EyeDiagnosticsPageContentInterface,
-        PageDataInterface<EyeDiagnosticsPageContentInterface> {}
+        PageDataInterface<EyeDiagnosticsPageContentInterface> {
+}
+
+interface OurEyeDiagnosticsTechnologyProps {
+    data: DataInterface;
+    seo: any;
+    yoastJson: any;
+}
 
 /**
  * Url: /conjuctivitis-treatment-london
@@ -38,7 +46,11 @@ interface DataInterface
  * @export
  * @returns {JSX.Element}
  */
-export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterface }): JSX.Element {
+export default function OurEyeDiagnosticsTechnology({
+    data,
+    seo,
+    yoastJson
+}: OurEyeDiagnosticsTechnologyProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Eye diagnostics & equipment center';
@@ -53,25 +65,25 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
     }, [deviceSize]);
 
     return (
-        <Page title={heading} description={subheading}>
+        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
                 imageSmall={data?.masthead_image.image || MastheadImageSmall}
                 imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
                 imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
-                altText=""
+                altText=''
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4">
+                    <h1 className='flex flex-wrap gap-4'>
                         {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                            <span className='h1-inner-span inline-block opacity-0' key={index}>
                                 {word}
                             </span>
                         ))}
                     </h1>
                 }
                 h2Title={
-                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
+                    <h2 className='flex scale-[0.94] flex-wrap items-center justify-start gap-2'>
                         {subheading.split(' ').map((word, index) => (
                             <span
                                 className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
@@ -87,9 +99,9 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
+            <Container className='mt-24'>
+                <h2 className='w-full text-center normal-case'>
+                    <strong className='normal-case'>
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
@@ -101,25 +113,25 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
 
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
+            <div className='w-full md:h-[0.1rem] lg:mt-28'></div>
 
             <SideImageSection
-                containerClassName="md:!gap-x-32 md:!gap-y-12"
+                containerClassName='md:!gap-x-32 md:!gap-y-12'
                 dynamicTextColumn={
                     <>
-                        <h2 className="col-span-2 w-full max-w-[79.3rem] normal-case">
-                            <strong className="normal-case">
+                        <h2 className='col-span-2 w-full max-w-[79.3rem] normal-case'>
+                            <strong className='normal-case'>
                                 Achieving accurate and comprehensive screening assessments to provide the best treatment
                                 plan for our patients.
                             </strong>
                         </h2>
                         <TextColumn
-                            textColumnClassName="-mt-12"
+                            textColumnClassName='-mt-12'
                             normalLightHeading={<></>}
                             descriptions={[
                                 'Every pair of eyes are unique and different. We understand that every patient needs careful and precise attention to detail in their eye health to find the best treatment plan for them.',
                                 'Our ophthalmic technology and equipment facilities are highly advanced in the private eye care industry, achieving accurate and comprehensive screening assessments.',
-                                "Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children's pediatric eye care and more."
+                                'Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children\'s pediatric eye care and more.'
                             ]}
                         />
                     </>
@@ -136,21 +148,22 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                 }}
             />
 
-            <NormalSection5 heading="The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare." />
+            <NormalSection5
+                heading='The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare.' />
 
             <SideImageSection
-                containerClassName="md:!grid-cols-1 md:!gap-12"
+                containerClassName='md:!grid-cols-1 md:!gap-12'
                 h3LightHeading={
                     <>
                         Advanced eye care
                         <br />
                     </>
                 }
-                h3BoldHeading="assessment & scanning"
+                h3BoldHeading='assessment & scanning'
                 customColumn={<AdvanceEyeCare />}
             />
 
-            <CtaSection2 title="Interested in working with us?" excludeSloganText />
+            <CtaSection2 title='Interested in working with us?' excludeSloganText />
 
             <LazyComponent>
                 <CompanyLogos />
@@ -167,7 +180,7 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
                             treatment
                         </>
                     }
-                    pageSlug="our-eye-diagnostics-technology"
+                    pageSlug='our-eye-diagnostics-technology'
                 />
             </LazyComponent>
 
@@ -176,6 +189,30 @@ export default function OurEyeDiagnosticsTechnology({ data }: { data: DataInterf
             </LazyComponent>
         </Page>
     );
+}
+
+/**
+ * Fetch the data from the WordPress database
+ *
+ * @returns {Promise<{props: {posts: any}}>}
+ */
+export async function getStaticProps() {
+    try {
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'home' });
+
+        return {
+            /* eslint-disable */
+            props: {
+                seo: data?.yoast_head || null,
+                yoastJson: data?.yoast_head_json || null
+            },
+            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            /* eslint-enable */
+        };
+    } catch (error: any) {
+        console.error(error);
+        return { props: {} };
+    }
 }
 
 /// **

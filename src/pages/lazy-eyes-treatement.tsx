@@ -4,8 +4,6 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/page-sections/index';
-import { lazyEyesFaqList } from '@/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
@@ -13,6 +11,8 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lazy-eyes-large.png';
 import MastheadImageMedium from '@/masthead/masthead-lazy-eyes-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-lazy-eyes-small.png';
+import { lazyEyesFaqList } from '@/page-sections/Faq/faqList';
+import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { LazyEyesPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -36,8 +36,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {
-}
+interface DataInterface extends LazyEyesPageContentInterface, PageDataInterface<LazyEyesPageContentInterface> {}
 
 interface LazyEyesProps {
     data: DataInterface;
@@ -316,10 +315,8 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     height: 439
                 }}
                 textColumnExtras={
-                    <div
-                        className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
-                        <BookConsultation
-                            buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
+                    <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
+                        <BookConsultation buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />
 
                         <Button
                             type="phone"
@@ -377,7 +374,10 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await getPageData();
+        const data: WpPageResponseInterface<LazyEyesPageContentInterface> = await getPageData({
+            slug: 'lazy-eyes-treatement'
+        });
+
         return {
             /* eslint-disable */
             props: {

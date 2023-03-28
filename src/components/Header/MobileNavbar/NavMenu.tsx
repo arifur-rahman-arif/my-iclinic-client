@@ -1,13 +1,20 @@
+import ComponentLoader from '@/components/ComponentLoader';
 import { AppContextInterface, AppCtx } from '@/components/Header/Context';
+import { InnerAppContext, MobileNavbarContext } from '@/components/Header/MobileNavbar/MobileNavbar';
 import { NavMenuType } from '@/components/Header/navMenuList';
+import { Articles } from '@/components/Header/SubMenus/Articles';
+import { SubMenu } from '@/components/Header/SubMenus/Cataract';
+import { LinkStyle } from '@/components/Link';
+import { useGetMenuDataQuery } from '@/services/navMenuData';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
-import { Dispatch, ReactNode, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
+import EyeTreatments from '../SubMenus/EyeTreatments/EyeTreatments';
+import OurSpecialists from '../SubMenus/OurSpecialists/OurSpecialists';
+import PricingFinancing from '../SubMenus/PricingFinancing/PricingFinancing';
 
-interface NavMenuProps {
-    openMobileMenu: boolean;
-    setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
-}
+interface NavMenuProps {}
 
 /**
  * Navigation menu component
@@ -15,73 +22,75 @@ interface NavMenuProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const NavMenu = ({ openMobileMenu, setOpenMobileMenu }: NavMenuProps): JSX.Element => {
+const NavMenu = ({}: NavMenuProps): JSX.Element => {
     const router = useRouter();
     const appCtx: AppContextInterface | null = useContext(AppCtx);
-    //
-    // // Close the navigation submenus if users clicks outside the navigation menu
-    // const ref = useOnclickOutside(() => {
-    //     const windowWidth = window.innerWidth;
-    //
-    //     // Close the submenus if user is in desktop screen
-    //     if (windowWidth > 1280) dispatch(closeParentSubmenus());
-    // });
+    const innerAppCtx: InnerAppContext = useContext(MobileNavbarContext);
+    // @ts-ignore
+    const { data, isSuccess } = useGetMenuDataQuery();
 
     return (
-        <div className="mobile-navbar overflow-y-scroll">
+        <div className="mobile-navbar px-6">
             <ul className="grid w-full content-start justify-items-start">
                 {appCtx?.navMenus.map((menu: NavMenuType, index) => (
                     <li
                         key={index}
-                        className="leading-16 min-h-16 block w-full cursor-pointer py-4"
-                        onClick={() => {
-                            menu.submenu?.length && appCtx?.toggleSubmenu({ index });
+                        className="leading-16 min-h-16 block w-full cursor-pointer py-6"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            menu.submenu && appCtx?.toggleSubmenu({ index });
                         }}
                     >
                         {/* Parent menus */}
-                        <ParentMenuItem
-                            menu={menu}
-                            router={router}
-                            openMobileMenu={openMobileMenu}
-                            setOpenMobileMenu={setOpenMobileMenu}
-                        />
+                        <ParentMenuItem menu={menu} router={router} setOpenMobileMenu={innerAppCtx.setOpenMobileMenu} />
 
                         {/* Submenus */}
-                        {menu.submenu?.length && (
+                        {menu.submenu && (
                             <div
-                                className={`mb-1 grid max-h-0 gap-4 overflow-hidden pl-4 transition-all duration-500 ${
+                                className={`mb-1 grid max-h-0 gap-4 overflow-hidden transition-all duration-500 ${
                                     menu.subMenuOpen && 'mt-8 max-h-[200rem]'
                                 }`}
                             >
-                                {menu.submenu.map((item, index) => (
-                                    <div key={index}>
-                                        {!item.submenu ? (
-                                            <SubMenuLink
-                                                {...item}
-                                                router={router}
-                                                openMobileMenu={openMobileMenu}
-                                                setOpenMobileMenu={setOpenMobileMenu}
-                                            />
-                                        ) : (
-                                            <div className="w-full">
-                                                <span key={index} className="font-mulishBold text-[1.6rem] leading-8">
-                                                    {item.name}
-                                                </span>
-                                                <div className="mt-4 flex w-full flex-col items-start justify-start gap-6 pl-4">
-                                                    {item.submenu?.map((item, index) => (
-                                                        <SubMenuLink
-                                                            key={index}
-                                                            {...item}
-                                                            router={router}
-                                                            openMobileMenu={openMobileMenu}
-                                                            setOpenMobileMenu={setOpenMobileMenu}
-                                                        />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
+                                {menu.slug === 'cataract' && (
+                                    <SubMenu
+                                        router={router}
+                                        submenu={menu.submenu}
+                                        subMenuTitle="Cataract"
+                                        blogsTitle="More about cataract surgery"
+                                    />
+                                )}
+                                {menu.slug === 'vision-correction' && (
+                                    <SubMenu
+                                        router={router}
+                                        submenu={menu.submenu}
+                                        subMenuTitle="Vision correction"
+                                        blogsTitle="More about vision correction"
+                                    />
+                                )}
+                                {menu.slug === 'eye-treatments' && (
+                                    <EyeTreatments router={router} submenu={menu.submenu} />
+                                )}
+                                {menu.slug === 'our-specialists' && (
+                                    <OurSpecialists router={router} submenu={menu.submenu} />
+                                )}
+                                {menu.slug === 'pricing-and-financing' && (
+                                    <PricingFinancing router={router} submenu={menu.submenu} />
+                                )}
+                                {menu.slug === 'articles' && (
+                                    <div className="grid gap-12">
+                                        {isSuccess ? <Articles articlesData={data.articles} /> : <ComponentLoader />}
+                                        <div className="flex items-center justify-center gap-2">
+                                            <LinkStyle
+                                                url="/articles"
+                                                className="justify-self-center font-mulishBold !text-[1.6rem] leading-8"
+                                            >
+                                                View full articles lists
+                                            </LinkStyle>
+                                            <FaArrowRight className="h-6 w-6 translate-y-[0.1rem] fill-blue" />
+                                        </div>
                                     </div>
-                                ))}
+                                )}
                             </div>
                         )}
                     </li>
@@ -96,7 +105,6 @@ export default NavMenu;
 interface ParentMenuItemProps {
     menu: NavMenuType;
     router: NextRouter;
-    openMobileMenu: boolean;
     setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -108,16 +116,16 @@ interface ParentMenuItemProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const ParentMenuItem = ({ menu, router, openMobileMenu, setOpenMobileMenu }: ParentMenuItemProps) => {
+const ParentMenuItem = ({ menu, router, setOpenMobileMenu }: ParentMenuItemProps) => {
     const isMenuActive = router.pathname === menu.url;
 
     return (
-        <span className="flex items-center justify-start gap-2">
+        <span className="flex items-center justify-between gap-2">
             {menu.submenu ? (
                 <>
                     <span
-                        className={`font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-brand ${
-                            isMenuActive && 'text-brand'
+                        className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
+                            isMenuActive && 'text-[#9B9FA1]'
                         }`}
                     >
                         {menu.name}
@@ -129,8 +137,8 @@ const ParentMenuItem = ({ menu, router, openMobileMenu, setOpenMobileMenu }: Par
                         viewBox="0 0 14 8"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90 ${
-                            menu.subMenuOpen && '-rotate-90'
+                        className={`h-[1.2rem] w-[1.2rem] translate-y-[0.1rem] -rotate-90 transition-all duration-500 hover:text-brand group-hover/menu-item:-rotate-90 ${
+                            menu.subMenuOpen && 'rotate-0'
                         }`}
                     >
                         <path
@@ -139,8 +147,8 @@ const ParentMenuItem = ({ menu, router, openMobileMenu, setOpenMobileMenu }: Par
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className={`transition-all duration-500 group-hover/menu-item:!stroke-brand ${
-                                isMenuActive && '!stroke-brand'
+                            className={`transition-all duration-500 group-hover/menu-item:!stroke-[#9B9FA1] ${
+                                isMenuActive && '!stroke-[#9B9FA1]'
                             }`}
                         />
                     </svg>
@@ -148,46 +156,52 @@ const ParentMenuItem = ({ menu, router, openMobileMenu, setOpenMobileMenu }: Par
             ) : (
                 <Link
                     href={menu.url}
-                    className={`font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-brand ${
-                        isMenuActive && 'text-brand'
+                    className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
+                        isMenuActive && 'text-[#9B9FA1]'
                     }`}
-                    onClick={() => setOpenMobileMenu(!openMobileMenu)}
+                    onClick={() => setOpenMobileMenu(false)}
                 >
                     {menu.name}
+
+                    {isMenuActive && (
+                        <span
+                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                    )}
                 </Link>
             )}
         </span>
     );
 };
+//
+// interface SubMenuLinkProps {
+//     name: ReactNode;
+//     url: string;
+//     router: NextRouter;
+//     openMobileMenu: boolean;
+//     setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+// }
 
-interface SubMenuLinkProps {
-    name: ReactNode;
-    url: string;
-    router: NextRouter;
-    openMobileMenu: boolean;
-    setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
-}
-
-/**
- * Submenu link component
- *
- * @param {string} linkText
- * @param {string} url
- * @returns {JSX.Element}
- * @constructor
- */
-const SubMenuLink = ({ name, url, router, openMobileMenu, setOpenMobileMenu }: SubMenuLinkProps): JSX.Element => {
-    const isMenuActive = router.pathname === url;
-
-    return (
-        <Link
-            href={url}
-            className={`block w-full whitespace-nowrap font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-brand ${
-                isMenuActive && 'text-brand'
-            }`}
-            onClick={() => setOpenMobileMenu(!openMobileMenu)}
-        >
-            {name}
-        </Link>
-    );
-};
+//
+// /**
+//  * Submenu link component
+//  *
+//  * @param {string} linkText
+//  * @param {string} url
+//  * @returns {JSX.Element}
+//  * @constructor
+//  */
+// const SubMenuLink = ({ name, url, router, openMobileMenu, setOpenMobileMenu }: SubMenuLinkProps): JSX.Element => {
+//     const isMenuActive = router.pathname === url;
+//
+//     return (
+//         <Link
+//             href={url}
+//             className={`block w-full whitespace-nowrap font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-brand ${
+//                 isMenuActive && 'text-brand'
+//             }`}
+//             onClick={() => setOpenMobileMenu(!openMobileMenu)}
+//         >
+//             {name}
+//         </Link>
+//     );
+// };

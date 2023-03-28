@@ -6,6 +6,15 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getPageData } from '@/lib';
+import MastheadImageLarge from '@/masthead/masthead-relex-smile-large.png';
+import MastheadImageSmall from '@/masthead/masthead-relex-smile-small.png';
+import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
+import { relexSmileFaqList } from '@/page-sections/Faq/faqList';
+import { relexSliders } from '@/page-sections/FeaturedPatient';
 import {
     ClimateChange,
     CtaSection,
@@ -17,16 +26,7 @@ import {
     SideImageSection,
     StackColumn
 } from '@/page-sections/index';
-import { relexSmileFaqList } from '@/page-sections/Faq/faqList';
-import { relexSliders } from '@/page-sections/FeaturedPatient';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
-import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-relex-smile-large.png';
-import MastheadImageSmall from '@/masthead/masthead-relex-smile-small.png';
-import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
 import { default as LaserEyeSurgery, default as LaserEyeSurgeryLarge } from '@/section-images/laser-eye-surgery.png';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
@@ -89,8 +89,8 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
 
     return (
         <Page
-            title="ReLEx SMILE Laser eye surgery In London"
-            description="ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments."
+            title='ReLEx SMILE Laser eye surgery In London'
+            description='ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments.'
             seo={seo}
             yoastJson={yoastJson}
         >
@@ -100,18 +100,18 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText="Man travelling without glasses for vision correction"
+                altText='Man travelling without glasses for vision correction'
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4">
+                    <h1 className='flex flex-wrap gap-4'>
                         {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                            <span className='h1-inner-span inline-block opacity-0' key={index}>
                                 {word}
                             </span>
                         ))}
                     </h1>
                 }
                 h2Title={
-                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
+                    <h2 className='flex scale-[0.94] flex-wrap items-center justify-start gap-2'>
                         {subheading.split(' ').map((word, index) => (
                             <span
                                 className={`h2-inner-span inline-block normal-case text-heading2 opacity-0`}
@@ -124,15 +124,15 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                 }
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+            <Container className='mt-24'>
+                <h2 className='w-full text-center normal-case'>
+                    <strong className='normal-case'>Talk to a specialist</strong>
                 </h2>
             </Container>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
+            <div className='w-full md:h-[0.1rem] lg:mt-28'></div>
 
             <FullWidthImageSection
                 h3Title={
@@ -141,13 +141,13 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                         <br /> Eye Surgery!
                     </>
                 }
-                containerClass="md:!grid-cols-1 lg:!grid-cols-[1fr_auto] md:!py-0 lg:!py-24"
-                altText="Man with luggage at airport"
+                containerClass='md:!grid-cols-1 lg:!grid-cols-[1fr_auto] md:!py-0 lg:!py-24'
+                altText='Man with luggage at airport'
                 image={LaserEyeSurgery}
                 desktopImage={LaserEyeSurgeryLarge}
                 includeScrollDownButton
-                videoUrl="/videos/relex-smile-vision-correction-treatment-explained.mp4"
-                videoPoster="D7qX9brFvCw"
+                videoUrl='/videos/relex-smile-vision-correction-treatment-explained.mp4'
+                videoPoster='D7qX9brFvCw'
             />
 
             <LazyComponent>
@@ -156,8 +156,8 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
 
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our ReLEx patients say after treatment"
-                    h3Heading="Hear from a patient"
+                    h2Heading='What our ReLEx patients say after treatment'
+                    h3Heading='Hear from a patient'
                     darkPin
                     descriptions={[
                         `When you choose My-iClinic’s 5-star rated services, you can rest assured that
@@ -165,8 +165,8 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                           optometrists carefully work with you to evaluate your eyes to offer you the best
                            possible course of treatment – allowing you to re-discover a life of normal vision.`
                     ]}
-                    videoUrl="/videos/relex-smile.mp4"
-                    videoPoster="e3z34A3mmeI"
+                    videoUrl='/videos/relex-smile.mp4'
+                    videoPoster='e3z34A3mmeI'
                 />
             </LazyComponent>
 
@@ -174,16 +174,16 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                 <BottomBanner2 />
             </LazyComponent>
 
-            <CtaSection subtitle="Vision correction options" />
+            <CtaSection subtitle='Vision correction options' />
 
             <SideImageSection
-                h2Heading="Why RELEX SMILE"
+                h2Heading='Why RELEX SMILE'
                 h3LightHeading={
                     <>
                         The benefits of ReLEx <br />
                     </>
                 }
-                h3BoldHeading="Smile laser eye surgery!"
+                h3BoldHeading='Smile laser eye surgery!'
                 descriptions={[
                     `When you choose My-iClinic’s 5-star rated services, you can rest assured that
                      you’ve made the best possible choice for your eyesight.`,
@@ -202,7 +202,7 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                         <br />
                     </>
                 }
-                h3BoldHeading="Clear, natural vision!"
+                h3BoldHeading='Clear, natural vision!'
                 descriptions={[
                     `Have you or one of your loved ones finally decided to do something about being short-sighted or
                      having astigmatism? To begin the ReLEx SMILE process, give us a call or book a consultation with
@@ -219,9 +219,9 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                     height: 558
                 }}
                 positionReversed={true}
-                altText="Two friends travelling with clear vision"
+                altText='Two friends travelling with clear vision'
                 textColumnExtras={
-                    <p className="font-mulishBold text-[2rem] leading-[2.4rem]">
+                    <p className='font-mulishBold text-[2rem] leading-[2.4rem]'>
                         A better quality of life is just <br />
                         around the corner.
                     </p>
@@ -229,19 +229,19 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             />
 
             <FullWidthImageSection3
-                title1="97% of people"
-                title2="From our clinic are extremely happy with their vision after laser eye surgery."
+                title1='97% of people'
+                title2='From our clinic are extremely happy with their vision after laser eye surgery.'
                 descriptions={[
                     'Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.'
                 ]}
             />
 
-            <div className="md:mt-24"></div>
+            <div className='md:mt-24'></div>
 
             <LazyComponent>
                 <FeaturedPatient
-                    h2Title="Relex SMILE Patient"
-                    h3Title="Life after ReLEx SMILE Treatment"
+                    h2Title='Relex SMILE Patient'
+                    h3Title='Life after ReLEx SMILE Treatment'
                     bandImageDescription={[
                         `It has been two months since my ReLEx SMILE eye surgery at My-iClinic,
                         and my vision is better than 20/20 (~20/10), with only minor and receding eye dryness. `,
@@ -250,16 +250,16 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                          He performed the correcting procedure with great care, and after 15 minutes I walked out
                           of the surgery on my own without any visual aids or help!`
                     ]}
-                    bandImageTitle="Mr. Lukicov"
-                    bandImageURL="/images/section-images/mr-lukicov.png"
+                    bandImageTitle='Mr. Lukicov'
+                    bandImageURL='/images/section-images/mr-lukicov.png'
                     reviewDescription={[
                         `The next day I was already back at work (software development),
                          gym the following day (weight lifting) and swimming just a week after - if that is not a miracle,
                           I don't know what is!`
                     ]}
-                    reviewTitle="Thank you My-iClinic"
+                    reviewTitle='Thank you My-iClinic'
                     sliders={relexSliders}
-                    bandColor="bg-[#FF5C00]"
+                    bandColor='bg-[#FF5C00]'
                 />
             </LazyComponent>
 
@@ -268,27 +268,27 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             </LazyComponent>
 
             <FullWidthImageSection
-                h3Title="Whatever the view,"
+                h3Title='Whatever the view,'
                 boldHeading={
                     <>
                         Remember it with <br /> Clear vision
                     </>
                 }
-                altText=""
+                altText=''
                 albumAnimation
-                containerClass="grid grid-cols-1 items-center justify-center py-12 sm:py-16 lg:py-0 gap-12 lg:grid-cols-[auto_1fr] xl:grid-cols-2  lg:gap-24"
+                containerClass='grid grid-cols-1 items-center justify-center py-12 sm:py-16 lg:py-0 gap-12 lg:grid-cols-[auto_1fr] xl:grid-cols-2  lg:gap-24'
                 includeCta
             />
 
             <SideImageSection
-                h2Heading="Why laser Relex smile"
+                h2Heading='Why laser Relex smile'
                 h3LightHeading={
                     <>
                         Why consider our ReLEx SMILE Laser eye surgery
                         <br />
                     </>
                 }
-                h3BoldHeading="When you already have glasses or contact lenses?"
+                h3BoldHeading='When you already have glasses or contact lenses?'
                 sectionImage={{
                     url: '/images/section-images/laser-relex-smile.png',
                     width: 370,
@@ -299,14 +299,14 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                     width: 682,
                     height: 686
                 }}
-                altText="Male athlete on bike after laser eye surgery"
+                altText='Male athlete on bike after laser eye surgery'
                 textColumnImage={true}
                 customColumn={<StackColumn />}
-                containerClassName="!items-start"
+                containerClassName='!items-start'
             />
 
             <SideImageSection
-                h2Heading="Right treatment for you"
+                h2Heading='Right treatment for you'
                 h3LightHeading={
                     <>
                         Do you think ReLEx
@@ -314,10 +314,11 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                         <br />
                     </>
                 }
-                h3BoldHeading="Be the right treatment for you?"
+                h3BoldHeading='Be the right treatment for you?'
                 descriptions={[
                     <>
-                        To begin the ReLEx SMILE process, give us a call or book your <strong>free consultation</strong>{' '}
+                        To begin the ReLEx SMILE process, give us a call or book your <strong>free
+                        consultation</strong>{' '}
                         with our friendly team today.
                     </>
                 ]}
@@ -331,43 +332,43 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                     width: 657,
                     height: 554
                 }}
-                altText="Woman smiling without needing glasses for short-sightedness"
+                altText='Woman smiling without needing glasses for short-sightedness'
                 textColumnExtras={
                     <>
-                        <div className="flex flex-wrap items-center justify-start gap-6">
+                        <div className='flex flex-wrap items-center justify-start gap-6'>
                             <Button
-                                type="anchor"
-                                text="Book a consultation"
-                                iconPosition="left"
+                                type='anchor'
+                                text='Book a consultation'
+                                iconPosition='left'
                                 icon={
                                     <Image
-                                        src="/images/icons/icon-calendar-outline-darker.svg"
-                                        alt=""
+                                        src='/images/icons/icon-calendar-outline-darker.svg'
+                                        alt=''
                                         width={20}
                                         height={20}
                                         quality={2}
-                                        className="h-8 w-8"
+                                        className='h-8 w-8'
                                     />
                                 }
                             />
                             <Button
-                                type="anchor"
-                                text="0208 445 8877"
-                                iconPosition="left"
-                                className="!min-w-[18.6rem] place-content-center border !bg-transparent md:min-w-[23.3rem]"
+                                type='anchor'
+                                text='0208 445 8877'
+                                iconPosition='left'
+                                className='!min-w-[18.6rem] place-content-center border !bg-transparent md:min-w-[23.3rem]'
                                 icon={
                                     <Image
-                                        src="/images/icons/icon-phone-dark.svg"
-                                        alt=""
+                                        src='/images/icons/icon-phone-dark.svg'
+                                        alt=''
                                         width={20}
                                         height={20}
                                         quality={2}
-                                        className="h-8 w-8"
+                                        className='h-8 w-8'
                                     />
                                 }
                             />
                         </div>
-                        <span className="font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:max-w-[38.7rem]">
+                        <span className='font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:max-w-[38.7rem]'>
                             A better quality of life is just around the corner!
                         </span>
                     </>
@@ -394,7 +395,7 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree
-                        h2Heading="plastic free life"
+                        h2Heading='plastic free life'
                         h3LightHeading={
                             <>
                                 ReLEx SMILE is the key
@@ -452,23 +453,23 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             /> */}
 
                     <SideImageSection
-                        h2Heading="gift of a tree"
+                        h2Heading='gift of a tree'
                         h3LightHeading={
                             <>
                                 Saving the planet
                                 <br />
                             </>
                         }
-                        h3BoldHeading="One eye at a time!"
+                        h3BoldHeading='One eye at a time!'
                         descriptions={[
                             `When undergoing laser eye surgery, you may not realize it but you are already making a positive
                      difference to the environment. For every 10 years of contact lens wearing the amount of plastic
                       that ends up in the ocean is roughly the same as your own body weight.`,
-                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                            <span className='font-latoBold text-[2rem] normal-case leading-[2.4rem]'>
                                 Our gift to you…
                             </span>,
                             `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                            <span className='font-latoBold text-[2rem] normal-case leading-[2.4rem]'>
                                 Here at My-iClinic we give all of our laser patients a real forest tree!
                             </span>,
                             `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
@@ -487,7 +488,7 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                             width: 554,
                             height: 496
                         }}
-                        altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
+                        altText='Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
                     />
                     {/*
                     <DrawLine
@@ -512,18 +513,18 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
 
             <LazyComponent>
                 <PdfDownload
-                    title="Get the guide to ReLEx laser surgery"
-                    description="Robotic laser vision correction"
-                    pageSlug="relex-smile-london"
+                    title='Get the guide to ReLEx laser surgery'
+                    description='Robotic laser vision correction'
+                    pageSlug='relex-smile-london'
                 />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
                     faqs={relexSmileFaqList}
-                    titleLight="ReLEx SMILE Laser"
-                    titleBold="Treatment FAQ’s"
-                    description="Have a question? We are here to help."
+                    titleLight='ReLEx SMILE Laser'
+                    titleBold='Treatment FAQ’s'
+                    description='Have a question? We are here to help.'
                 />
             </LazyComponent>
         </Page>
