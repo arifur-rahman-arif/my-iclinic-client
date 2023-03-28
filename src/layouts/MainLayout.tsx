@@ -1,3 +1,4 @@
+import FreshChatScript from '@/components/FreshChatScript';
 import { Header } from '@/components/Header';
 import LazyComponent from '@/components/LazyComponent';
 import { AlertInterface } from '@/features/alert/alertSlice';
@@ -47,7 +48,8 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatbot && <Script src="//eu.fw-cdn.com/10828756/380235.js" chat="true" strategy="lazyOnload" />}
+            <FreshChatScript />
+
             <Header />
             {children}
             <LazyComponent>
