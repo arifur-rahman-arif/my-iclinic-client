@@ -12,16 +12,16 @@ import NavMenu from './NavMenu';
 interface MobileNavbarProps {
     openMobileMenu: boolean;
     setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+    navMenuData: any;
 }
 
 export interface InnerAppContext {
     setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+    navMenuData: any;
 }
 
 // Create a new inner context context
-export const MobileNavbarContext = createContext<InnerAppContext>({
-    setOpenMobileMenu: () => {}
-});
+export const MobileNavbarContext = createContext<InnerAppContext | null>(null);
 
 /**
  * Mobile navbar component
@@ -29,11 +29,11 @@ export const MobileNavbarContext = createContext<InnerAppContext>({
  * @returns {JSX.Element}
  * @constructor
  */
-const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu }: MobileNavbarProps): JSX.Element => {
+const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu, navMenuData }: MobileNavbarProps): JSX.Element => {
     return (
         <>
             <Context>
-                <MobileNavbarContext.Provider value={{ setOpenMobileMenu }}>
+                <MobileNavbarContext.Provider value={{ setOpenMobileMenu, navMenuData }}>
                     <div
                         className={`fixed top-0 left-0 z-[101] grid max-h-screen w-full -translate-y-full grid-rows-[auto_1fr] gap-16 overflow-y-auto bg-white pt-6 shadow-shadow2 transition-all duration-500 xl:hidden ${
                             openMobileMenu && '!translate-y-0'

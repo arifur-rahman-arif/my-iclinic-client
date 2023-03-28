@@ -47,7 +47,13 @@ const Header = (): JSX.Element => {
 
     return (
         <>
-            {loadMobileMenu && <MobileNavbar openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} />}
+            {loadMobileMenu && (
+                <MobileNavbar
+                    openMobileMenu={openMobileMenu}
+                    setOpenMobileMenu={setOpenMobileMenu}
+                    navMenuData={isSuccess && data}
+                />
+            )}
             <header
                 ref={headerRef}
                 className="relative sticky top-0 left-0 z-[100] w-full bg-white shadow-shadow3 transition-all duration-500 xl:shadow-none"

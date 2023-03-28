@@ -91,9 +91,11 @@ const PricingFinancing = ({ submenu, router, posts }: PricingFinancing): JSX.Ele
 
             {/* Blogs */}
             {Array.isArray(posts) ? (
-                posts.length && <SubMenuBlogs title="Our clinic" blogContainerClassName="!grid-cols-1" posts={posts} />
+                posts.length && <SubMenuBlogs title="Our clinic" posts={posts} />
             ) : (
-                <ComponentLoader />
+                <div className="hidden md:block">
+                    <ComponentLoader />
+                </div>
             )}
         </div>
     );

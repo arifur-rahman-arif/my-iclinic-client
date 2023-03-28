@@ -24,7 +24,7 @@ interface SubMenuBlogProps {
 const SubMenuBlogs = ({ title, blogContainerClassName, posts, className }: SubMenuBlogProps): JSX.Element => {
     // Context will be provided only for mobile menu
     const context = useContext(MobileNavbarContext);
-    let innerAppCtx: InnerAppContext | undefined;
+    let innerAppCtx: InnerAppContext | null;
     if (context !== undefined) {
         innerAppCtx = context;
     }

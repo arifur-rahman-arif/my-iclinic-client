@@ -5,7 +5,6 @@ import { NavMenuType } from '@/components/Header/navMenuList';
 import { Articles } from '@/components/Header/SubMenus/Articles';
 import { SubMenu } from '@/components/Header/SubMenus/Cataract';
 import { LinkStyle } from '@/components/Link';
-import { useGetMenuDataQuery } from '@/services/navMenuData';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { Dispatch, SetStateAction, useContext } from 'react';
@@ -25,9 +24,7 @@ interface NavMenuProps {}
 const NavMenu = ({}: NavMenuProps): JSX.Element => {
     const router = useRouter();
     const appCtx: AppContextInterface | null = useContext(AppCtx);
-    const innerAppCtx: InnerAppContext = useContext(MobileNavbarContext);
-    // @ts-ignore
-    const { data, isSuccess } = useGetMenuDataQuery();
+    const innerAppCtx: InnerAppContext | null = useContext(MobileNavbarContext);
 
     return (
         <div className="mobile-navbar px-6">
@@ -43,7 +40,11 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                         }}
                     >
                         {/* Parent menus */}
-                        <ParentMenuItem menu={menu} router={router} setOpenMobileMenu={innerAppCtx.setOpenMobileMenu} />
+                        <ParentMenuItem
+                            menu={menu}
+                            router={router}
+                            setOpenMobileMenu={innerAppCtx?.setOpenMobileMenu}
+                        />
 
                         {/* Submenus */}
                         {menu.submenu && (
@@ -58,6 +59,7 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                                         submenu={menu.submenu}
                                         subMenuTitle="Cataract"
                                         blogsTitle="More about cataract surgery"
+                                        posts={innerAppCtx?.navMenuData?.cataractPosts}
                                     />
                                 )}
                                 {menu.slug === 'vision-correction' && (
@@ -66,6 +68,7 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                                         submenu={menu.submenu}
                                         subMenuTitle="Vision correction"
                                         blogsTitle="More about vision correction"
+                                        posts={innerAppCtx?.navMenuData?.surgeryPosts}
                                     />
                                 )}
                                 {menu.slug === 'eye-treatments' && (
@@ -75,11 +78,19 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                                     <OurSpecialists router={router} submenu={menu.submenu} />
                                 )}
                                 {menu.slug === 'pricing-and-financing' && (
-                                    <PricingFinancing router={router} submenu={menu.submenu} />
+                                    <PricingFinancing
+                                        router={router}
+                                        submenu={menu.submenu}
+                                        posts={innerAppCtx?.navMenuData?.iclinicPosts}
+                                    />
                                 )}
                                 {menu.slug === 'articles' && (
                                     <div className="grid gap-12">
-                                        {isSuccess ? <Articles articlesData={data.articles} /> : <ComponentLoader />}
+                                        {innerAppCtx?.navMenuData.articles ? (
+                                            <Articles articlesData={innerAppCtx?.navMenuData.articles} />
+                                        ) : (
+                                            <ComponentLoader />
+                                        )}
                                         <div className="flex items-center justify-center gap-2">
                                             <LinkStyle
                                                 url="/articles"
@@ -105,7 +116,7 @@ export default NavMenu;
 interface ParentMenuItemProps {
     menu: NavMenuType;
     router: NextRouter;
-    setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+    setOpenMobileMenu: Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 /**
@@ -159,13 +170,12 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu }: ParentMenuItemProps
                     className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                         isMenuActive && 'text-[#9B9FA1]'
                     }`}
-                    onClick={() => setOpenMobileMenu(false)}
+                    onClick={() => setOpenMobileMenu && setOpenMobileMenu(false)}
                 >
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                     )}
                 </Link>
             )}

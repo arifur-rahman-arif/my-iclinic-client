@@ -25,12 +25,17 @@ interface CataractProps {
  */
 const SubMenu = ({ submenu, router, subMenuTitle, blogsTitle, posts }: CataractProps): JSX.Element => {
     return (
-        <div className='grid grid-cols-1 gap-12 py-12 md:grid-cols-[auto_1fr] xl:gap-40 xl:py-20'>
+        <div className="grid grid-cols-1 gap-12 py-12 md:grid-cols-[auto_1fr] xl:gap-40 xl:py-20">
             <SubMenuList submenu={submenu} router={router} subMenuTitle={subMenuTitle} />
 
             {/* Blogs */}
-            {Array.isArray(posts) ? posts.length && <SubMenuBlogs title={blogsTitle} posts={posts} /> :
-                <ComponentLoader />}
+            {Array.isArray(posts) ? (
+                posts.length && <SubMenuBlogs title={blogsTitle} posts={posts} />
+            ) : (
+                <div className="hidden md:block">
+                    <ComponentLoader />
+                </div>
+            )}
         </div>
     );
 };
