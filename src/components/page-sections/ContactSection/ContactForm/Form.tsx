@@ -6,7 +6,6 @@ import {
     formatNumberToInternational,
     formatPhoneNumber,
     getElementTopPosition,
-    validateEmail,
     validatePhoneNumber
 } from '@/utils/miscellaneous';
 import { useContext, useEffect, useState } from 'react';
@@ -42,15 +41,15 @@ const Form = (): JSX.Element => {
             return true;
         }
 
-        if (!appCtx.email) {
-            setEmailError('Please provide your email');
-            return true;
-        }
+        // if (!appCtx.email) {
+        //     setEmailError('Please provide your email');
+        //     return true;
+        // }
 
-        if (!validateEmail(appCtx.email)) {
-            setEmailError('Please provide a valid email address');
-            return true;
-        }
+        // if (!validateEmail(appCtx.email)) {
+        //     setEmailError('Please provide a valid email address');
+        //     return true;
+        // }
 
         if (!appCtx.phone) {
             setPhoneError('Please provide your phone');
@@ -179,7 +178,6 @@ const Form = (): JSX.Element => {
                 value={appCtx.email}
                 id="contact-form-email"
                 placeholder="Email Address"
-                important
                 errorText={emailError}
                 onChange={(e) => {
                     appCtx?.setEmail(e.target.value);
