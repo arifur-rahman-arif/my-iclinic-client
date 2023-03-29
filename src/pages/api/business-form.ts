@@ -26,7 +26,7 @@ const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: Nex
         }
     } catch (err: any) {
         console.error(err);
-        res.status(500).send(err);
+        return res.status(500).send(err);
     }
 };
 
