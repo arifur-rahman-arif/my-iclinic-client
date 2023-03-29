@@ -9,12 +9,18 @@ const DateAndTime = dynamic(() => import('./DateAndTime'), {
     ssr: false
 });
 
+interface RequestCallbackProps {
+    className?: string;
+}
+
 /**
  * Request callback component
  *
- * @returns {*}  {JSX.Element}
+ * @param {string | undefined} className
+ * @returns {JSX.Element}
+ * @constructor
  */
-const RequestCallback = (): JSX.Element => {
+const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -84,7 +90,7 @@ const RequestCallback = (): JSX.Element => {
     ]);
 
     return (
-        <Stepper stepperList={stepperList} className="min-h-[50rem] !w-full max-w-[45rem] bg-white">
+        <Stepper stepperList={stepperList} className={`${className || 'min-h-[50rem] !w-full max-w-[45rem] bg-white'}`}>
             <PersonalInfo
                 name={name}
                 setName={setName}

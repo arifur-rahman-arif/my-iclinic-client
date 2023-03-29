@@ -95,6 +95,9 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                                             <LinkStyle
                                                 url="/articles"
                                                 className="justify-self-center font-mulishBold !text-[1.6rem] leading-8"
+                                                onClick={() => {
+                                                    innerAppCtx?.setOpenMobileMenu(false);
+                                                }}
                                             >
                                                 View full articles lists
                                             </LinkStyle>

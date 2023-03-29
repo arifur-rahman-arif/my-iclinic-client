@@ -1,4 +1,5 @@
 import { alertSlice } from '@/features/index';
+import { businessFormApi } from '@/services/businessInfo';
 
 import { downloadFormApi } from '@/services/downloadForm';
 import { navMenuApi } from '@/services/navMenuData';
@@ -20,14 +21,16 @@ export const makeStore = () => {
             [downloadFormApi.reducerPath]: downloadFormApi.reducer,
             [requestCallbackApi.reducerPath]: requestCallbackApi.reducer,
             [reviewsApi.reducerPath]: reviewsApi.reducer,
-            [navMenuApi.reducerPath]: navMenuApi.reducer
+            [navMenuApi.reducerPath]: navMenuApi.reducer,
+            [businessFormApi.reducerPath]: businessFormApi.reducer
         },
         middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware) =>
             getDefaultMiddleware().concat(
                 reviewsApi.middleware,
                 downloadFormApi.middleware,
                 requestCallbackApi.middleware,
-                navMenuApi.middleware
+                navMenuApi.middleware,
+                businessFormApi.middleware
             )
     });
 };

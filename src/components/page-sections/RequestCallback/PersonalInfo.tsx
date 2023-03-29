@@ -1,9 +1,8 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
-
 import { Button } from '@/components/Button';
-import { FaAngleRight } from 'react-icons/fa';
 import { TextField } from '@/components/Inputs';
+import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { FaAngleRight } from 'react-icons/fa';
 
 interface PersonalInfoInterface {
     name: string;
@@ -132,7 +131,7 @@ const PersonalInfo = ({
                     onClearValue={() => {
                         setName('');
                     }}
-                    randomID={clonedElement == true ? false : true}
+                    randomID={clonedElement != true}
                 />
                 <TextField
                     value={phone}
@@ -146,7 +145,7 @@ const PersonalInfo = ({
                         setPhone('');
                         setPhoneError('');
                     }}
-                    randomID={clonedElement == true ? false : true}
+                    randomID={clonedElement != true}
                 />
                 <TextField
                     type="text"
@@ -163,7 +162,7 @@ const PersonalInfo = ({
                     onClearValue={() => {
                         setEmail('');
                     }}
-                    randomID={clonedElement == true ? false : true}
+                    randomID={clonedElement != true}
                 />
             </div>
 
@@ -172,7 +171,7 @@ const PersonalInfo = ({
                 text="Next"
                 iconPosition="right"
                 icon={<FaAngleRight className="relative top-[0.1rem] h-7 w-7" />}
-                className="gap-2 justify-self-end"
+                className="next-button gap-2 justify-self-end"
                 mockDisabled={!shouldActivateNextStep}
                 onClick={() => {
                     if (typeof activateNextStepper == 'function') {

@@ -1,5 +1,7 @@
+import { InnerAppContext, MobileNavbarContext } from '@/components/Header/MobileNavbar/MobileNavbar';
 import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
+import { useContext } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 
 export interface ArticleInterface {
@@ -32,6 +34,8 @@ interface AccordionItemProps {
  * @constructor
  */
 const AccordionItem = ({ accordionItems, index, toggleAccordionItem }: AccordionItemProps): JSX.Element => {
+    const innerAppCtx: InnerAppContext | null = useContext(MobileNavbarContext);
+
     return (
         <div className={`grid content-start transition-all duration-500`}>
             <button
@@ -55,6 +59,9 @@ const AccordionItem = ({ accordionItems, index, toggleAccordionItem }: Accordion
                             key={i}
                             href={`/articles/${item.slug}`}
                             className="group/blog-item grid cursor-pointer justify-items-start gap-4"
+                            onClick={() => {
+                                innerAppCtx?.setOpenMobileMenu(false);
+                            }}
                         >
                             <span className="font-mulishBold text-[1.6rem] leading-8 text-[#384043] transition-all duration-500 line-clamp-2 group-hover/blog-item:text-[#697072]">
                                 {HTMLReactParser(item?.title?.rendered || '')}

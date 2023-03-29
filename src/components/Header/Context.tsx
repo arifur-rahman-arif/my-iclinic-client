@@ -37,7 +37,7 @@ const Context = ({ children }: PropInterface): JSX.Element => {
         },
         {
             name: 'Contact Us',
-            url: '#',
+            url: '/contact-us',
             slug: 'contact-us'
         }
     ]);

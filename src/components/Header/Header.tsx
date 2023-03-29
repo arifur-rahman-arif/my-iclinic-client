@@ -83,7 +83,7 @@ const Header = (): JSX.Element => {
                                 About us
                             </Link>
                             <Link
-                                href=""
+                                href="/contact-us"
                                 aria-label="Contact us"
                                 className="font-mulishMedium text-[1.6rem] leading-8 text-[#51585B]"
                             >

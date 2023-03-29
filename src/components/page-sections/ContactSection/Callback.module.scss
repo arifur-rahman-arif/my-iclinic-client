@@ -1,0 +1,25 @@
+.styles {
+    :global {
+        .callback-form {
+            .next-button {
+                background: var(--color-heading2);
+                border: var(--color-heading2);
+                border: 2px solid var(--color-heading2) !important;
+                color: white;
+
+                &:hover {
+                    background: transparent;
+                    color: var(--color-heading2) !important;
+
+                    svg {
+                        fill: var(--color-heading2) !important;
+                    }
+                }
+
+                svg {
+                    fill: white;
+                }
+            }
+        }
+    }
+}
