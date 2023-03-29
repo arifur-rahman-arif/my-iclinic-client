@@ -1,10 +1,1 @@
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/cataract
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/cataract/price
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/presbyond-london
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/presbyond-london/price
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/lasik-london
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/lasik-london/price
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/relex-smile-london
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/laser-eye-surgery/relex-smile-london/price
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/icl
-https://my-iclinic-staging-git-feature-145-ca-2fd9fd-my-iclinic-website.vercel.app/icl/price
+https://my-iclinic-staging.vercel.app/
