@@ -27,7 +27,7 @@ export interface ConsultantCardInterface {
 const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInterface): JSX.Element => {
     return (
         <div className="group/card grid w-full overflow-hidden rounded-primary bg-white pb-6 shadow-md transition-all duration-500 hover:shadow-shadow1">
-            <div className="max-h-[24.5rem] overflow-hidden">
+            <Link href={url || ''} className="block max-h-[24.5rem] overflow-hidden">
                 <Image
                     src={image}
                     alt={name}
@@ -36,7 +36,7 @@ const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInter
                     quality={100}
                     className="w-full rounded-tl-primary rounded-tr-primary transition-all duration-500 group-hover/card:scale-110"
                 />
-            </div>
+            </Link>
 
             <div className="mt-6 grid px-6">
                 <H4Variant1>{name}</H4Variant1>

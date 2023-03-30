@@ -1,3 +1,4 @@
+import { getSpecialistPost, getSpecialistsPost } from './page-functions/our-specialists';
 import { getLatestPosts } from './page-functions/myopia';
 import { getNavMenuData, getPageData } from './commonUtils';
 import { getTreatments } from './page-functions/financing-your-treatment';
@@ -11,5 +12,7 @@ export {
     getTreatments,
     getPageData,
     getLatestPosts,
-    getNavMenuData
+    getNavMenuData,
+    getSpecialistsPost,
+    getSpecialistPost
 };

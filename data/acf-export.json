@@ -1598,6 +1598,7 @@
                                 "collapsed": "",
                                 "button_label": "Add Row",
                                 "rows_per_page": 20,
+                                "parent_repeater": "field_63eb72bbef9fd",
                                 "sub_fields": [
                                     {
                                         "key": "field_63eb7bdf5410e",
@@ -1620,8 +1621,7 @@
                                         "new_lines": "",
                                         "parent_repeater": "field_63eb7bd75410d"
                                     }
-                                ],
-                                "parent_repeater": "field_63eb72bbef9fd"
+                                ]
                             }
                         ]
                     }
@@ -4674,6 +4674,88 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_642544417b0fb",
+        "title": "Specialists Data",
+        "fields": [
+            {
+                "key": "field_642544418cd64",
+                "label": "Specialist Data",
+                "name": "specialist_data",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_642544828cd65",
+                        "label": "Degree",
+                        "name": "degree",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_642544948cd66",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "specialist"
                 }
             ]
         ],

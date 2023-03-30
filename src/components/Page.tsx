@@ -27,6 +27,7 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
         <>
             <Head>
                 <title>{yoastJson?.title || title}</title>
+                {!yoastJson?.description && <meta name="description" content={description} />}
                 {seo && HTMLReactParser(seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL))}
                 {yoastJson && (
                     <>

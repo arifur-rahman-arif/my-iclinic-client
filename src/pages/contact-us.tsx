@@ -31,7 +31,7 @@ const ContactUs = ({ seo, yoastJson }: CookiePolicyProps) => {
                                 <strong>Contact</strong> Us
                             </>
                         }
-                        textColumnExtras={<p className="-mt-6">We usually reply within couple of hours.</p>}
+                        textColumnExtras={<p className="-mt-6">Our specialist team will reply as soon as possible</p>}
                     />
                     <Context>
                         <ContactSection />
