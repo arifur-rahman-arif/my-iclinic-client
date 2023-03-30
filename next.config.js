@@ -21,6 +21,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'stg-myicliniccouk-dev.kinsta.cloud'
+            },
+            {
+                protocol: 'https',
+                hostname: 'my-iclinic.co.uk'
             }
         ]
     },

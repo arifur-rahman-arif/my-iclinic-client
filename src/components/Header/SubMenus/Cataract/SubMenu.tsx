@@ -30,7 +30,9 @@ const SubMenu = ({ submenu, router, subMenuTitle, blogsTitle, posts }: CataractP
 
             {/* Blogs */}
             {Array.isArray(posts) ? (
-                posts.length && <SubMenuBlogs title={blogsTitle} posts={posts} />
+                posts.length ? (
+                    <SubMenuBlogs title={blogsTitle} posts={posts} />
+                ) : null
             ) : (
                 <div className="hidden md:block">
                     <ComponentLoader />

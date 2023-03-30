@@ -10,6 +10,34 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
+            // Ticket data to be created
+            const payload = {
+                subject: `Request callback from ${req.body.name}`,
+                description: req.body.message,
+                email: req.body.email,
+                phone: req.body.phone,
+                custom_fields: {
+                    cf_full_name: req.body.name
+                },
+                priority: 1,
+                status: 2
+            };
+
+            const freshdeskApiResponse = await postData({
+                url: `https://myiclinic-help.freshdesk.com/api/v2/tickets`,
+                body: payload,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${btoa(process.env.FRESHDESK_API_KEY || '')}`
+                }
+            });
+
+            if (!freshdeskApiResponse.ok) {
+                const freshdeskResponse = await freshdeskApiResponse.json();
+                console.log(freshdeskResponse.message);
+                return res.status(404).json({ message: freshdeskResponse.message });
+            }
+
             const response = await postData({
                 url: `${process.env.CUSTOM_REST_URL}/business-form`,
                 body: req.body
@@ -24,7 +52,7 @@ const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: Nex
         } else {
             res.status(404).json({ message: 'Request url not found' });
         }
-    } catch (err: any) {
+    } catch (err) {
         console.error(err);
         return res.status(500).send(err);
     }
