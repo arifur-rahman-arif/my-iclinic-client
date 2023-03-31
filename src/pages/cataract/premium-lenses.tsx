@@ -291,7 +291,7 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'premium-lenses' });
 
         return {
             /* eslint-disable */

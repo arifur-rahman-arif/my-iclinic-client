@@ -88,8 +88,8 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
 
     return (
         <Page
-            title='Presbyond Laser eye surgery In London'
-            description='Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help.'
+            title="Presbyond Laser eye surgery In London"
+            description="Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help."
             seo={seo}
             yoastJson={yoastJson}
         >
@@ -99,18 +99,18 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText='Presbyopic woman reading a book with her glasses on.'
+                altText="Presbyopic woman reading a book with her glasses on."
                 h1Title={
-                    <h1 className='flex flex-wrap gap-4'>
+                    <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (
-                            <span className='h1-inner-span inline-block opacity-0' key={index}>
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}
                             </span>
                         ))}
                     </h1>
                 }
                 h2Title={
-                    <h2 className='flex scale-[0.94] flex-wrap items-center justify-start gap-2'>
+                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
                         {subheading.split(' ').map((word, index) => (
                             <span
                                 className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
@@ -123,29 +123,29 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                 }
             />
 
-            <Container className='mt-24'>
-                <h2 className='w-full text-center normal-case'>
-                    <strong className='normal-case'>Talk to a specialist</strong>
+            <Container className="mt-24">
+                <h2 className="w-full text-center normal-case">
+                    <strong className="normal-case">Talk to a specialist</strong>
                 </h2>
             </Container>
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
 
-            <div className='w-full md:h-[0.1rem] lg:mt-28'></div>
+            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             {/* <UspSection list={presbyondUspList} /> */}
 
             <SideImageSection
-                h2Heading='Vision correction treatment'
-                h3LightHeading='Getting rid of your reading glasses with'
+                h2Heading="Vision correction treatment"
+                h3LightHeading="Getting rid of your reading glasses with"
                 h3BoldHeading={
                     <>
                         our Presbyond
                         <br /> Laser Treatment
                     </>
                 }
-                altText='Woman with reading glasses has a headache from watching her laptop screen. She is
-                long sighted, suffering from presbyopia.'
+                altText="Woman with reading glasses has a headache from watching her laptop screen. She is
+                long sighted, suffering from presbyopia."
                 descriptions={[
                     `Always wanted to know what your vision could be like without the need for reading
                     glasses?`,
@@ -182,14 +182,14 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <FullWidthImageSection
-                boldHeading='What to expect after your Presbyond Treatment with our London specialists.'
-                altText='Older man with clear vision looking at his fit bit after running a marathon.'
+                boldHeading="What to expect after your Presbyond Treatment with our London specialists."
+                altText="Older man with clear vision looking at his fit bit after running a marathon."
                 description={[
                     'Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!',
                     'Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.'
                 ]}
-                videoUrl='/videos/presbyond.mp4'
-                videoPoster='IEVaY-Rj4RA'
+                videoUrl="/videos/presbyond.mp4"
+                videoPoster="IEVaY-Rj4RA"
                 // TextColumnExtraBottomElements={
                 //     <>
                 //         <div className="mt-12 grid md:mt-24">
@@ -227,22 +227,22 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                 // }
             />
 
-            <div className='md:mt-24'></div>
+            <div className="md:mt-24"></div>
 
             <LazyComponent>
                 <FeaturedPatient
-                    h2Title='Presbyond Patient'
-                    h3Title='Life after Presbyond laser eye surgery'
+                    h2Title="Presbyond Patient"
+                    h3Title="Life after Presbyond laser eye surgery"
                     bandImageDescription={[
                         `My experience was amazing. The whole team is very kind and exceedingly professional.`,
                         'The after care is exceptional and I would highly recommend them.'
                     ]}
-                    bandImageTitle='Hasina'
-                    bandImageURL='/images/section-images/hasina.jpg'
+                    bandImageTitle="Hasina"
+                    bandImageURL="/images/section-images/hasina.jpg"
                     reviewDescription={[
                         `Being able to see again without glasses is the best feeling and the best money I have ever spent!!!`
                     ]}
-                    reviewTitle='Thank you My-iClinic'
+                    reviewTitle="Thank you My-iClinic"
                     sliders={presbyondSliders}
                 />
             </LazyComponent>
@@ -252,14 +252,14 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <SideImageSection
-                h2Heading='Transparent Price'
+                h2Heading="Transparent Price"
                 h3LightHeading={
                     <>
                         Clearer vision with an all inclusive,
                         <br />
                     </>
                 }
-                h3BoldHeading='Transparent cost'
+                h3BoldHeading="Transparent cost"
                 descriptions={[
                     `Having to wear glasses and contact lenses is a big financial burden overtime. We never subject the safety of people’s eye health to a cheap deal like glasses and contact lenses do and we also understand you don’t want to pay more than what’s fair.`,
                     `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
@@ -274,21 +274,21 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                     width: 689,
                     height: 558
                 }}
-                altText='Happy couple on a hike in the mountains after correcting their long-sighted vision.'
+                altText="Happy couple on a hike in the mountains after correcting their long-sighted vision."
                 textColumnExtras={
                     <>
                         <FinanceExtra
-                            priceText='£2,400 per eye'
-                            priceDescription='With 10 Months Interest-Free Finance available!'
+                            priceText="£2,400 per eye"
+                            priceDescription="With 10 Months Interest-Free Finance available!"
                             paragraphs={[
                                 `The best laser eye surgery price in London, saving an average of £1,000 for your treatment when you come
                             to My-iClinic.`,
                                 <>
                                     Want to know more about our{' '}
                                     <LinkText
-                                        href='#'
-                                        className='font-mulishBold font-extrabold text-blue'
-                                        indicatorColor='bg-blue'
+                                        href="#"
+                                        className="font-mulishBold font-extrabold text-blue"
+                                        indicatorColor="bg-blue"
                                     >
                                         Finance Options?
                                     </LinkText>
@@ -305,12 +305,12 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                         />
 
                         <Button
-                            type='anchor'
-                            link='/presbyond-london/price'
-                            icon={<FaPoundSign className='h-[1.7rem] w-[1.7rem]' />}
-                            text='Pricing & Financing'
-                            iconPosition='left'
-                            className='mt-6 !gap-2 justify-self-center md:justify-self-start'
+                            type="anchor"
+                            link="/presbyond-london/price"
+                            icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
+                            text="Pricing & Financing"
+                            iconPosition="left"
+                            className="mt-6 !gap-2 justify-self-center md:justify-self-start"
                         />
                     </>
                 }
@@ -321,8 +321,8 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             <LazyComponent>
                 <StackedSection
                     stackList={presbyondStackList}
-                    h3LightHeading='Why do our patients choose our'
-                    h3BoldHeading='Presbyond laser surgery?'
+                    h3LightHeading="Why do our patients choose our"
+                    h3BoldHeading="Presbyond laser surgery?"
                     descriptions={[
                         `The answer is simple – they want to escape limitations and take charge of their life.`
                     ]}
@@ -330,7 +330,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <CtaSection2
-                title='Want to be free from reading glasses?'
+                title="Want to be free from reading glasses?"
                 descriptions={[
                     <>
                         Saying goodbye to glasses after cataract surgery is now possible with Presbyond laser treatment!
@@ -408,9 +408,9 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree
-                        h2Heading='plastic free life'
-                        h3LightHeading='Presbyond is the key to living'
-                        h3BoldHeading='a sustainable, plastic free life!'
+                        h2Heading="plastic free life"
+                        h3LightHeading="Presbyond is the key to living"
+                        h3BoldHeading="a sustainable, plastic free life!"
                         descriptions={[
                             `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
                     free of plastic waste from your glasses and contact lenses!`
@@ -418,14 +418,14 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                     />
 
                     <SideImageSection
-                        h2Heading='gift of a tree'
+                        h2Heading="gift of a tree"
                         h3LightHeading={
                             <>
                                 Saving the planet
                                 <br />
                             </>
                         }
-                        h3BoldHeading='One eye at a time!'
+                        h3BoldHeading="One eye at a time!"
                         descriptions={[
                             `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
                     a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
@@ -442,9 +442,8 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                             height: 496
                         }}
                         textColumnExtras={
-                            <div className='grid gap-6'>
-                                <span
-                                    className='max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]'>
+                            <div className="grid gap-6">
+                                <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
                                     We want to take our impact on the environment a step further and this is where the
                                     gift of a tree comes in!
                                 </span>
@@ -534,15 +533,15 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title='Presbyond Patient Information' pageSlug='presbyond-london' />
+                <PdfDownload title="Presbyond Patient Information" pageSlug="presbyond-london" />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
                     faqs={presbyondFaqList}
-                    titleLight='Presbyond Frequently'
-                    titleBold='Asked Questions'
-                    description='Have a question? We are here to help.'
+                    titleLight="Presbyond Frequently"
+                    titleBold="Asked Questions"
+                    description="Have a question? We are here to help."
                 />
             </LazyComponent>
         </Page>
@@ -556,7 +555,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'presbyond-london' });
 
         return {
             /* eslint-disable */

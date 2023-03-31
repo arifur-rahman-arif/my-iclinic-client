@@ -392,7 +392,7 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'glaucoma-treatment' });
 
         return {
             /* eslint-disable */

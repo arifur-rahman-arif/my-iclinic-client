@@ -348,7 +348,7 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'lasek-prk' });
 
         return {
             /* eslint-disable */

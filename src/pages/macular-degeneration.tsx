@@ -247,7 +247,7 @@ export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerat
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'macular-degeneration' });
 
         return {
             /* eslint-disable */

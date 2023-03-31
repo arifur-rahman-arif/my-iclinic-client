@@ -238,7 +238,7 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson }: DryEyesProps)
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'dry-eyes-treatment-london' });
 
         return {
             /* eslint-disable */

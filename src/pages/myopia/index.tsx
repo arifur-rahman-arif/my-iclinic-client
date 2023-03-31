@@ -568,7 +568,7 @@ export default function PaediatricEyeCare({ seo, yoastJson, data, blogPosts }: P
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'myopia' });
         const blogPosts = await getLatestPosts();
 
         return {

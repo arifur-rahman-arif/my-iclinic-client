@@ -187,7 +187,7 @@ export default function CornealTreatments({ seo, yoastJson }: CornealTreatmentsP
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'corneal-treatments' });
 
         return {
             /* eslint-disable */

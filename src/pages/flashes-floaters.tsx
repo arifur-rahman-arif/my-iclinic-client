@@ -320,7 +320,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'flashes-floaters' });
 
         return {
             /* eslint-disable */

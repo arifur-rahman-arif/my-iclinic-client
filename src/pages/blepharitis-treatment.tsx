@@ -247,7 +247,7 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'blepharitis-treatment' });
 
         return {
             /* eslint-disable */

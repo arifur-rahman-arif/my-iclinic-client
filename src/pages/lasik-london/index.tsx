@@ -505,7 +505,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'lasik-london' });
 
         return {
             /* eslint-disable */

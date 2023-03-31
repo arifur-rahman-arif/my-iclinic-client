@@ -489,7 +489,7 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'icl' });
 
         return {
             /* eslint-disable */

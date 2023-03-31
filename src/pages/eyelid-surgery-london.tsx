@@ -164,7 +164,7 @@ export default function EyeLidPage({ seo, yoastJson }: EyeLidPageProps): JSX.Ele
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'eyelid-surgery-london' });
 
         return {
             /* eslint-disable */

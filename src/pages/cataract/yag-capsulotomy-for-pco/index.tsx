@@ -190,7 +190,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'yag-capsulotomy-for-pco' });
 
         return {
             /* eslint-disable */

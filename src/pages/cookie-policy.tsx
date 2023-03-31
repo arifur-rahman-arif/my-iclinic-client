@@ -70,7 +70,7 @@ const CookiePolicy = ({ seo, yoastJson }: CookiePolicyProps) => {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cookie-policy' });
 
         return {
             /* eslint-disable */

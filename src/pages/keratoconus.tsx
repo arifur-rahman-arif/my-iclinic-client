@@ -260,7 +260,7 @@ export default function KeratoconusPage({ seo, yoastJson }: KeratoconusPageProps
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'keratoconus' });
 
         return {
             /* eslint-disable */

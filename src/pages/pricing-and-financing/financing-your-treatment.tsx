@@ -232,7 +232,7 @@ export default function FinancingYourTreatment({
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'financing-your-treatment' });
         const treatments = await getTreatments();
 
         return {

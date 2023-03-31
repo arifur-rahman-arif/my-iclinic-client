@@ -266,7 +266,9 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData();
+        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData({
+            slug: 'our-prices'
+        });
 
         return {
             /* eslint-disable */

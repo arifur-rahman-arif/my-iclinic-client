@@ -232,7 +232,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'paediatric-eye-care' });
 
         return {
             /* eslint-disable */

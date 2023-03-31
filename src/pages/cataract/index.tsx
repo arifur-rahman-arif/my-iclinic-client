@@ -307,7 +307,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData();
+        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cataract' });
 
         return {
             /* eslint-disable */

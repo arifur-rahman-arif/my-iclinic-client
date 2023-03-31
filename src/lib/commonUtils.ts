@@ -34,8 +34,8 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
     return {
         ...data,
         yoast_head_json: {
-            ...data.yoast_head_json,
-            schema: replaceSchemaUrl(data.yoast_head_json.schema)
+            ...(data?.yoast_head_json || null),
+            schema: replaceSchemaUrl(data?.yoast_head_json?.schema || null)
         }
     };
 };
@@ -47,6 +47,7 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
  * @returns {any}
  */
 const replaceSchemaUrl = (schema: any) => {
+    if (!schema) return null;
     return JSON.parse(JSON.stringify(schema).replaceAll(`${process.env.WP_URL}`, `${process.env.SITE_URL}`));
 };
 
