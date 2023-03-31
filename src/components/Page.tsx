@@ -25,6 +25,7 @@ interface PropInterface {
  */
 const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
     const router = useRouter();
+    const query = router?.query?.category || null;
 
     return (
         <>
@@ -39,7 +40,11 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
             <NextSeo
                 title={yoastJson?.title || title}
                 description={yoastJson?.description || description}
-                canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
+                canonical={
+                    query ?
+                        `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}?category=${query}` :
+                        `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`
+                }
             />
 
             <Head>

@@ -30,6 +30,19 @@ const ArticleMenu = ({ articles }: ArticleMenuProps): JSX.Element => {
                 className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                     isMenuActive && 'text-[#9B9FA1]'
                 }`}
+                onClick={() => {
+                    const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
+
+                    parentMenus.forEach((element: HTMLElement | null) => {
+                        if (element) {
+                            element.style.pointerEvents = 'none';
+
+                            setTimeout(() => {
+                                element.style.pointerEvents = 'auto';
+                            }, 800);
+                        }
+                    });
+                }}
             >
                 Articles
                 {isMenuActive && (

@@ -53,7 +53,7 @@ const BlogCard2 = ({
         <div className="group/card grid max-w-[40rem] items-start overflow-hidden rounded-primary border-b-4 pb-12 shadow-shadow3 transition-all duration-500 hover:border-brand hover:shadow-shadow1">
             <Link href={`/articles/${slug}` || '#'} className="max-h-[19.7rem] cursor-pointer overflow-hidden">
                 <Image
-                    src={image.src}
+                    src={image.src || '/images/section-images/placeholder-image.png'}
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""

@@ -52,6 +52,7 @@ export default function SinglePost({ post, categories, seo, yoastJson, navMenuDa
                 readTime={post.readTime}
                 views={post.views}
                 categories={post.categories || []}
+                author={post.author}
             />
 
             <BlogBody post={post} categories={categories} />

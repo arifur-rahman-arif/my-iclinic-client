@@ -35,9 +35,9 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                         <Link
                             key={index}
                             href={`/articles/${article.slug}`}
-                            className="grid grid-cols-[auto_1fr] gap-10 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:p-0 md:shadow-none md:hover:shadow-none"
+                            className="grid w-full max-w-[40rem] grid-cols-[auto_1fr] gap-10 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:p-0 md:shadow-none md:hover:shadow-none"
                         >
-                            <div className="overflow-hidden rounded-primary md:h-[7.8rem] md:w-[9.1rem]">
+                            <div className="overflow-hidden rounded-tl-primary rounded-bl-primary md:h-[7.8rem] md:w-[9.1rem] md:rounded-primary">
                                 <Image
                                     src={article.image.src || '/images/section-images/placeholder-image.png'}
                                     width={91}
