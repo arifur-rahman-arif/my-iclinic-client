@@ -122,7 +122,7 @@ const FoldItem = ({
                         className="h-6 w-[15rem]"
                     />
                 </div>
-                <p
+                <div
                     className="w-full translate-y-4 font-latoLight text-[2.8rem] leading-[3.2rem] opacity-0 md:text-[3.2rem] md:leading-[3.6rem]"
                     ref={descTextElement}
                 >
@@ -136,7 +136,7 @@ const FoldItem = ({
                         <></>
                     )}
                     {extraElements}
-                </p>
+                </div>
             </Container>
         </>
     );

@@ -2,6 +2,7 @@ import { ArticleAccordion, ArticleInterface } from '@/components/Accordion/Artic
 import { WpPageResponseInterface } from '@/types';
 import { getData } from '@/utils/apiHelpers';
 import { getCurrentFileName, wordpressPageFields } from '@/utils/miscellaneous';
+import * as process from 'process';
 
 interface GetPageDataProps {
     slug?: string;
@@ -30,7 +31,23 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
 
     const [data]: [WpPageResponseInterface<any>] = await pageResponse.json();
 
-    return data;
+    return {
+        ...data,
+        yoast_head_json: {
+            ...data.yoast_head_json,
+            schema: replaceSchemaUrl(data.yoast_head_json.schema)
+        }
+    };
+};
+
+/**
+ * Replace the schema url from wordpress yoast seo
+ *
+ * @param {any} schema
+ * @returns {any}
+ */
+const replaceSchemaUrl = (schema: any) => {
+    return JSON.parse(JSON.stringify(schema).replaceAll(`${process.env.WP_URL}`, `${process.env.SITE_URL}`));
 };
 
 /**

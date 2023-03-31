@@ -1,7 +1,7 @@
 import { Button } from '@/components/Button';
 import { TextField } from '@/components/Inputs';
 import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 
 interface PersonalInfoInterface {
@@ -69,6 +69,8 @@ const PersonalInfo = ({
     checkInputsForNextStepActivation,
     clonedElement
 }: PersonalInfoInterface): JSX.Element => {
+    const [typingTimer, setTypingTimer] = useState<any>();
+
     /**
      * Handle the phone input for onchange event
      *
@@ -77,7 +79,13 @@ const PersonalInfo = ({
     const handlePhoneInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const value = e.target.value as string;
         setPhone(value);
-        formatPhoneNumber(value).then((res) => setPhone(res));
+        clearTimeout(typingTimer);
+
+        const timeoutID = setTimeout(() => {
+            formatPhoneNumber(value).then((res) => setPhone(res));
+        }, 1000);
+
+        setTypingTimer(timeoutID);
     };
 
     /**

@@ -1,5 +1,6 @@
-import HTMLReactParser from 'html-react-parser';
+import { NextSeo } from 'next-seo';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import * as process from 'process';
 
 interface PropInterface {
@@ -23,18 +24,29 @@ interface PropInterface {
  * @constructor
  */
 const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
+    const router = useRouter();
+
     return (
         <>
+            {/* <Head> */}
+            {/*     {!yoastJson?.title && <title>{title}</title>} */}
+            {/*     {!yoastJson?.description && <meta name="description" content={description} />} */}
+
+            {/*     {seo && */}
+            {/*         HTMLReactParser(seo?.replaceAll(process.env.NEXT_PUBLIC_WP_URL, process.env.NEXT_PUBLIC_SITE_URL))} */}
+            {/* </Head> */}
+
+            <NextSeo
+                title={yoastJson?.title || title}
+                description={yoastJson?.description || description}
+                canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
+            />
+
             <Head>
-                <title>{yoastJson?.title || title}</title>
-                {!yoastJson?.description && <meta name="description" content={description} />}
-                {seo && HTMLReactParser(seo?.replaceAll(process.env.WP_URL, process.env.SITE_URL))}
-                {yoastJson && (
-                    <>
-                        <meta name="twitter:card" content={yoastJson?.twitter_card || 'summary_large_image'} />
-                        <meta name="twitter:image" content={yoastJson?.twitter_image || ''} />
-                    </>
-                )}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(yoastJson.schema) }}
+                />
             </Head>
 
             {children}

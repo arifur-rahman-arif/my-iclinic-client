@@ -35,6 +35,7 @@ specifiers:
   js-search: ^2.0.0
   libphonenumber-js: ^1.10.21
   next: 13.1.5
+  next-seo: ^5.15.0
   next-sitemap: ^4.0.2
   plyr: ^3.7.3
   prettier: ^2.8.4
@@ -64,6 +65,7 @@ dependencies:
   js-search: 2.0.0
   libphonenumber-js: 1.10.21
   next: 13.1.5_4pgn6omj4irpgog4tpnzary34q
+  next-seo: 5.15.0_s6zlkfvllybxhmcq5pkr2zsuza
   next-sitemap: 4.0.2_next@13.1.5
   plyr: 3.7.3
   react: 18.2.0
@@ -3001,6 +3003,18 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /next-seo/5.15.0_s6zlkfvllybxhmcq5pkr2zsuza:
+    resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}
+    peerDependencies:
+      next: ^8.1.1-canary.54 || >=9.0.0
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      next: 13.1.5_4pgn6omj4irpgog4tpnzary34q
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next-sitemap/4.0.2_next@13.1.5:
     resolution: {integrity: sha512-NQVzguzW6xkh0fZzmgZJ//H9f1DdvKmhJmTO1xuIPmDuZxM2Gd48CrKHXVnbK0zAx52hpyNe3ZUGkrExUWyljg==}

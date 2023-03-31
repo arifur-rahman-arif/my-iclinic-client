@@ -31,6 +31,8 @@ const Form = (): JSX.Element => {
     const [emailError, setEmailError] = useState<string>('');
     const [messageError, setMessageError] = useState<string>('');
 
+    const [typingTimer, setTypingTimer] = useState<any>();
+
     /**
      * Show the error messages while input is empty
      *
@@ -199,7 +201,15 @@ const Form = (): JSX.Element => {
                 errorText={phoneError}
                 onChange={(e) => {
                     const value = e.target.value as string;
-                    formatPhoneNumber(value).then((res) => appCtx?.setPhone(res));
+                    appCtx?.setPhone(value);
+
+                    clearTimeout(typingTimer);
+
+                    const timeoutID = setTimeout(() => {
+                        formatPhoneNumber(value).then((res) => appCtx?.setPhone(res));
+                    }, 1000);
+
+                    setTypingTimer(timeoutID);
                     setPhoneError('');
                 }}
                 onClearValue={() => {

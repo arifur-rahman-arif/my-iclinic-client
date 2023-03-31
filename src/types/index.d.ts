@@ -1,3 +1,4 @@
+import YagPricePageContentProps from './pages/yagPrice';
 import PrivacyPolicyPageContentInterface from './pages/privacyPolicy';
 import PostInterface from './api/single-post';
 import WPSettings from './api/wp-settings';
@@ -9,7 +10,9 @@ import ConjunctivitisPageContentInterface from './pages/conjunctivitis';
 import EyeDiagnosticsPageContentInterface from './pages/eyeDiagnostics';
 import LazyEyesPageContentInterface from './pages/lazyEyes';
 
+
 export type {
+    YagPricePageContentProps,
     PostInterface,
     WPSettings,
     DoubleVisionPageContentInterface,

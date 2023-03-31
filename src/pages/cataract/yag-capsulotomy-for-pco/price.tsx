@@ -1,4 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -15,14 +16,20 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-yag-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-yag-pricing-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-yag-pricing-small.png';
-import { WpPageResponseInterface } from '@/types';
+import { PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
+import YagPricePageContentProps from 'src/types/pages/yagPrice';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'));
+const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends YagPricePageContentProps, PageDataInterface<YagPricePageContentProps> {}
 
 interface IclPricingProps {
     seo: any;
     yoastJson: any;
+    data: DataInterface;
 }
 
 /**
