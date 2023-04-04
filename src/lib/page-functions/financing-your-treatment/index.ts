@@ -1,3 +1,4 @@
+import { AverageSpendInterfaceProps } from '@/page-sections/FinanceCalculator/AverageSpend';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
 import { WpPageResponseInterface } from '@/types';
 import { getData } from '@/utils/apiHelpers';
@@ -10,6 +11,7 @@ interface AcfInterface {
     minimum_instalment: string;
     maximum_instalment: string;
     default_instalment: string;
+    averageSpend: AverageSpendInterfaceProps;
 }
 
 /**
@@ -38,7 +40,8 @@ export const getTreatments = async (): Promise<TreatmentInterface[]> => {
             defaultUpfront: Number(post.acf.default_upfront_percentage),
             minInstallment: Number(post.acf.minimum_instalment),
             maxInstallment: Number(post.acf.maximum_instalment),
-            defaultInstallment: Number(post.acf.default_instalment)
+            defaultInstallment: Number(post.acf.default_instalment),
+            averageSpend: post.acf.averageSpend
         } as TreatmentInterface;
     });
 };

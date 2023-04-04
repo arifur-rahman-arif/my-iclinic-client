@@ -20,15 +20,19 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-price-small.png';
-import { AstigmatismPageContentInterface, WpPageResponseInterface } from '@/types';
+import { PageDataInterface, PricePageContentProps, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 
 import Image from 'next/image';
 import { BiRightArrowAlt } from 'react-icons/bi';
 
+interface DataInterface extends PricePageContentProps, PageDataInterface<PricePageContentProps> {}
+
 interface OurPricesProps {
     seo: any;
     yoastJson: any;
+    data: DataInterface;
 }
 
 /**
@@ -36,18 +40,18 @@ interface OurPricesProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Element {
-    const heading = 'Our private consultation and treatment prices';
-    const subheading = 'Our leading specialists';
+export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX.Element {
+    const heading = data?.masthead_heading || 'Our private consultation and treatment prices';
+    const subheading = data?.masthead_subheading || 'Our leading specialists';
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 imagePosition="object-[-14rem_0] !object-cover"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -100,11 +104,11 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
 
             <GlaucomaPackages3
                 dynamicSectionHead={<></>}
-                packageList={pricePageList1}
+                packageList={data?.section_1 || pricePageList1}
                 itemClassName="!items-stretch"
                 cardClassName="md:!place-items-start"
                 packageContainerClassName="md:!ml-0"
-                titleClassName="sticky top-[14rem]"
+                titleClassName="sticky top-[23rem]"
             />
 
             <Section>
@@ -140,7 +144,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
-                packageList={cataractPriceList}
+                packageList={data?.section_2 || cataractPriceList}
                 itemClassName="!items-stretch"
                 dynamicSectionHead={
                     <div className="px-8 xl:px-0">
@@ -152,35 +156,37 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={visionCorrectionPriceList}
+                packageList={data?.section_3 || visionCorrectionPriceList}
                 itemClassName="!items-stretch"
             />
 
             <SideImageSection
                 h3LightHeading={
                     <>
-                        Funding Your
+                        {data?.section_4?.heading?.light_heading || 'Funding Your'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Treatment"
-                descriptions={[
-                    <>
-                        Interested in funding your vision correction treatment with 24 months finance?{' '}
-                        <LinkStyle url="/pricing-and-financing/financing-your-treatment#calculator">
-                            Calculate your monthly spend
-                        </LinkStyle>{' '}
-                        for clear, permanent vision. Budget and save yourself from purchasing glasses and contact lenses
-                        in the future.
-                    </>
-                ]}
+                h3BoldHeading={data?.section_4?.heading?.bold_heading || 'Treatment'}
+                descriptions={
+                    (data?.section_4.descriptions.length && data?.section_4.descriptions) || [
+                        <>
+                            Interested in funding your vision correction treatment with 24 months finance?{' '}
+                            <LinkStyle url="/pricing-and-financing/financing-your-treatment#calculator">
+                                Calculate your monthly spend
+                            </LinkStyle>{' '}
+                            for clear, permanent vision. Budget and save yourself from purchasing glasses and contact
+                            lenses in the future.
+                        </>
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/funding-your-treatment.jpg',
+                    url: data?.section_4?.image || '/images/section-images/funding-your-treatment.jpg',
                     width: 388,
                     height: 469
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/funding-your-treatment.jpg',
+                    url: data?.section_4?.large_image || '/images/section-images/funding-your-treatment.jpg',
                     width: 659,
                     height: 687
                 }}
@@ -212,28 +218,28 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={glaucomaPriceList}
+                packageList={data?.section_5 || glaucomaPriceList}
                 itemClassName="!items-stretch"
             />
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={maculerDegenerationPriceList}
+                packageList={data?.section_6 || maculerDegenerationPriceList}
                 itemClassName="!items-stretch"
             />
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={keratoconusTreatmentPriceList}
+                packageList={data?.section_7 || keratoconusTreatmentPriceList}
                 itemClassName="!items-stretch"
             />
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
-                packageList={eyelidSurgeryPriceList}
+                packageList={data?.section_8 || eyelidSurgeryPriceList}
                 itemClassName="!items-stretch"
             />
 
@@ -244,15 +250,21 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
                 dynamicSectionHead={
                     <div className="px-8 xl:px-0">
                         <TextColumn
-                            h3LightHeading="All necessary tests are"
-                            h3BoldHeading="included in our consultation prices"
-                            descriptions={[
-                                <strong>If tests are required without a consultation the prices are as follows:</strong>
-                            ]}
+                            h3LightHeading={data?.section_9?.heading?.light_heading || 'All necessary tests are'}
+                            h3BoldHeading={
+                                data?.section_9?.heading?.bold_heading || 'included in our consultation prices'
+                            }
+                            descriptions={
+                                (data?.section_9.descriptions.length && data?.section_9.descriptions) || [
+                                    <strong>
+                                        If tests are required without a consultation the prices are as follows:
+                                    </strong>
+                                ]
+                            }
                         />
                     </div>
                 }
-                packageList={diagnosisPriceList}
+                packageList={data?.section_9?.package || diagnosisPriceList}
                 itemClassName="!items-stretch"
             />
         </Page>
@@ -266,7 +278,7 @@ export default function OurPrices({ seo, yoastJson }: OurPricesProps): JSX.Eleme
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<AstigmatismPageContentInterface> = await getPageData({
+        const data: WpPageResponseInterface<PricePageContentProps> = await getPageData({
             slug: 'our-prices'
         });
 
@@ -274,7 +286,18 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    section_4: {
+                        ...data?.acf.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions)
+                    },
+                    section_9: {
+                        ...data?.acf.section_9,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_9?.descriptions)
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

@@ -1,5 +1,5 @@
 import Cta4 from '@/page-sections/SectionParts/Cta4';
-import AverageSpend from './AverageSpend';
+import AverageSpend, { AverageSpendInterfaceProps } from './AverageSpend';
 import CostCalender from './CostCalender';
 import useFinanceHook from './hooks/useFinanceHook';
 import SurgeryController from './SurgeryController';
@@ -14,6 +14,7 @@ export interface TreatmentInterface {
     minInstallment: number;
     maxInstallment: number;
     defaultInstallment: number;
+    averageSpend?: AverageSpendInterfaceProps;
 }
 
 /**
@@ -40,7 +41,8 @@ const Treatment = ({
     defaultUpfront,
     minInstallment,
     maxInstallment,
-    defaultInstallment
+    defaultInstallment,
+    averageSpend
 }: TreatmentInterface): JSX.Element => {
     const {
         // Upfront controller related states
@@ -102,7 +104,7 @@ const Treatment = ({
 
                 {/* Average spend on glasses & contact lenses */}
                 <div className="hidden md:block">
-                    <AverageSpend />
+                    <AverageSpend {...(averageSpend as unknown as any)} />
                 </div>
             </div>
 
@@ -161,7 +163,7 @@ const Treatment = ({
 
             {/* This component is visible in mobile version at the end of this grid container  */}
             <div className="md:hidden">
-                <AverageSpend />
+                <AverageSpend {...(averageSpend as unknown as any)} />
             </div>
         </div>
     );

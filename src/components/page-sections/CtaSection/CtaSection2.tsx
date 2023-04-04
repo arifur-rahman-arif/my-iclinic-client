@@ -56,7 +56,6 @@ const CtaSection2 = ({
                     height: 514
                 }
             }
-            altText=""
             textColumnExtras={
                 textColumnExtras || (
                     <>

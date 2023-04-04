@@ -65,7 +65,7 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
                     treatmentList.map((treatment, index) => {
                         if (!treatment.active) return null;
 
-                        return <Treatment key={index} {...treatment} />;
+                        return <Treatment key={index} {...treatment} averageSpend={treatment.averageSpend} />;
                     }) :
                     null}
             </Container>

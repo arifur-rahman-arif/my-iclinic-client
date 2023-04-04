@@ -1,12 +1,23 @@
 import { BulletPoint, SideImageSection, SideImageSectionInterface } from '@/components/page-sections';
 
-interface PlasticFreeInterface extends SideImageSectionInterface {}
+interface PlasticFreeInterface extends SideImageSectionInterface {
+    image?: string;
+    largeImage?: string;
+}
+
 /**
  * Plastic free section
  *
  * @returns {*}  {JSX.Element}
  */
-const PlasticFree = ({ h2Heading, h3LightHeading, h3BoldHeading, descriptions }: PlasticFreeInterface): JSX.Element => {
+const PlasticFree = ({
+    h2Heading,
+    h3LightHeading,
+    h3BoldHeading,
+    descriptions,
+    image,
+    largeImage
+}: PlasticFreeInterface): JSX.Element => {
     return (
         <SideImageSection
             h2Heading={h2Heading}
@@ -14,12 +25,12 @@ const PlasticFree = ({ h2Heading, h3LightHeading, h3BoldHeading, descriptions }:
             h3BoldHeading={h3BoldHeading}
             descriptions={descriptions}
             sectionImage={{
-                url: '/images/section-images/plastic-free-life.png',
+                url: image || '/images/section-images/plastic-free-life.png',
                 width: 390,
                 height: 390
             }}
             sectionImageDesktop={{
-                url: '/images/section-images/plastic-free-life-desktop.png',
+                url: largeImage || '/images/section-images/plastic-free-life-desktop.png',
                 width: 685,
                 height: 587
             }}

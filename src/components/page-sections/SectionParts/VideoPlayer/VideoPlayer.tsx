@@ -4,7 +4,7 @@ import 'plyr/dist/plyr.css';
 
 interface VideoPlayerInterface {
     videoUrl: string;
-    videoPoster?: string;
+    videoPoster?: string | boolean;
     localPoster?: string;
 }
 

@@ -69,7 +69,7 @@ const LeftRightTextColumn = ({
                 )}
                 {descriptions?.map((description, index) => (
                     <FadeIn key={index}>
-                        <p>{description}</p>
+                        <div>{description}</div>
                     </FadeIn>
                 ))}
             </div>

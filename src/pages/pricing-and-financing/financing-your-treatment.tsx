@@ -13,8 +13,10 @@ import MastheadImageMedium from '@/masthead/masthead-finance-treatment-medium.pn
 import MastheadImageSmall from '@/masthead/masthead-finance-treatment-small.png';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
 import Cta4 from '@/page-sections/SectionParts/Cta4';
-import { WpPageResponseInterface } from '@/types';
+import { FinanceTreatmentPageContents, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { getElementTopPosition } from '@/utils/miscellaneous';
+import HTMLReactParser from 'html-react-parser';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -25,8 +27,10 @@ const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLog
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {}
+
 interface FinancingYourTreatmentProps {
-    data: any;
+    data: DataInterface;
     treatments: TreatmentInterface[];
     seo: any;
     yoastJson: any;
@@ -89,7 +93,7 @@ export default function FinancingYourTreatment({
                             onClick={() => {
                                 window.scrollTo(
                                     0,
-                                    getElementTopPosition(document.querySelector('#calculator') as HTMLElement) - 150
+                                    getElementTopPosition(document.querySelector('#calculator') as HTMLElement) - 200
                                 );
                             }}
                             icon={
@@ -132,34 +136,36 @@ export default function FinancingYourTreatment({
             <FullWidthImageSection
                 boldHeading={
                     <div className="md:max-w-[54.4rem]">
-                        {data?.full_width_image_section.heading || 'Correct your vision from just £150 per month'}
+                        {data?.section_1.heading || 'Correct your vision from just £150 per month'}
                     </div>
                 }
                 altText=""
                 description={
-                    (data?.full_width_image_section.descriptions?.length &&
-                        data?.full_width_image_section.descriptions) || [
+                    (data?.section_1.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_1.descriptions)) || [
                         <H3Variant2>How much do you currently spend on your glasses and contact lenses?</H3Variant2>,
                         'Over time the cost of purchasing glasses and everyday contact lenses add up to a massive, inconvenient spend.'
                     ]
                 }
-                image={data?.full_width_image_section.image || '/images/section-images/monthly-spending-finance.png'}
-                desktopImage={
-                    data?.full_width_image_section.large_image || '/images/section-images/monthly-spending-finance.png'
-                }
+                image={data?.section_1.image || '/images/section-images/monthly-spending-finance.png'}
+                desktopImage={data?.section_1.large_image || '/images/section-images/monthly-spending-finance.png'}
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
 
             <Section>
                 <Container className="grid place-items-center">
-                    <H3Variant2 className="max-w-[79.7rem] text-center !font-mulishLight">
-                        Our vision correction treatments provide a{' '}
-                        <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[3rem] md:leading-[3.6rem]">
-                            24 month finance option from £150/Per eye, per month for permanently clear vision,
-                        </strong>{' '}
-                        without the hassle of glasses and contact lenses.
-                    </H3Variant2>
+                    {data?.calculator_heading ? (
+                        HTMLReactParser(data.calculator_heading)
+                    ) : (
+                        <H3Variant2 className="max-w-[79.7rem] text-center !font-mulishLight">
+                            Our vision correction treatments provide a{' '}
+                            <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[3rem] md:leading-[3.6rem]">
+                                24 month finance option from £150/Per eye, per month for permanently clear vision,
+                            </strong>{' '}
+                            without the hassle of glasses and contact lenses.
+                        </H3Variant2>
+                    )}
                 </Container>
             </Section>
 
@@ -167,38 +173,68 @@ export default function FinancingYourTreatment({
 
             <Section id="insurance">
                 <Container className="grid place-items-center gap-6">
-                    <H3Variant2 className="text-center">Our health insurance partners</H3Variant2>
-                    <p className="text-center">
-                        <strong>Understanding how your health insurance covers your fees:</strong>
-                    </p>
-                    <p className="max-w-[45.4rem] text-center">
-                        You are eligible to use your health insurance with our partnered insurance companies
-                    </p>
+                    {data?.section_3 ? (
+                        HTMLReactParser(data.section_3)
+                    ) : (
+                        <>
+                            <H3Variant2 className="text-center">Our health insurance partners</H3Variant2>
+                            <p className="text-center">
+                                <strong>Understanding how your health insurance covers your fees:</strong>
+                            </p>
+                            <p className="max-w-[45.4rem] text-center">
+                                You are eligible to use your health insurance with our partnered insurance companies
+                            </p>
+                        </>
+                    )}
                 </Container>
             </Section>
 
             <Container>
                 <div className="mt-12 flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:mt-24 md:gap-14">
-                    <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
-                    <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
-                    <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
-                    <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
-                    <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
-                    <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
+                    {data?.section_4 ? (
+                        HTMLReactParser(data.section_4)
+                    ) : (
+                        <>
+                            <Image
+                                src="/images/logos/healthcare-practice.png"
+                                width={185}
+                                height={50}
+                                alt=""
+                                quality={100}
+                            />
+                            <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
+                            <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
+                            <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
+                            <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
+                            <Image
+                                src="/images/logos/general-medical.png"
+                                width={85}
+                                height={83}
+                                alt=""
+                                quality={100}
+                            />
+                        </>
+                    )}
                 </div>
             </Container>
 
             <Section className="!mt-12 bg-brandLight md:!mt-16">
                 <Container className="grid place-items-center gap-12 py-12 md:py-24 xl:py-32">
-                    <H3Variant1 className="block max-w-[89.5rem] text-center">
-                        It's always best to check with your healthcare insurance provider that they will cover your fees
-                        and provide a pre-authorisation code for you.
-                    </H3Variant1>
+                    {data?.section_5 ? (
+                        HTMLReactParser(data.section_5)
+                    ) : (
+                        <>
+                            <H3Variant1 className="block max-w-[89.5rem] text-center">
+                                It's always best to check with your healthcare insurance provider that they will cover
+                                your fees and provide a pre-authorisation code for you.
+                            </H3Variant1>
 
-                    <H4Variant1 className="text-center">
-                        <span className="text-[#F3411A]">Important:</span> We will require your pre-authorization code
-                        before your consultation
-                    </H4Variant1>
+                            <H4Variant1 className="text-center">
+                                <span className="text-[#F3411A]">Important:</span> We will require your
+                                pre-authorization code before your consultation
+                            </H4Variant1>
+                        </>
+                    )}
 
                     {/* Cta section */}
                     <div className="grid place-items-center md:mt-12 xl:mt-28">
@@ -232,7 +268,9 @@ export default function FinancingYourTreatment({
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'financing-your-treatment' });
+        const data: WpPageResponseInterface<FinanceTreatmentPageContents> = await getPageData({
+            slug: 'financing-your-treatment'
+        });
         const treatments = await getTreatments();
 
         return {
@@ -240,7 +278,14 @@ export async function getStaticProps() {
             props: {
                 treatments,
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    section_1: {
+                        ...data?.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

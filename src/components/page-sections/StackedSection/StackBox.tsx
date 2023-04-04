@@ -1,6 +1,7 @@
 import { FadeIn } from '@/components/Animations';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { pinAnimation } from '@/utils/gsapFunctions';
+import HTMLReactParser from 'html-react-parser';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useRef } from 'react';
 
@@ -84,7 +85,7 @@ const StackBox = ({
 
             <div
                 style={{
-                    maxWidth: boxWidth
+                    maxWidth: boxWidth || '51.4rem'
                 }}
                 className={`grid gap-6 md:absolute md:top-2/4 md:-translate-y-2/4 md:gap-12 md:rounded-primary md:bg-white md:p-12 ${
                     isEven ? 'left-0' : 'right-0'
@@ -116,7 +117,7 @@ const StackBox = ({
                 <div className="grid gap-6">
                     {descriptions.map((desc, index) => (
                         <FadeIn key={index}>
-                            <p>{desc}</p>
+                            <div>{typeof desc === 'string' ? HTMLReactParser(desc) : desc}</div>
                         </FadeIn>
                     ))}
                 </div>
