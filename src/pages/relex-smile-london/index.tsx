@@ -27,8 +27,9 @@ import {
     StackColumn
 } from '@/page-sections/index';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
-import { default as LaserEyeSurgery, default as LaserEyeSurgeryLarge } from '@/section-images/laser-eye-surgery.png';
-import { WpPageResponseInterface } from '@/types';
+import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -62,9 +63,12 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/Bo
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends RelexSmilePageContentProps, PageDataInterface<RelexSmilePageContentProps> {}
+
 interface RelexSmileLondonProps {
     seo: any;
     yoastJson: any;
+    data: DataInterface;
 }
 
 /**
@@ -73,11 +77,11 @@ interface RelexSmileLondonProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonProps): JSX.Element {
+export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLondonProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'ReLEx SMILE Laser Eye Surgery London';
-    const subheading = 'London’s latest laser vision correction procedure';
+    const heading = data?.masthead_heading || 'ReLEx SMILE Laser Eye Surgery London';
+    const subheading = data?.masthead_subheading || 'London’s latest laser vision correction procedure';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -86,6 +90,35 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    const serviceList: any = data?.section_2.length ?
+        data?.section_2.map((service) => {
+            return {
+                ...service,
+                mobileImage: (
+                      <Image
+                          src={service.mobileImage}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="md:hidden"
+                          alt=""
+                      />
+                ),
+                desktopImage: (
+                      <Image
+                          src={service.desktopImage}
+                          width={685}
+                          height={557}
+                          quality={70}
+                          className="hidden md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                ),
+                descriptions: stringArrayToElementArray(service.descriptions)
+            };
+        }) :
+        null;
 
     return (
         <Page
@@ -97,9 +130,9 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 altText="Man travelling without glasses for vision correction"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
@@ -122,11 +155,20 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                         ))}
                     </h2>
                 }
+                priceText={data?.masthead_price}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">
+                        {data?.request_callback_title ? (
+                            HTMLReactParser(data.request_callback_title)
+                        ) : (
+                            <>Talk to a specialist</>
+                        )}
+                    </strong>
                 </h2>
             </Container>
 
@@ -137,36 +179,46 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             <FullWidthImageSection
                 h3Title={
                     <>
-                        Say hello to clear vision <br /> with ReLEx SMILE Laser
-                        <br /> Eye Surgery!
+                        {data?.section_1.heading ? (
+                            HTMLReactParser(data.section_1.heading)
+                        ) : (
+                            <>
+                                Say hello to clear vision <br /> with ReLEx SMILE Laser
+                                <br /> Eye Surgery!
+                            </>
+                        )}
                     </>
                 }
                 containerClass="md:!grid-cols-1 lg:!grid-cols-[1fr_auto] md:!py-0 lg:!py-24"
                 altText="Man with luggage at airport"
-                image={LaserEyeSurgery}
-                desktopImage={LaserEyeSurgeryLarge}
                 includeScrollDownButton
-                videoUrl="/videos/relex-smile-vision-correction-treatment-explained.mp4"
+                videoUrl={
+                    data?.section_1?.video?.src || '/videos/relex-smile-vision-correction-treatment-explained.mp4'
+                }
                 videoPoster="D7qX9brFvCw"
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListRelexSmileLondon} />
+                <LeftRightSection childrenList={serviceList || leftRightListRelexSmileLondon} />
             </LazyComponent>
 
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our ReLEx patients say after treatment"
-                    h3Heading="Hear from a patient"
+                    h2Heading={data?.section_3?.heading || 'What our ReLEx patients say after treatment'}
+                    h3Heading={data?.section_3?.subheading || 'Hear from a patient'}
                     darkPin
-                    descriptions={[
-                        `When you choose My-iClinic’s 5-star rated services, you can rest assured that
+                    descriptions={
+                        (data?.section_3.descriptions.length &&
+                            stringArrayToElementArray(data?.section_3.descriptions)) || [
+                            `When you choose My-iClinic’s 5-star rated services, you can rest assured that
                          you’ve made the best possible choice for your eyesight. Our specialist
                           optometrists carefully work with you to evaluate your eyes to offer you the best
                            possible course of treatment – allowing you to re-discover a life of normal vision.`
-                    ]}
-                    videoUrl="/videos/relex-smile.mp4"
-                    videoPoster="e3z34A3mmeI"
+                        ]
+                    }
+                    videoUrl={data?.section_3?.video?.src || '/videos/relex-smile.mp4'}
+                    videoPoster={!data?.section_3?.video?.src && 'e3z34A3mmeI'}
+                    localPoster={data?.section_3?.video?.poster}
                 />
             </LazyComponent>
 
@@ -174,47 +226,57 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                 <BottomBanner2 />
             </LazyComponent>
 
-            <CtaSection subtitle="Vision correction options" />
-
-            <SideImageSection
-                h2Heading="Why RELEX SMILE"
-                h3LightHeading={
-                    <>
-                        The benefits of ReLEx <br />
-                    </>
-                }
-                h3BoldHeading="Smile laser eye surgery!"
-                descriptions={[
-                    `When you choose My-iClinic’s 5-star rated services, you can rest assured that
-                     you’ve made the best possible choice for your eyesight.`,
-                    `Our specialists here in London will carefully work with you to evaluate your eyes,
-                    offering you the best possible course of treatment. Take the first step and allow yourself
-                     to re-discover a life of clear, natural vision.`
-                ]}
-                customColumn={<GridColumn />}
+            <CtaSection
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading || 'Vision correction options'}
             />
 
             <SideImageSection
-                h2Heading="improve your life's quality"
+                h2Heading={data?.section_4?.subheading || 'Why RELEX SMILE'}
                 h3LightHeading={
                     <>
-                        Step closer to a life of
+                        {data?.section_4.heading?.light_heading || 'The benefits of ReLEx'} <br />
+                    </>
+                }
+                h3BoldHeading={data?.section_4.heading?.bold_heading || 'Smile laser eye surgery!'}
+                descriptions={
+                    (data?.section_4.descriptions.length &&
+                        stringArrayToElementArray(data?.section_4.descriptions)) || [
+                        `When you choose My-iClinic’s 5-star rated services, you can rest assured that
+                     you’ve made the best possible choice for your eyesight.`,
+                        `Our specialists here in London will carefully work with you to evaluate your eyes,
+                    offering you the best possible course of treatment. Take the first step and allow yourself
+                     to re-discover a life of clear, natural vision.`
+                    ]
+                }
+                customColumn={<GridColumn cardList={data?.section_4.card_list} />}
+            />
+
+            <SideImageSection
+                h2Heading={data?.section_5?.subheading || "improve your life's quality"}
+                h3LightHeading={
+                    <>
+                        {data?.section_5.heading?.light_heading || 'Step closer to a life of'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Clear, natural vision!"
-                descriptions={[
-                    `Have you or one of your loved ones finally decided to do something about being short-sighted or
+                h3BoldHeading={data?.section_5.heading?.bold_heading || 'Clear, natural vision!'}
+                descriptions={
+                    (data?.section_5.descriptions.length &&
+                        stringArrayToElementArray(data?.section_5.descriptions)) || [
+                        `Have you or one of your loved ones finally decided to do something about being short-sighted or
                      having astigmatism? To begin the ReLEx SMILE process, give us a call or book a consultation with
                       our friendly team today.`
-                ]}
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/clear-natural-vision.png',
+                    url: data?.section_5?.image || '/images/section-images/clear-natural-vision.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/clear-natural-vision-large.png',
+                    url: data?.section_5?.large_image || '/images/section-images/clear-natural-vision-large.png',
                     width: 675,
                     height: 558
                 }}
@@ -281,53 +343,57 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             />
 
             <SideImageSection
-                h2Heading="Why laser Relex smile"
+                h2Heading={data?.section_6?.subheading || 'Why laser Relex smile'}
                 h3LightHeading={
                     <>
-                        Why consider our ReLEx SMILE Laser eye surgery
+                        {data?.section_6?.heading?.light_heading || 'Why consider our ReLEx SMILE Laser eye surgery'}
                         <br />
                     </>
                 }
-                h3BoldHeading="When you already have glasses or contact lenses?"
+                h3BoldHeading={
+                    data?.section_6?.heading?.bold_heading || 'When you already have glasses or contact lenses?'
+                }
                 sectionImage={{
-                    url: '/images/section-images/laser-relex-smile.png',
+                    url: data?.section_6?.image || '/images/section-images/laser-relex-smile.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/laser-relex-smile-large.png',
+                    url: data?.section_6?.large_image || '/images/section-images/laser-relex-smile-large.png',
                     width: 682,
                     height: 686
                 }}
                 altText="Male athlete on bike after laser eye surgery"
                 textColumnImage={true}
-                customColumn={<StackColumn />}
+                customColumn={<StackColumn stackList={data?.section_6?.list} />}
                 containerClassName="!items-start"
             />
 
             <SideImageSection
-                h2Heading="Right treatment for you"
+                h2Heading={data?.section_7?.subheading || 'Right treatment for you'}
                 h3LightHeading={
                     <>
-                        Do you think ReLEx
-                        <br /> SMILE could
+                        {data?.section_7?.heading?.light_heading || 'Do you think ReLEx SMILE could'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Be the right treatment for you?"
-                descriptions={[
-                    <>
-                        To begin the ReLEx SMILE process, give us a call or book your <strong>free consultation</strong>{' '}
-                        with our friendly team today.
-                    </>
-                ]}
+                h3BoldHeading={data?.section_7?.heading?.bold_heading || 'Be the right treatment for you?'}
+                descriptions={
+                    (data?.section_7.descriptions.length &&
+                        stringArrayToElementArray(data?.section_7.descriptions)) || [
+                        <>
+                            To begin the ReLEx SMILE process, give us a call or book your{' '}
+                            <strong>free consultation</strong> with our friendly team today.
+                        </>
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/right-treatment.png',
+                    url: data?.section_7?.image || '/images/section-images/right-treatment.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/right-treatment-large.png',
+                    url: data?.section_7?.large_image || '/images/section-images/right-treatment-large.png',
                     width: 657,
                     height: 554
                 }}
@@ -394,21 +460,25 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree
-                        h2Heading="plastic free life"
-                        h3LightHeading={
-                            <>
-                                ReLEx SMILE is the key
-                                <br /> to living
-                            </>
+                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
+                        h3LightHeading={HTMLReactParser(
+                            data?.sustainability_section?.plastic_free_life?.heading.light_heading ||
+                                'ReLEx SMILE is the key<br /> to living'
+                        )}
+                        h3BoldHeading={HTMLReactParser(
+                            data?.sustainability_section?.plastic_free_life?.heading.bold_heading ||
+                                'a sustainable, <br /> plastic free life!'
+                        )}
+                        descriptions={
+                            (data?.sustainability_section?.plastic_free_life?.descriptions.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section.plastic_free_life.descriptions
+                                )) || [
+                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style, free of plastic waste from your glasses and contact lenses!`
+                            ]
                         }
-                        h3BoldHeading={
-                            <>
-                                a sustainable, <br /> plastic free life!
-                            </>
-                        }
-                        descriptions={[
-                            `The most sustainable, green lifestyle to have is when you have a plastic free eye-style, free of plastic waste from your glasses and contact lenses!`
-                        ]}
+                        image={data?.sustainability_section?.plastic_free_life?.image}
+                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image}
                     />
 
                     {/* <DrawLine
@@ -452,31 +522,36 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
             /> */}
 
                     <SideImageSection
-                        h2Heading="gift of a tree"
-                        h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading="One eye at a time!"
-                        descriptions={[
-                            `When undergoing laser eye surgery, you may not realize it but you are already making a positive
+                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
+                        h3LightHeading={HTMLReactParser(
+                            data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
+                                'Saving the planet <br />'
+                        )}
+                        h3BoldHeading={HTMLReactParser(
+                            data?.sustainability_section?.gift_of_a_tree?.heading.bold_heading || 'One eye at a time!'
+                        )}
+                        descriptions={
+                            (data?.sustainability_section?.gift_of_a_tree?.descriptions.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section.gift_of_a_tree.descriptions
+                                )) || [
+                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
                      difference to the environment. For every 10 years of contact lens wearing the amount of plastic
                       that ends up in the ocean is roughly the same as your own body weight.`,
-                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                Our gift to you…
-                            </span>,
-                            `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                            <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                Here at My-iClinic we give all of our laser patients a real forest tree!
-                            </span>,
-                            `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Our gift to you…
+                                </span>,
+                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Here at My-iClinic we give all of our laser patients a real forest tree!
+                                </span>,
+                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
                      value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
                       contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
                       to replace it.`,
-                            `This is our big thank you for choosing a natural, green living eye-style.`
-                        ]}
+                                `This is our big thank you for choosing a natural, green living eye-style.`
+                            ]
+                        }
                         sectionImage={{
                             url: '/images/section-images/gift-of-a-tree.png',
                             width: 390,
@@ -502,7 +577,14 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
                             height: 234
                         }}
                     /> */}
-                    <ClimateChange />
+                    <ClimateChange
+                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
+                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
+                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
+                        image={data?.sustainability_section?.clearer_vision?.image}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image}
+                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
+                    />
                 </SustainableSlider>
             </LazyComponent>
 
@@ -537,13 +619,69 @@ export default function RelexSmileLondon({ seo, yoastJson }: RelexSmileLondonPro
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'relex-smile-london' });
+        const data: WpPageResponseInterface<RelexSmilePageContentProps> = await getPageData({
+            slug: 'relex-smile-london'
+        });
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    section_2: data?.acf?.section_2?.map((sectionData) => {
+                        return {
+                            ...sectionData,
+                            descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
+                        };
+                    }),
+                    section_3: {
+                        ...data?.acf.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions)
+                    },
+                    section_4: {
+                        ...data?.acf.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions)
+                    },
+                    section_5: {
+                        ...data?.acf.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions)
+                    },
+                    section_6: {
+                        ...data?.acf?.section_6,
+                        list: data?.acf.section_6?.list.map((item) => {
+                            return {
+                                ...item,
+                                descriptions: convertArrayOfObjectsToStrings(item.descriptions)
+                            };
+                        })
+                    },
+                    section_7: {
+                        ...data?.acf?.section_7,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions)
+                    },
+                    sustainability_section: {
+                        plastic_free_life: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                            )
+                        },
+                        gift_of_a_tree: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                            )
+                        },
+                        clearer_vision: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.clearer_vision.descriptions
+                            )
+                        }
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

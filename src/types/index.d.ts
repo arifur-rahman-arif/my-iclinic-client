@@ -1,3 +1,7 @@
+import FinanceTreatmentPageContents from 'src/types/pages/financeTreatment';
+import RelexSmilePageContentProps from './pages/relexSmile';
+import MyopiaPageContentProps from './pages/myopia';
+import PricePageContentProps from './pages/price';
 import YagPricePageContentProps from './pages/yagPrice';
 import PrivacyPolicyPageContentInterface from './pages/privacyPolicy';
 import PostInterface from './api/single-post';
@@ -10,8 +14,11 @@ import ConjunctivitisPageContentInterface from './pages/conjunctivitis';
 import EyeDiagnosticsPageContentInterface from './pages/eyeDiagnostics';
 import LazyEyesPageContentInterface from './pages/lazyEyes';
 
-
 export type {
+    FinanceTreatmentPageContents,
+    RelexSmilePageContentProps,
+    MyopiaPageContentProps,
+    PricePageContentProps,
     YagPricePageContentProps,
     PostInterface,
     WPSettings,

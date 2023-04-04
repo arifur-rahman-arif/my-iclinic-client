@@ -1,7 +1,5 @@
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import * as process from 'process';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
@@ -24,8 +22,8 @@ interface PropInterface {
  * @constructor
  */
 const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
-    const router = useRouter();
-    const query = router?.query?.category || null;
+    // const router = useRouter();
+    // const query = router?.query?.category || null;
 
     return (
         <>
@@ -40,17 +38,18 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
             <NextSeo
                 title={yoastJson?.title || title}
                 description={yoastJson?.description || description}
-                canonical={
-                    query ?
-                        `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}?category=${query}` :
-                        `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`
-                }
+                // canonical={
+                //     query ?
+                //         `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}?category=${query}` :
+                //         `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`
+                // }
+                // canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`}
             />
 
             <Head>
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(yoastJson.schema) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(yoastJson?.schema) }}
                 />
             </Head>
 

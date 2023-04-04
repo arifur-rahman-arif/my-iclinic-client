@@ -1,7 +1,7 @@
 import { ArticleAccordion, ArticleInterface } from '@/components/Accordion/ArticlesSubmenuAccordion/AccordionItem';
 import { WpPageResponseInterface } from '@/types';
 import { getData } from '@/utils/apiHelpers';
-import { getCurrentFileName, wordpressPageFields } from '@/utils/miscellaneous';
+import { wordpressPageFields } from '@/utils/miscellaneous';
 import * as process from 'process';
 
 interface GetPageDataProps {
@@ -18,11 +18,7 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
     WpPageResponseInterface<any>
 > => {
     const pageResponse: Response = await getData({
-        url:
-            url ||
-            `${process.env.WP_REST_URL}/pages?slug=${slug || getCurrentFileName(__filename)}&_fields=${
-                fields || wordpressPageFields()
-            }`
+        url: url || `${process.env.WP_REST_URL}/pages?slug=${slug}&_fields=${fields || wordpressPageFields()}`
     });
 
     if (!pageResponse.ok) {

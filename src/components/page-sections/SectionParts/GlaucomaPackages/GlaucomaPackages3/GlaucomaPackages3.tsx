@@ -1,11 +1,12 @@
 import { Container } from '@/components/Container';
 import { H3Variant3 } from '@/components/Headings';
-import { defaultList } from './packageList';
 import { Section } from '@/components/Section';
 import { useOnScreen } from '@/hooks';
 import { TextColumn } from '@/page-sections/index';
+import HTMLReactParser from 'html-react-parser';
 import { ReactNode, useRef } from 'react';
 import H3Variant1 from 'src/components/Headings/H3Variant1';
+import { defaultList } from './packageList';
 
 interface ItemInterface {
     title: string;
@@ -122,13 +123,15 @@ const Item = ({ title, price, description }: ItemInterface): JSX.Element => {
         <div className="grid grid-cols-1 items-center gap-2 md:grid-cols-[auto_1fr_auto] md:gap-10" ref={containerRef}>
             <H3Variant3>{title}</H3Variant3>
             <div className={`bg-yellow transition-all duration-[2.5s] ${onEnter ? 'w-full' : 'w-0'} h-[0.2rem]`}></div>
-            <span className="font-mulishBold text-[2rem] leading-[2.8rem]">{price}</span>
+            <span className="font-mulishBold text-[2rem] leading-[2.8rem]">
+                {typeof price === 'string' ? HTMLReactParser(price) : price}
+            </span>
             {description && (
                 <div className="md:col-span-2">
                     {Array.isArray(description) ? (
                         <div className="grid gap-6">
                             {description.map((item, index) => (
-                                <div key={index}>{item}</div>
+                                <div key={index}>{typeof item === 'string' ? HTMLReactParser(item) : item}</div>
                             ))}
                         </div>
                     ) : (

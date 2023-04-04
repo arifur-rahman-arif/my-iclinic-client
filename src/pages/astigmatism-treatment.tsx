@@ -14,7 +14,7 @@ import MastheadImageSmall from '@/masthead/masthead-astigmatism-small.png';
 import { astigmatismFaqList } from '@/page-sections/Faq/faqList';
 import { BulletList, CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { AstigmatismPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -115,7 +115,8 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 }
                 h3BoldHeading={data?.section_1.heading?.bold_heading || 'children and adults'}
                 descriptions={
-                    (data?.section_1.descriptions.length && data?.section_1.descriptions) || [
+                    (data?.section_1.descriptions.length &&
+                        stringArrayToElementArray(data?.section_1.descriptions)) || [
                         'Astigmatism is a condition which causes blurry vision. Astigmatism develops when the shape of your eye (your cornea or lens) isn’t perfectly round.',
                         'This means the light which your eye needs to perceive clear vision bends in the wrong way and refracts in multiple directions, leading to distorted sight and blurry vision.',
                         'If you currently wear glasses and/or contact lenses and are still experiencing blurry vision, you may have irregular astigmatism, which can be permanently corrected by our vision correction procedures.'
@@ -249,10 +250,9 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                         )}
                     </>
                 }
-                altText=""
                 description={
                     (data?.full_width_image_section.descriptions?.length &&
-                        data?.full_width_image_section.descriptions) || [
+                        stringArrayToElementArray(data.full_width_image_section.descriptions)) || [
                         'If you wear hard contact lenses, we advise you not to wear these for a minimum of two weeks (including a week for every decade you have worn hard contact lenses) before your consultation.',
                         'This is to make sure the cornea of your eye is ready for measurements to be taken accurately.',
                         'Our eye assessments & scans include a Keratometry test, a visual acuity test, a refraction test and any additional scanning required to accurately measure the shape of your cornea, the axial length of your eye and your prescription.',

@@ -1,6 +1,7 @@
 import { H3Variant3 } from '@/components/Headings';
 import IconAngle from '@/icons/icon-angle-right.svg';
 import BulletList from '@/page-sections/SectionParts/BulletList';
+import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -89,7 +90,7 @@ const Card = ({ title, descriptions }: CardInterface): JSX.Element => {
             <div className="grid content-start gap-6">
                 <H3Variant3>{title}</H3Variant3>
                 {descriptions.map((item, index) => (
-                    <div key={index}>{item}</div>
+                    <div key={index}>{typeof item === 'string' ? HTMLReactParser(item) : item}</div>
                 ))}
             </div>
         </div>

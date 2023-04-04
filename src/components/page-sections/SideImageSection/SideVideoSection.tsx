@@ -15,7 +15,7 @@ type ImageType = {
 export interface SideVideoSectionInterface {
     h2Heading?: string;
     h3Heading?: string;
-    descriptions?: string[];
+    descriptions?: ReactNode[];
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: string;
@@ -28,7 +28,8 @@ export interface SideVideoSectionInterface {
     noPin?: boolean;
     beforeAttribute?: boolean;
     videoUrl?: string;
-    videoPoster?: string;
+    videoPoster?: string | boolean;
+    localPoster?: string;
 }
 
 /**
@@ -61,7 +62,8 @@ const SideVideoSection = ({
     noPin,
     beforeAttribute,
     videoPoster,
-    videoUrl
+    videoUrl,
+    localPoster
 }: SideVideoSectionInterface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement | null>(null);
@@ -125,7 +127,11 @@ const SideVideoSection = ({
                     </div>
                 </div>
 
-                <VideoPlayer videoUrl={videoUrl || '/videos/video-1.mp4'} videoPoster={videoPoster || 'WUkLbxQYWME'} />
+                <VideoPlayer
+                    videoUrl={videoUrl || '/videos/video-1.mp4'}
+                    videoPoster={videoPoster || 'WUkLbxQYWME'}
+                    localPoster={localPoster}
+                />
             </Container>
         </Section>
     );

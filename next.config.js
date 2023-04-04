@@ -2,6 +2,7 @@
 //     enabled: process.env.ANALYZE === 'true'
 // });
 //
+const redirects = require('./redirections.json');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -58,22 +59,14 @@ const nextConfig = {
         // ],
     },
     async rewrites() {
-        return [
-            {
-                source: '/robots.txt',
-                destination: '/api/robots'
-            }
-        ];
+        return [{
+            source: '/robots.txt',
+            destination: '/api/robots'
+        }];
+    },
+    async redirects() {
+        return redirects.map(redirect => redirect);
     }
-    // webpack(config, options) {
-    //     config.module.rules.push({
-    //         test: /\.svg$/i,
-    //         issuer: /\.[jt]sx?$/,
-    //         use: ['@svgr/webpack', 'url-loader']
-    //     });
-
-    //     return config;
-    // },
     // Need this, if it is a static file export
     // trailingSlash: true,
     // experimental:{appDir: true}
