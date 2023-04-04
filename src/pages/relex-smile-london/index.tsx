@@ -630,12 +630,14 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
-                    section_2: data?.acf?.section_2?.map((sectionData) => {
-                        return {
-                            ...sectionData,
-                            descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
-                        };
-                    }),
+                    section_2: Array.isArray(data?.acf?.section_2)
+                        ? data?.acf.section_2.map((sectionData) => {
+                              return {
+                                  ...sectionData,
+                                  descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
+                              };
+                          })
+                        : [],
                     section_3: {
                         ...data?.acf.section_3,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions)
@@ -650,12 +652,14 @@ export async function getStaticProps() {
                     },
                     section_6: {
                         ...data?.acf?.section_6,
-                        list: data?.acf.section_6?.list.map((item) => {
-                            return {
-                                ...item,
-                                descriptions: convertArrayOfObjectsToStrings(item.descriptions)
-                            };
-                        })
+                        list: Array.isArray(data?.acf.section_6?.list)
+                            ? data?.acf.section_6?.list.map((item) => {
+                                  return {
+                                      ...item,
+                                      descriptions: convertArrayOfObjectsToStrings(item.descriptions)
+                                  };
+                              })
+                            : []
                     },
                     section_7: {
                         ...data?.acf?.section_7,
