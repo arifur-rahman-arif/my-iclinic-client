@@ -65,8 +65,27 @@ const nextConfig = {
         }];
     },
     async redirects() {
-        return redirects.map(redirect => redirect);
+        return [
+            {
+                source: '/eye-conditions/cataracts',
+                destination: '/cataract',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/conjunctivitis',
+                destination: '/conjuctivitis-treatment-london',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/double-vision',
+                destination: '/double-vision-treatment-london',
+                permanent: true
+            }
+        ];
     }
+    // async redirects() {
+    //     return redirects.map(redirect => redirect);
+    // }
     // Need this, if it is a static file export
     // trailingSlash: true,
     // experimental:{appDir: true}
