@@ -21,6 +21,11 @@ export interface PageDataInterface<I> extends I {
         heading: string,
         description: string
     },
+    faq_list: Array<{
+        title: string;
+        description: string;
+        shortDescription: string;
+    }>
 }
 
 export default interface WpPageResponseInterface<PageContentInterface> {

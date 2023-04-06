@@ -1,15 +1,13 @@
+import store from '@/store';
 import '@/styles/globals.scss';
-import '../../build/styles/tailwind.css';
-import { DefaultSeo } from 'next-seo';
 
-import { MainLayout, NoNavigationLayout } from 'src/layouts';
+import { Lato, Mulish } from '@next/font/google';
 
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import store from '@/store';
 
-import { Lato } from '@next/font/google';
-import { Mulish } from '@next/font/google';
+import { MainLayout, NoNavigationLayout } from 'src/layouts';
+import '../../build/styles/tailwind.css';
 
 const latoLight = Lato({
     weight: '300',
@@ -86,21 +84,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                     --mulish-extra-bold: ${muslishExtraBold.style.fontFamily};
                 }
             `}</style>
-            <DefaultSeo
-                title="My-iClinic"
-                description="Our specialist consultants offer a selection of laser eye surgery and lens surgery treatments that allow you to discover crystal clear vision."
-                openGraph={{
-                    type: 'website',
-                    locale: 'en_IE',
-                    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-                    siteName: 'My-iClinic'
-                }}
-                twitter={{
-                    handle: '@handle',
-                    site: '@site',
-                    cardType: 'summary_large_image'
-                }}
-            />
             <Provider store={store}>
                 <PageLayout>
                     <Component {...pageProps} />

@@ -606,7 +606,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
 
             <LazyComponent>
                 <Faq
-                    faqs={myopiaFaqList}
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || myopiaFaqList}
                     titleLight="Myopia Frequently"
                     titleBold="Asked Questions"
                     description="Have a question? We are here to help."
