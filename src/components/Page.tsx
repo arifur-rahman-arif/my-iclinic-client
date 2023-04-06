@@ -1,7 +1,7 @@
 // @ts-nocheck
-
 import HTMLReactParser from 'html-react-parser';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
@@ -24,12 +24,16 @@ interface PropInterface {
  * @constructor
  */
 const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
+    const router = useRouter();
+
     return (
         <>
             <Head>
                 {!yoastJson?.title && <title>{title}</title>}
                 {!yoastJson?.description && <meta name="description" content={description} />}
 
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+                <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 {seo && HTMLReactParser(seo)}
 
                 {/* <script */}

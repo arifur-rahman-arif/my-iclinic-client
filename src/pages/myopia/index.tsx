@@ -625,7 +625,6 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<MyopiaPageContentProps> = await getPageData({ slug: 'myopia' });
         const blogPosts = await getLatestPosts();
-
         return {
             /* eslint-disable */
             props: {

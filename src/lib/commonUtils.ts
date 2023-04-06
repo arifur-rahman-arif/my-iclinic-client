@@ -29,9 +29,9 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
 
     return {
         ...data,
+        yoast_head: yoastHeadReplacement(data?.yoast_head),
         yoast_head_json: {
             ...(data?.yoast_head_json || null),
-            yoast_head: yoastHeadReplacement(data?.yoast_head),
             schema: replaceSchemaUrl(data?.yoast_head_json?.schema || null)
         }
     };
@@ -49,7 +49,11 @@ const yoastHeadReplacement = (headText: string) => {
     // Replace the canonical link tag
     const regex = /<link\s+rel=\"canonical\"\s+href=\"([^\"]*)\".*?>/g;
     const replacement = '';
-    return headText.replace(regex, replacement);
+    const canonicalReplacedText = headText.replace(regex, replacement);
+
+    // Replace the og url meta
+    const ogUrlRegex = /<meta\s+property=\"og:url\"\s+content=\"([^\"]*)\".*?>/g;
+    return canonicalReplacedText.replace(ogUrlRegex, replacement);
 };
 
 /**

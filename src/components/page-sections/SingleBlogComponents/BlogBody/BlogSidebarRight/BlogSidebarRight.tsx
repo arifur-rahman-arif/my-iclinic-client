@@ -1,6 +1,8 @@
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
-import ArticlesCategories from './ArticlesCategories';
 import RecentArticles, { RecentArticlesInterface } from './RecentArticles';
+import dynamic from 'next/dynamic';
+
+const ArticlesCategories = dynamic(() => import('./ArticlesCategories'), { ssr: false });
 
 interface BlogSidebarRightInterface {
     recentArticles: RecentArticlesInterface[];
