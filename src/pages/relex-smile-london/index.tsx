@@ -553,12 +553,16 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                             ]
                         }
                         sectionImage={{
-                            url: '/images/section-images/gift-of-a-tree.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.image ||
+                                '/images/section-images/gift-of-a-tree.png',
                             width: 390,
                             height: 390
                         }}
                         sectionImageDesktop={{
-                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.large_image ||
+                                '/images/section-images/gift-of-a-tree-desktop.png',
                             width: 554,
                             height: 496
                         }}
@@ -602,7 +606,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
 
             <LazyComponent>
                 <Faq
-                    faqs={relexSmileFaqList}
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || relexSmileFaqList}
                     titleLight="ReLEx SMILE Laser"
                     titleBold="Treatment FAQ’s"
                     description="Have a question? We are here to help."

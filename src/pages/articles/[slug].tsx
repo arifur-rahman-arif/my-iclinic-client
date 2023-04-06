@@ -25,7 +25,6 @@ interface SinglePostProps {
     categories: BlogCategoriesInterface[];
     seo: any;
     yoastJson: any;
-    navMenuData: any;
 }
 
 /**
@@ -36,7 +35,7 @@ interface SinglePostProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function SinglePost({ post, categories, seo, yoastJson, navMenuData }: SinglePostProps): JSX.Element {
+export default function SinglePost({ post, categories, seo, yoastJson }: SinglePostProps): JSX.Element {
     usePostView({ postID: post.ID });
 
     return (

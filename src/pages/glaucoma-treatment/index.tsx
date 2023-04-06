@@ -1,12 +1,13 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
-import { SpanVariant1 } from '@/components/Headings';
+import { H3Variant3, SpanVariant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
+import * as GlaucomaTrabeculectomyLottie from '@/lottie/glaucoma-trabeculectomy.lottie.json';
 import MastheadImageLarge from '@/masthead/masthead-glaucoma-large.png';
 import MastheadImageMedium from '@/masthead/masthead-glaucoma-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-glaucoma-small.png';
@@ -25,12 +26,17 @@ import {
 } from '@/page-sections/index';
 import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListGlaucoma, leftRightListGlaucomma } from '@/page-sections/LeftRight/leftRightList';
+import LottieComponent from '@/page-sections/LeftRight/lottie/LottieComponent';
+import VideoColumn from '@/page-sections/LeftRight/VideoColumn';
 import { StarComponent } from '@/page-sections/SectionParts/StarComponent';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { glaucomaStackList } from '@/page-sections/StackedSection';
 import ImprovedVisionLarge from '@/section-images/improved-vision-large.png';
-import { WpPageResponseInterface } from '@/types';
+import { GlaucomaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
@@ -61,9 +67,12 @@ const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/Compar
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends GlaucomaPageContentProps, PageDataInterface<GlaucomaPageContentProps> {}
+
 interface GlaucomaPageProps {
     seo: any;
     yoastJson: any;
+    data: DataInterface;
 }
 
 /**
@@ -74,10 +83,12 @@ interface GlaucomaPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX.Element {
+export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const subheading = 'Affordable management and treatment for your Glaucoma!';
+
+    const heading = data?.masthead_heading || 'Glaucoma Treatment London';
+    const subheading = data?.masthead_subheading || 'Affordable management and treatment for your Glaucoma!';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -86,6 +97,88 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    const serviceList: any = Array.isArray(data?.section_3) ?
+        data?.section_3.map((service) => {
+            return {
+                ...service,
+                mobileImage: (
+                      <Image
+                          src={service.mobileImage}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="md:hidden"
+                          alt=""
+                      />
+                ),
+                desktopImage: (
+                      <Image
+                          src={service.desktopImage}
+                          width={685}
+                          height={557}
+                          quality={70}
+                          className="hidden md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                ),
+                descriptions: stringArrayToElementArray(service.descriptions),
+                excludeNumbers: true
+            };
+        }) :
+        null;
+
+    const glaucomaServices: any = Array.isArray(data?.section_6) ?
+        data?.section_6.map((service) => {
+            const returnObject = {
+                ...service,
+                alternativeHeading: service?.alternativeHeading ? (
+                      <H3Variant3>{service.alternativeHeading}</H3Variant3>
+                ) : (
+                      <></>
+                ),
+                descriptions: stringArrayToElementArray(service.descriptions)
+            };
+
+            if (service.mobileImage || service.desktopImage) {
+                return {
+                    ...returnObject,
+                    mobileImage: (
+                          <Image
+                              src={service.mobileImage}
+                              width={390}
+                              height={390}
+                              quality={70}
+                              className="md:hidden"
+                              alt=""
+                          />
+                    ),
+                    desktopImage: (
+                          <Image
+                              src={service.desktopImage}
+                              width={685}
+                              height={557}
+                              quality={70}
+                              className="hidden md:block md:scale-90 2xl:scale-100"
+                              alt=""
+                          />
+                    )
+                };
+            } else if (service.lottieComponent) {
+                return {
+                    ...returnObject,
+                    lottieComponent: <LottieComponent animationData={GlaucomaTrabeculectomyLottie} loop={false} />
+                };
+            } else {
+                return {
+                    ...returnObject,
+                    dynamicMediaColumn: (
+                          <VideoColumn poster={service?.video?.poster} source={service?.video?.source} />
+                    )
+                };
+            }
+        }) :
+        null;
 
     return (
         <Page
@@ -97,18 +190,18 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
-                altText=""
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 smallImageClassName={'object-[center_-3rem]'}
                 h1Title={
-                    <h1 className="">
-                        <span className="h1-inner-span inline-block opacity-0 ">Glaucoma</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 ">Treatment</span>{' '}
-                        <span className="h1-inner-span inline-block opacity-0 ">London</span>
+                    <h1 className="flex flex-wrap gap-4 md:max-w-[41rem]">
+                        {heading.split(' ').map((word, index) => (
+                            <span className="h1-inner-span inline-block opacity-0" key={index}>
+                                {word}
+                            </span>
+                        ))}
                     </h1>
                 }
                 h2Title={
@@ -123,12 +216,20 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
                         ))}
                     </h2>
                 }
-                priceText="From £400"
+                priceText={data?.masthead_price || 'From £400'}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
+                    <strong className="normal-case">
+                        {data?.request_callback_title ? (
+                            HTMLReactParser(data.request_callback_title)
+                        ) : (
+                            <>Talk to a specialist</>
+                        )}
+                    </strong>
                 </h2>
             </Container>
 
@@ -141,51 +242,57 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             <SideImageSection
                 h2Heading={
                     <div className="grid gap-4">
-                        <StarComponent /> <SpanVariant1>5-star Glaucoma clinic</SpanVariant1>
+                        <StarComponent />
+                        <SpanVariant1>{data?.section_1?.subheading || '5-star Glaucoma clinic'}</SpanVariant1>
                     </div>
                 }
-                h3LightHeading="Manage and Treat your glaucoma"
-                h3BoldHeading="with our 5-star Glaucoma clinic in London"
-                altText=""
-                descriptions={[
-                    'Glaucoma is a chronic eye condition which is detected by our Glaucoma specialists after careful and regular assessments for your eyes.',
-                    'We call Glaucoma the ‘silent thief of sight’ because the condition quietly progresses over time, without any sudden noticeable signs or symptoms.',
-                    'Glaucoma tends to run in families and certain groups are more at risk than others. We understand this can be worrying, which is why our Glaucoma specialists are here to help manage and treat your Glaucoma for a better and happier quality of life!'
-                ]}
+                h3LightHeading={data?.section_1?.heading?.light_heading || 'Manage and Treat your glaucoma'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'with our 5-star Glaucoma clinic in London?'}
+                descriptions={
+                    (data?.section_1?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
+                        'Glaucoma is a chronic eye condition which is detected by our Glaucoma specialists after careful and regular assessments for your eyes.',
+                        'We call Glaucoma the ‘silent thief of sight’ because the condition quietly progresses over time, without any sudden noticeable signs or symptoms.',
+                        'Glaucoma tends to run in families and certain groups are more at risk than others. We understand this can be worrying, which is why our Glaucoma specialists are here to help manage and treat your Glaucoma for a better and happier quality of life!'
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/manage-glaucoma.png',
+                    url: data?.section_1?.image || '/images/section-images/manage-glaucoma.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/manage-glaucoma-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/manage-glaucoma-large.png',
                     width: 664,
                     height: 642
                 }}
             />
 
-            <GlaucomaSection />
+            <GlaucomaSection content={data?.section_2?.content} image={data?.section_2?.image} />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListGlaucoma} />
+                <LeftRightSection childrenList={serviceList || leftRightListGlaucoma} />
             </LazyComponent>
 
             <FullWidthImageSection
-                boldHeading="Treatment, aftercare and monitoring Glaucoma"
-                description={[
-                    'In a subsequent visit to our clinic, our glaucoma specialist will continue to provide a dedicated care service for your Glaucoma management.',
-                    'When you come for your first visit with us, our specialists can determine what package will be best suited for your Glaucoma management.'
-                ]}
+                boldHeading={data?.section_4?.heading || 'Treatment, aftercare and monitoring Glaucoma'}
+                description={
+                    (data?.section_4?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_4?.descriptions)) || [
+                        'In a subsequent visit to our clinic, our glaucoma specialist will continue to provide a dedicated care service for your Glaucoma management.',
+                        'When you come for your first visit with us, our specialists can determine what package will be best suited for your Glaucoma management.'
+                    ]
+                }
                 dynamicMediaColumn={
                     <LazyComponent>
                         <CompareSlider
                             image1={{
-                                src: '/images/section-images/glaucoma-compare-slider-1.png',
+                                src: data?.section_4?.image_1 || '/images/section-images/glaucoma-compare-slider-1.png',
                                 width: 748,
                                 height: 498
                             }}
                             image2={{
-                                src: '/images/section-images/glaucoma-compare-slider-2.png',
+                                src: data?.section_4?.image_2 || '/images/section-images/glaucoma-compare-slider-2.png',
                                 width: 748,
                                 height: 498
                             }}
@@ -223,33 +330,40 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             <Section>
                 <Container className="grid grid-cols-1 md:grid-cols-2">
                     <TextColumn
-                        h2Heading="Glaucoma Treatments"
+                        h2Heading={data?.section_5?.subheading || 'Glaucoma Treatments'}
                         h3LightHeading={
                             <>
-                                Treatment options we provide
+                                {data?.section_5?.heading?.light_heading || 'Treatment options we provide'}
                                 <br />
                             </>
                         }
-                        h3BoldHeading="For your Glaucoma Management"
-                        descriptions={[
-                            'All eyes are unique! We provide the most wide-ranging successful procedures for all Glaucoma types in our London Clinic.'
-                        ]}
+                        h3BoldHeading={data?.section_5?.heading?.bold_heading || 'For your Glaucoma Management'}
+                        descriptions={
+                            (data?.section_5?.descriptions?.length &&
+                                stringArrayToElementArray(data?.section_5?.descriptions)) || [
+                                'All eyes are unique! We provide the most wide-ranging successful procedures for all Glaucoma types in our London Clinic.'
+                            ]
+                        }
                     />
                 </Container>
             </Section>
 
             <LazyComponent>
                 <LeftRightSection
-                    childrenList={leftRightListGlaucomma}
+                    childrenList={(glaucomaServices?.length && glaucomaServices) || leftRightListGlaucomma}
                     positionReversed
                     containerClassName="md:!gap-20 md:!grid-cols-[auto_auto]"
                     sectionClassName="md:!mt-24"
                 />
             </LazyComponent>
 
-            <CtaSection />
+            <CtaSection
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
+            />
 
-            <GlaucomaChargeSection />
+            <GlaucomaChargeSection {...data?.section_7} />
 
             <LazyComponent>
                 <FeaturedPatient
@@ -274,27 +388,29 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             </LazyComponent>
 
             <SideImageSection
-                dynamicTextColumn={<GlaucomaPackages />}
+                dynamicTextColumn={<GlaucomaPackages packageList={data?.section_8?.package_list} />}
                 containerClassName="md:!grid-cols-[auto_1fr]"
                 positionReversed
                 sectionImage={{
-                    url: '/images/section-images/glaucoma-packages-large.png',
+                    url: data?.section_8?.image || '/images/section-images/glaucoma-packages-large.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/glaucoma-packages-large.png',
+                    url: data?.section_8?.large_image || '/images/section-images/glaucoma-packages-large.png',
                     width: 655,
                     height: 494
                 }}
             />
 
             <FullWidthImageSection
-                h3Title="Step into the light with"
-                boldHeading={<strong className="normal-case">improved vision!</strong>}
+                h3Title={data?.section_9?.heading || 'Step into the light with'}
+                boldHeading={
+                    <strong className="normal-case">{data?.section_9?.bold_heading || 'improved vision!'}</strong>
+                }
                 altText=""
-                image={ImprovedVisionLarge}
-                desktopImage={ImprovedVisionLarge}
+                image={data?.section_9?.image || ImprovedVisionLarge}
+                desktopImage={data?.section_9?.image || ImprovedVisionLarge}
                 containerClass="pb-16 md:!py-0 !mx-0 md:!mx-auto"
                 overlayAnimation
                 textColumnOverlay
@@ -304,9 +420,15 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
 
             <LazyComponent>
                 <StackedSection
-                    stackList={glaucomaStackList}
-                    h3LightHeading="We promise the benefits of our Glaucoma"
-                    h3BoldHeading="treatment is safer and better for your health!"
+                    stackList={
+                        (data?.section_10?.slider_list?.length && data?.section_10?.slider_list) || glaucomaStackList
+                    }
+                    h3LightHeading={
+                        data?.section_10?.heading?.light_heading || 'We promise the benefits of our Glaucoma'
+                    }
+                    h3BoldHeading={
+                        data?.section_10?.heading?.bold_heading || 'treatment is safer and better for your health!'
+                    }
                     noImages
                     containerClassName="md:!gap-8"
                 />
@@ -315,36 +437,56 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree
-                        h2Heading="plastic free life"
-                        h3LightHeading="Vision correction is the key to living"
-                        h3BoldHeading="a sustainable, plastic free life!"
-                        descriptions={[
-                            `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
+                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
+                        h3LightHeading={HTMLReactParser(
+                            data?.sustainability_section?.plastic_free_life?.heading.light_heading ||
+                                'Vision correction is the key to living'
+                        )}
+                        h3BoldHeading={HTMLReactParser(
+                            data?.sustainability_section?.plastic_free_life?.heading.bold_heading ||
+                                'a sustainable, plastic free life!'
+                        )}
+                        descriptions={
+                            (data?.sustainability_section?.plastic_free_life?.descriptions.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section.plastic_free_life.descriptions
+                                )) || [
+                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
                     free of plastic waste from your glasses and contact lenses!`
-                        ]}
+                            ]
+                        }
                     />
 
                     <SideImageSection
-                        h2Heading="gift of a tree"
-                        h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading="One eye at a time!"
-                        descriptions={[
-                            `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
+                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
+                        h3LightHeading={HTMLReactParser(
+                            data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading ||
+                                'Saving the planet <br />'
+                        )}
+                        h3BoldHeading={HTMLReactParser(
+                            data?.sustainability_section?.gift_of_a_tree?.heading?.bold_heading || 'One eye at a time!'
+                        )}
+                        descriptions={
+                            (data?.sustainability_section?.gift_of_a_tree?.descriptions.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section.gift_of_a_tree.descriptions
+                                )) || [
+                                `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
                     a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
-                            `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
-                        ]}
+                                `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
+                            ]
+                        }
                         sectionImage={{
-                            url: '/images/section-images/gift-of-a-tree.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.image ||
+                                '/images/section-images/gift-of-a-tree.png',
                             width: 390,
                             height: 390
                         }}
                         sectionImageDesktop={{
-                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.large_image ||
+                                '/images/section-images/gift-of-a-tree-desktop.png',
                             width: 554,
                             height: 496
                         }}
@@ -357,7 +499,15 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
                             </div>
                         }
                     />
-                    <ClimateChange />
+
+                    <ClimateChange
+                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
+                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
+                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
+                        image={data?.sustainability_section?.clearer_vision?.image}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image}
+                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
+                    />
                 </SustainableSlider>
 
                 <LazyComponent>
@@ -374,7 +524,7 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
 
                 <LazyComponent>
                     <Faq
-                        faqs={glaucomaFaqList}
+                        faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || glaucomaFaqList}
                         titleLight="Glaucoma Frequently"
                         titleBold="Asked Questions"
                         description="Have a question? We are here to help."
@@ -392,13 +542,92 @@ export default function GlaucomaPage({ seo, yoastJson }: GlaucomaPageProps): JSX
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'glaucoma-treatment' });
+        const data: WpPageResponseInterface<GlaucomaPageContentProps> = await getPageData({
+            slug: 'glaucoma-treatment'
+        });
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    section_1: {
+                        ...data?.acf.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
+                    },
+                    section_3: Array.isArray(data?.acf?.section_3)
+                        ? data?.acf.section_3.slice(0, 1).map((sectionData) => {
+                              return {
+                                  ...sectionData,
+                                  descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
+                              };
+                          })
+                        : [],
+                    section_4: {
+                        ...data?.acf.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions)
+                    },
+                    section_5: {
+                        ...data?.acf.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions)
+                    },
+                    section_6: Array.isArray(data?.acf?.section_6)
+                        ? data?.acf.section_6.slice(0, 6).map((sectionData) => {
+                              return {
+                                  ...sectionData,
+                                  descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
+                              };
+                          })
+                        : [],
+                    section_7: {
+                        ...data?.acf.section_7,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions)
+                    },
+                    section_8: {
+                        ...data?.acf.section_8,
+                        package_list: Array.isArray(data?.acf?.section_8?.package_list)
+                            ? data?.acf?.section_8?.package_list?.map((list) => {
+                                  return {
+                                      ...list,
+                                      descriptions: convertArrayOfObjectsToStrings(list?.descriptions)
+                                  };
+                              })
+                            : []
+                    },
+                    section_10: {
+                        ...data?.acf.section_10,
+                        slider_list: Array.isArray(data?.acf?.section_10?.slider_list)
+                            ? data?.acf?.section_10?.slider_list?.map((list) => {
+                                  return {
+                                      ...list,
+                                      descriptions: convertArrayOfObjectsToStrings(list?.descriptions)
+                                  };
+                              })
+                            : []
+                    },
+                    sustainability_section: {
+                        plastic_free_life: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                            )
+                        },
+                        gift_of_a_tree: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                            )
+                        },
+                        clearer_vision: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.clearer_vision.descriptions
+                            )
+                        }
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

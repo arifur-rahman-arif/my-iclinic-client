@@ -31,9 +31,25 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
         ...data,
         yoast_head_json: {
             ...(data?.yoast_head_json || null),
+            yoast_head: yoastHeadReplacement(data?.yoast_head),
             schema: replaceSchemaUrl(data?.yoast_head_json?.schema || null)
         }
     };
+};
+
+/**
+ * Replace the canonical link tag from the yoast head
+ *
+ * @param {string} headText
+ * @returns {string | null}
+ */
+const yoastHeadReplacement = (headText: string) => {
+    if (!headText) return null;
+
+    // Replace the canonical link tag
+    const regex = /<link\s+rel=\"canonical\"\s+href=\"([^\"]*)\".*?>/g;
+    const replacement = '';
+    return headText.replace(regex, replacement);
 };
 
 /**
