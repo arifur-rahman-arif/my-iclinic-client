@@ -4,13 +4,11 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { HorizontalSliderInterface } from '@/components/Slider/HorizontalSlider/HorizontalSlider';
 import Slide from '@/components/Slider/HorizontalSlider/Slide';
-import { handleAlert } from '@/features/alert/alertSlice';
 import { useGetReviewsQuery } from '@/services/reviews';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { SwiperSlide } from 'swiper/react';
 import { sliderList } from './sliderList';
 
@@ -24,8 +22,9 @@ const HorizontalSlider = dynamic(() => import('@/components/Slider/HorizontalSli
  */
 const CallbackSection = (): JSX.Element => {
     const router = useRouter();
-    const dispatch = useDispatch();
-    const { data, isError, error, isSuccess } = useGetReviewsQuery(`?page-url=${router.pathname.replace('/', '')}`);
+    const pageSlug = router.pathname == '/' ? 'home' : router.pathname.replace('/', '');
+
+    const { data, isError, error, isSuccess } = useGetReviewsQuery(`?page-url=${pageSlug}`);
 
     const [sliders, setSliders] = useState<HorizontalSliderInterface[]>(sliderList);
 
@@ -33,13 +32,13 @@ const CallbackSection = (): JSX.Element => {
         try {
             if (isError) {
                 setSliders(sliderList);
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: 'Failed to load reviews'
-                    })
-                );
+                // dispatch(
+                //     handleAlert({
+                //         showAlert: true,
+                //         alertType: 'error',
+                //         alertMessage: 'Failed to load reviews'
+                //     })
+                // );
                 return;
             }
 
@@ -48,13 +47,13 @@ const CallbackSection = (): JSX.Element => {
             }
         } catch (err: any) {
             setSliders(sliderList);
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message
-                })
-            );
+            // dispatch(
+            //     handleAlert({
+            //         showAlert: true,
+            //         alertType: 'error',
+            //         alertMessage: err.message
+            //     })
+            // );
         }
     }, [data, error]);
 
