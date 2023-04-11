@@ -1189,6 +1189,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 alt=""
             />
         ),
+        sectionId: 'ptosis-surgery',
         alternativeHeading: <></>,
         descriptions: [
             <>
@@ -1402,6 +1403,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             />
         ),
         alternativeHeading: <></>,
+        sectionId: 'blepharospasm-botox',
         descriptions: [
             <>
                 <H3Variant3>

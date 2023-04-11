@@ -367,18 +367,21 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
 
             <LazyComponent>
                 <FeaturedPatient
-                    h2Title="Glaucoma Patient"
-                    h3Title="Life after Glaucoma Treatment & management"
-                    bandImageDescription={[
-                        `I was originally recommended to this Clinic by my optician for urgent Glaucoma treatment. Mr Bolger saved my sight - what more can I say? Since then I have been seen regularly and had cataract treatment very successfully in both eyes.`,
-                        'Ms Odufuwa- Bolger now sees me every 6 months for a complete checkup, the most recent being last week.',
-                        'The array of the latest machines helps to inform them and track my progress. The staff are friendly, attentive and helpful; the rooms are clean and everything is wiped down before each use - this has always been the case even before the pandemic.'
-                    ]}
-                    bandImageTitle="Tamara"
-                    bandImageURL="/images/section-images/placeholder-image.png"
-                    reviewDescription={[`I take every opportunity to recommend this Clinic.`]}
+                    h2Title={data?.section_11?.subheading || 'Glaucoma Patient'}
+                    h3Title={data?.section_11?.heading || 'Life after Glaucoma Treatment & management'}
+                    bandImageDescription={
+                        (data?.section_11?.descriptions?.length &&
+                            stringArrayToElementArray(data?.section_11.descriptions)) || [
+                            `I was originally recommended to this Clinic by my optician for urgent Glaucoma treatment. Mr Bolger saved my sight - what more can I say? Since then I have been seen regularly and had cataract treatment very successfully in both eyes.`,
+                            'Ms Odufuwa- Bolger now sees me every 6 months for a complete checkup, the most recent being last week.',
+                            'The array of the latest machines helps to inform them and track my progress. The staff are friendly, attentive and helpful; the rooms are clean and everything is wiped down before each use - this has always been the case even before the pandemic.',
+                            'I take every opportunity to recommend this Clinic.'
+                        ]
+                    }
+                    bandImageTitle={data?.section_11?.name || 'Tamara'}
+                    bandImageURL={data?.section_11?.front_image || '/images/section-images/placeholder-image.png'}
                     reviewTitle="Thank you My-iClinic"
-                    sliders={glaucomaSliders}
+                    sliders={data?.section_11?.additional_images || glaucomaSliders}
                     bandColor="bg-[#8D33FF]"
                 />
             </LazyComponent>

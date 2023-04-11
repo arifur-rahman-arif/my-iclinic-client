@@ -1,5 +1,6 @@
 import { LinkText } from '@/components/Link';
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import H3Variant3 from 'src/components/Headings/H3Variant3';
 
 interface DownloadOnTheWayInterface {
     showDownloadOnTheWayTemplate: boolean;
@@ -24,7 +25,7 @@ const DownloadOnTheWay = ({
     showDownloadOnTheWayTemplate,
     downloadFile
 }: DownloadOnTheWayInterface) => {
-    const anchorRef = useRef<HTMLAnchorElement>(null);
+    const anchorRef = useRef<HTMLAnchorElement | null>(null);
 
     useEffect(() => {
         return () => {
@@ -38,14 +39,14 @@ const DownloadOnTheWay = ({
 
     return (
         <div className="mx-auto grid w-full max-w-[45rem] grid-cols-1 place-items-center content-start px-8 py-12 md:py-28">
-            <h2 className="normal-case">Your download is on its way</h2>
+            <H3Variant3 className="text-center normal-case">Your download is on its way</H3Variant3>
             <p className="mt-12 max-w-[31.4rem] text-center">
                 Thank you for submitting!
                 <br />
                 We have sent our information booklet to your email and your downloads folder.
             </p>
-            <span className="mt-24 font-mulishBold text-[2rem] leading-[2.4rem]">
-                Need some help with your download?
+            <span className="mt-24 block max-w-[25.3rem] text-center font-latoBold text-[2rem] leading-[2.4rem]">
+                Need help with your download?
             </span>
             <p className="mt-6">Please call for any further help</p>
 

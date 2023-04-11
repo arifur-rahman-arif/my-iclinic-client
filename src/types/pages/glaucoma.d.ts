@@ -1,4 +1,5 @@
-import { Sustainibility } from 'src/types/pages/component/sustainibility';
+import { FeaturedPatientProps } from './component/featuredPatient';
+import { Sustainibility } from './component/sustainibility';
 
 interface SectionContent {
     subheading: string;
@@ -88,4 +89,5 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
             descriptions: string[]
         }>
     };
+    section_11: FeaturedPatientProps;
 }

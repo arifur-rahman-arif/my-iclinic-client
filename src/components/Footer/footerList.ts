@@ -64,7 +64,7 @@ const footerList: FooterListInterface[] = [
         listLinks: [
             {
                 text: 'Affordable high-quality vision correction',
-                url: '#'
+                url: '/relex-smile-london'
             },
             {
                 text: '5 star technology and treatment',
@@ -80,7 +80,7 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Care Quality Commission',
-                url: ''
+                url: 'https://www.cqc.org.uk/location/1-482726029'
             }
         ]
     },
@@ -89,7 +89,7 @@ const footerList: FooterListInterface[] = [
         listLinks: [
             {
                 text: 'Entropia',
-                url: '#'
+                url: '/eyelid-surgery-london#eyelid-surgery-list'
             },
             {
                 text: 'Blepharoplasty',
@@ -97,11 +97,11 @@ const footerList: FooterListInterface[] = [
             },
             {
                 text: 'Droopy Eyelid (Ptosis)',
-                url: '/eyelid-surgery-london'
+                url: '/eyelid-surgery-london#ptosis-surgery'
             },
             {
-                text: 'Eye Bags',
-                url: '#'
+                text: 'Blepharospasm Botox',
+                url: '/eyelid-surgery-london#blepharospasm-botox'
             }
         ]
     }

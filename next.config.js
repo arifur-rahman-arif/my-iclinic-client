@@ -19,8 +19,8 @@ const nextConfig = {
                 hostname: 'my-iclinic.local'
             },
             {
-                protocol: 'https',
-                hostname: 'stg-myicliniccouk-dev.kinsta.cloud'
+                protocol: 'http',
+                hostname: 'myiclinicn.sg-host.com'
             },
             {
                 protocol: 'https',

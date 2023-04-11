@@ -480,7 +480,11 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                                     </strong>
                                     <p className="text-blue">(ReLEX SMILE, LASIK, LASEK & PRK)</p>
                                 </Link>,
-                                'Refractive lens exchange',
+                                <Link href="/cataract/premium-lenses" className="">
+                                    <strong className="text-[2rem] leading-[2.8rem] text-blue">
+                                        Refractive lens exchange
+                                    </strong>
+                                </Link>,
                                 <Link href="/icl" className="font-mulishBold text-[2rem] leading-[2.8rem] text-blue">
                                     Implantable Contact Lenses
                                 </Link>

@@ -4,6 +4,7 @@ interface PropInterface {
     children: ReactNode;
     className?: string | null;
     defaultClassName?: string | null;
+    id?: string;
 }
 
 /**

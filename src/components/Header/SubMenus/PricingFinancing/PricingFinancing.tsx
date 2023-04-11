@@ -75,7 +75,7 @@ const PricingFinancing = ({ submenu, router, posts }: PricingFinancing): JSX.Ele
                             name: 'Glaucoma surgery cost',
                             url: '/glaucoma-treatment/price',
                             slug: 'glaucoma-surgery-cost',
-                            metaDescription: 'Reducing PCO after Cataract Surgery'
+                            metaDescription: 'Glaucoma treatment and management cost London'
                         },
                         {
                             name: 'Myopia Treatment cost',

@@ -14,6 +14,7 @@ export interface LeftRightSectionChildrenInterface {
     descriptionClassName?: string;
     excludeNumbers?: boolean;
     dynamicMediaColumn?: ReactNode;
+    sectionId?: string;
 }
 
 interface LeftRightSectionInterface {
@@ -23,6 +24,7 @@ interface LeftRightSectionInterface {
     containerClassName?: string;
     sectionDefaultClassName?: string;
     sectionClassName?: string;
+    sectionId?: string;
 }
 
 /**
@@ -37,17 +39,22 @@ const LeftRightSection = ({
     sectionDefaultClassName = 'grid gap-8 overflow-hidden md:gap-40',
     sectionClassName,
     containerDefaultClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32',
-    containerClassName
+    containerClassName,
+    sectionId
 }: LeftRightSectionInterface): JSX.Element => {
     const sectionPosition = positionReversed ? 1 : 0;
 
     return (
         <>
-            <Section className={`${sectionDefaultClassName} ${sectionClassName}`}>
+            <Section className={`${sectionDefaultClassName} ${sectionClassName}`} id={sectionId}>
                 {childrenList.map((childrenElement, index) => {
                     if (index % 2 === sectionPosition) {
                         return (
-                            <Container className={`${containerDefaultClassName} ${containerClassName}`} key={index}>
+                            <Container
+                                className={`${containerDefaultClassName} ${containerClassName}`}
+                                key={index}
+                                id={childrenElement?.sectionId}
+                            >
                                 {childrenElement.mobileImage && childrenElement.desktopImage ? (
                                     <ImageComponent
                                         mobileImage={childrenElement.mobileImage}
@@ -62,7 +69,11 @@ const LeftRightSection = ({
                         );
                     } else {
                         return (
-                            <Container className={`${containerDefaultClassName} ${containerClassName}`} key={index}>
+                            <Container
+                                className={`${containerDefaultClassName} ${containerClassName}`}
+                                key={index}
+                                id={childrenElement?.sectionId}
+                            >
                                 <LeftRightTextColumn index={index} {...childrenElement} />
                                 {childrenElement.mobileImage && childrenElement.desktopImage ? (
                                     <ImageComponent

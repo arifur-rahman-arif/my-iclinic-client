@@ -58,7 +58,7 @@ export default interface RelexSmilePageContentProps extends Sustainibility {
         descriptions: string[];
         image: string;
     };
-    // 97% of people
+    // Featured Patient section
     section_9: FeaturedPatientProps;
     // Why laser Relex smile
     section_6: {

@@ -4,7 +4,6 @@ import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-eyelid-large.png';
 import MastheadImageMedium from '@/masthead/masthead-eyelid-medium.png';
@@ -16,7 +15,6 @@ import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListCosmeticEyelid, leftRightListEyelid } from '@/page-sections/LeftRight/leftRightList';
 import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -47,18 +45,18 @@ interface EyeLidPageProps {
  * @returns {JSX.Element}
  */
 export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
+    // const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
+    // const deviceSize = useDeviceSize();
     const heading = 'Eyelid surgery London';
     const subheading = 'Medical and cosmetic Eyelid surgery for Cysts, Chalazion, Styes, blepharoplasty, and more.';
 
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
+    // useEffect(() => {
+    //     if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
+    //
+    //     setTimeout(() => {
+    //         if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
+    //     }, 2500);
+    // }, [deviceSize]);
 
     return (
         <Page
@@ -105,7 +103,8 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 </h2>
             </Container>
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            {/* <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent> */}
+            <CallbackSection />
 
             <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
@@ -118,23 +117,20 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 </Container>
             </Section>
 
-            <LazyComponent>
-                <LeftRightSection
-                    childrenList={leftRightListEyelid}
-                    positionReversed
-                    sectionClassName="bg-brandLight py-12 md:py-24 !gap-24 md:!gap-40"
-                />
-            </LazyComponent>
+            <LeftRightSection
+                childrenList={leftRightListEyelid}
+                positionReversed
+                sectionClassName="bg-brandLight py-12 md:py-24 !gap-24 md:!gap-40"
+                sectionId="eyelid-surgery-list"
+            />
 
             <ImageGallery galleryList={galleryListEyelid} />
 
-            <LazyComponent>
-                <LeftRightSection
-                    childrenList={leftRightListCosmeticEyelid}
-                    positionReversed
-                    sectionClassName="bg-[#F1CFE580] py-12 md:py-24 !gap-24 md:!gap-40"
-                />
-            </LazyComponent>
+            <LeftRightSection
+                childrenList={leftRightListCosmeticEyelid}
+                positionReversed
+                sectionClassName="bg-[#F1CFE580] py-12 md:py-24 !gap-24 md:!gap-40"
+            />
 
             <CtaSection />
 

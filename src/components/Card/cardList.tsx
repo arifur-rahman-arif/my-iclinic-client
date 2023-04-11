@@ -170,44 +170,44 @@ export const card2List: Card2Interface[] = [
 export const consultantCardList: ConsultantCardInterface[] = [
     {
         image: '/images/avaters/odufuwa-bolger.jpg',
-        name: 'Ms. Odufuwa- Bolger',
+        name: 'Bola Bolger',
         degree: 'MBBS DO FRCS (Ed) FRCOphth MSc CertLRS; PGDip LRS',
         title: 'Consultant and Surgeon',
-        url: '/our-specialists/ms-odufuwa-bolger'
+        url: '/our-specialists/bola-bolger'
     },
     {
         image: '/images/avaters/mr-john-bolger.png',
-        name: 'Mr. John Bolger',
+        name: 'John Bolger',
         degree: 'M.B., B.Ch., B.A.O., D.O., F.R.C.S., F.E.B.O.S.-CR',
         title: 'Consultant and Surgeon',
-        url: '/our-specialists/mr-john-bolger'
+        url: '/our-specialists/john-bolger'
     },
     {
         image: '/images/avaters/ms-sancy-low.png',
-        name: 'Ms. Sancy Low',
+        name: 'Sancy Low',
         degree: 'MB BS BSc(Hons) PhD FRCOphth',
         title: 'Consultant and Surgeon',
-        url: '/our-specialists/ms-sancy-low'
+        url: '/our-specialists/sancy-low'
     },
     {
         image: '/images/avaters/mr-radwan-almousa.png',
-        name: 'Mr. Radwan Almousa',
+        name: 'Radwan Almousa',
         degree: 'MD FRCOphth CertLRS',
         title: 'Consultant and Surgeon',
-        url: '/our-specialists/mr-radwan-almousa'
+        url: '/our-specialists/radwan-almousa'
     },
     {
         image: '/images/avaters/ms-yvonne-luo.jpg',
-        name: 'Ms. Yvonne Luo',
+        name: 'Yvonne Luo',
         degree: 'M.B., B.Chir., M.A.(Cantab), FRCOphth, PhD',
         title: 'Consultant and Surgeon',
-        url: '/our-specialists/ms-yvonne-luo'
+        url: '/our-specialists/yvonne-luo'
     },
     {
         image: '/images/avaters/ms-maria-dimitry.png',
-        name: 'Ms. Maria Dimitry',
+        name: 'Maria Dimitry',
         degree: 'MBBS, MSc, FRCOphth',
         title: 'Consultant ophthalmic surgeon',
-        url: '/our-specialists/ms-maria-dimitry'
+        url: '/our-specialists/maria-dimitry'
     }
 ];
