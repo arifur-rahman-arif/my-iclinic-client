@@ -12,6 +12,7 @@ import MastheadImageMedium from '@/masthead/masthead-blepharitis-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-blepharitis-small.png';
 import { blepharitisFaqList } from '@/page-sections/Faq/faqList';
 import { CtaSection2, FullWidthImageSection, Masthead, SideImageSection, StackColumn2 } from '@/page-sections/index';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { blepharitisList } from '@/page-sections/SectionParts/stack-column/list';
 import FullWidthImage from '@/section-images/blepharitis.png';
 import { WpPageResponseInterface } from '@/types';
@@ -34,6 +35,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
 interface BlepharitisPageProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -44,7 +46,7 @@ interface BlepharitisPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps): JSX.Element {
+export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Blepharitis treatment in London';
@@ -190,16 +192,20 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
                         >
                             call
                         </LinkText>{' '}
-                        or with our lovely team today.
+                        or{' '}
+                        <BookConsultation buttonClassName="font-mulishBold text-blue cursor-pointer">
+                            <span className="">book a consultation</span>
+                        </BookConsultation>{' '}
+                        with our lovely team today.
                     </>
                 ]}
                 image={{
-                    url: '/images/section-images/cta-blepharitis.png',
+                    url: '/images/section-images/cta-blepharitis-large.png',
                     width: 640,
                     height: 514
                 }}
                 imageLarge={{
-                    url: '/images/section-images/cta-blepharitis.png',
+                    url: '/images/section-images/cta-blepharitis-large.png',
                     width: 640,
                     height: 514
                 }}
@@ -230,9 +236,9 @@ export default function BlepharitisPage({ seo, yoastJson }: BlepharitisPageProps
 
             <LazyComponent>
                 <Faq
-                    faqs={blepharitisFaqList}
-                    titleLight="Blepharitis Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || blepharitisFaqList}
+                    titleLight="Blepharitis"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -253,7 +259,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

@@ -26,7 +26,11 @@ export interface CardInterface {
  */
 const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JSX.Element => {
     return (
-        <div className="group/card grid h-full max-w-[37rem] grid-rows-[auto_auto_1fr] content-start items-start gap-6 overflow-hidden rounded-primary pb-6 shadow-md md:max-w-none">
+        <Link
+            href={cardLink}
+            title={title?.toString() || ''}
+            className="group/card grid h-full max-w-[37rem] grid-rows-[auto_auto_1fr] content-start items-start gap-6 overflow-hidden rounded-primary pb-6 shadow-md md:max-w-none"
+        >
             <div className="flex items-center justify-between px-4 pt-[1.2rem]">
                 <span className="font-latoBold text-[2.4rem] leading-[3.2rem]">{title}</span>
                 <span className="self-start justify-self-end rounded-primary bg-brandLight py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] ">
@@ -52,16 +56,12 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
                         <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
                     }
                 />
-                <Link
-                    title="Learn more"
-                    href={cardLink}
-                    className="group/link flex items-center justify-center gap-4 self-end justify-self-end"
-                >
+                <span className="group/link flex items-center justify-center gap-4 self-end justify-self-end">
                     <span className="font-latoBold text-[1.4rem] leading-[1.9rem] text-heading2">Learn More</span>
                     <AiOutlineArrowRight className="h-[2.4rem] w-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
-                </Link>
+                </span>
             </div>
-        </div>
+        </Link>
     );
 };
 

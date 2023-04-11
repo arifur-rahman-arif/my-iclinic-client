@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { Card, cardList } from '@/components/Card';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';

@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { ConsultantCard } from '@/components/Card';
 import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
 import Page from '@/components/Page';
@@ -98,7 +98,7 @@ export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpeci
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
                     <div className="grid grid-cols-1 justify-items-center gap-x-12 gap-y-12 sm:grid-cols-[repeat(auto-fit,_minmax(37.5rem,_1fr))] md:gap-y-24">
-                        {specialists.map((item, index) => (
+                        {specialists?.map((item, index) => (
                             <ConsultantCard key={index} {...item} />
                         ))}
                     </div>

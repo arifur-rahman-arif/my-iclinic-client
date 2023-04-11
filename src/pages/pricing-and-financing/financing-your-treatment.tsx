@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import { H3Variant2 } from '@/components/Headings';
@@ -219,7 +219,7 @@ export default function FinancingYourTreatment({
             </Container>
 
             <Section className="!mt-12 bg-brandLight md:!mt-16">
-                <Container className="grid place-items-center gap-12 py-12 md:py-24 xl:py-32">
+                <Container className="grid place-items-center gap-16 py-12 md:py-24 xl:py-32">
                     {data?.section_5 ? (
                         HTMLReactParser(data.section_5)
                     ) : (
@@ -229,7 +229,7 @@ export default function FinancingYourTreatment({
                                 your fees and provide a pre-authorisation code for you.
                             </H3Variant1>
 
-                            <H4Variant1 className="text-center">
+                            <H4Variant1 className="!w-auto rounded-primary border-2 border-[#F3411A] p-10 text-center">
                                 <span className="text-[#F3411A]">Important:</span> We will require your
                                 pre-authorization code before your consultation
                             </H4Variant1>
@@ -237,7 +237,7 @@ export default function FinancingYourTreatment({
                     )}
 
                     {/* Cta section */}
-                    <div className="grid place-items-center md:mt-12 xl:mt-28">
+                    <div className="grid place-items-center md:mt-4">
                         <span>Need help?</span>
                         <strong className="mt-6">Speak to our friendly team</strong>
 
@@ -255,7 +255,7 @@ export default function FinancingYourTreatment({
             </Section>
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos sectionClass="!mt-24" />
             </LazyComponent>
         </Page>
     );

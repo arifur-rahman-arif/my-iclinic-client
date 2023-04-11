@@ -42,6 +42,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
 interface MacularDegenerationProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -50,7 +51,7 @@ interface MacularDegenerationProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerationProps): JSX.Element {
+export default function MacularDegeneration({ seo, yoastJson, data }: MacularDegenerationProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Macular Degeneration Treatment London';
@@ -230,9 +231,9 @@ export default function MacularDegeneration({ seo, yoastJson }: MacularDegenerat
 
             <LazyComponent>
                 <Faq
-                    faqs={maculerDegenerationFaqList}
-                    titleLight="Macular Degeneration Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || maculerDegenerationFaqList}
+                    titleLight="Macular Degeneration"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -253,7 +254,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

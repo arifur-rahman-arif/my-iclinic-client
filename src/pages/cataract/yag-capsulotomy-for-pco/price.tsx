@@ -105,9 +105,7 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                         className="!ml-0"
                         list={[
                             'A comprehensive consultation and YAG laser treatment performed in our private laser suite with your dedicated specialist and our friendly team',
-                            <>
-                                <strong>FREE aftercare</strong> appointments with your dedicated YAG laser specialist.
-                            </>
+                            <>FREE aftercare appointments with your dedicated YAG laser specialist.</>
                         ]}
                     />
                 }

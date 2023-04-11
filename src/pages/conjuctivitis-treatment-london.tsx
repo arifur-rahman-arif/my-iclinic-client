@@ -105,7 +105,7 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -133,6 +133,7 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                         'If you have conjunctivitis (also known as ‘Pink Eye’), having the correct diagnosis is essential before treating and managing your symptoms.'
                     ]
                 }
+                sectionClass="px-8 md:px-0 md:bg-brandLight"
                 altText=""
                 image={data?.full_width_image_section?.image || '/images/section-images/conjunctivitis.png'}
                 desktopImage={
@@ -252,6 +253,7 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
 
             <LazyComponent>
                 <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
                     title={
                         <>
                             Get the guide to
@@ -259,15 +261,15 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                             Conjunctivitis treatment
                         </>
                     }
-                    pageSlug="conjunctivitis"
+                    pageSlug="conjuctivitis-treatment-london"
                 />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={conjunctivitisFaqList}
-                    titleLight="Conjunctivitis Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || conjunctivitisFaqList}
+                    titleLight="Conjunctivitis"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>

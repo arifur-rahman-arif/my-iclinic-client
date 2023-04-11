@@ -3,7 +3,6 @@ import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 
 import LazyComponent from '@/components/LazyComponent';
-import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
@@ -66,6 +65,7 @@ const StackedSection = dynamic(() => import('@/page-sections/StackedSection/Stac
 interface LasekPageProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -74,7 +74,7 @@ interface LasekPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Element {
+export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'LASEK, PRK & PTK laser eye surgery London';
@@ -185,9 +185,9 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
                 description={
                     <>
                         Need to talk to a specialist before booking a laser consultation? If you are unsure whether you
-                        are suitable for our laser treatments, you can attend a{' '}
-                        <LinkStyle>FREE suitability check</LinkStyle> with our laser specialist. They will talk you
-                        through your prescription history and the best treatment options we offer for vision correction.
+                        are suitable for our laser treatments, you can attend a <strong>FREE suitability check </strong>
+                        with our laser specialist. They will talk you through your prescription history and the best
+                        treatment options we offer for vision correction.
                     </>
                 }
             />
@@ -323,6 +323,7 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
 
             <LazyComponent>
                 <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
                     title="Get the guide to LASEK, PRK & PTK laser surgery"
                     description="Robotic laser vision correction"
                     pageSlug="lasek-prk"
@@ -331,9 +332,9 @@ export default function LasekPage({ seo, yoastJson }: LasekPageProps): JSX.Eleme
 
             <LazyComponent>
                 <Faq
-                    faqs={lasekFaqList}
-                    titleLight="LASEK, PRK & PTK Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || lasekFaqList}
+                    titleLight="LASEK, PRK & PTK"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -354,7 +355,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

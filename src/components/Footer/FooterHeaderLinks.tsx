@@ -86,9 +86,12 @@ const FooterHeaderLinks = (): JSX.Element => {
                     height={20}
                     className="h-8 w-8"
                 />
-                <span className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]">
+                <a
+                    href="mailto:reception@my-iclinic.co.uk"
+                    className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                >
                     reception@my-iclinic.co.uk
-                </span>
+                </a>
             </div>
         </div>
     );

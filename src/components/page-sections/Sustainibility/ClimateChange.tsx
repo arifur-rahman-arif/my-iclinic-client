@@ -40,7 +40,7 @@ const ClimateChange = ({
             }}
             imageYPosition="bottom"
             descriptions={
-                (descriptions && stringArrayToElementArray(descriptions)) || [
+                (descriptions?.length && stringArrayToElementArray(descriptions)) || [
                     <span className="block font-latoBold text-[2rem] normal-case leading-[2.4rem] md:mt-24">
                         Did you know that blurry
                         <br /> vision is rapidly rising?

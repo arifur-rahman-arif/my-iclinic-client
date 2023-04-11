@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -64,6 +64,7 @@ const SideVideoSection = dynamic(() => import('@/components/page-sections/SideIm
 interface IclProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -72,7 +73,7 @@ interface IclProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
+export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
 
@@ -120,7 +121,7 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
                 priceText="£2,750 per eye"
                 priceTextExtra={
                     <span className="font-mulishBold text-[1.8rem] lowercase leading-[2.4rem] text-heading2 first-letter:uppercase">
-                        With 10 Months Interest
+                        With 24 Months Interest
                         <br /> Free Finance available!
                     </span>
                 }
@@ -128,7 +129,7 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -467,14 +468,18 @@ export default function Icl({ seo, yoastJson }: IclProps): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title="ICL Patient Information" pageSlug="icl" />
+                <PdfDownload
+                    title="ICL Patient Information"
+                    pageSlug="icl"
+                    downloadFile={data?.email_contents?.download_file}
+                />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={iclFaqList}
-                    titleLight="Implantable Contact Lenses"
-                    titleBold="FAQ’s"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || iclFaqList}
+                    titleLight="Implantable contact lenses"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -495,7 +500,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

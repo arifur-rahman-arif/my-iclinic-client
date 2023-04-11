@@ -95,7 +95,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -346,9 +346,9 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
 
             <LazyComponent>
                 <Faq
-                    faqs={astigmatismFaqList}
-                    titleLight="Astigmatism Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || astigmatismFaqList}
+                    titleLight="Astigmatism"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>

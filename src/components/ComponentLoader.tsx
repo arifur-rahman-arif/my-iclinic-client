@@ -17,7 +17,7 @@ const ComponentLoader = ({
             <div role="status">
                 <svg
                     aria-hidden="true"
-                    className="inline h-24 w-24 animate-spin fill-brand"
+                    className="inline h-24 w-24 animate-spin fill-heading2"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

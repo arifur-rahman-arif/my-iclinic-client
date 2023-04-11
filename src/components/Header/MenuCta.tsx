@@ -44,7 +44,7 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
                             height={18}
                             className="h-[1.8rem] w-[1.8rem]"
                         />
-                        <span className="font-latoExtraBold text-[1.4rem] leading-8">Book a free consultation</span>
+                        <span className="font-latoExtraBold text-[1.4rem] leading-8">Book a free screening test</span>
                     </button>
                 </BookConsultation>
             </Container>

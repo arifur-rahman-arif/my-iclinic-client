@@ -106,7 +106,7 @@ const ConjunctivitisTreatment = ({ list, heading, descriptions }: Conjunctivitis
                     </div>
                 </div>
 
-                <div className="h-1 w-full max-w-[27rem] bg-[#9B9FA1] md:max-w-[53rem]"></div>
+                <div className="h-[1px] w-full max-w-[27rem] bg-[#9B9FA1] md:max-w-[53rem]"></div>
 
                 <div className="grid max-w-[106rem] gap-12 md:gap-24">
                     {((list?.length && list) || conjunctivitisTreatmentList).map((item, index) => (

@@ -44,7 +44,7 @@ const VideoPlayer = ({ videoUrl, videoPoster, localPoster }: VideoPlayerInterfac
         <div
             className={`row-start-1 mb-4 w-full overflow-hidden md:mb-0 md:min-w-[40rem] lg:row-start-auto lg:max-w-[65rem] lg:justify-self-auto lg:pr-8`}
         >
-            <div className="overflow-hidden lg:rounded-primary">
+            <div className="overflow-hidden rounded-primary lg:rounded-primary">
                 <video
                     ref={videoPlayer}
                     playsInline

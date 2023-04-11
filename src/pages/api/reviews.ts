@@ -10,16 +10,20 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const reviewsHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'GET') {
-            const result = await getData({
+            const response = await getData({
                 url: `${process.env.CUSTOM_REST_URL}/get-reviews/?page-url=${req.query['page-url']}`
             });
 
-            res.status(200).send(result.json());
+            const result = await response.json();
+
+            if (!result.success) throw new Error(result.message);
+
+            return res.status(200).send(result);
         } else {
-            res.status(404).json({ message: 'Request url not found' });
+            return res.status(404).json({ message: 'Request url not found' });
         }
     } catch (err: any) {
-        res.status(500).send(err);
+        return res.status(500).send(err);
     }
 };
 

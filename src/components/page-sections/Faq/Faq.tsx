@@ -47,10 +47,12 @@ const Faq = ({ faqs, titleLight, titleBold, description }: FaqInterface): JSX.El
         <Section>
             <Container className="grid grid-cols-1 gap-16">
                 <div>
-                    <h2 className="text-center leading-[3.6rem] md:text-[3.2rem] xl:text-[3.2rem] xl:leading-[3.6rem]">
+                    <h2 className="text-center normal-case leading-[3.6rem] md:text-[3.2rem] xl:text-[3.2rem] xl:leading-[3.6rem]">
                         {titleLight}
                         <br />
-                        <strong className="font-latoBold md:text-[3.2rem] xl:text-[3.2rem]">{titleBold}</strong>
+                        <strong className="font-latoBold normal-case md:text-[3.2rem] xl:text-[3.2rem]">
+                            {titleBold}
+                        </strong>
                     </h2>
                     <p className="mt-16 text-center font-mulishLight text-[1.8rem] leading-[3.2rem] sm:text-[2rem] sm:leading-[2.8rem] md:mt-24">
                         {description}

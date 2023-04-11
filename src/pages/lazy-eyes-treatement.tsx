@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -78,7 +78,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 imageSmall={data?.masthead_image?.image || MastheadImageSmall}
                 imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
                 imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                imagePosition="2xl:object-[-25rem_top] xl:object-[-20rem_top]"
+                imagePosition="2xl:object-[-35rem_top] xl:object-[-20rem_top]"
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -99,7 +99,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -351,15 +351,16 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                             Lazy eye treatment
                         </>
                     }
-                    pageSlug="lazy-eyes"
+                    pageSlug="lazy-eyes-treatement"
+                    downloadFile={data?.email_contents?.download_file}
                 />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={lazyEyesFaqList}
-                    titleLight="Lazy Eyes Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || lazyEyesFaqList}
+                    titleLight="Lazy Eyes"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>

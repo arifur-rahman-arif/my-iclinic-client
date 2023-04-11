@@ -16,8 +16,10 @@ interface GlaucomaPackageInterface {
 const PackageItem = ({ title, price, descriptions }: GlaucomaPackageInterface): JSX.Element => {
     return (
         <div className="grid grid-cols-[28rem_auto] items-center gap-x-8 gap-y-10">
-            <span className="font-latoBold text-[2.8rem] leading-[3.2rem]">{title}</span>
-            <span className="grid h-[8rem] w-[8rem] place-items-center justify-self-end rounded-full bg-[#004574] font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
+            <span className="font-latoBold text-[2rem] leading-[2.4rem] md:text-[2.8rem] md:leading-[3.2rem]">
+                {title}
+            </span>
+            <span className="grid h-20 w-20 place-items-center justify-self-end rounded-full bg-[#004574] font-latoBold text-[1.8rem] leading-8 text-white md:h-[8rem] md:w-[8rem] md:text-[2.4rem] md:leading-[3.2rem]">
                 {price}
             </span>
             <div className="col-span-2 grid gap-6">

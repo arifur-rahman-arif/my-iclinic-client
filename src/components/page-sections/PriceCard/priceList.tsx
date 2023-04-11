@@ -72,7 +72,11 @@ export const cataractPriceList: PriceSectionInterface[] = [
         priceDescription: `We are partnered with health insurance companies to make the cost of your treatment easier!`,
         extraElements: (
             <span className="mt-20 flex items-center justify-start gap-4">
-                <LinkText href="#" indicatorColor="bg-blue" className="ont-mulishBold font-extrabold text-blue">
+                <LinkText
+                    href="/pricing-and-financing/financing-your-treatment"
+                    indicatorColor="bg-blue"
+                    className="ont-mulishBold font-extrabold text-blue"
+                >
                     Learn More
                 </LinkText>
                 <BsArrowRightShort className="h-10 w-10 translate-y-1 fill-blue text-blue" />

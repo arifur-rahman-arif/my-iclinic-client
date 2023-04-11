@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 
 import { Container } from '@/components/Container';
@@ -68,6 +68,7 @@ const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/
 interface LasikProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -78,7 +79,7 @@ interface LasikProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
+export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'LASIK Laser Eye Surgery London';
@@ -133,7 +134,7 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -483,14 +484,15 @@ export default function Lasik({ seo, yoastJson }: LasikProps): JSX.Element {
                     }
                     description="Robotic laser vision correction"
                     pageSlug="lasik-london"
+                    downloadFile={data?.email_contents?.download_file}
                 />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={lasikFaqList}
-                    titleLight="LASIK Frequently"
-                    titleBold="asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || lasikFaqList}
+                    titleLight="LASIK"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -511,7 +513,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

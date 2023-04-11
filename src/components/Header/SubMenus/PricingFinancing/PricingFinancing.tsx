@@ -82,6 +82,12 @@ const PricingFinancing = ({ submenu, router, posts }: PricingFinancing): JSX.Ele
                             url: '/myopia/price',
                             slug: 'myopia-treatment-cost',
                             metaDescription: 'Myopia control management & treatment cost London'
+                        },
+                        {
+                            name: 'YAG laser capsulotomy surgery cost',
+                            url: '/cataract/yag-capsulotomy-for-pco/price',
+                            slug: 'yag-capsulotomy-for-pco',
+                            metaDescription: 'A comprehensive consultation and YAG laser treatment'
                         }
                     ]}
                     router={router}

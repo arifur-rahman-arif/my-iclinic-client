@@ -125,7 +125,7 @@ const SideImageSection = ({
                                 width={sectionImage.width}
                                 height={sectionImage.height}
                                 quality={70}
-                                className={`md:hidden ${smallImageClassName}`}
+                                className={`md:hidden ${smallImageClassName} rounded-primary`}
                                 alt={altText || ''}
                             />
                         )}
@@ -136,7 +136,9 @@ const SideImageSection = ({
                                 width={sectionImageDesktop.width}
                                 height={sectionImageDesktop.height}
                                 quality={70}
-                                className={`${largeImageClassName || 'hidden md:block md:scale-90 2xl:scale-100'}`}
+                                className={`${
+                                    largeImageClassName || 'hidden rounded-primary md:block md:scale-90 2xl:scale-100'
+                                }`}
                                 alt={altText || ''}
                             />
                         )}

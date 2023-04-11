@@ -1,15 +1,15 @@
 .styles {
-    width: 7.2rem !important;
     height: 7.2rem !important;
+    width: 7.2rem !important;
 
     :global {
         .MuiCircularProgress-root {
-            width: 100% !important;
             height: 100% !important;
+            width: 100% !important;
         }
 
         svg circle {
-            stroke: var(--color-brand);
+            stroke: var(--color-heading2);
         }
     }
 }

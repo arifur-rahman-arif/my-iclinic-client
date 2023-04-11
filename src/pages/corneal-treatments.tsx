@@ -133,12 +133,12 @@ export default function CornealTreatments({ seo, yoastJson }: CornealTreatmentsP
                     'This includes:'
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/cornea-consultation-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/cornea-consultation-large.png',
                     width: 643,
                     height: 461
                 }}

@@ -11,6 +11,7 @@ interface LinkInterface {
     indicatorColor?: string;
     onClick?: (e: MouseEvent) => void;
     excludeAnimation?: boolean;
+    target?: string;
 }
 
 /**
@@ -32,7 +33,8 @@ const LinkText = ({
     indicatorColor,
     children,
     onClick,
-    excludeAnimation
+    excludeAnimation,
+    target
 }: LinkInterface): JSX.Element => {
     const indicator = useRef<HTMLSpanElement>(null);
     const [animationActive, setAnimationActive] = useState<boolean>(false);
@@ -44,6 +46,7 @@ const LinkText = ({
     return (
         <Link
             href={href}
+            target={target}
             className={`${defaultClassName || ''} ${className || ''}`}
             onMouseOver={() => {
                 !excludeAnimation && setAnimationActive(true);

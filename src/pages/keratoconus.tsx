@@ -38,6 +38,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
 interface KeratoconusPageProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -47,7 +48,7 @@ interface KeratoconusPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function KeratoconusPage({ seo, yoastJson }: KeratoconusPageProps): JSX.Element {
+export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Keratoconus treatment London';
@@ -243,9 +244,9 @@ export default function KeratoconusPage({ seo, yoastJson }: KeratoconusPageProps
 
             <LazyComponent>
                 <Faq
-                    faqs={keratoconusFaqList}
-                    titleLight="Keratoconus Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || keratoconusFaqList}
+                    titleLight="Keratoconus"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -266,7 +267,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

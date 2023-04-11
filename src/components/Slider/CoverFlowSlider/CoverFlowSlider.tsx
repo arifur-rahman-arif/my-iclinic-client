@@ -71,7 +71,7 @@ const CoverFlowSlider = ({ sliderList }: CoverFlowSliderInterface): JSX.Element 
                         alt=""
                         width={402}
                         height={220}
-                        className="h-[22rem] w-full max-w-[40.2rem] object-cover"
+                        className="h-[22rem] w-full max-w-[40.2rem] rounded-primary object-cover"
                     />
                 </SwiperSlide>
             ))}

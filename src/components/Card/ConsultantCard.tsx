@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { H4Variant1 } from '@/components/Headings';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import Image from 'next/image';

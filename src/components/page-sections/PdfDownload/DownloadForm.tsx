@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { RadioField, TextField } from '@/components/Inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useDownloadFormSubmissionMutation } from '@/services/downloadForm';

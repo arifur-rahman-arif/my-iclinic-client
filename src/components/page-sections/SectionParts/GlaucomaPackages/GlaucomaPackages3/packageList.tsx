@@ -300,11 +300,11 @@ export const maculerDegenerationPriceList: GlaucomaPackageInterface[] = [
             },
             {
                 title: 'Eyela',
-                price: 'Cost Per Injection £1500'
+                price: 'Cost Per Injection £1,500'
             },
             {
                 title: 'Lucentis',
-                price: 'Cost Per Injection £1750'
+                price: 'Cost Per Injection £1,750'
             }
         ]
     }

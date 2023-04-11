@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { TextField } from '@/components/Inputs';
 import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';

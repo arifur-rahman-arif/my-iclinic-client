@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { BookConsultation } from '@/components/page-sections';
 import Image from 'next/image';
 import { ReactNode } from 'react';
