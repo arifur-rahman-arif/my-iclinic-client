@@ -18,7 +18,7 @@ interface BottomBanner2Interface {
  * @returns {*}  {JSX.Element}
  */
 const BottomBanner2 = ({
-    subtitle = 'With 12 Months Interest-Free Finance Available!'
+    subtitle = 'With 24 Months Interest-Free Finance Available!'
 }: BottomBanner2Interface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);

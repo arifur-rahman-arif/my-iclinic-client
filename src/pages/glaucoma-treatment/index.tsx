@@ -227,7 +227,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -271,7 +271,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
             <GlaucomaSection content={data?.section_2?.content} image={data?.section_2?.image} />
 
             <LazyComponent>
-                <LeftRightSection childrenList={serviceList || leftRightListGlaucoma} />
+                <LeftRightSection childrenList={(serviceList.length && serviceList) || leftRightListGlaucoma} />
             </LazyComponent>
 
             <FullWidthImageSection
@@ -516,17 +516,18 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
 
                 <LazyComponent>
                     <PdfDownload
+                        downloadFile={data?.email_contents?.download_file}
                         title="Get the guide to Glaucoma treatment"
                         description="Robotic laser vision correction"
-                        pageSlug="glaucoma"
+                        pageSlug="glaucoma-treatment"
                     />
                 </LazyComponent>
 
                 <LazyComponent>
                     <Faq
                         faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || glaucomaFaqList}
-                        titleLight="Glaucoma Frequently"
-                        titleBold="Asked Questions"
+                        titleLight="Glaucoma"
+                        titleBold="Frequently asked questions"
                         description="Have a question? We are here to help."
                     />
                 </LazyComponent>

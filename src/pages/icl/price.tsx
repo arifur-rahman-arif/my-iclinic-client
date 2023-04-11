@@ -171,7 +171,7 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                 textColumnExtras={
                     <FinanceList
                         list={[
-                            'You are eligible for our 10 months interest-free finance',
+                            'You are eligible for our 24 months interest-free finance',
                             'Calculate your monthly spend for your ICL treatment'
                         ]}
                     />

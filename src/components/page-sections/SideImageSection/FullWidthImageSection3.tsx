@@ -11,6 +11,7 @@ interface FullWidthImageSection3Interface {
     title1: ReactNode;
     title2: ReactNode;
     descriptions: string[] | ReactNode[];
+    image?: string;
 }
 
 /**
@@ -18,7 +19,12 @@ interface FullWidthImageSection3Interface {
  *
  * @returns {*}  {JSX.Element}
  */
-const FullWidthImageSection3 = ({ title1, title2, descriptions }: FullWidthImageSection3Interface): JSX.Element => {
+const FullWidthImageSection3 = ({
+    title1,
+    title2,
+    descriptions,
+    image
+}: FullWidthImageSection3Interface): JSX.Element => {
     const animationRef = useRef<HTMLDivElement | null>(null);
     const deviceSize = useDeviceSize();
     const { onEnter } = useOnScreen({
@@ -50,14 +56,16 @@ const FullWidthImageSection3 = ({ title1, title2, descriptions }: FullWidthImage
                     </h3>
 
                     {descriptions.map((desc, index) => (
-                        <p key={index}>{desc}</p>
+                        <div key={index}>{desc}</div>
                     ))}
                 </div>
                 <div className="relative justify-self-center overflow-hidden md:row-auto">
                     <div className="absolute right-0 top-0 -z-[1] h-full w-full max-w-[75%] bg-brandLight md:hidden"></div>
                     <Image
-                        src={LadyOnCycle}
+                        src={image || LadyOnCycle}
                         quality={100}
+                        width={467}
+                        height={335}
                         alt="Happy woman on bike with clear vision"
                         className="relative rounded-primary"
                     />

@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -64,6 +64,7 @@ const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableS
 interface PresbyondProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -72,7 +73,7 @@ interface PresbyondProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Element {
+export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Presbyond Laser Treatment London';
@@ -125,7 +126,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -286,7 +287,7 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
                                 <>
                                     Want to know more about our{' '}
                                     <LinkText
-                                        href="#"
+                                        href="/pricing-and-financing/financing-your-treatment"
                                         className="font-mulishBold font-extrabold text-blue"
                                         indicatorColor="bg-blue"
                                     >
@@ -533,14 +534,18 @@ export default function Presbyond({ seo, yoastJson }: PresbyondProps): JSX.Eleme
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title="Presbyond Patient Information" pageSlug="presbyond-london" />
+                <PdfDownload
+                    title="Presbyond Patient Information"
+                    pageSlug="presbyond-london"
+                    downloadFile={data?.email_contents?.download_file}
+                />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={presbyondFaqList}
-                    titleLight="Presbyond Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || presbyondFaqList}
+                    titleLight="Presbyond"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -561,7 +566,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

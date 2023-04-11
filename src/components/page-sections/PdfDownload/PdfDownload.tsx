@@ -3,19 +3,20 @@ import { Section } from '@/components/Section';
 import IconPin from '@/icons/icon-pin-extra-large.svg';
 import { pdfList } from '@/page-sections/PdfDownload/pdfList';
 import PdfListComponent from '@/page-sections/PdfDownload/PdfListComponent';
+import Thankyou from '@/page-sections/PdfDownload/Thankyou';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 import DownloadForm from './DownloadForm';
 
 const DownloadOnTheWay = dynamic(() => import('./DownloadOnTheWay'));
-const Thankyou = dynamic(() => import('./Thankyou'));
 
 interface PdfDownloadInterface {
     title: ReactNode;
     list?: ReactNode[];
     description?: string;
-    pageSlug?: string;
+    pageSlug: string;
+    downloadFile: string;
 }
 
 /**
@@ -23,7 +24,7 @@ interface PdfDownloadInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const PdfDownload = ({ title, list, description, pageSlug }: PdfDownloadInterface): JSX.Element => {
+const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDownloadInterface): JSX.Element => {
     const [showForm, setShowForm] = useState<boolean>(true);
     const [showDownloadOnTheWayTemplate, setShowDownloadOnTheWayTemplate] = useState<boolean>(false);
     const [showThankYouTemplate, setShowThankYouTemplate] = useState<boolean>(false);
@@ -46,7 +47,7 @@ const PdfDownload = ({ title, list, description, pageSlug }: PdfDownloadInterfac
                         width={280}
                         height={614}
                         quality={1}
-                        className="absolute top-0 right-0 -z-[1] hidden h-[61.4rem] w-[28rem] translate-x-[40%] xl:block"
+                        className="absolute top-0 right-0 -z-[1] hidden h-full w-[28rem] translate-x-[40%] xl:block"
                     />
                     <div className="flex w-full flex-col items-center justify-center gap-12 rounded-tl-primary rounded-bl-primary bg-brandLight py-12 px-8 md:max-w-[43.9rem] md:px-20">
                         <div>
@@ -86,10 +87,11 @@ const PdfDownload = ({ title, list, description, pageSlug }: PdfDownloadInterfac
                             showDownloadOnTheWayTemplate={showDownloadOnTheWayTemplate}
                             setShowThankYouTemplate={setShowThankYouTemplate}
                             setShowDownloadOnTheWayTemplate={setShowDownloadOnTheWayTemplate}
+                            downloadFile={downloadFile}
                         />
                     )}
 
-                    {showThankYouTemplate && <Thankyou />}
+                    {showThankYouTemplate && <Thankyou downloadFile={downloadFile} />}
                 </div>
             </Container>
         </Section>

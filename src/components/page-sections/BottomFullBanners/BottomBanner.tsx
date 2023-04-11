@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { Container, ContainerFluid } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { largeSizes, useDeviceSize, useOnScreen } from '@/hooks';

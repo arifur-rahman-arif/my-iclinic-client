@@ -35,6 +35,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
 interface EyeLidPageProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -45,7 +46,7 @@ interface EyeLidPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function EyeLidPage({ seo, yoastJson }: EyeLidPageProps): JSX.Element {
+export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Eyelid surgery London';
@@ -147,9 +148,9 @@ export default function EyeLidPage({ seo, yoastJson }: EyeLidPageProps): JSX.Ele
 
             <LazyComponent>
                 <Faq
-                    faqs={eyelidFaqList}
-                    titleLight="Eyelid Surgery Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || eyelidFaqList}
+                    titleLight="Eyelid surgery"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -170,7 +171,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

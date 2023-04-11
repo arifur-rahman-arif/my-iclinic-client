@@ -43,6 +43,7 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
 interface DryEyesProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -51,7 +52,7 @@ interface DryEyesProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function DryEyesTreatmentLondon({ seo, yoastJson }: DryEyesProps): JSX.Element {
+export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Dry Eyes';
@@ -121,8 +122,8 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson }: DryEyesProps)
                     'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
                     'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
                 ]}
-                image="/images/section-images/placeholder-image.png"
-                desktopImage="/images/section-images/placeholder-image.png"
+                image="/images/section-images/dry-eye-private-consultation-large.jpg"
+                desktopImage="/images/section-images/dry-eye-private-consultation-large.jpg"
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
@@ -144,12 +145,12 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson }: DryEyesProps)
                     'This includes:'
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/dry-eye-consultation-large.jpg',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/dry-eye-consultation-large.jpg',
                     width: 631,
                     height: 582
                 }}
@@ -221,9 +222,9 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson }: DryEyesProps)
 
             <LazyComponent>
                 <Faq
-                    faqs={dryEyeFaqList}
-                    titleLight="Dry Eye Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || dryEyeFaqList}
+                    titleLight="Dry eye"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -244,7 +245,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

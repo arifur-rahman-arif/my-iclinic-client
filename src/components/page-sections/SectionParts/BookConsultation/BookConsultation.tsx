@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { cloneElement, ReactNode, useState } from 'react';
@@ -28,7 +28,7 @@ const BookConsultation = ({
     const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     return (
-        <div>
+        <span>
             {children ? (
                 <>
                     {cloneElement(children, {
@@ -64,7 +64,7 @@ const BookConsultation = ({
             )}
 
             {showForm && <ConsultationForm {...{ modalOpen, setModalOpen }} />}
-        </div>
+        </span>
     );
 };
 

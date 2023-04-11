@@ -21,11 +21,15 @@ export interface PageDataInterface<I> extends I {
         heading: string,
         description: string
     },
+    
     faq_list: Array<{
         title: string;
         description: string;
         shortDescription: string;
     }>
+    email_contents: {
+        download_file: string;
+    }
 }
 
 export default interface WpPageResponseInterface<PageContentInterface> {

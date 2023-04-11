@@ -15,7 +15,7 @@ import Logo6 from '@/logos/general-medical.png';
  */
 const CompanyLogos = (): JSX.Element => {
     return (
-        <Section>
+        <Section className="!mt-24">
             <Container>
                 <div className="mx-auto flex flex-wrap items-center justify-center sm:gap-8">
                     <div className="grid h-[17.8rem] w-[17.8rem] place-items-center overflow-hidden rounded-full p-8">

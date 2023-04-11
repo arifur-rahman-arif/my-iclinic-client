@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -116,7 +116,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -282,6 +282,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
 
             <LazyComponent>
                 <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
                     title="Get the guide to Cataract treatment"
                     description="Robotic laser vision correction"
                     pageSlug="cataract"
@@ -290,9 +291,9 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
 
             <LazyComponent>
                 <Faq
-                    faqs={cataractFaqList}
-                    titleLight="Cataract Surgery Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || cataractFaqList}
+                    titleLight="Cataract surgery"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -313,7 +314,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

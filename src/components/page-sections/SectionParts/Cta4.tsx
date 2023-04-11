@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 

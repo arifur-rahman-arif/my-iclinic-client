@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { BiRightArrowAlt } from 'react-icons/bi';
-import Button from 'src/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 
 /**
  * Form submission confirmation component

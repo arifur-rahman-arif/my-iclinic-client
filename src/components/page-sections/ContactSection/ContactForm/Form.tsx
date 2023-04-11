@@ -1,4 +1,4 @@
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 import { TextField } from '@/components/Inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useBusinessInfoSubmitMutation } from '@/services/businessInfo';

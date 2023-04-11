@@ -61,6 +61,7 @@ const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/Compar
 interface PremiumLensesProps {
     seo: any;
     yoastJson: any;
+    data: any;
 }
 
 /**
@@ -70,7 +71,7 @@ interface PremiumLensesProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): JSX.Element {
+export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = 'Independence from glasses after Cataract surgery London';
@@ -97,7 +98,6 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -119,16 +119,17 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
                         ))}
                     </h2>
                 }
-                priceText="£300 per eye"
+                priceText="from £350 extra per eye"
+                bannerWidth="max-w-[65rem]"
                 // ExcludePriceComponent
                 // list={['EDOF', 'Monofocal', 'Multifocals', 'Presbyond']}
             />
 
             {/* <FinanceCalculator /> */}
 
-            <Container className="mt-36">
+            <Container className="mt-40 sm:mt-36">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -226,17 +227,17 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
                 // videoUrl="/videos/premium-lenses.mp4"
                 midExtras={
                     <div className="flex flex-wrap items-center justify-start gap-12">
-                        <div className="flex items-center justify-start gap-6">
+                        <div className="flex items-center justify-start gap-4">
                             <BulletPoint className="!translate-y-[0.1rem]" />
                             <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem]">Edof</span>
                         </div>
-                        <div className="flex items-center justify-start gap-6">
+                        <div className="flex items-center justify-start gap-4">
                             <BulletPoint className="!translate-y-[0.1rem]" />
                             <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem]">
                                 Multifocals
                             </span>
                         </div>
-                        <div className="flex items-center justify-start gap-6">
+                        <div className="flex items-center justify-start gap-4">
                             <BulletPoint className="!translate-y-[0.1rem]" />
                             <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem]">Monofocal</span>
                         </div>
@@ -269,14 +270,18 @@ export default function PremiumLenses({ seo, yoastJson }: PremiumLensesProps): J
             </LazyComponent>
 
             <LazyComponent>
-                <PdfDownload title={<>Get the guide to Premium lenses treatment</>} pageSlug="premium-lenses" />
+                <PdfDownload
+                    title="Get the guide to Premium lenses treatment"
+                    pageSlug="premium-lenses"
+                    downloadFile={data?.email_contents?.download_file}
+                />
             </LazyComponent>
 
             <LazyComponent>
                 <Faq
-                    faqs={premiumLensesFaqList}
-                    titleLight="Premium Lenses Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || premiumLensesFaqList}
+                    titleLight="Premium lenses"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -297,7 +302,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

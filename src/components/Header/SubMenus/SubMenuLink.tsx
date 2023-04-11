@@ -31,6 +31,7 @@ const SubMenuLink = ({ url, name, isActive, metaDescription }: SubMenuLinkProps)
     return (
         <Link
             href={url}
+            title={name as string}
             className={`grid max-w-[38rem] cursor-pointer gap-2 border-l py-6 pr-6 transition-all duration-500 hover:border-heading2 hover:bg-[#D9E2E566] hover:pl-6 ${
                 isActive ? 'border-heading2 bg-[#D9E2E566] pl-6' : 'border-l-transparent'
             }`}
@@ -50,7 +51,7 @@ const SubMenuLink = ({ url, name, isActive, metaDescription }: SubMenuLinkProps)
                 innerAppCtx?.setOpenMobileMenu(false);
             }}
         >
-            <strong className="text-[1.6rem] leading-8">{name}</strong>
+            <strong className="text-[1.6rem] leading-8 xl:text-[1.8rem]">{name}</strong>
             <span className="block font-mulishMedium text-[1.4rem] leading-8 text-[#51585B] line-clamp-1">
                 {metaDescription ||
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}

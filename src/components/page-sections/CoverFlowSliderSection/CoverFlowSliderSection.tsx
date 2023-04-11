@@ -25,7 +25,7 @@ const CoverFlowSliderSection = ({ sliderList }: CoverFlowSliderSectionInterface)
         <Section>
             <Container className="overflow-hidden">
                 <LazyComponent>
-                    <CoverFlowSlider sliderList={sliderList || myopiaCoverFlowSliderList} />
+                    <CoverFlowSlider sliderList={(sliderList?.length && sliderList) || myopiaCoverFlowSliderList} />
                 </LazyComponent>
             </Container>
         </Section>

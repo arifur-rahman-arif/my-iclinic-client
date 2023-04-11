@@ -1,7 +1,6 @@
-import { ChangeEvent, useEffect, useRef } from 'react';
-
 import { IconButton } from '@mui/material';
 import gsap from 'gsap';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import { AiOutlineClear } from 'react-icons/ai';
 
 interface TextFieldInterface {

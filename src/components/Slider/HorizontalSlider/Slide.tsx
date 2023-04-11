@@ -11,7 +11,7 @@ interface SlideInterface extends HorizontalSliderInterface {}
  * @param {SlideInterface} { name, title, description, reviewLink }
  * @returns {*}  {JSX.Element}
  */
-const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideInterface): JSX.Element => {
+const Slide = ({ name, title, description, reviewLink, star = 5, avatarUrl }: SlideInterface): JSX.Element => {
     return (
         <div className="h-full w-full p-8 md:p-0">
             <div className="grid grid-cols-1 gap-4 rounded-primary p-8 shadow-shadow1 md:p-0 md:shadow-none">
@@ -84,7 +84,7 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                         <Image
                             src={avatarUrl}
                             alt=""
-                            className="h-[4.3rem] w-[4.3rem]"
+                            className="h-[4.3rem] w-[4.3rem] overflow-hidden rounded-full"
                             width={45}
                             height={45}
                             quality={70}
@@ -103,9 +103,10 @@ const Slide = ({ name, title, description, reviewLink, star, avatarUrl }: SlideI
                 <p>
                     {trimText(description, 140)}&nbsp;&nbsp;
                     <LinkText
-                        href="#"
+                        href={reviewLink || '#'}
                         indicatorColor="bg-blue"
                         className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
+                        target="_blank"
                     >
                         Read More
                     </LinkText>

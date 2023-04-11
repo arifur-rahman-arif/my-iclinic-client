@@ -165,7 +165,7 @@ export const presbyondFaqList: FaqListInterface[] = [
         title: 'Do you offer finance options for Presbyond Laser Eye Surgery?',
         description: `Yes. We do offer finance for Presbyond laser treatment and because we know Presbyond is a
         great investment for achieving long-term sight, we offer a 0% interest free finance option for 12
-        months. Find out if you are eligible for our <a href='#' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>laser eye surgery finance.</a>
+        months. Find out if you are eligible for our <a href='/pricing-and-financing/financing-your-treatment' class='font-mulishBold text-[1.6rem] text-brand leading-[2.4rem] relative inline-block decoration-brand underline-offset-4 cursor-pointer transition-all hover:underline'>laser eye surgery finance.</a>
         `
     },
     {
@@ -271,7 +271,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
         title: 'I have keratoconus, am I suitable for ReLEx SMILE laser treatment?',
         description: `Unfortunately, If you have keratoconus (a thin cornea) you would not be suitable for our ReLEx
         Smile treatment but we do offer the best alternative for freedom from glasses with our
-        <strong>Implantable contact lenses</strong>. This procedure achieves the same results as our ReLEx smile
+        <a href='/icl'>Implantable contact lenses</a>. This procedure achieves the same results as our ReLEx smile
         treatment and you can still say goodbye to your glasses and everyday contact lenses!
         `
     },
@@ -279,7 +279,7 @@ export const relexSmileFaqList: FaqListInterface[] = [
         title: 'Do you offer finance options for ReLEx SMILE Laser Eye Surgery?',
         description: `Yes. We do offer finance for ReLEx Smile laser eye surgery and because we know ReLEx smile is a
         great investment for achieving long-term sight, we offer a 0% interest free finance option for 12
-        months. Find out if you are eligible for our <strong>laser eye surgery finance.</strong>
+        months. Find out if you are eligible for our <a href='/pricing-and-financing/financing-your-treatment'>laser eye surgery finance.</a>
         `
     },
     {
@@ -1129,7 +1129,7 @@ export const keratoconusFaqList: FaqListInterface[] = [
                 <li class='list-item list-disc'><p>Headaches associated with eye pain</p></li>
             </ul>
             <p>
-                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href=''>corneal-cross linking</a> to strengthen your corneal tissue. When <a href=''>booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
+                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href='/corneal-treatments'>corneal-cross linking</a> to strengthen your corneal tissue. When <a target='_blank' href='https://connect.pabau.com/bookings.php?compid=11842'>booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
             </p>
         </div>
         `
@@ -1999,7 +1999,7 @@ export const flashesFaqList: FaqListInterface[] = [
     },
     {
         title: 'At what age are eye flashes & floaters normally diagnosed?',
-        description: `Eye flashes & floaters can be visible at any age. For children and young adults who are short-sighted, flashes & floaters may be visible and monitored by the opticians. Although you may experience flashes & floaters, it is rare to be given a diagnosis for an eye condition as these floaters are generally nothing to worry about in early adulthood. For people over the age of 50, flashes & floaters may indicate early signs of more serious eye conditions. If you are over the age of 50 and experiencing eye flashes & floaters, please contact 0208 447 8877 for a private eye assessment with an ophthalmologist.`
+        description: `Eye flashes & floaters can be visible at any age. For children and young adults who are short-sighted, flashes & floaters may be visible and monitored by the opticians. Although you may experience flashes & floaters, it is rare to be given a diagnosis for an eye condition as these floaters are generally nothing to worry about in early adulthood. For people over the age of 50, flashes & floaters may indicate early signs of more serious eye conditions. If you are over the age of 50 and experiencing eye flashes & floaters, please contact <a href='tel:0208 447 8877'>0208 447 8877</a> for a private eye assessment with an ophthalmologist.`
     },
     {
         title: 'What is a retinal detachment?',

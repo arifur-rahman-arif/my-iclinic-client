@@ -1,5 +1,4 @@
-import { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
+import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
 
 export default interface RelexSmilePageContentProps extends Sustainibility {
@@ -52,6 +51,15 @@ export default interface RelexSmilePageContentProps extends Sustainibility {
         image: string;
         large_image: string;
     };
+    // 97% of people
+    section_8: {
+        heading: string;
+        subheading: string;
+        descriptions: string[];
+        image: string;
+    };
+    // 97% of people
+    section_9: FeaturedPatientProps;
     // Why laser Relex smile
     section_6: {
         subheading: string;

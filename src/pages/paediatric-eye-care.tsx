@@ -15,7 +15,6 @@ import { paediatricFaqList } from '@/page-sections/Faq/faqList';
 import { CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { leftRightListPaediatric, leftRightListPaediatricAftercare } from '@/page-sections/LeftRight/leftRightList';
 import { WpPageResponseInterface } from '@/types';
-import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -93,7 +92,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -104,13 +103,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             <FullWidthImageSection
                 h3Title={
                     <>
-                        {data?.section_1_title ? (
-                            HTMLReactParser(data.section_1_title)
-                        ) : (
-                            <>
-                                <strong>Paediatric</strong> services for children
-                            </>
-                        )}
+                        <strong>Paediatric</strong> services for children
                     </>
                 }
                 description={[
@@ -198,7 +191,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     </>
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/ophthalmologist-consultations-large.png',
+                    url: '/images/section-images/ophthalmologist-consultations.png',
                     width: 635,
                     height: 503
                 }}
@@ -215,9 +208,9 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
 
             <LazyComponent>
                 <Faq
-                    faqs={paediatricFaqList}
-                    titleLight="Paediatric Eye Care Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || paediatricFaqList}
+                    titleLight="Paediatric eye care"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -238,7 +231,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

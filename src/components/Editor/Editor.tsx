@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { useState } from 'react';
 import { RxReset } from 'react-icons/rx';
 import { FiSave } from 'react-icons/fi';

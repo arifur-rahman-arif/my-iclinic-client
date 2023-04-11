@@ -13,7 +13,7 @@ interface FeaturedPatientInterface {
     bandColor?: string;
     h2Title: string;
     h3Title: string;
-    bandImageDescription: string[];
+    bandImageDescription: ReactNode[];
     reviewDescription?: string[];
     reviewTitle: ReactNode;
     sliders: BandImageInterface[];
@@ -104,7 +104,7 @@ const FeaturedPatient = ({
 
                         <div className="flex flex-col gap-6">
                             {bandImageDescription.map((desc, index) => (
-                                <p key={index}>{desc}</p>
+                                <div key={index}>{desc}</div>
                             ))}
                         </div>
 
@@ -112,7 +112,7 @@ const FeaturedPatient = ({
                             {reviewDescription ? (
                                 <div className="flex flex-col gap-6">
                                     {reviewDescription?.map((desc, index) => (
-                                        <p key={index}>{desc}</p>
+                                        <div key={index}>{desc}</div>
                                     ))}
                                 </div>
                             ) : null}

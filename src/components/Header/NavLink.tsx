@@ -25,21 +25,20 @@ export interface NavLinkInterface {
  */
 const NavLink = ({ menu, router, navMenuData }: NavLinkInterface): JSX.Element => {
     return (
-        <li className='group/menu-item parent-menu block grid h-full place-items-center'>
+        <li className="group/menu-item parent-menu block grid h-full place-items-center">
             {/* Parent menus */}
             <ParentMenuItem router={router} menu={menu} />
 
             {/* Submenus */}
             {menu.submenu?.length && (
-                <div
-                    className='mega-submenu absolute z-[99] left-0 top-full grid max-h-0 w-screen grid-rows-[1fr_auto] overflow-y-auto overflow-x-hidden bg-white transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_19rem)] group-hover/menu-item:drop-shadow-md'>
-                    <Container className='relative'>
+                <div className="mega-submenu absolute left-0 top-full z-[99] grid max-h-0 w-screen grid-rows-[1fr_auto] overflow-y-auto overflow-x-hidden bg-white transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_19rem)] group-hover/menu-item:drop-shadow-md">
+                    <Container className="relative">
                         {menu.slug === 'cataract' && (
                             <SubMenu
                                 router={router}
                                 submenu={menu.submenu}
-                                subMenuTitle='Cataract'
-                                blogsTitle='More about cataract surgery'
+                                subMenuTitle="Cataract"
+                                blogsTitle="More about cataract surgery"
                                 posts={navMenuData?.cataractPosts}
                             />
                         )}
@@ -47,8 +46,8 @@ const NavLink = ({ menu, router, navMenuData }: NavLinkInterface): JSX.Element =
                             <SubMenu
                                 router={router}
                                 submenu={menu.submenu}
-                                subMenuTitle='Vision correction'
-                                blogsTitle='More about vision correction '
+                                subMenuTitle="Vision correction"
+                                blogsTitle="More about vision correction "
                                 posts={navMenuData?.surgeryPosts}
                             />
                         )}
@@ -83,7 +82,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
     const isMenuActive = router.pathname === menu.url;
 
     return (
-        <span className='relative flex items-center justify-center gap-2'>
+        <span className="relative flex items-center justify-center gap-2">
             {menu.submenu ? (
                 <>
                     <span
@@ -93,17 +92,16 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     >
                         {menu.name}
                         {isMenuActive && (
-                            <span
-                                className='absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]'></span>
+                            <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                         )}
                     </span>
 
-                    <FaAngleDown
-                        className='h-[1.2rem] w-[1.2rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]' />
+                    <FaAngleDown className="h-[1.2rem] w-[1.2rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]" />
                 </>
             ) : (
                 <Link
                     href={menu.url}
+                    title={menu.name as string}
                     className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                         isMenuActive && 'text-[#9B9FA1]'
                     }`}
@@ -111,8 +109,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className='absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]'></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                     )}
                 </Link>
             )}

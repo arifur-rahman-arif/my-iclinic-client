@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';

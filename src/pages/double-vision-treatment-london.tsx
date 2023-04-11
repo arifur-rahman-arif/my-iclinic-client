@@ -110,7 +110,7 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -260,9 +260,9 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
 
             <LazyComponent>
                 <Faq
-                    faqs={doubleVisionFaqList}
-                    titleLight="Double vision Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || doubleVisionFaqList}
+                    titleLight="Double vision"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>

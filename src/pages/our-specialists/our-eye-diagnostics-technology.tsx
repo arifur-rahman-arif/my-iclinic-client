@@ -13,7 +13,9 @@ import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Button } from 'src/components/Buttons';
 import NormalSection5 from 'src/components/page-sections/NormalSection/NormalSection5';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
@@ -104,7 +106,7 @@ export default function OurEyeDiagnosticsTechnology({
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -161,7 +163,30 @@ export default function OurEyeDiagnosticsTechnology({
                 customColumn={<AdvanceEyeCare />}
             />
 
-            <CtaSection2 title="Interested in working with us?" excludeSloganText />
+            <CtaSection2
+                title="Interested in working with us?"
+                textColumnExtras={
+                    <>
+                        <div className={`flex flex-wrap items-center justify-start gap-6`}>
+                            <Button
+                                type="phone"
+                                text="0208 445 8877"
+                                iconPosition="left"
+                                icon={
+                                    <Image
+                                        src="/images/icons/icon-phone-dark.svg"
+                                        alt=""
+                                        width={20}
+                                        height={20}
+                                        quality={2}
+                                        className="h-8 w-8"
+                                    />
+                                }
+                            />
+                        </div>
+                    </>
+                }
+            />
 
             <LazyComponent>
                 <CompanyLogos />
@@ -179,6 +204,7 @@ export default function OurEyeDiagnosticsTechnology({
                         </>
                     }
                     pageSlug="our-eye-diagnostics-technology"
+                    downloadFile={data?.email_contents?.download_file}
                 />
             </LazyComponent>
 

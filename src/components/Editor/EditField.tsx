@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import { TextField } from '@/components/Inputs';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { RxReset } from 'react-icons/rx';

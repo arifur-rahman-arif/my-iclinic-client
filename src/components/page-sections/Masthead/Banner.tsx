@@ -25,8 +25,8 @@ const Banner = ({
     googleReviews,
     trustPilotReviews
 }: BannerInterface): JSX.Element => {
-    const priceRef = useRef<HTMLSpanElement>(null);
-    const bannerRef = useRef<HTMLDivElement>(null);
+    const priceRef = useRef<HTMLSpanElement | null>(null);
+    const bannerRef = useRef<HTMLDivElement | null>(null);
     const [startH2Animation, setStartH2Animation] = useState<boolean>(false);
 
     useEffect(() => {
@@ -103,7 +103,7 @@ const Banner = ({
                         className={`block h-full w-2 bg-heading2 ${priceTextExtra ? 'row-span-2' : 'row-span-1'}`}
                     ></span>
                     <span
-                        className="w-0 overflow-hidden whitespace-nowrap font-latoBold text-[2rem] uppercase leading-[2.4rem] text-heading2 md:text-[2.4rem] md:leading-[2.4rem]"
+                        className="w-0 overflow-hidden whitespace-nowrap font-latoBold text-[2rem] uppercase leading-[2.4rem] text-heading2 line-clamp-2 md:text-[2.4rem] md:leading-[2.4rem]"
                         ref={priceRef}
                     >
                         {priceText || '£2,400 per eye'}

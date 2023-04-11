@@ -1,12 +1,14 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button2 } from '@/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
+import { H2Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { CtaSection, FullWidthImageSection, Masthead } from '@/components/page-sections';
 import { yagFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListYag } from '@/components/page-sections/LeftRight/leftRightList';
-import { normalSlideListYag } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
+import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-yag-large.png';
@@ -29,9 +31,6 @@ const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
-});
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
@@ -107,7 +106,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
 
             <Container className="mt-24">
                 <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Talk to a specialist</strong>
+                    <strong className="normal-case">Speak to a specialist</strong>
                 </h2>
             </Container>
 
@@ -149,9 +148,18 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             {/*     /> */}
             {/* </LazyComponent> */}
 
-            <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListYag} />
-            </LazyComponent>
+            {/* <LazyComponent> */}
+            {/*     <NormalSlideSection sliderList={normalSlideListYag} /> */}
+            {/* </LazyComponent> */}
+
+            <Section>
+                <Container className="grid place-items-center gap-12 md:gap-24">
+                    <H2Variant1 className="max-w-[56.5rem] text-center !normal-case">
+                        Find out more about YAG laser treatment price
+                    </H2Variant1>
+                    <Button2 type="anchor" text="Yag treatment price" link="/cataract/yag-capsulotomy-for-pco/price" />
+                </Container>
+            </Section>
 
             <CtaSection subtitle="Find out your options" />
 
@@ -161,6 +169,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
 
             <LazyComponent>
                 <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
                     title={
                         <>
                             Get the guide to <br />
@@ -173,9 +182,9 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
 
             <LazyComponent>
                 <Faq
-                    faqs={yagFaqList}
-                    titleLight="YAG Laser Treatment Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || yagFaqList}
+                    titleLight="YAG laser treatment "
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -196,7 +205,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

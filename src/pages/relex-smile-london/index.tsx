@@ -1,7 +1,7 @@
 // Import BannerImage from '@/section-images/relex-banner-bg.png';
 import { BreadCrumb } from '@/components/Breadcrumb';
 
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -160,13 +160,13 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
+            <Container className="mt-36 sm:mt-24">
                 <h2 className="w-full text-center normal-case">
                     <strong className="normal-case">
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -263,7 +263,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 }
                 h3BoldHeading={data?.section_5.heading?.bold_heading || 'Clear, natural vision!'}
                 descriptions={
-                    (data?.section_5.descriptions.length &&
+                    (data?.section_5?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_5.descriptions)) || [
                         `Have you or one of your loved ones finally decided to do something about being short-sighted or
                      having astigmatism? To begin the ReLEx SMILE process, give us a call or book a consultation with
@@ -291,36 +291,42 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             />
 
             <FullWidthImageSection3
-                title1="97% of people"
-                title2="From our clinic are extremely happy with their vision after laser eye surgery."
-                descriptions={[
-                    'Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.'
-                ]}
+                title1={data?.section_8?.heading || '97% of people'}
+                title2={
+                    data?.section_8?.subheading ||
+                    'From our clinic are extremely happy with their vision after laser eye surgery.'
+                }
+                descriptions={
+                    (data?.section_8?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_8.descriptions)) || [
+                        'Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.'
+                    ]
+                }
+                image={data?.section_8?.image}
             />
 
             <div className="md:mt-24"></div>
 
             <LazyComponent>
                 <FeaturedPatient
-                    h2Title="Relex SMILE Patient"
-                    h3Title="Life after ReLEx SMILE Treatment"
-                    bandImageDescription={[
-                        `It has been two months since my ReLEx SMILE eye surgery at My-iClinic,
+                    h2Title={data?.section_9?.subheading || 'Relex SMILE Patient'}
+                    h3Title={data?.section_9?.heading || 'Life after ReLEx SMILE Treatment'}
+                    bandImageDescription={
+                        (data?.section_9?.descriptions?.length &&
+                            stringArrayToElementArray(data?.section_9.descriptions)) || [
+                            `It has been two months since my ReLEx SMILE eye surgery at My-iClinic,
                         and my vision is better than 20/20 (~20/10), with only minor and receding eye dryness. `,
-                        'In the past, I was a regular contact lens user with a -4.25 prescription in both eyes.',
-                        `Dr John Bolger has taken great care in assessing my vision and health, and explaining the surgery.
+                            'In the past, I was a regular contact lens user with a -4.25 prescription in both eyes.',
+                            `Dr John Bolger has taken great care in assessing my vision and health, and explaining the surgery.
                          He performed the correcting procedure with great care, and after 15 minutes I walked out
-                          of the surgery on my own without any visual aids or help!`
-                    ]}
-                    bandImageTitle="Mr. Lukicov"
-                    bandImageURL="/images/section-images/mr-lukicov.png"
-                    reviewDescription={[
-                        `The next day I was already back at work (software development),
-                         gym the following day (weight lifting) and swimming just a week after - if that is not a miracle,
-                          I don't know what is!`
-                    ]}
+                          of the surgery on my own without any visual aids or help!`,
+                            "The next day I was already back at work (software development), gym the following day (weight lifting) and swimming just a week after - if that is not a miracle, I don't know what is!"
+                        ]
+                    }
+                    bandImageTitle={data?.section_9?.name || 'Mr. Lukicov'}
+                    bandImageURL={data?.section_9?.front_image || '/images/section-images/mr-lukicov.png'}
                     reviewTitle="Thank you My-iClinic"
-                    sliders={relexSliders}
+                    sliders={data?.section_9?.additional_images || relexSliders}
                     bandColor="bg-[#FF5C00]"
                 />
             </LazyComponent>
@@ -470,7 +476,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                                 'a sustainable, <br /> plastic free life!'
                         )}
                         descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions.length &&
+                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
                                 stringArrayToElementArray(
                                     data?.sustainability_section.plastic_free_life.descriptions
                                 )) || [
@@ -598,6 +604,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
 
             <LazyComponent>
                 <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
                     title="Get the guide to ReLEx laser surgery"
                     description="Robotic laser vision correction"
                     pageSlug="relex-smile-london"
@@ -607,8 +614,8 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             <LazyComponent>
                 <Faq
                     faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || relexSmileFaqList}
-                    titleLight="ReLEx SMILE Laser"
-                    titleBold="Treatment FAQ’s"
+                    titleLight="ReLEx SMILE"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -668,6 +675,14 @@ export async function getStaticProps() {
                     section_7: {
                         ...data?.acf?.section_7,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions)
+                    },
+                    section_8: {
+                        ...data?.acf?.section_8,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_8?.descriptions)
+                    },
+                    section_9: {
+                        ...data?.acf?.section_9,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_9?.descriptions)
                     },
                     sustainability_section: {
                         plastic_free_life: {

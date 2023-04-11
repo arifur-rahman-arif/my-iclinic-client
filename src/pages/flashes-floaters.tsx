@@ -112,7 +112,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                         {data?.request_callback_title ? (
                             HTMLReactParser(data.request_callback_title)
                         ) : (
-                            <>Talk to a specialist</>
+                            <>Speak to a specialist</>
                         )}
                     </strong>
                 </h2>
@@ -151,12 +151,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     </>
                 ]}
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/eye-flashes-&-floaters-large.png',
+                    url: data?.section_2?.image || '/images/section-images/eye-flashes-&-floaters-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2.large_image || '/images/section-images/eye-flashes-&-floaters-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/eye-flashes-&-floaters-large.png',
                     width: 644,
                     height: 559
                 }}
@@ -177,12 +177,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     'For people over the age of 50, flashes & floaters may indicate early signs of more serious eye conditions. If you are over the age of 50 and experiencing eye flashes & floaters, please contact our support team for a private consultation with our ophthalmologist.'
                 ]}
                 sectionImage={{
-                    url: data?.section_2.image || '/images/section-images/eye-flashes-diagnosis-large.png',
+                    url: data?.section_2?.image || '/images/section-images/eye-flashes-diagnosis-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2.large_image || '/images/section-images/eye-flashes-diagnosis-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/eye-flashes-diagnosis-large.png',
                     width: 654,
                     height: 559
                 }}
@@ -190,9 +190,9 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             />
 
             <CtaSection
-                title={data?.cta_section.heading}
-                description={data?.cta_section.description}
-                subtitle={data?.cta_section.subheading}
+                title={data?.cta_section?.heading}
+                description={data?.cta_section?.description}
+                subtitle={data?.cta_section?.subheading}
             />
 
             <SideImageSection
@@ -205,22 +205,22 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 }
                 h3BoldHeading="private consultation?"
                 descriptions={
-                    (data?.section_3.descriptions.length &&
-                        stringArrayToElementArray(data?.section_3.descriptions)) || [
+                    (data?.section_3?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_3?.descriptions)) || [
                         <>
                             A private consultation with our ophthalmologist is an all-inclusive{' '}
-                            <strong>cost of £200</strong>
+                            <strong>cost of £300</strong>
                         </>,
                         'This includes:'
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3.image || '/images/section-images/placeholder-image.png',
+                    url: data?.section_3?.image || '/images/section-images/placeholder-image.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3.large_image || '/images/section-images/placeholder-image.png',
+                    url: data?.section_3?.large_image || '/images/section-images/placeholder-image.png',
                     width: 649,
                     height: 552
                 }}
@@ -244,8 +244,8 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             <FullWidthImageSection
                 h3Title={
                     <>
-                        {data?.full_width_image_section.heading ? (
-                            HTMLReactParser(data.full_width_image_section.heading)
+                        {data?.full_width_image_section?.heading ? (
+                            HTMLReactParser(data?.full_width_image_section?.heading)
                         ) : (
                             <>Retinal detachments</>
                         )}
@@ -303,9 +303,9 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
 
             <LazyComponent>
                 <Faq
-                    faqs={flashesFaqList}
-                    titleLight="Conjunctivitis Frequently"
-                    titleBold="Asked Questions"
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || flashesFaqList}
+                    titleLight="Conjunctivitis"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>
@@ -326,7 +326,10 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

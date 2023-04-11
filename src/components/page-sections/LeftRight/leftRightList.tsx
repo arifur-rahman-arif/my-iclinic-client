@@ -582,7 +582,7 @@ export const leftRightListPremiumLenses: Array<LeftRightSectionChildrenInterface
     {
         lottieComponent: <LottieComponent animationData={animationData5} />,
         alternativeHeading: (
-            <LeftRightHeading1 title="Monofocal Lenses" subTitle="Independence from glasses" percentage={60} />
+            <LeftRightHeading1 title="Monovision" subTitle="Independence from glasses" percentage={60} />
         ),
         descriptions: [
             `Monovision is when we correct the dominant eye for distance vision, and the other eye is corrected for near vision. When both eyes are viewing together, the distances pair.`,
@@ -689,7 +689,7 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/cataract-consultation.png"
+                src="/images/section-images/glaucoma-consultation.png"
                 width={390}
                 height={390}
                 quality={70}
@@ -953,7 +953,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                             Private Consultation Cost <strong className="text-[2rem]">£200</strong>
                         </strong>,
                         <strong className="text-[1.8rem] leading-[2.8rem]">
-                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£3,000</strong>
+                            Chalazion Removal Treatment Cost From <strong className="text-[2rem]">£350 per eye</strong>
                         </strong>
                     ]}
                 />
@@ -1642,21 +1642,21 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/corneal-cross-linking-large.jpg"
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/corneal-cross-linking-large.jpg"
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),

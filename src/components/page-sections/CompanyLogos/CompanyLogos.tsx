@@ -2,17 +2,21 @@ import Image from 'next/image';
 import { Section } from '@/components/Section';
 import { Container } from '@/components/Container';
 
+interface CompanyLogosProps {
+    sectionClass?: string;
+}
+
 /**
  * Company logo component
  *
  * @returns {*}  {JSX.Element}
  */
-const CompanyLogos = (): JSX.Element => {
+const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
     return (
-        <Section>
+        <Section className={`${sectionClass || '!mt-24'}`}>
             <Container>
-                <div className="mx-auto flex flex-wrap items-center justify-center sm:gap-12">
-                    <div className="grid h-[17.8rem] w-[17.8rem] place-items-center overflow-hidden rounded-full p-8 transition-all duration-500 hover:shadow-shadow1">
+                <div className="mx-auto flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+                    <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
                             src="/images/section-images/royal-society-medicine.png"
@@ -22,7 +26,7 @@ const CompanyLogos = (): JSX.Element => {
                             height={68}
                         />
                     </div>
-                    <div className="grid h-[17.8rem] w-[17.8rem] place-items-center overflow-hidden rounded-full p-8 transition-all duration-500 hover:shadow-shadow1">
+                    <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
                             src="/images/section-images/ukiscrs.png"
@@ -32,7 +36,7 @@ const CompanyLogos = (): JSX.Element => {
                             height={52}
                         />
                     </div>
-                    <div className="grid h-[17.8rem] w-[17.8rem] place-items-center overflow-hidden rounded-full p-8 transition-all duration-500 hover:shadow-shadow1">
+                    <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
                             src="/images/section-images/royal-collage.png"
@@ -42,7 +46,7 @@ const CompanyLogos = (): JSX.Element => {
                             height={143}
                         />
                     </div>
-                    <div className="grid h-[17.8rem] w-[17.8rem] place-items-center overflow-hidden rounded-full p-8 transition-all duration-500 hover:shadow-shadow1">
+                    <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
                             src="/images/section-images/escrs.png"

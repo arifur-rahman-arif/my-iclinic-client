@@ -58,7 +58,7 @@ const StackColumn = ({ stackList }: StackColumnProps): JSX.Element => {
             {/* Grid item 5 */}
             {((stackList?.length && stackList) || defaultStackList).map((stack, index) => (
                 <div key={index} className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-6">
-                    <BulletPoint />
+                    <BulletPoint className="!translate-y-2" />
                     <span className="font-latoBold text-[2rem] leading-[2.4rem] sm:col-span-1">{stack.title}</span>
                     <div className="col-span-2 grid gap-6">
                         {stack.descriptions.map((item, index) => (

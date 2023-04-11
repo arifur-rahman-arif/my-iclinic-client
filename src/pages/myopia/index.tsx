@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from '@/components/Button';
+import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import H3Variant3 from '@/components/Headings/H3Variant3';
@@ -416,7 +416,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                                 link="/pdf/myopia.pdf"
                                 text="Download"
                                 // @ts-ignore
-                                download="download"
+                                download={true}
                                 // @ts-ignore
                                 target="_blank"
                                 iconPosition="left"
@@ -597,6 +597,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         </>
                     }
                     pageSlug="myopia"
+                    downloadFile={data?.email_contents?.download_file}
                 />
             </LazyComponent>
 
@@ -607,8 +608,8 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             <LazyComponent>
                 <Faq
                     faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || myopiaFaqList}
-                    titleLight="Myopia Frequently"
-                    titleBold="Asked Questions"
+                    titleLight="Myopia"
+                    titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
             </LazyComponent>

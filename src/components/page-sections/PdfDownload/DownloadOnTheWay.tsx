@@ -5,6 +5,7 @@ interface DownloadOnTheWayInterface {
     showDownloadOnTheWayTemplate: boolean;
     setShowThankYouTemplate: Dispatch<SetStateAction<boolean>>;
     setShowDownloadOnTheWayTemplate: Dispatch<SetStateAction<boolean>>;
+    downloadFile?: string;
 }
 
 /**
@@ -20,7 +21,8 @@ interface DownloadOnTheWayInterface {
 const DownloadOnTheWay = ({
     setShowThankYouTemplate,
     setShowDownloadOnTheWayTemplate,
-    showDownloadOnTheWayTemplate
+    showDownloadOnTheWayTemplate,
+    downloadFile
 }: DownloadOnTheWayInterface) => {
     const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -58,7 +60,7 @@ const DownloadOnTheWay = ({
                 </LinkText>{' '}
                 to download manually
             </p>
-            <a href="/pdf/cataract-surgery.pdf" ref={anchorRef} download></a>
+            <a href={downloadFile} ref={anchorRef} download></a>
         </div>
     );
 };
