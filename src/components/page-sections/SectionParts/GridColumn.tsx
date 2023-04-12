@@ -3,6 +3,7 @@ import IconPersonHead from '@/icons/icon-person-head-on-machine.svg';
 import IconEyeBall from '@/icons/icon-eye-ball.svg';
 import IconEyeWithPlus from '@/icons/icon-eye-with-plus.svg';
 import gsap from 'gsap';
+import HTMLReactParser from 'html-react-parser';
 
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useEffect, useRef } from 'react';
@@ -29,7 +30,6 @@ const defautltcardList: CardList[] = [
         image: IconEyeBall,
         title: (
             <>
-                {' '}
                 Clear, natural vision
                 <br />
                 restored
@@ -95,7 +95,9 @@ const GridColumn = ({ cardList }: GridColumnProps): JSX.Element => {
                     className={`flex min-h-[31.1rem] translate-x-1/4 flex-col items-start justify-start gap-8 rounded-primary ${colorList[index]} px-8 py-12 opacity-0`}
                 >
                     <Image src={card.image} width={128} height={128} alt="" className="h-32 w-32" />
-                    <span className="font-latoBold text-[2rem] leading-[2.4rem]">{card.title}</span>
+                    <span className="font-latoBold text-[2rem] leading-[2.4rem]">
+                        {typeof card.title === 'string' ? HTMLReactParser(card.title) : card.title}
+                    </span>
                     <p className="text-[1.6rem] leading-[2.8rem]">{card.description}</p>
                 </div>
             ))}
