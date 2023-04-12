@@ -27,7 +27,9 @@ const Thankyou = ({ downloadFile }: ThankyouProps): JSX.Element => {
                 style={{ width: '6rem', height: '6rem', background: 'transparent' }}
             />
 
-            <h2 className="mt-14 normal-case">Your download completed</h2>
+            <span className="mt-14 font-latoBold text-[2.4rem] normal-case leading-[2.8rem] md:text-[2.8rem] md:leading-[3.2rem]">
+                Your download completed
+            </span>
             <p className="mt-12 max-w-[31.4rem] text-center">Please check your download folder or your email.</p>
 
             {downloadFile && (

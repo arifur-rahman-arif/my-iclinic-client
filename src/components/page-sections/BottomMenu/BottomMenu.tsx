@@ -44,8 +44,8 @@ const BottomMenu = (): JSX.Element => {
                     </Link>
                 </li>
                 <li className="grid place-items-center">
-                    <button aria-label="Live chat" onClick={openFreshdeskChat}>
-                        <Image src={IconChat} alt="" quality={100} />
+                    <button aria-label="Live chat">
+                        <Image src={IconChat} alt="" quality={100} onClick={openFreshdeskChat} />
                     </button>
                 </li>
                 <li onClick={() => handleZoomToggle()} className="grid place-items-center">

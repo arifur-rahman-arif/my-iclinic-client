@@ -51,7 +51,7 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4">
+                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
                                 {word}
@@ -72,11 +72,6 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                     </h2>
                 }
                 priceText="£395 per eye"
-                priceTextExtra={
-                    <span className="font-mulishBold text-[1.8rem] lowercase leading-[2.4rem] text-heading2 first-letter:uppercase">
-                        All-inclusive
-                    </span>
-                }
             />
 
             <SideImageSection

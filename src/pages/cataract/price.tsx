@@ -68,7 +68,7 @@ export default function CataractPrice({ seo, yoastJson }: CataractPriceProps): J
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4 sm:max-w-[35rem]">
+                    <h1 className="flex flex-wrap gap-2 xs:gap-4 sm:max-w-[35rem]">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

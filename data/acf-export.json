@@ -2505,42 +2505,42 @@
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "home.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "cookie-policy.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "financing-your-treatment.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "articles.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "contact-us.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "about-us.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "our-specialists.php"
                 },
                 {
                     "param": "page_template",
                     "operator": "!=",
-                    "value": "default"
+                    "value": "privacy-policies.php"
                 },
                 {
                     "param": "post_type",
@@ -9981,34 +9981,100 @@
         "location": [
             [
                 {
-                    "param": "post_type",
+                    "param": "page_template",
                     "operator": "==",
-                    "value": "page"
-                },
+                    "value": "our-eye-diagnostics-technology.php"
+                }
+            ],
+            [
                 {
                     "param": "page_template",
-                    "operator": "!=",
-                    "value": "home.php"
-                },
+                    "operator": "==",
+                    "value": "cataract.php"
+                }
+            ],
+            [
                 {
                     "param": "page_template",
-                    "operator": "!=",
-                    "value": "our-prices.php"
-                },
+                    "operator": "==",
+                    "value": "premium-lenses.php"
+                }
+            ],
+            [
                 {
                     "param": "page_template",
-                    "operator": "!=",
-                    "value": "financing-your-treatment.php"
-                },
+                    "operator": "==",
+                    "value": "yag-capsulotomy-for-pco.php"
+                }
+            ],
+            [
                 {
                     "param": "page_template",
-                    "operator": "!=",
-                    "value": "our-specialists.php"
-                },
+                    "operator": "==",
+                    "value": "conjuctivitis-treatment-london.php"
+                }
+            ],
+            [
                 {
                     "param": "page_template",
-                    "operator": "!=",
-                    "value": "privacy-policies.php"
+                    "operator": "==",
+                    "value": "double-vision-treatment-london.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "glaucoma-treatment.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "icl.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "lasek-prk.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "lasik-london.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "lazy-eyes-treatement.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "myopia.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "presbyond-london.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "relex-smile-london.php"
                 }
             ]
         ],

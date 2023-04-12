@@ -32,7 +32,7 @@ interface PriceProps {
  */
 export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
     const heading = 'Glaucoma treatment and management cost London';
-    const subheading = 'Reducing PCO after Cataract Surgery';
+    const subheading = 'The cost of Glaucoma management';
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
@@ -42,7 +42,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4">
+                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}
@@ -62,7 +62,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                         ))}
                     </h2>
                 }
-                priceText="£395 per eye"
+                priceText="£400 per eye"
             />
             <SideImageSection
                 h2Heading="Your consultation"

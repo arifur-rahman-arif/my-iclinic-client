@@ -19,7 +19,7 @@ interface OurSpecialistsProps {
 const OurSpecialists = ({ submenu, router }: OurSpecialistsProps): JSX.Element => {
     return (
         <div className="grid grid-cols-1 gap-12 py-12 xl:grid-cols-[auto_1fr] xl:gap-40 xl:py-20">
-            <SubMenuList submenu={submenu} router={router} subMenuTitle="Cataract" />
+            <SubMenuList submenu={submenu} router={router} subMenuTitle="Our team" />
 
             {/* Blogs */}
             <Specialists />

@@ -63,7 +63,7 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
                 imageLarge={MastheadImageLarge}
                 altText="Woman reading the cost of Presbyond Treatment in London."
                 h1Title={
-                    <h1 className="flex flex-wrap gap-4">
+                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
                                 {word}

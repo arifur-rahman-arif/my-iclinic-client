@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
+import { getElementTopPosition } from '@/utils/miscellaneous';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect } from 'react';
 import ImageComponent from './ImageComponent';
@@ -58,15 +59,9 @@ const LeftRightSection = ({
             // Get the DOM element of the target section by its ID
             const targetSection = document.getElementById(targetSectionId);
             if (targetSection) {
-                const offset = 200; // Adjust this value to the desired offset amount
-                const targetOffsetTop = targetSection.offsetTop - offset;
-
                 // Use setTimeout to delay scrolling by 1000ms (1 second)
                 setTimeout(() => {
-                    window.scrollTo({
-                        top: targetOffsetTop,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo(0, getElementTopPosition(targetSection as HTMLElement) - 200);
                 }, 200); // Change the delay time as needed
             }
         }

@@ -140,7 +140,7 @@ export const yagPriceList: PriceSectionInterface[] = [
         priceText: 'The price of your laser consultation & surgery',
         priceDescription: (
             <div className="max-w-[45rem] font-latoBold text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem]">
-                Permanently correct your PCO symptoms with our all-inclusive cost.
+                Permanently correct your PCO symptoms
             </div>
         )
     }

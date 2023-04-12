@@ -38,7 +38,7 @@ export const defaultList: GlaucomaPackageInterface[] = [
             },
             {
                 title: 'HFDS (High-frequency deep sclerotomy)',
-                price: '£1200 per eye'
+                price: '£1,200 per eye'
             },
             {
                 title: 'PreserFlo',

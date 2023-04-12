@@ -51,7 +51,7 @@ const Masthead = ({
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     return (
-        <Section defaultClassName="mt-12 xl:mt-20 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative">
+        <Section defaultClassName="mt-12 xl:mt-20 w-full xl:h-[11.4rem] relative md:min-h-[70rem] relative masthead">
             <div className="absolute right-0 left-auto -z-[1] min-h-[30rem] w-full max-w-[123.1rem] sm:hidden md:h-full">
                 <Image
                     src={imageSmall}

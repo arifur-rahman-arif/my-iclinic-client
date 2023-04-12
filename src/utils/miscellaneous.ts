@@ -286,12 +286,15 @@ export const wordpressPageFields = (): string => {
 export const openFreshdeskChat = (): Element | null => {
     const freshChatIcon = document.getElementById('fc_frame');
 
-    if (!freshChatIcon) return null;
+    if (!freshChatIcon) {
+        return null;
+    }
 
+    // Check if window.fcWidget is defined and is a function
     // @ts-ignore
-    if (window?.fcWidget) {
+    if (typeof window.fcWidget === 'object') {
         // @ts-ignore
-        window?.fcWidget.open();
+        window.fcWidget.open();
 
         setTimeout(() => {
             freshChatIcon.style.opacity = '1';
