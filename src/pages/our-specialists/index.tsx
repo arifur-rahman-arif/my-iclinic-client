@@ -44,7 +44,7 @@ export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpeci
                 altText=""
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 " key={index}>
                                 {word}

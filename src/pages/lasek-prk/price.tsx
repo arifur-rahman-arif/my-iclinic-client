@@ -64,7 +64,7 @@ export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX
                 altText=""
                 imagePosition="!object-cover object-[-35rem_center]"
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
                                 {word}

@@ -81,7 +81,7 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 imagePosition="object-[-3rem_0rem]"
                 altText=""
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

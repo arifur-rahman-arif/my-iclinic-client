@@ -196,7 +196,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 smallImageClassName={'object-[center_-3rem]'}
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4 md:max-w-[41rem]">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4 md:max-w-[41rem]">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

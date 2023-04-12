@@ -89,7 +89,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 imageLarge={MastheadImageLarge}
                 altText=""
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word: string, index: number) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

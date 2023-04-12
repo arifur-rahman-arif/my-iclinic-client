@@ -54,7 +54,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 imagePosition="object-[-14rem_0] !object-cover"
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
                                 {word}

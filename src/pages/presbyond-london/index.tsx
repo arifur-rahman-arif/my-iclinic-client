@@ -102,7 +102,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 imageLarge={MastheadImageLarge}
                 altText="Presbyopic woman reading a book with her glasses on."
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

@@ -109,7 +109,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 imageLarge={MastheadImageLarge}
                 altText=""
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4">
+                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0" key={index}>
                                 {word}

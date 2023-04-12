@@ -98,7 +98,7 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 imageLarge={MastheadImageLarge}
                 altText=""
                 h1Title={
-                    <h1 className="flex flex-wrap gap-2 xs:gap-4 sm:max-w-[43.7rem]">
+                    <h1 className="flex flex-wrap gap-2 sm:max-w-[43.7rem] sm:gap-4">
                         {heading.split(' ').map((word, index) => (
                             <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
                                 {word}
