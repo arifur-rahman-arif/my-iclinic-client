@@ -5963,7 +5963,7 @@
             ]
         ],
         "menu_order": 0,
-        "position": "side",
+        "position": "acf_after_title",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
@@ -6864,7 +6864,7 @@
                         "label": "Heading",
                         "name": "heading",
                         "aria-label": "",
-                        "type": "text",
+                        "type": "group",
                         "instructions": "",
                         "required": 0,
                         "conditional_logic": 0,
@@ -6873,11 +6873,49 @@
                             "class": "",
                             "id": ""
                         },
-                        "default_value": "",
-                        "maxlength": "",
-                        "placeholder": "",
-                        "prepend": "",
-                        "append": ""
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_64368abc0748c",
+                                "label": "Light Heading",
+                                "name": "light_heading",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_64368ac90748d",
+                                "label": "Bold Heading",
+                                "name": "bold_heading",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            }
+                        ]
                     },
                     {
                         "key": "field_642a1d4165413",

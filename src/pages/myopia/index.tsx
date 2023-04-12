@@ -402,7 +402,31 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     </div>
                 }
                 description={
-                    (data?.section_12.descriptions?.length && data?.section_12.descriptions) || [
+                    (data?.section_12.descriptions?.length && [
+                        ...stringArrayToElementArray(data?.section_12.descriptions),
+                        <div className="mt-12 grid md:mt-12">
+                            <Button
+                                type="anchor"
+                                link="/pdf/myopia.pdf"
+                                text="Download"
+                                // @ts-ignore
+                                download={true}
+                                // @ts-ignore
+                                target="_blank"
+                                iconPosition="left"
+                                icon={
+                                    <Image
+                                        src="/images/icons/icon-cloud-download-outline.svg"
+                                        alt=""
+                                        width={24}
+                                        height={24}
+                                        className="h-[2.4rem] w-[2.4rem]"
+                                    />
+                                }
+                                className="justify-self-center"
+                            />
+                        </div>
+                    ]) || [
                         "If you think your child is ready for Myopia treatment, we can help. With our Atropine eye drops we can slow down the progression of your Myopia and manage your Atropine treatment to check the effectiveness and benefits for your child's future vision.",
                         <span className="block max-w-[40.8rem] font-mulishLight text-[2rem] leading-[2.8rem]">
                             Do you want a friendly information pack for your child to understand Myopia?
@@ -563,7 +587,8 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     </H3Variant3>
                 }
                 descriptions={
-                    (data?.section_15.descriptions?.length && data?.section_15.descriptions) || [
+                    (data?.section_15.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_15.descriptions)) || [
                         'When they arrive in this world their eyes will contain the perfect algorithm for eye growth that evolved for millions of generations and has produced emmetropia (crisp clear vision).',
                         'But as soon as they arrive in the modern urbanized world this algorithm is corrupted by unnatural environmental inputs which causes the eye to continue to elongate, resulting in Myopia.',
                         'Plano 2025 is an organization whose aim is that no child born after 2025 should become myopic. If we are diagnosing 10-year-olds with myopia in 2035 we have failed.',

@@ -88,7 +88,7 @@ const Card = ({ title, descriptions }: CardInterface): JSX.Element => {
     return (
         <div className="max-w-[58.7rem] flex-grow rounded-primary py-20 px-12 shadow-shadow2 transition-all duration-500 hover:shadow-shadow1 md:px-24">
             <div className="grid content-start gap-6">
-                <H3Variant3>{title}</H3Variant3>
+                <H3Variant3>{typeof title === 'string' ? HTMLReactParser(title) : title}</H3Variant3>
                 {descriptions.map((item, index) => (
                     <div key={index}>{typeof item === 'string' ? HTMLReactParser(item) : item}</div>
                 ))}
@@ -111,7 +111,7 @@ interface MyopiaControlInterface {
 const MyopiaControl = ({ cardList }: MyopiaControlInterface): JSX.Element => {
     return (
         <div className="flex flex-col items-stretch justify-center gap-12 md:flex-row md:justify-start md:gap-24">
-            {(cardList || defaultCardList).map((card, index) => (
+            {((cardList?.length && cardList) || defaultCardList).map((card, index) => (
                 <Card {...card} key={index} />
             ))}
         </div>
