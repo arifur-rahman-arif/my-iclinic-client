@@ -170,7 +170,7 @@ export const card2List: Card2Interface[] = [
 export const consultantCardList: ConsultantCardInterface[] = [
     {
         image: '/images/avaters/odufuwa-bolger.jpg',
-        name: 'Bola Bolger',
+        name: 'Bola Odufuwa-Bolger',
         degree: 'MBBS DO FRCS (Ed) FRCOphth MSc CertLRS; PGDip LRS',
         title: 'Consultant and Surgeon',
         url: '/our-specialists/bola-bolger'

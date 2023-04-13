@@ -55,13 +55,13 @@ const Specialists = ({}: SpecialistsProps): JSX.Element => {
                                 unoptimized={true}
                                 className="h-24 w-24 overflow-hidden rounded-full object-cover"
                             />
-                            <span className="font-mulishBold text-[1.6rem] leading-8">{item.name}</span>
+                            <span className="font-mulishBold text-[1.6rem] leading-8 line-clamp-1">{item.name}</span>
                         </div>
                         <div className="grid justify-items-start gap-2">
                             <span className="rounded-[0.5rem] bg-[#D9E2E5] py-[0.1rem] px-[0.8rem] font-latoExtraBold text-[1.2rem] uppercase leading-[1.2rem]">
                                 {item.title}
                             </span>
-                            <span className="text-[1.4rem] leading-8 text-[#51585B] line-clamp-2">{item.degree}</span>
+                            <span className="text-[1.4rem] leading-8 text-[#51585B] line-clamp-1">{item.degree}</span>
                         </div>
                     </Link>
                 ))}
