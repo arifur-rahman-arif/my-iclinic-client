@@ -21,7 +21,7 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
             {
                 name: 'Laser eye surgery',
                 active: true,
-                cost: 4800,
+                cost: 2400,
                 minUpfront: 25,
                 maxUpfront: 50,
                 defaultUpfront: 30,

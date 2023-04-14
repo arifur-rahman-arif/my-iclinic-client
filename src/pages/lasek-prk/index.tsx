@@ -252,7 +252,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                         `Honest, friendly and professional, I thoroughly recommend My-iClinic for anyone considering laser corrective surgery.”`
                     ]}
                     bandImageTitle="Ms. Priti Patel"
-                    bandImageURL="/images/section-images/placeholder-image.png"
+                    bandImageURL="/images/section-images/ms-priti-patel.jpg"
                     reviewTitle="Thank you My-iClinic"
                     sliders={lasekSliders}
                     bandColor="bg-[#FF5C00]"
