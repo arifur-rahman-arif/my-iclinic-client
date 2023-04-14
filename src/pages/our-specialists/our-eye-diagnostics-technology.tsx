@@ -6,9 +6,9 @@ import Page from '@/components/Page';
 import { AdvanceEyeCare, CtaSection2, Masthead, SideImageSection } from '@/components/page-sections';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-large.png';
-import MastheadImageMedium from '@/masthead/masthead-eye-diagnostics-technology-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-eye-diagnostics-technology-small.png';
+import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-large.jpg';
+// import MastheadImageMedium from '@/masthead/masthead-eye-diagnostics-technology-medium.png';
+// import MastheadImageSmall from '@/masthead/masthead-eye-diagnostics-technology-small.png';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
@@ -70,8 +70,8 @@ export default function OurEyeDiagnosticsTechnology({
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
+                imageSmall={data?.masthead_image.image || MastheadImageLarge}
+                imageMedium={data?.masthead_image.image_medium || MastheadImageLarge}
                 imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
                 altText=""
                 h1Title={
@@ -138,12 +138,12 @@ export default function OurEyeDiagnosticsTechnology({
                     </>
                 }
                 sectionImage={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/comprehensive-screening.jpg',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/placeholder-image.png',
+                    url: '/images/section-images/comprehensive-screening.jpg',
                     width: 677,
                     height: 484
                 }}

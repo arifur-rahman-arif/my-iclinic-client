@@ -42,7 +42,7 @@ export default function DynamicPage({ specialist }: DynamicPageProps): JSX.Eleme
                                         alt={'Mr. John Bolger'}
                                         width={500}
                                         height={375}
-                                        quality={100}
+                                        unoptimized
                                         className="rounded-tl-primary rounded-tr-primary transition-all duration-500 group-hover/card:scale-110"
                                     />
                                 )}

@@ -379,7 +379,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         ]
                     }
                     bandImageTitle={data?.section_11?.name || 'Tamara'}
-                    bandImageURL={data?.section_11?.front_image || '/images/section-images/placeholder-image.png'}
+                    bandImageURL={data?.section_11?.front_image || '/images/section-images/tamara.jpg'}
                     reviewTitle="Thank you My-iClinic"
                     sliders={data?.section_11?.additional_images || glaucomaSliders}
                     bandColor="bg-[#8D33FF]"

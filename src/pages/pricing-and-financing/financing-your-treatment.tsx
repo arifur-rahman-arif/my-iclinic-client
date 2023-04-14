@@ -56,9 +56,9 @@ export default function FinancingYourTreatment({
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
                 altText=""
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">

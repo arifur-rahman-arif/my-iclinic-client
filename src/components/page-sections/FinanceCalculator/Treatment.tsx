@@ -65,7 +65,7 @@ const Treatment = ({
             <div className="grid content-start gap-12 md:gap-24">
                 <div>
                     <strong>
-                        Total cost of <strong className="capitalize">{name}</strong> is: {(cost / 2).toLocaleString()}{' '}
+                        Total cost of <strong className="capitalize">{name}</strong> is: {cost.toLocaleString()}{' '}
                         <span>/ per eye</span>
                     </strong>
 
@@ -130,7 +130,7 @@ const Treatment = ({
 
                     <div className="grid grid-flow-col place-items-center gap-4 justify-self-center">
                         <span className="font-latoBold text-[3rem] leading-[3.6rem] md:text-[6.4rem] md:leading-[6.4rem]">
-                            {(cost / 2).toLocaleString()}
+                            {cost.toLocaleString()}
                         </span>
                         <span className="font-mulishMedium">/Per eye</span>
                     </div>

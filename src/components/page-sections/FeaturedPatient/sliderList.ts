@@ -15,15 +15,15 @@ export const presbyondSliders: CardSlideInterface[] = [
     }
 ];
 export const iclSliders: CardSlideInterface[] = [
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    }
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // }
 ];
 
 export const lasikSliders: CardSlideInterface[] = [
@@ -63,25 +63,25 @@ export const blepharitisSliders: CardSlideInterface[] = [
 ];
 
 export const lasekSliders: CardSlideInterface[] = [
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    }
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // }
 ];
 
 export const glaucomaSliders: CardSlideInterface[] = [
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    },
-    {
-        imageURL: '/images/section-images/placeholder-image.png'
-    }
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // },
+    // {
+    //     imageURL: '/images/section-images/placeholder-image.png'
+    // }
 ];

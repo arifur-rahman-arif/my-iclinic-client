@@ -1,3 +1,4 @@
+import { FontResizer } from '@/components/FontResizer';
 import FreshChatScript from '@/components/FreshChatScript';
 import { Header } from '@/components/Header';
 import LazyComponent from '@/components/LazyComponent';
@@ -49,6 +50,8 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             />
             {/* @ts-ignore */}
             <FreshChatScript />
+
+            <FontResizer />
 
             <Header />
             {children}

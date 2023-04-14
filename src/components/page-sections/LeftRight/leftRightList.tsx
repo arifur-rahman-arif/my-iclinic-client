@@ -25,7 +25,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Woman having eye check with ophthalmologist to correct her vision"
             />
         ),
@@ -35,7 +35,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={685}
                 height={557}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Woman having eye check with ophthalmologist to correct her vision"
             />
         ),
@@ -70,7 +70,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="ReLEx SMILE laser eye surgery"
             />
         ),
@@ -80,7 +80,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={683}
                 height={568}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="ReLEx SMILE laser eye surgery"
             />
         ),
@@ -111,7 +111,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Woman free from glasses rock climbing"
             />
         ),
@@ -121,7 +121,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
                 width={675}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Woman free from glasses rock climbing"
             />
         ),
@@ -149,7 +149,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -159,7 +159,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={685}
                 height={587}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -181,7 +181,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -191,7 +191,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={677}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -212,7 +212,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Woman free from glasses rock climbing"
             />
         ),
@@ -222,7 +222,7 @@ export const leftRightListIcl: Array<LeftRightSectionChildrenInterface> = [
                 width={685}
                 height={587}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Woman free from glasses rock climbing"
             />
         ),
@@ -243,7 +243,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -253,7 +253,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={687}
                 height={574}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -274,7 +274,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -284,7 +284,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={689}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -305,7 +305,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -315,7 +315,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
                 width={691}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -339,7 +339,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -349,7 +349,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={696}
                 height={550}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -383,7 +383,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -393,7 +393,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={689}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -413,7 +413,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -423,7 +423,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
                 width={680}
                 height={550}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -448,7 +448,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
@@ -458,7 +458,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={685}
                 height={587}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
@@ -480,7 +480,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
@@ -490,7 +490,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={677}
                 height={558}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
@@ -509,7 +509,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
                 "
@@ -521,7 +521,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
                 width={685}
                 height={587}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
                 "
@@ -599,7 +599,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -609,7 +609,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={695}
                 height={580}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -632,7 +632,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -642,7 +642,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -661,7 +661,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -671,7 +671,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
                 width={695}
                 height={580}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -693,7 +693,7 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -703,7 +703,7 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
                 width={682}
                 height={686}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -728,7 +728,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -738,7 +738,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
                 width={678}
                 height={533}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -772,7 +772,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -782,7 +782,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
                 width={678}
                 height={533}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -822,21 +822,21 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/presserflo.png"
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/presserflo.png"
                 width={647}
                 height={389}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -868,21 +868,21 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/canaloplasty.jpg"
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/canaloplasty.jpg"
                 width={647}
                 height={389}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -901,21 +901,21 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/eyelid-malposition.jpg"
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/eyelid-malposition.jpg"
                 width={695}
                 height={580}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -966,21 +966,21 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/ectropion-treatment.jpg"
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/ectropion-treatment.jpg"
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1010,7 +1010,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1020,7 +1020,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1071,7 +1071,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1081,7 +1081,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1113,7 +1113,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1123,7 +1123,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1175,7 +1175,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1185,7 +1185,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1215,7 +1215,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1225,7 +1225,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1280,7 +1280,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1290,7 +1290,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={695}
                 height={580}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1344,7 +1344,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1354,7 +1354,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1388,7 +1388,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1398,7 +1398,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1454,7 +1454,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1464,7 +1464,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={677}
                 height={484}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1484,7 +1484,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1494,7 +1494,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={677}
                 height={484}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1512,7 +1512,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1522,7 +1522,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
                 width={677}
                 height={484}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1541,7 +1541,7 @@ export const leftRightListPaediatric: Array<LeftRightSectionChildrenInterface> =
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1551,7 +1551,7 @@ export const leftRightListPaediatric: Array<LeftRightSectionChildrenInterface> =
                 width={677}
                 height={484}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1571,7 +1571,7 @@ export const leftRightListPaediatricAftercare: Array<LeftRightSectionChildrenInt
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1581,7 +1581,7 @@ export const leftRightListPaediatricAftercare: Array<LeftRightSectionChildrenInt
                 width={677}
                 height={484}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1601,7 +1601,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1611,7 +1611,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={695}
                 height={580}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1686,7 +1686,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1696,7 +1696,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1723,7 +1723,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1733,7 +1733,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={711}
                 height={522}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),
@@ -1762,7 +1762,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={390}
                 height={390}
                 quality={70}
-                className="md:hidden"
+                className="rounded-primary md:hidden"
                 alt=""
             />
         ),
@@ -1772,7 +1772,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 width={544}
                 height={392}
                 quality={70}
-                className="hidden md:block md:scale-90 2xl:scale-100"
+                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                 alt=""
             />
         ),

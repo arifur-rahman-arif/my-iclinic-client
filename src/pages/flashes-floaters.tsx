@@ -215,14 +215,14 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/placeholder-image.png',
+                    url: data?.section_3?.image || '/images/section-images/cornea-consultation-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/placeholder-image.png',
-                    width: 649,
-                    height: 552
+                    url: data?.section_3?.large_image || '/images/section-images/cornea-consultation-large.png',
+                    width: 643,
+                    height: 461
                 }}
                 textColumnExtras={
                     <BulletList
