@@ -57,7 +57,7 @@ const BlogCard2 = ({
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""
-                    className="object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
+                    className="w-full object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
                 />
             </Link>
 
