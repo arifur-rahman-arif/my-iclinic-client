@@ -115,7 +115,7 @@ const SideImageSection = ({
                     customColumn
                 ) : (
                     <div
-                        className={`row-start-1 justify-self-center md:row-auto md:justify-self-auto ${
+                        className={`row-start-1 h-full justify-self-center md:row-auto md:justify-self-auto ${
                             positionReversed ? 'md:col-start-1 md:row-start-1' : ''
                         } ${imageYPosition === 'top' && 'self-start'} ${imageYPosition === 'bottom' && 'self-end'}`}
                     >
@@ -124,7 +124,7 @@ const SideImageSection = ({
                                 src={sectionImage.url}
                                 width={sectionImage.width}
                                 height={sectionImage.height}
-                                quality={70}
+                                quality={100}
                                 className={`md:hidden ${smallImageClassName} rounded-primary`}
                                 alt={altText || ''}
                             />
@@ -135,7 +135,7 @@ const SideImageSection = ({
                                 src={sectionImageDesktop.url}
                                 width={sectionImageDesktop.width}
                                 height={sectionImageDesktop.height}
-                                quality={70}
+                                quality={100}
                                 className={`${
                                     largeImageClassName || 'hidden rounded-primary md:block md:scale-90 2xl:scale-100'
                                 }`}

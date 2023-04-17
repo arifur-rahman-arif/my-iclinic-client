@@ -1,5 +1,6 @@
-import FinanceTreatmentPageContents from 'src/types/pages/financeTreatment';
-import GlaucomaPageContentProps from 'src/types/pages/glaucoma';
+import AboutUsPageContent from './pages/aboutUs';
+import FinanceTreatmentPageContents from './pages/financeTreatment';
+import GlaucomaPageContentProps from './pages/glaucoma';
 import RelexSmilePageContentProps from './pages/relexSmile';
 import MyopiaPageContentProps from './pages/myopia';
 import PricePageContentProps from './pages/price';
@@ -16,6 +17,7 @@ import EyeDiagnosticsPageContentInterface from './pages/eyeDiagnostics';
 import LazyEyesPageContentInterface from './pages/lazyEyes';
 
 export type {
+    AboutUsPageContent,
     GlaucomaPageContentProps,
     FinanceTreatmentPageContents,
     RelexSmilePageContentProps,

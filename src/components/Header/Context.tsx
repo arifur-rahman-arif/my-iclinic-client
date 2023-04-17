@@ -32,7 +32,7 @@ const Context = ({ children }: PropInterface): JSX.Element => {
         },
         {
             name: 'About Us',
-            url: '#',
+            url: '/about-us',
             slug: 'about-us'
         },
         {

@@ -5,6 +5,7 @@ import { useGetMenuDataQuery } from '@/services/navMenuData';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import ContactDetails from './ContactDetails';
 import NavMenu from './NavMenu';
@@ -20,6 +21,8 @@ const Header = (): JSX.Element => {
     const [loadMobileMenu, setLoadMobileMenu] = useState<boolean>(false);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
     const headerRef = useRef<HTMLHeadingElement | null>(null);
+
+    const router = useRouter();
 
     // @ts-ignore
     const { data, isSuccess } = useGetMenuDataQuery();
@@ -76,18 +79,28 @@ const Header = (): JSX.Element => {
                         <div className="flex items-center justify-start gap-12">
                             <ArticleMenu articles={isSuccess && data.articles} />
                             <Link
-                                href=""
+                                href="/about-us"
                                 aria-label="About us"
-                                className="font-mulishMedium text-[1.6rem] leading-8 text-[#51585B]"
+                                className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
+                                    router.pathname === '/about-us' && 'text-[#9B9FA1]'
+                                }`}
                             >
                                 About us
+                                {router.pathname === '/about-us' && (
+                                    <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                                )}
                             </Link>
                             <Link
                                 href="/contact-us"
                                 aria-label="Contact us"
-                                className="font-mulishMedium text-[1.6rem] leading-8 text-[#51585B]"
+                                className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
+                                    router.pathname === '/contact-us' && 'text-[#9B9FA1]'
+                                }`}
                             >
                                 Contact us
+                                {router.pathname === '/contact-us' && (
+                                    <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                                )}
                             </Link>
                         </div>
 
