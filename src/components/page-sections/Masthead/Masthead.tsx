@@ -85,11 +85,9 @@ const Masthead = ({
                 className={`${imagePosition} absolute left-0 hidden h-2/4 w-full object-cover md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]`}
                 quality={100}
                 placeholder={typeof imageLarge === 'string' ? 'empty' : 'blur'}
-                priority={true}
+                // priority={true}
                 onLoadingComplete={() => setImageLoaded(true)}
             />
-
-            {/* Code experiment */}
 
             {!imageLoaded ? (
                 <div className="absolute left-0 min-h-[30rem] w-full animate-pulse bg-gray-200  md:!h-[calc(100%_+_2rem)] xl:!left-[calc(calc(100%_-_var(--container-width))_/_2)] xl:block xl:translate-x-[6.9rem]"></div>
