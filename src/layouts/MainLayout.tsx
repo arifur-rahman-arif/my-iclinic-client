@@ -1,19 +1,18 @@
 import { FontResizer } from '@/components/FontResizer';
-import FreshChatScript from '@/components/FreshChatScript';
 import { Header } from '@/components/Header';
 import LazyComponent from '@/components/LazyComponent';
 import { AlertInterface } from '@/features/alert/alertSlice';
-import { smallSizes, useDeviceSize } from '@/hooks';
 import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Footer = dynamic(() => import('@/components/Footer/Footer'));
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
 const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'));
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
+const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
 
 interface PropTypes {
     children: ReactNode;
@@ -28,28 +27,24 @@ interface PropTypes {
  */
 const MainLayout = ({ children }: PropTypes): JSX.Element => {
     const { showAlert } = useSelector((state: AppState) => state.alert as AlertInterface);
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const [loadChatbot, setLoadChatbot] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
+    const [loadChatBot, setLoadChatBot] = useState<boolean>(false);
 
-    useEffect(() => {
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) {
-                setLoadCallbackSection(true);
-            }
-            setLoadChatbot(true);
-        }, 3500);
-    }, [deviceSize]);
+    /**
+     * When user enters the mouse in screen or user touches the screen load the chatbot
+     */
+    const handleMouseEnter = () => {
+        setLoadChatBot(true);
+    };
 
     return (
-        <>
+        <div onMouseEnter={handleMouseEnter} onTouchStart={handleMouseEnter}>
             <Script
                 dangerouslySetInnerHTML={{
                     __html: `history.scrollRestoration = "manual"`
                 }}
             />
             {/* @ts-ignore */}
-            <FreshChatScript />
+            {loadChatBot && <FreshChatScript />}
 
             <FontResizer />
 
@@ -58,10 +53,12 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             <LazyComponent>
                 <Footer />
             </LazyComponent>
+
             {showAlert && <Alert />}
-            {loadCallbackSection && <BottomMenu />}
-            {loadChatbot && <CookieConsent />}
-        </>
+
+            <BottomMenu />
+            {loadChatBot && <CookieConsent />}
+        </div>
     );
 };
 

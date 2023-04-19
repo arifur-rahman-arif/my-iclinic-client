@@ -49,7 +49,7 @@ const BottomMenu = (): JSX.Element => {
                     </button>
                 </li>
                 <li onClick={() => handleZoomToggle()} className="grid place-items-center">
-                    <button>
+                    <button aria-label="Font Resizer">
                         <Image src={IconLetter} alt="" quality={100} />
                     </button>
                 </li>
