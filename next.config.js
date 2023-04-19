@@ -8,6 +8,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
+        quality: 100,
         // formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {
