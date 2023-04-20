@@ -9,19 +9,19 @@ import MastheadImageLarge from '@/masthead/masthead-complaint-large.png';
 import MastheadImageSmall from '@/masthead/masthead-complaint-medium.png';
 import MastheadImageMedium from '@/masthead/masthead-complaint.png';
 import { Masthead } from '@/page-sections/Masthead';
-import { PageDataInterface, PrivacyPolicyPageContentInterface, WpPageResponseInterface } from '@/types';
+import { ComplaintPageProps, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
-
-interface DataInterface
-    extends PrivacyPolicyPageContentInterface,
-        PageDataInterface<PrivacyPolicyPageContentInterface> {}
+import styles from './complaint.module.scss';
+interface DataInterface extends ComplaintPageProps, PageDataInterface<ComplaintPageProps> {}
 
 interface CookiePolicyProps {
     seo: any;
     yoastJson: any;
-    data: DataInterface;
+    data: DataInterface & {
+        content?: string;
+    };
 }
 
 /**
@@ -39,9 +39,10 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:max-w-[47.1rem] sm:gap-4">
@@ -66,9 +67,11 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                 }
                 bannerExtraComponents={
                     <Button2
-                        type="button"
+                        type="anchor"
                         text="Chat with us"
                         iconPosition="left"
+                        link={data?.pdf_download || ''}
+                        download
                         className="group/chat-button justify-self-start normal-case"
                         icon={
                             <svg
@@ -93,8 +96,8 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                 }
             />
 
-            <Section>
-                <Container>
+            <Section className={styles.styles}>
+                <Container className="grid">
                     <div className="grid !max-w-[112.1rem] gap-12 md:gap-24 xl:gap-32">
                         <h2 className="w-full max-w-[67.7rem] font-latoBold md:!text-[3rem] md:leading-[3.6rem]">
                             The Independent Sector Complaints Adjudication Service (ISCAS)
@@ -134,62 +137,6 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                                             efficiently.
                                         </p>
                                         <strong>Click here to download the ISCAS Guide (Button)</strong>
-                                        <Button2
-                                            type="anchor"
-                                            text="Download"
-                                            iconPosition="left"
-                                            loadingIconPosition="right"
-                                            className="group/download-button mt-6 justify-self-start normal-case"
-                                            // @ts-ignore
-                                            download={true}
-                                            link={data?.guide_file || ''}
-                                            icon={
-                                                <svg
-                                                    width="25"
-                                                    height="24"
-                                                    viewBox="0 0 25 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <g clipPath="url(#clip0_2401_5839)">
-                                                        <path
-                                                            d="M8.10181 17L12.1018 21L16.1018 17"
-                                                            stroke="#fff"
-                                                            strokeWidth="2"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            className="transition-all duration-500 group-hover/download-button:stroke-heading2"
-                                                        />
-                                                        <path
-                                                            d="M12.1018 12V21"
-                                                            stroke="#fff"
-                                                            strokeWidth="2"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            className="transition-all duration-500 group-hover/download-button:stroke-heading2"
-                                                        />
-                                                        <path
-                                                            d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
-                                                            stroke="#fff"
-                                                            strokeWidth="2"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            className="transition-all duration-500 group-hover/download-button:stroke-heading2"
-                                                        />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2401_5839">
-                                                            <rect
-                                                                width="24"
-                                                                height="24"
-                                                                fill="white"
-                                                                transform="translate(0.101807)"
-                                                            />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            }
-                                        />
                                     </div>
                                     <Image
                                         src="/images/logos/iscas-logo.png"
@@ -202,6 +149,58 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                             )}
                         </div>
                     </div>
+
+                    <Button2
+                        type="anchor"
+                        text="Download"
+                        iconPosition="left"
+                        loadingIconPosition="right"
+                        className="group/download-button mt-24 justify-self-start normal-case"
+                        // @ts-ignore
+                        download={true}
+                        link={data?.pdf_download || ''}
+                        icon={
+                            <svg
+                                width="25"
+                                height="24"
+                                viewBox="0 0 25 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clipPath="url(#clip0_2401_5839)">
+                                    <path
+                                        d="M8.10181 17L12.1018 21L16.1018 17"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/download-button:stroke-heading2"
+                                    />
+                                    <path
+                                        d="M12.1018 12V21"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/download-button:stroke-heading2"
+                                    />
+                                    <path
+                                        d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/download-button:stroke-heading2"
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_2401_5839">
+                                        <rect width="24" height="24" fill="white" transform="translate(0.101807)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        }
+                    />
                 </Container>
             </Section>
         </Page>
@@ -215,7 +214,7 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<PrivacyPolicyPageContentInterface> = await getPageData({
+        const data: WpPageResponseInterface<ComplaintPageProps> = await getPageData({
             fields: 'title,content,acf,yoast_head,yoast_head_json',
             slug: 'complaint'
         });

@@ -104,22 +104,22 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 ...service,
                 mobileImage: (
                       <Image
-                          src={service.mobileImage}
+                          src={service.mobileImage?.url || ''}
                           width={390}
                           height={390}
                           quality={70}
                           className="md:hidden"
-                          alt=""
+                          alt={service.mobileImage?.alt || ''}
                       />
                 ),
                 desktopImage: (
                       <Image
-                          src={service.desktopImage}
+                          src={service.desktopImage?.url || ''}
                           width={685}
                           height={557}
                           quality={70}
                           className="hidden md:block md:scale-90 2xl:scale-100"
-                          alt=""
+                          alt={service.desktopImage?.alt || ''}
                       />
                 ),
                 descriptions: stringArrayToElementArray(service.descriptions),
@@ -140,27 +140,27 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 descriptions: stringArrayToElementArray(service.descriptions)
             };
 
-            if (service.mobileImage || service.desktopImage) {
+            if (service.mobileImage.url || service.desktopImage?.url) {
                 return {
                     ...returnObject,
                     mobileImage: (
                           <Image
-                              src={service.mobileImage}
+                              src={service.mobileImage.url}
                               width={390}
                               height={390}
                               quality={70}
                               className="md:hidden"
-                              alt=""
+                              alt={service.mobileImage?.alt || ''}
                           />
                     ),
                     desktopImage: (
                           <Image
-                              src={service.desktopImage}
+                              src={service.desktopImage.url}
                               width={685}
                               height={557}
                               quality={70}
                               className="hidden md:block md:scale-90 2xl:scale-100"
-                              alt=""
+                              alt={service.desktopImage?.alt || ''}
                           />
                     )
                 };
@@ -190,9 +190,10 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 smallImageClassName={'object-[center_-3rem]'}
                 h1Title={
@@ -257,18 +258,23 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/manage-glaucoma.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/manage-glaucoma.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/manage-glaucoma-large.png',
+                    url: data?.section_1?.large_image?.url || '/images/section-images/manage-glaucoma-large.png',
                     width: 664,
                     height: 642
                 }}
+                altText={data?.section_1?.large_image?.alt}
             />
 
-            <GlaucomaSection content={data?.section_2?.content} image={data?.section_2?.image} />
+            <GlaucomaSection
+                content={data?.section_2?.content}
+                image={data?.section_2?.image?.url}
+                altText={data?.section_2?.image?.alt}
+            />
 
             <LazyComponent>
                 <LeftRightSection childrenList={(serviceList?.length && serviceList) || leftRightListGlaucoma} />
@@ -287,15 +293,21 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     <LazyComponent>
                         <CompareSlider
                             image1={{
-                                src: data?.section_4?.image_1 || '/images/section-images/glaucoma-compare-slider-1.png',
+                                src:
+                                    data?.section_4?.image_1?.url ||
+                                    '/images/section-images/glaucoma-compare-slider-1.png',
                                 width: 748,
                                 height: 498
                             }}
                             image2={{
-                                src: data?.section_4?.image_2 || '/images/section-images/glaucoma-compare-slider-2.png',
+                                src:
+                                    data?.section_4?.image_2?.url ||
+                                    '/images/section-images/glaucoma-compare-slider-2.png',
                                 width: 748,
                                 height: 498
                             }}
+                            altText1={data?.section_4?.image_1?.alt}
+                            altText2={data?.section_4?.image_2?.alt}
                         />
                     </LazyComponent>
                 }
@@ -395,15 +407,16 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 containerClassName="md:!grid-cols-[auto_1fr]"
                 positionReversed
                 sectionImage={{
-                    url: data?.section_8?.image || '/images/section-images/glaucoma-packages-large.png',
+                    url: data?.section_8?.image?.url || '/images/section-images/glaucoma-packages-large.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_8?.large_image || '/images/section-images/glaucoma-packages-large.png',
+                    url: data?.section_8?.large_image?.url || '/images/section-images/glaucoma-packages-large.png',
                     width: 655,
                     height: 494
                 }}
+                altText={data?.section_8?.large_image?.alt}
             />
 
             <FullWidthImageSection
@@ -411,9 +424,9 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 boldHeading={
                     <strong className="normal-case">{data?.section_9?.bold_heading || 'improved vision!'}</strong>
                 }
-                altText=""
-                image={data?.section_9?.image || ImprovedVisionLarge}
-                desktopImage={data?.section_9?.image || ImprovedVisionLarge}
+                altText={data?.section_9?.image?.alt}
+                image={data?.section_9?.image?.url || ImprovedVisionLarge}
+                desktopImage={data?.section_9?.image?.url || ImprovedVisionLarge}
                 containerClass="pb-16 md:!py-0 !mx-0 md:!mx-auto"
                 overlayAnimation
                 textColumnOverlay
@@ -442,15 +455,15 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     <PlasticFree
                         h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
                         h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading.light_heading ||
+                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
                                 'Vision correction is the key to living'
                         )}
                         h3BoldHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading.bold_heading ||
+                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
                                 'a sustainable, plastic free life!'
                         )}
                         descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions.length &&
+                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
                                 stringArrayToElementArray(
                                     data?.sustainability_section.plastic_free_life.descriptions
                                 )) || [
@@ -481,14 +494,15 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         }
                         sectionImage={{
                             url:
-                                data?.sustainability_section?.gift_of_a_tree?.image ||
+                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
                                 '/images/section-images/gift-of-a-tree.png',
                             width: 390,
                             height: 390
                         }}
+                        altText={data?.sustainability_section?.gift_of_a_tree?.image?.alt}
                         sectionImageDesktop={{
                             url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image ||
+                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
                                 '/images/section-images/gift-of-a-tree-desktop.png',
                             width: 554,
                             height: 496
@@ -507,8 +521,8 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
                         h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
                         h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image}
+                        image={data?.sustainability_section?.clearer_vision?.image?.url}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
                         descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
                     />
                 </SustainableSlider>

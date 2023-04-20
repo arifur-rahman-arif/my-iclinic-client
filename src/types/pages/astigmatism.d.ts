@@ -1,3 +1,5 @@
+import ImageApiType from 'src/types/api/image';
+
 export default interface AstigmatismPageContentInterface {
 	section_1: {
 		subheading: string; // Subheading
@@ -6,8 +8,8 @@ export default interface AstigmatismPageContentInterface {
 			bold_heading: string; // Bold heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 	},
 	section_2: {
@@ -17,8 +19,8 @@ export default interface AstigmatismPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 		extra_description: string; // Extra Description
 	},
@@ -29,8 +31,8 @@ export default interface AstigmatismPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 	},
 	section_4: {
@@ -45,7 +47,7 @@ export default interface AstigmatismPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 	},
 }

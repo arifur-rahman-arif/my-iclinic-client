@@ -1,3 +1,4 @@
+import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from './component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
 
@@ -8,8 +9,8 @@ interface SectionContent {
         bold_heading: string; // Bold heading
     };
     descriptions: string[];
-    image: string;
-    large_image: string;
+    image: ImageApiType;
+    large_image: ImageApiType;
 }
 
 export default interface GlaucomaPageContentProps extends Sustainibility {
@@ -17,12 +18,12 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
     // Glaucoma Conditions
     section_2: {
         content: string;
-        image: string;
+        image: ImageApiType;
     };
     // Services
     section_3: Array<{
-        mobileImage: string; // Mobile
-        desktopImage: string; // Desktop
+        mobileImage: ImageApiType; // Mobile
+        desktopImage: ImageApiType; // Desktop
         title?: string;
         descriptions: string[];
         excludeNumbers?: boolean
@@ -31,8 +32,8 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
     section_4: {
         heading: string;
         descriptions: string[];
-        image_1: string;
-        image_2: string;
+        image_1: ImageApiType;
+        image_2: ImageApiType;
     };
     // Glaucoma Treatments
     section_5: {
@@ -45,8 +46,8 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
     };
     // Glaucoma Treatments Services
     section_6: Array<{
-        mobileImage: string; // Mobile
-        desktopImage: string; // Desktop
+        mobileImage: ImageApiType; // Mobile
+        desktopImage: ImageApiType; // Desktop
         alternativeHeading?: string;
         descriptions: string[];
         lottieComponent?: boolean; //
@@ -60,12 +61,12 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
     section_7: {
         heading: string;
         descriptions: string[];
-        image: string
+        image: ImageApiType
     };
     // Glaucoma Annual Package
     section_8: {
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
         package_list: Array<{
             title: string;
             price: string;
@@ -76,7 +77,7 @@ export default interface GlaucomaPageContentProps extends Sustainibility {
     section_9: {
         heading: string;
         bold_heading: string;
-        image: string;
+        image: ImageApiType;
     };
     // Slider
     section_10: {

@@ -1,3 +1,4 @@
+import ImageApiType from 'src/types/api/image';
 
 interface SectionProps {
     subheading: string;
@@ -6,8 +7,8 @@ interface SectionProps {
         bold_heading: string; // Bold heading
     };
     descriptions: string[];
-    image: string
-    large_image: string
+    image: ImageApiType
+    large_image: ImageApiType
 }
 
 interface AboutUsPageContent {
@@ -25,8 +26,8 @@ interface AboutUsPageContent {
     section_5: {
         heading: string;
         descriptions: string[];
-        image: string
-        large_image: string
+        image: ImageApiType
+        large_image: ImageApiType
     };
     // No hidden cost
     section_6: SectionProps;

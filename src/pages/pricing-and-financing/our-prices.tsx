@@ -49,9 +49,10 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="object-[-14rem_0] !object-cover"
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
@@ -181,15 +182,16 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/funding-your-treatment.jpg',
+                    url: data?.section_4?.image?.url || '/images/section-images/funding-your-treatment.jpg',
                     width: 388,
                     height: 469
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/funding-your-treatment.jpg',
+                    url: data?.section_4?.large_image?.url || '/images/section-images/funding-your-treatment.jpg',
                     width: 659,
                     height: 687
                 }}
+                altText={data?.section_4?.large_image?.alt}
                 largeImageClassName="rounded-primary"
                 smallImageClassName="rounded-primary"
                 textColumnExtras={

@@ -1,5 +1,22 @@
 .styles {
     :global {
-        //
+        a {
+            &,
+            * {
+                font-family: var(--mulish-bold);
+                color: var(--color-blue);
+                transition: all 0.5s ease-in-out;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        strong {
+            &,
+            * {
+                font-family: var(--mulish-bold);
+            }
+        }
     }
 }

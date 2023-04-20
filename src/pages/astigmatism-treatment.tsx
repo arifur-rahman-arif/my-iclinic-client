@@ -71,10 +71,10 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                altText=""
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -123,17 +123,18 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/vision-correction-astigmatism.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-astigmatism.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_1?.large_image ||
+                        data?.section_1?.large_image?.url ||
                         '/images/section-images/vision-correction-astigmatism-large.png',
                     width: 659,
                     height: 477
                 }}
+                altText={data?.section_1?.large_image?.alt}
             />
 
             <SideImageSection
@@ -151,15 +152,16 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/astigmatism-diagnosis.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/astigmatism-diagnosis.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/astigmatism-diagnosis-large.png',
+                    url: data?.section_2?.large_image?.url || '/images/section-images/astigmatism-diagnosis-large.png',
                     width: 659,
                     height: 562
                 }}
+                altText={data?.section_2?.large_image?.alt}
                 positionReversed
                 textColumnExtras={
                     <div className="grid gap-12">
@@ -212,15 +214,18 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/astigmatism-consultation.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/astigmatism-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/astigmatism-consultation-large.png',
+                    url:
+                        data?.section_3?.large_image?.url ||
+                        '/images/section-images/astigmatism-consultation-large.png',
                     width: 649,
                     height: 552
                 }}
+                altText={data?.section_3?.large_image?.alt}
                 textColumnExtras={
                     <BulletList
                         list={
@@ -329,15 +334,16 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/children-astigmatism.png',
+                    url: data?.section_5?.image?.url || '/images/section-images/children-astigmatism.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/children-astigmatism-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/children-astigmatism-large.png',
                     width: 647,
                     height: 503
                 }}
+                altText={data?.section_5?.large_image?.alt}
             />
 
             <LazyComponent>

@@ -5,17 +5,16 @@ import Page from '@/components/Page';
 import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-translation-large.png';
-import MastheadImageSmall from '@/masthead/masthead-translation-medium.png';
-import MastheadImageMedium from '@/masthead/masthead-translation.png';
+import MastheadImageSmall from '@/masthead/masthead-translation.png';
+import MastheadImageMedium from '@/masthead/masthead-translation-medium.png';
 import { Masthead } from '@/page-sections/Masthead';
 import TranslationPackages from '@/page-sections/TranslationPackages/TranslationPackages';
-import { PageDataInterface, PrivacyPolicyPageContentInterface, WpPageResponseInterface } from '@/types';
+import { PageDataInterface, TranslationPageProps, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
-interface DataInterface
-    extends PrivacyPolicyPageContentInterface,
-        PageDataInterface<PrivacyPolicyPageContentInterface> {}
+interface DataInterface extends TranslationPageProps, PageDataInterface<TranslationPageProps> {}
 
 interface TranslationServiceProps {
     seo: any;
@@ -38,9 +37,10 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
@@ -95,23 +95,29 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
             <Section>
                 <Container className="grid place-items-center gap-12 md:gap-24">
                     <h2 className="w-full max-w-[67.7rem] text-center font-latoBold normal-case md:!text-[3rem] md:leading-[3.6rem]">
-                        Understand your care journey with us by our trusted translator partner
+                        {data?.section_1?.heading ||
+                            'Understand your care journey with us by our trusted translator partner'}
                     </h2>
 
                     <div className="grid gap-12 xs:place-items-center">
-                        <strong>Members of our team are fluent in the following languages:</strong>
+                        <strong>
+                            {data?.section_1?.subheading ||
+                                'Members of our team are fluent in the following languages:'}
+                        </strong>
 
                         <div className="ml-12 grid grid-cols-1  justify-items-start gap-y-6 gap-x-12 xs:ml-0 xs:grid-cols-2">
-                            {[
-                                'Russian',
-                                'Albanian',
-                                'Italian',
-                                'Yoruba',
-                                'Romanian',
-                                'Irish (Gaelic)',
-                                'Polish',
-                                'Bulgarian'
-                            ].map((item, index) => (
+                            {(
+                                (data?.section_1?.list?.length && data?.section_1?.list) || [
+                                    'Russian',
+                                    'Albanian',
+                                    'Italian',
+                                    'Yoruba',
+                                    'Romanian',
+                                    'Irish (Gaelic)',
+                                    'Polish',
+                                    'Bulgarian'
+                                ]
+                            ).map((item, index) => (
                                 <div className="flex items-center justify-center gap-5">
                                     <Image
                                         src="/images/icons/icon-angle-right.svg"
@@ -132,8 +138,8 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
                 <ContainerFluid className="grid grid-cols-1 !px-0 md:min-h-[39.6rem] md:grid-cols-2">
                     <div className="grid content-center gap-12 bg-[#006088] px-8 py-12 md:pr-12 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                         <h2 className="w-full font-latoBold normal-case text-white md:!text-[3rem] md:leading-[3.6rem]">
-                            If you would like to book with our translation service partner please call us and we will
-                            arrange this on your behalf.
+                            {data?.section_2?.heading ||
+                                'If you would like to book with our translation service partner please call us and we will arrange this on your behalf.'}
                         </h2>
 
                         <Button
@@ -156,8 +162,8 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
 
                     <div className="relative row-start-1 min-h-[40rem] md:row-start-auto md:min-h-full">
                         <Image
-                            src="/images/section-images/translation-bg.png"
-                            alt=""
+                            src={data?.section_2?.image?.url || '/images/section-images/translation-bg.png'}
+                            alt={data?.section_2?.image?.alt || ''}
                             quality={100}
                             fill
                             className="h-full w-full object-cover"
@@ -171,10 +177,12 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
                 dynamicSectionHead={
                     <>
                         <h2 className="w-full max-w-[67.7rem] font-latoBold normal-case md:!text-[3rem] md:leading-[3.6rem]">
-                            Understand your care journey with us by our trusted translator partner
+                            {data?.section_3?.heading ||
+                                'Understand your care journey with us by our trusted translator partner'}
                         </h2>
                     </>
                 }
+                packageList={data?.section_3?.services}
                 itemClassName="!items-stretch"
                 cardClassName="!bg-[#006088]"
                 titleClassName="text-center gap-3 flex"
@@ -190,7 +198,7 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<PrivacyPolicyPageContentInterface> = await getPageData({
+        const data: WpPageResponseInterface<TranslationPageProps> = await getPageData({
             fields: 'title,content,acf,yoast_head,yoast_head_json',
             slug: 'translation-service'
         });
@@ -198,7 +206,14 @@ export async function getStaticProps() {
         return {
             /* eslint-disable */
             props: {
-                data: { content: data?.content?.rendered || null, ...data?.acf } as DataInterface,
+                data: {
+                    ...data?.acf,
+                    // Children Astigmatism
+                    section_1: {
+                        ...data?.acf.section_1,
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_1?.list)
+                    }
+                } as DataInterface,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

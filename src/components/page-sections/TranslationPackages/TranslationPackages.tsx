@@ -138,7 +138,7 @@ const TranslationPackages = ({
                 )}
 
                 <div className={`grid gap-12 md:ml-14 md:gap-28 ${packageContainerClassName}`}>
-                    {(packageList || defaultList).map((item, index) => (
+                    {((packageList?.length && packageList) || defaultList).map((item, index) => (
                         <Package key={index} {...item} {...other} />
                     ))}
                 </div>
@@ -180,9 +180,14 @@ const Package = ({
                     quality={100}
                     className="h-full w-full object-cover"
                 />
-                <H3Variant1 className={`p-12 !font-latoLight  text-white sm:p-32  ${titleClassName}`}>
-                    {title}
-                </H3Variant1>
+
+                {typeof title == 'string' ? (
+                    HTMLReactParser(title)
+                ) : (
+                    <H3Variant1 className={`p-12 !font-latoLight text-white sm:p-32  ${titleClassName}`}>
+                        {title}
+                    </H3Variant1>
+                )}
             </div>
             <div className="grid content-center gap-12 px-8 xl:px-0">
                 {packageList.map((item, index) => (
@@ -205,7 +210,7 @@ const Item = ({ title, price, description }: ItemInterface): JSX.Element => {
 
     return (
         <div className="grid grid-cols-1 items-center gap-2 md:grid-cols-[auto_1fr_auto] md:gap-10" ref={containerRef}>
-            <H3Variant3>{title}</H3Variant3>
+            <H3Variant3>{typeof title === 'string' ? HTMLReactParser(title) : title}</H3Variant3>
             <div className={`bg-yellow transition-all duration-[2.5s] ${onEnter ? 'w-full' : 'w-0'} h-[0.2rem]`}></div>
             <span className="font-mulishBold text-[2rem] leading-[2.8rem]">
                 {typeof price === 'string' ? HTMLReactParser(price) : price}

@@ -56,10 +56,10 @@ export default function FinancingYourTreatment({
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                altText=""
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -139,7 +139,7 @@ export default function FinancingYourTreatment({
                         {data?.section_1.heading || 'Correct your vision from just £150 per month'}
                     </div>
                 }
-                altText=""
+                altText={data?.section_1.large_image?.alt}
                 description={
                     (data?.section_1.descriptions?.length &&
                         stringArrayToElementArray(data?.section_1.descriptions)) || [
@@ -147,8 +147,8 @@ export default function FinancingYourTreatment({
                         'Over time the cost of purchasing glasses and everyday contact lenses add up to a massive, inconvenient spend.'
                     ]
                 }
-                image={data?.section_1.image || '/images/section-images/monthly-spending-finance.png'}
-                desktopImage={data?.section_1.large_image || '/images/section-images/monthly-spending-finance.png'}
+                image={data?.section_1.image?.url || '/images/section-images/monthly-spending-finance.png'}
+                desktopImage={data?.section_1.large_image?.url || '/images/section-images/monthly-spending-finance.png'}
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />

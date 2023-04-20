@@ -12,6 +12,7 @@ interface FullWidthImageSection3Interface {
     title2: ReactNode;
     descriptions: string[] | ReactNode[];
     image?: string;
+    altText?: string;
 }
 
 /**
@@ -23,7 +24,8 @@ const FullWidthImageSection3 = ({
     title1,
     title2,
     descriptions,
-    image
+    image,
+    altText
 }: FullWidthImageSection3Interface): JSX.Element => {
     const animationRef = useRef<HTMLDivElement | null>(null);
     const deviceSize = useDeviceSize();
@@ -66,7 +68,7 @@ const FullWidthImageSection3 = ({
                         quality={100}
                         width={467}
                         height={335}
-                        alt="Happy woman on bike with clear vision"
+                        alt={altText || ''}
                         className="relative rounded-primary"
                     />
                 </div>

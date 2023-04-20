@@ -1,4 +1,5 @@
 import { ImageType } from '@/types';
+import ImageApiType from 'src/types/api/image';
 
 type Section3CardListType = {
 	image: ImageType;
@@ -10,8 +11,8 @@ export default interface ConjunctivitisPageContentInterface {
 	section_1: {
 		heading: string
 		descriptions: string[]
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 	},
 	section_2: {
 		subheading: string
@@ -20,8 +21,8 @@ export default interface ConjunctivitisPageContentInterface {
 			bold_heading: string;
 		}
 		descriptions: string[]
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 	},
 	section_3: {

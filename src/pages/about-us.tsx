@@ -39,9 +39,9 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
@@ -159,12 +159,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/how-we-started.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/how-we-started.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/how-we-started-large.png',
+                    url: data?.section_3?.large_image?.url || '/images/section-images/how-we-started-large.png',
                     width: 668,
                     height: 477
                 }}
@@ -181,12 +181,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/our-approach.png',
+                    url: data?.section_4?.image?.url || '/images/section-images/our-approach.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/our-approach-large.png',
+                    url: data?.section_4?.large_image?.url || '/images/section-images/our-approach-large.png',
                     width: 668,
                     height: 477
                 }}
@@ -204,12 +204,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6?.image || '/images/section-images/no-hidden-cost.png',
+                    url: data?.section_6?.image?.url || '/images/section-images/no-hidden-cost.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image || '/images/section-images/no-hidden-cost-large.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/no-hidden-cost-large.png',
                     width: 668,
                     height: 477
                 }}
@@ -286,12 +286,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 sectionClass="bg-heading2 pb-12 md:pb-0 overflow-hidden"
                 containerClassName="!px-0"
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/medical-practices.jpg',
+                    url: data?.section_5?.image?.url || '/images/section-images/medical-practices.jpg',
                     width: 447,
                     height: 693
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/medical-practices-large.jpg',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/medical-practices-large.jpg',
                     width: 613,
                     height: 693
                 }}

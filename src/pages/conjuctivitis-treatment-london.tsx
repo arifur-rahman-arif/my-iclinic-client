@@ -81,10 +81,10 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                altText=""
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -151,15 +151,18 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/conjunctivitis-consultation.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/conjunctivitis-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/conjunctivitis-consultation-large.png',
+                    url:
+                        data?.section_1?.large_image?.url ||
+                        '/images/section-images/conjunctivitis-consultation-large.png',
                     width: 677,
                     height: 484
                 }}
+                altText={data?.section_1?.large_image?.alt}
                 positionReversed
             />
 
@@ -192,17 +195,19 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/conjunctivitis-private-consultation.png',
+                    url:
+                        data?.section_2?.image?.url || '/images/section-images/conjunctivitis-private-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_2?.large_image ||
+                        data?.section_2?.large_image?.url ||
                         '/images/section-images/conjunctivitis-private-consultation-large.png',
                     width: 649,
                     height: 552
                 }}
+                altText={data?.section_2?.large_image?.alt}
                 textColumnExtras={
                     <BulletList
                         list={

@@ -6,6 +6,8 @@ import styles from './styles/CompareSlider.module.scss';
 interface CompareSliderInterface {
     image1: ImageType;
     image2: ImageType;
+    altText1?: string;
+    altText2?: string;
 }
 
 /**
@@ -13,7 +15,7 @@ interface CompareSliderInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const CompareSlider = ({ image1, image2 }: CompareSliderInterface): JSX.Element => {
+const CompareSlider = ({ image1, image2, altText1, altText2 }: CompareSliderInterface): JSX.Element => {
     return (
         <div
             className={`${styles.styles} compare-slider relative grid h-full place-items-center overflow-hidden rounded-primary`}
@@ -21,7 +23,7 @@ const CompareSlider = ({ image1, image2 }: CompareSliderInterface): JSX.Element 
             <ImgComparisonSlider hover>
                 <Image
                     slot="first"
-                    alt=""
+                    alt={altText1 || ''}
                     style={{ height: '100%' }}
                     width={image1.width}
                     height={image1.height}
@@ -29,7 +31,7 @@ const CompareSlider = ({ image1, image2 }: CompareSliderInterface): JSX.Element 
                 />
                 <Image
                     slot="second"
-                    alt=""
+                    alt={altText2 || ''}
                     style={{ height: '100%' }}
                     width={image2.width}
                     height={image2.height}
