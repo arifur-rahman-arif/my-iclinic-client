@@ -1,3 +1,5 @@
+import ImageApiType from 'src/types/api/image';
+
 interface SectionData {
     subheading: string;
     heading: { // Heading
@@ -5,8 +7,8 @@ interface SectionData {
         bold_heading: string; // Bold heading
     };
     descriptions: string[];
-    image: string;
-    large_image: string;
+    image: ImageApiType;
+    large_image: ImageApiType;
 }
 
 export interface Sustainibility {

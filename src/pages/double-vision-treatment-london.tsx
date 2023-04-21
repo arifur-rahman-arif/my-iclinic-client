@@ -75,9 +75,9 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 imagePosition="object-[-3rem_0rem]"
                 altText=""
                 h1Title={

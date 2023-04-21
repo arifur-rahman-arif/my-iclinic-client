@@ -75,9 +75,10 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[-35rem_top] xl:object-[-20rem_top]"
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
@@ -126,15 +127,18 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/vision-correction-lazy-eyes.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-lazy-eyes.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-lazy-eyes-large.png',
+                    url:
+                        data?.section_1?.large_image?.url ||
+                        '/images/section-images/vision-correction-lazy-eyes-large.png',
                     width: 659,
                     height: 477
                 }}
+                altText={data?.section_1?.large_image?.alt}
             />
 
             <SideImageSection
@@ -153,15 +157,16 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/amblyopia-diagnosis.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/amblyopia-diagnosis.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/amblyopia-diagnosis-large.png',
+                    url: data?.section_2?.large_image?.url || '/images/section-images/amblyopia-diagnosis-large.png',
                     width: 664,
                     height: 562
                 }}
+                altText={data?.section_2?.large_image?.alt}
                 positionReversed
                 textColumnExtras={
                     <div className="grid gap-12">
@@ -210,15 +215,16 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/amblyopia-consultation.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/amblyopia-consultation.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/amblyopia-consultation-large.png',
+                    url: data?.section_3?.large_image?.url || '/images/section-images/amblyopia-consultation-large.png',
                     width: 649,
                     height: 552
                 }}
+                altText={data?.section_3?.large_image?.alt}
                 textColumnExtras={
                     <BulletList
                         list={
@@ -276,15 +282,16 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/lazy-eye-treatment-large.png',
+                    url: data?.section_5?.image?.url || '/images/section-images/lazy-eye-treatment-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/lazy-eye-treatment-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/lazy-eye-treatment-large.png',
                     width: 647,
                     height: 503
                 }}
+                altText={data?.section_5?.large_image?.alt}
             />
 
             <SideImageSection
@@ -304,16 +311,17 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6?.image || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.image?.url || '/images/section-images/tedy-bear.png',
                     width: 390,
                     height: 390
                 }}
                 largeImageClassName="mx-auto"
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/tedy-bear.png',
                     width: 412,
                     height: 439
                 }}
+                altText={data?.section_6?.large_image?.alt}
                 textColumnExtras={
                     <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-[auto_1fr] md:justify-items-start">
                         <BookConsultation buttonClassName="!bg-orange !border-orange hover:!bg-[#FFEFE5] hover:!border-orange" />

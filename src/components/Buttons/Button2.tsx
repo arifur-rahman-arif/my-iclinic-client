@@ -17,6 +17,7 @@ interface ButtonInterface {
     defaultClassName?: string;
     onClick?: () => void;
     title?: string;
+    download?: any;
 }
 
 /**

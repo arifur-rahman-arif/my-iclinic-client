@@ -1,3 +1,5 @@
+import ImageApiType from 'src/types/api/image';
+
 export default interface LazyEyesPageContentInterface {
 	// Correct your vision Lazy eyes (amblyopia)
 	section_1: {
@@ -7,8 +9,8 @@ export default interface LazyEyesPageContentInterface {
 			bold_heading: string; // Bold heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 	},
 	// Amblyopia Diagnosis
@@ -19,8 +21,8 @@ export default interface LazyEyesPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 		extra_description: string; // Extra Description
 	},
@@ -32,8 +34,8 @@ export default interface LazyEyesPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 		list: string[];
 	},
 	// Private Consultation Banner
@@ -49,15 +51,15 @@ export default interface LazyEyesPageContentInterface {
 			bold_heading: string; // Bold Heading
 		}
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 	},
 	// Lazy Eye Specialist Banner
 	section_6: {
 		heading: string // Heading
 		descriptions: string[];
 		phone: string;
-		image: string;
-		large_image: string;
+		image: ImageApiType;
+		large_image: ImageApiType;
 	},
 }

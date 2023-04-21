@@ -1,8 +1,10 @@
+import ImageApiType from './image';
+
 export interface PageDataInterface<I> extends I {
     masthead_image: {
-        image: string
-        image_medium: string
-        image_large: string
+        image: ImageApiType
+        image_medium: ImageApiType
+        image_large: ImageApiType
     },
     masthead_heading: string
     masthead_subheading: string
@@ -21,7 +23,6 @@ export interface PageDataInterface<I> extends I {
         heading: string,
         description: string
     },
-    
     faq_list: Array<{
         title: string;
         description: string;

@@ -1,5 +1,5 @@
 import { GalleryInterface } from '@/page-sections/ImageGallery/ImageGallery';
-import { ImageType, ImageType2 } from '@/types';
+import ImageApiType from 'src/types/api/image';
 
 interface SectionContent {
     heading: { // Heading
@@ -7,8 +7,8 @@ interface SectionContent {
         bold_heading: string; // Bold heading
     };
     descriptions: string[];
-    image: string;
-    large_image: string;
+    image: ImageApiType;
+    large_image: ImageApiType;
 }
 
 export default interface MyopiaPageContentProps {
@@ -24,8 +24,8 @@ export default interface MyopiaPageContentProps {
     section_5: {
         heading: string;
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     // Changing our indoor lifestyles
     section_6: GalleryInterface[];
@@ -49,16 +49,16 @@ export default interface MyopiaPageContentProps {
             bold_heading: string; // Bold heading
         };
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
         list: string[];
     };
     // Have you noticed that your child has an existing or emerging eye condition?
     section_9: {
         heading: string;
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     // Cta Section
     section_10: SectionContent;
@@ -79,8 +79,8 @@ export default interface MyopiaPageContentProps {
     section_12: {
         heading: string;
         descriptions?: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     // Are you above the age of 21
     section_13: {
@@ -90,15 +90,15 @@ export default interface MyopiaPageContentProps {
             bold_heading: string; // Bold heading
         };
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
         list: string[];
     };
     // CTA Section
     section_14: {
         heading: string; // Heading
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     // Plano 2025
     section_15: {
@@ -106,8 +106,8 @@ export default interface MyopiaPageContentProps {
         heading_image: string; // Image
         subheading: string; // Subheading
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     // Slider Images
     section_16: string[];

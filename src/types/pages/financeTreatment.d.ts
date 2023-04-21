@@ -1,9 +1,11 @@
+import ImageApiType from 'src/types/api/image';
+
 export default interface FinanceTreatmentPageContents {
     section_1: {
         heading: string;
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     };
     calculator_heading: string;
     // Our health insurance partners

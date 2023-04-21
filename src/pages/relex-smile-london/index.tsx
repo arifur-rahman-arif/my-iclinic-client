@@ -1,7 +1,5 @@
 // Import BannerImage from '@/section-images/relex-banner-bg.png';
 import { BreadCrumb } from '@/components/Breadcrumb';
-
-import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -33,6 +31,8 @@ import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+
+import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -97,22 +97,22 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 ...service,
                 mobileImage: (
                       <Image
-                          src={service.mobileImage}
+                          src={service.mobileImage?.url || ''}
                           width={390}
                           height={390}
                           quality={70}
                           className="md:hidden"
-                          alt=""
+                          alt={service.mobileImage?.alt || ''}
                       />
                 ),
                 desktopImage: (
                       <Image
-                          src={service.desktopImage}
+                          src={service.desktopImage?.url || ''}
                           width={685}
                           height={557}
                           quality={70}
                           className="hidden md:block md:scale-90 2xl:scale-100"
-                          alt=""
+                          alt={service.desktopImage?.alt || ''}
                       />
                 ),
                 descriptions: stringArrayToElementArray(service.descriptions)
@@ -130,10 +130,12 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large || MastheadImageLarge}
-                altText="Man travelling without glasses for vision correction"
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                altText={
+                    data?.masthead_image?.image_large?.alt || 'Man travelling without glasses for vision correction'
+                }
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
@@ -271,17 +273,17 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/clear-natural-vision.png',
+                    url: data?.section_5?.image?.url || '/images/section-images/clear-natural-vision.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/clear-natural-vision-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/clear-natural-vision-large.png',
                     width: 675,
                     height: 558
                 }}
                 positionReversed={true}
-                altText="Two friends travelling with clear vision"
+                altText={data?.section_5?.large_image?.alt}
                 textColumnExtras={
                     <p className="font-mulishBold text-[2rem] leading-[2.4rem]">
                         A better quality of life is just <br />
@@ -302,7 +304,8 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         'Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.'
                     ]
                 }
-                image={data?.section_8?.image}
+                image={data?.section_8?.image?.url}
+                altText={data?.section_8?.image?.alt}
             />
 
             <div className="md:mt-24"></div>
@@ -360,16 +363,16 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                     data?.section_6?.heading?.bold_heading || 'When you already have glasses or contact lenses?'
                 }
                 sectionImage={{
-                    url: data?.section_6?.image || '/images/section-images/laser-relex-smile.png',
+                    url: data?.section_6?.image?.url || '/images/section-images/laser-relex-smile.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image || '/images/section-images/laser-relex-smile-large.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/laser-relex-smile-large.png',
                     width: 682,
                     height: 686
                 }}
-                altText="Male athlete on bike after laser eye surgery"
+                altText={data?.section_6?.large_image?.alt || 'Male athlete on bike after laser eye surgery'}
                 textColumnImage={true}
                 customColumn={<StackColumn stackList={data?.section_6?.list} />}
                 containerClassName="!items-start"
@@ -394,16 +397,18 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_7?.image || '/images/section-images/right-treatment.png',
+                    url: data?.section_7?.image?.url || '/images/section-images/right-treatment.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_7?.large_image || '/images/section-images/right-treatment-large.png',
+                    url: data?.section_7?.large_image?.url || '/images/section-images/right-treatment-large.png',
                     width: 657,
                     height: 554
                 }}
-                altText="Woman smiling without needing glasses for short-sightedness"
+                altText={
+                    data?.section_7?.large_image?.alt || 'Woman smiling without needing glasses for short-sightedness'
+                }
                 textColumnExtras={
                     <>
                         <div className="flex flex-wrap items-center justify-start gap-6">
@@ -483,8 +488,9 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                                 `The most sustainable, green lifestyle to have is when you have a plastic free eye-style, free of plastic waste from your glasses and contact lenses!`
                             ]
                         }
-                        image={data?.sustainability_section?.plastic_free_life?.image}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image}
+                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
+                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
+                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
                     />
 
                     {/* <DrawLine
@@ -560,19 +566,22 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         }
                         sectionImage={{
                             url:
-                                data?.sustainability_section?.gift_of_a_tree?.image ||
+                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
                                 '/images/section-images/gift-of-a-tree.png',
                             width: 390,
                             height: 390
                         }}
                         sectionImageDesktop={{
                             url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image ||
+                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
                                 '/images/section-images/gift-of-a-tree-desktop.png',
                             width: 554,
                             height: 496
                         }}
-                        altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
+                        altText={
+                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
+                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
+                        }
                     />
                     {/*
                     <DrawLine
@@ -591,8 +600,8 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
                         h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
                         h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image}
+                        image={data?.sustainability_section?.clearer_vision?.image?.url}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
                         descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
                     />
                 </SustainableSlider>

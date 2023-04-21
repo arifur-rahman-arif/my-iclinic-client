@@ -1,11 +1,12 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import Image from 'next/image';
+import ImageApiType from 'src/types/api/image';
 
 interface GlaucomaChargeSectionProps {
     heading: string;
     descriptions: string[];
-    image: string;
+    image: ImageApiType;
 }
 
 /**
@@ -47,8 +48,8 @@ const GlaucomaChargeSection = ({ heading, descriptions, image }: GlaucomaChargeS
                 </div>
 
                 <Image
-                    src={image || '/images/section-images/glaucoma-charge.png'}
-                    alt=""
+                    src={image?.url || '/images/section-images/glaucoma-charge.png'}
+                    alt={image?.alt || ''}
                     width={816}
                     height={565}
                     className="md:col-span-2 md:col-start-2 md:row-span-full md:row-start-1"

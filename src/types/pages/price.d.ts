@@ -1,4 +1,6 @@
-type PriceObject = {
+import ImageApiType from 'src/types/api/image';
+
+export type PriceObject = {
     title: string;
     packageList: Array<{
         title: string
@@ -22,8 +24,8 @@ export default interface PricePageContentProps {
             bold_heading: string; // Bold Heading
         }
         descriptions: string[];
-        image: string;
-        large_image: string;
+        image: ImageApiType;
+        large_image: ImageApiType;
     },
     // Glaucoma surgery
     section_5: Array<PriceObject>;

@@ -1,0 +1,25 @@
+@import '/src/styles/utils/breakpoints';
+
+.styles {
+    :global {
+        .wp-block-columns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            justify-items: center;
+            @include media-breakpoint-up(md) {
+                grid-template-columns: 1fr auto;
+                gap: 6rem;
+            }
+            @include media-breakpoint-up(xl) {
+                gap: 12rem;
+            }
+        }
+
+        .wp-block-column {
+            display: grid;
+            gap: 1.5rem;
+            align-items: center;
+        }
+    }
+}

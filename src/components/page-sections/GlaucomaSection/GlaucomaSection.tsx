@@ -9,6 +9,7 @@ import Image from 'next/image';
 interface GlaucomaSectionProps {
     content?: string;
     image?: string;
+    altText?: string;
 }
 
 /**
@@ -17,7 +18,7 @@ interface GlaucomaSectionProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const GlaucomaSection = ({ content, image }: GlaucomaSectionProps): JSX.Element => {
+const GlaucomaSection = ({ content, image, altText }: GlaucomaSectionProps): JSX.Element => {
     return (
         <Section>
             <Container className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-32">
@@ -76,7 +77,7 @@ const GlaucomaSection = ({ content, image }: GlaucomaSectionProps): JSX.Element 
                 <div className="row-start-1 grid place-items-center md:row-start-auto">
                     <Image
                         src={image || '/images/section-images/glaucoma-conditions.png'}
-                        alt=""
+                        alt={altText || ''}
                         width={562}
                         height={576}
                     />

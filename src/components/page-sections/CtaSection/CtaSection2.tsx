@@ -13,6 +13,7 @@ interface CtaSection2Interface {
     sectionClass?: string;
     button1Text?: string;
     excludeSloganText?: boolean;
+    altText?: string;
 }
 
 /**
@@ -31,7 +32,8 @@ const CtaSection2 = ({
     textColumnExtras,
     sectionClass,
     button1Text,
-    excludeSloganText
+    excludeSloganText,
+    altText
 }: CtaSection2Interface): JSX.Element => {
     return (
         <SideImageSection
@@ -56,6 +58,7 @@ const CtaSection2 = ({
                     height: 514
                 }
             }
+            altText={altText || ''}
             textColumnExtras={
                 textColumnExtras || (
                     <>

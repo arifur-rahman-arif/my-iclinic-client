@@ -1,3 +1,5 @@
+import TranslationPageProps from 'src/types/pages/translation';
+import ComplaintPageProps from './pages/complaint';
 import AboutUsPageContent from './pages/aboutUs';
 import FinanceTreatmentPageContents from './pages/financeTreatment';
 import GlaucomaPageContentProps from './pages/glaucoma';
@@ -17,6 +19,8 @@ import EyeDiagnosticsPageContentInterface from './pages/eyeDiagnostics';
 import LazyEyesPageContentInterface from './pages/lazyEyes';
 
 export type {
+    TranslationPageProps,
+    ComplaintPageProps,
     AboutUsPageContent,
     GlaucomaPageContentProps,
     FinanceTreatmentPageContents,

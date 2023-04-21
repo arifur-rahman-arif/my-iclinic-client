@@ -70,10 +70,10 @@ export default function OurEyeDiagnosticsTechnology({
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image.image || MastheadImageLarge}
-                imageMedium={data?.masthead_image.image_medium || MastheadImageLarge}
-                imageLarge={data?.masthead_image.image_large || MastheadImageLarge}
-                altText=""
+                imageSmall={data?.masthead_image.image?.url || MastheadImageLarge}
+                imageMedium={data?.masthead_image.image_medium?.url || MastheadImageLarge}
+                imageLarge={data?.masthead_image.image_large?.url || MastheadImageLarge}
+                altText={data?.masthead_image.image_large?.alt}
                 h1Title={
                     <h1 className="flex flex-wrap gap-2 sm:gap-4">
                         {heading.split(' ').map((word, index) => (
