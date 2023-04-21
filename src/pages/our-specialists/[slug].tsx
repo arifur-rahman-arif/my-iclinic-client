@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Container } from '@/components/Container';
-import { H4Variant1 } from '@/components/Headings';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
 import { getSpecialistPost, getSpecialistsPost } from '@/lib';
@@ -49,7 +48,11 @@ export default function DynamicPage({ specialist }: DynamicPageProps): JSX.Eleme
                             </div>
 
                             <div className="mt-16 grid px-12">
-                                {specialist?.name && <H4Variant1>{specialist.name}</H4Variant1>}
+                                {specialist?.name && (
+                                    <h1 className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">
+                                        {specialist.name}
+                                    </h1>
+                                )}
                                 {specialist?.degree && (
                                     <span className="mt-2 font-mulishBold text-[1.4rem] uppercase leading-[2rem] text-[#51585B]">
                                         {specialist.degree}
