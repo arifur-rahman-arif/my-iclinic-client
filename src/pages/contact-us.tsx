@@ -1,7 +1,6 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
-import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
 import { ContactSection, Context } from '@/page-sections/ContactSection';
@@ -25,14 +24,22 @@ const ContactUs = ({ seo, yoastJson }: CookiePolicyProps) => {
 
             <Section>
                 <Container className="grid grid-cols-1 gap-12 md:gap-24 xl:gap-32">
-                    <TextColumn
-                        h3LightHeading={
-                            <>
-                                <strong>Contact</strong> Us
-                            </>
-                        }
-                        textColumnExtras={<p className="-mt-6">Our specialist team will reply as soon as possible</p>}
-                    />
+                    <div className="grid gap-6">
+                        <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
+                            <span className="h-full w-[0.5rem] bg-yellow"></span>
+                            <h1 className="">
+                                <strong className="font-latoExtraBold text-[3.6rem] leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
+                                    Contact
+                                </strong>{' '}
+                                <span className="font-latoLight text-[3.6rem] normal-case leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
+                                    Us
+                                </span>
+                            </h1>
+                        </div>
+
+                        <p className="ml-12">Our specialist team will reply as soon as possible</p>
+                    </div>
+
                     <Context>
                         <ContactSection />
                     </Context>

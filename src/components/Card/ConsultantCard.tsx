@@ -45,7 +45,7 @@ const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInter
                 </span>
                 <span className="mt-6 font-mulishBold text-[1.6rem] leading-[2.4rem]">{title}</span>
             </div>
-            <div className="mt-[4.5rem] flex items-center justify-between px-6">
+            <div className="mt-[4.5rem] flex flex-wrap items-center justify-center gap-8 px-8 xs:justify-between">
                 <BookConsultation buttonClassName="normal-case">
                     <Button type="button" text="Book a consultation" iconPosition="left" />
                 </BookConsultation>

@@ -1,7 +1,6 @@
 import { BlogCard2 } from '@/components/Card';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
-import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/Section';
 import Filters, { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { useBlogPageHooks } from '@/page-sections/BlogList/index';
@@ -164,14 +163,17 @@ const BlogList = ({ blogList, categoryList, postsPerPageValue }: BlogListInterfa
             <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24" ref={containerRef}>
                 {/* Section title & search box */}
                 <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
-                    <TextColumn
-                        h3LightHeading={
-                            <>
-                                <strong className="font-latoExtraBold">Latest</strong>{' '}
-                                <span className="font-latoLight normal-case">articles</span>
-                            </>
-                        }
-                    />
+                    <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
+                        <span className="h-full w-[0.5rem] bg-yellow"></span>
+                        <h1 className="">
+                            <strong className="font-latoExtraBold text-[3.6rem] leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
+                                Latest
+                            </strong>{' '}
+                            <span className="font-latoLight text-[3.6rem] normal-case leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
+                                articles
+                            </span>
+                        </h1>
+                    </div>
 
                     <BlogSearch
                         blogList={blogList}
