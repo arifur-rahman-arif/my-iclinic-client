@@ -63,7 +63,7 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'Content-Security-Policy',
-                        value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://myiclinic-help.freshchat.com; style-src 'self' 'unsafe-inline' https://myiclinic-help.freshchat.com; img-src 'self' data:; frame-ancestors *;",
+                        value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://myiclinic-help.freshchat.com; style-src 'self' 'unsafe-inline' https://myiclinic-help.freshchat.com; img-src 'self' https://myiclinicn.sg-host.com;  data:; frame-ancestors *;",
                     },
                     {
                         key: 'X-Content-Type-Options',
