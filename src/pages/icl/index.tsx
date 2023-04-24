@@ -97,27 +97,8 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 altText=""
-                h1Title={
-                    <h1 className="flex flex-wrap gap-2 sm:max-w-[43.7rem] sm:gap-4">
-                        {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0 blur-sm" key={index}>
-                                {word}
-                            </span>
-                        ))}
-                    </h1>
-                }
-                h2Title={
-                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        {subheading.split(' ').map((word, index) => (
-                            <span
-                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
-                                key={index}
-                            >
-                                {word}
-                            </span>
-                        ))}
-                    </h2>
-                }
+                h1Title={<h1>{heading}</h1>}
+                h2Title={<h2>{subheading}</h2>}
                 priceText="£2,750 per eye"
                 priceTextExtra={
                     <span className="font-mulishBold text-[1.8rem] lowercase leading-[2.4rem] text-heading2 first-letter:uppercase">

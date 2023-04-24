@@ -1,10 +1,10 @@
-import { FcGoogle } from 'react-icons/fc';
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
-import styles from './styles/Heading.module.scss';
-import { MastheadInterface } from './Masthead';
-import gsap from 'gsap';
 import IconCheck from '@/icons/icon-check-dark.svg';
+import gsap from 'gsap';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { MastheadInterface } from './Masthead';
+import styles from './styles/Heading.module.scss';
 
 interface BannerInterface extends Omit<MastheadInterface, 'imageSmall' | 'imageMedium' | 'imageLarge'> {}
 
@@ -27,21 +27,14 @@ const Banner = ({
 }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement | null>(null);
     const bannerRef = useRef<HTMLDivElement | null>(null);
-    const [startH2Animation, setStartH2Animation] = useState<boolean>(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setStartH2Animation(true);
-        }, 1000);
+        if (!priceRef.current) return;
 
-        setTimeout(() => {
-            if (!priceRef.current) return;
-
-            gsap.to(priceRef.current, {
-                duration: 2,
-                width: 'auto'
-            });
-        }, 2000);
+        gsap.to(priceRef.current, {
+            duration: 2,
+            width: 'auto'
+        });
     }, []);
 
     return (
@@ -85,7 +78,7 @@ const Banner = ({
             {/* Headings */}
             <div className="grid w-full grid-cols-1 gap-6 md:col-span-2 md:gap-12">
                 <div className={`${styles.styles}`}>{h1Title}</div>
-                {h2Title && <div className={`${startH2Animation ? styles.styles : ''}`}>{h2Title}</div>}
+                {h2Title && <div>{h2Title}</div>}
 
                 <Image
                     src="/images/icons/icon-pin-yellow.svg"

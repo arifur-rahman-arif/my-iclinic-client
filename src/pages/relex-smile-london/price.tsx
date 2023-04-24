@@ -41,6 +41,8 @@ interface PresbyondPricingProps {
  */
 export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingProps): JSX.Element {
     const deviceSize = useDeviceSize();
+    const heading = 'ReLEX SMILE laser eye surgery cost London';
+    const subheading = 'Save an average of £1,000';
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
 
     useEffect(() => {
@@ -65,38 +67,8 @@ export default function PresbyondPricing({ seo, yoastJson }: PresbyondPricingPro
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 altText="Woman reading the cost of Presbyond Treatment in London."
-                h1Title={
-                    <h1 id="masthead-title" className="flex flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">ReLEx</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">SMILE</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">laser</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">eye</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">surgery</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">cost</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
-                    </h1>
-                }
-                h2Title={
-                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            Save
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            an
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            average
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            of
-                        </span>
-                        <span className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}>
-                            {' '}
-                            £1,000
-                        </span>
-                    </h2>
-                }
+                h1Title={<h1>{heading}</h1>}
+                h2Title={<h2>{subheading}</h2>}
             />
 
             <SideImageSection

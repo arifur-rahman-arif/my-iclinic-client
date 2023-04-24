@@ -80,15 +80,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[-35rem_top] xl:object-[-20rem_top]"
-                h1Title={
-                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
-                        {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0" key={index}>
-                                {word}
-                            </span>
-                        ))}
-                    </h1>
-                }
+                h1Title={<h1>{heading}</h1>}
                 priceText={<></>}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}

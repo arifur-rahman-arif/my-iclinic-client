@@ -24,7 +24,7 @@ const BreadCrumb = (): JSX.Element => {
                     <Link href="/" aria-label="Home" className="flex items-center justify-start gap-6">
                         <IconHome active={true} />
                         <span
-                            className={`translate-y-[0.1rem] cursor-pointer whitespace-nowrap font-mulishBold text-[1.5rem] capitalize leading-[1.6rem] text-brand`}
+                            className={`translate-y-[0.1rem] cursor-pointer whitespace-nowrap font-mulishBold text-[1.5rem] capitalize leading-[1.6rem] text-heading2`}
                         >
                             Home
                         </span>
