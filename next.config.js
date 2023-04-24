@@ -2,6 +2,11 @@
 //     enabled: process.env.ANALYZE === 'true'
 // });
 
+// const ContentSecurityPolicy = `
+//   default-src 'self';
+//   script-src 'self';
+//   font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;;
+// `
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -63,20 +68,20 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'X-Content-Type-Options',
-                        value: 'nosniff',
+                        value: 'nosniff'
                     },
                     {
                         key: 'X-Frame-Options',
-                        value: 'DENY',
+                        value: 'SAMEORIGIN'
                     },
                     {
                         key: 'Referrer-Policy',
-                        value: 'strict-origin',
+                        value: 'origin-when-cross-origin'
                     },
-                    {
-                        key: 'Content-Security-Policy',
-                        value: "default-src 'self'",
-                    },
+                    // {
+                    //     key: 'Content-Security-Policy',
+                    //     value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+                    // },
                 ],
             },
         ];
@@ -579,13 +584,6 @@ const nextConfig = {
             }
         ];
     }
-    // async redirects() {
-    //     return redirects.map(redirect => redirect);
-    // }
-    // Need this, if it is a static file export
-    // trailingSlash: true,
-    // experimental:{appDir: true}
-    // assetPrefix: './' // Turn off this option if next static export is needed
     // typescript: {
     //     // !! WARN !!
     //     // Dangerously allow production builds to successfully complete even if
