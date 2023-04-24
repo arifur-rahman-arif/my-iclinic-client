@@ -59,35 +59,20 @@ const nextConfig = {
     async headers() {
         return [
             {
-                source: '/(.*)',
+                source: '/(.*)?', // Use a regular expression to match all routes
                 headers: [
                     {
-                        key: 'X-Content-Options',
+                        key: 'X-Content-Type-Options',
                         value: 'nosniff',
                     },
-                ],
-            },
-            {
-                source: '/(.*)',
-                headers: [
                     {
                         key: 'X-Frame-Options',
-                        value: 'SAMEORIGIN',
+                        value: 'DENY',
                     },
-                ],
-            },
-            {
-                source: '/(.*)',
-                headers: [
                     {
                         key: 'Referrer-Policy',
                         value: 'strict-origin',
                     },
-                ],
-            },
-            {
-                source: '/(.*)',
-                headers: [
                     {
                         key: 'Content-Security-Policy',
                         value: "default-src 'self'",

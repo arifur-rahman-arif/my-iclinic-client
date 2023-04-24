@@ -106,7 +106,6 @@ const Slide = ({ name, title, description, reviewLink, star = 5, avatarUrl }: Sl
                         href={reviewLink || '#'}
                         indicatorColor="bg-blue"
                         className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
-                        target="_blank"
                     >
                         Read More
                     </LinkText>
