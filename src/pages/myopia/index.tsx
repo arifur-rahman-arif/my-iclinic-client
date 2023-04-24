@@ -45,6 +45,7 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
+const ClientButton = dynamic(() => import('src/components/Buttons/Button'), { ssr: false });
 
 interface DataInterface extends MyopiaPageContentProps, PageDataInterface<MyopiaPageContentProps> {}
 
@@ -395,14 +396,13 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     (data?.section_12.descriptions?.length && [
                         ...stringArrayToElementArray(data?.section_12.descriptions),
                         <div className="mt-12 grid md:mt-12">
-                            <Button
+                            <ClientButton
                                 type="anchor"
                                 link="/pdf/myopia.pdf"
                                 text="Download"
                                 // @ts-ignore
                                 download={true}
                                 // @ts-ignore
-                                target="_blank"
                                 iconPosition="left"
                                 icon={
                                     <Image

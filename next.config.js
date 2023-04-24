@@ -1,5 +1,3 @@
-const path = require( 'path' );
-
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
 //     enabled: process.env.ANALYZE === 'true'
 // });
@@ -36,7 +34,6 @@ const nextConfig = {
         // locales: ['en-US', 'fr', 'nl-NL'],
         locales: ['en-GB'],
         // This is the default locale you want to be used when visiting
-        // a non-locale prefixed path e.g. `/hello`
         defaultLocale: 'en-GB'
         // This is a list of locale domains and the default locale they
         // should handle (these are only required when setting up domain routing)
@@ -58,6 +55,46 @@ const nextConfig = {
         //     http: true,
         //   },
         // ],
+    },
+    async headers() {
+        return [
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'X-Content-Options',
+                        value: 'nosniff',
+                    },
+                ],
+            },
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'SAMEORIGIN',
+                    },
+                ],
+            },
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'strict-origin',
+                    },
+                ],
+            },
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "default-src 'self'",
+                    },
+                ],
+            },
+        ];
     },
     async rewrites() {
         return [{

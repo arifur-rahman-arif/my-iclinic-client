@@ -10,7 +10,9 @@ import { useSelector } from 'react-redux';
 
 const Footer = dynamic(() => import('@/components/Footer/Footer'));
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
-const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'));
+const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'), {
+    ssr: false
+});
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
 
