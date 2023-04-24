@@ -2,12 +2,6 @@
 //     enabled: process.env.ANALYZE === 'true'
 // });
 
-// const ContentSecurityPolicy = `
-//   default-src 'self';
-//   script-src 'self';
-//   font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;;
-// `
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
@@ -61,10 +55,11 @@ const nextConfig = {
         //   },
         // ],
     },
+    poweredByHeader: false,
     async headers() {
         return [
             {
-                source: '/(.*)?', // Use a regular expression to match all routes
+                source: '/(.*)', // Use a regular expression to match all routes
                 headers: [
                     {
                         key: 'X-Content-Type-Options',
@@ -76,12 +71,16 @@ const nextConfig = {
                     },
                     {
                         key: 'Referrer-Policy',
-                        value: 'origin-when-cross-origin'
+                        value: 'strict-origin-when-cross-origin'
                     },
-                    // {
-                    //     key: 'Content-Security-Policy',
-                    //     value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
-                    // },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: 'default-src *'
+                    },
+                    {
+                        key: 'Permissions-Policy',
+                        value: "camera=(); battery=(self); geolocation=(); microphone=('https://somewhere.com')",
+                    },
                 ],
             },
         ];
