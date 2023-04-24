@@ -56,40 +56,40 @@ const nextConfig = {
         // ],
     },
     poweredByHeader: false,
-    async headers() {
-        return [
-            {
-                source: '/(.*)?', // Use a regular expression to match all routes
-                headers: [
-                    {
-                        key: 'X-Content-Type-Options',
-                        value: 'nosniff'
-                    },
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'SAMEORIGIN'
-                    },
-                    {
-                        key: 'Referrer-Policy',
-                        value: 'strict-origin-when-cross-origin'
-                    },
-                    // {
-                    //     key: 'Content-Security-Policy',
-                    //     value: 'default-src *'
-                    // },
-                ],
-            },
-            {
-                source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
-                headers: [
-                    {
-                        key: "X-Frame-Options",
-                        value: "SAMEORIGIN",
-                    },
-                ],
-            },
-        ];
-    },
+    // async headers() {
+    //     return [
+    //         {
+    //             source: '/(.*)?', // Use a regular expression to match all routes
+    //             headers: [
+    //                 {
+    //                     key: 'X-Content-Type-Options',
+    //                     value: 'nosniff'
+    //                 },
+    //                 {
+    //                     key: 'X-Frame-Options',
+    //                     value: 'SAMEORIGIN'
+    //                 },
+    //                 {
+    //                     key: 'Referrer-Policy',
+    //                     value: 'strict-origin-when-cross-origin'
+    //                 },
+    //                 // {
+    //                 //     key: 'Content-Security-Policy',
+    //                 //     value: 'default-src *'
+    //                 // },
+    //             ],
+    //         },
+    //         {
+    //             source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
+    //             headers: [
+    //                 {
+    //                     key: "X-Frame-Options",
+    //                     value: "SAMEORIGIN",
+    //                 },
+    //             ],
+    //         },
+    //     ];
+    // },
     async rewrites() {
         return [{
             source: '/robots.txt',
