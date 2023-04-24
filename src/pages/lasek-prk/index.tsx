@@ -101,15 +101,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 altText=""
-                h1Title={
-                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
-                        {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0" key={index}>
-                                {word}
-                            </span>
-                        ))}
-                    </h1>
-                }
+                h1Title={<h1>{heading}</h1>}
                 bannerWidth="md:max-w-[65.1rem]"
                 imagePosition="object-[-20rem_center]"
             />

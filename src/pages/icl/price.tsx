@@ -41,6 +41,7 @@ interface IclPricingProps {
  * @returns {JSX.Element}
  */
 export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Element {
+    const heading = 'Implantable Contact Lens cost London';
     const subheading = 'Save an average of £1,000';
 
     const deviceSize = useDeviceSize();
@@ -62,29 +63,8 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                h1Title={
-                    <h1 id="masthead-title" className="flex max-w-[43.7rem] flex-wrap items-center justify-start gap-2">
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Implantable</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Contact</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">Lens</span>
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">cost</span>
-                        <br />
-                        <span className="h1-inner-span inline-block opacity-0 blur-sm">London</span>
-                    </h1>
-                }
-                h2Title={
-                    <h2 className="flex scale-[0.94] flex-wrap items-center justify-start gap-2">
-                        {subheading.split(' ').map((word, index) => (
-                            <span
-                                className={`h2-inner-span inline-block normal-case text-heading2 opacity-0 blur-sm`}
-                                key={index}
-                            >
-                                {word}
-                            </span>
-                        ))}
-                    </h2>
-                }
+                h1Title={<h1 className="xs:max-w-[40rem]">{heading}</h1>}
+                h2Title={<h2>{subheading}</h2>}
                 priceText="£2,750 per eye"
             />
 

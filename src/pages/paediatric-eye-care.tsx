@@ -76,15 +76,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
                 altText=""
-                h1Title={
-                    <h1 className="flex flex-wrap gap-2 sm:gap-4">
-                        {heading.split(' ').map((word, index) => (
-                            <span className="h1-inner-span inline-block opacity-0" key={index}>
-                                {word}
-                            </span>
-                        ))}
-                    </h1>
-                }
+                h1Title={<h1>{heading}</h1>}
                 priceText={data?.masthead_price || 'From £200'}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
