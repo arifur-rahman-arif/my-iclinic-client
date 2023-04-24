@@ -62,7 +62,11 @@ const nextConfig = {
                 source: '/(.*)?', // Use a regular expression to match all routes
                 headers: [
                     {
-                        key: 'X-Content-Type-Options',
+                        key: 'Content-Security-Policy',
+                        value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://myiclinic-help.freshchat.com; style-src 'self' 'unsafe-inline' https://myiclinic-help.freshchat.com; img-src 'self' data:; frame-ancestors *;",
+                    },
+                    {
+                        key: 'Content-Type-Options',
                         value: 'nosniff'
                     },
                     {
@@ -84,23 +88,6 @@ const nextConfig = {
                     {
                         key: 'Strict-Transport-Security',
                         value: 'max-age=63072000; includeSubDomains; preload'
-                    },
-                    {
-                        key: 'Content-Security-Policy',
-                        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;",
-                    },
-                    // {
-                    //     key: 'Content-Security-Policy',
-                    //     value: 'default-src *'
-                    // },
-                ],
-            },
-            {
-                source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
-                headers: [
-                    {
-                        key: "X-Frame-Options",
-                        value: "SAMEORIGIN",
                     },
                 ],
             },
