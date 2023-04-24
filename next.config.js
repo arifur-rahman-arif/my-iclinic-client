@@ -56,40 +56,56 @@ const nextConfig = {
         // ],
     },
     poweredByHeader: false,
-    // async headers() {
-    //     return [
-    //         {
-    //             source: '/(.*)?', // Use a regular expression to match all routes
-    //             headers: [
-    //                 {
-    //                     key: 'X-Content-Type-Options',
-    //                     value: 'nosniff'
-    //                 },
-    //                 {
-    //                     key: 'X-Frame-Options',
-    //                     value: 'SAMEORIGIN'
-    //                 },
-    //                 {
-    //                     key: 'Referrer-Policy',
-    //                     value: 'strict-origin-when-cross-origin'
-    //                 },
-    //                 // {
-    //                 //     key: 'Content-Security-Policy',
-    //                 //     value: 'default-src *'
-    //                 // },
-    //             ],
-    //         },
-    //         {
-    //             source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
-    //             headers: [
-    //                 {
-    //                     key: "X-Frame-Options",
-    //                     value: "SAMEORIGIN",
-    //                 },
-    //             ],
-    //         },
-    //     ];
-    // },
+    async headers() {
+        return [
+            {
+                source: '/(.*)?', // Use a regular expression to match all routes
+                headers: [
+                    {
+                        key: 'X-Content-Type-Options',
+                        value: 'nosniff'
+                    },
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'SAMEORIGIN'
+                    },
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'strict-origin-when-cross-origin'
+                    },
+                    {
+                        key: 'X-XSS-Protection',
+                        value: '1; mode=block'
+                    },
+                    {
+                        key: 'Permissions-Policy',
+                        value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'
+                    },
+                    {
+                        key: 'Strict-Transport-Security',
+                        value: 'max-age=63072000; includeSubDomains; preload'
+                    },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;",
+                    },
+                    // {
+                    //     key: 'Content-Security-Policy',
+                    //     value: 'default-src *'
+                    // },
+                ],
+            },
+            {
+                source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
+                headers: [
+                    {
+                        key: "X-Frame-Options",
+                        value: "SAMEORIGIN",
+                    },
+                ],
+            },
+        ];
+    },
     async rewrites() {
         return [{
             source: '/robots.txt',
