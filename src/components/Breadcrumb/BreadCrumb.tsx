@@ -4,6 +4,7 @@ import { generateBreadcrumbs } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 import IconHome from './IconHome';
 
 /**
@@ -36,18 +37,23 @@ const BreadCrumb = (): JSX.Element => {
                 )}
 
                 {paths.map((path, index) => (
-                    <div className="flex min-w-max items-center justify-start gap-2" key={index}>
-                        <Image src={IconArrow} alt="" className="h-8 w-8 translate-y-[0.1rem]" />
-                        <Link href={!excludeUrls.includes(path.url) ? path.url : '/'}>
-                            <span
-                                className={`whitespace-nowrap font-mulishBold text-[1.5rem] capitalize leading-[1.6rem] ${
-                                    index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
-                                }`}
-                            >
-                                {path.name}
-                            </span>
-                        </Link>
-                    </div>
+                    <Fragment key={index}>
+                        {!excludeUrls.includes(path.url) && (
+                            <div className="flex min-w-max items-center justify-start gap-2" key={index}>
+                                <Image src={IconArrow} alt="" className="h-8 w-8 translate-y-[0.1rem]" />
+
+                                <Link href={!excludeUrls.includes(path.url) ? path.url : '/'}>
+                                    <span
+                                        className={`whitespace-nowrap font-mulishBold text-[1.5rem] capitalize leading-[1.6rem] ${
+                                            index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
+                                        }`}
+                                    >
+                                        {path.name}
+                                    </span>
+                                </Link>
+                            </div>
+                        )}
+                    </Fragment>
                 ))}
             </Container>
         </>

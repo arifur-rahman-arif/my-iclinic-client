@@ -66,7 +66,7 @@ const nextConfig = {
                         value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://myiclinic-help.freshchat.com; style-src 'self' 'unsafe-inline' https://myiclinic-help.freshchat.com; img-src 'self' data:; frame-ancestors *;",
                     },
                     {
-                        key: 'Content-Type-Options',
+                        key: 'X-Content-Type-Options',
                         value: 'nosniff'
                     },
                     {
