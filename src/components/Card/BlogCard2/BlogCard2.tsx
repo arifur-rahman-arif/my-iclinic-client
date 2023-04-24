@@ -64,7 +64,9 @@ const BlogCard2 = ({
             <div className="px-10 pt-12">
                 <BlogAuthor author={author} />
 
-                <H3Variant3 className="mt-8">{trimText(title, 30)}</H3Variant3>
+                <Link href={`/articles/${slug}` || '#'} className="mt-8 block" title={title}>
+                    <H3Variant3>{trimText(title, 30)}</H3Variant3>
+                </Link>
 
                 {categories?.length && <BlogCategories categories={categories} />}
 

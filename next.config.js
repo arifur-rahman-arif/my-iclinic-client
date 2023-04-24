@@ -59,7 +59,7 @@ const nextConfig = {
     async headers() {
         return [
             {
-                source: '/(.*)', // Use a regular expression to match all routes
+                source: '/(.*)?', // Use a regular expression to match all routes
                 headers: [
                     {
                         key: 'X-Content-Type-Options',
@@ -73,13 +73,18 @@ const nextConfig = {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin'
                     },
+                    // {
+                    //     key: 'Content-Security-Policy',
+                    //     value: 'default-src *'
+                    // },
+                ],
+            },
+            {
+                source: "/(.*)\\.(jpg|png|webp|jpeg|gif)",
+                headers: [
                     {
-                        key: 'Content-Security-Policy',
-                        value: 'default-src *'
-                    },
-                    {
-                        key: 'Permissions-Policy',
-                        value: "camera=(); battery=(self); geolocation=(); microphone=('https://somewhere.com')",
+                        key: "X-Frame-Options",
+                        value: "SAMEORIGIN",
                     },
                 ],
             },
