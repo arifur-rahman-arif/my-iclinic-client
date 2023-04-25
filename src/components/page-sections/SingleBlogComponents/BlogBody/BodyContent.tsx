@@ -17,10 +17,10 @@ interface BodyContentInterface {
  */
 const BodyContent = ({ content, includeCta }: BodyContentInterface): JSX.Element => {
     return (
-        <div className={`${styles.styles} md:pr-12`}>
-            {content && HTMLReactParser(content)}
+        <div>
+            <div className={`${styles.styles} md:pr-12`}>{content && HTMLReactParser(content)}</div>
 
-            {includeCta && <CtaSection3 />}
+            <div className="md:pr-12">{includeCta && <CtaSection3 />}</div>
         </div>
     );
 };

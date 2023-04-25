@@ -19,7 +19,7 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
         <div className="h-[6.7rem] w-full bg-[#003C5526]">
             <Container className="flex h-full items-center justify-center gap-6 !px-4 sm:justify-start sm:gap-12 md:!px-0">
                 <button
-                    className="flex h-full cursor-pointer items-center justify-start gap-2 transition-all duration-500 hover:opacity-40 sm:gap-4"
+                    className="flex -translate-y-2 cursor-pointer items-center justify-start gap-2 transition-all duration-500 hover:opacity-40 sm:gap-4"
                     onClick={() => {
                         setOpenMobileMenu && setOpenMobileMenu(false);
                         openFreshdeskChat();
@@ -28,23 +28,26 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
                     <Image
                         src="/images/icons/icon-chat.svg"
                         alt=""
-                        width={18}
-                        height={18}
-                        className="h-[1.8rem] w-[1.8rem]"
+                        width={24}
+                        height={24}
+                        className="h-[2.4rem] w-[2.4rem]"
                     />
-                    <span className="font-latoExtraBold text-[1.4rem] leading-8">Chat with us</span>
+                    <span className="font-latoExtraBold text-[1.4rem] leading-8 line-clamp-1">Chat with us</span>
                 </button>
                 <span className="h-10 w-[0.1rem] bg-[#9B9FA1]"></span>
-                <BookConsultation buttonClassName="flex h-full cursor-pointer items-center justify-start gap-2 sm:gap-4 transition-all duration-500 hover:opacity-40">
+                <BookConsultation buttonClassName="flex h-full cursor-pointer items-start justify-start gap-2 sm:gap-4 transition-all duration-500 hover:opacity-40">
                     <button>
                         <Image
                             src="/images/icons/icon-calendar-outline-darker.svg"
                             alt=""
-                            width={18}
-                            height={18}
-                            className="h-[1.8rem] w-[1.8rem]"
+                            width={24}
+                            height={24}
+                            className="h-[2.4rem] w-[2.4rem] translate-y-2"
                         />
-                        <span className="font-latoExtraBold text-[1.4rem] leading-8">Book a free screening test</span>
+                        <span className="text-left font-latoExtraBold text-[1.4rem] leading-8 line-clamp-2">
+                            Book a free consultation
+                            <br /> for vision correction
+                        </span>
                     </button>
                 </BookConsultation>
             </Container>

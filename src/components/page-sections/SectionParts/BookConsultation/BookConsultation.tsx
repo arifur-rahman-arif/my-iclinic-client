@@ -28,7 +28,7 @@ const BookConsultation = ({
     const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     return (
-        <span>
+        <div>
             {children ? (
                 <>
                     {cloneElement(children, {
@@ -42,9 +42,9 @@ const BookConsultation = ({
             ) : (
                 <Button
                     type="button"
-                    text={buttonText || 'Book a consultation'}
+                    text={buttonText || 'Book a free screening test'}
                     iconPosition="left"
-                    className={buttonClassName}
+                    className={`${buttonClassName} !normal-case`}
                     onClick={() => {
                         setShowForm(true);
                         setModalOpen(true);
@@ -64,7 +64,7 @@ const BookConsultation = ({
             )}
 
             {showForm && <ConsultationForm {...{ modalOpen, setModalOpen }} />}
-        </span>
+        </div>
     );
 };
 

@@ -96,7 +96,7 @@ const Banner = ({
                         className={`block h-full w-2 bg-heading2 ${priceTextExtra ? 'row-span-2' : 'row-span-1'}`}
                     ></span>
                     <span
-                        className="w-0 overflow-hidden whitespace-nowrap font-latoBold text-[2rem] uppercase leading-[2.4rem] text-heading2 line-clamp-2 md:text-[2.4rem] md:leading-[2.4rem]"
+                        className="w-0 font-latoBold text-[1.8rem] uppercase leading-[2.4rem] text-heading2 line-clamp-2 xs:whitespace-nowrap md:text-[2.4rem] md:leading-[2.4rem]"
                         ref={priceRef}
                     >
                         {priceText || '£2,400 per eye'}

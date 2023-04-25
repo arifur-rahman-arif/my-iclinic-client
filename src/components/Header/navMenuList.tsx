@@ -65,14 +65,14 @@ export const navMenuList: NavMenuType[] = [
                     'Presbyond laser eye surgery is a vision correction treatment to fix presbyopia (long-sightedness). Learn about the treatments available and how we can help.'
             },
             {
-                name: 'Lasik',
+                name: 'LASIK',
                 url: '/lasik-london',
                 slug: 'lasik-london',
                 metaDescription:
                     'The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!'
             },
             {
-                name: 'Lasek, PRK, PTK',
+                name: 'LASEK, PRK, PTK',
                 url: '/lasek-prk',
                 slug: 'lasek-prk',
                 metaDescription:

@@ -1,9 +1,8 @@
+import gsap from 'gsap';
 import { useEffect, useState } from 'react';
 
 import StepIndicator from './StepIndicator';
 import StepperBody from './StepperBody';
-import { getElementTopPosition } from '@/utils/miscellaneous';
-import gsap from 'gsap';
 
 interface StepperPropInterface {
     stepperList: StepperInterface[];
@@ -61,7 +60,7 @@ const Stepper = ({
             return [...tempState];
         });
 
-        scrollStepperIntoView();
+        // scrollStepperIntoView();
     };
 
     /**
@@ -81,26 +80,22 @@ const Stepper = ({
 
             // Disable all other stepper except the selected one
             tempState.forEach((stepperState, index) => {
-                if (pointerIndex === index) {
-                    stepperState.isActive = true;
-                } else {
-                    stepperState.isActive = false;
-                }
+                stepperState.isActive = pointerIndex === index;
             });
 
             return [...tempState];
         });
 
-        scrollStepperIntoView();
+        // scrollStepperIntoView();
     };
 
     /**
      * Change the stepper position to be visible for the user when user changes the stepper state
      */
-    const scrollStepperIntoView = () => {
-        const targetedElement = document.querySelector('.stepper-indicator');
-        window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 200);
-    };
+    // const scrollStepperIntoView = () => {
+    //     // const targetedElement = document.querySelector('.stepper-indicator');
+    //     // window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 200);
+    // };
 
     useEffect(() => {
         document.querySelector('.stepper-active') &&

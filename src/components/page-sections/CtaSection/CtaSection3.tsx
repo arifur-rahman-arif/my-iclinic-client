@@ -9,7 +9,7 @@ import Image from 'next/image';
  */
 const CtaSection3 = (): JSX.Element => {
     return (
-        <div className="relative mt-6 grid grid-cols-1 overflow-hidden rounded-primary bg-[#004574] md:mt-[4.5rem] md:md:grid-cols-[1fr_6rem_auto] lg:grid-cols-[auto_6rem_1fr]">
+        <div className="blog-cta relative mt-6 grid grid-cols-1 overflow-hidden rounded-primary bg-[#004574] md:mt-[4.5rem] md:md:grid-cols-[1fr_6rem_auto] lg:grid-cols-[auto_6rem_1fr]">
             <Image
                 src="/images/section-images/blog-cta-consultation.png"
                 alt=""
