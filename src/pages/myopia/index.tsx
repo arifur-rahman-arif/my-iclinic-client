@@ -465,7 +465,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_13?.heading?.light_heading || 'and experiencing Myopia?'}
+                h3BoldHeading={data?.section_13?.heading?.bold_heading || 'and experiencing Myopia?'}
                 descriptions={
                     (data?.section_13.descriptions?.length && data?.section_13.descriptions) || [
                         'Fortunately, there are many amazing ways we can correct short sightedness in adults.',
