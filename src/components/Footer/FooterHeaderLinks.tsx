@@ -69,9 +69,10 @@ const FooterHeaderLinks = (): JSX.Element => {
                     className="h-[2.4rem] w-[2.4rem]"
                 />
                 <LinkText
-                    href="#"
+                    href="https://www.google.com/maps/place/960+High+Rd,+London+N12+8FA,+UK/@51.6220441,-0.1783466,17z/data=!3m1!4b1!4m5!3m4!1s0x487619c2ce086057:0xb2604f94b7bbeecd!8m2!3d51.6220441!4d-0.1761579"
                     defaultClassName="font-mulishBold text-[1.6rem] leading-[2.4rem] relative block text-blue"
                     indicatorColor="bg-blue"
+                    target="_blank"
                 >
                     Map View
                 </LinkText>

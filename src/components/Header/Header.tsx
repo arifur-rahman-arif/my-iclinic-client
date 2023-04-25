@@ -59,7 +59,7 @@ const Header = (): JSX.Element => {
             )}
             <header
                 ref={headerRef}
-                className="relative sticky top-0 left-0 z-[100] w-full bg-white shadow-shadow3 transition-all duration-500 xl:shadow-none"
+                className="sticky top-0 left-0 z-[99] w-full bg-white shadow-shadow3 transition-all duration-500 xl:shadow-none"
             >
                 <Container className="grid grid-cols-[auto_1fr] items-center gap-12 gap-y-4 gap-x-40 xl:py-6">
                     <Link href="/" className="self-start py-4">
