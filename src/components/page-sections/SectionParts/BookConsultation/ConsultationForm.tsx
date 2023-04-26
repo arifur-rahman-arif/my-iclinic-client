@@ -1,4 +1,3 @@
-import ComponentLoader from '@/components/ComponentLoader';
 import RequestCallback from '@/page-sections/RequestCallback/RequestCallback';
 import dynamic from 'next/dynamic';
 import { Dispatch, SetStateAction, useEffect } from 'react';
@@ -10,9 +9,7 @@ interface ConsultationFormInterface {
     setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const Dialog = dynamic(() => import('@mui/material/Dialog'), {
-    loading: () => <ComponentLoader />
-});
+const Dialog = dynamic(() => import('@mui/material/Dialog'));
 
 /**
  * Consultation form for pabau integration
@@ -37,7 +34,7 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
                 '.MuiPaper-root': {
                     borderRadius: 'var(--border-radius)',
                     width: '100%',
-                    maxWidth: '53rem',
+                    maxWidth: '50rem',
                     marginLeft: '5px !important',
                     marginRight: '5px !important',
                     overflow: 'hidden'
