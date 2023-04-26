@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import { Card, cardList } from '@/components/Card';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
@@ -21,9 +20,9 @@ import MastheadImageLarge from '@/masthead/masthead-home-large.png';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
+import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
 import { WpPageResponseInterface } from '@/types';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -74,27 +73,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={
-                    <>
-                        <Button
-                            type="button"
-                            text="Chat with us"
-                            iconPosition="left"
-                            className="justify-self-start normal-case"
-                            icon={
-                                <Image
-                                    src="/images/icons/icon-chat.svg"
-                                    alt=""
-                                    width={20}
-                                    height={20}
-                                    quality={2}
-                                    className="h-8 w-8"
-                                />
-                            }
-                            onClick={openFreshdeskChat}
-                        />
-                    </>
-                }
+                bannerExtraComponents={<ChatWithUs />}
             />
 
             <SideImageSection
@@ -127,9 +106,9 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 ]}
                 containerClassName="md:!pl-[15rem]"
                 textColor="!text-white"
-                sloganTextColor="!text-[#83DFE5]"
-                bgColor="bg-[#004574]"
-                button1ClassName="!bg-white !border-white hover:!bg-[#004574] hover:!border-white hover:text-white"
+                sloganTextColor="!text-[#CDCFD0]"
+                bgColor="bg-[#00527c]"
+                button1ClassName="!bg-white !border-white hover:!bg-[#00527c] hover:!border-white hover:text-white"
                 button2ClassName="!border-white !bg-transparent text-white"
                 button2Icon={
                     <Image

@@ -6,7 +6,7 @@
             display: grid;
             place-items: center;
             @include media-breakpoint-up(md) {
-                max-width: 60%;
+                max-width: 50rem;
                 min-height: 50rem;
             }
         }

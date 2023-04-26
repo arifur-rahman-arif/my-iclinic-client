@@ -1,9 +1,9 @@
 import { BulletList } from '@/components/page-sections';
+import IconArrow from '@/icons/icon-arrow-right.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import IconArrow from '@/icons/icon-arrow-right.svg';
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 export interface CardInterface {
     image: string;
@@ -33,12 +33,12 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
         >
             <div className="flex items-center justify-between px-4 pt-[1.2rem]">
                 <span className="font-latoBold text-[2.4rem] leading-[3.2rem]">{title}</span>
-                <span className="self-start justify-self-end rounded-primary bg-brandLight py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] ">
+                <span className="self-start justify-self-end rounded-primary bg-[#0C4969] py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] text-white ">
                     {pillText}
                 </span>
             </div>
 
-            <div className="max-w-full overflow-hidden bg-brandLight p-[1.2rem] transition-all duration-500 group-hover/card:m-[1.2rem] group-hover/card:rounded-primary group-hover/card:p-0">
+            <div className="max-w-full overflow-hidden p-[1.2rem] transition-all duration-500 group-hover/card:m-[1.2rem] group-hover/card:rounded-primary group-hover/card:p-0">
                 <Image
                     src={image}
                     alt=""
@@ -56,9 +56,9 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
                         <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
                     }
                 />
-                <span className="group/link flex items-center justify-center gap-4 self-end justify-self-end">
-                    <span className="font-latoBold text-[1.4rem] leading-[1.9rem] text-heading2">Learn More</span>
-                    <AiOutlineArrowRight className="h-[2.4rem] w-[2.4rem] fill-heading2 transition-all duration-300 group-hover/link:translate-x-2" />
+                <span className="group/link flex items-center justify-center gap-3 self-end justify-self-end">
+                    <span className="font-latoBold text-[1.2rem] leading-[1.9rem] text-heading">Learn More</span>
+                    <BiRightArrowAlt className="h-[1.6rem] w-[1.6rem] fill-heading transition-all duration-300 group-hover/link:translate-x-2" />
                 </span>
             </div>
         </Link>
