@@ -1,12 +1,14 @@
 import RequestCallback from '@/page-sections/RequestCallback/RequestCallback';
 import dynamic from 'next/dynamic';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import styles from './Style.module.scss';
 
 interface ConsultationFormInterface {
     modalOpen: boolean;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
+    modalElement?: ReactNode;
+    maxWidth?: string;
 }
 
 const Dialog = dynamic(() => import('@mui/material/Dialog'));
@@ -19,7 +21,12 @@ const Dialog = dynamic(() => import('@mui/material/Dialog'));
  * @returns {JSX.Element}
  * @constructor
  */
-const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface): JSX.Element => {
+const ConsultationForm = ({
+    modalOpen,
+    setModalOpen,
+    modalElement,
+    maxWidth
+}: ConsultationFormInterface): JSX.Element => {
     useEffect(() => {
         setModalOpen(true);
     }, []);
@@ -34,15 +41,15 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
                 '.MuiPaper-root': {
                     borderRadius: 'var(--border-radius)',
                     width: '100%',
-                    maxWidth: '50rem',
-                    marginLeft: '5px !important',
-                    marginRight: '5px !important',
-                    overflow: 'hidden'
+                    maxWidth: maxWidth || '50rem',
+                    maxHeight: '100%',
+                    overflowX: 'hidden',
+                    margin: 0
                 }
             }}
             className={styles.styles}
         >
-            <div className="relative h-full w-full py-20 sm:py-16">
+            <div className="relative h-full w-full pt-20 sm:pt-16">
                 <IoIosCloseCircleOutline
                     className="absolute top-0 right-0 h-12 w-12 translate-y-3 -translate-x-3 cursor-pointer fill-secondary"
                     onClick={() => {
@@ -50,18 +57,12 @@ const ConsultationForm = ({ modalOpen, setModalOpen }: ConsultationFormInterface
                     }}
                 />
                 {/* Render the content of the modal */}
-                <RequestCallback className="!shadow-none" />
-                {/* /!* <iframe *!/ */}
-                {/* /!*     src="https://connect.pabau.com/bookings.php?compid=11842" *!/ */}
-                {/* /!*     width={600} *!/ */}
-                {/* /!*     height={600} *!/ */}
-                {/* /!*     className="min-h-[60rem] w-full pt-16" *!/ */}
-                {/* /!* ></iframe>  *!/ */}
-                {/* <iframe */}
-                {/*     src="https://calendly.com/myiclinic/free_visioncorrection_consultation" */}
+                {modalElement || <RequestCallback className="!shadow-none" />}
+                {/* < iframe */}
+                {/*     src="https://connect.pabau.com/bookings.php?compid=11842" */}
                 {/*     width={600} */}
-                {/*     height={700} */}
-                {/*     className="w-full md:min-h-[70rem]" */}
+                {/*     height={600} */}
+                {/*     className="min-h-[60rem] w-full pt-16" */}
                 {/* ></iframe> */}
             </div>
         </Dialog>

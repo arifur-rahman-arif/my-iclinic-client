@@ -34,7 +34,22 @@ const Cta2 = ({
     return (
         <>
             <div className={`flex flex-wrap items-center justify-start gap-6 ${className}`}>
-                <BookConsultation buttonClassName={button1ClassName} buttonText={button1Text} hoverIcon={hoverIcon} />
+                <BookConsultation
+                    buttonClassName={button1ClassName}
+                    buttonText={button1Text}
+                    hoverIcon={hoverIcon}
+                    modalElement={
+                        <>
+                            <iframe
+                                src="https://calendly.com/myiclinic/free_visioncorrection_consultation"
+                                width={600}
+                                height={700}
+                                className="w-full md:min-h-[70rem]"
+                            ></iframe>
+                        </>
+                    }
+                    maxWidth="70rem"
+                />
 
                 <Button
                     type="phone"
