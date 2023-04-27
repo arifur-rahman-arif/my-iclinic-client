@@ -10,6 +10,8 @@ interface BookConsultationInterface {
     children?: JSX.Element;
     buttonText?: string;
     hoverIcon?: ReactNode;
+    modalElement?: ReactNode;
+    maxWidth?: string;
 }
 
 /**
@@ -22,7 +24,9 @@ const BookConsultation = ({
     buttonClassName,
     children,
     buttonText,
-    hoverIcon
+    hoverIcon,
+    modalElement,
+    maxWidth
 }: BookConsultationInterface): JSX.Element => {
     const [showForm, setShowForm] = useState<boolean>(false);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -63,7 +67,7 @@ const BookConsultation = ({
                 />
             )}
 
-            {showForm && <ConsultationForm {...{ modalOpen, setModalOpen }} />}
+            {showForm && <ConsultationForm {...{ modalOpen, setModalOpen, modalElement, maxWidth }} />}
         </div>
     );
 };

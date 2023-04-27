@@ -3,11 +3,8 @@
 .styles {
     :global {
         .MuiPaper-root {
-            display: grid;
-            place-items: center;
-            @include media-breakpoint-up(md) {
-                max-width: 60%;
-                min-height: 50rem;
+            @include media-breakpoint-up(lg) {
+                overflow: hidden !important;
             }
         }
     }
