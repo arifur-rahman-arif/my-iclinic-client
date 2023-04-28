@@ -1,7 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
@@ -32,6 +30,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { FaPoundSign } from 'react-icons/fa';
+import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -108,15 +107,7 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 }
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 h2Heading="Vision correction treatment"

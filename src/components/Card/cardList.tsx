@@ -17,7 +17,7 @@ export const cardList: CardInterface[] = [
         pillText: 'Age 20 - 39',
         cardList: [
             <>
-                The best treatment for <strong>life without glasses or contact lenses</strong>.
+                The best treatment for <strong className="text-heading">life without glasses or contact lenses</strong>.
             </>,
             'No more compromise.'
         ],
@@ -29,7 +29,7 @@ export const cardList: CardInterface[] = [
         pillText: 'Age 55+',
         cardList: [
             <>
-                Best treatment for <strong>removing cloudy vision.</strong>
+                Best treatment for <strong className="text-heading">removing cloudy vision.</strong>
             </>,
             'Restoring clear, natural vision.'
         ],
@@ -56,7 +56,7 @@ export const cardList: CardInterface[] = [
         pillText: 'Age 20+',
         cardList: [
             <>
-                Best treatment <strong>for life without glasses.</strong>
+                Best treatment <strong className="text-heading">for life without glasses.</strong>
             </>,
             'Be active without risk of contact lens infections.'
         ],
@@ -74,7 +74,7 @@ export const cardList: CardInterface[] = [
         pillText: 'Age 40+',
         cardList: [
             <>
-                Best treatment for all <strong>glaucoma types.</strong>
+                Best treatment for all <strong className="text-heading">glaucoma types.</strong>
             </>,
             'Get bespoke treatment to manage your glaucoma.'
         ],
@@ -91,7 +91,7 @@ export const cardList: CardInterface[] = [
         pillText: 'Age 3+',
         cardList: [
             <>
-                Best treatment for <strong>slowing down the progression of myopia.</strong>
+                Best treatment for <strong className="text-heading">slowing down the progression of myopia.</strong>
             </>,
             'Atropine eye drops available.'
         ],

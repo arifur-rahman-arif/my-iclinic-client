@@ -76,7 +76,7 @@ const Cta2 = ({
             </div>
             {!excludeSloganText && (
                 <span
-                    className={`font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:max-w-[38.7rem] ${sloganTextColor}`}
+                    className={`max-w-[32.7rem] text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-heading2 md:text-left ${sloganTextColor}`}
                 >
                     A better quality of life is just around the corner!
                 </span>

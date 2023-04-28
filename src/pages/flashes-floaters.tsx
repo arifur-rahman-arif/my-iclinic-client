@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import { H3Variant3 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
@@ -87,21 +86,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-32 sm:mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        {data?.request_callback_title ? (
-                            HTMLReactParser(data.request_callback_title)
-                        ) : (
-                            <>Speak to a specialist</>
-                        )}
-                    </strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 h2Heading="children and adults"

@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import { Container } from '@/components/Container';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
@@ -20,12 +19,13 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-price-small.png';
+import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { PageDataInterface, PricePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
 
 import Image from 'next/image';
 import { BiRightArrowAlt } from 'react-icons/bi';
+import { Button } from 'src/components/Buttons';
 
 interface DataInterface extends PricePageContentProps, PageDataInterface<PricePageContentProps> {}
 
@@ -57,27 +57,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 priceText={<></>}
-                bannerExtraComponents={
-                    <>
-                        <Button
-                            type="button"
-                            text="Chat with us"
-                            iconPosition="left"
-                            className="justify-self-start normal-case"
-                            icon={
-                                <Image
-                                    src="/images/icons/icon-chat.svg"
-                                    alt=""
-                                    width={20}
-                                    height={20}
-                                    quality={2}
-                                    className="h-8 w-8"
-                                />
-                            }
-                            onClick={openFreshdeskChat}
-                        />
-                    </>
-                }
+                bannerExtraComponents={<ChatWithUs />}
             />
 
             <div className="mt-24 block h-[0.1rem] w-full md:hidden"></div>

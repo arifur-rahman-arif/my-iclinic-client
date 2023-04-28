@@ -1,4 +1,4 @@
-import { Button } from 'src/components/Buttons';
+import { Button2 } from '@/components/Buttons';
 import { TextField } from '@/components/Inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
@@ -279,7 +279,7 @@ const DateAndTime = ({
                 </div>
             </div>
 
-            <Button
+            <Button2
                 type="submit"
                 text="Submit"
                 iconPosition="right"

@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import { H4Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
@@ -23,6 +22,7 @@ import {
     SideVideoSection2
 } from '@/page-sections/index';
 import { leftRightListPremiumLenses } from '@/page-sections/LeftRight/leftRightList';
+import Cta5 from '@/page-sections/SectionParts/Cta5';
 import PremiumLense1 from '@/section-images/premium-lense-1.png';
 import PremiumLense2 from '@/section-images/premium-lense-2.png';
 import PremiumLense3 from '@/section-images/premium-lense-3.png';
@@ -101,22 +101,14 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 priceText="from £350 extra per eye"
-                bannerWidth="max-w-[65rem]"
+                bannerWidth="md:max-w-[68rem]"
                 // ExcludePriceComponent
                 // list={['EDOF', 'Monofocal', 'Multifocals', 'Presbyond']}
             />
 
             {/* <FinanceCalculator /> */}
 
-            <Container className="mt-40 sm:mt-36">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 h2Heading="Be Glasses free"
@@ -179,6 +171,23 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 descriptions={[
                     'We provide the perfect laser treatment for seeing near, intermediate and distance vision altogether without artificial lens implantation.'
                 ]}
+                containerClassName="md:!pl-[15rem]"
+                textColor="!text-white"
+                sloganTextColor="!text-[#CDCFD0]"
+                bgColor="bg-[#00527c]"
+                button1ClassName="!bg-white !border-white hover:!bg-[#00527c] hover:!border-white hover:text-white"
+                button2ClassName="!border-white !bg-transparent text-white"
+                button2Icon={
+                    <Image
+                        src="/images/icons/icon-phone-white.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        quality={2}
+                        className="h-8 w-8"
+                    />
+                }
+                hoverIcon={<Image src="/images/icons/icon-calendar-outline-white.svg" alt="" width={20} height={20} />}
             />
 
             <SideImageSection
@@ -242,7 +251,10 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 <NormalSlideSection sliderList={premiumListCataract} />
             </LazyComponent>
 
-            <CtaSection2 title="Do you think Premium lenses could be the right treatment for you?" />
+            <CtaSection2
+                title="Do you think Premium lenses could be the right treatment for you?"
+                textColumnExtras={<Cta5 />}
+            />
 
             <ImageGallery galleryList={galleryListPremiumLens} />
 

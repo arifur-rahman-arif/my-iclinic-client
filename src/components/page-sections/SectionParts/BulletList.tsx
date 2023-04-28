@@ -29,7 +29,7 @@ const BulletList = ({
     return (
         <ul className={`${defaultClassName} ${className}`}>
             {list.map((item, index) => (
-                <li className={`flex items-start justify-start gap-4 ${listClassName}`} key={index}>
+                <li className={`grid grid-cols-[auto_1fr] gap-4 ${listClassName}`} key={index}>
                     {bulletPoint ? bulletPoint : <BulletPoint />}
                     {bold ? (
                         <div className={listItemClassName}>

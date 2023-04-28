@@ -5,10 +5,7 @@ export interface SliderListInterface
 
 export const journeySliderListHome: SliderListInterface[] = [
     {
-        title: {
-            active: 'Begin Your Care Journey',
-            inactive: 'Private Consultation'
-        },
+        title: 'Begin your care Journey',
         list: [
             'Easy booking with our patient care liaison',
             'Accessible resources available from our specialists',
@@ -17,10 +14,7 @@ export const journeySliderListHome: SliderListInterface[] = [
         image: '/images/section-images/journey-slider-image-1.png'
     },
     {
-        title: {
-            active: 'Private Consultation',
-            inactive: 'Quality Care & Private Treatment'
-        },
+        title: 'Private Consultation',
         list: [
             'Comprehensive eye assessments and scans',
             'One-to-one with your dedicated ophthalmologist',
@@ -29,10 +23,7 @@ export const journeySliderListHome: SliderListInterface[] = [
         image: '/images/section-images/journey-slider-image-2.png'
     },
     {
-        title: {
-            active: 'Quality Care & Private Treatment',
-            inactive: 'Aftercare Appointments'
-        },
+        title: 'Quality care & private treatment',
         list: [
             'Guidance from our friendly team & clinic nurses',
             'Comfortable, stress-free treatment in our private suites',
@@ -41,9 +32,7 @@ export const journeySliderListHome: SliderListInterface[] = [
         image: '/images/section-images/journey-slider-image-3.png'
     },
     {
-        title: {
-            active: 'Aftercare Appointments'
-        },
+        title: 'Aftercare Appointments',
         list: [
             'Free aftercare check ups with your specialist / surgeon',
             'Comprehensive eye assessments & scans',
