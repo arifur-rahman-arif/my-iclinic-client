@@ -11,6 +11,7 @@ import HorizontalSlider from './HorizontalSlider/HorizontalSlider';
 import ImageSlider from './ImageSlider/ImageSlider';
 import JourneySlider from './JourneySlider/JourneySlider';
 import OffscreenSlider from './OffscreenSlider/OffscreenSlider';
+import OffscreenSlider2 from './OffscreenSlider/OffscreenSlider2';
 import StackSlider from './StackSlider/StackSlider';
 
 export {
@@ -23,7 +24,8 @@ export {
     GridSlider,
     ImageSlider,
     JourneySlider,
-    OffscreenSlider
+    OffscreenSlider,
+    OffscreenSlider2
 };
 
 export type { CardSlideInterface };

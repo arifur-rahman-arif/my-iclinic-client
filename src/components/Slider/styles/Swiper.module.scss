@@ -255,33 +255,138 @@
     }
 }
 
-.journeySlider {
-    :global {
-        @include slider-style-1;
-    }
-}
 
 .offScreenSlider {
     :global {
-        @include slider-style-1;
+        //.swiper-pagination {
+        //    @include media-breakpoint-up(md) {
+        //        justify-content: center;
+        //    }
+        //}
 
-        .swiper-pagination {
-            @include media-breakpoint-up(md) {
-                justify-content: center;
+        .swiper-button-disabled {
+            &:after {
+                background: none !important;
+            }
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            width: auto;
+            height: auto;
+            &:after {
+                color: #fff;
+                font-family: var(--mulish-bold);
+                font-size: 1.4rem;
+                line-height: 2rem;
+                text-transform: uppercase !important;
+                padding: 1rem;
+                height: auto;
+            }
+            &:hover {
+                background: none;
+            }
+        }
+
+        .swiper-button-prev {
+            &:after {
+                content: 'Previous';
+            }
+            &:before {
+                content: '';
+                width: 2.4rem;
+                height: 2.4rem;
+                background: url(/images/icons/icon-arrow-left-2-white.svg);
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%) translateX(-2.5rem);
+            }
+            transform: translateX(5rem) translateY(-4rem);
+            left: 0;
+
+            @include media-breakpoint-up(xl) {
+                left: 50%;
+            }
+
+            @include media-breakpoint-up('2xl') {
+                left: 40%;
+            }
+        }
+
+        .swiper-button-next {
+            &:after {
+                content: 'Next';
+            }
+            &:before {
+                content: '';
+                width: 2.4rem;
+                height: 2.4rem;
+                background: url(/images/icons/icon-arrow-right-2-white.svg);
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%) translateX(2.5rem);
+            }
+            transform: translateX(-5rem) translateY(-4rem);
+            right: 0;
+            left: auto;
+
+            @include media-breakpoint-up(xl) {
+                right: 15%;
+            }
+
+            @include media-breakpoint-up('2xl') {
+                right: 25%;
             }
         }
     }
 }
+
+.journeySlider {
+    :global {
+
+        .swiper-button-prev {
+            @include media-breakpoint-up(md) {
+                left: 0;
+            }
+
+            @include media-breakpoint-up('2xl') {
+                left: calc(calc(calc(100% - var(--container-width)) / 2) - 2.5rem);
+            }
+        }
+
+        .swiper-button-next {
+            @include media-breakpoint-up(md) {
+                right: auto;
+                left: 30%;
+            }
+
+            //
+            @include media-breakpoint-up(xl) {
+                right: auto;
+                left: 30%;
+            }
+
+            @include media-breakpoint-up('2xl') {
+                right: auto;
+                left: 50%;
+            }
+        }
+    }
+}
+
 
 .fadeIn {
     :global {
         .swiper-slide {
             opacity: 0 !important;
             transition: 0.5s all ease-in-out;
+            pointer-events: none !important;
         }
 
         .swiper-slide-active {
             opacity: 1 !important;
+            pointer-events: auto !important;
         }
     }
 }

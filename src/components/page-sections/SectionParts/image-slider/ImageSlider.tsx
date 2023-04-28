@@ -38,6 +38,7 @@ const ImageSliderSectionPart = ({ sliderList }: ImageSliderInterface): JSX.Eleme
                                     width={slider.image.width}
                                     height={slider.image.height}
                                     quality={70}
+                                    className="rounded-primary"
                                     alt=""
                                 />
                             )}
@@ -48,7 +49,7 @@ const ImageSliderSectionPart = ({ sliderList }: ImageSliderInterface): JSX.Eleme
                                     width={slider.largeImage.width}
                                     height={slider.largeImage.height}
                                     quality={70}
-                                    className="hidden h-full min-h-[48.5rem] object-cover md:block md:scale-90 2xl:scale-100"
+                                    className="hidden h-full min-h-[48.5rem] rounded-primary object-cover md:block md:scale-90 2xl:scale-100"
                                     alt=""
                                 />
                             )}

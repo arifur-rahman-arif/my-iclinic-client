@@ -1,11 +1,10 @@
+import { ContainerFluid } from '@/components/Container';
+import { Section } from '@/components/Section';
 import { useOnScreen } from '@/hooks';
-import { useEffect, useRef } from 'react';
-
-import { Autoplay, EffectFade, Mousewheel, Pagination } from 'swiper';
-import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import styles from '../styles/Swiper.module.scss';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import { SliderListInterface } from './journeySliderList';
-import Slide from './Slide';
+import Slider from './Slider';
 
 interface StackSliderInterface {
     sliderList: SliderListInterface[];
@@ -18,71 +17,73 @@ interface StackSliderInterface {
  * @returns {*}  {JSX.Element}
  */
 const JourneySlider = ({ sliderList }: StackSliderInterface): JSX.Element => {
-    const swiperRef = useRef<SwiperRef | null>(null);
-    const { onEnter } = useOnScreen({ ref: swiperRef, repeat: true });
-    const { onLeave } = useOnScreen({ ref: swiperRef, triggerPosition: '40%', repeat: true });
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+
+    const sectionRefPosition = useOnScreen({ ref: sectionRef, triggerPosition: '50%' });
+    const [showSlider, setShowSlider] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!swiperRef.current) return;
-
-        // When the slider enters start the slider
-        // When slider is scrolled to 30% of viewport stop the slider autoplay
-        // If slider is again in the viewport start the slider again
-        if (onEnter) {
-            if (onLeave) {
-                swiperRef.current?.swiper.autoplay.stop();
-                swiperRef.current?.swiper.mousewheel.enable();
-            } else {
-                swiperRef.current?.swiper.autoplay.start();
-            }
-        } else {
-            swiperRef.current?.swiper.autoplay.stop();
-            if (onLeave) swiperRef.current?.swiper.slideNext();
+        if (sectionRefPosition.onEnter) {
+            setTimeout(() => {
+                setShowSlider(true);
+            }, 3100);
         }
-
-        // SwiperRef.current?.swiper.autoplay.stop();
-    }, [onEnter, onLeave]);
+    }, [sectionRefPosition]);
 
     return (
-        <Swiper
-            effect="fade"
-            loop={true}
-            grabCursor={true}
-            pagination={{
-                clickable: true
-            }}
-            autoplay={{
-                delay: 4000,
-                disableOnInteraction: false
-            }}
-            autoHeight={false}
-            mousewheel={{
-                invert: false
-            }}
-            speed={800}
-            modules={[EffectFade, Pagination, Mousewheel, Autoplay]}
-            className={`${styles.style} ${styles.fadeIn} ${styles.journeySlider}`}
-            ref={swiperRef}
-            onScroll={(swiper) => {
-                if (swiper?.realIndex == sliderList.length - 1 && swiper?.previousIndex == sliderList.length - 1) {
-                    setTimeout(() => {
-                        swiper.mousewheel.disable();
-                    }, 300);
-                }
-            }}
-        >
-            {sliderList.map((item, index) => (
-                <SwiperSlide className="w-full pb-12 sm:px-12 md:pb-0" key={index}>
-                    <Slide
-                        {...item}
-                        index={index}
-                        swiperRef={swiperRef}
-                        active={true}
-                        sliderListLength={sliderList.length}
-                    />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <Section>
+            {showSlider ? (
+                <Slider {...{ sliderList }} />
+            ) : (
+                <ContainerFluid className="!px-0">
+                    <div>
+                        <Image
+                            src="/images/section-images/jourey-image.png"
+                            alt=""
+                            width={436}
+                            height={350}
+                            className="h-full max-h-[35rem] w-full md:hidden"
+                        />
+                        <Image
+                            src="/images/section-images/jourey-image-large.png"
+                            alt=""
+                            fill
+                            className="z-[-1] hidden h-full w-full md:block"
+                        />
+                        <div className="grid place-items-center py-40" ref={sectionRef}>
+                            <Image
+                                src="/images/section-images/journey-bg.png"
+                                alt=""
+                                fill
+                                className="z-[-1] w-full md:hidden"
+                            />
+                            <h2 className="text-center font-latoLight text-[7.6rem] leading-[7.4rem] text-white lg:text-[14rem] lg:leading-[14rem]">
+                                Your
+                            </h2>
+                            <p className="mt-6 text-center font-latoLight text-[3.2rem] leading-[3.2rem] text-white lg:text-[4.8rem] lg:leading-[4.8rem]">
+                                Journey in our clinic
+                            </p>
+                            <p className="mt-12 text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-white lg:text-[3rem] lg:leading-[3.8rem]">
+                                What to expect when you choose our clinic
+                            </p>
+
+                            <div className="mt-36 grid place-items-center gap-6">
+                                <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white lg:text-[2.4rem] lg:leading-[3.2rem]">
+                                    Starting
+                                </span>
+                                <div className="relative h-4 w-[15.5rem] rounded-primary bg-[#EAEDEE]">
+                                    <div
+                                        className={`absolute top-0 left-0 h-full rounded-primary bg-[#0186B0] transition-all duration-[3s] ${
+                                            sectionRefPosition.onEnter ? 'w-full' : 'w-0'
+                                        }`}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ContainerFluid>
+            )}
+        </Section>
     );
 };
 

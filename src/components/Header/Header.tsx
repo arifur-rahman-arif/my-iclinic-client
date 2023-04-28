@@ -59,9 +59,9 @@ const Header = (): JSX.Element => {
             )}
             <header
                 ref={headerRef}
-                className="sticky top-0 left-0 z-[99] w-full bg-white shadow-shadow3 transition-all duration-500 xl:shadow-none"
+                className="sticky top-0 left-0 z-[99] w-full bg-white shadow-md transition-all duration-500 xl:shadow-none"
             >
-                <Container className="grid grid-cols-[auto_1fr] items-center gap-12 gap-y-4 gap-x-40 xl:py-6">
+                <Container className="grid grid-cols-[auto_1fr] items-center gap-12 gap-y-4 gap-x-40 xl:py-12">
                     <Link href="/" className="self-start py-4">
                         <Image
                             src="/images/logos/logo-iclinic-desktop.png"
@@ -75,7 +75,6 @@ const Header = (): JSX.Element => {
 
                     <div className="hidden grid-cols-[auto_1fr] gap-y-12 xl:grid">
                         {/* Top nav links */}
-
                         <div className="flex items-center justify-start gap-12">
                             <ArticleMenu articles={isSuccess && data.articles} />
                             <Link
@@ -106,6 +105,8 @@ const Header = (): JSX.Element => {
 
                         {/* Nav contact button */}
                         <ContactDetails />
+
+                        <div className="col-span-full hidden h-[0.1rem] w-full max-w-[78rem] bg-[#E6E7E8] xl:block"></div>
 
                         <NavMenu navMenuData={isSuccess && data} />
                     </div>

@@ -47,6 +47,12 @@
                 position: relative;
                 z-index: 1;
 
+                &,
+                * {
+                    color: #fff;
+                    font-family: var(--lato-bold);
+                }
+
                 &:hover,
                 &:active,
                 &:focus {

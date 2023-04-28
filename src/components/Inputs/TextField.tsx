@@ -176,6 +176,7 @@ const TextField = ({
                         animatePlaceHolder(false);
                     }}
                     onChange={onChange}
+                    autoComplete="new-password"
                 />
             )}
 
@@ -198,6 +199,7 @@ const TextField = ({
                     //         event.preventDefault();
                     //     }
                     // }}
+                    autoComplete="new-password"
                 />
             )}
 
@@ -217,6 +219,7 @@ const TextField = ({
                     }}
                     onChange={onChange}
                     rows={rows}
+                    autoComplete="off"
                 />
             )}
             <label

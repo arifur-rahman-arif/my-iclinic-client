@@ -93,7 +93,7 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
             setSlidesPerView(1);
             setSliderSpace(1);
             setNavigation(true);
-            setSpeed(300);
+            setSpeed(2000);
             setPaginationConfig({
                 clickable: true,
                 type: 'fraction'
@@ -101,8 +101,8 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
         } else {
             // For the tablet & desktop devices
             setDirection('vertical');
-            setSlidesPerView(2);
-            setSliderSpace(30);
+            setSlidesPerView(3);
+            setSliderSpace(50);
             setNavigation(false);
             setPaginationConfig(false);
             setSpeed(2000);
@@ -121,7 +121,7 @@ const HorizontalSlider = ({ children }: HorizontalSliderPropsInterface): JSX.Ele
             autoplay={autoPlayConfig}
             modules={[Autoplay, Pagination, Navigation]}
             ref={swiperRef}
-            className={`${styles.style} max-h-[54rem] w-full max-w-[43.5rem] md:min-h-[54rem] lg:h-[54rem] lg:min-h-max`}
+            className={`${styles.style} max-h-[54rem] w-full max-w-[40.5rem] md:max-h-[62rem] md:min-h-[54rem]`}
         >
             {children}
         </Swiper>

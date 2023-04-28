@@ -41,7 +41,7 @@ const ClimateChange = ({
             imageYPosition="bottom"
             descriptions={
                 (descriptions?.length && stringArrayToElementArray(descriptions)) || [
-                    <span className="block font-latoBold text-[2rem] normal-case leading-[2.4rem] md:mt-24">
+                    <span className="block font-latoBold text-[2rem] leading-[2.4rem] text-heading md:mt-24">
                         Did you know that blurry
                         <br /> vision is rapidly rising?
                     </span>,
@@ -51,7 +51,7 @@ const ClimateChange = ({
                         not only affects people's natural sight and quality of life, but also contributes to the masses
                         of plastic waste in our climate.
                     </p>,
-                    <span className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                    <span className="mt-6 font-latoBold text-[2rem] leading-[2.4rem] text-heading">
                         All of our My-iClinic
                         <br />
                         specialists are very climate conscious

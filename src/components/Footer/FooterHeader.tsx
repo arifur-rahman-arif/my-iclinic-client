@@ -27,20 +27,19 @@ const FooterHeader = (): JSX.Element => {
     }, [onEnter]);
 
     return (
-        <ContainerFluid className="z-[2] overflow-hidden bg-[#ccf6ff] !px-0">
-            {/* Map */}
+        <ContainerFluid className="z-[2] overflow-hidden bg-white !px-0">
+            {/* Mobile version Map */}
             <div className="mapouter relative h-[35rem] w-full lg:hidden">
                 <div className="gmap_canvas h-full w-full overflow-hidden !bg-none">
                     <iframe
                         width="100%"
                         height="100%"
                         id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=960%20High%20Rd,%20London%20N12%209RY&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        src="https://snazzymaps.com/embed/85989"
                     ></iframe>
-                    <br />
-                    <a href="https://www.embedgooglemap.net">inserting google maps</a>
                 </div>
             </div>
+
             <Container className="grid grid-cols-1 items-center py-12 md:min-h-[53rem] md:py-0 lg:grid-cols-2">
                 <div>
                     <h2 className="text-[2.8rem] normal-case leading-[2.8rem] md:text-[4.8rem] md:leading-[4.8rem]">
@@ -65,12 +64,13 @@ const FooterHeader = (): JSX.Element => {
                     <FooterHeaderLinks />
                 </div>
 
-                <div className="gmap_canvas absolute right-0 hidden h-full w-2/4 max-w-[70rem] justify-self-end overflow-hidden !bg-none lg:block">
+                {/* Desktop version map */}
+                <div className="gmap_canvas absolute right-0 hidden h-full w-2/4 max-w-[70rem] justify-self-end overflow-hidden !bg-none md:max-w-[50%] lg:block">
                     <iframe
                         width="100%"
                         height="100%"
                         id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=960%20High%20Rd,%20London%20N12%209RY&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        src="https://snazzymaps.com/embed/476517"
                     ></iframe>
                 </div>
             </Container>

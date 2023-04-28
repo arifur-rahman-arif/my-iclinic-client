@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
@@ -74,15 +73,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 priceText="From £350"
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 containerClass="pb-16 md:py-24"
