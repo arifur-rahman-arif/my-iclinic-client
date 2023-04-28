@@ -1,4 +1,5 @@
-import { Cta2, SideImageSection } from '@/components/page-sections';
+import { SideImageSection } from '@/components/page-sections';
+import Cta5 from '@/page-sections/SectionParts/Cta5';
 import { ImageType2 } from '@/types';
 import { ReactNode } from 'react';
 
@@ -14,6 +15,7 @@ interface CtaSection2Interface {
     button1Text?: string;
     excludeSloganText?: boolean;
     altText?: string;
+    button1ClassName?: string;
 }
 
 /**
@@ -62,7 +64,7 @@ const CtaSection2 = ({
             textColumnExtras={
                 textColumnExtras || (
                     <>
-                        <Cta2 button1Text={button1Text} excludeSloganText={excludeSloganText} />
+                        <Cta5 button1Text={button1Text} excludeSloganText={excludeSloganText} />
                     </>
                 )
             }

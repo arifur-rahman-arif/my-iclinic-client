@@ -14,7 +14,7 @@ interface StepIndicatorInterface {
  */
 const StepIndicator = ({ steppers, activateSelectedStepper }: StepIndicatorInterface): JSX.Element => {
     return (
-        <div className="w-full overflow-scroll sm:overflow-hidden" id="stepper-indicator">
+        <div className="w-full overflow-scroll lg:overflow-hidden" id="stepper-indicator">
             <div className="stepper-indicator relative z-[1] grid w-full min-w-[28rem] grid-cols-3 gap-4 sm:min-w-[35.5rem]">
                 {steppers.map((stepper, index) => (
                     <div
@@ -28,14 +28,14 @@ const StepIndicator = ({ steppers, activateSelectedStepper }: StepIndicatorInter
                     >
                         <span
                             className={`grid h-10 w-10 place-items-center rounded-full  pt-1 transition-all delay-200 duration-200 ${
-                                stepper.indicatorActive ? 'bg-green-500' : 'bg-gray-400'
+                                stepper.indicatorActive ? 'bg-heading2' : 'bg-gray-400'
                             }`}
                         >
                             <BsCheckLg className="fill-white text-[1.5rem]" />
                         </span>
                         <span
                             className={`whitespace-nowrap font-mulishBold text-[1.4rem] uppercase transition-all duration-200 ${
-                                stepper.indicatorActive ? 'text-green-500' : ''
+                                stepper.indicatorActive ? 'text-heading2' : ''
                             }`}
                         >
                             {stepper.title}
@@ -48,7 +48,7 @@ const StepIndicator = ({ steppers, activateSelectedStepper }: StepIndicatorInter
                             }`}
                         >
                             <span
-                                className={`absolute h-full bg-green-400 transition-all duration-200 ${
+                                className={`absolute h-full bg-heading2 transition-all duration-200 ${
                                     stepper.indicatorActive ? 'w-full' : 'w-0'
                                 }`}
                             ></span>

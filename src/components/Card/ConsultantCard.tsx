@@ -1,4 +1,4 @@
-import { Button } from 'src/components/Buttons';
+import { Button2 } from '@/components/Buttons';
 import { H4Variant1 } from '@/components/Headings';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import Image from 'next/image';
@@ -47,7 +47,7 @@ const ConsultantCard = ({ image, name, degree, title, url }: ConsultantCardInter
             </div>
             <div className="mt-[4.5rem] flex flex-wrap items-center justify-center gap-8 px-8 xs:justify-between">
                 <BookConsultation buttonClassName="normal-case">
-                    <Button type="button" text="Book a consultation" iconPosition="left" />
+                    <Button2 type="button" text="Book a consultation" iconPosition="left" />
                 </BookConsultation>
                 <Link title="Learn more" href={url} className="group/link flex items-center justify-center gap-4">
                     <span className="font-latoBold text-[1.4rem] leading-[1.9rem] text-heading2">Learn More</span>

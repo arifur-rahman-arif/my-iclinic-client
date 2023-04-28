@@ -1,8 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
-
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
@@ -36,6 +33,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
+import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -113,15 +111,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 priceText="£2,400 per eye"
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title="LASIK may be the suitable alternative to correct your vision"

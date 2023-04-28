@@ -78,16 +78,9 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 priceText="From £200"
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
-            {/* <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent> */}
-            <CallbackSection />
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <Section>
                 <Container>

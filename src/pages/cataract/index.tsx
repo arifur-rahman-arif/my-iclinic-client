@@ -1,7 +1,6 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
+import { Button2 } from '@/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
@@ -95,15 +94,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title={
@@ -186,13 +177,15 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                         </span>
                         <p className="">We are here to make your treatment easy.</p>
 
-                        <Button
+                        <Button2
                             type="anchor"
                             link="/cataract/price"
                             text="Find out more"
                             iconPosition="right"
-                            icon={<FaAngleRight className="h-6 w-6 translate-y-[0.1rem]" />}
-                            className="mt-6 justify-self-center md:justify-self-start"
+                            icon={
+                                <FaAngleRight className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
+                            }
+                            className="group/button mt-6 justify-self-center md:justify-self-start"
                         />
                     </>
                 }

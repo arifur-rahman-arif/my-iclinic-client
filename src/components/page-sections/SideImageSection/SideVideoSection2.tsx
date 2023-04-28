@@ -61,11 +61,8 @@ const SideVideoSection2 = ({
     }, [sectionOnScreen]);
 
     return (
-        <Section className="relative overflow-hidden py-16 md:pt-28 md:pb-24" ref={sectionRef}>
-            <div
-                ref={animationRef}
-                className={`absolute top-0 left-0 -z-[1] h-full w-0 ${bgColor || 'bg-lightOrange'}`}
-            ></div>
+        <Section className="relative overflow-hidden py-16 md:py-32" ref={sectionRef}>
+            <div ref={animationRef} className={`absolute top-0 left-0 -z-[1] h-full w-0 bg-[#0C4969]`}></div>
             <Container
                 className={`${
                     containerDefaultClassName || 'grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-24'
