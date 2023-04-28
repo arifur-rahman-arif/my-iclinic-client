@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import H2Variant1 from '@/components/Headings/H2Variant1';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -84,15 +83,7 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                 priceText={<></>}
             />
 
-            <Container className="mt-12 md:mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title="Dry eye syndrome symptoms and vision testing"

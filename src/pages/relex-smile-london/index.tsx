@@ -1,7 +1,6 @@
 // Import BannerImage from '@/section-images/relex-banner-bg.png';
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
@@ -143,21 +142,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-36 sm:mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        {data?.request_callback_title ? (
-                            HTMLReactParser(data.request_callback_title)
-                        ) : (
-                            <>Speak to a specialist</>
-                        )}
-                    </strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <FullWidthImageSection
                 h3Title={

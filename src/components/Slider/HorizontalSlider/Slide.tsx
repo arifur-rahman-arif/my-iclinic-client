@@ -13,7 +13,7 @@ interface SlideInterface extends HorizontalSliderInterface {}
  */
 const Slide = ({ name, title, description, reviewLink, star = 5, avatarUrl }: SlideInterface): JSX.Element => {
     return (
-        <div className="h-full w-full p-8 md:p-0">
+        <div className="h-full w-full max-w-fit p-8 md:p-0">
             <div className="grid grid-cols-1 gap-4 rounded-primary p-8 shadow-shadow1 md:p-0 md:shadow-none">
                 {star ? (
                     <>
@@ -101,7 +101,7 @@ const Slide = ({ name, title, description, reviewLink, star = 5, avatarUrl }: Sl
                 <span className="block font-latoBold leading-[2.4rem] sm:text-[2rem]">{trimText(title, 40)}</span>
 
                 <p>
-                    {trimText(description, 140)}&nbsp;&nbsp;
+                    {trimText(description, 90)}&nbsp;&nbsp;
                     <LinkText
                         href={reviewLink || '#'}
                         indicatorColor="bg-blue"

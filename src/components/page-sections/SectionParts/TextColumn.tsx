@@ -50,9 +50,9 @@ const TextColumn = ({
                     <h2 className="w-full normal-case">{normalLightHeading}</h2>
                 </div>
             ) : (
-                <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
+                <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-6">
                     {h2Heading ? <SpanVariant1 className="col-start-2">{h2Heading}</SpanVariant1> : <></>}
-                    <span className="h-full w-[0.5rem] bg-yellow"></span>
+                    <span className="h-full w-[0.5rem] rounded-primary bg-yellow"></span>
                     <h2 className="w-full normal-case md:max-w-[55rem]">
                         {h3LightHeading || ''} <strong className="normal-case">{h3BoldHeading || ''}</strong>
                     </h2>
@@ -67,7 +67,7 @@ const TextColumn = ({
             )}
 
             {(midExtras || descriptions || textColumnExtras) && (
-                <div className={`grid gap-12 ${!normalLightHeading && 'ml-10 md:ml-14'}`}>
+                <div className={`grid gap-12 ${!normalLightHeading && 'ml-9'}`}>
                     {midExtras}
 
                     {descriptions?.length && (

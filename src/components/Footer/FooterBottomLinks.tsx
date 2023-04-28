@@ -10,13 +10,19 @@ const FooterBottomLinks = (): JSX.Element => {
     return (
         <ul className={`${styles.list} mt-6 flex flex-wrap items-center justify-center gap-12`}>
             <li>
-                <LinkText href="/privacy-policies">Privacy Policy</LinkText>
+                <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
+                    Privacy Policy
+                </LinkText>
             </li>
             <li>
-                <LinkText href="/privacy-policies">Terms and condition</LinkText>
+                <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
+                    Terms and condition
+                </LinkText>
             </li>
             <li>
-                <LinkText href="/cookie-policy">Cookies Policy</LinkText>
+                <LinkText href="/cookie-policy" className="text-white" indicatorColor="bg-white">
+                    Cookies Policy
+                </LinkText>
             </li>
         </ul>
     );

@@ -13,7 +13,7 @@ const FontResizer = () => {
 
     return (
         <button
-            className="fixed top-[40%] right-0 z-10 hidden cursor-pointer rounded-primary shadow-shadow1 sm:block"
+            className="fixed top-[40%] right-0 z-10 hidden translate-x-8 cursor-pointer rounded-bl-primary rounded-tl-primary border-t-2 border-b-2 border-l-2 pr-8 shadow-shadow1 transition-all duration-500 hover:border-brand sm:block"
             onClick={handleZoomToggle}
         >
             <Image src={LetterIcon} alt="Font Resizer" />

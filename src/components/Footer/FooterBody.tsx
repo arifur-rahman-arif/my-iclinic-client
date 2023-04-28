@@ -12,15 +12,21 @@ import footerList from './footerList';
  */
 const FooterBody = (): JSX.Element => {
     return (
-        <Container className="pt-12 md:pt-24">
+        <Container className="pt-12 md:pt-28">
             <div className="grid grid-cols-1 items-start gap-12  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-[auto_auto_auto_auto]">
                 {footerList.map((list, index) => (
                     <div key={index} className="grid grid-cols-1 place-content-start gap-12">
-                        <h4 className="normal-case">{list.listHeading}</h4>
-                        <ul className="flex flex-col items-start justify-start gap-6">
+                        <h4 className="normal-case text-white">{list.listHeading}</h4>
+                        <ul className="flex flex-col items-start justify-start gap-4">
                             {list.listLinks.map((link, index) => (
                                 <li key={index}>
-                                    <LinkText href={link.url}>{link.text}</LinkText>
+                                    <LinkText
+                                        href={link.url}
+                                        className="!text-[1.6rem] !leading-[2.4rem] text-[#E9EAEB]"
+                                        indicatorColor="bg-[#E9EAEB]"
+                                    >
+                                        {link.text}
+                                    </LinkText>
                                 </li>
                             ))}
                         </ul>
@@ -32,28 +38,19 @@ const FooterBody = (): JSX.Element => {
                 <div className="grid place-items-center">
                     <Image
                         alt="Quality approved Clinic"
-                        width={158}
-                        height={49}
+                        width={227}
+                        height={62}
                         src="/images/logos/logo-iclinic-footer.png"
-                        quality={70}
+                        quality={100}
                     />
                     {/* <h4 className="normal-case">Quality approved Clinic</h4> */}
                 </div>
 
                 <FooterBottomLinks />
 
-                <div className={`mt-6 w-full max-w-[45.3rem] overflow-hidden`}>
-                    <Image
-                        src="/images/icons/icon-pin-long.svg"
-                        quality={70}
-                        alt=""
-                        width={453}
-                        height={2}
-                        className="md:h-auto md:w-auto"
-                    />
-                </div>
+                <div className={`mt-6 h-[0.1rem] w-full max-w-[45.3rem] overflow-hidden bg-[#CACECF]`}></div>
 
-                <span className="mt-6 text-[1.4rem] leading-[1.8rem]">
+                <span className="mt-6 text-center font-mulishLight text-[1.2rem] leading-[1.6rem] text-white">
                     Copy Right © My-Clinic {new Date().getFullYear()} | All Right Reserved
                 </span>
             </div>

@@ -32,10 +32,10 @@ const CookieConsent = (): JSX.Element => {
     if (showCookieConsent) {
         return (
             <div
-                className={`${styles.styles} fixed bottom-0 left-0 z-[999] flex translate-x-8 -translate-y-8 items-center justify-center gap-6 rounded-primary bg-secondary py-6 px-8`}
+                className={`${styles.styles} fixed bottom-0 left-0 z-[999] flex translate-x-8 -translate-y-8 items-center justify-center gap-6 rounded-primary bg-white py-6 px-8 shadow-shadow1`}
             >
                 <Image className="h-[3.6rem] w-[3.6rem]" src={CookieIcon} alt="" />
-                <span className="font-latoMedium text-[1.6rem] text-white">
+                <span className="font-latoMedium text-[1.6rem] text-heading">
                     We use{' '}
                     <LinkStyle url="/cookie-policy" className="!font-latoMedium !text-[1.5rem] ">
                         Cookies.
@@ -43,7 +43,7 @@ const CookieConsent = (): JSX.Element => {
                 </span>
 
                 <button
-                    className="rounded-2xl border-2 border-brand bg-brand px-4 py-1 font-latoBold text-[1.4rem] text-heading transition-all duration-500 hover:bg-transparent hover:text-white"
+                    className="rounded-2xl border-2 border-brand bg-brand px-4 py-1 font-latoBold text-[1.4rem] text-white transition-all duration-500 hover:bg-transparent hover:text-brand"
                     onClick={handleAccept}
                 >
                     OK

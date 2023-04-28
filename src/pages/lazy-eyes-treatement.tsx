@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
@@ -15,10 +14,10 @@ import { lazyEyesFaqList } from '@/page-sections/Faq/faqList';
 import { BookConsultation, BulletList, CtaSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { LazyEyesPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -86,21 +85,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        {data?.request_callback_title ? (
-                            HTMLReactParser(data.request_callback_title)
-                        ) : (
-                            <>Speak to a specialist</>
-                        )}
-                    </strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 h2Heading={data?.section_1?.subheading || 'Correct your vision'}

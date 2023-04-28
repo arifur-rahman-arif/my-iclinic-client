@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { AdvanceEyeCare, CtaSection2, Masthead, SideImageSection } from '@/components/page-sections';
@@ -11,7 +10,6 @@ import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-l
 // import MastheadImageSmall from '@/masthead/masthead-eye-diagnostics-technology-small.png';
 import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -81,21 +79,7 @@ export default function OurEyeDiagnosticsTechnology({
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">
-                        {data?.request_callback_title ? (
-                            HTMLReactParser(data.request_callback_title)
-                        ) : (
-                            <>Speak to a specialist</>
-                        )}
-                    </strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             <SideImageSection
                 containerClassName="md:!gap-x-32 md:!gap-y-12"

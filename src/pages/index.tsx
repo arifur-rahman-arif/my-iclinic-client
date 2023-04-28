@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import { Card, cardList } from '@/components/Card';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
@@ -21,9 +20,9 @@ import MastheadImageLarge from '@/masthead/masthead-home-large.png';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
+import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
 import { WpPageResponseInterface } from '@/types';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -36,7 +35,7 @@ const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableS
 const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/JourneySlider'), {
     loading: () => <ComponentLoader />
 });
-const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection'), {
+const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection2'), {
     loading: () => <ComponentLoader />
 });
 
@@ -74,27 +73,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={
-                    <>
-                        <Button
-                            type="button"
-                            text="Chat with us"
-                            iconPosition="left"
-                            className="justify-self-start normal-case"
-                            icon={
-                                <Image
-                                    src="/images/icons/icon-chat.svg"
-                                    alt=""
-                                    width={20}
-                                    height={20}
-                                    quality={2}
-                                    className="h-8 w-8"
-                                />
-                            }
-                            onClick={openFreshdeskChat}
-                        />
-                    </>
-                }
+                bannerExtraComponents={<ChatWithUs />}
             />
 
             <SideImageSection
@@ -107,7 +86,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 h3BoldHeading="Care Services"
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
-                    <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
+                    <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 md:mt-12 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
                         {cardList.map((list, index) => (
                             <Card key={index} {...list} />
                         ))}
@@ -127,9 +106,9 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 ]}
                 containerClassName="md:!pl-[15rem]"
                 textColor="!text-white"
-                sloganTextColor="!text-[#83DFE5]"
-                bgColor="bg-[#004574]"
-                button1ClassName="!bg-white !border-white hover:!bg-[#004574] hover:!border-white hover:text-white"
+                sloganTextColor="!text-[#CDCFD0]"
+                bgColor="bg-[#00527c]"
+                button1ClassName="!bg-white !border-white hover:!bg-[#00527c] hover:!border-white hover:text-white"
                 button2ClassName="!border-white !bg-transparent text-white"
                 button2Icon={
                     <Image
@@ -156,31 +135,13 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
 
             <ImageGallery galleryList={galleryListHome} />
 
-            {/* <LazyComponent> */}
-            {/*     <OffScreenSliderSection sliderList={offScreenSliderList} /> */}
-            {/* </LazyComponent> */}
-
             <LazyComponent>
                 <OffScreenSliderSection sliderList={offScreenSliderList} />
             </LazyComponent>
 
-            <SideImageSection
-                h3LightHeading={
-                    <>
-                        Your journey
-                        <br />
-                    </>
-                }
-                h3BoldHeading="in our clinic"
-                containerClassName="md:!grid-cols-1 md:!gap-12"
-                customColumn={
-                    <LazyComponent>
-                        <JourneySlider sliderList={journeySliderListHome} />
-                    </LazyComponent>
-                }
-            />
-
-            <div className="w-full md:h-[0.1rem] lg:mt-16"></div>
+            <LazyComponent>
+                <JourneySlider sliderList={journeySliderListHome} />
+            </LazyComponent>
 
             <LazyComponent>
                 <CallbackSection />
@@ -213,9 +174,9 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                     'With leading opthalmologists Mr. Bolger and Ms. Odufuwa-Bolger, our North London team is here to make sure every patient receives the best treatment suitable for their eye health.',
                     'We understand how delicate and important our eyes are, which is why we with you through every step of your patient journey.'
                 ]}
-                sectionClass="bg-brandLight pb-12 md:pb-0 overflow-hidden"
+                sectionClass="pb-12 md:pb-0 overflow-hidden"
                 containerClassName="!px-0"
-                textColumnClassName="px-8 md:px-0"
+                textColumnClassName="px-8"
                 customColumn={<ImageSliderSectionPart sliderList={sliderListHome} />}
             />
 
@@ -257,7 +218,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                         }}
                         textColumnExtras={
                             <div className="grid gap-6">
-                                <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                <span className="max-w-[44.5rem] font-latoBold text-[2rem] leading-[2.4rem] text-heading">
                                     We want to take our impact on the environment a step further and this is where the
                                     gift of a tree comes in!
                                 </span>
@@ -283,6 +244,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 {/*         /> */}
                 {/*     </Container> */}
                 {/* </Section> */}
+
                 <CompanyLogos2 />
             </LazyComponent>
         </Page>

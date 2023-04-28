@@ -1,7 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Button } from 'src/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
@@ -29,6 +27,7 @@ import { WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
+import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -105,15 +104,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 h2Title={<h2>{subheading}</h2>}
             />
 
-            <Container className="mt-24">
-                <h2 className="w-full text-center normal-case">
-                    <strong className="normal-case">Speak to a specialist</strong>
-                </h2>
-            </Container>
-
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-28"></div>
 
             {/* <UspSection list={presbyondUspList} /> */}
 
