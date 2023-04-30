@@ -46,9 +46,9 @@ const BookConsultation = ({
             ) : (
                 <Button
                     type="button"
-                    text={buttonText || 'Book a free screening test'}
+                    text={buttonText || 'Book a consultation'}
                     iconPosition="left"
-                    className={`${buttonClassName} !normal-case`}
+                    className={`${buttonClassName} group/consultation !normal-case`}
                     onClick={() => {
                         setShowForm(true);
                         setModalOpen(true);

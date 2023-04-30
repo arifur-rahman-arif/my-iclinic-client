@@ -920,7 +920,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             />
         ),
         alternativeHeading: <TextColumn h3LightHeading="Medical" h3BoldHeading="Eyelid Surgery" />,
-        descriptionClassName: 'md:ml-14 md:mt-6',
+        descriptionClassName: 'md:ml-9 md:mt-6',
         descriptions: [
             <>
                 <H3Variant3>
@@ -959,7 +959,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -999,7 +1040,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Private Consultation Cost £200</strong>,
             <strong>Ectropion Treatment Cost From £3,000</strong>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1060,7 +1142,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1102,7 +1225,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Private Consultation Cost £200</strong>,
             <strong>Chalazion Removal Treatment Cost From £350</strong>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1164,7 +1328,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1204,7 +1409,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Private Consultation Cost £200</strong>,
             <strong>Ptosis Treatment Cost From £3,500</strong>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1266,7 +1512,48 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     }
@@ -1295,7 +1582,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             />
         ),
         alternativeHeading: <TextColumn h3LightHeading="Cosmetic" h3BoldHeading="Eyelid Surgery" />,
-        descriptionClassName: 'md:ml-14 md:mt-6',
+        descriptionClassName: 'md:ml-9 md:mt-6',
         descriptions: [
             <>
                 <H3Variant3>
@@ -1333,7 +1620,48 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1377,7 +1705,48 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 <strong>Ptosis surgery</strong> (shortening the muscles or tendons that raise the eyelid)
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1440,7 +1809,48 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                 />
             </>,
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     }
@@ -1626,7 +2036,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                 h3BoldHeading="for corneal conditions"
             />
         ),
-        descriptionClassName: 'md:ml-14 md:mt-6',
+        descriptionClassName: 'md:ml-9 md:mt-6',
         descriptions: [
             <>
                 <H3Variant3>
@@ -1637,7 +2047,48 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'KeraNatural corneal ring implantation is an advanced alternative treatment to keraring surgery. Keraring surgery is an implantation of intra-corneal ring segments (ICRS) which improve the corneas shape.',
             '. KeraNatural allograft corneal rings improves unaided and aided visual acuity in most patient cases without the complications associated with plastic intrastromal corneal rings such as: corneal melting, ring extrusion and intrusion, and sight-threatening complications like microbial keratitis.',
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1675,7 +2126,48 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'However, Keratoconus glasses and contact lenses do not prevent the condition of Keratoconus from getting worse.',
             'This is why cross-linking is used as an early surgical intervention to treat the condition before keratoconus progresses any further.',
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1712,7 +2204,48 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             </>,
             'A Lamellar corneal graft is a minimally invasive surgery which replaces the anterior layer of the cornea with new cornea tissue. This surgery strengthens the corneas structure and can improve vision.',
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1751,7 +2284,48 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'CAIRS can be combined with corneal cross-linking to make this treatment more successful.',
             'CAIRS avoids possible complications that are associated with implanting synthetic material in the cornea such as: corneal melting, ring extrusion and intrusion, corneal necrosis; and infection.',
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     },
@@ -1789,7 +2363,48 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             "DMEK is a Keratoplasty procedure which maintains the tensile strength of the cornea to restore clear, natural vision. DMEk helps restore symptoms of corneal endothelial diseases such as: Fuchs' dystrophy.",
             'This procedure is a minimally invasive surgery where only the posterior layer of the corneal is replaced as opposed to translanting the anterior chamber of your eye.',
             <div className="mt-6">
-                <BookConsultation />
+                <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+                    <button className="" aria-label="Book a consultation">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M13.334 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M6.66602 1.66699V5.00033"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                            <path
+                                d="M2.5 8.33301H17.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                            />
+                        </svg>
+
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                            Book a consultation
+                        </span>
+                    </button>
+                </BookConsultation>
             </div>
         ]
     }
