@@ -406,15 +406,52 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                                 // @ts-ignore
                                 iconPosition="left"
                                 icon={
-                                    <Image
-                                        src="/images/icons/icon-cloud-download-outline.svg"
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                        className="h-[2.4rem] w-[2.4rem]"
-                                    />
+                                    <svg
+                                        width="25"
+                                        height="24"
+                                        viewBox="0 0 25 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g clipPath="url(#clip0_2401_5839)">
+                                            <path
+                                                d="M8.10181 17L12.1018 21L16.1018 17"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                            <path
+                                                d="M12.1018 12V21"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                            <path
+                                                d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2401_5839">
+                                                <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                    transform="translate(0.101807)"
+                                                />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
                                 }
-                                className="justify-self-center"
+                                className="group/download justify-self-center"
                             />
                         </div>
                     ]) || [
@@ -436,15 +473,52 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                                 target="_blank"
                                 iconPosition="left"
                                 icon={
-                                    <Image
-                                        src="/images/icons/icon-cloud-download-outline.svg"
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                        className="h-[2.4rem] w-[2.4rem]"
-                                    />
+                                    <svg
+                                        width="25"
+                                        height="24"
+                                        viewBox="0 0 25 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g clipPath="url(#clip0_2401_5839)">
+                                            <path
+                                                d="M8.10181 17L12.1018 21L16.1018 17"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                            <path
+                                                d="M12.1018 12V21"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                            <path
+                                                d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
+                                                stroke="#fff"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2401_5839">
+                                                <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                    transform="translate(0.101807)"
+                                                />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
                                 }
-                                className="justify-self-center"
+                                className="group/download justify-self-center"
                             />
                         </div>
                     ]
@@ -538,23 +612,53 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         <span className="max-w-[40.8rem] font-mulishBold text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[2.8rem]">
                             FREE suitability check for our vision correction treatments.
                         </span>
-                        <BookConsultation buttonClassName="!normal-case">
-                            <Button
-                                type="button"
-                                text="Book your FREE suitability check"
-                                iconPosition="left"
-                                icon={
-                                    <Image
-                                        src="/images/icons/icon-calendar-outline-darker.svg"
-                                        alt=""
-                                        width={20}
-                                        height={20}
-                                        quality={2}
-                                        className="h-8 w-8"
+                        <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
+                            <button className="" aria-label="Book your FREE suitability check">
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
                                     />
-                                }
-                                className="justify-self-center"
-                            />
+                                    <path
+                                        d="M13.334 1.66699V5.00033"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                    />
+                                    <path
+                                        d="M6.66602 1.66699V5.00033"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                    />
+                                    <path
+                                        d="M2.5 8.33301H17.5"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                    />
+                                </svg>
+
+                                <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                                    Book your FREE suitability check
+                                </span>
+                            </button>
                         </BookConsultation>
                         <span className="mt-10 max-w-[38.6rem] font-mulishMedium text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[3.2rem]">
                             Enjoy life at all distances again, free from visual aids.
