@@ -24,14 +24,13 @@ import {
     StackColumn
 } from '@/page-sections/index';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
+import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-
-import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -375,46 +374,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 altText={
                     data?.section_7?.large_image?.alt || 'Woman smiling without needing glasses for short-sightedness'
                 }
-                textColumnExtras={
-                    <>
-                        <div className="flex flex-wrap items-center justify-start gap-6">
-                            <Button
-                                type="anchor"
-                                text="Book a consultation"
-                                iconPosition="left"
-                                icon={
-                                    <Image
-                                        src="/images/icons/icon-calendar-outline-darker.svg"
-                                        alt=""
-                                        width={20}
-                                        height={20}
-                                        quality={2}
-                                        className="h-8 w-8"
-                                    />
-                                }
-                            />
-                            <Button
-                                type="anchor"
-                                text="0208 445 8877"
-                                iconPosition="left"
-                                className="!min-w-[18.6rem] place-content-center border !bg-transparent md:min-w-[23.3rem]"
-                                icon={
-                                    <Image
-                                        src="/images/icons/icon-phone-dark.svg"
-                                        alt=""
-                                        width={20}
-                                        height={20}
-                                        quality={2}
-                                        className="h-8 w-8"
-                                    />
-                                }
-                            />
-                        </div>
-                        <span className="font-latoBold text-[2.8rem] leading-[3.2rem] text-heading2 md:max-w-[38.7rem]">
-                            A better quality of life is just around the corner!
-                        </span>
-                    </>
-                }
+                textColumnExtras={<Cta6 />}
             />
 
             {/* <LazyComponent>

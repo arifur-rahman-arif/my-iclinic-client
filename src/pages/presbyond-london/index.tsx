@@ -280,10 +280,12 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                         <Button
                             type="anchor"
                             link="/presbyond-london/price"
-                            icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
+                            icon={
+                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2" />
+                            }
                             text="Pricing & Financing"
                             iconPosition="left"
-                            className="mt-6 !gap-2 justify-self-center md:justify-self-start"
+                            className="group/finance mt-6 !gap-2 justify-self-center md:justify-self-start"
                         />
                     </>
                 }

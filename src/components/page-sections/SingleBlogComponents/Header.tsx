@@ -1,6 +1,5 @@
 import { BlogCategories } from '@/components/Card/BlogCard2';
 import { Container } from '@/components/Container';
-import { H2Variant1 } from '@/components/Headings';
 import { Section } from '@/components/Section';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { ImageType } from '@/types';
@@ -41,13 +40,17 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                         alt={title}
                         quality={100}
                         priority={true}
-                        className="max-h-[43.8rem] rounded-primary object-cover object-cover transition-all duration-[0.45s] group-hover/header:scale-105"
+                        className="max-h-[43.8rem] rounded-primary object-cover transition-all duration-[0.45s] group-hover/header:scale-105"
                     />
                 </div>
 
                 {/*  Title  */}
                 <div className="mt-12 md:ml-32 md:mt-24 md:max-w-[calc(100%_-_8rem)]">
-                    {title && <H2Variant1 className="max-w-[64rem] normal-case">{title}</H2Variant1>}
+                    {title && (
+                        <h1 className="max-w-[64rem] font-latoBold text-[3rem] normal-case leading-[3.6rem] text-heading md:text-[3.6rem] md:leading-[4rem]">
+                            {title}
+                        </h1>
+                    )}
 
                     <Image src="/images/icons/icon-pin-yellow.svg" width={154} height={2} alt="" className="mt-12" />
 

@@ -54,7 +54,7 @@ const Banner = ({
             </div>
 
             {/* Reviews */}
-            <div className="flex flex-wrap items-center justify-start gap-8 md:col-start-2 md:row-start-3 md:justify-end md:self-center">
+            <div className="flex flex-wrap items-end justify-start gap-8 md:col-start-2 md:row-start-3 md:justify-end md:self-center">
                 {/* Review 1 */}
                 <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2">
                     <span className="grid place-items-center">
