@@ -17,7 +17,7 @@ interface MenuCtaProps {
 const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
     return (
         <div className="h-[6.7rem] w-full bg-[#003C5526]">
-            <Container className="flex h-full items-center justify-center gap-6 !px-4 sm:justify-start sm:gap-12 md:!px-0">
+            <Container className="flex h-full items-center justify-center gap-6 !px-4 sm:justify-start sm:gap-12 xl:!px-0">
                 <button
                     className="flex -translate-y-2 cursor-pointer items-center justify-start gap-2 transition-all duration-500 hover:opacity-40 sm:gap-4"
                     onClick={() => {

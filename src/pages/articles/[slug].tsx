@@ -40,7 +40,7 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
 
     return (
         <Page title={post.title} description={post.title} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb className="md:!flex" />
             <Header
                 image={{
                     src: post.image.src || '/images/section-images/placeholder-image.png',

@@ -54,7 +54,7 @@ interface HomeProps {
  * @returns {JSX.Element}
  */
 export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
-    const heading = "North London's Eye Hospital";
+    const heading = "North London's Private Eye Clinic";
     const subheading = 'Premium eye care for all the family';
 
     return (

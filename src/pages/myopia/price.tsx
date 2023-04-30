@@ -91,11 +91,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                 }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
-
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
 
             <PriceSection priceList={myopiaPriceList} />
 
