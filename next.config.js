@@ -61,18 +61,18 @@ const nextConfig = {
             {
                 source: '/(.*)?', // Use a regular expression to match all routes
                 headers: [
-                    {
-                        key: 'Content-Security-Policy',
-                        value: 'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://myiclinic-help.freshchat.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://connect.facebook.net; style-src \'self\' \'unsafe-inline\' https://myiclinic-help.freshchat.com; img-src \'self\' https://myiclinicn.sg-host.com https://www.google.com data:; frame-ancestors *;'
-                    },
+                    // {
+                    //     key: 'Content-Security-Policy',
+                    //     value: 'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://myiclinic-help.freshchat.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://connect.facebook.net; style-src \'self\' \'unsafe-inline\' https://myiclinic-help.freshchat.com; img-src \'self\' https://myiclinicn.sg-host.com https://www.google.com data:; frame-ancestors *;'
+                    // },
                     {
                         key: 'X-Content-Type-Options',
                         value: 'nosniff'
                     },
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'SAMEORIGIN'
-                    },
+                    // {
+                    //     key: 'X-Frame-Options',
+                    //     value: 'SAMEORIGIN'
+                    // },
                     {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin'
