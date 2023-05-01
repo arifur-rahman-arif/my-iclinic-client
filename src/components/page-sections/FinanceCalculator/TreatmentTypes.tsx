@@ -37,9 +37,9 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
                 <Button
                     key={index}
                     className={`flex-1 !uppercase ${
-                        treatment.active
-                            ? '!bg-[#063147] hover:!bg-transparent hover:!text-[#063147]'
-                            : '!bg-transparent !text-[#063147] hover:!bg-[#063147] hover:!text-white'
+                        treatment.active ?
+                            '!bg-[#063147] hover:!bg-transparent hover:!text-[#063147]' :
+                            '!bg-transparent !text-[#063147] hover:!bg-[#063147] hover:!text-white'
                     }`}
                     onClick={() => activateTreatmentCalculator({ activeIndex: index })}
                     text={treatment.name}
