@@ -10,6 +10,7 @@ interface ControllerInterface {
     value: number;
     valueLabelFormat?: string;
     onValueChange: Dispatch<SetStateAction<number>>;
+    id?: string;
 }
 
 /**
@@ -35,14 +36,51 @@ const Controller = ({
     defaultValue,
     value,
     onValueChange,
-    valueLabelFormat
+    valueLabelFormat,
+    id
 }: ControllerInterface): JSX.Element => {
     return (
-        <div className="row-start-2 mt-16 grid grid-cols-[auto_1fr_auto] items-center justify-start gap-8 self-end md:row-start-auto md:mt-0">
-            <span className="font-mulishBold text-[1.6rem]">
-                {minValue}
-                {appendValueText}
-            </span>
+        <div className="grid grid-cols-2 items-center md:grid-cols-[auto_1fr_auto] md:gap-8">
+            {id === 'upfront-payment' ? (
+                <>
+                    <div className="grid place-items-center justify-self-start">
+                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">
+                            {minValue}
+                            {appendValueText}
+                        </span>
+                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                            upfront
+                        </span>
+                    </div>
+
+                    <div className="grid place-items-center justify-self-end">
+                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">
+                            {maxValue}
+                            {appendValueText}
+                        </span>
+                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                            upfront
+                        </span>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="grid place-items-center justify-self-start">
+                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">{minValue}</span>
+                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                            month
+                        </span>
+                    </div>
+
+                    <div className="grid place-items-center justify-self-end">
+                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">{maxValue}</span>
+                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                            month
+                        </span>
+                    </div>
+                </>
+            )}
+
             <Slider
                 defaultValue={defaultValue}
                 value={value}
@@ -55,11 +93,12 @@ const Controller = ({
                     const currentValue = e.target.value;
                     onValueChange(currentValue);
                 }}
+                className="col-span-full md:col-span-1 md:col-start-2 md:row-start-1"
                 sx={{
                     height: 8,
                     '& .MuiSlider-track': {
                         border: 'none',
-                        backgroundColor: 'var(--color-dark-blue)'
+                        backgroundColor: '#063147'
                     },
                     '& .MuiSlider-rail': {
                         backgroundColor: 'var(--color-brand)'
@@ -77,25 +116,22 @@ const Controller = ({
                             width: '6px',
                             height: '6px',
                             borderRadius: '50%',
-                            backgroundColor: 'var(--color-dark-blue)'
+                            backgroundColor: '#fff'
                         }
                     },
                     '& .MuiSlider-valueLabel': {
                         borderRadius: '5px',
                         padding: '8px 20px',
-                        backgroundColor: 'var(--color-yellow)'
+                        backgroundColor: '#063147'
                     },
                     '& .MuiSlider-valueLabelLabel': {
                         fontSize: '1.6rem',
-                        lineHeight: '1.6rem',
-                        fontFamily: 'var(--mulish-bold)'
+                        lineHeight: '2.4rem',
+                        fontFamily: 'var(--mulish-bold)',
+                        color: '#fff'
                     }
                 }}
             />
-            <span className="font-mulishBold text-[1.6rem]">
-                {maxValue}
-                {appendValueText}
-            </span>
         </div>
     );
 };

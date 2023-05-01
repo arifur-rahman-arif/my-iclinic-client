@@ -51,41 +51,43 @@ const SurgeryController = ({
     totalPayment
 }: UpfrontPaymentInterface) => {
     const inputClassName =
-        'bg-darkBlue rounded-primary text-white font-mulishBold py-4 px-6 max-w-[15.7rem] text-center';
+        'rounded-primary font-mulishBold py-4 px-6 max-w-[15.7rem] text-center text-heading border-2 border-heading focus-visible:!outline-[none]';
 
     return (
-        <div className="grid grid-cols-1 items-center justify-start gap-x-8 md:grid-cols-[auto_1fr] md:gap-x-12">
-            <span className="col-span-full font-latoBold text-[2rem] leading-[2.8rem] underline decoration-darkBlue decoration-2 underline-offset-8 md:text-[2.4rem] md:leading-[3.2rem]">
-                {title}
-            </span>
-
-            <span className="col-span-full mt-8 font-mulishMedium text-[1.4rem] leading-[1.4rem] md:mt-12">
-                {inputLabel}{' '}
-                <span className="font-mulishBold text-[1.6rem] leading-[1.6rem]">
-                    ({id === 'upfront-payment' ? '£' : 'months'})
+        <div className="grid md:gap-28">
+            <div className="hidden place-items-center gap-6 justify-self-center md:grid">
+                <span className="font-mulishExtraBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
+                    {title}
                 </span>
-            </span>
 
-            <div className="mt-6 grid gap-6">
-                {id === 'upfront-payment' ? (
-                    <UpfrontAmountInput
-                        upfrontAmount={upfrontAmount || null}
-                        className={inputClassName}
-                        totalPayment={totalPayment || 0}
-                        setUpfrontPercentage={onValueChange}
-                        upfrontMaxPercentage={maxValue}
-                        upfrontMinPercentage={minValue}
-                    />
-                ) : (
-                    <InstallmentInput
-                        id={id}
-                        className={inputClassName}
-                        minInstallment={minValue}
-                        maxInstallment={maxValue}
-                        installment={value}
-                        setInstallment={onValueChange}
-                    />
-                )}
+                {/* <span className="col-span-full mt-8 font-mulishMedium text-[1.4rem] leading-[1.4rem] md:mt-12"> */}
+                {/*     {inputLabel}{' '} */}
+                {/*     <span className="font-mulishBold text-[1.6rem] leading-[1.6rem]"> */}
+                {/*         ({id === 'upfront-payment' ? '£' : 'months'}) */}
+                {/*     </span> */}
+                {/* </span> */}
+
+                <div className="grid gap-6">
+                    {id === 'upfront-payment' ? (
+                        <UpfrontAmountInput
+                            upfrontAmount={upfrontAmount || null}
+                            className={inputClassName}
+                            totalPayment={totalPayment || 0}
+                            setUpfrontPercentage={onValueChange}
+                            upfrontMaxPercentage={maxValue}
+                            upfrontMinPercentage={minValue}
+                        />
+                    ) : (
+                        <InstallmentInput
+                            id={id}
+                            className={inputClassName}
+                            minInstallment={minValue}
+                            maxInstallment={maxValue}
+                            installment={value}
+                            setInstallment={onValueChange}
+                        />
+                    )}
+                </div>
             </div>
 
             <Controller
@@ -97,6 +99,7 @@ const SurgeryController = ({
                 defaultValue={defaultValue}
                 onValueChange={onValueChange}
                 valueLabelFormat={valueLabelFormat}
+                id={id}
             />
         </div>
     );

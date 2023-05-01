@@ -1,3 +1,4 @@
+import { smallSizes, useDeviceSize } from '@/hooks';
 import Cta4 from '@/page-sections/SectionParts/Cta4';
 import AverageSpend, { AverageSpendInterfaceProps } from './AverageSpend';
 import CostCalender from './CostCalender';
@@ -59,17 +60,19 @@ const Treatment = ({
         defaultInstallment: defaultInstallment
     });
 
+    const deviceSize = useDeviceSize();
+
     return (
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:gap-28">
             {/* Left column */}
             <div className="grid content-start gap-12 md:gap-24">
-                <div>
-                    <strong>
-                        Total cost of <strong className="capitalize">{name}</strong> is: {cost.toLocaleString()}{' '}
-                        <span>/ per eye</span>
-                    </strong>
+                <div className="rounded-primary px-12 py-16 shadow-shadow1 md:px-16 md:py-24">
+                    {/* <strong> */}
+                    {/*     Total cost of <strong className="capitalize">{name}</strong> is: {cost.toLocaleString()}{' '} */}
+                    {/*     <span>/ per eye</span> */}
+                    {/* </strong> */}
 
-                    <div className="mt-16 grid gap-12 md:gap-40">
+                    <div className="grid gap-32 md:gap-48">
                         {/*  Deposit controller    */}
                         <SurgeryController
                             title="Upfront payment"
@@ -79,7 +82,9 @@ const Treatment = ({
                             defaultValue={defaultUpfront}
                             onValueChange={setUpfrontPercentage}
                             upfrontAmount={upfrontAmount}
-                            valueLabelFormat={`${upfrontPercentage}%`}
+                            valueLabelFormat={
+                                smallSizes.includes(deviceSize) ? `${upfrontAmount}` : `${upfrontPercentage}%`
+                            }
                             appendValueText="%"
                             id="upfront-payment"
                             inputLabel="How much you want pay"
