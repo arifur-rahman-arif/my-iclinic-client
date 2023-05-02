@@ -35,7 +35,20 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
                     <span className="font-latoExtraBold text-[1.4rem] leading-8 line-clamp-1">Chat with us</span>
                 </button>
                 <span className="h-10 w-[0.1rem] bg-[#9B9FA1]"></span>
-                <BookConsultation buttonClassName="flex h-full cursor-pointer items-start justify-start gap-2 sm:gap-4 transition-all duration-500 hover:opacity-40">
+                <BookConsultation
+                    modalElement={
+                        <>
+                            <iframe
+                                src="https://calendly.com/myiclinic/free_visioncorrection_consultation"
+                                width={600}
+                                height={700}
+                                className="w-full md:min-h-[70rem]"
+                            ></iframe>
+                        </>
+                    }
+                    maxWidth="70rem"
+                    buttonClassName="flex h-full cursor-pointer items-start justify-start gap-2 sm:gap-4 transition-all duration-500 hover:opacity-40"
+                >
                     <button>
                         <Image
                             src="/images/icons/icon-calendar-outline-darker.svg"

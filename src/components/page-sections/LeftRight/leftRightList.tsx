@@ -960,7 +960,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -997,7 +997,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1041,7 +1041,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Ectropion Treatment Cost From £3,000</strong>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1078,7 +1078,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1143,7 +1143,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1180,7 +1180,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1226,7 +1226,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Chalazion Removal Treatment Cost From £350</strong>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1263,7 +1263,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1329,7 +1329,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1366,7 +1366,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1410,7 +1410,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             <strong>Ptosis Treatment Cost From £3,500</strong>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1447,7 +1447,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1513,7 +1513,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1550,7 +1550,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1621,7 +1621,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1658,7 +1658,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1706,7 +1706,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1743,7 +1743,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -1810,7 +1810,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
             </>,
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -1847,7 +1847,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -2048,7 +2048,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             '. KeraNatural allograft corneal rings improves unaided and aided visual acuity in most patient cases without the complications associated with plastic intrastromal corneal rings such as: corneal melting, ring extrusion and intrusion, and sight-threatening complications like microbial keratitis.',
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -2085,7 +2085,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -2127,7 +2127,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'This is why cross-linking is used as an early surgical intervention to treat the condition before keratoconus progresses any further.',
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -2164,7 +2164,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -2205,7 +2205,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'A Lamellar corneal graft is a minimally invasive surgery which replaces the anterior layer of the cornea with new cornea tissue. This surgery strengthens the corneas structure and can improve vision.',
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -2242,7 +2242,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -2285,7 +2285,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'CAIRS avoids possible complications that are associated with implanting synthetic material in the cornea such as: corneal melting, ring extrusion and intrusion, corneal necrosis; and infection.',
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -2322,7 +2322,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>
@@ -2364,7 +2364,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
             'This procedure is a minimally invasive surgery where only the posterior layer of the corneal is replaced as opposed to translanting the anterior chamber of your eye.',
             <div className="mt-6">
                 <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
-                    <button className="" aria-label="Book a consultation">
+                    <button className="" aria-label="Request a callback">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
@@ -2401,7 +2401,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
                         </svg>
 
                         <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            Book a consultation
+                            Request a callback
                         </span>
                     </button>
                 </BookConsultation>

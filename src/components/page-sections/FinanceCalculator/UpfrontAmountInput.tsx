@@ -33,6 +33,8 @@ const UpfrontAmountInput = ({
     const [inputFocused, setInputFocused] = useState<boolean>(false);
     const [invalidAmount, setInvalidAmount] = useState<boolean>(false);
 
+    const [percentage, setPercentage] = useState<number>();
+
     useEffect(() => {
         if (inputFocused) return;
 
@@ -57,7 +59,7 @@ const UpfrontAmountInput = ({
     };
 
     return (
-        <div className="relative grid gap-3">
+        <div className="relative grid place-items-center gap-3">
             <input
                 type="number"
                 id="upfront-payment"
@@ -68,21 +70,33 @@ const UpfrontAmountInput = ({
                 onChange={(e) => {
                     const currentValue = Number(e.target.value);
                     setInputValue(currentValue);
-                    const percentage = calculatePercentage(totalPayment, currentValue);
+                    const tempPercentage = calculatePercentage(totalPayment, currentValue);
+                    setPercentage(tempPercentage);
 
-                    if (percentage < upfrontMinPercentage || percentage > upfrontMaxPercentage) {
+                    if (tempPercentage < upfrontMinPercentage || tempPercentage > upfrontMaxPercentage) {
                         setInvalidAmount(true);
                         return;
                     }
 
                     setInvalidAmount(false);
-                    setUpfrontPercentage(percentage);
+                    setUpfrontPercentage(tempPercentage);
                 }}
             />
-            {invalidAmount && (
-                <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
-                    Invalid amount
-                </span>
+            {invalidAmount && percentage ? (
+                <>
+                    {percentage < upfrontMinPercentage ? (
+                        <span className="w-full text-center font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 line-clamp-1 xl:absolute xl:bottom-0 xl:translate-y-8">
+                            Sorry, minimum deposit of £{(upfrontMinPercentage / 100) * totalPayment} is required for
+                            this treatment
+                        </span>
+                    ) : (
+                        <span className="w-full text-center font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 line-clamp-1 xl:absolute xl:bottom-0 xl:translate-y-8">
+                            Sorry, maximum deposit of £{(upfrontMaxPercentage / 100) * totalPayment} is allowed
+                        </span>
+                    )}
+                </>
+            ) : (
+                <></>
             )}
         </div>
     );
