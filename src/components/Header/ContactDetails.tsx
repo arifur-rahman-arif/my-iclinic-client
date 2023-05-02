@@ -10,7 +10,7 @@ import Link from 'next/link';
 const ContactDetails = (): JSX.Element => {
     return (
         <div className="flex grid-flow-col items-center justify-center gap-6 justify-self-end">
-            <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+            <BookConsultation buttonClassName="group/consultation transition-all border-2 border-[#063147] duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-[#063147] rounded-primary">
                 <button className="" aria-label="Book a consultation">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
