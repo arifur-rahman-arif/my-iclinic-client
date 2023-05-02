@@ -66,7 +66,7 @@ const InstallmentInput = ({
                 }}
             />
 
-            {invalidInput && installmentInput && (
+            {invalidInput && installmentInput ? (
                 <>
                     {installmentInput < minInstallment ? (
                         <span className="whitespace-nowrap font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
@@ -78,6 +78,8 @@ const InstallmentInput = ({
                         </span>
                     )}
                 </>
+            ) : (
+                <></>
             )}
         </div>
     );
