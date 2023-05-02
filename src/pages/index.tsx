@@ -70,7 +70,6 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 imageSmall={MastheadImageSmall}
                 imageMedium={MastheadImageMedium}
                 imageLarge={MastheadImageLarge}
-                imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 bannerExtraComponents={<ChatWithUs />}
@@ -140,11 +139,11 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <JourneySlider sliderList={journeySliderListHome} />
+                <CallbackSection />
             </LazyComponent>
 
             <LazyComponent>
-                <CallbackSection />
+                <JourneySlider sliderList={journeySliderListHome} />
             </LazyComponent>
 
             <div className="w-full md:h-[0.1rem] lg:mt-12"></div>

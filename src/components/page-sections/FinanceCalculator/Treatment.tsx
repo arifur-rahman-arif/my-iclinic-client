@@ -1,4 +1,10 @@
-import Cta4 from '@/page-sections/SectionParts/Cta4';
+import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { getElementTopPosition, openFreshdeskChat } from '@/utils/miscellaneous';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
+import { FaAngleRight } from 'react-icons/fa';
 import AverageSpend, { AverageSpendInterfaceProps } from './AverageSpend';
 import CostCalender from './CostCalender';
 import useFinanceHook from './hooks/useFinanceHook';
@@ -33,8 +39,6 @@ export interface TreatmentInterface {
  * @constructor
  */
 const Treatment = ({
-    name,
-    active,
     cost,
     minUpfront,
     maxUpfront,
@@ -59,17 +63,122 @@ const Treatment = ({
         defaultInstallment: defaultInstallment
     });
 
-    return (
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:gap-28">
-            {/* Left column */}
-            <div className="grid content-start gap-12 md:gap-24">
-                <div>
-                    <strong>
-                        Total cost of <strong className="capitalize">{name}</strong> is: {cost.toLocaleString()}{' '}
-                        <span>/ per eye</span>
-                    </strong>
+    const deviceSize = useDeviceSize();
 
-                    <div className="mt-16 grid gap-12 md:gap-40">
+    const [openCostTable, setOpenCostTable] = useState<boolean>(false);
+
+    useEffect(() => {
+        setOpenCostTable(largeSizes.includes(deviceSize));
+    }, [deviceSize]);
+    return (
+        <div className="grid grid-cols-1 content-start gap-12 lg:grid-cols-[1fr_auto]">
+            <div className="grid content-start gap-12 justify-self-center lg:gap-6">
+                <div className="grid w-full max-w-[34.1rem] gap-16  rounded-primary bg-[#063147] py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start">
+                    <div className="grid content-start gap-14 justify-self-center">
+                        <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-white">
+                            Your monthly payment
+                        </span>
+                        <div className="grid place-items-center gap-4 justify-self-center">
+                            <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-white">
+                                £{monthlyPayment}
+                            </span>
+                            <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-white">
+                                Per eye | Per month
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Cost breakdown desktop version */}
+                <div
+                    className={`hidden w-full max-w-[34.1rem] justify-self-center rounded-primary py-8 px-8 shadow-shadow1 transition-all duration-500 md:py-16 md:px-12 lg:grid`}
+                >
+                    <button
+                        className="flex cursor-pointer items-center justify-center gap-4 justify-self-center"
+                        onClick={() => {
+                            setOpenCostTable(!openCostTable);
+                        }}
+                    >
+                        <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
+                            Cost break down
+                        </span>
+                        <FaAngleRight className="h-[1.2rem] w-[1.2rem] fill-[#9B9FA1]" />
+                    </button>
+
+                    <div
+                        className={`overflow-hidden  transition-all duration-500 ${
+                            openCostTable ? 'max-h-full pt-12' : 'max-h-0'
+                        }`}
+                    >
+                        <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} />
+                    </div>
+                </div>
+
+                {/* Total cost desktop version */}
+                <div className="hidden w-full max-w-[34.1rem] gap-16 justify-self-center rounded-primary py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:grid">
+                    <div className="grid gap-14 justify-self-center">
+                        <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
+                            Total cost of vision correction treatment
+                        </span>
+                        <div className="grid place-items-center gap-4 justify-self-center">
+                            <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-heading">
+                                {cost.toLocaleString()}
+                            </span>
+                            <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-heading">
+                                Per eye
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* How much you desktop */}
+                <div className="hidden grid-cols-[auto_1fr] gap-6 lg:mt-6 lg:grid">
+                    <Image src="/images/icons/icon-money-bag-dark.svg" alt="" width={30} height={40} />
+                    <p className="max-w-[21.5rem] font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading">
+                        How much you save over 30 Years{' '}
+                        <span
+                            onClick={() => {
+                                window.scrollTo(
+                                    0,
+                                    getElementTopPosition(
+                                        document.querySelector('#average-spend-large') as HTMLElement
+                                    ) - 250
+                                );
+                            }}
+                            className="cursor-pointer font-mulishExtraBold text-[1.4rem] leading-[1.8rem] text-heading2 underline decoration-heading2 decoration-2 underline-offset-4"
+                        >
+                            Learn More
+                        </span>
+                    </p>
+                </div>
+
+                {/* Need help desktop */}
+                <div className="hidden grid-cols-[auto_1fr] gap-x-6 gap-y-4 lg:grid">
+                    <AiOutlineQuestionCircle className="h-10 w-10 fill-heading" />
+                    <p className="font-mulishExtraBold text-[1.6rem] leading-[2.8rem] text-heading">Need help?</p>
+                    <div className="col-start-2 flex items-center justify-start gap-12">
+                        <Link
+                            href="tel:0208 445 8877"
+                            className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#35444B]"
+                        >
+                            0208 445 8877
+                        </Link>
+                        <button
+                            className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#35444B]"
+                            onClick={() => {
+                                openFreshdeskChat();
+                            }}
+                        >
+                            Chat with us
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Calculator */}
+            <div className="grid gap-12 lg:col-start-1 lg:row-start-1">
+                <div className="rounded-primary px-12 py-16 shadow-shadow1 md:px-16 md:py-24">
+                    <div className="grid gap-32 md:gap-48">
                         {/*  Deposit controller    */}
                         <SurgeryController
                             title="Upfront payment"
@@ -79,7 +188,9 @@ const Treatment = ({
                             defaultValue={defaultUpfront}
                             onValueChange={setUpfrontPercentage}
                             upfrontAmount={upfrontAmount}
-                            valueLabelFormat={`${upfrontPercentage}%`}
+                            valueLabelFormat={
+                                smallSizes.includes(deviceSize) ? `${upfrontAmount}` : `${upfrontPercentage}%`
+                            }
                             appendValueText="%"
                             id="upfront-payment"
                             inputLabel="How much you want pay"
@@ -102,67 +213,139 @@ const Treatment = ({
                     </div>
                 </div>
 
-                {/* Average spend on glasses & contact lenses */}
-                <div className="hidden md:block">
-                    <AverageSpend {...(averageSpend as unknown as any)} />
+                {/* Read carefully desktop view */}
+                {/* <div className="hidden grid-cols-[auto_1fr] content-start gap-6 lg:col-span-1 lg:grid"> */}
+                {/*     <Image src="/images/icons/icon-bell-yellow.svg" alt="" width={35} height={43} /> */}
+                {/*     <div className="grid gap-6"> */}
+                {/*         <span className="font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-heading"> */}
+                {/*             Please Read Carefully Before Applying */}
+                {/*         </span> */}
+                {/*         <span className="leading-[2.4rem font-mulishBold text-[1.6rem] text-heading"> */}
+                {/*             Terms & Conditions: */}
+                {/*         </span> */}
+                {/*         <p> */}
+                {/*             Please consider: approval for{' '} */}
+                {/*             <span className="font-mulishExtraBold text-[#FE8083]">0% ARP</span> representative finance */}
+                {/*             is <span className="font-mulishExtraBold uppercase text-[#FE8083]">subject to status.</span> */}
+                {/*         </p> */}
+                {/*         <p> */}
+                {/*             All finance plans must be approved at least{' '} */}
+                {/*             <span className="font-mulishExtraBold uppercase text-[#FE8083]"> */}
+                {/*                 14 days prior to the treatment. */}
+                {/*             </span> */}
+                {/*         </p> */}
+                {/*     </div> */}
+                {/* </div> */}
+            </div>
+
+            {/* Total cost mobile version */}
+            <div className="grid w-full max-w-[34.1rem] gap-16 justify-self-center rounded-primary py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:hidden">
+                <div className="grid gap-14 justify-self-center">
+                    <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
+                        Total cost of vision correction treatment
+                    </span>
+                    <div className="grid place-items-center gap-4 justify-self-center">
+                        <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-heading">
+                            {cost.toLocaleString()}
+                        </span>
+                        <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-heading">
+                            Per eye
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            {/* Right column */}
-            <div className="grid gap-12 md:max-w-[40.1rem]">
-                {/* Calculation result */}
-                <div className="grid gap-16 rounded-primary bg-brandLight py-8 px-8 md:py-16 md:px-12">
-                    <div className="grid gap-12 justify-self-center">
-                        <span className="font-mulishBold text-[2.4rem] leading-[3.2rem]">Your monthly payment</span>
-                        <div className="grid place-items-center gap-4 justify-self-center">
-                            <span className="font-latoExtraBold text-[3.6rem] leading-[4.8rem] text-heading md:text-[4.8rem] md:leading-[4.8rem]">
-                                £{monthlyPayment}
-                            </span>
-                            <span>Per eye</span>
-                        </div>
-                    </div>
-
-                    <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} />
-
-                    <span className="text-center font-latoBold text-[2rem] leading-[2.8rem] md:text-[3rem] md:leading-[3.6rem]">
-                        Total cost of vision correction treatment
+            {/* Cost breakdown mobile version */}
+            <div
+                className={`grid w-full max-w-[34.1rem] justify-self-center rounded-primary py-8 px-8 shadow-shadow1 transition-all duration-500 md:py-16 md:px-12 lg:hidden`}
+            >
+                <button
+                    className="flex cursor-pointer items-center justify-center gap-4 justify-self-center"
+                    onClick={() => {
+                        setOpenCostTable(!openCostTable);
+                    }}
+                >
+                    <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
+                        Cost break down
                     </span>
+                    <FaAngleRight className="h-[1.2rem] w-[1.2rem] fill-[#9B9FA1]" />
+                </button>
 
-                    <div className="grid grid-flow-col place-items-center gap-4 justify-self-center">
-                        <span className="font-latoBold text-[3rem] leading-[3.6rem] md:text-[6.4rem] md:leading-[6.4rem]">
-                            {cost.toLocaleString()}
-                        </span>
-                        <span className="font-mulishMedium">/Per eye</span>
-                    </div>
+                <div
+                    className={`overflow-hidden  transition-all duration-500 ${
+                        openCostTable ? 'max-h-full pt-12' : 'max-h-0'
+                    }`}
+                >
+                    <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} />
                 </div>
+            </div>
 
-                {/* Cta section */}
-                <div className="grid">
-                    <span>Need help?</span>
-                    <strong className="mt-6">Speak to our friendly team </strong>
-
-                    <Cta4 />
-                </div>
-
-                <p>
-                    <strong>Please consider: approval for 0% ARP representative finance is subject to status.</strong>
+            {/* How much you mobile */}
+            <div className="grid grid-cols-[auto_1fr] gap-6 lg:hidden">
+                <Image src="/images/icons/icon-money-bag-dark.svg" alt="" width={30} height={40} />
+                <p className="max-w-[21.5rem] font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading">
+                    How much you save over 30 Years{' '}
+                    <span
+                        onClick={() => {
+                            window.scrollTo(
+                                0,
+                                getElementTopPosition(document.querySelector('#average-spend') as HTMLElement) - 100
+                            );
+                        }}
+                        className="cursor-pointer font-mulishExtraBold text-[1.4rem] leading-[1.8rem] text-heading2 underline decoration-heading2 decoration-2 underline-offset-4"
+                    >
+                        Learn More
+                    </span>
                 </p>
+            </div>
 
+            {/* Need help mobile */}
+            <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 lg:hidden">
+                <AiOutlineQuestionCircle className="h-10 w-10 fill-heading" />
+                <p className="font-mulishExtraBold text-[1.6rem] leading-[2.8rem] text-heading">Need help?</p>
+                <div className="col-start-2 flex items-center justify-start gap-12">
+                    <Link
+                        href="tel:0208 445 8877"
+                        className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#35444B]"
+                    >
+                        0208 445 8877
+                    </Link>
+                    <button
+                        className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#35444B]"
+                        onClick={() => {
+                            openFreshdeskChat();
+                        }}
+                    >
+                        Chat with us
+                    </button>
+                </div>
+            </div>
+
+            {/* Read carefully mobile view */}
+            <div className="grid grid-cols-[auto_1fr] content-start gap-6 lg:col-span-1">
+                <Image src="/images/icons/icon-bell-yellow.svg" alt="" width={35} height={43} />
                 <div className="grid gap-6">
-                    <strong>Terms & Conditions:</strong>
+                    <span className="font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-heading">
+                        Please Read Carefully Before Applying
+                    </span>
+                    <span className="leading-[2.4rem font-mulishBold text-[1.6rem] text-heading">
+                        Terms & Conditions:
+                    </span>
                     <p>
-                        Please call{' '}
-                        <strong>
-                            <a href="tel:0208 445 8877">0208 445 8877</a>
-                        </strong>{' '}
-                        to discuss your finance plan with our finance department.{' '}
-                        <strong>All finance plans must be approved at least 14 days prior to the treatment</strong>
+                        Please consider: approval for{' '}
+                        <span className="font-mulishExtraBold text-[#FE8083]">0% ARP</span> representative finance is{' '}
+                        <span className="font-mulishExtraBold uppercase text-[#FE8083]">subject to status.</span>
+                    </p>
+                    <p>
+                        All finance plans must be approved at least{' '}
+                        <span className="font-mulishExtraBold uppercase text-[#FE8083]">
+                            14 days prior to the treatment.
+                        </span>
                     </p>
                 </div>
             </div>
 
-            {/* This component is visible in mobile version at the end of this grid container  */}
-            <div className="md:hidden">
+            <div className="-ml-8 w-[calc(100%_+_4rem)] lg:col-span-full lg:hidden" id="average-spend">
                 <AverageSpend {...(averageSpend as unknown as any)} />
             </div>
         </div>
