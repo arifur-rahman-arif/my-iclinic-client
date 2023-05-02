@@ -104,7 +104,7 @@ export default function FinancingYourTreatment({
                             type="button"
                             text="Our insurance partners"
                             iconPosition="left"
-                            className="group/chat-button justify-self-start normal-case"
+                            className="group/chat-button normal-case"
                             onClick={() => {
                                 window.scrollTo(
                                     0,
@@ -271,7 +271,7 @@ export default function FinancingYourTreatment({
                             </span>
                         </div>
 
-                        <div className="mt-4 flex items-center justify-center gap-6">
+                        <div className="mt-4 flex flex-wrap items-center justify-center gap-6">
                             <Button2
                                 type="phone"
                                 text="0208 445 8877"
