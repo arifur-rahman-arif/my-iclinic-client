@@ -1,6 +1,6 @@
-import { TreatmentInterface } from './Treatment';
+import { Button } from '@/components/Buttons';
 import { Dispatch, SetStateAction } from 'react';
-import Image from 'next/image';
+import { TreatmentInterface } from './Treatment';
 
 interface TreatmentTypesPropsInterface {
     treatmentList: TreatmentInterface[];
@@ -31,38 +31,19 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
     };
 
     return (
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+        <div className="grid max-w-[93rem] justify-center gap-6 md:flex md:items-center md:justify-self-center">
             {treatmentList.map((treatment, index) => (
-                <button
+                <Button
                     key={index}
-                    className="flex items-center justify-center gap-4 rounded-primary bg-darkBlue p-6"
+                    className={`flex-1 !uppercase ${
+                        treatment.active ?
+                            '!bg-[#063147] hover:!bg-transparent hover:!text-[#063147]' :
+                            '!bg-transparent !text-[#063147] hover:!bg-[#063147] hover:!text-white'
+                    }`}
                     onClick={() => activateTreatmentCalculator({ activeIndex: index })}
-                >
-                    {treatment.active ? (
-                        <Image
-                            src="/images/icons/icon-check-white.svg"
-                            width={26}
-                            height={26}
-                            alt=""
-                            className="h-8 w-8 translate-y-[0.1rem] md:h-[2.6rem] md:w-[2.6rem]"
-                        />
-                    ) : (
-                        <Image
-                            src="/images/icons/icon-circle-white.svg"
-                            width={26}
-                            height={26}
-                            alt=""
-                            className="h-8 w-8 opacity-70 md:h-[2.6rem] md:w-[2.6rem]"
-                        />
-                    )}
-                    <span
-                        className={`font-mulishBold capitalize text-white transition-all duration-500 md:text-[2rem] md:leading-[2.8rem] ${
-                            !treatment.active && 'opacity-70'
-                        }`}
-                    >
-                        {treatment.name}
-                    </span>
-                </button>
+                    text={treatment.name}
+                    type="button"
+                />
             ))}
         </div>
     );
