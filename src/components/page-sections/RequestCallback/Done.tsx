@@ -1,9 +1,5 @@
 import { getTheDayName, getTheMonthName } from '@/utils/miscellaneous';
-
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-
-const LottieComponent = dynamic(() => import('./LottieComponent'));
 
 interface DoneInterface {
     date: Date;
@@ -19,31 +15,23 @@ interface DoneInterface {
  */
 const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
     return (
-        <div className="grid grid-cols-1 gap-8">
-            {formSubmitted && <LottieComponent />}
+        <div className="grid grid-cols-1 place-items-center content-start gap-8">
+            <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
 
-            <div className="flex w-full flex-col items-center justify-start gap-4">
-                <h3 className="sm:leading-16 font-latoBold sm:text-[4rem]">Thank You</h3>
-                <p className="text-center">Your booking was successful</p>
-                <p className="text-center">We just sent you a confirmation email</p>
-                <Image
-                    src="/images/avaters/people-jumping.svg"
-                    quality={70}
-                    alt=""
-                    width={152}
-                    height={130}
-                    className="mt-4 h-[13rem] w-[15.2rem]"
-                />
+            <div className="flex w-full flex-col items-center justify-start gap-2">
+                <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">Thank You</span>
+                <p className="font-mulishMedium text-[1.6rem] leading-[2.4rem] text-[#35444B]">
+                    We have received your call-back request.
+                </p>
             </div>
 
-            <div className="mt-4 grid grid-cols-1 gap-4">
-                <h4 className="normal-case">Your Booking:</h4>
-                <div className="flex flex-wrap gap-4">
-                    <span>{date.getFullYear()}</span>
-                    <span>
-                        {getTheDayName(date.getDay())} {getTheMonthName(date.getMonth())} {date.getDate()}
-                    </span>
-                </div>
+            <div className="mt-12 grid grid-cols-1 place-items-center content-start gap-4">
+                <Image src="/images/section-images/phone-call.png" alt="" width={52} height={52} />
+                <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you on</span>
+                <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">
+                    {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '}
+                    {date.getFullYear()}
+                </span>
             </div>
         </div>
     );

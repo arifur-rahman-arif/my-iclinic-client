@@ -55,7 +55,7 @@ const SurgeryController = ({
 
     return (
         <div className="grid md:gap-28">
-            <div className="hidden place-items-center gap-6 justify-self-center md:grid">
+            <div className="hidden w-full place-items-center gap-6 justify-self-center md:grid">
                 <span className="font-mulishExtraBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
                     {title}
                 </span>
@@ -67,7 +67,7 @@ const SurgeryController = ({
                 {/*     </span> */}
                 {/* </span> */}
 
-                <div className="grid gap-6">
+                <div className="grid w-full gap-6">
                     {id === 'upfront-payment' ? (
                         <UpfrontAmountInput
                             upfrontAmount={upfrontAmount || null}

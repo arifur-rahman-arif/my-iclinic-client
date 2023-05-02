@@ -20,7 +20,7 @@ const FooterHeaderLinks = (): JSX.Element => {
                     className="h-8 w-8"
                 />
                 <BookConsultation buttonClassName="font-mulishBold text-[1.6rem] leading-[2.4rem] relative block cursor-pointer text-heading">
-                    <strong>Book A Consultation</strong>
+                    <strong>Request a callback</strong>
                 </BookConsultation>
             </div>
 

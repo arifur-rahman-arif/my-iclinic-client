@@ -66,7 +66,7 @@ const BottomBanner = ({
 
                             <Button
                                 type="anchor"
-                                text="Book a consultation"
+                                text="Request a callback"
                                 iconPosition="left"
                                 className="mt-24 justify-self-center md:mt-0 md:justify-self-start"
                                 icon={

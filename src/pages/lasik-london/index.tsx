@@ -276,7 +276,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     <div className="flex flex-col items-center justify-start gap-12 sm:flex-row">
                         <div className="place-items-end xl:grid">
                             <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
-                                <button className="" aria-label="Book a consultation">
+                                <button className="" aria-label="Request a callback">
                                     <svg
                                         width="20"
                                         height="20"
@@ -319,7 +319,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                                     </svg>
 
                                     <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                                        Book a consultation
+                                        Request a callback
                                     </span>
                                 </button>
                             </BookConsultation>
