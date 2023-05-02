@@ -166,7 +166,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                         </LinkText>{' '}
                         or{' '}
                         <BookConsultation buttonClassName="font-mulishBold text-blue cursor-pointer">
-                            <span className="">book a consultation</span>
+                            <span className="">Request a callback</span>
                         </BookConsultation>{' '}
                         with our lovely team today.
                     </>

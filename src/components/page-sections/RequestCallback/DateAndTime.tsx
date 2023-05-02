@@ -12,6 +12,7 @@ import {
     validatePhoneNumber
 } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import { useDispatch } from 'react-redux';
@@ -269,14 +270,23 @@ const DateAndTime = ({
                 />
             </div>
 
-            <div className="grid grid-cols-1 gap-4">
-                <h4 className="normal-case">Your Booking:</h4>
-                <div className="flex flex-wrap gap-4">
-                    <span>{date.getFullYear()}</span>
-                    <span>
-                        {getTheDayName(date.getDay())} {getTheMonthName(date.getMonth())} {date.getDate()}
-                    </span>
-                </div>
+            {/* <div className="grid grid-cols-1 gap-4"> */}
+            {/*     <h4 className="normal-case">Your Booking:</h4> */}
+            {/*     <div className="flex flex-wrap gap-4"> */}
+            {/*         <span>{date.getFullYear()}</span> */}
+            {/*         <span> */}
+            {/*             {getTheDayName(date.getDay())} {getTheMonthName(date.getMonth())} {date.getDate()} */}
+            {/*         </span> */}
+            {/*     </div> */}
+            {/* </div> */}
+
+            <div className="grid grid-cols-1 place-items-center content-start gap-4">
+                <Image src="/images/section-images/phone-call.png" alt="" width={52} height={52} />
+                <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you on</span>
+                <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">
+                    {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '}
+                    {date.getFullYear()}
+                </span>
             </div>
 
             <Button2

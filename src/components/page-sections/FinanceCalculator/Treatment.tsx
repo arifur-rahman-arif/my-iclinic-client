@@ -199,7 +199,7 @@ const Treatment = ({
 
                         {/*  Number of instalment */}
                         <SurgeryController
-                            title="Number of instalment"
+                            title="Number of instalments"
                             minValue={minInstallment}
                             maxValue={maxInstallment}
                             value={installment}
