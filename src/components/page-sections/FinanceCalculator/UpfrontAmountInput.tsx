@@ -82,7 +82,7 @@ const UpfrontAmountInput = ({
                     setUpfrontPercentage(tempPercentage);
                 }}
             />
-            {invalidAmount && percentage && (
+            {invalidAmount && percentage ? (
                 <>
                     {percentage < upfrontMinPercentage ? (
                         <span className="w-full text-center font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 line-clamp-1 xl:absolute xl:bottom-0 xl:translate-y-8">
@@ -95,6 +95,8 @@ const UpfrontAmountInput = ({
                         </span>
                     )}
                 </>
+            ) : (
+                <></>
             )}
         </div>
     );
