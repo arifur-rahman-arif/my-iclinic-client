@@ -76,7 +76,7 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
             activateNextStep: false
         },
         {
-            title: 'Date & Time',
+            title: 'Date',
             isActive: false,
             indicatorActive: false,
             activateNextStep: false

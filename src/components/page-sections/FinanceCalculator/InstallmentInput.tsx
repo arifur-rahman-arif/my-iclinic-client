@@ -39,8 +39,10 @@ const InstallmentInput = ({
         setInputValue(installment);
     }, [installment]);
 
+    const [installmentInput, setInstallmentInput] = useState<number>();
+
     return (
-        <div className="relative grid gap-3">
+        <div className="relative grid place-items-center gap-3">
             <input
                 type="number"
                 id={id}
@@ -50,6 +52,8 @@ const InstallmentInput = ({
                 onBlur={() => setInputFocused(false)}
                 onChange={(e) => {
                     const currentValue = Number(e.target.value);
+                    setInstallmentInput(currentValue);
+
                     setInputValue(currentValue || null);
 
                     if (currentValue < minInstallment || currentValue > maxInstallment) {
@@ -62,10 +66,20 @@ const InstallmentInput = ({
                 }}
             />
 
-            {invalidInput && (
-                <span className="whitespace-nowrap font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
-                    Invalid monthly instalment
-                </span>
+            {invalidInput && installmentInput ? (
+                <>
+                    {installmentInput < minInstallment ? (
+                        <span className="whitespace-nowrap font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
+                            Sorry, minimum of {minInstallment} month's instalment is required
+                        </span>
+                    ) : (
+                        <span className="whitespace-nowrap font-mulishBold text-[1.4rem] leading-[1.4rem] text-red-500 xl:absolute xl:bottom-0 xl:translate-y-8">
+                            Sorry, maximum of {maxInstallment} month's instalment is allowed
+                        </span>
+                    )}
+                </>
+            ) : (
+                <></>
             )}
         </div>
     );
