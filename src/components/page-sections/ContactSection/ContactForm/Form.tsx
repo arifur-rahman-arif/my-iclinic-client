@@ -159,7 +159,7 @@ const Form = (): JSX.Element => {
     }, [response, dispatch]);
 
     return (
-        <form className="grid grid-rows-[6rem,_6rem,_6rem,_25rem,auto] gap-14" onSubmit={formSubmit}>
+        <form className="grid grid-rows-[6rem,_6rem,_6rem,_17rem,_auto] gap-14" onSubmit={formSubmit}>
             <TextField
                 value={appCtx.name}
                 type="text"

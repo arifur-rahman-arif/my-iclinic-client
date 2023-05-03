@@ -16,10 +16,10 @@ const ContactForm = (): JSX.Element => {
     return (
         <div
             className={`mx-auto grid w-full max-w-[90rem] grid-cols-1 content-start gap-24 ${
-                !appCtx.formSubmitted && 'md:grid-cols-2'
-            } md:items-start xl:gap-40`}
+                appCtx.formSubmitted && 'md:grid-cols-2'
+            } md:items-start`}
         >
-            {appCtx.formSubmitted ? (
+            {!appCtx.formSubmitted ? (
                 <ThankYou />
             ) : (
                 <>
