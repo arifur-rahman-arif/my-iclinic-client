@@ -20,13 +20,13 @@ interface CookiePolicyProps {
 const ContactUs = ({ seo, yoastJson }: CookiePolicyProps) => {
     return (
         <Page title="Contact Us" seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb className="md:!flex" />
 
             <Section>
                 <Container className="grid grid-cols-1 gap-12 md:gap-24 xl:gap-32">
                     <div className="grid gap-6">
-                        <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
-                            <span className="h-full w-[0.5rem] bg-yellow"></span>
+                        <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4">
+                            <span className="h-full w-[0.5rem] rounded-full bg-yellow"></span>
                             <h1 className="">
                                 <strong className="font-latoExtraBold text-[3.6rem] leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
                                     Contact
@@ -37,7 +37,7 @@ const ContactUs = ({ seo, yoastJson }: CookiePolicyProps) => {
                             </h1>
                         </div>
 
-                        <p className="ml-12">Our specialist team will reply as soon as possible</p>
+                        <p className="ml-9">Our specialist team will reply as soon as possible</p>
                     </div>
 
                     <Context>

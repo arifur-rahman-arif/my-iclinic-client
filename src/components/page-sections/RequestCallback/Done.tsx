@@ -15,7 +15,7 @@ interface DoneInterface {
  */
 const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
     return (
-        <div className="grid grid-cols-1 place-items-center content-start gap-8">
+        <div className="grid grid-cols-1 place-items-center content-start gap-8" id="request-callback-confirmation">
             <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
 
             <div className="flex w-full flex-col items-center justify-start gap-2">

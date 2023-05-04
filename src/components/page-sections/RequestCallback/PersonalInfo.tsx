@@ -179,7 +179,7 @@ const PersonalInfo = ({
                 text="Next"
                 iconPosition="right"
                 icon={
-                    <FaAngleRight className="relative top-[0.1rem] h-7 w-7 fill-white transition-all duration-500 group-hover/next-button:fill-heading2" />
+                    <FaAngleRight className="relative top-[0.1rem] h-7 w-7 fill-white transition-all duration-500 group-hover/next-button:fill-brand" />
                 }
                 className="next-button group/next-button gap-2 justify-self-end"
                 mockDisabled={!shouldActivateNextStep}

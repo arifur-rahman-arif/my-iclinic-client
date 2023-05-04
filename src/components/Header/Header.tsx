@@ -1,6 +1,7 @@
 import { Container } from '@/components/Container';
-import ArticleMenu from '@/components/Header/ArticleMenu';
-import Hamburger from '@/components/Header/Hamburger/Hamburger';
+import AboutUs from './AboutUs';
+import ArticleMenu from './ArticleMenu';
+import Hamburger from './Hamburger/Hamburger';
 import { useGetMenuDataQuery } from '@/services/navMenuData';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -77,18 +78,19 @@ const Header = (): JSX.Element => {
                         {/* Top nav links */}
                         <div className="flex items-center justify-start gap-12">
                             <ArticleMenu articles={isSuccess && data.articles} />
-                            <Link
-                                href="/about-us"
-                                aria-label="About us"
-                                className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
-                                    router.pathname === '/about-us' && 'text-[#9B9FA1]'
-                                }`}
-                            >
-                                About us
-                                {router.pathname === '/about-us' && (
-                                    <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
-                                )}
-                            </Link>
+                            {/* <Link */}
+                            {/*     href="/about-us" */}
+                            {/*     aria-label="About us" */}
+                            {/*     className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${ */}
+                            {/*         router.pathname === '/about-us' && 'text-[#9B9FA1]' */}
+                            {/*     }`} */}
+                            {/* > */}
+                            {/*     About us */}
+                            {/*     {router.pathname === '/about-us' && ( */}
+                            {/*         <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span> */}
+                            {/*     )} */}
+                            {/* </Link> */}
+                            <AboutUs />
                             <Link
                                 href="/contact-us"
                                 aria-label="Contact us"

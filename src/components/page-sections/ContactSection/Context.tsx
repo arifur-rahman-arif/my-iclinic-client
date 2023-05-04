@@ -59,6 +59,10 @@ const Context = ({ children }: ContextProps): JSX.Element => {
         {
             name: 'Request a call back',
             active: false
+        },
+        {
+            name: 'Out of hours information',
+            active: false
         }
     ]);
 
