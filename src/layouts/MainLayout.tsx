@@ -52,7 +52,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
 
             <Header />
             {children}
-            <LazyComponent>
+            <LazyComponent triggerPosition={-100}>
                 <Footer />
             </LazyComponent>
 
