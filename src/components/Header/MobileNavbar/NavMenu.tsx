@@ -4,6 +4,7 @@ import { InnerAppContext, MobileNavbarContext } from '@/components/Header/Mobile
 import { NavMenuType } from '@/components/Header/navMenuList';
 import { Articles } from '@/components/Header/SubMenus/Articles';
 import { SubMenu } from '@/components/Header/SubMenus/Cataract';
+import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
 import { LinkStyle } from '@/components/Link';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
@@ -103,6 +104,13 @@ const NavMenu = ({}: NavMenuProps): JSX.Element => {
                                             </LinkStyle>
                                             <FaArrowRight className="h-6 w-6 translate-y-[0.1rem] fill-blue" />
                                         </div>
+                                    </div>
+                                )}
+                                {menu.slug === 'about-us' && (
+                                    <div className="grid content-start gap-4">
+                                        {menu.submenu?.map((menu, i) => (
+                                            <SubMenuLink {...menu} isActive={router.pathname === menu.url} key={i} />
+                                        ))}
                                     </div>
                                 )}
                             </div>

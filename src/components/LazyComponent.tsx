@@ -32,7 +32,7 @@ const LazyComponent = ({ children, triggerPosition }: LazyComponentInterface): J
     const { onEnter } = useOnScreen({ ref: divRef, triggerPosition: triggerPosition || 200 });
 
     return (
-        <div ref={divRef} className="w-full pt-[0.1rem]">
+        <div ref={divRef} className="w-full">
             <Suspense fallback={<Fallback />}>{onEnter && children}</Suspense>
         </div>
     );

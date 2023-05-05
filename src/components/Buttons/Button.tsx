@@ -47,7 +47,7 @@ const Button = ({
     disabled = false,
     mockDisabled = false,
     className,
-    defaultClassName = 'grid cursor-pointer text-white grid-flow-col place-items-center gap-4 whitespace-nowrap rounded-primary border-2 border-heading2 bg-heading2 py-6 px-6 font-latoBold text-[1.6rem] capitalize outline-0 transition-all duration-300 focus-within:border-2 hover:bg-white focus:border-2 focus:border-heading2 hover:text-heading2 hover:shadow-shadow1 focus-visible:border-2 sm:px-8',
+    defaultClassName = 'grid cursor-pointer text-white grid-flow-col place-items-center gap-4 whitespace-nowrap rounded-primary border-2 border-brand bg-brand py-6 px-6 font-latoBold text-[1.6rem] capitalize outline-0 transition-all duration-300 focus-within:border-2 hover:bg-white focus:border-2 focus:border-brand hover:text-brand hover:shadow-shadow1 focus-visible:border-2 sm:px-8',
     onClick,
     ...other
 }: ButtonInterface): JSX.Element => {

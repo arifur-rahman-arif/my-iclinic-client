@@ -2,17 +2,17 @@
     :global {
         .callback-form {
             .next-button {
-                background: var(--color-heading2);
-                border: var(--color-heading2);
-                border: 2px solid var(--color-heading2) !important;
+                background: var(--color-brand);
+                border: var(--color-brand);
+                border: 2px solid var(--color-brand) !important;
                 color: white;
 
                 &:hover {
                     background: transparent;
-                    color: var(--color-heading2) !important;
+                    color: var(--color-brand) !important;
 
                     svg {
-                        fill: var(--color-heading2) !important;
+                        fill: var(--color-brand) !important;
                     }
                 }
 
