@@ -33,7 +33,30 @@ const Context = ({ children }: PropInterface): JSX.Element => {
         {
             name: 'About Us',
             url: '/about-us',
-            slug: 'about-us'
+            slug: 'about-us',
+            subMenuOpen: false,
+            submenu: [
+                {
+                    name: 'About Us',
+                    url: '/about-us',
+                    slug: 'about-us',
+                    metaDescription:
+                        'We are a leading private laser eye clinic in North London, offering expert treatments by experienced surgeons. Trust us for clearer vision.'
+                },
+                {
+                    name: 'Complaint',
+                    url: '/complaint',
+                    slug: 'complaint',
+                    metaDescription:
+                        "Our complaints procedure outlines the steps you need to take. We're here to help you resolve any issues you may have."
+                },
+                {
+                    name: 'Translation Service',
+                    url: '/translation-service',
+                    slug: 'translation-service',
+                    metaDescription: 'Understand your care journey with us'
+                }
+            ]
         },
         {
             name: 'Contact Us',

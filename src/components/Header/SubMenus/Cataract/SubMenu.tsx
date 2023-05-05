@@ -8,7 +8,7 @@ interface CataractProps {
     submenu: NavMenuType[];
     router: NextRouter;
     subMenuTitle: string;
-    blogsTitle: string;
+    blogsTitle?: string;
     posts?: any;
 }
 
@@ -31,7 +31,7 @@ const SubMenu = ({ submenu, router, subMenuTitle, blogsTitle, posts }: CataractP
             {/* Blogs */}
             {Array.isArray(posts) ? (
                 posts.length ? (
-                    <SubMenuBlogs title={blogsTitle} posts={posts} />
+                    <SubMenuBlogs title={blogsTitle || ''} posts={posts} />
                 ) : null
             ) : (
                 <div className="hidden md:block">

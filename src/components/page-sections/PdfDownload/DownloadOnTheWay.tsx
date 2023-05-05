@@ -38,7 +38,10 @@ const DownloadOnTheWay = ({
     }, []);
 
     return (
-        <div className="mx-auto grid w-full max-w-[45rem] grid-cols-1 place-items-center content-start px-8 py-12 md:py-28">
+        <div
+            className="mx-auto grid w-full max-w-[45rem] grid-cols-1 place-items-center content-start px-8 py-12 md:py-28"
+            id="pdf-download-confirmation"
+        >
             <H3Variant3 className="text-center normal-case">Your download is on its way</H3Variant3>
             <p className="mt-12 max-w-[32.4rem] text-center">
                 Thank you for submitting!

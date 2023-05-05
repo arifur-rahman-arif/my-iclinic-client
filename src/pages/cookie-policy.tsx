@@ -23,7 +23,7 @@ interface CookiePolicyProps {
 const CookiePolicy = ({ seo, yoastJson }: CookiePolicyProps) => {
     return (
         <Page title="Cookie Polices" seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb className="md:!flex" />
 
             <Section>
                 <Container className="grid gap-12 md:gap-24 xl:gap-32">

@@ -1,6 +1,6 @@
 import { FontResizer } from '@/components/FontResizer';
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import LazyComponent from '@/components/LazyComponent';
 import { AlertInterface } from '@/features/alert/alertSlice';
 import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
@@ -8,7 +8,6 @@ import Script from 'next/script';
 import { ReactNode, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const Footer = dynamic(() => import('@/components/Footer/Footer'));
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
 const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'), {
     ssr: false
@@ -52,9 +51,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
 
             <Header />
             {children}
-            <LazyComponent>
-                <Footer />
-            </LazyComponent>
+            <Footer />
 
             {showAlert && <Alert />}
 

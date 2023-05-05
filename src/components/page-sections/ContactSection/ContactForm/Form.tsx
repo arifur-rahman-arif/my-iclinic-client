@@ -159,7 +159,7 @@ const Form = (): JSX.Element => {
     }, [response, dispatch]);
 
     return (
-        <form className="grid grid-rows-[6rem,_6rem,_6rem,_25rem,auto] gap-14" onSubmit={formSubmit}>
+        <form className="grid grid-rows-[6rem,_6rem,_6rem,_17rem,_auto] gap-14" onSubmit={formSubmit}>
             <TextField
                 value={appCtx.name}
                 type="text"
@@ -236,11 +236,11 @@ const Form = (): JSX.Element => {
             <Button
                 type="submit"
                 text="Send message"
-                className="group/button justify-self-end !border-heading2 !bg-heading2 !font-mulishBold !text-[1.6rem] !leading-[2.4rem] text-white hover:!bg-transparent hover:text-heading2 md:mt-12"
+                className="group/button justify-self-end !border-heading2 !bg-brand !font-mulishBold !text-[1.6rem] !leading-[2.4rem] text-white hover:!bg-transparent hover:text-brand md:mt-12"
                 loading={response.isLoading}
                 loadingIconPosition="right"
                 icon={
-                    <BiRightArrowAlt className="h-9 w-9 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
+                    <BiRightArrowAlt className="h-9 w-9 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-brand" />
                 }
                 iconPosition="right"
             />
