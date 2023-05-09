@@ -592,6 +592,467 @@ const nextConfig = {
                 source: '/laser-eye-surgery/relex-smile',
                 destination: '/relex-smile-london',
                 permanent: true
+            },
+            { source: '/our-prices/', destination: '/pricing-and-financing/our-prices', permanent: true },
+            { source: '/blog-post-template/', destination: '/', permanent: true },
+            { source: '/eye-treatments/', destination: '/', permanent: true },
+            { source: '/__trashed-2/', destination: '/', permanent: true },
+            { source: '/the-top-wallets-of-2019/', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp/feed/', destination: '/', permanent: true },
+            { source: '/portfolio-items/', destination: '/', permanent: true },
+            { source: '/amd-awareness-month/', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp/', destination: '/', permanent: true },
+            { source: '/embed/', destination: '/', permanent: true },
+            { source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true },
+            { source: '/glasses-are-not-a-solution/feed/', destination: '/', permanent: true },
+            { source: '/author/sashamossman/', destination: '/', permanent: true },
+            { source: '/iselfie', destination: '/', permanent: true },
+            {
+                source: '/glasses-are-not-a-solution',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/our-clinic',
+                destination: '/about-us',
+                permanent: true
+            },
+            {
+                source: '/why-my-iclinic/testimonials',
+                destination: '/about-us',
+                permanent: true
+            },
+            {
+                source: '/our-clinic',
+                destination: '/about-us',
+                permanent: true
+            },
+            {
+                source: '/faqs-blog/page/2',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/faqs-blog/page/3',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/faqs-blog/page/4',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/news/post/669',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/author/ladfah-suwichacherdchu',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/author/caterina-abbrescia',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/author/elisa-friedl',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/author/my-iclinic',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/7-keys-to-maintaining-good-eye-he',
+                destination: '/articles/7-keys-to-maintaining-good-eye-health',
+                permanent: true
+            },
+            {
+                source: '/battling-the-cold-weather-protect-your-eyes',
+                destination: '/articles/battling-the-cold-weather-protect-your-eyes-bp',
+                permanent: true
+            },
+            {
+                source: '/beauty-doesnt-have-to-mean-pain',
+                destination: '/articles/beauty-doesnt-have-to-mean-pain-bp',
+                permanent: true
+            },
+            {
+                source: '/camera-obscura-bp/feed',
+                destination: '/articles/camera-obscura-bp',
+                permanent: true
+            },
+            {
+                source: '/camera-obscura',
+                destination: '/articles/camera-obscura-bp',
+                permanent: true
+            },
+            {
+                source: '/can-my-vision-get-worse-again-after-laser-eye-surgery-what-is-regression',
+                destination: '/articles/can-my-vision-get-worse-again-after-laser-eye-surgery-what-is-regression-bp',
+                permanent: true
+            },
+            {
+                source: '/can-wearing-soft-contact-lenses-be-a-risk-to-your-vision',
+                destination: '/articles/can-wearing-soft-contact-lenses-be-a-risk-to-your-vision-bp',
+                permanent: true
+            },
+            {
+                source: '/forget-what-you-think-you-know-about-laser-eye-surgery',
+                destination: '/articles/forget-what-you-think-you-know-about-laser-eye-surgery-bp',
+                permanent: true
+            },
+            {
+                source: '/forget-what-you-think-you-know-about-laser-eye-surgery-bp/feed',
+                destination: '/articles/forget-what-you-think-you-know-about-laser-eye-surgery-bp',
+                permanent: true
+            },
+            {
+                source: '/gaywood-eye-clinic-celebrates-special-milestone',
+                destination: '/articles/gaywood-eye-clinic-celebrates-special-milestone-bp',
+                permanent: true
+            },
+            {
+                source: '/hereditary-glaucoma-and-diabetes-am-i-at-risk',
+                destination: '/articles/hereditary-glaucoma-and-diabetes-am-i-at-risk-bp',
+                permanent: true
+            },
+            {
+                source: '/how-to-choose-where-to-go-to-have-your-laser-corrective-eye-surgery-bp/feed',
+                destination: '/articles/how-to-choose-where-to-go-to-have-your-laser-corrective-eye-surgery-bp',
+                permanent: true
+            },
+            {
+                source: '/how-to-treat-and-prevent-myopia-bp/feed',
+                destination: '/articles/how-to-treat-and-prevent-myopia-bp',
+                permanent: true
+            },
+            {
+                source: '/i-tried-to-do-laser-eye-surgery-by-myself-it-was-unexpected',
+                destination: '/articles/i-tried-to-do-laser-eye-surgery-by-myself-it-was-unexpected-bp',
+                permanent: true
+            },
+            {
+                source: '/if-you-really-had-the-choice-would-you-choose-to-be-short-sighted',
+                destination: '/articles/if-you-really-had-the-choice-would-you-choose-to-be-short-sighted-bp',
+                permanent: true
+            },
+            {
+                source: '/introducing-low-dose-atropine-for-kids',
+                destination: '/articles/introducing-low-dose-atropine-for-kids-bp',
+                permanent: true
+            },
+            {
+                source: '/laser-assessment-procedure-what-is-going-to-happen-when-i-am-going-to-have-my-eyes-tasted-for-laser',
+                destination: '/articles/laser-assessment-procedure-what-is-going-to-happen-when-i-am-going-to-have-my-eyes-tasted-for-laser-bp',
+                permanent: true
+            },
+            {
+                source: '/laser-eye-surgery-the-patients-view',
+                destination: '/articles/laser-eye-surgery-the-patients-view-bp',
+                permanent: true
+            },
+            {
+                source: '/my-iclinic-trip-to-switzerland-bp/feed',
+                destination: '/articles/my-iclinic-trip-to-switzerland-bp',
+                permanent: true,
+            },
+            {
+                source: '/seeing-in-the-dark-sicilian-courgette-recipe',
+                destination: '/articles/seeing-in-the-dark-sicilian-courgette-recipe-bp',
+                permanent: true,
+            },
+            {
+                source: '/take-a-minute-to-relax-stress-can-be-bad-for-your-eyes-bp/feed',
+                destination: '/articles/take-a-minute-to-relax-stress-can-be-bad-for-your-eyes-bp',
+                permanent: true,
+            },
+            {
+                source: '/the-dos-and-donts-after-cataract-surgery',
+                destination: '/articles/the-dos-and-donts-after-cataract-surgery-bp',
+                permanent: true,
+            },
+            {
+                source: '/time-spent-on-putting-in-contacts-whats-the-alternative',
+                destination: '/articles/time-spent-on-putting-in-contacts-whats-the-alternative-bp',
+                permanent: true,
+            },
+            {
+                source: '/vision-development-in-babies',
+                destination: '/articles/vision-development-in-babies-bp',
+                permanent: true,
+            },
+            {
+                source: '/vision-development-in-babies-bp/feed',
+                destination: '/articles/vision-development-in-babies-bp',
+                permanent: true,
+            },
+            {
+                source: '/vision-development-in-babies/feed',
+                destination: '/articles/vision-development-in-babies-bp',
+                permanent: true,
+            },
+            {
+                source: '/eye-conditions/hyperopia-long-sightedness',
+                destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
+                permanent: true,
+            },
+            {
+                source: '/hyperopia-long-sightedness',
+                destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
+                permanent: true,
+            },
+            {
+                source: '/long-sightedness-hyperopia',
+                destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
+                permanent: true,
+            },
+            {
+                source: '/what-causes-myopia-in-children-and-how-to-help-myopic-kids',
+                destination: '/articles/what-causes-myopia-in-children-and-how-to-help-myopic-kids-bp',
+                permanent: true,
+            },
+            {
+                source: '/why-contact-wearers-should-ditch-contacts-and-opt-for-laser',
+                destination: '/articles/why-contact-wearers-should-ditch-contacts-and-opt-for-laser-bp',
+                permanent: true,
+            },
+            {
+                source: '/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses',
+                destination: '/articles/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses-bp',
+                permanent: true,
+            },
+            {
+                source: '/why-should-you-consider-presbyond-after-cataract-surgery',
+                destination: '/articles/why-should-you-consider-presbyond-after-cataract-surgery-bp',
+                permanent: true,
+            },
+            {
+                source: '/blepharitis',
+                destination: '/blepharitis-treatment',
+                permanent: true,
+            },
+            {
+                source: '/lp-cataract-surgery',
+                destination: '/cataract',
+                permanent: true,
+            },
+            {
+                source: '/refractive-cataract-surgery',
+                destination: '/cataract',
+                permanent: true,
+            },
+            {
+                source: '/cataract-surgery-60',
+                destination: '/cataract',
+                permanent: true,
+            },
+            {
+                source: '/cataracts',
+                destination: '/cataract',
+                permanent: true,
+            },
+            {
+                source: '/conjunctivitis',
+                destination: '/conjuctivitis-treatment-london',
+                permanent: true,
+            },
+            {
+                source: '/typ-call-me-back',
+                destination: '/contact-us',
+                permanent: true,
+            },
+            {
+                source: '/book-a-consultation',
+                destination: '/contact-us',
+                permanent: true,
+            },
+            {
+                source: '/learn-more-about-eye-treatments',
+                destination: '/contact-us',
+                permanent: true,
+            },
+            {
+                source: '/cet-meetings',
+                destination: '/contact-us',
+                permanent: true,
+            },
+            {
+                source: '/double-vision',
+                destination: '/double-vision-treatment-london',
+                permanent: true,
+            },
+            {
+                source: '/eye-conditions/dry-eyes',
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                destination: '/dry-eyes-treatment-london',
+                permanent: true,
+            },
+            {
+                source: '/dry-eyes',
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                destination: '/dry-eyes-treatment-london',
+                permanent: true,
+            },
+            {
+                source: '/flashes-and-floaters',
+                destination: '/flashes-floaters',
+                permanent: true,
+            },
+            {
+                source: '/lens-replacement-rle',
+                destination: '/cataract',
+                permanent: true,
+            },
+            {
+                source: '/implantable-contact-lenses-icl',
+                destination: '/icl',
+                permanent: true,
+            },
+            {
+                source: '/eye-treatments/icl-',
+                destination: '/icl',
+                permanent: true,
+            },
+            {
+                source: '/eye-treatments/icl-eye-surgery',
+                destination: '/icl',
+                permanent: true,
+            },
+            {
+                source: '/icl-eye-surgery',
+                destination: '/icl',
+                permanent: true,
+            },
+            {
+                source: '/corneal-cross-linking',
+                destination: '/keratoconus',
+                permanent: true,
+            },
+            {
+                source: '/keratoconus-cross-linking',
+                destination: '/keratoconus',
+                permanent: true,
+            },
+            {
+                source: '/laser-eye-surgery',
+                destination: '/lasik-london',
+                permanent: true
+            },
+            {
+                source: '/lp-laser-eye-surgery',
+                destination: '/lasek-prk',
+                permanent: true
+            },
+            {
+                source: '/laser-eye-',
+                destination: '/lasek-prk',
+                permanent: true
+            },
+            {
+                source: '/laser-eye-surgery/lasik/Want',
+                destination: '/lasik-london',
+                permanent: true
+            },
+            {
+                source: '/lazy-eyes-amblyopia',
+                destination: '/lazy-eyes-treatement',
+                permanent: true
+            },
+            {
+                source: '/macula',
+                destination: '/macular-degeneration',
+                permanent: true
+            },
+            {
+                source: '/category/myopia',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/short-sightedness-myopia',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/articles/myopia-short-sightedness',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/myopia-short-sightedness',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/myopia-control',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/myopia-control-clinic',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/our-eye-diagnostics-technology',
+                destination: '/our-specialists/our-eye-diagnostics-technology',
+                permanent: true
+            },
+            {
+                source: '/team/dr-sancy-low',
+                destination: '/our-specialists/sancy-low',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/paediatric-ophthalmologist',
+                destination: '/paediatric-eye-care',
+                permanent: true
+            },
+            {
+                source: '/paediatric-eye-care',
+                destination: '/paediatric-eye-care',
+                permanent: true
+            },
+            {
+                source: '/laser-treatment/presbyopia-correction',
+                destination: '/presbyond-london',
+                permanent: true
+            },
+            {
+                source: '/presbyond',
+                destination: '/presbyond-london',
+                permanent: true
+            },
+            {
+                source: '/presbyopia-reading-glasses',
+                destination: '/presbyond-london',
+                permanent: true
+            },
+            {
+                source: '/prices',
+                destination: '/pricing-and-financing/our-prices',
+                permanent: true
+            },
+            {
+                source: '/terms-conditions',
+                destination: '/privacy-policies',
+                permanent: true
+            },
+            {
+                source: '/privacy',
+                destination: '/privacy-policies',
+                permanent: true
+            },
+            {
+                source: '/relex-smile',
+                destination: '/relex-smile-london',
+                permanent: true
             }
         ];
     }
