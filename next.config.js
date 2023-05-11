@@ -593,19 +593,19 @@ const nextConfig = {
                 destination: '/relex-smile-london',
                 permanent: true
             },
-            { source: '/our-prices/', destination: '/pricing-and-financing/our-prices', permanent: true },
-            { source: '/blog-post-template/', destination: '/', permanent: true },
-            { source: '/eye-treatments/', destination: '/', permanent: true },
-            { source: '/__trashed-2/', destination: '/', permanent: true },
-            { source: '/the-top-wallets-of-2019/', destination: '/', permanent: true },
-            { source: '/amd-awareness-month-bp/feed/', destination: '/', permanent: true },
-            { source: '/portfolio-items/', destination: '/', permanent: true },
-            { source: '/amd-awareness-month/', destination: '/', permanent: true },
-            { source: '/amd-awareness-month-bp/', destination: '/', permanent: true },
-            { source: '/embed/', destination: '/', permanent: true },
+            { source: '/our-prices', destination: '/pricing-and-financing/our-prices', permanent: true },
+            { source: '/blog-post-template', destination: '/', permanent: true },
+            { source: '/eye-treatments', destination: '/', permanent: true },
+            { source: '/__trashed-2', destination: '/', permanent: true },
+            { source: '/the-top-wallets-of-2019', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp/feed', destination: '/', permanent: true },
+            { source: '/portfolio-items', destination: '/', permanent: true },
+            { source: '/amd-awareness-month', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp', destination: '/', permanent: true },
+            { source: '/embed', destination: '/', permanent: true },
             { source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true },
-            { source: '/glasses-are-not-a-solution/feed/', destination: '/', permanent: true },
-            { source: '/author/sashamossman/', destination: '/', permanent: true },
+            { source: '/glasses-are-not-a-solution/feed', destination: '/', permanent: true },
+            { source: '/author/sashamossman', destination: '/', permanent: true },
             { source: '/iselfie', destination: '/', permanent: true },
             {
                 source: '/glasses-are-not-a-solution',
@@ -1052,6 +1052,187 @@ const nextConfig = {
             {
                 source: '/relex-smile',
                 destination: '/relex-smile-london',
+                permanent: true
+            },
+            {
+                source: '/100-optical-how-was-it-what-is-our-impression-about-it-bp/feed',
+                destination: '/articles/100-optical-how-was-it-what-is-our-impression-about-it-bp',
+                permanent: true
+            },
+            {
+                source: '/amd-awareness-month-bp/',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/amd-awareness-month-bp/feed',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/amd-awareness-month',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/blog-post-template',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/book-an-appointment',
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                destination: '/contact-us',
+                permanent: true,
+            },
+            {
+                source: '/callback',
+                destination: '/contact-us',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/cataract-surgery',
+                destination: '/cataract',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/macular-degeneration',
+                destination: '/macular-degeneration',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/myopia-short-sightedness',
+                destination: '/myopia',
+                permanent: true
+            },
+            {
+                source: '/eye-treatments',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/find-us-in-north-london',
+                destination: '/about-us',
+                permanent: true
+            },
+            {
+                source: '/how-did-amanda-join-my-iclinic-bp/feed',
+                destination: '/articles/how-did-amanda-join-my-iclinic-bp',
+                permanent: true
+            },
+            {
+                source: '/how-to-treat-and-prevent-myopia',
+                destination: '/articles/how-to-treat-and-prevent-myopia-bp',
+                permanent: true
+            },
+            {
+                source: '/keratoconus-what-you-should-know',
+                destination: '/articles/keratoconus-what-you-should-know-bp',
+                permanent: true
+            },
+            {
+                source: '/laser-treatment/vis',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/laser-treatment/vision-correction',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/lasik',
+                destination: '/lasik-london',
+                permanent: true
+            },
+            {
+                source: '/nutrition-and-hydration-week',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/our-clinic/our-staff',
+                destination: '/our-specialists',
+                permanent: true
+            },
+            {
+                source: '/our-prices',
+                destination: '/pricing-and-financing/our-prices',
+                permanent: true
+            },
+            {
+                source: '/team/john-bolger',
+                destination: '/our-specialists/john-bolger',
+                permanent: true
+            },
+            {
+                source: '/testimonials',
+                destination: '/our-specialists',
+                permanent: true
+            },
+            {
+                source: '/what-are-myopia-hypermetropia-and-astigmatism',
+                destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
+                permanent: true
+            },
+            {
+                source: '/what-is-laser-surgery-can-it-help-me-get-rid-of-my-glasses',
+                destination: '/articles/what-is-laser-surgery-can-it-help-me-get-rid-of-my-glasses-bp',
+                permanent: true
+            },
+            {
+                source: '/what-is-the-spectacle-free-zone',
+                destination: '/articles/what-is-the-spectacle-free-zone-bp',
+                permanent: true
+            },
+            {
+                source: '/wp-cont/uploads/09/08_Vision.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2019/09/210x210-Presbyond-Booklet-2019.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2019/09/Myopia-Control-Leaflet-PDF.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2019/09/Time-Spent-on-Putting-in-Contacts-What',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2019/10/210x210-Smile-Booklet-2019.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2020/01/Glaucoma-Leaflet-Updated-2019.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2020/09/08_Vision.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2021/08/Presbyond-Guide-2021-V2.pdf',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/wp-content/uploads/2021/08/YAG-Laser-Capsulotomy-Guide-2019.pdf',
+                destination: '/',
                 permanent: true
             }
         ];
