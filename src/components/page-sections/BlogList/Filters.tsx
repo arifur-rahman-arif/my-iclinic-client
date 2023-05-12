@@ -141,8 +141,8 @@ const Filters = ({
                 <div className="relative flex min-w-max items-center justify-center gap-8 justify-self-center py-2 md:gap-12 md:py-0">
                     {filterList.map((filter, index) => (
                         <button
-                            className={`cursor-pointer font-mulishBold capitalize transition-all duration-500 hover:text-brand ${
-                                filter.active && 'text-brand'
+                            className={`cursor-pointer border-b-2 border-transparent font-mulishBold capitalize transition-all duration-500 hover:text-brand ${
+                                filter.active && '!border-brand'
                             }`}
                             key={index}
                             onClick={() => handleFilter({ slug: filter.slug, index })}
