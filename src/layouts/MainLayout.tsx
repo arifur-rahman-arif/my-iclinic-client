@@ -5,7 +5,7 @@ import { AlertInterface } from '@/features/alert/alertSlice';
 import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
@@ -36,6 +36,12 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
     const handleMouseEnter = () => {
         setLoadChatBot(true);
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoadChatBot(true);
+        }, 4000);
+    }, []);
 
     return (
         <div onMouseEnter={handleMouseEnter} onTouchStart={handleMouseEnter}>

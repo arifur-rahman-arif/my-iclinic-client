@@ -2,7 +2,6 @@ import { Container } from '@/components/Container';
 import MenuCta from '@/components/Header/MenuCta';
 import { NavMenuType } from '@/components/Header/navMenuList';
 import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaAngleDown } from 'react-icons/fa';
 
@@ -19,25 +18,23 @@ const AboutUs = () => {
 
     const aboutUsSubmenus: NavMenuType[] = [
         {
-            name: 'Complaint',
-            url: '/complaint',
-            slug: 'complaint',
-            metaDescription:
-                "Our complaints procedure outlines the steps you need to take. We're here to help you resolve any issues you may have."
+            name: 'About our Clinic',
+            url: '/about-us',
+            slug: 'about-us',
+            metaDescription: 'We are passionate team of skilled ophthalmologists, optometrists,'
         },
         {
             name: 'Translation Service',
             url: '/translation-service',
             slug: 'translation-service',
-            metaDescription: 'Understand your care journey with us'
+            metaDescription: 'Understand your care journey with us by our trusted translator partner'
         }
     ];
 
     return (
         <span className="group/menu-item parent-menu flex items-center justify-center gap-2">
-            <Link
-                href="/about-us"
-                className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
+            <span
+                className={`relative font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                     isMenuActive && 'text-[#9B9FA1]'
                 }`}
                 onClick={() => {
@@ -58,7 +55,7 @@ const AboutUs = () => {
                 {isMenuActive && (
                     <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                 )}
-            </Link>
+            </span>
 
             <FaAngleDown className="h-[1.2rem] w-[1.2rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]" />
 
