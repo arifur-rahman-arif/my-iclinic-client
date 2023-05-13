@@ -89,7 +89,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 priceText={data?.masthead_price || <></>}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
-                bannerWidth="max-w-[72rem]"
+                bannerWidth="max-w-[73rem]"
             />
 
             <SideImageSection

@@ -16,9 +16,6 @@ import {
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-home-large.png';
-import MastheadImageSmall from '@/masthead/masthead-home-small.png';
-import MastheadImageMedium from '@/masthead/masthead-home.png';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
@@ -67,9 +64,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageMedium={'/images/masthead/masthead-home.png'}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 bannerExtraComponents={<ChatWithUs />}

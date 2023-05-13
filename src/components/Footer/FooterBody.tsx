@@ -38,17 +38,15 @@ const FooterBody = (): JSX.Element => {
                 <div className="grid place-items-center">
                     <Image
                         alt="Quality approved Clinic"
-                        width={227}
-                        height={62}
+                        width={135}
+                        height={42}
                         src="/images/logos/logo-iclinic-footer.png"
-                        quality={100}
+                        unoptimized={true}
                     />
                     {/* <h4 className="normal-case">Quality approved Clinic</h4> */}
                 </div>
 
                 <FooterBottomLinks />
-
-                <div className={`mt-6 h-[0.1rem] w-full max-w-[45.3rem] overflow-hidden bg-[#CACECF]`}></div>
 
                 <span className="mt-6 text-center font-mulishLight text-[1.2rem] leading-[1.6rem] text-white">
                     Copy Right © My-Clinic {new Date().getFullYear()} | All Right Reserved
