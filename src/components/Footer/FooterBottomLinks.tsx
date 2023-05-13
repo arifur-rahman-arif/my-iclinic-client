@@ -1,4 +1,5 @@
 import { LinkText } from '@/components/Link';
+import React from 'react';
 import styles from './styles/FooterBottomLInks.module.scss';
 
 /**
@@ -8,23 +9,32 @@ import styles from './styles/FooterBottomLInks.module.scss';
  */
 const FooterBottomLinks = (): JSX.Element => {
     return (
-        <ul className={`${styles.list} mt-6 flex flex-wrap items-center justify-center gap-12`}>
-            <li>
-                <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
-                    Privacy Policy
-                </LinkText>
-            </li>
-            <li>
-                <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
-                    Terms and condition
-                </LinkText>
-            </li>
-            <li>
-                <LinkText href="/cookie-policy" className="text-white" indicatorColor="bg-white">
-                    Cookies Policy
-                </LinkText>
-            </li>
-        </ul>
+        <div>
+            <ul className={`${styles.list} mt-6 flex flex-wrap items-center justify-center gap-12`}>
+                <li>
+                    <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
+                        Privacy Policy
+                    </LinkText>
+                </li>
+                <li>
+                    <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
+                        Terms and condition
+                    </LinkText>
+                </li>
+                <li>
+                    <LinkText href="/cookie-policy" className="text-white" indicatorColor="bg-white">
+                        Cookies Policy
+                    </LinkText>
+                </li>
+                <li>
+                    <LinkText href="/complaint" className="text-white" indicatorColor="bg-white">
+                        Complaints Procedure
+                    </LinkText>
+                </li>
+            </ul>
+
+            <div className={`mt-6 h-[0.1rem] w-full overflow-hidden bg-white`}></div>
+        </div>
     );
 };
 
