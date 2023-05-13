@@ -5,9 +5,9 @@ import { ReactNode, useState } from 'react';
 import Banner from './Banner';
 
 export interface MastheadInterface {
-    imageSmall: string | StaticImageData;
+    imageSmall?: string | StaticImageData;
     imageMedium: string | StaticImageData;
-    imageLarge: string | StaticImageData;
+    imageLarge?: string | StaticImageData;
     h1Title: JSX.Element;
     h2Title?: JSX.Element;
     altText?: string;

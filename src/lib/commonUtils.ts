@@ -200,7 +200,7 @@ export const getArticles = async (): Promise<ArticleAccordion[]> => {
     //     .filter((categoryArticle) => categoryArticle !== null)
     //     .map((categoryArticle) => {
     //         const { articles, ...rest } = categoryArticle!;
-    //         return { ...rest, articles: articles.slice(0, 6) };
+    //         return { ...rest, articles: articles.slice(0, 3) };
     //     }) as ArticleAccordion[];
 };
 
