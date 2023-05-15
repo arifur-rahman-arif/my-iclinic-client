@@ -2007,7 +2007,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/keranatural-surgery-large.jpg"
                 width={390}
                 height={390}
                 quality={70}
@@ -2017,7 +2017,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/keranatural-surgery-large.jpg"
                 width={695}
                 height={580}
                 quality={70}
@@ -2174,7 +2174,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/lamellar-corneal-large.jpg"
                 width={390}
                 height={390}
                 quality={70}
@@ -2184,7 +2184,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/lamellar-corneal-large.jpg"
                 width={544}
                 height={392}
                 quality={70}

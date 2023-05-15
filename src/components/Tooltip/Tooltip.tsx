@@ -19,7 +19,7 @@ const Tooltip = memo(({ text, children }: TooltipProps) => {
         <div className="group/tooltip relative">
             {children}
 
-            <div className="pointer-events-none absolute left-1/2 z-10 mt-5 -translate-x-1/2 -translate-y-12 transform rounded-primary bg-white opacity-0 drop-shadow-xl transition-all duration-500 group-hover/tooltip:pointer-events-auto group-hover/tooltip:translate-y-0 group-hover/tooltip:opacity-100">
+            <div className="pointer-events-none absolute left-1/2 z-10 mt-5 -translate-x-1/2 -translate-y-8 transform rounded-primary bg-white opacity-0 drop-shadow-xl transition-all duration-500 group-hover/tooltip:pointer-events-auto group-hover/tooltip:translate-y-0 group-hover/tooltip:opacity-100">
                 <div className="relative">
                     <div className="absolute top-0 left-1/2 -z-[1] -translate-x-1/2">
                         <div className="h-6 w-6 -translate-y-2 rotate-45 transform bg-heading2"></div>
