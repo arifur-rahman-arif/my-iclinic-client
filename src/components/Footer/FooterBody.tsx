@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container';
+import Link from 'next/link';
 import FooterBottomLinks from './FooterBottomLinks';
 import Image from 'next/image';
 import { LinkText } from '@/components/Link';
@@ -36,14 +37,15 @@ const FooterBody = (): JSX.Element => {
 
             <div className="mt-32 grid place-items-center">
                 <div className="grid place-items-center">
-                    <Image
-                        alt="Quality approved Clinic"
-                        width={135}
-                        height={42}
-                        src="/images/logos/logo-iclinic-footer.png"
-                        unoptimized={true}
-                    />
-                    {/* <h4 className="normal-case">Quality approved Clinic</h4> */}
+                    <Link href="https://www.cqc.org.uk/provider/1-392154192" target="_blank" className="cursor-pointer">
+                        <Image
+                            alt="Quality approved Clinic"
+                            width={135}
+                            height={42}
+                            src="/images/logos/logo-iclinic-footer.png"
+                            unoptimized={true}
+                        />
+                    </Link>
                 </div>
 
                 <FooterBottomLinks />
