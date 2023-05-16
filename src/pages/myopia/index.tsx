@@ -24,6 +24,7 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import BulletList from '@/page-sections/SectionParts/BulletList';
+import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { StackedSection2 } from '@/page-sections/StackedSection';
 import { MyopiaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
@@ -261,6 +262,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         </strong>
                     ]
                 }
+                // customColumn={<MyopiaControl cardList={data?.section_7?.card_list} />}
                 customColumn={<MyopiaControl cardList={data?.section_7?.card_list} />}
             />
 
@@ -374,6 +376,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     height: 554
                 }}
                 altText={data?.section_9?.large_image?.alt}
+                textColumnExtras={<Cta6 />}
             />
 
             <StackedSection2

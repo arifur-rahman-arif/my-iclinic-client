@@ -20,6 +20,7 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract.png';
+import Cta6 from '@/page-sections/SectionParts/Cta6';
 import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
 import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
 import { WpPageResponseInterface } from '@/types';
@@ -240,7 +241,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 positionReversed={true}
             />
 
-            <CtaSection2 title="Book Your Private Cataract Surgery Today" />
+            <CtaSection2 title="Book Your Private Cataract Surgery Today" textColumnExtras={<Cta6 />} />
 
             {/* <LazyComponent>
                 <BottomBanner
