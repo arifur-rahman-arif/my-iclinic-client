@@ -30,23 +30,18 @@ export interface MastheadInterface {
  * @returns {*}  {JSX.Element}
  */
 const Masthead = ({
-    imageSmall,
     imageMedium,
-    imageLarge,
     h1Title,
     h2Title,
     altText,
     priceText,
     priceTextExtra,
-    imagePosition = 'object-[0_0rem]',
     bannerWidth = 'md:max-w-[60.5rem]',
     excludePriceComponent = false,
     list,
     bannerExtraComponents,
     googleReviews,
-    trustPilotReviews,
-    smallImageDefaultClassName = 'w-full object-cover md:hidden',
-    smallImageClassName
+    trustPilotReviews
 }: MastheadInterface): JSX.Element => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 

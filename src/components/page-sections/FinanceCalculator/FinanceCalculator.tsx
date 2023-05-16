@@ -1,9 +1,9 @@
 import { Container } from '@/components/Container';
-import { H2Variant1 } from '@/components/Headings';
 import { Section } from '@/components/Section';
 import AverageSpend from '@/page-sections/FinanceCalculator/AverageSpend';
 import { useState } from 'react';
-import Treatment, { TreatmentInterface } from './Treatment';
+import H3Variant2 from 'src/components/Headings/H3Variant2';
+import { TreatmentInterface } from './Treatment';
 import TreatmentTypes from './TreatmentTypes';
 
 interface FinanceCalculatorInterface {
@@ -55,25 +55,32 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
 
     return (
         <Section id="calculator" className="grid gap-48">
-            <Container className="grid grid-cols-1 gap-12 rounded-primary md:gap-28 xl:border xl:border-[#CACECF] xl:py-[7.5rem] xl:px-20">
-                <div className="col-span-full grid gap-12 justify-self-center">
-                    <H2Variant1 className="text-center normal-case">Finance calculator</H2Variant1>
-                    <span className="text-center font-latoBold text-[1.8rem] uppercase leading-[2.8rem] text-heading md:text-[2rem] md:leading-[2.8rem]">
-                        Select your treatment
-                    </span>
-                    {/* Treatment types */}
-                    <TreatmentTypes treatmentList={treatmentList} setTreatmentList={setTreatmentList} />
-                </div>
+            <Container className="grid grid-cols-1 rounded-primary px-12 xl:border xl:border-[#CACECF]">
+                {/* {treatmentList.length */}
+                {/*     ? treatmentList.map((treatment, index) => { */}
+                {/*           return ( */}
+                {/*               <div className={`${treatment.active ? 'block' : 'hidden'}`} key={index}> */}
+                {/*                   <Treatment key={index} {...treatment} averageSpend={treatment.averageSpend} /> */}
+                {/*               </div> */}
+                {/*           ); */}
+                {/*       }) */}
+                {/*     : null} */}
 
-                {treatmentList.length ?
-                    treatmentList.map((treatment, index) => {
-                        return (
-                              <div className={`${treatment.active ? 'block' : 'hidden'}`} key={index}>
-                                  <Treatment key={index} {...treatment} averageSpend={treatment.averageSpend} />
-                              </div>
-                        );
-                    }) :
-                    null}
+                <div className="grid md:grid-cols-[1fr_auto]">
+                    <div className="grid content-start">
+                        <H3Variant2 className="normal-case text-heading">Finance options</H3Variant2>
+                        <p className="mt-6 font-mulishBold text-[2rem] leading-[2.8rem] text-[#35444B]">
+                            Choose which surgery you are looking to get
+                        </p>
+
+                        <div className="col-span-full grid gap-12 justify-self-center">
+                            {/* Treatment types */}
+                            <TreatmentTypes treatmentList={treatmentList} setTreatmentList={setTreatmentList} />
+                        </div>
+                    </div>
+
+                    <div className="bg-heading2 py-12 md:py-[7.5rem] md:px-24"></div>
+                </div>
             </Container>
 
             <div id="average-spend-large">

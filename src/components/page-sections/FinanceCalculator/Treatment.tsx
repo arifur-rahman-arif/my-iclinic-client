@@ -73,46 +73,46 @@ const Treatment = ({
     return (
         <div className="grid grid-cols-1 content-start gap-12 lg:grid-cols-[1fr_auto]">
             <div className="grid content-start gap-12 justify-self-center lg:gap-6">
-                <div className="grid w-full max-w-[34.1rem] gap-16  rounded-primary bg-[#063147] py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start">
-                    <div className="grid content-start gap-14 justify-self-center">
-                        <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-white">
-                            Your monthly payment
-                        </span>
-                        <div className="grid place-items-center gap-4 justify-self-center">
-                            <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-white">
-                                £{monthlyPayment}
-                            </span>
-                            <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-white">
-                                Per eye | Per month
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                {/* <div className="grid w-full max-w-[34.1rem] gap-16  rounded-primary bg-[#063147] py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start"> */}
+                {/*     <div className="grid content-start gap-14 justify-self-center"> */}
+                {/*         <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-white"> */}
+                {/*             Your monthly payment */}
+                {/*         </span> */}
+                {/*         <div className="grid place-items-center gap-4 justify-self-center"> */}
+                {/*             <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-white"> */}
+                {/*                 £{monthlyPayment} */}
+                {/*             </span> */}
+                {/*             <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-white"> */}
+                {/*                 Per eye | Per month */}
+                {/*             </span> */}
+                {/*         </div> */}
+                {/*     </div> */}
+                {/* </div> */}
 
                 {/* Cost breakdown desktop version */}
-                <div
-                    className={`hidden w-full max-w-[34.1rem] justify-self-center rounded-primary py-8 px-8 shadow-shadow1 transition-all duration-500 md:py-16 md:px-12 lg:grid`}
-                >
-                    <button
-                        className="flex cursor-pointer items-center justify-center gap-4 justify-self-center"
-                        onClick={() => {
-                            setOpenCostTable(!openCostTable);
-                        }}
-                    >
-                        <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading">
-                            Cost break down
-                        </span>
-                        <FaAngleRight className="h-[1.2rem] w-[1.2rem] fill-[#9B9FA1]" />
-                    </button>
+                {/* <div */}
+                {/*     className={`hidden w-full max-w-[34.1rem] justify-self-center rounded-primary py-8 px-8 shadow-shadow1 transition-all duration-500 md:py-16 md:px-12 lg:grid`} */}
+                {/* > */}
+                {/*     <button */}
+                {/*         className="flex cursor-pointer items-center justify-center gap-4 justify-self-center" */}
+                {/*         onClick={() => { */}
+                {/*             setOpenCostTable(!openCostTable); */}
+                {/*         }} */}
+                {/*     > */}
+                {/*         <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-heading"> */}
+                {/*             Cost break down */}
+                {/*         </span> */}
+                {/*         <FaAngleRight className="h-[1.2rem] w-[1.2rem] fill-[#9B9FA1]" /> */}
+                {/*     </button> */}
 
-                    <div
-                        className={`overflow-hidden  transition-all duration-500 ${
-                            openCostTable ? 'max-h-full pt-12' : 'max-h-0'
-                        }`}
-                    >
-                        <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} />
-                    </div>
-                </div>
+                {/*     <div */}
+                {/*         className={`overflow-hidden  transition-all duration-500 ${ */}
+                {/*             openCostTable ? 'max-h-full pt-12' : 'max-h-0' */}
+                {/*         }`} */}
+                {/*     > */}
+                {/*         <CostCalender installmentTime={installment} monthlyPayment={monthlyPayment} /> */}
+                {/*     </div> */}
+                {/* </div> */}
 
                 {/* Total cost desktop version */}
                 <div className="hidden w-full max-w-[34.1rem] gap-16 justify-self-center rounded-primary py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:grid">
