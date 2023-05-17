@@ -9,7 +9,7 @@ interface ControllerInterface {
     defaultValue: number;
     value: number;
     valueLabelFormat?: string;
-    onValueChange: Dispatch<SetStateAction<number>>;
+    onValueChange: (e: any) => void;
     id?: string;
 }
 
@@ -65,16 +65,20 @@ const Controller = ({
                 </>
             ) : (
                 <>
-                    <div className="grid place-items-center justify-self-start">
-                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">{minValue}</span>
-                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                    <div className="grid place-items-center gap-2 justify-self-start">
+                        <span className="font-mulishExtraBold text-[2rem] leading-[3.2rem] text-[#F0F1F1]">
+                            {minValue}
+                        </span>
+                        <span className="font-mulishExtraBold text-[1.6rem] uppercase leading-[1.6rem] text-[#95A7AF]">
                             month
                         </span>
                     </div>
 
-                    <div className="grid place-items-center justify-self-end">
-                        <span className="font-mulishExtraBold text-[3.2rem] leading-[3.2rem]">{maxValue}</span>
-                        <span className="font-mulishExtraBold text-[1.4rem] uppercase leading-[1.6rem] text-[#657076]">
+                    <div className="grid place-items-center gap-2 justify-self-end">
+                        <span className="font-mulishExtraBold text-[2rem] leading-[3.2rem] text-[#F0F1F1]">
+                            {maxValue}
+                        </span>
+                        <span className="font-mulishExtraBold text-[1.6rem] uppercase leading-[1.6rem] text-[#95A7AF]">
                             month
                         </span>
                     </div>
@@ -89,23 +93,20 @@ const Controller = ({
                 valueLabelDisplay="on"
                 max={maxValue}
                 min={minValue}
-                onChange={(e: any) => {
-                    const currentValue = e.target.value;
-                    onValueChange(currentValue);
-                }}
+                onChange={onValueChange}
                 className="col-span-full md:col-span-1 md:col-start-2 md:row-start-1"
                 sx={{
                     height: 8,
                     '& .MuiSlider-track': {
                         border: 'none',
-                        backgroundColor: '#063147'
+                        backgroundColor: '#fff'
                     },
                     '& .MuiSlider-rail': {
-                        backgroundColor: 'var(--color-brand)'
+                        backgroundColor: '#0471AB'
                     },
                     '& .MuiSlider-thumb': {
-                        height: 24,
-                        width: 24,
+                        height: 30,
+                        width: 30,
                         backgroundColor: 'var(--color-yellow)',
                         '&:before': {
                             // Content: ' ',
@@ -113,8 +114,8 @@ const Controller = ({
                             top: '50%',
                             left: '50%',
                             transform: 'translate(-50%, -50%)',
-                            width: '6px',
-                            height: '6px',
+                            width: '15px',
+                            height: '15px',
                             borderRadius: '50%',
                             backgroundColor: '#fff'
                         }
@@ -122,12 +123,12 @@ const Controller = ({
                     '& .MuiSlider-valueLabel': {
                         borderRadius: '5px',
                         padding: '8px 20px',
-                        backgroundColor: '#063147'
+                        backgroundColor: 'var(--color-heading2)'
                     },
                     '& .MuiSlider-valueLabelLabel': {
                         fontSize: '1.6rem',
                         lineHeight: '2.4rem',
-                        fontFamily: 'var(--mulish-bold)',
+                        fontFamily: 'var(--lato-bold)',
                         color: '#fff'
                     }
                 }}

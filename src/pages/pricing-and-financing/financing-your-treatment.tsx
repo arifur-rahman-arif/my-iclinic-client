@@ -15,6 +15,7 @@ import Logo5 from '@/logos/cigma.png';
 import Logo4 from '@/logos/freedom.png';
 import Logo6 from '@/logos/general-medical.png';
 import Logo2 from '@/logos/healthcare-practice.png';
+import Context from '@/page-sections/FinanceCalculator/Context';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import FullWidthImageSection4 from '@/page-sections/SideImageSection/FullWidthImageSection4';
@@ -193,7 +194,9 @@ export default function FinancingYourTreatment({
                 </Container>
             </Section>
 
-            <FinanceCalculator treatments={treatments} />
+            <Context treatments={treatments}>
+                <FinanceCalculator />
+            </Context>
 
             <Section id="insurance">
                 <Container className="grid place-items-center gap-6">

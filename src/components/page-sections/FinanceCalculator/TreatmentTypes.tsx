@@ -1,29 +1,25 @@
+import { AppCtx, CalculatorContext } from '@/page-sections/FinanceCalculator/Context';
 import Image from 'next/image';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { TreatmentInterface } from './Treatment';
 import styles from './styles/Treatments.module.scss';
-
-interface TreatmentTypesPropsInterface {
-    treatmentList: TreatmentInterface[];
-    setTreatmentList: Dispatch<SetStateAction<TreatmentInterface[]>>;
-}
 
 /**
  * Treatment types
  *
- * @param {[]} treatmentList
- * @param {Dispatch<SetStateAction<TreatmentInterface[]>>} setTreatmentList
  * @returns {JSX.Element}
  * @constructor
  */
-const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesPropsInterface): JSX.Element => {
+const TreatmentTypes = (): JSX.Element => {
+    const ctx: CalculatorContext = useContext(AppCtx);
+
     /**
      * Treatment calculator tab activation function
      *
      * @param {number} activeIndex
      */
     const activateTreatmentCalculator = ({ activeIndex }: { activeIndex: number }) => {
-        setTreatmentList((currentTreatmentList) => {
+        ctx.setTreatmentList((currentTreatmentList) => {
             return currentTreatmentList.map((treatment, index) => {
                 treatment.active = index === activeIndex;
                 return treatment;
@@ -32,26 +28,20 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
     };
 
     return (
-        <div className={`max-w-full overflow-x-auto pb-6 md:pb-0 ${styles.styles}`}>
-            <div className="flex min-w-min items-center justify-start overflow-hidden rounded-primary pt-12 md:justify-center">
-                {treatmentList.map((treatment, index) => (
-                    <button
-                        key={index}
-                        className={`relative grid place-items-center whitespace-nowrap px-10 py-8 font-mulishBold text-[1.6rem] leading-[1.8rem] transition-all duration-500 ${
-                            treatment.active ? 'bg-brand text-white' : 'bg-[#F0F1F1]'
-                        }`}
-                        onClick={() => activateTreatmentCalculator({ activeIndex: index })}
-                    >
-                        {treatment.active && (
-                            <span className="absolute top-0 left-1/2 grid h-14 w-14 -translate-y-2/3 -translate-x-1/2 place-content-center rounded-full border border-white bg-brand">
-                                <Image src="/images/icons/icon-check-white.svg" alt="" width={16} height={11} />
-                            </span>
-                        )}
-
-                        {treatment.name}
-                    </button>
-                ))}
-            </div>
+        <div
+            className={`mt-12 flex flex-col items-center justify-start gap-8 rounded-primary sm:flex-row sm:gap-0 md:justify-center md:overflow-hidden md:shadow-shadow1 ${styles.styles}`}
+        >
+            {ctx.treatmentList.map((treatment, index) => (
+                <button
+                    key={index}
+                    className={`relative grid place-items-center whitespace-nowrap px-8 py-12 font-mulishExtraBold text-[1.6rem] leading-[1.8rem] shadow-shadow1 transition-all duration-500 md:shadow-none ${
+                        treatment.active ? 'bg-brand text-white' : 'text-heading'
+                    }`}
+                    onClick={() => activateTreatmentCalculator({ activeIndex: index })}
+                >
+                    {treatment.name}
+                </button>
+            ))}
         </div>
     );
 };

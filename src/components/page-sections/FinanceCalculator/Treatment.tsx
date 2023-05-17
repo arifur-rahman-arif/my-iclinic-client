@@ -13,20 +13,6 @@ import CostCalender from './CostCalender';
 import useFinanceHook from './hooks/useFinanceHook';
 import SurgeryController from './SurgeryController';
 
-export interface TreatmentInterface {
-    name: string;
-    active?: boolean;
-    cost: number;
-    minUpfront: number;
-    maxUpfront: number;
-    defaultUpfront: number;
-    minInstallment: number;
-    maxInstallment: number;
-    defaultInstallment: number;
-    averageSpend?: AverageSpendInterfaceProps;
-    eyeCount: number;
-}
-
 /**
  * The individual treatment cost calculator component
  *
@@ -80,56 +66,47 @@ const Treatment = ({
         setOpenCostTable(largeSizes.includes(deviceSize));
     }, [deviceSize]);
     return (
-        <div className="grid grid-cols-1 content-start gap-12">
+        <div className="grid grid-cols-1 content-start gap-12 bg-red-300">
             {/* Eye count selector */}
-            <div className="flex min-w-min items-center justify-start rounded-primary md:justify-center">
-                <button
-                    className={`relative grid place-items-center whitespace-nowrap rounded-tl-primary rounded-bl-primary px-10 py-8 font-mulishBold text-[1.6rem] leading-[1.8rem] transition-all duration-500 ${
-                        eyeCountState === 1 ? 'bg-brand text-white' : 'bg-[#F0F1F1]'
-                    }`}
-                    onClick={() => setEyeCountState(1)}
-                >
-                    {eyeCountState === 1 && (
-                        <span className="absolute top-0 left-1/2 grid h-14 w-14 -translate-y-2/3 -translate-x-1/2 place-content-center rounded-full border border-white bg-brand">
-                            <Image src="/images/icons/icon-check-white.svg" alt="" width={16} height={11} />
-                        </span>
-                    )}
-                    One Eye
-                </button>
+            <div>
+                <p className="mt-6 font-mulishBold text-[2rem] leading-[2.8rem] text-[#35444B]">
+                    One eye or both eyes?
+                </p>
 
-                <button
-                    className={`relative grid place-items-center whitespace-nowrap rounded-tr-primary rounded-br-primary px-10 py-8 font-mulishBold text-[1.6rem] leading-[1.8rem] transition-all duration-500 ${
-                        eyeCountState === 2 ? 'bg-brand text-white' : 'bg-[#F0F1F1]'
-                    }`}
-                    onClick={() => setEyeCountState(2)}
-                >
-                    {eyeCountState === 2 && (
-                        <span className="absolute top-0 left-1/2 grid h-14 w-14 -translate-y-2/3 -translate-x-1/2 place-content-center rounded-full border border-white bg-brand">
-                            <Image src="/images/icons/icon-check-white.svg" alt="" width={16} height={11} />
-                        </span>
-                    )}
-                    Both Eyes
-                </button>
+                <div className="flex min-w-min items-center justify-start rounded-primary md:justify-center">
+                    <button
+                        className={`relative grid place-items-center whitespace-nowrap rounded-tl-primary rounded-bl-primary px-10 py-8 font-mulishBold text-[1.6rem] leading-[1.8rem] transition-all duration-500 ${
+                            eyeCountState === 1 ? 'bg-brand text-white' : 'bg-[#F0F1F1]'
+                        }`}
+                        onClick={() => setEyeCountState(1)}
+                    >
+                        {eyeCountState === 1 && (
+                            <span className="absolute top-0 left-1/2 grid h-14 w-14 -translate-y-2/3 -translate-x-1/2 place-content-center rounded-full border border-white bg-brand">
+                                <Image src="/images/icons/icon-check-white.svg" alt="" width={16} height={11} />
+                            </span>
+                        )}
+                        One Eye
+                    </button>
+
+                    <button
+                        className={`relative grid place-items-center whitespace-nowrap rounded-tr-primary rounded-br-primary px-10 py-8 font-mulishBold text-[1.6rem] leading-[1.8rem] transition-all duration-500 ${
+                            eyeCountState === 2 ? 'bg-brand text-white' : 'bg-[#F0F1F1]'
+                        }`}
+                        onClick={() => setEyeCountState(2)}
+                    >
+                        {eyeCountState === 2 && (
+                            <span className="absolute top-0 left-1/2 grid h-14 w-14 -translate-y-2/3 -translate-x-1/2 place-content-center rounded-full border border-white bg-brand">
+                                <Image src="/images/icons/icon-check-white.svg" alt="" width={16} height={11} />
+                            </span>
+                        )}
+                        Both Eyes
+                    </button>
+                </div>
             </div>
 
             <PercentageCheckBox {...{ upfrontPercentage, setUpfrontPercentage, minUpfront, maxUpfront, name }} />
 
             {/* <div className="grid content-start gap-12 justify-self-center lg:gap-6"> */}
-            {/*     /!* <div className="grid w-full max-w-[34.1rem] gap-16  rounded-primary bg-[#063147] py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start"> *!/ */}
-            {/*     /!*     <div className="grid content-start gap-14 justify-self-center"> *!/ */}
-            {/*     /!*         <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-white"> *!/ */}
-            {/*     /!*             Your monthly payment *!/ */}
-            {/*     /!*         </span> *!/ */}
-            {/*     /!*         <div className="grid place-items-center gap-4 justify-self-center"> *!/ */}
-            {/*     /!*             <span className="font-latoExtraBold text-[4.8rem] leading-[4.8rem] text-white"> *!/ */}
-            {/*     /!*                 £{monthlyPayment} *!/ */}
-            {/*     /!*             </span> *!/ */}
-            {/*     /!*             <span className="font-mulishBold text-[1.6rem] uppercase leading-[2.4rem] text-white"> *!/ */}
-            {/*     /!*                 Per eye | Per month *!/ */}
-            {/*     /!*             </span> *!/ */}
-            {/*     /!*         </div> *!/ */}
-            {/*     /!*     </div> *!/ */}
-            {/*     /!* </div> *!/ */}
 
             {/*     /!* Cost breakdown desktop version *!/ */}
             {/*     /!* <div *!/ */}
@@ -178,19 +155,7 @@ const Treatment = ({
             {/*         <Image src="/images/icons/icon-money-bag-dark.svg" alt="" width={30} height={40} /> */}
             {/*         <p className="max-w-[21.5rem] font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading"> */}
             {/*             How much you save over 30 Years{' '} */}
-            {/*             <span */}
-            {/*                 onClick={() => { */}
-            {/*                     window.scrollTo( */}
-            {/*                         0, */}
-            {/*                         getElementTopPosition( */}
-            {/*                             document.querySelector('#average-spend-large') as HTMLElement */}
-            {/*                         ) - 250 */}
-            {/*                     ); */}
-            {/*                 }} */}
-            {/*                 className="cursor-pointer font-mulishExtraBold text-[1.4rem] leading-[1.8rem] text-heading2 underline decoration-heading2 decoration-2 underline-offset-4" */}
-            {/*             > */}
-            {/*                 Learn More */}
-            {/*             </span> */}
+
             {/*         </p> */}
             {/*     </div> */}
 
@@ -239,19 +204,6 @@ const Treatment = ({
             {/*                 totalPayment={cost} */}
             {/*             /> */}
 
-            {/*             /!*  Number of instalment *!/ */}
-            {/*             <SurgeryController */}
-            {/*                 title="Number of instalments" */}
-            {/*                 minValue={minInstallment} */}
-            {/*                 maxValue={maxInstallment} */}
-            {/*                 value={installment} */}
-            {/*                 defaultValue={defaultInstallment} */}
-            {/*                 onValueChange={setInstallment} */}
-            {/*                 valueLabelFormat={`${installment} month`} */}
-            {/*                 appendValueText=" month" */}
-            {/*                 id="installment-month" */}
-            {/*                 inputLabel="How many installment" */}
-            {/*             /> */}
             {/*         </div> */}
             {/*     </div> */}
 

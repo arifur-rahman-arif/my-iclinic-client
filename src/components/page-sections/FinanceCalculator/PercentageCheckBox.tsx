@@ -1,13 +1,9 @@
-import Image from 'next/image';
-import { Dispatch, SetStateAction } from 'react';
-import styles from './styles/PercentageCheckBox.module.scss';
+import { RadioButton } from '@/components/Inputs/RadioButton';
+import { AppCtx, CalculatorContext } from '@/page-sections/FinanceCalculator/Context';
+import { useContext } from 'react';
 
 interface PercentageCheckBoxProps {
-    upfrontPercentage: number;
-    setUpfrontPercentage: Dispatch<SetStateAction<number>>;
-    minUpfront: number;
-    maxUpfront: number;
-    name: string;
+    index: number;
 }
 
 /**
@@ -16,13 +12,9 @@ interface PercentageCheckBoxProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const PercentageCheckBox = ({
-    upfrontPercentage,
-    setUpfrontPercentage,
-    minUpfront,
-    maxUpfront,
-    name
-}: PercentageCheckBoxProps) => {
+const PercentageCheckBox = ({ index }: PercentageCheckBoxProps) => {
+    const ctx: CalculatorContext = useContext(AppCtx);
+
     /**
      * Calculates an array of evenly distributed percentage values between a minimum and maximum percentage.
      * @param min - The minimum percentage value.
@@ -42,54 +34,40 @@ const PercentageCheckBox = ({
         return percentages;
     };
 
-    const slug = name
+    const slug = ctx?.treatmentList[index]?.name
         .trim() // Remove leading and trailing space
         .replace(/[^a-zA-Z0-9\s]/g, '') // Remove special characters
         .replace(/\s+/g, '-') // Convert spaces to dashes
         .toLowerCase(); // Convert to lowercase
 
     return (
-        <div>
-            <p className="mt-6 font-mulishBold text-[2rem] leading-[2.8rem] text-[#35444B]">
-                How much would you like to pay up-front
-            </p>
+        <div className="mt-12 grid w-full gap-12 md:mt-24">
+            <div className="grid w-full gap-12">
+                <div className="flex items-center justify-center gap-10">
+                    <span className="h-[0.1rem] max-w-[7.5rem] flex-grow bg-[#C5CED2]"></span>
+                    <span className="text-[1.6rem] leading-[2.4rem] text-[#35444B]">
+                        How much would you like to pay up-front
+                    </span>
+                    <span className="h-[0.1rem] max-w-[7.5rem] flex-grow bg-[#C5CED2]"></span>
+                </div>
+            </div>
 
-            <div className="grid grid-cols-2 gap-10 xs:grid-cols-3 xs:gap-12 md:gap-x-24 md:gap-y-12">
-                {getPercentageRange(minUpfront, maxUpfront)?.map((percentage, index) => (
-                    <div key={index} className={styles.styles}>
-                        <label htmlFor={`${slug}-${index}`} className="grid grid-flow-col place-items-center gap-4">
-                            <input
-                                aria-label={slug}
-                                type="radio"
-                                id={`${slug}-${index}`}
-                                value={percentage}
-                                name={`${slug}-percentage`}
-                                checked={percentage === upfrontPercentage}
-                                onChange={(e) => {
-                                    setUpfrontPercentage(Number(e.target.value));
-                                }}
-                            />
-                            <span className="checkbox">
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 14 10"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M12.3334 1L5.00002 8.33333L1.66669 5"
-                                        stroke="#FAF9F6"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </span>
-                            <span className="font-mulishBold text-[2rem] leading-[2.8rem]">{percentage}%</span>
-                        </label>
-                    </div>
-                ))}
+            <div className="mx-auto grid max-w-[40rem] grid-cols-2 gap-10 xs:grid-cols-3 xs:gap-12 md:gap-x-24 md:gap-y-12">
+                {getPercentageRange(ctx.treatmentList[index].minUpfront, ctx.treatmentList[index].maxUpfront)?.map(
+                    (percentage, i) => (
+                        <RadioButton
+                            key={i}
+                            label={`${percentage}%`}
+                            id={`${slug}-${i}`}
+                            value={percentage}
+                            name={`${slug}-percentage`}
+                            checked={percentage === ctx?.treatmentList[index]?.defaultUpfront}
+                            onChange={(e) => {
+                                ctx.setUpfrontPercentage(index, Number(e.target.value));
+                            }}
+                        />
+                    )
+                )}
             </div>
         </div>
     );
