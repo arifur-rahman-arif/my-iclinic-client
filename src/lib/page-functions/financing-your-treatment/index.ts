@@ -41,7 +41,8 @@ export const getTreatments = async (): Promise<TreatmentInterface[]> => {
             minInstallment: Number(post.acf.minimum_instalment),
             maxInstallment: Number(post.acf.maximum_instalment),
             defaultInstallment: Number(post.acf.default_instalment),
-            averageSpend: post.acf.averageSpend
+            averageSpend: post.acf.averageSpend,
+            eyeCount: 1
         } as TreatmentInterface;
     });
 };

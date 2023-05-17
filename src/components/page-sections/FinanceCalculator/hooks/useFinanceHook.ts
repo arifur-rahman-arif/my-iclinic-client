@@ -9,12 +9,15 @@ interface UserFinanceHookReturnInterface {
     setInstallment: Dispatch<SetStateAction<number>>;
     monthlyPayment: number;
     upfrontAmount: number;
+    eyeCountState: number;
+    setEyeCountState: Dispatch<SetStateAction<number>>;
 }
 
 interface UserFinanceHookInterface {
     totalPayment: number;
     defaultUpfrontPercentage: number;
     defaultInstallment: number;
+    eyeCount: number;
 }
 
 /**
@@ -28,7 +31,8 @@ interface UserFinanceHookInterface {
 const useFinanceHook = ({
     totalPayment,
     defaultUpfrontPercentage,
-    defaultInstallment
+    defaultInstallment,
+    eyeCount
 }: UserFinanceHookInterface): UserFinanceHookReturnInterface => {
     // Upfront controller related states
     const [upfrontPercentage, setUpfrontPercentage] = useState<number>(defaultUpfrontPercentage);
@@ -36,6 +40,8 @@ const useFinanceHook = ({
     // Installment controller related states
     const [installment, setInstallment] = useState<number>(defaultInstallment);
     const upfrontAmount = (totalPayment * upfrontPercentage) / 100;
+
+    const [eyeCountState, setEyeCountState] = useState(eyeCount);
 
     /**
      * Get the monthly payment amount based on upfront percentage value
@@ -59,8 +65,9 @@ const useFinanceHook = ({
         installment,
         setInstallment,
         monthlyPayment,
-        upfrontAmount
-        // Functions
+        upfrontAmount,
+        eyeCountState,
+        setEyeCountState
     };
 };
 

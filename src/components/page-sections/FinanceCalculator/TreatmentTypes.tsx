@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
 import { TreatmentInterface } from './Treatment';
-import styles from './Treatments.module.scss';
+import styles from './styles/Treatments.module.scss';
 
 interface TreatmentTypesPropsInterface {
     treatmentList: TreatmentInterface[];
