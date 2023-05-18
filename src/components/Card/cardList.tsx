@@ -219,5 +219,12 @@ export const consultantCardList: ConsultantCardInterface[] = [
         degree: 'MBBS, MSc, FRCOphth',
         title: 'Consultant ophthalmic surgeon',
         url: '/our-specialists/maria-dimitry'
+    },
+    {
+        image: '/images/avaters/tina-khanam.jpeg',
+        name: 'Tina Khanam',
+        degree: 'MBBS, BSc (intercal), MSc, FRCOPhth, PG Dip CRS, Cert LRS',
+        title: 'Consultant and Surgeon',
+        url: '/our-specialists/tina-khanam'
     }
 ];

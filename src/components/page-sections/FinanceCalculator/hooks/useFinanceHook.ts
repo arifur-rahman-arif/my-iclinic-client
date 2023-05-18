@@ -60,7 +60,6 @@ const useFinanceHook = ({
         setInstallment,
         monthlyPayment,
         upfrontAmount
-        // Functions
     };
 };
 

@@ -1,0 +1,14 @@
+.styles {
+    :global {
+        .checkbox {
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 100%;
+            border: 0.3rem solid var(--color-brand);
+        }
+
+        input:checked + .checkbox {
+            border: 0.3rem solid var(--color-white) !important;
+        }
+    }
+}
