@@ -1,28 +1,23 @@
-import { Button } from '@/components/Buttons';
-import { Dispatch, SetStateAction } from 'react';
-import { TreatmentInterface } from './Treatment';
-
-interface TreatmentTypesPropsInterface {
-    treatmentList: TreatmentInterface[];
-    setTreatmentList: Dispatch<SetStateAction<TreatmentInterface[]>>;
-}
+import { AppCtx, CalculatorContext } from '@/page-sections/FinanceCalculator/Context';
+import { useContext } from 'react';
+import styles from './styles/Treatments.module.scss';
 
 /**
  * Treatment types
  *
- * @param {[]} treatmentList
- * @param {Dispatch<SetStateAction<TreatmentInterface[]>>} setTreatmentList
  * @returns {JSX.Element}
  * @constructor
  */
-const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesPropsInterface): JSX.Element => {
+const TreatmentTypes = (): JSX.Element => {
+    const ctx: CalculatorContext = useContext(AppCtx);
+
     /**
      * Treatment calculator tab activation function
      *
      * @param {number} activeIndex
      */
     const activateTreatmentCalculator = ({ activeIndex }: { activeIndex: number }) => {
-        setTreatmentList((currentTreatmentList) => {
+        ctx.setTreatmentList((currentTreatmentList) => {
             return currentTreatmentList.map((treatment, index) => {
                 treatment.active = index === activeIndex;
                 return treatment;
@@ -31,19 +26,19 @@ const TreatmentTypes = ({ treatmentList, setTreatmentList }: TreatmentTypesProps
     };
 
     return (
-        <div className="grid max-w-[93rem] justify-center gap-6 md:flex md:items-center md:justify-self-center">
-            {treatmentList.map((treatment, index) => (
-                <Button
+        <div
+            className={`mt-12 flex flex-col items-center justify-start gap-8 rounded-primary sm:flex-row sm:gap-0 md:justify-center md:overflow-hidden md:shadow-shadow1 ${styles.styles}`}
+        >
+            {ctx.treatmentList.map((treatment, index) => (
+                <button
                     key={index}
-                    className={`flex-1 !uppercase ${
-                        treatment.active ?
-                            '!bg-[#063147] !text-white' :
-                            '!bg-transparent !text-[#063147] hover:!bg-[#063147] hover:!text-white'
+                    className={`relative grid place-items-center whitespace-nowrap px-8 py-12 font-mulishExtraBold text-[1.6rem] leading-[1.8rem] shadow-shadow1 transition-all duration-500 md:shadow-none ${
+                        treatment.active ? 'bg-brand text-white' : 'text-heading'
                     }`}
                     onClick={() => activateTreatmentCalculator({ activeIndex: index })}
-                    text={treatment.name}
-                    type="button"
-                />
+                >
+                    {treatment.name}
+                </button>
             ))}
         </div>
     );

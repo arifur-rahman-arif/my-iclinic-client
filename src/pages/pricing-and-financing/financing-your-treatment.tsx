@@ -15,10 +15,7 @@ import Logo5 from '@/logos/cigma.png';
 import Logo4 from '@/logos/freedom.png';
 import Logo6 from '@/logos/general-medical.png';
 import Logo2 from '@/logos/healthcare-practice.png';
-import MastheadImageLarge from '@/masthead/masthead-finance-treatment-large.png';
-import MastheadImageMedium from '@/masthead/masthead-finance-treatment-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-finance-treatment-small.png';
-import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Treatment';
+import Context, { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import FullWidthImageSection4 from '@/page-sections/SideImageSection/FullWidthImageSection4';
 import { FinanceTreatmentPageContents, PageDataInterface, WpPageResponseInterface } from '@/types';
@@ -63,9 +60,9 @@ export default function FinancingYourTreatment({
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
+                imageMedium={
+                    data?.masthead_image?.image_medium?.url || '/images/masthead/masthead-finance-treatment-medium.png'
+                }
                 altText={data?.masthead_image?.image_large?.alt}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
@@ -196,7 +193,9 @@ export default function FinancingYourTreatment({
                 </Container>
             </Section>
 
-            <FinanceCalculator treatments={treatments} />
+            <Context treatments={treatments}>
+                <FinanceCalculator />
+            </Context>
 
             <Section id="insurance">
                 <Container className="grid place-items-center gap-6">

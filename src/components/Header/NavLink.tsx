@@ -31,7 +31,7 @@ const NavLink = ({ menu, router, navMenuData }: NavLinkInterface): JSX.Element =
 
             {/* Submenus */}
             {menu.submenu?.length && (
-                <div className="mega-submenu absolute left-0 top-full z-[99] grid max-h-0 w-screen grid-rows-[1fr_auto] overflow-y-auto overflow-x-hidden bg-white transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_19rem)] group-hover/menu-item:drop-shadow-md">
+                <div className="mega-submenu absolute left-0 top-full z-[99] grid max-h-0 w-screen grid-rows-[1fr_auto] overflow-y-auto overflow-x-hidden bg-white transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_26rem)] group-hover/menu-item:drop-shadow-md">
                     <Container className="relative">
                         {menu.slug === 'cataract' && (
                             <SubMenu
