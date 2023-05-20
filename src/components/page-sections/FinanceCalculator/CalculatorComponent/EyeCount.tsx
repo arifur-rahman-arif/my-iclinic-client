@@ -6,6 +6,7 @@ import styles from './EyeCount.module.scss';
 interface EyeCountProps {
     index: number;
 }
+
 /**
  * Renders a component that allows the user to select the number of eyes for a specific treatment.
  * The component displays two radio buttons for selecting either one eye or both eyes.
@@ -16,6 +17,12 @@ interface EyeCountProps {
  */
 export const EyeCount = ({ index }: EyeCountProps) => {
     const ctx: CalculatorContext = useContext(AppCtx);
+
+    const slug = ctx?.treatmentList[index]?.name
+        .trim() // Remove leading and trailing space
+        .replace(/[^a-zA-Z0-9\s]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Convert spaces to dashes
+        .toLowerCase(); // Convert to lowercase
 
     return (
         <div className="mt-12 grid w-full gap-12 md:mt-24">
@@ -30,9 +37,9 @@ export const EyeCount = ({ index }: EyeCountProps) => {
             <div className={`${styles.styles} flex flex-wrap items-center justify-center gap-8 sm:gap-12`}>
                 <RadioButton
                     label="One Eye"
-                    id={`one-eye-${index}`}
+                    id={`${slug}-one-eye-${index}`}
                     value={ctx.treatmentList[index].eyeCount}
-                    name={`eye-count-${index}`}
+                    name={`${slug}-eye-count-${index}`}
                     checked={ctx.treatmentList[index].eyeCount === 1}
                     onChange={() => {
                         ctx.setEyeCount(index, 1);
@@ -45,9 +52,9 @@ export const EyeCount = ({ index }: EyeCountProps) => {
 
                 <RadioButton
                     label="Both Eyes"
-                    id={`both-eyes-${index}`}
+                    id={`${slug}-both-eyes-${index}`}
                     value={ctx.treatmentList[index].eyeCount}
-                    name={`eye-count-${index}`}
+                    name={`${slug}-eye-count-${index}`}
                     checked={ctx.treatmentList[index].eyeCount === 2}
                     onChange={() => {
                         ctx.setEyeCount(index, 2);
