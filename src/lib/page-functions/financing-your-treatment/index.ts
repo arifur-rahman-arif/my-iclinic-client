@@ -12,6 +12,7 @@ interface AcfInterface {
     maximum_instalment: string;
     default_instalment: string;
     averageSpend: AverageSpendInterfaceProps;
+    group_name: string;
 }
 
 /**
@@ -21,7 +22,7 @@ interface AcfInterface {
  */
 export const getTreatments = async (): Promise<TreatmentInterface[]> => {
     const postResponse: Response = await getData({
-        url: `${process.env.WP_REST_URL}/surgery-cost?per_page=100`
+        url: `${process.env.WP_REST_URL}/surgery-cost?per_page=100&_fields=title,acf`
     });
 
     if (postResponse.status !== 200) {
@@ -42,7 +43,8 @@ export const getTreatments = async (): Promise<TreatmentInterface[]> => {
             maxInstallment: Number(post.acf.maximum_instalment),
             defaultInstallment: Number(post.acf.default_instalment),
             averageSpend: post.acf.averageSpend,
-            eyeCount: 1
+            eyeCount: 1,
+            group_name: post.acf.group_name
         } as TreatmentInterface;
     });
 };

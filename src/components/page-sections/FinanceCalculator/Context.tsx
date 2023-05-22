@@ -13,6 +13,7 @@ export interface TreatmentInterface {
     defaultInstallment: number;
     averageSpend?: AverageSpendInterfaceProps;
     eyeCount: 1 | 2;
+    group_name?: string;
 }
 
 export interface CalculatorContext {
