@@ -35,7 +35,9 @@ interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<
 
 interface FinancingYourTreatmentProps {
     data: DataInterface;
-    treatments: TreatmentInterface[];
+    laserTreatments: TreatmentInterface[];
+    cataractTreatments: TreatmentInterface[];
+    iclTreatments: TreatmentInterface[];
     seo: any;
     yoastJson: any;
 }
@@ -48,7 +50,9 @@ interface FinancingYourTreatmentProps {
  */
 export default function FinancingYourTreatment({
     data,
-    treatments,
+    laserTreatments,
+    cataractTreatments,
+    iclTreatments,
     seo,
     yoastJson
 }: FinancingYourTreatmentProps): JSX.Element {
@@ -193,9 +197,19 @@ export default function FinancingYourTreatment({
                 </Container>
             </Section>
 
-            <Context treatments={treatments}>
-                <FinanceCalculator />
-            </Context>
+            <div id="calculator">
+                <Context treatments={laserTreatments}>
+                    <FinanceCalculator excludeBottomBanner />
+                </Context>
+
+                <Context treatments={cataractTreatments}>
+                    <FinanceCalculator excludeBottomBanner />
+                </Context>
+
+                <Context treatments={iclTreatments}>
+                    <FinanceCalculator />
+                </Context>
+            </div>
 
             <Section id="insurance">
                 <Container className="grid place-items-center gap-6">
@@ -327,10 +341,49 @@ export async function getStaticProps() {
         });
         const treatments = await getTreatments();
 
+        let laserTreatments = treatments.filter((treatment) => treatment.group_name === 'Laser eye surgery');
+        let cataractTreatments = treatments.filter((treatment) => treatment.group_name === 'Cataract');
+        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'ICL Surgery');
+
+        /**
+         * Updates the `laserTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} laserTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        laserTreatments = laserTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
+        /**
+         * Updates the `cataractTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} cataractTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        cataractTreatments = cataractTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
+        /**
+         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        iclTreatments = iclTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         return {
             /* eslint-disable */
             props: {
-                treatments,
+                laserTreatments,
+                cataractTreatments,
+                iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
