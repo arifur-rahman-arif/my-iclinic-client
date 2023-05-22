@@ -4,10 +4,10 @@ import AverageSpend from '@/page-sections/FinanceCalculator/AverageSpend';
 import { ResultColumn } from '@/page-sections/FinanceCalculator/ResultColumn';
 import { useContext } from 'react';
 import CalculatorComponent from './CalculatorComponent/CalculatorComponent';
-import { AppCtx, CalculatorContext, TreatmentInterface } from './Context';
+import { AppCtx, CalculatorContext } from './Context';
 
 interface FinanceCalculatorInterface {
-    treatments?: TreatmentInterface[];
+    excludeBottomBanner?: boolean;
 }
 
 /**
@@ -16,11 +16,11 @@ interface FinanceCalculatorInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Element => {
+const FinanceCalculator = ({ excludeBottomBanner }: FinanceCalculatorInterface): JSX.Element => {
     const ctx: CalculatorContext = useContext(AppCtx);
 
     return (
-        <Section id="calculator" className="grid gap-48">
+        <Section className="grid gap-48">
             <Container className="">
                 {ctx.treatmentList.length ?
                     ctx.treatmentList.map((treatment, index) => {
@@ -76,20 +76,24 @@ const FinanceCalculator = ({ treatments }: FinanceCalculatorInterface): JSX.Elem
                 {/*     : null} */}
             </Container>
 
-            <div id="average-spend-large">
-                {ctx.treatmentList.length ?
-                    ctx.treatmentList.map((treatment, index) => {
-                        if (!treatment.active) return null;
-                        const averageSpend = treatment.averageSpend;
+            {!excludeBottomBanner ? (
+                <div id="average-spend-large">
+                    {ctx.treatmentList.length ?
+                        ctx.treatmentList.map((treatment, index) => {
+                            if (!treatment.active) return null;
+                            const averageSpend = treatment.averageSpend;
 
-                        return (
-                              <div className="col-span-full" key={index}>
-                                  <AverageSpend {...(averageSpend as unknown as any)} />
-                              </div>
-                        );
-                    }) :
-                    null}
-            </div>
+                            return (
+                                  <div className="col-span-full" key={index}>
+                                      <AverageSpend {...(averageSpend as unknown as any)} />
+                                  </div>
+                            );
+                        }) :
+                        null}
+                </div>
+            ) : (
+                <></>
+            )}
         </Section>
     );
 };
