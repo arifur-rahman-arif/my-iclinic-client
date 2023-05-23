@@ -760,184 +760,184 @@ const nextConfig = {
             {
                 source: '/my-iclinic-trip-to-switzerland-bp/feed',
                 destination: '/articles/my-iclinic-trip-to-switzerland-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/seeing-in-the-dark-sicilian-courgette-recipe',
                 destination: '/articles/seeing-in-the-dark-sicilian-courgette-recipe-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/take-a-minute-to-relax-stress-can-be-bad-for-your-eyes-bp/feed',
                 destination: '/articles/take-a-minute-to-relax-stress-can-be-bad-for-your-eyes-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/the-dos-and-donts-after-cataract-surgery',
                 destination: '/articles/the-dos-and-donts-after-cataract-surgery-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/time-spent-on-putting-in-contacts-whats-the-alternative',
                 destination: '/articles/time-spent-on-putting-in-contacts-whats-the-alternative-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/vision-development-in-babies',
                 destination: '/articles/vision-development-in-babies-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/vision-development-in-babies-bp/feed',
                 destination: '/articles/vision-development-in-babies-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/vision-development-in-babies/feed',
                 destination: '/articles/vision-development-in-babies-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/eye-conditions/hyperopia-long-sightedness',
                 destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/hyperopia-long-sightedness',
                 destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/long-sightedness-hyperopia',
                 destination: '/articles/what-are-myopia-hypermetropia-and-astigmatism-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/what-causes-myopia-in-children-and-how-to-help-myopic-kids',
                 destination: '/articles/what-causes-myopia-in-children-and-how-to-help-myopic-kids-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/why-contact-wearers-should-ditch-contacts-and-opt-for-laser',
                 destination: '/articles/why-contact-wearers-should-ditch-contacts-and-opt-for-laser-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses',
                 destination: '/articles/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/why-should-you-consider-presbyond-after-cataract-surgery',
                 destination: '/articles/why-should-you-consider-presbyond-after-cataract-surgery-bp',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/blepharitis',
                 destination: '/blepharitis-treatment',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/lp-cataract-surgery',
                 destination: '/cataract',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/refractive-cataract-surgery',
                 destination: '/cataract',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/cataract-surgery-60',
                 destination: '/cataract',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/cataracts',
                 destination: '/cataract',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/conjunctivitis',
                 destination: '/conjuctivitis-treatment-london',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/typ-call-me-back',
                 destination: '/contact-us',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/book-a-consultation',
                 destination: '/contact-us',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/learn-more-about-eye-treatments',
                 destination: '/contact-us',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/cet-meetings',
                 destination: '/contact-us',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/double-vision',
                 destination: '/double-vision-treatment-london',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/eye-conditions/dry-eyes',
                 has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/dry-eyes-treatment-london',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/dry-eyes',
                 has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/dry-eyes-treatment-london',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/flashes-and-floaters',
                 destination: '/flashes-floaters',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/lens-replacement-rle',
                 destination: '/cataract',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/implantable-contact-lenses-icl',
                 destination: '/icl',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/eye-treatments/icl-',
                 destination: '/icl',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/eye-treatments/icl-eye-surgery',
                 destination: '/icl',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/icl-eye-surgery',
                 destination: '/icl',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/corneal-cross-linking',
                 destination: '/keratoconus',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/keratoconus-cross-linking',
                 destination: '/keratoconus',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/laser-eye-surgery',
@@ -1083,7 +1083,7 @@ const nextConfig = {
                 source: '/book-an-appointment',
                 has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/contact-us',
-                permanent: true,
+                permanent: true
             },
             {
                 source: '/callback',
@@ -1233,6 +1233,31 @@ const nextConfig = {
             {
                 source: '/wp-content/uploads/2021/08/YAG-Laser-Capsulotomy-Guide-2019.pdf',
                 destination: '/',
+                permanent: true
+            },
+            {
+                source: '/__trashed',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/astigmatism',
+                destination: '/astigmatism-treatment',
+                permanent: true
+            },
+            {
+                source: '/articles/stressawarenessmonth-bp',
+                destination: '/articles',
+                permanent: true
+            },
+            {
+                source: '/emergencies-and-second-opinion',
+                destination: '/contact-us',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/diabetic-eye-disease',
+                destination: '/articles/the-battle-against-diabetes-bp',
                 permanent: true
             }
         ];
