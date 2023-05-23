@@ -19,7 +19,12 @@ const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
             <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
 
             <div className="flex w-full flex-col items-center justify-start gap-2">
-                <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">Thank You</span>
+                <span
+                    className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading"
+                    id="request-callback-thank-you"
+                >
+                    Thank You
+                </span>
                 <p className="font-mulishMedium text-[1.6rem] leading-[2.4rem] text-[#35444B]">
                     We have received your call-back request.
                 </p>

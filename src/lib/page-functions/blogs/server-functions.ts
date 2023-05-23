@@ -25,21 +25,23 @@ export const getPosts = async (): Promise<GeneralBlogInterface[]> => {
  */
 export const getCategories = async (): Promise<BlogCategoriesInterface[]> => {
     const categoriesResponse: Response = await getData({
-        url: `${process.env.WP_REST_URL}/categories`
+        url: `${process.env.WP_REST_URL}/categories?_fields=name,slug,count&per_page=100`
     });
 
     if (categoriesResponse.status !== 200) {
         throw new Error('Unable to fetch WordPress Post categories. Error text: ' + categoriesResponse.statusText);
     }
 
-    const categories: any = await categoriesResponse.json();
+    const categories: Array<{ name: string; slug: string; count: number }> = await categoriesResponse.json();
 
-    return categories.map((category: any) => {
-        return {
-            name: category?.name,
-            slug: category.slug
-        };
-    });
+    return categories.filter((category) => category.count > 0);
+
+    // return categories.map((category: any) => {
+    //     return {
+    //         name: category?.name,
+    //         slug: category.slug
+    //     };
+    // });
 };
 
 /**
