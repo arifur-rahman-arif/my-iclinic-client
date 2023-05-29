@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import IconHome from './IconHome';
+import { twMerge } from 'tailwind-merge';
 
 interface BreadCrumbProps {
     className?: string;
@@ -22,7 +23,10 @@ const BreadCrumb = ({ className }: BreadCrumbProps): JSX.Element => {
     const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing', '/laser-eye-surgery'];
     return (
         <Container
-            className={`breadcrumb-container mt-4 flex items-center justify-start gap-4 overflow-x-auto overflow-y-hidden pb-4 md:hidden md:pb-0 ${className}`}
+            className={twMerge(
+                'breadcrumb-container mt-4 flex items-center justify-start gap-4 overflow-x-auto overflow-y-hidden pb-4 md:hidden md:pb-0',
+                className
+            )}
         >
             {router.pathname === '/' ? (
                 <Link href="/" aria-label="Home" className="flex items-center justify-start gap-6">
