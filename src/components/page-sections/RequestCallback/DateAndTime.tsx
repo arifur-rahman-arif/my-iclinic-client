@@ -4,7 +4,6 @@ import { handleAlert } from '@/features/alert/alertSlice';
 import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
 
 import {
-    dateDifferenceInDays,
     formatNumberToInternational,
     getTheDayName,
     getTheMonthName,
@@ -34,7 +33,7 @@ interface DateAndTimeInterface {
     setFormSubmitted: Dispatch<SetStateAction<boolean>>;
     activateNextStepper?: () => void;
     stepperIndex?: number;
-    checkInputsForNextStepActivation: (arg: number, arg2: string) => void;
+    checkInputsForNextStepActivation: (arg: number, arg2: { name: string; phone: string; email: string }) => void;
     clonedElement?: boolean;
     indicatorActive?: boolean;
 }
@@ -98,9 +97,15 @@ const DateAndTime = ({
             }
 
             if (response.isSuccess) {
-                checkInputsForNextStepActivation(stepperIndex || 0, email);
+                checkInputsForNextStepActivation(stepperIndex || 0, {
+                    name,
+                    phone,
+                    email
+                });
 
                 if (typeof activateNextStepper == 'function') activateNextStepper();
+
+                localStorage.removeItem('callback-id');
 
                 resetForm();
 
@@ -195,18 +200,18 @@ const DateAndTime = ({
         }
 
         const internationalPhoneNumber = await formatNumberToInternational(phone);
-
-        if (!dateDifferenceInDays(new Date(), date)) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please select one day ahead of the current date',
-                    timeout: 4000
-                })
-            );
-            return;
-        }
+        //
+        // if (!dateDifferenceInDays(new Date(), date)) {
+        //     dispatch(
+        //         handleAlert({
+        //             showAlert: true,
+        //             alertType: 'error',
+        //             alertMessage: 'Please select one day ahead of the current date',
+        //             timeout: 4000
+        //         })
+        //     );
+        //     return;
+        // }
 
         if (!optionalMessage) {
             dispatch(
@@ -220,13 +225,16 @@ const DateAndTime = ({
             return;
         }
 
+        const postId = localStorage.getItem('callback-id');
+
         const payload = {
             name,
             phone: internationalPhoneNumber,
             email,
             date: date.toDateString(),
             dateOriginal: `${date}`,
-            optionalMessage
+            optionalMessage,
+            postId
         };
 
         submitForm(payload);

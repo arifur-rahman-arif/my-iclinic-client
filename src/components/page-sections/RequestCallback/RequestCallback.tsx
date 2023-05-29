@@ -55,13 +55,22 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
     };
 
     /**
-     * Check all the inputs are valid and prepare for next step activation
+     * Activate the next step if all inputs have values
      *
      * @param {number} stepperIndex
-     * @param {string} currentEmailValue
+     * @param {{name: string, phone: string, email: string}} data
      */
-    const checkInputsForNextStepActivation = (stepperIndex: number, currentEmailValue: string) => {
-        if (name && phone && currentEmailValue) {
+    const checkInputsForNextStepActivation = (
+        stepperIndex: number,
+        data: {
+            name: string;
+            phone: string;
+            email: string;
+        }
+    ) => {
+        const { name, phone, email } = data;
+
+        if (name && phone && email) {
             setNextStepActive(stepperIndex, true);
         } else {
             setNextStepActive(stepperIndex, false);
