@@ -9,34 +9,34 @@
 }
 
 * {
-    border: none;
-    box-sizing: border-box;
-    color: var(--color-secondary);
     font-size: 68.5%;
+    box-sizing: border-box;
     margin: 0;
-    outline: none;
     padding: 0;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     text-decoration: none;
+    color: var(--color-secondary);
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     //outline: 1px solid red !important;
 
     /* Selection style for Firefox */
     ::-moz-selection {
-        background: var(--color-brand);
         color: var(--color-secondary);
+        background: var(--color-brand);
     }
 
     /* Selection style for Chrome */
     ::selection {
+        color: #ffffff;
         background: var(--color-brand);
-        color: #fff;
     }
 
     // Hide the number input arrows
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
         margin: 0;
+        -webkit-appearance: none;
     }
 
     /* Firefox */
@@ -50,12 +50,12 @@ html {
 }
 
 body {
-    background: var(--color-white);
     font-size: 1.6rem;
-    max-width: 2560px;
-    overflow-anchor: none !important;
     overflow-x: hidden;
     width: 100%;
+    max-width: 2560px;
+    background: var(--color-white);
+    overflow-anchor: none !important;
 
     @include media-breakpoint-up(md) {
         font-size: 1.7rem;
@@ -73,11 +73,11 @@ body {
     div {
         &,
         * {
-            color: var(--color-secondary);
             font-family: var(--mulish-medium);
             font-size: 1.6rem;
             font-weight: normal;
             line-height: 2.4rem;
+            color: var(--color-secondary);
 
             @include media-breakpoint-up('2xl') {
                 &,
@@ -243,13 +243,13 @@ body {
     }
 
     .plyr__control svg {
-        fill: var(--color-white);
         opacity: 0.9;
+        fill: var(--color-white);
     }
 
     .plyr__time {
-        color: var(--color-white);
         font-family: var(--lato-bold);
+        color: var(--color-white);
     }
 
     .plyr {
@@ -265,9 +265,9 @@ body {
     #fc_frame {
         z-index: 101 !important;
         @include media-breakpoint-down(sm) {
+            right: 10px !important;
             bottom: 85px !important;
             opacity: 0;
-            right: 10px !important;
         }
     }
 }
@@ -277,8 +277,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top, var(--color-brand) 0%, transparent 100%);
     border-radius: 50px;
+    background: linear-gradient(to top, var(--color-brand) 0%, transparent 100%);
 }
 
 #react-calendar > div::-webkit-scrollbar {
@@ -286,8 +286,8 @@ body {
 }
 
 #stepper-indicator::-webkit-scrollbar {
-    height: 3px;
     width: 5px;
+    height: 3px;
 }
 
 .submenu::-webkit-scrollbar {

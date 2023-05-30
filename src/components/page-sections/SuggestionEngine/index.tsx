@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
-import { QuestionPicker } from './QuestionPicker';
 import AnswerPanel from './AnswerPanel';
+import { QuestionPicker } from './QuestionPicker';
 
 /**
  * Suggestion engine component
@@ -11,7 +11,7 @@ import AnswerPanel from './AnswerPanel';
  */
 const Engine = () => {
     return (
-        <Section>
+        <Section className="sm:!mt-24">
             <Container className="grid overflow-hidden rounded-primary md:grid-cols-[auto_1fr]">
                 <QuestionPicker />
 
