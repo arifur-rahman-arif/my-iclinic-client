@@ -1,4 +1,5 @@
 import { alertSlice } from '@/features/index';
+import { abandonedCallbackApi } from '@/services/abandoned-cb';
 import { businessFormApi } from '@/services/businessInfo';
 
 import { downloadFormApi } from '@/services/downloadForm';
@@ -20,6 +21,7 @@ export const makeStore = () => {
             // API Reducer's
             [downloadFormApi.reducerPath]: downloadFormApi.reducer,
             [requestCallbackApi.reducerPath]: requestCallbackApi.reducer,
+            [abandonedCallbackApi.reducerPath]: abandonedCallbackApi.reducer,
             [reviewsApi.reducerPath]: reviewsApi.reducer,
             [navMenuApi.reducerPath]: navMenuApi.reducer,
             [businessFormApi.reducerPath]: businessFormApi.reducer
@@ -29,6 +31,7 @@ export const makeStore = () => {
                 reviewsApi.middleware,
                 downloadFormApi.middleware,
                 requestCallbackApi.middleware,
+                abandonedCallbackApi.middleware,
                 navMenuApi.middleware,
                 businessFormApi.middleware
             )
