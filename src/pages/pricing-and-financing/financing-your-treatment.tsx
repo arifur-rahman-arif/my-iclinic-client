@@ -28,10 +28,11 @@ import Image from 'next/image';
 import { FiHelpCircle } from 'react-icons/fi';
 
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {}
+interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {
+}
 
 interface FinancingYourTreatmentProps {
     data: DataInterface;
@@ -61,7 +62,7 @@ export default function FinancingYourTreatment({
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageMedium={
@@ -179,11 +180,13 @@ export default function FinancingYourTreatment({
                             <div className="grid max-w-[59.5rem] place-items-center gap-6">
                                 <p className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
                                     Correct your vison permanently with{' '}
-                                    <span className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
+                                    <span
+                                        className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
                                         24 month finance
                                     </span>
                                     &nbsp; option from&nbsp;
-                                    <span className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
+                                    <span
+                                        className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
                                         £150/Per eye, per month.
                                     </span>
                                 </p>
@@ -199,15 +202,15 @@ export default function FinancingYourTreatment({
 
             <div id="calculator">
                 <Context treatments={laserTreatments}>
-                    <FinanceCalculator excludeBottomBanner />
+                    <FinanceCalculator excludeBottomBanner/>
                 </Context>
 
                 <Context treatments={cataractTreatments}>
-                    <FinanceCalculator excludeBottomBanner />
+                    <FinanceCalculator excludeBottomBanner/>
                 </Context>
 
                 <Context treatments={iclTreatments}>
-                    <FinanceCalculator />
+                    <FinanceCalculator/>
                 </Context>
             </div>
 
@@ -231,28 +234,35 @@ export default function FinancingYourTreatment({
 
             <Section className="grid gap-12 px-8 md:gap-16">
                 <div className="mx-auto flex flex-wrap items-center justify-center gap-6">
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo1} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo1} alt=""/>
                     </div>
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo2} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo2} alt=""/>
                     </div>
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo3} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo3} alt=""/>
                     </div>
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6]  shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo4} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6]  shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo4} alt=""/>
                     </div>
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo5} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo5} alt=""/>
                     </div>
-                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full scale-[0.8] object-contain" src={Logo6} alt="" />
+                    <div
+                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full scale-[0.8] object-contain" src={Logo6} alt=""/>
                     </div>
                 </div>
 
                 <Container className="grid place-items-center gap-12 rounded-primary pb-24 shadow-shadow1">
-                    <div className="h-14 w-[calc(100%_+_4rem)] rounded-tl-primary rounded-tr-primary bg-[#FF393E] xl:w-full"></div>
+                    <div
+                        className="h-14 w-[calc(100%_+_4rem)] rounded-tl-primary rounded-tr-primary bg-[#FF393E] xl:w-full"></div>
                     <Image
                         src="/images/section-images/image-lock.png"
                         alt=""
@@ -263,7 +273,8 @@ export default function FinancingYourTreatment({
 
                     <H3Variant2 className="block max-w-[73.9rem] text-center normal-case text-heading">
                         We will require your{' '}
-                        <span className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-[#FF393E] md:text-[3rem] md:leading-[3.6rem]">
+                        <span
+                            className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-[#FF393E] md:text-[3rem] md:leading-[3.6rem]">
                             pre-authorization code
                         </span>{' '}
                         before your consultation
@@ -277,7 +288,7 @@ export default function FinancingYourTreatment({
                     {/* Cta section */}
                     <div className="grid place-items-center gap-6">
                         <div className="flex items-center justify-center gap-4">
-                            <FiHelpCircle className="h-[2.4rem] w-[2.4rem] stroke-heading" />
+                            <FiHelpCircle className="h-[2.4rem] w-[2.4rem] stroke-heading"/>
 
                             <span className="font-mulishExtraBold text-[1.8rem] leading-[2.8rem] text-heading">
                                 Need help?
@@ -310,20 +321,20 @@ export default function FinancingYourTreatment({
                                         </g>
                                         <defs>
                                             <clipPath id="clip0_7348_23262">
-                                                <rect width="20" height="20" fill="white" />
+                                                <rect width="20" height="20" fill="white"/>
                                             </clipPath>
                                         </defs>
                                     </svg>
                                 }
                             />
-                            <ChatWithUs />
+                            <ChatWithUs/>
                         </div>
                     </div>
                 </Container>
             </Section>
 
             <LazyComponent>
-                <CompanyLogos sectionClass="!mt-24" />
+                <CompanyLogos sectionClass="!mt-24"/>
             </LazyComponent>
         </Page>
     );

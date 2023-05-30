@@ -78,9 +78,9 @@ const Header = (): JSX.Element => {
                     <div className="hidden grid-cols-[auto_1fr] gap-y-12 xl:grid">
                         {/* Top nav links */}
                         <div className="flex items-center justify-start gap-12">
-                            <ArticleMenu articles={isSuccess && data.articles} />
+                            <ArticleMenu articles={isSuccess && data.articles}/>
 
-                            <AboutUs />
+                            <AboutUs/>
 
                             <Link
                                 href="/contact-us"
@@ -91,19 +91,21 @@ const Header = (): JSX.Element => {
                             >
                                 Contact us
                                 {router.pathname === '/contact-us' && (
-                                    <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                                    <span
+                                        className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                                 )}
                             </Link>
 
-                            <PhoneCall />
+                            <PhoneCall/>
                         </div>
 
                         {/* Nav contact button */}
-                        <ContactDetails />
+                        <ContactDetails/>
 
-                        <div className="col-span-full hidden h-[0.1rem] w-full max-w-[78rem] bg-[#E6E7E8] xl:block"></div>
+                        <div
+                            className="col-span-full hidden h-[0.1rem] w-full max-w-[78rem] bg-[#E6E7E8] xl:block"></div>
 
-                        <NavMenu navMenuData={isSuccess && data} />
+                        <NavMenu navMenuData={isSuccess && data}/>
                     </div>
 
                     <Hamburger

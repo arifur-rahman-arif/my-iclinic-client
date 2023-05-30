@@ -100,7 +100,7 @@ export const lasekPriceList: PriceSectionInterface[] = [
 
 export const myopiaPriceList: PriceSectionInterface[] = [
     {
-        price: '£350',
+        price: '£400',
         priceText: 'All-inclusive of comprehensive eye assessments for your child',
         priceDescription: (
             <>
@@ -113,7 +113,7 @@ export const myopiaPriceList: PriceSectionInterface[] = [
         )
     },
     {
-        price: '£200 per check-up consultation',
+        price: '£250 per check up consultation',
         priceText: 'A Myopia management consultation',
         priceDescription: (
             <>

@@ -57,7 +57,7 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText="£350 All-inclusive"
+                priceText="£400 All-inclusive"
             />
 
             <SideImageSection

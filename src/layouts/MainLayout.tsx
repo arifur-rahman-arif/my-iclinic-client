@@ -51,18 +51,18 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatBot && <FreshChatScript />}
+            {loadChatBot && <FreshChatScript/>}
 
-            <FontResizer />
+            <FontResizer/>
 
-            <Header />
+            <Header/>
             {children}
-            <Footer />
+            <Footer/>
 
-            {showAlert && <Alert />}
+            {showAlert && <Alert/>}
 
-            <BottomMenu />
-            {loadChatBot && <CookieConsent />}
+            <BottomMenu/>
+            {loadChatBot && <CookieConsent/>}
         </div>
     );
 };

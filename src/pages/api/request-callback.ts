@@ -72,7 +72,7 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // Send the data to WordPress API
             postData({
                 url: `${process.env.CUSTOM_REST_URL}/request-callback`,
-                body: req.body
+                body: { ...req.body, status: 'Completed' }
             });
 
             res.status(200).json({ message: 'Form submitted successfully' });

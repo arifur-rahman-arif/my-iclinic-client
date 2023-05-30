@@ -25,18 +25,18 @@ const FinanceCalculator = ({ excludeBottomBanner }: FinanceCalculatorInterface):
                 {ctx.treatmentList.length ?
                     ctx.treatmentList.map((treatment, index) => {
                         return (
-                              <div
-                                  className={`gap-12 md:gap-8 lg:grid-cols-[auto_1fr] xl:grid-cols-[auto_55.5rem] ${
-                                      treatment.active ? 'grid' : 'hidden'
-                                  }`}
-                                  key={index}
-                              >
-                                  {/* <Treatment key={index} {...treatment} averageSpend={treatment.averageSpend} /> */}
-                                  {/* Grid item 1 */}
-                                  <CalculatorComponent index={index} />
-                                  {/* Grid item 2 */}
-                                  <ResultColumn index={index} />
-                              </div>
+                            <div
+                                className={`gap-12 md:gap-8 lg:grid-cols-[auto_1fr] xl:grid-cols-[auto_55.5rem] ${
+                                    treatment.active ? 'grid' : 'hidden'
+                                }`}
+                                key={index}
+                            >
+                                {/* <Treatment key={index} {...treatment} averageSpend={treatment.averageSpend} /> */}
+                                {/* Grid item 1 */}
+                                <CalculatorComponent index={index}/>
+                                {/* Grid item 2 */}
+                                <ResultColumn index={index}/>
+                            </div>
                         );
                     }) :
                     null}
@@ -84,9 +84,9 @@ const FinanceCalculator = ({ excludeBottomBanner }: FinanceCalculatorInterface):
                             const averageSpend = treatment.averageSpend;
 
                             return (
-                                  <div className="col-span-full" key={index}>
-                                      <AverageSpend {...(averageSpend as unknown as any)} />
-                                  </div>
+                                <div className="col-span-full" key={index}>
+                                    <AverageSpend {...(averageSpend as unknown as any)} />
+                                </div>
                             );
                         }) :
                         null}
