@@ -1,20 +1,43 @@
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Context } from '@/page-sections/SuggestionEngine/Context';
 import Link from 'next/link';
+import { ReactNode, useContext } from 'react';
 import CtaForm from './CtaForm';
+import styles from './styles/PanelReveal.module.scss';
 
 interface CtaScreen2 {
-    heading: string;
+    heading: ReactNode;
+    includeSuitabilityButtons?: boolean;
 }
 
-const CtaScreen2 = ({ heading }: CtaScreen2): JSX.Element => {
+const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): JSX.Element => {
+    const ctx = useContext(Context);
+    const selectedOption = ctx.options?.filter((option) => option.active);
+    
     return (
-        <div className="grid h-full w-full place-items-center px-12 md:px-24 xl:px-40 py-12 md:py-24">
+        <div
+            className={`${styles.styles} grid h-full w-full place-items-center px-12 md:px-24 xl:px-40 py-12 md:py-24`}>
             <div className="grid h-full place-items-center content-center gap-12 md:gap-24">
-                <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
+                
+                {selectedOption?.length ?
+                    <div className="grid grid-cols-[1fr_auto] justify-self-start gap-y-6 gap-x-12">
+                    <span
+                        className="text-[1.8rem] leading-[2.4rem] text-white uppercase font-mulishBold">You have selected:</span>
+                        <button
+                            className="text-[#CACECF] cursor-pointer text-[1.4rem] self-center row-span-2 col-start-2 leading-8 font-mulishBold underline underline-[#CACECF] underline-offset-4">Change
+                        </button>
+                        <span className="text-[2.8rem] leading-[3.6rem] text-white font-mulishBold">
+                        {selectedOption[0].label}
+                    </span>
+                    </div> : null}
+                
+                <span className="font-latoBold text-white leading-[2.8rem]">
                     {heading}
                 </span>
                 
-                <div className={`flex flex-wrap items-center justify-center gap-6`}>
+                <CtaForm/>
+                
+                {includeSuitabilityButtons ? <div className={`flex flex-wrap items-center justify-center gap-6`}>
                     {/* Modal */}
                     <BookConsultation
                         modalElement={
@@ -95,9 +118,7 @@ const CtaScreen2 = ({ heading }: CtaScreen2): JSX.Element => {
                             0208 445 8877
                         </span>
                     </Link>
-                </div>
-                
-                <CtaForm/>
+                </div> : null}
             </div>
         </div>
     );

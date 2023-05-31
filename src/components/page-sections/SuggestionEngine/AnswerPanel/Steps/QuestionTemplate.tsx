@@ -11,7 +11,7 @@ interface QuestionTemplateProps {
     includeAnswerButton?: boolean;
     showNextButton?: boolean;
     includeEyeButton?: boolean;
-    checkBoxes?: string[];
+    includeRadioBoxes?: boolean;
 }
 
 const QuestionTemplate = memo(
@@ -22,7 +22,7 @@ const QuestionTemplate = memo(
         includeAnswerButton = true,
         showNextButton,
         includeEyeButton,
-        checkBoxes
+        includeRadioBoxes
     }: QuestionTemplateProps): JSX.Element => {
         return (
             <div
@@ -44,7 +44,7 @@ const QuestionTemplate = memo(
                         <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}</span>
                     </div>
                     
-                    {checkBoxes?.length ? <SingleChoiceQuestions/> : null}
+                    {includeRadioBoxes ? <SingleChoiceQuestions/> : null}
                     
                     <div className="grid w-full gap-12">
                         {includeAnswerButton && (
