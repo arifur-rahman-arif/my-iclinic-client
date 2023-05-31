@@ -204,7 +204,8 @@
       {
         "allowIndentationTabs": true
       }
-    ]
+    ],
+    "no-trailing-spaces": "off"
   },
   "overrides": [
     {

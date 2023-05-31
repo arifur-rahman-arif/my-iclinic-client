@@ -1,6 +1,7 @@
 import { BookConsultation } from '@/components/page-sections';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface Cta5Interface {
     button1ClassName?: string;
@@ -43,7 +44,7 @@ const Cta5 = ({
                         </>
                     }
                     maxWidth="70rem"
-                    buttonClassName={`${button1ClassName} group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary`}
+                    buttonClassName={twMerge('group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary', button1ClassName)}
                 >
                     <button className="" aria-label="Book a free screening test">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,17 +81,18 @@ const Cta5 = ({
                                 className="transition-all duration-500 group-hover/consultation:stroke-heading2"
                             />
                         </svg>
-
-                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                        
+                        <span
+                            className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
                             {button1Text || 'Book a free screening test'}
                         </span>
                     </button>
                 </BookConsultation>
-
+                
                 {/* Phone number */}
                 <Link
                     href="tel:0208 445 8877"
-                    className={`group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 px-8 py-6 transition-all duration-500 hover:bg-heading2 ${button2ClassName}`}
+                    className={twMerge('group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 px-8 py-6 transition-all duration-500 hover:bg-heading2', button2ClassName)}
                 >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -102,8 +104,9 @@ const Cta5 = ({
                             className="transition-all duration-500 group-hover/phone:stroke-white"
                         />
                     </svg>
-
-                    <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#384043] transition-all duration-500 group-hover/phone:text-white">
+                    
+                    <span
+                        className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#384043] transition-all duration-500 group-hover/phone:text-white">
                         0208 445 8877
                     </span>
                 </Link>

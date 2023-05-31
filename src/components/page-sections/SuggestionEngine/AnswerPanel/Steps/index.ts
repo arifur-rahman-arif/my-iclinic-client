@@ -1,5 +1,4 @@
 import QuestionTemplate from './QuestionTemplate';
-import Question1 from './Question1';
-import StepNotFound from './StepNotFound';
+import UnderAgeStep from 'src/components/page-sections/SuggestionEngine/AnswerPanel/Steps/UnderAgeStep';
 
-export { StepNotFound, Question1, QuestionTemplate };
+export { UnderAgeStep, QuestionTemplate };
