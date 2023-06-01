@@ -13,9 +13,9 @@ const Engine = () => {
     return (
         <Section className="sm:!mt-24">
             <Container className="grid overflow-hidden rounded-primary md:grid-cols-[auto_1fr]">
-                <QuestionPicker />
-
-                <AnswerPanel />
+                <QuestionPicker/>
+                
+                <AnswerPanel/>
             </Container>
         </Section>
     );

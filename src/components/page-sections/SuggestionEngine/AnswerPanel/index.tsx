@@ -1,10 +1,10 @@
-import { LinkStyle } from '@/components/Link';
-import CtaScreen from '@/page-sections/SuggestionEngine/AnswerPanel/CtaScreen';
-import CtaScreen2 from '@/page-sections/SuggestionEngine/AnswerPanel/CtaScreen2';
-import { Context } from '@/page-sections/SuggestionEngine/Context';
-import { useContext } from 'react';
-import { QuestionTemplate, UnderAgeStep } from './Steps';
+import CtaScreen from './CtaScreen';
+import CtaScreen2 from './CtaScreen2';
+import QuestionTemplate from './Steps/QuestionTemplate';
 import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
+import { Context } from '@/page-sections/SuggestionEngine/Context';
+import { Fragment, useContext } from 'react';
+import { UnderAgeStep } from './Steps';
 
 /**
  * Answer panel component
@@ -15,9 +15,39 @@ import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
 const AnswerPanel = (): JSX.Element => {
     const ctx = useContext(Context);
     
+    const renderScreen = (screen: string, props: any, node) => {
+        switch (screen) {
+            case 'SuitabilityQuestionnaire':
+                return <SuitabilityQuestionnaire/>;
+            case 'UnderAgeStep':
+                return <UnderAgeStep/>;
+            case 'QuestionTemplate':
+                return <QuestionTemplate {...props} {...{ node }}/>;
+            case 'CtaScreen':
+                return <CtaScreen {...props}/>;
+            case 'CtaScreen2':
+                return <CtaScreen2 {...props}/>;
+            default:
+                return null;
+        }
+    };
     
     return (
         <div className="bg-brand">
+            
+            {ctx.routes?.map((route, index) => route.active && <Fragment key={index}>
+                {renderScreen(route.screen, route.props, index)}
+            </Fragment>)}
+            
+            {/* {ctx.routes?.map((route, index) => { */}
+            {/*     if (route.active) { */}
+            {/*         return <Fragment key={index}> */}
+            {/*             {route.screen} */}
+            {/*         </Fragment>; */}
+            {/*     } */}
+            {/*      */}
+            {/*     return null; */}
+            {/* })} */}
             {/* {!ctx.ageSelected ? <SuitabilityQuestionnaire/> : null} */}
             
             {/* {ctx.showUnderAgeStep ? <UnderAgeStep/> : null} */}
@@ -40,13 +70,13 @@ const AnswerPanel = (): JSX.Element => {
             {/* <CtaScreen/> */}
             
             
-            <CtaScreen2
-                heading={<>We are very sorry but you are unlikely to be suitable for our laser treatments as all retinal
-                    detachments need to be treated before laser treatment. We do offer alternative vision correction
-                    treatments depending on your eye health within these conditions, such as <LinkStyle url="/icl">implantable
-                        contact lenses.</LinkStyle>
-                    Please leave your details and we can book you for a free suitability check with our treatment’s
-                    specialist.</>}/>
+            {/* <CtaScreen2 */}
+            {/*     heading={`We are very sorry but you are unlikely to be suitable for our laser treatments as all retinal */}
+            {/*         detachments need to be treated before laser treatment. We do offer alternative vision correction */}
+            {/*         treatments depending on your eye health within these conditions, such as <LinkStyle url="/icl">implantable */}
+            {/*             contact lenses.</LinkStyle> */}
+            {/*         Please leave your details and we can book you for a free suitability check with our treatment’s */}
+            {/*         specialist.`}/> */}
             
             
             {/* <QuestionTemplate */}

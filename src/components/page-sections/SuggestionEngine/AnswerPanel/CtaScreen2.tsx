@@ -1,18 +1,23 @@
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
+import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
-import { ReactNode, useContext } from 'react';
+import { ReactNode, useContext, useEffect } from 'react';
 import CtaForm from './CtaForm';
 import styles from './styles/PanelReveal.module.scss';
 
 interface CtaScreen2 {
-    heading: ReactNode;
+    heading: string;
     includeSuitabilityButtons?: boolean;
 }
 
 const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): JSX.Element => {
     const ctx = useContext(Context);
     const selectedOption = ctx.options?.filter((option) => option.active);
+    
+    useEffect(() => {
+        ctx.setCompletedStep(ctx.completedStep += 1);
+    }, []);
     
     return (
         <div
@@ -24,7 +29,12 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
                     <span
                         className="text-[1.8rem] leading-[2.4rem] text-white uppercase font-mulishBold">You have selected:</span>
                         <button
-                            className="text-[#CACECF] cursor-pointer text-[1.4rem] self-center row-span-2 col-start-2 leading-8 font-mulishBold underline underline-[#CACECF] underline-offset-4">Change
+                            className="text-[#CACECF] cursor-pointer text-[1.4rem] self-center row-span-2 col-start-2 leading-8 font-mulishBold underline underline-[#CACECF] underline-offset-4"
+                            onClick={() => {
+                                ctx.navigateToStep(7);
+                            }}
+                        >
+                            Change
                         </button>
                         <span className="text-[2.8rem] leading-[3.6rem] text-white font-mulishBold">
                         {selectedOption[0].label}
@@ -32,7 +42,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
                     </div> : null}
                 
                 <span className="font-latoBold text-white leading-[2.8rem]">
-                    {heading}
+                    {HTMLReactParser(heading)}
                 </span>
                 
                 <CtaForm/>
