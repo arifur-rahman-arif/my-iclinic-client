@@ -1,10 +1,10 @@
-import CtaScreen from './CtaScreen';
-import CtaScreen2 from './CtaScreen2';
-import QuestionTemplate from './Steps/QuestionTemplate';
-import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { Fragment, useContext } from 'react';
+import CtaScreen from './CtaScreen';
+import CtaScreen2 from './CtaScreen2';
 import { UnderAgeStep } from './Steps';
+import QuestionTemplate from './Steps/QuestionTemplate';
+import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
 
 /**
  * Answer panel component
@@ -42,7 +42,6 @@ const AnswerPanel = (): JSX.Element => {
     
     return (
         <div className="bg-brand">
-            
             {ctx.routes?.map((route, index) => route.active && <Fragment key={index}>
                 {renderScreen(route.screen, route.props, index)}
             </Fragment>)}

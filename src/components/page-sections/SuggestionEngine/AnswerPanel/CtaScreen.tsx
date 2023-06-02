@@ -19,7 +19,7 @@ const CtaScreen = ({ description }: CtaScreenProps) => {
     const ctx = useContext(Context);
     
     useEffect(() => {
-        ctx.setCompletedStep(ctx.completedStep += 1);
+        ctx.setCompletedStep(ctx.totalSteps);
     }, []);
     
     return (

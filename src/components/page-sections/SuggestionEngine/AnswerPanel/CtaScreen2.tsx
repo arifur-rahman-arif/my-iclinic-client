@@ -24,7 +24,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
     const selectedOption = ctx.options?.filter((option) => option.active);
     
     useEffect(() => {
-        ctx.setCompletedStep(ctx.completedStep += 1);
+        ctx.setCompletedStep(ctx.totalSteps);
     }, []);
     
     return (

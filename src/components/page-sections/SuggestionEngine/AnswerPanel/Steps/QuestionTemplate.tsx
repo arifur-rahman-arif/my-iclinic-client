@@ -112,8 +112,6 @@ const QuestionTemplate = memo(
                 questionIndex: `${node}`
             });
             
-            ctx.setCompletedStep(ctx.completedStep += 1);
-            
             const nextNode = ctx.routes[node].nextNode;
             
             if (!nextNode) return;

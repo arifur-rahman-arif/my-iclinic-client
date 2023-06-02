@@ -392,14 +392,13 @@ const Provider = ({ children }: ProviderProps) => {
     };
     
     /**
-     * Updates the previous node of a given current node in the routes state.
+     * Update the previous node of the next node with the current node.
      *
      * @param {number} currentNode - The current node identifier.
      * @param {number} nextNode - The next node identifier.
      * @returns {void}
      */
     const setPreviousNode = (currentNode: number, nextNode: number) => {
-        // Update the previous node of the next node with the current node.
         setRoutes((prevState) => {
             prevState[nextNode].prevNode = currentNode;
             return prevState;
