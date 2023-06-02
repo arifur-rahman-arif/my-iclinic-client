@@ -1,5 +1,12 @@
 import styles from '../styles/PanelReveal.module.scss';
 
+/**
+ * Renders the UnderAgeStep component.
+ *
+ * The UnderAgeStep component displays a message for individuals who are under the age of 21 and are not suitable candidates for laser eye treatment. It provides information about why individuals under 21 should not undergo the treatment and encourages them to wait until they reach the age of 21 to have their prescription stabilized for long-term vision correction.
+ *
+ * @returns {JSX.Element} The rendered UnderAgeStep component.
+ */
 const UnderAgeStep = (): JSX.Element => {
     return (
         <div className={`${styles.styles} grid h-full w-full place-items-center`}>
@@ -15,8 +22,8 @@ const UnderAgeStep = (): JSX.Element => {
                         Sorry, our eye specialists do not advise anybody under the age of 21 to have laser eye
                         treatment. This is because our eyes are still changing until we are 21, after then your
                         prescription is stable for treatment for long term vision correction.
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         If you do receive laser treatment before your prescription is stable, you would need glasses a
                         few years after which can be worse for your eye health. We will be very happy to review your
                         prescription and suitability for our laser treatment options once you are 21 years of age.

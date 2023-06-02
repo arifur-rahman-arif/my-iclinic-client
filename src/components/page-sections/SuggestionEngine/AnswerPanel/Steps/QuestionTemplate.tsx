@@ -1,9 +1,9 @@
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import Image from 'next/image';
-import SingleChoiceQuestions from './SingleChoiceQuestions';
-import { memo, useContext, useState } from 'react';
+import { memo, useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import styles from '../styles/PanelReveal.module.scss';
+import SingleChoiceQuestions from './SingleChoiceQuestions';
 
 interface QuestionTemplateProps {
     questionNumber: number;
@@ -15,6 +15,21 @@ interface QuestionTemplateProps {
     node: number;
 }
 
+/**
+ * A memoized component for rendering a question template.
+ *
+ * @component
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.questionNumber - The number of the question.
+ * @param {string} props.questionText - The text of the question.
+ * @param {boolean} props.showBackButton - Whether to show the back button.
+ * @param {boolean} [props.includeAnswerButton=true] - Whether to include the answer buttons.
+ * @param {boolean} props.includeEyeButton - Whether to include the eye buttons.
+ * @param {boolean} props.includeRadioBoxes - Whether to include radio boxes.
+ * @param {string} props.node - The node identifier.
+ * @returns {JSX.Element} - The rendered question template.
+ */
 const QuestionTemplate = memo(
     ({
         questionNumber,
@@ -27,8 +42,18 @@ const QuestionTemplate = memo(
     }: QuestionTemplateProps): JSX.Element => {
         const ctx = useContext(Context);
         
+        /**
+         * Handles click events for the component.
+         * If ages are not selected yet, disables all ages except the current one and updates the ages in the context.
+         * Increments the completed step in the context.
+         * Determines the next node based on the provided type and updates the previous node in the context.
+         * Navigate to the next step in the context.
+         * Add the question and answer to the queue in the context.
+         *
+         * @param {string} type - The type of click event ('yes' or 'no').
+         * @returns {void}
+         */
         const handleClick = (type: 'yes' | 'no') => {
-            
             // If ages are not selected yet
             if (!ctx.ageSelected) {
                 /**
@@ -74,6 +99,12 @@ const QuestionTemplate = memo(
             });
         };
         
+        
+        /**
+         * Handles the eye button click event.
+         *
+         * @param {('Left Eye' | 'Right Eye')} type - The type of eye button clicked (either 'Left Eye' or 'Right Eye').
+         */
         const handleEyeButtonClick = (type: 'Left Eye' | 'Right Eye') => {
             ctx.addQuestionToQueue({
                 question: questionText,
@@ -112,7 +143,7 @@ const QuestionTemplate = memo(
                         <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}</span>
                     </div>
                     
-                    {includeRadioBoxes ? <SingleChoiceQuestions node={node}/> : null}
+                    {includeRadioBoxes ? <SingleChoiceQuestions node={node} /> : null}
                     
                     {includeAnswerButton && (
                         <div className="flex flex-wrap items-center justify-start gap-6">
@@ -137,7 +168,7 @@ const QuestionTemplate = memo(
                             >
                                 Left Eye
                                 
-                                <Image src="/images/icons/icon-half-left-eye.svg" alt="" width={54} height={45}/>
+                                <Image src="/images/icons/icon-half-left-eye.svg" alt="" width={54} height={45} />
                             </button>
                             
                             <button
@@ -146,7 +177,7 @@ const QuestionTemplate = memo(
                             >
                                 Right Eye
                                 
-                                <Image src="/images/icons/icon-half-right-eye.svg" alt="" width={54} height={45}/>
+                                <Image src="/images/icons/icon-half-right-eye.svg" alt="" width={54} height={45} />
                             </button>
                         </div>
                     )}
@@ -159,7 +190,7 @@ const QuestionTemplate = memo(
                                 ctx.navigateToStep(ctx.routes[node].prevNode as number);
                             }}
                         >
-                            <BiArrowBack className="h-10 w-10 fill-[#C5CED2]"/>
+                            <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
                             Previous Question
                         </button>
                     )}

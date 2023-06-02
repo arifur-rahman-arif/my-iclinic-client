@@ -15,18 +15,26 @@ import { UnderAgeStep } from './Steps';
 const AnswerPanel = (): JSX.Element => {
     const ctx = useContext(Context);
     
-    const renderScreen = (screen: string, props: any, node) => {
+    /**
+     * Renders a screen based on the provided screen name and props.
+     *
+     * @param {string} screen - The name of the screen to render.
+     * @param {Object} props - The props to pass to the rendered screen component.
+     * @param {any} node - Additional node parameter, if required.
+     * @returns {React.Element|null} - The rendered screen component or null if the screen name is not recognized.
+     */
+    const renderScreen = (screen: string, props: any, node: number) => {
         switch (screen) {
             case 'SuitabilityQuestionnaire':
-                return <SuitabilityQuestionnaire/>;
+                return <SuitabilityQuestionnaire />;
             case 'UnderAgeStep':
-                return <UnderAgeStep/>;
+                return <UnderAgeStep />;
             case 'QuestionTemplate':
-                return <QuestionTemplate {...props} {...{ node }}/>;
+                return <QuestionTemplate {...props} {...{ node }} />;
             case 'CtaScreen':
-                return <CtaScreen {...props}/>;
+                return <CtaScreen {...props} />;
             case 'CtaScreen2':
-                return <CtaScreen2 {...props}/>;
+                return <CtaScreen2 {...props} />;
             default:
                 return null;
         }

@@ -1,8 +1,7 @@
-import { AppCtx, CalculatorContext } from '@/page-sections/FinanceCalculator/Context';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { useContext } from 'react';
-import QuestionBox from './QuestionBox';
 import ProgressMenu from './ProgressMenu';
+import QuestionBox from './QuestionBox';
 
 /**
  * Question picker component
@@ -15,7 +14,7 @@ const QuestionPicker = () => {
     
     return (
         <div className="grid place-items-center gap-12 bg-heading2 p-12 md:p-24 md:px-24">
-            <ProgressMenu percentage={ctx.progress}/>
+            <ProgressMenu percentage={ctx.progress} />
             
             <span
                 className="text font-latoBold text-[2.4rem] leading-[3.2rem] text-white md:text-[3rem] md:leading-[3.6rem]">

@@ -1,16 +1,21 @@
 import RadioButton2 from '@/components/Inputs/RadioButton/RadioButton2';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 
 interface SingleChoiceQuestionsProps {
     node: number;
 }
 
+/**
+ * A component that renders a set of single choice questions.
+ *
+ * @component
+ * @param {Object} node - The node object containing information about the current question.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
     const ctx = useContext(Context);
-    
-    console.log(node);
     
     interface HandlerOnChangeProps {
         index: number;
@@ -18,6 +23,14 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
         targetNode: number;
     }
     
+    /**
+     * Function to handle the onChange event for a given input field.
+     * It updates the options and routes in the context based on the provided parameters.
+     * It also adds a question to the queue in the context.
+     *
+     * @param {HandlerOnChangeProps} props - The properties containing the index, value, and targetNode.
+     * @returns {void}
+     */
     const handleOnChange = ({ index, value, targetNode }: HandlerOnChangeProps) => {
         ctx.setOptions((prevState) => {
             return prevState.map((state, i) => {
@@ -68,7 +81,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                         ctx.setCompletedStep(ctx.completedStep += 1);
                     }}
                 >
-                    <BiArrowBack className="h-10 w-10 fill-[#C5CED2]"/>
+                    <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
                     Previous Question
                 </button>
                 

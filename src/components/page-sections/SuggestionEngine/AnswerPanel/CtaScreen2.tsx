@@ -2,7 +2,7 @@ import BookConsultation from '@/page-sections/SectionParts/BookConsultation/Book
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
-import { ReactNode, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import CtaForm from './CtaForm';
 import styles from './styles/PanelReveal.module.scss';
 
@@ -11,6 +11,14 @@ interface CtaScreen2 {
     includeSuitabilityButtons?: boolean;
 }
 
+/**
+ * Component for displaying CTA Screen 2.
+ *
+ * @component
+ * @param {string} heading - The heading to be displayed.
+ * @param {boolean} includeSuitabilityButtons - Flag to include suitability buttons. Default is true.
+ * @returns {JSX.Element} The rendered CTA Screen 2 component.
+ */
 const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): JSX.Element => {
     const ctx = useContext(Context);
     const selectedOption = ctx.options?.filter((option) => option.active);
@@ -45,7 +53,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
                     {HTMLReactParser(heading)}
                 </span>
                 
-                <CtaForm/>
+                <CtaForm />
                 
                 {includeSuitabilityButtons ? <div className={`flex flex-wrap items-center justify-center gap-6`}>
                     {/* Modal */}

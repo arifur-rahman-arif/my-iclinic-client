@@ -1,15 +1,15 @@
 import { TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
-import {
-    formatNumberToInternational,
-    formatPhoneNumber,
-    validateEmail,
-    validatePhoneNumber
-} from '@/utils/miscellaneous';
+import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import { ChangeEvent, FormEventHandler, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-const CtaForm = () => {
+/**
+ * A component representing a form for capturing user information.
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const CtaForm = (): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -57,11 +57,11 @@ const CtaForm = () => {
     /**
      * Reset the form to its initial state
      */
-    const resetForm = () => {
-        setName('');
-        setEmail('');
-        setPhone('');
-    };
+    // const resetForm = () => {
+    //     setName('');
+    //     setEmail('');
+    //     setPhone('');
+    // };
     
     
     /**
@@ -73,11 +73,11 @@ const CtaForm = () => {
         
         if (formError) return;
         
-        const payload = {
-            name,
-            phone,
-            email
-        };
+        // const payload = {
+        //     name,
+        //     phone,
+        //     email
+        // };
     };
     
     
@@ -141,7 +141,7 @@ const CtaForm = () => {
                 type="submit"
                 className="rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent flex items-center justify-center gap-6">
                 Send
-                <Image src="/images/icons/icon-send-white.svg" alt="" width={24} height={24}/>
+                <Image src="/images/icons/icon-send-white.svg" alt="" width={24} height={24} />
             </button>
         </form>
     );

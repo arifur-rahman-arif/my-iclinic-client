@@ -7,7 +7,6 @@ interface QuestionInterface {
     };
 }
 
-
 interface Age {
     active: boolean;
     age: string;
@@ -70,14 +69,13 @@ interface ProviderProps {
 export const Context = createContext<SuggestionEngineContext>({} as SuggestionEngineContext);
 
 /**
- * Provider of context properties
+ * Context Provider of the SuggestionEngine
  *
  * @param {ReactNode} children
  * @returns {JSX.Element}
  * @constructor
  */
 const Provider = ({ children }: ProviderProps) => {
-    
     const totalSteps = 4;
     const [completedStep, setCompletedStep] = useState<number>(0);
     const [progress, setProgress] = useState<number>(0);
@@ -337,6 +335,16 @@ const Provider = ({ children }: ProviderProps) => {
         });
     };
     
+    /**
+     * Adds a question to the queue of questions.
+     *
+     * @param {Object} props - The properties for adding a question to the queue.
+     * @param {string} props.question - The question to be added.
+     * @param {string} props.answer - The answer to the question.
+     * @param {number} props.questionIndex - The index of the question in the queue. If provided, the question at this index will be updated or replaced.
+     *
+     * @returns {void}
+     */
     const addQuestionToQueue = ({ question, answer, questionIndex }: AddQuestionQueueProps) => {
         setQuestions((prevState) => {
             const updatedQuestions = { ...prevState };
@@ -354,10 +362,17 @@ const Provider = ({ children }: ProviderProps) => {
     };
     
     
+    /**
+     * Navigates to a specific step in the navigation and updates the state accordingly.
+     *
+     * @param {number} navigationIndex - The index of the step to navigate to.
+     * @returns {void}
+     */
     const navigateToStep = (navigationIndex: number) => {
         setRoutes((prevState) => {
             let tempState = [...prevState];
             
+            // Reset the active property of all routes to false
             tempState = tempState.map((state) => {
                 return {
                     ...state,
@@ -373,6 +388,7 @@ const Provider = ({ children }: ProviderProps) => {
         setQuestions((prevState) => {
             const tempState = { ...prevState };
             
+            // Remove the question at the specified index from the questions state
             if (tempState.hasOwnProperty(navigationIndex)) {
                 delete tempState[navigationIndex];
             }
@@ -381,7 +397,15 @@ const Provider = ({ children }: ProviderProps) => {
         });
     };
     
+    /**
+     * Updates the previous node of a given current node in the routes state.
+     *
+     * @param {number} currentNode - The current node identifier.
+     * @param {number} nextNode - The next node identifier.
+     * @returns {void}
+     */
     const setPreviousNode = (currentNode: number, nextNode: number) => {
+        // Update the previous node of the next node with the current node.
         setRoutes((prevState) => {
             prevState[nextNode].prevNode = currentNode;
             return prevState;

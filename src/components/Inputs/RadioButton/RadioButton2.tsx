@@ -13,6 +13,18 @@ interface RadioButton2Props {
     labelClassName?: string;
 }
 
+/**
+ * Radio button component
+ *
+ * @param {string} label - The label for the radio button
+ * @param {string} id - The unique identifier for the radio button
+ * @param {string | number} value - The value of the radio button
+ * @param {string} name - The name of the radio button
+ * @param {boolean} checked - Indicates whether the radio button is checked
+ * @param {function(e: ChangeEvent<HTMLInputElement>): void} onChange - The change event handler for the radio button
+ * @param {string | undefined} labelClassName - The class name for the label
+ * @returns {JSX.Element} - The JSX element representing the radio button
+ */
 const RadioButton2 = ({
     label,
     id,
@@ -23,12 +35,12 @@ const RadioButton2 = ({
     labelClassName
 }: RadioButton2Props): JSX.Element => {
     const { to, fromTo } = gsap;
-
+    
     const elementRef = useRef<HTMLLabelElement | null>(null);
-
+    
     useEffect(() => {
         if (!elementRef.current) return;
-
+        
         /**
          * Get the CSS variable from the element
          *
@@ -38,12 +50,12 @@ const RadioButton2 = ({
          */
         const getVar = (key: string, elem: HTMLElement = document.documentElement) =>
             getComputedStyle(elem).getPropertyValue(key);
-
+        
         const elem = elementRef.current;
-
+        
         const svg = elem.querySelector('svg');
         const input = elem.querySelector('input');
-
+        
         input?.addEventListener('change', (e) => {
             fromTo(
                 input,
@@ -97,7 +109,7 @@ const RadioButton2 = ({
             });
         });
     }, []);
-
+    
     return (
         <div className={styles.styles}>
             <label className="radio flex items-center justify-start gap-4" ref={elementRef}>
@@ -116,10 +128,11 @@ const RadioButton2 = ({
                         <circle className="dot" cx="12" cy="12" r="5" />
                         <circle className="drop" cx="12" cy="12" r="2" />
                     </svg>
-
-                    <span className="selected-dot absolute top-1/2 left-1/2 block h-[1.2rem] w-[1.2rem] -translate-y-1/2 -translate-x-1/2 rounded-full bg-white"></span>
+                    
+                    <span
+                        className="selected-dot absolute top-1/2 left-1/2 block h-[1.2rem] w-[1.2rem] -translate-y-1/2 -translate-x-1/2 rounded-full bg-white"></span>
                 </div>
-
+                
                 <span
                     className={twMerge(
                         'cursor-pointer font-mulishBold text-[1.8rem] leading-[2.8rem] text-white',
