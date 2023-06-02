@@ -45,10 +45,6 @@ export interface SuggestionEngineContext {
     setActiveAge: (index: number) => void;
     ageSelected: boolean;
     setAgeSelected: Dispatch<SetStateAction<boolean>>;
-    showUnderAgeStep: boolean;
-    setShowUnderAgeStep: Dispatch<SetStateAction<boolean>>;
-    showSurgeryQuestion: boolean;
-    setShowSurgeryQuestion: Dispatch<SetStateAction<boolean>>;
     addQuestionToQueue: (arg: AddQuestionQueueProps) => void;
     progress: number;
     setProgress: Dispatch<SetStateAction<number>>;
@@ -81,8 +77,6 @@ const Provider = ({ children }: ProviderProps) => {
     const [progress, setProgress] = useState<number>(0);
     const [questions, setQuestions] = useState<QuestionInterface | null>(null);
     const [ageSelected, setAgeSelected] = useState<boolean>(false);
-    const [showUnderAgeStep, setShowUnderAgeStep] = useState<boolean>(false);
-    const [showSurgeryQuestion, setShowSurgeryQuestion] = useState<boolean>(false);
     const [ages, setAges] = useState<Age[]>([
         {
             active: false,
@@ -426,10 +420,6 @@ const Provider = ({ children }: ProviderProps) => {
             setActiveAge,
             ageSelected,
             setAgeSelected,
-            showUnderAgeStep,
-            setShowUnderAgeStep,
-            showSurgeryQuestion,
-            setShowSurgeryQuestion,
             addQuestionToQueue,
             progress,
             setProgress,
