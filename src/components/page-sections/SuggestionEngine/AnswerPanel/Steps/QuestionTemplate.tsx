@@ -116,6 +116,8 @@ const QuestionTemplate = memo(
             
             if (!nextNode) return;
             
+            ctx.setCompletedStep(ctx.completedStep += 1);
+            
             ctx.setPreviousNode(node, nextNode);
             
             ctx.navigateToStep(nextNode);

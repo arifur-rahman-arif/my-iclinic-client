@@ -1,10 +1,12 @@
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
+import CtaForm from '@/page-sections/SuggestionEngine/AnswerPanel/CtaForm';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { useContext, useEffect } from 'react';
 import styles from './styles/PanelReveal.module.scss';
 
 interface CtaScreenProps {
     description?: string;
+    node: number;
 }
 
 /**
@@ -15,23 +17,25 @@ interface CtaScreenProps {
  *
  * @returns {JSX.Element} - The rendered CtaScreen component.
  */
-const CtaScreen = ({ description }: CtaScreenProps) => {
-    const ctx = useContext(Context);
-    
-    useEffect(() => {
-        ctx.setCompletedStep(ctx.totalSteps);
-    }, []);
+const CtaScreen = ({ description, node }: CtaScreenProps) => {
+    // const ctx = useContext(Context);
+    //
+    // useEffect(() => {
+    //     ctx.setCompletedStep(ctx.totalSteps);
+    // }, []);
     
     return (
-        <div className={`${styles.styles} grid h-full w-full place-items-center px-12 md:px-24 xl:px-40`}>
+        <div
+            className={`${styles.styles} grid h-full w-full place-items-center px-12 md:px-24 xl:px-40 py-12 md:py-24`}>
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                 <span className="md:leading-[4rem] font-latoBold text-white md:text-[3.6rem] max-w-[40rem]">
                     Chat to an expert now to see how we can help
                 </span>
                 
                 {description && <p className="text-white">{description}</p>}
+                {/* <ChatWithUs className="!bg-heading2 hover:!bg-white" text="Talk to a specialist" /> */}
                 
-                <ChatWithUs className="!bg-heading2 hover:!bg-white" text="Talk to a specialist" />
+                <CtaForm node={node} />
             </div>
         </div>
     );

@@ -22,6 +22,7 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
                 let nextActiveIndex;
                 
                 if (age === 'Under 20') {
+                    ctx.setCompletedStep(ctx.totalSteps);
                     nextActiveIndex = ctx.routes[0].yesNode;
                     ctx.setQuestions(null);
                     ctx.setProgress(100);
@@ -39,7 +40,7 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
                 ctx.navigateToStep(nextActiveIndex as number);
             }}
         >
-            {ctx.ages[index].active && <AiOutlineCheck className="h-9 w-9 fill-white"/>}
+            {ctx.ages[index].active && <AiOutlineCheck className="h-9 w-9 fill-white" />}
             {age}
         </button>
     );

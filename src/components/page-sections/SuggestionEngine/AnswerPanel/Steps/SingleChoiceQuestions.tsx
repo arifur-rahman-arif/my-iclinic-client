@@ -78,7 +78,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                     className="flex cursor-pointer items-center justify-start gap-6 font-mulishBold text-[1.4rem] capitalize leading-8 text-[#CDCFD0]"
                     onClick={() => {
                         ctx.navigateToStep(ctx.routes[node].prevNode as number);
-                        ctx.setCompletedStep(ctx.completedStep += 1);
+                        ctx.setCompletedStep(ctx.completedStep -= 1);
                     }}
                 >
                     <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
@@ -88,7 +88,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                 <button
                     className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
                     onClick={() => {
-                        ctx.setCompletedStep(ctx.completedStep -= 1);
+                        ctx.setCompletedStep(ctx.completedStep += 1);
                         ctx.navigateToStep(ctx.routes[node].nextNode as number);
                     }}
                 >

@@ -1,7 +1,12 @@
 import { TextField } from '@/components/Inputs';
+import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
+
+interface CtaFormProps {
+    node: number;
+}
 
 /**
  * A component representing a form for capturing user information.
@@ -9,7 +14,9 @@ import { ChangeEvent, useState } from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-const CtaForm = (): JSX.Element => {
+const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
+    const ctx = useContext(Context);
+    
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -18,7 +25,6 @@ const CtaForm = (): JSX.Element => {
     const [nameError, setNameError] = useState<string>('');
     const [phoneError, setPhoneError] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
-    
     
     /**
      * Validate the input fields of the form
@@ -69,9 +75,16 @@ const CtaForm = (): JSX.Element => {
      * @returns {Promise<any>}
      */
     const formSubmit = async (): Promise<any> => {
-        const formError = await showInputErrors();
+        // const formError = await showInputErrors();
         
-        if (formError) return;
+        // if (formError) return;
+        
+        ctx.setCompletedStep(ctx.completedStep += 1);
+        const nextNode = ctx.routes[node].nextNode;
+        
+        if (!nextNode) return;
+        
+        ctx.navigateToStep(nextNode);
         
         // const payload = {
         //     name,
@@ -102,10 +115,11 @@ const CtaForm = (): JSX.Element => {
     
     
     return (
-        <form className="w-full grid grid-rows-[6rem_6rem_6rem_auto] gap-16 max-w-[40rem]" onSubmit={(e) => {
-            e.preventDefault();
-            formSubmit();
-        }}>
+        <form className="w-full grid grid-rows-[6rem_6rem_6rem_auto] justify-self-center gap-16 max-w-[40rem]"
+              onSubmit={(e) => {
+                  e.preventDefault();
+                  formSubmit();
+              }}>
             <TextField
                 value={name}
                 type="text"

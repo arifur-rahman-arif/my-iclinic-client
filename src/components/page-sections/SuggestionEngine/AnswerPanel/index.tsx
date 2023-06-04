@@ -1,3 +1,4 @@
+import ThankYou from '@/page-sections/SuggestionEngine/AnswerPanel/ThankYou';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { Fragment, useContext } from 'react';
 import CtaScreen from './CtaScreen';
@@ -32,9 +33,11 @@ const AnswerPanel = (): JSX.Element => {
             case 'QuestionTemplate':
                 return <QuestionTemplate {...props} {...{ node }} />;
             case 'CtaScreen':
-                return <CtaScreen {...props} />;
+                return <CtaScreen {...props} {...{ node }} />;
             case 'CtaScreen2':
-                return <CtaScreen2 {...props} />;
+                return <CtaScreen2 {...props} {...{ node }} />;
+            case 'ThankYou':
+                return <ThankYou />;
             default:
                 return null;
         }

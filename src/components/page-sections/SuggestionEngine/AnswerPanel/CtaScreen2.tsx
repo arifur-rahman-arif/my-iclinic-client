@@ -2,13 +2,14 @@ import BookConsultation from '@/page-sections/SectionParts/BookConsultation/Book
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import CtaForm from './CtaForm';
 import styles from './styles/PanelReveal.module.scss';
 
 interface CtaScreen2 {
     heading: string;
     includeSuitabilityButtons?: boolean;
+    node: number;
 }
 
 /**
@@ -19,13 +20,9 @@ interface CtaScreen2 {
  * @param {boolean} includeSuitabilityButtons - Flag to include suitability buttons. Default is true.
  * @returns {JSX.Element} The rendered CTA Screen 2 component.
  */
-const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): JSX.Element => {
+const CtaScreen2 = ({ heading, includeSuitabilityButtons = true, node }: CtaScreen2): JSX.Element => {
     const ctx = useContext(Context);
     const selectedOption = ctx.options?.filter((option) => option.active);
-    
-    useEffect(() => {
-        ctx.setCompletedStep(ctx.totalSteps);
-    }, []);
     
     return (
         <div
@@ -39,6 +36,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
                         <button
                             className="text-[#CACECF] cursor-pointer text-[1.4rem] self-center row-span-2 col-start-2 leading-8 font-mulishBold underline underline-[#CACECF] underline-offset-4"
                             onClick={() => {
+                                ctx.setCompletedStep(ctx.completedStep -= 1);
                                 ctx.navigateToStep(7);
                             }}
                         >
@@ -53,7 +51,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true }: CtaScreen2): 
                     {HTMLReactParser(heading)}
                 </span>
                 
-                <CtaForm />
+                <CtaForm node={node} />
                 
                 {includeSuitabilityButtons ? <div className={`flex flex-wrap items-center justify-center gap-6`}>
                     {/* Modal */}
