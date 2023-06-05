@@ -10,17 +10,22 @@ interface QuestionBoxProps {
 
 const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
     const ctx = useContext(Context);
-    
+
     return (
         <button
-            className={twMerge(`flex w-full max-w-[22.1rem] transition-all duration-500 cursor-pointer items-center justify-center gap-6 rounded-primary border-2 py-4 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white`, `${
-                ctx.ages[index].disabled && !ctx.ages[index].active ? 'border-brand opacity-50 cursor-not-allowed' : 'border-white'
-            } ${ctx.ages[index].active ? '!border-brand bg-brand' : 'bg-transparent'}`)}
+            className={twMerge(
+                `flex w-full max-w-[22.1rem] cursor-pointer items-center justify-center gap-6 rounded-primary border-2 py-4 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500`,
+                `${
+                    ctx.ages[index].disabled && !ctx.ages[index].active ?
+                        'cursor-not-allowed border-brand opacity-50' :
+                        'border-white'
+                } ${ctx.ages[index].active ? '!border-brand bg-brand' : 'bg-transparent'}`
+            )}
             onClick={() => {
                 if (ctx.ageSelected) return;
-                
+
                 let nextActiveIndex;
-                
+
                 if (age === 'Under 20') {
                     ctx.setCompletedStep(ctx.totalSteps);
                     nextActiveIndex = ctx.routes[0].yesNode;
@@ -30,12 +35,12 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
                     ctx.setCompletedStep(1);
                     nextActiveIndex = ctx.routes[0].noNode;
                     ctx.addQuestionToQueue({
-                        question: 'What is your age?',
+                        question: 'What is your age',
                         answer: age,
                         questionIndex: '0'
                     });
                 }
-                
+
                 ctx.setActiveAge(index);
                 ctx.navigateToStep(nextActiveIndex as number);
             }}

@@ -20,14 +20,14 @@ interface Options {
 }
 
 interface RouteInterface {
-    active: boolean,
-    node: number,
-    screen: string,
+    active: boolean;
+    node: number;
+    screen: string;
     props?: any;
-    yesNode?: null | number,
-    noNode?: null | number,
-    nextNode?: null | number,
-    prevNode?: null | number
+    yesNode?: null | number;
+    noNode?: null | number;
+    nextNode?: null | number;
+    prevNode?: null | number;
 }
 
 interface AddQuestionQueueProps {
@@ -99,7 +99,7 @@ const Provider = ({ children }: ProviderProps) => {
             age: '60+'
         }
     ]);
-    
+
     const [options, setOptions] = useState<Options[]>([
         {
             active: false,
@@ -137,7 +137,7 @@ const Provider = ({ children }: ProviderProps) => {
             targetNode: 13
         }
     ]);
-    
+
     const [routes, setRoutes] = useState<RouteInterface[]>([
         {
             active: true,
@@ -157,7 +157,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 1,
-                questionText: 'Have you had laser eye surgery before?'
+                questionText: 'Have you had laser eye surgery before'
             },
             yesNode: 3,
             noNode: 4
@@ -169,7 +169,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 2,
-                questionText: 'Are you a glasses/contact lense wearer?',
+                questionText: 'Are you a glasses/contact lense wearer',
                 showBackButton: true
             },
             yesNode: 5,
@@ -182,7 +182,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 2,
-                questionText: 'Are you a glasses/contact lense wearer?',
+                questionText: 'Are you a glasses/contact lense wearer',
                 showBackButton: true
             },
             yesNode: 15,
@@ -195,7 +195,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 3,
-                questionText: 'What is your prescription?',
+                questionText: 'What is your prescription',
                 includeAnswerButton: false,
                 showBackButton: true,
                 includeEyeButton: true
@@ -227,7 +227,8 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'CtaScreen2',
             props: {
                 includeSuitabilityButtons: false,
-                heading: 'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you 3 months from this date to book a suitability check:'
+                heading:
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you 3 months from this date to book a suitability check:'
             },
             nextNode: 18
         },
@@ -236,7 +237,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 9,
             screen: 'CtaScreen2',
             props: {
-                heading: 'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white decoration-white underline underline-offset-4">implantable contact lenses.</a> Please leave your details and we can book you for a free suitability check with our treatment’s specialist.'
+                heading:
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white decoration-white underline underline-offset-4">implantable contact lenses.</a> Please leave your details and we can book you for a free suitability check with our treatment’s specialist.'
             },
             nextNode: 18
         },
@@ -245,7 +247,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 10,
             screen: 'CtaScreen2',
             props: {
-                heading: 'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions. Please leave your details and we can book you for a free suitability check with our treatment’s specialist'
+                heading:
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions. Please leave your details and we can book you for a free suitability check with our treatment’s specialist'
             },
             nextNode: 18
         },
@@ -267,7 +270,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 12,
             screen: 'CtaScreen2',
             props: {
-                heading: 'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
+                heading:
+                    'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
             },
             nextNode: 18
         },
@@ -276,7 +280,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 13,
             screen: 'CtaScreen2',
             props: {
-                heading: 'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor'
+                heading:
+                    'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor'
             },
             nextNode: 18
         },
@@ -285,7 +290,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 14,
             screen: 'CtaScreen',
             props: {
-                description: 'If you don\'t currently wear glasses or contact lenses you are unlikely to need laser eye surgery. If you are experiencing any of the following: Dry eyes, glares around lights or sore eyes please chat to one of our specialists and we can support you with our treatment options.'
+                description:
+                    "If you don't currently wear glasses or contact lenses you are unlikely to need laser eye surgery. If you are experiencing any of the following: Dry eyes, glares around lights or sore eyes please chat to one of our specialists and we can support you with our treatment options."
             },
             nextNode: 18
         },
@@ -295,7 +301,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 4,
-                questionText: 'What is your prescription?',
+                questionText: 'What is your prescription',
                 includeAnswerButton: false,
                 showBackButton: true,
                 includeEyeButton: true
@@ -307,7 +313,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 16,
             screen: 'CtaScreen2',
             props: {
-                heading: 'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
+                heading:
+                    'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
             },
             nextNode: 18
         },
@@ -316,7 +323,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 17,
             screen: 'CtaScreen2',
             props: {
-                heading: 'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
+                heading:
+                    'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
             },
             nextNode: 18
         },
@@ -326,7 +334,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'ThankYou'
         }
     ]);
-    
+
     /**
      * Updates the active state of the age selector based on the provided index.
      *
@@ -343,7 +351,7 @@ const Provider = ({ children }: ProviderProps) => {
             });
         });
     };
-    
+
     /**
      * Adds a question to the queue of questions.
      *
@@ -357,7 +365,7 @@ const Provider = ({ children }: ProviderProps) => {
     const addQuestionToQueue = ({ question, answer, questionIndex }: AddQuestionQueueProps) => {
         setQuestions((prevState) => {
             const updatedQuestions = { ...prevState };
-            
+
             if (questionIndex !== undefined) {
                 // Update or add the question based on the questionIndex
                 updatedQuestions[questionIndex] = {
@@ -365,12 +373,11 @@ const Provider = ({ children }: ProviderProps) => {
                     answer
                 };
             }
-            
+
             return updatedQuestions;
         });
     };
-    
-    
+
     /**
      * Navigates to a specific step in the navigation and updates the state accordingly.
      *
@@ -380,7 +387,7 @@ const Provider = ({ children }: ProviderProps) => {
     const navigateToStep = (navigationIndex: number) => {
         setRoutes((prevState) => {
             let tempState = [...prevState];
-            
+
             // Reset the active property of all routes to false
             tempState = tempState.map((state) => {
                 return {
@@ -388,24 +395,24 @@ const Provider = ({ children }: ProviderProps) => {
                     active: false
                 };
             });
-            
+
             tempState[navigationIndex].active = true;
-            
+
             return tempState;
         });
-        
+
         setQuestions((prevState) => {
             const tempState = { ...prevState };
-            
+
             // Remove the question at the specified index from the questions state
             if (tempState.hasOwnProperty(navigationIndex)) {
                 delete tempState[navigationIndex];
             }
-            
+
             return tempState;
         });
     };
-    
+
     /**
      * Update the previous node of the next node with the current node.
      *
@@ -419,35 +426,38 @@ const Provider = ({ children }: ProviderProps) => {
             return prevState;
         });
     };
-    
+
     useEffect(() => {
         setProgress((completedStep / totalSteps) * 100);
     }, [completedStep]);
-    
-    return <Context.Provider
-        value={{
-            totalSteps,
-            questions,
-            setQuestions,
-            ages,
-            setAges,
-            setActiveAge,
-            ageSelected,
-            setAgeSelected,
-            addQuestionToQueue,
-            progress,
-            setProgress,
-            options,
-            setOptions,
-            routes,
-            setRoutes,
-            navigateToStep,
-            setPreviousNode,
-            completedStep,
-            setCompletedStep
-        }}>
-        {children}
-    </Context.Provider>;
+
+    return (
+        <Context.Provider
+            value={{
+                totalSteps,
+                questions,
+                setQuestions,
+                ages,
+                setAges,
+                setActiveAge,
+                ageSelected,
+                setAgeSelected,
+                addQuestionToQueue,
+                progress,
+                setProgress,
+                options,
+                setOptions,
+                routes,
+                setRoutes,
+                navigateToStep,
+                setPreviousNode,
+                completedStep,
+                setCompletedStep
+            }}
+        >
+            {children}
+        </Context.Provider>
+    );
 };
 
 export default Provider;

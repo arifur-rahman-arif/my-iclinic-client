@@ -1,8 +1,11 @@
 import { TextField } from '@/components/Inputs';
-import { Context } from '@/page-sections/SuggestionEngine/Context';
+import { handleAlert } from '@/features/alert/alertSlice';
+import { Context, SuggestionEngineContext } from '@/page-sections/SuggestionEngine/Context';
+import { useSubmitSuggestionMutation } from '@/services/suggestionRequest';
 import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 interface CtaFormProps {
     node: number;
@@ -15,17 +18,19 @@ interface CtaFormProps {
  * @constructor
  */
 const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
-    const ctx = useContext(Context);
-    
+    const ctx: SuggestionEngineContext = useContext(Context);
+    const dispatch = useDispatch();
+    const [submitForm, response] = useSubmitSuggestionMutation();
+
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [typingTimer, setTypingTimer] = useState<any>();
-    
+
     const [nameError, setNameError] = useState<string>('');
     const [phoneError, setPhoneError] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
-    
+
     /**
      * Validate the input fields of the form
      *
@@ -34,66 +39,66 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
     const showInputErrors = async (): Promise<boolean> => {
         if (!name) {
             setNameError('Please provide your name');
-            return false;
+            return true;
         }
         if (!phone) {
             setPhoneError('Please provide your phone');
-            return false;
+            return true;
         }
-        
+
         const numberValid = await validatePhoneNumber(phone);
-        
+
         if (!numberValid) {
             setPhoneError('Please provide a valid phone number');
-            return false;
+            return true;
         }
-        
+
         if (!email) {
             setEmailError('Please provide your email');
-            return false;
+            return true;
         }
         if (!validateEmail(email)) {
             setEmailError('Please provide a valid email address');
-            return false;
+            return true;
         }
-        
-        return true;
+
+        if (!ctx.questions) {
+            setEmailError('There are no questions selected to submit');
+            return true;
+        }
+
+        return false;
     };
-    
+
     /**
      * Reset the form to its initial state
      */
-    // const resetForm = () => {
-    //     setName('');
-    //     setEmail('');
-    //     setPhone('');
-    // };
-    
-    
+    const resetForm = () => {
+        setName('');
+        setEmail('');
+        setPhone('');
+    };
+
     /**
      * Submit the form
      * @returns {Promise<any>}
      */
     const formSubmit = async (): Promise<any> => {
-        // const formError = await showInputErrors();
-        
-        // if (formError) return;
-        
-        ctx.setCompletedStep(ctx.completedStep += 1);
-        const nextNode = ctx.routes[node].nextNode;
-        
-        if (!nextNode) return;
-        
-        ctx.navigateToStep(nextNode);
-        
-        // const payload = {
-        //     name,
-        //     phone,
-        //     email
-        // };
+        const formError = await showInputErrors();
+        console.log(formError);
+
+        if (formError) return;
+
+        const payload = {
+            name,
+            phone,
+            email,
+            questions: ctx.questions
+        };
+
+        submitForm(payload);
     };
-    
-    
+
     /**
      * Handle the phone input for onchange event
      *
@@ -102,60 +107,131 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
     const handlePhoneInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const value = e.target.value as string;
         setPhone(value);
+        setPhoneError('');
         clearTimeout(typingTimer);
-        
+
         const timeoutID = setTimeout(() => {
             formatPhoneNumber(value).then((res) => {
                 setPhone(res);
             });
         }, 1000);
-        
+
         setTypingTimer(timeoutID);
     };
-    
-    
+
+    useEffect(() => {
+        try {
+            // If it's a fetch error
+            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
+                dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertType: 'error',
+                        alertMessage: (response.error as any)?.data.message || 'Unable to submit the form'
+                    })
+                );
+                console.log(response.error);
+                return;
+            }
+
+            if (response.isError) {
+                dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertType: 'error',
+                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
+                    })
+                );
+                console.log(response.error);
+                return;
+            }
+
+            if (response.isSuccess) {
+                resetForm();
+
+                // Go to the next route
+                // if current node is 14 then increase the step by 2 as this route has only 4 routes
+                if (node === 14) {
+                    ctx.setCompletedStep((ctx.completedStep += 2));
+                } else {
+                    ctx.setCompletedStep((ctx.completedStep += 1));
+                }
+
+                const nextNode = ctx.routes[node].nextNode;
+                if (!nextNode) return;
+                ctx.navigateToStep(nextNode);
+            }
+        } catch (err: any) {
+            dispatch(
+                handleAlert({
+                    showAlert: true,
+                    alertType: 'error',
+                    alertMessage: err.message || 'Something went wrong. Please try again'
+                })
+            );
+        }
+    }, [response, dispatch]);
+
     return (
-        <form className="w-full grid grid-rows-[6rem_6rem_6rem_auto] justify-self-center gap-16 max-w-[40rem]"
-              onSubmit={(e) => {
-                  e.preventDefault();
-                  formSubmit();
-              }}>
+        <form
+            className="grid w-full max-w-[40rem] grid-rows-[6rem_6rem_6rem_auto] gap-[4.5rem] justify-self-center"
+            onSubmit={(e) => {
+                e.preventDefault();
+                formSubmit();
+            }}
+        >
             <TextField
                 value={name}
                 type="text"
                 placeholder="Your Name"
                 important
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                    setName(e.target.value);
+                    setNameError('');
+                }}
                 onClearValue={() => setName('')}
                 errorText={nameError}
             />
-            
+
             <TextField
                 value={phone}
                 type="text"
                 placeholder="Phone number"
                 important
                 onChange={handlePhoneInput}
-                onClearValue={() => {
-                }}
+                onClearValue={() => {}}
                 errorText={phoneError}
             />
-            
+
             <TextField
                 value={email}
                 type="text"
                 placeholder="Email"
                 important
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                    setEmail(e.target.value);
+                    setNameError('');
+                }}
                 onClearValue={() => setEmail('')}
                 errorText={emailError}
             />
-            
+
             <button
                 type="submit"
-                className="rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent flex items-center justify-center gap-6">
+                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+            >
                 Send
-                <Image src="/images/icons/icon-send-white.svg" alt="" width={24} height={24} />
+                {response.isLoading ? (
+                    <Image
+                        src="/images/icons/icon-loader-white.svg"
+                        alt=""
+                        width={24}
+                        height={24}
+                        className="relative top-[0.1rem] h-[2.4rem] w-[2.4rem]"
+                    />
+                ) : (
+                    <Image src="/images/icons/icon-send-white.svg" alt="" width={24} height={24} />
+                )}
             </button>
         </form>
     );

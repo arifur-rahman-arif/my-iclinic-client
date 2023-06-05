@@ -6,6 +6,7 @@ import { downloadFormApi } from '@/services/downloadForm';
 import { navMenuApi } from '@/services/navMenuData';
 import { requestCallbackApi } from '@/services/requestCallback';
 import { reviewsApi } from '@/services/reviews';
+import { suggestionRequestApi } from '@/services/suggestionRequest';
 import { configureStore } from '@reduxjs/toolkit';
 import { CurriedGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -24,7 +25,8 @@ export const makeStore = () => {
             [abandonedCallbackApi.reducerPath]: abandonedCallbackApi.reducer,
             [reviewsApi.reducerPath]: reviewsApi.reducer,
             [navMenuApi.reducerPath]: navMenuApi.reducer,
-            [businessFormApi.reducerPath]: businessFormApi.reducer
+            [businessFormApi.reducerPath]: businessFormApi.reducer,
+            [suggestionRequestApi.reducerPath]: suggestionRequestApi.reducer
         },
         middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware) =>
             getDefaultMiddleware().concat(
@@ -33,7 +35,8 @@ export const makeStore = () => {
                 requestCallbackApi.middleware,
                 abandonedCallbackApi.middleware,
                 navMenuApi.middleware,
-                businessFormApi.middleware
+                businessFormApi.middleware,
+                suggestionRequestApi.middleware
             )
     });
 };

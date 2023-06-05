@@ -41,7 +41,7 @@ const QuestionTemplate = memo(
         node
     }: QuestionTemplateProps): JSX.Element => {
         const ctx = useContext(Context);
-        
+
         /**
          * Handles click events for the component.
          * If ages are not selected yet, disables all ages except the current one and updates the ages in the context.
@@ -72,34 +72,33 @@ const QuestionTemplate = memo(
                         };
                     });
                 });
-                
+
                 ctx.setAgeSelected(true);
             }
-            
-            ctx.setCompletedStep(ctx.completedStep += 1);
-            
+
+            ctx.setCompletedStep((ctx.completedStep += 1));
+
             let nextNode;
-            
+
             if (type === 'yes') {
                 nextNode = ctx.routes[node].yesNode;
             } else {
                 nextNode = ctx.routes[node].noNode;
             }
-            
+
             if (!nextNode) return;
-            
+
             ctx.setPreviousNode(node, nextNode);
-            
+
             ctx.navigateToStep(nextNode);
-            
+
             ctx.addQuestionToQueue({
                 question: questionText,
                 answer: type,
                 questionIndex: `${node}`
             });
         };
-        
-        
+
         /**
          * Handles the eye button click event.
          *
@@ -111,82 +110,82 @@ const QuestionTemplate = memo(
                 answer: type,
                 questionIndex: `${node}`
             });
-            
+
             const nextNode = ctx.routes[node].nextNode;
-            
+
             if (!nextNode) return;
-            
-            ctx.setCompletedStep(ctx.completedStep += 1);
-            
+
+            ctx.setCompletedStep((ctx.completedStep += 1));
+
             ctx.setPreviousNode(node, nextNode);
-            
+
             ctx.navigateToStep(nextNode);
         };
-        
+
         return (
             <div
-                className={`${styles.styles} grid h-full w-full place-items-center px-12 md:px-24 xl:px-40 py-12 md:py-24`}>
+                className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+            >
                 <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                     <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
                         Suitability Questionnaire
                     </span>
-                    
+
                     <div className="grid max-w-[57.2rem] gap-12">
                         <div className="grid grid-cols-[auto_1fr] gap-2">
-                            <span
-                                className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
+                            <span className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
                                 Q{questionNumber}
                             </span>
                             <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-[#4E6C7C]"></span>
                         </div>
-                        
-                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}</span>
+
+                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}?</span>
                     </div>
-                    
+
                     {includeRadioBoxes ? <SingleChoiceQuestions node={node} /> : null}
-                    
+
                     {includeAnswerButton && (
                         <div className="flex flex-wrap items-center justify-start gap-6">
                             <button
                                 onClick={() => handleClick('yes')}
-                                className="rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent">
+                                className="rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                            >
                                 Yes
                             </button>
                             <button
                                 onClick={() => handleClick('no')}
-                                className="rounded-primary border-2 border-[#0186B0] bg-[#0186B0] py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent">
+                                className="rounded-primary border-2 border-[#0186B0] bg-[#0186B0] py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                            >
                                 No
                             </button>
                         </div>
                     )}
-                    
+
                     {includeEyeButton && (
                         <div className="flex flex-wrap items-center justify-start gap-6">
                             <button
-                                className="rounded-primary border-2 border-heading2 bg-heading2 py-5 pl-20 pr-8 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white flex items-center justify-center md:gap-16"
+                                className="flex items-center justify-center rounded-primary border-2 border-heading2 bg-heading2 py-5 pl-20 pr-8 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white md:gap-16"
                                 onClick={() => handleEyeButtonClick('Left Eye')}
                             >
                                 Left Eye
-                                
                                 <Image src="/images/icons/icon-half-left-eye.svg" alt="" width={54} height={45} />
                             </button>
-                            
+
                             <button
-                                className="rounded-primary border-2 border-[#0186B0] bg-[#0186B0] py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white flex items-center justify-center md:gap-4"
+                                className="flex items-center justify-center rounded-primary border-2 border-[#0186B0] bg-[#0186B0] py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white md:gap-4"
                                 onClick={() => handleEyeButtonClick('Right Eye')}
                             >
                                 Right Eye
-                                
                                 <Image src="/images/icons/icon-half-right-eye.svg" alt="" width={54} height={45} />
                             </button>
                         </div>
                     )}
-                    
+
                     {showBackButton && (
                         <button
                             className="flex cursor-pointer items-center justify-start gap-6 font-mulishBold text-[1.4rem] capitalize leading-8 text-[#CDCFD0]"
                             onClick={() => {
-                                ctx.setCompletedStep(ctx.completedStep -= 1);
+                                ctx.setCompletedStep((ctx.completedStep -= 1));
                                 ctx.navigateToStep(ctx.routes[node].prevNode as number);
                             }}
                         >

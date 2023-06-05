@@ -14,17 +14,14 @@ import Provider from '@/page-sections/SuggestionEngine/Context';
  */
 export default function SuggestionEngine(): JSX.Element {
     return (
-        <Page
-            title="Lazy Eye treatment in London"
-            description="My-iClinic offers experienced and comprehensive treatment for Lazy eyes in adults and children (amblyopia). Get in touch with us to learn how we can help."
-        >
-            <BreadCrumb className="md:flex"/>
-            
+        <Page title="Suitability check" description="Suggestion Engine">
+            <BreadCrumb className="md:flex" />
+
             <Provider>
-                <Engine/>
+                <Engine />
             </Provider>
-            
-            <CompanyLogos/>
+
+            <CompanyLogos />
         </Page>
     );
 }
