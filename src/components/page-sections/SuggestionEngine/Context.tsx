@@ -56,6 +56,7 @@ export interface SuggestionEngineContext {
     setPreviousNode: (currentNode: number, nextNode: number) => void;
     completedStep: number;
     setCompletedStep: Dispatch<SetStateAction<number>>;
+    resetAllRouteSteps: () => void;
 }
 
 interface ProviderProps {
@@ -77,7 +78,8 @@ const Provider = ({ children }: ProviderProps) => {
     const [progress, setProgress] = useState<number>(0);
     const [questions, setQuestions] = useState<QuestionInterface | null>(null);
     const [ageSelected, setAgeSelected] = useState<boolean>(false);
-    const [ages, setAges] = useState<Age[]>([
+
+    const defaultAges: Age[] = [
         {
             active: false,
             disabled: false,
@@ -98,9 +100,10 @@ const Provider = ({ children }: ProviderProps) => {
             disabled: false,
             age: '60+'
         }
-    ]);
+    ];
+    const [ages, setAges] = useState<Age[]>(defaultAges);
 
-    const [options, setOptions] = useState<Options[]>([
+    const defaultOptions: Options[] = [
         {
             active: false,
             label: 'I am pregnant and/or Breastfeeding',
@@ -136,9 +139,10 @@ const Provider = ({ children }: ProviderProps) => {
             label: 'I suffer from Amblyopia (Lazy Eye)',
             targetNode: 13
         }
-    ]);
+    ];
+    const [options, setOptions] = useState<Options[]>(defaultOptions);
 
-    const [routes, setRoutes] = useState<RouteInterface[]>([
+    const defaultRoutes: RouteInterface[] = [
         {
             active: true,
             node: 0,
@@ -228,7 +232,7 @@ const Provider = ({ children }: ProviderProps) => {
             props: {
                 includeSuitabilityButtons: false,
                 heading:
-                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you 3 months from this date to book a suitability check:'
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you <span class="font-mulishBold text-[#FE8083]">3 months from this date</span> to book a suitability check:'
             },
             nextNode: 18
         },
@@ -238,7 +242,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'CtaScreen2',
             props: {
                 heading:
-                    'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white decoration-white underline underline-offset-4">implantable contact lenses.</a> Please leave your details and we can book you for a free suitability check with our treatment’s specialist.'
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold">implantable contact lenses.</a> Please leave your details and we can book you for a free suitability check with our treatment’s specialist.'
             },
             nextNode: 18
         },
@@ -259,7 +263,7 @@ const Provider = ({ children }: ProviderProps) => {
             props: {
                 heading: `We are very sorry but you are unlikely to be suitable for our laser treatments as all retinal
                     detachments need to be treated before laser treatment. We do offer alternative vision correction
-                    treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white decoration-white underline underline-offset-4">implantable contact lenses.</a>
+                    treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold">implantable contact lenses.</a>
                     Please leave your details and we can book you for a free suitability check with our treatment’s
                     specialist.`
             },
@@ -333,7 +337,8 @@ const Provider = ({ children }: ProviderProps) => {
             node: 18,
             screen: 'ThankYou'
         }
-    ]);
+    ];
+    const [routes, setRoutes] = useState<RouteInterface[]>(defaultRoutes);
 
     /**
      * Updates the active state of the age selector based on the provided index.
@@ -427,6 +432,16 @@ const Provider = ({ children }: ProviderProps) => {
         });
     };
 
+    const resetAllRouteSteps = () => {
+        setCompletedStep(0);
+        setProgress(0);
+        setQuestions(null);
+        setAgeSelected(false);
+        setAges(defaultAges);
+        setOptions(defaultOptions);
+        setRoutes(defaultRoutes);
+    };
+
     useEffect(() => {
         setProgress((completedStep / totalSteps) * 100);
     }, [completedStep]);
@@ -452,7 +467,8 @@ const Provider = ({ children }: ProviderProps) => {
                 navigateToStep,
                 setPreviousNode,
                 completedStep,
-                setCompletedStep
+                setCompletedStep,
+                resetAllRouteSteps
             }}
         >
             {children}

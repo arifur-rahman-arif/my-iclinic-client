@@ -84,19 +84,29 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
      * @returns {Promise<any>}
      */
     const formSubmit = async (): Promise<any> => {
-        const formError = await showInputErrors();
-        console.log(formError);
+        // const formError = await showInputErrors();
+        //
+        //
+        // if (formError) return;
+        //
+        // const payload = {
+        //     name,
+        //     phone,
+        //     email,
+        //     questions: ctx.questions
+        // };
+        //
+        // submitForm(payload);
 
-        if (formError) return;
+        if (node === 14) {
+            ctx.setCompletedStep((ctx.completedStep += 2));
+        } else {
+            ctx.setCompletedStep((ctx.completedStep += 1));
+        }
 
-        const payload = {
-            name,
-            phone,
-            email,
-            questions: ctx.questions
-        };
-
-        submitForm(payload);
+        const nextNode = ctx.routes[node].nextNode;
+        if (!nextNode) return;
+        ctx.navigateToStep(nextNode);
     };
 
     /**
@@ -218,19 +228,24 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
 
             <button
                 type="submit"
-                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
             >
-                Send
                 {response.isLoading ? (
-                    <Image
-                        src="/images/icons/icon-loader-white.svg"
-                        alt=""
-                        width={24}
-                        height={24}
-                        className="relative top-[0.1rem] h-[2.4rem] w-[2.4rem]"
-                    />
+                    <>
+                        Sending
+                        <Image
+                            src="/images/icons/icon-loader-white.svg"
+                            alt=""
+                            width={20}
+                            height={20}
+                            className="relative top-[0.1rem] h-8 w-8"
+                        />
+                    </>
                 ) : (
-                    <Image src="/images/icons/icon-send-white.svg" alt="" width={24} height={24} />
+                    <>
+                        Send
+                        <Image src="/images/icons/icon-send-white.svg" alt="" width={20} height={20} />
+                    </>
                 )}
             </button>
         </form>
