@@ -32,7 +32,7 @@ interface HeaderInterface {
  */
 const Header = ({ image, title, author, readTime, views, categories }: HeaderInterface): JSX.Element => {
     return (
-        <Section>
+        <Section className="!mt-24">
             <Container className="grid">
                 <div className="group/header max-h-[43.8rem] overflow-hidden rounded-primary">
                     <Image
@@ -52,13 +52,11 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                         </h1>
                     )}
 
-                    <Image src="/images/icons/icon-pin-yellow.svg" width={154} height={2} alt="" className="mt-12" />
-
                     {categories?.length && <BlogCategories categories={categories} className="!mt-12  w-full" />}
 
-                    <div className="mt-8 flex flex-col items-center justify-between gap-12 md:flex-row">
+                    <div className="mt-12 flex flex-col items-center justify-between gap-12 md:flex-row">
                         {/* Blog meta data */}
-                        <div className="flex items-center justify-start gap-6">
+                        <div className="flex items-center justify-start gap-6 text-[#697072]">
                             <div className="flex items-center justify-start gap-4">
                                 <Image
                                     src={author?.logo || '/images/logos/iclinic-rounded.png'}
@@ -83,7 +81,9 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                                     alt=""
                                     className="mt-1"
                                 />
-                                <span className="font-mulishBold text-[1.4rem] leading-8">{readTime}</span>
+                                <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">
+                                    {readTime}
+                                </span>
                             </div>
                             |{/* Post views */}
                             <div className="flex items-center justify-start gap-4" title={`Total View: ${views || 0}`}>
@@ -94,7 +94,9 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                                     alt=""
                                     className="mt-1"
                                 />
-                                <span className="font-mulishBold text-[1.4rem] leading-8">{views || 0}</span>
+                                <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">
+                                    {views || 0}
+                                </span>
                             </div>
                         </div>
                     </div>

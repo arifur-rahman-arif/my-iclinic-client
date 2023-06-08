@@ -8,8 +8,11 @@ import IconTwitter from '@/icons/icon-twitter-outline-svg.svg';
 import IconShare from '@/icons/icon-share-outline.svg';
 import IconFacebook from '@/icons/icon-facebook-outline.svg';
 import { useRouter } from 'next/router';
+import { twMerge } from 'tailwind-merge';
 
-interface ShareLinksInterface {}
+interface ShareLinksInterface {
+    className?: string;
+}
 
 /**
  * Social sharing links component
@@ -21,15 +24,15 @@ interface ShareLinksInterface {}
  * @returns {JSX.Element}
  * @constructor
  */
-const ShareLinks = ({}: ShareLinksInterface): JSX.Element => {
+const ShareLinks = ({ className }: ShareLinksInterface): JSX.Element => {
     const router = useRouter();
     const dispatch = useAppDispatch();
 
     const siteUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/articles`;
 
     return (
-        <div className="flex flex-wrap items-center gap-8 md:flex-col">
-            <span className="font-mulishBold text-[2rem] leading-[2.8rem] md:mb-4">Share</span>
+        <div className={twMerge('flex flex-wrap items-center gap-8 md:flex-col', className)}>
+            <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading md:mb-4">Share</span>
 
             <Link
                 href="#"

@@ -33,7 +33,7 @@ const BlogMeta = ({
                     alt=""
                     className="mt-1 h-8 w-8"
                 />
-                <span className="font-mulishBold text-[1.4rem] leading-8">{views || 0}</span>
+                <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">{views || 0}</span>
             </div>
             <div className="flex items-center justify-start gap-4" title={`Reading Time: ${readTime}`}>
                 <Image
@@ -43,7 +43,7 @@ const BlogMeta = ({
                     alt=""
                     className="mt-1 h-[1.8rem] w-[1.8rem]"
                 />
-                <span className="font-mulishBold text-[1.4rem] leading-8">{readTime}</span>
+                <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">{readTime}</span>
             </div>
         </div>
     );

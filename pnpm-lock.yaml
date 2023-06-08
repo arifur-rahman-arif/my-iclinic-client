@@ -67,6 +67,9 @@ dependencies:
   swiper:
     specifier: ^8.4.6
     version: 8.4.7
+  tailwind-merge:
+    specifier: ^1.13.1
+    version: 1.13.1
   typescript:
     specifier: 4.9.5
     version: 4.9.5
@@ -3927,6 +3930,10 @@ packages:
       '@pkgr/utils': 2.3.1
       tslib: 2.5.0
     dev: true
+
+  /tailwind-merge@1.13.1:
+    resolution: {integrity: sha512-tRtRN22TDokGi2TuYSvuHQuuW6BJ/zlUEG+iYpAQ9i66msc/0eU/+HPccbPnNNH0mCPp0Ob8thaC8Uy9CxHitQ==}
+    dev: false
 
   /tailwindcss@3.2.7(postcss@8.4.21):
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}

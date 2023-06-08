@@ -50,7 +50,7 @@ const BlogCard2 = ({
     slug
 }: GeneralBlogInterface): JSX.Element => {
     return (
-        <div className="group/card grid max-w-[40rem] items-start overflow-hidden rounded-primary border-b-4 pb-12 shadow-shadow3 transition-all duration-500 hover:border-brand hover:shadow-shadow1">
+        <div className="group/card grid max-w-[40rem] items-start overflow-hidden rounded-primary border-b-4 pb-12 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1">
             <Link href={`/articles/${slug}` || '#'} className="max-h-[19.7rem] cursor-pointer overflow-hidden">
                 <Image
                     src={image.src || '/images/section-images/placeholder-image.png'}
@@ -65,7 +65,9 @@ const BlogCard2 = ({
                 <BlogAuthor author={author} />
 
                 <Link href={`/articles/${slug}` || '#'} className="mt-8 block" title={title}>
-                    <H3Variant3>{trimText(title, 30)}</H3Variant3>
+                    <H3Variant3 className="!text-[2rem] !leading-[2.8rem] text-heading line-clamp-1">
+                        {title}
+                    </H3Variant3>
                 </Link>
 
                 {categories?.length && <BlogCategories categories={categories} />}

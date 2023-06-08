@@ -9,13 +9,11 @@ Dockerfile*
 package.json
 composer.json
 composer.lock
+pnpm-lock.yaml
 yarn.lock
 *.md
 node_modules
-assets
 build
-vendor
 out
-shell-scripts
 public
 .next
