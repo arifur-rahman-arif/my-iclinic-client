@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface H4Variant1Interface {
     children: ReactNode;
@@ -21,7 +22,7 @@ const H3Variant3 = ({
     defaultClassName = 'w-full font-latoBold text-[2rem] normal-case leading-[3.2rem] md:text-[2.4rem] md:leading-[3.2rem]',
     className
 }: H4Variant1Interface): JSX.Element => {
-    return <h3 className={`${defaultClassName} ${className}`}>{children}</h3>;
+    return <h3 className={twMerge(defaultClassName, className)}>{children}</h3>;
 };
 
 export default H3Variant3;

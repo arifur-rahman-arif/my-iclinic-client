@@ -39,8 +39,9 @@ const ArticleMenu = ({ articles }: ArticleMenuProps): JSX.Element => {
 
     return (
         <span className="group/menu-item parent-menu flex items-center justify-center gap-2">
-            <span
-                className={`relative font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
+            <Link
+                href="/articles"
+                className={`relative cursor-pointer font-mulishMedium text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                     isMenuActive && 'text-[#9B9FA1]'
                 }`}
                 onClick={() => {
@@ -61,7 +62,7 @@ const ArticleMenu = ({ articles }: ArticleMenuProps): JSX.Element => {
                 {isMenuActive && (
                     <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                 )}
-            </span>
+            </Link>
 
             <FaAngleDown className="h-[1.2rem] w-[1.2rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]" />
 

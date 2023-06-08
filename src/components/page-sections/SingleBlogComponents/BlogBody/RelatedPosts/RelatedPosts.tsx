@@ -28,7 +28,7 @@ const RelatedPosts = ({ posts }: RelatedPostsInterface): JSX.Element => {
                 <Image src="/images/icons/icon-pin-yellow.svg" width={198} height={2} alt="" />
             </div>
 
-            <div className="grid  grid-cols-1 justify-items-start gap-12 sm:grid-cols-[repeat(auto-fit,_minmax(auto,_36.6rem))]">
+            <div className="grid grid-cols-1 justify-items-start gap-12 sm:grid-cols-[repeat(auto-fit,_minmax(36.6rem,_1fr))]">
                 {currentPosts.length > 0 ?
                     currentPosts.map((post, index) => <BlogRelatedCard key={index} {...post} />) :
                     null}

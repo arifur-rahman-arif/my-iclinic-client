@@ -30,7 +30,7 @@ const BlogRelatedCard = ({
     return (
         <Link
             href={`/articles/${slug}` || '#'}
-            className="group/card grid max-w-[36.6rem] grid-cols-[auto_1fr] items-start gap-10 overflow-hidden rounded-primary border-b-4 pr-4 shadow-shadow3 transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:h-[18rem] sm:pr-8"
+            className="group/card grid min-h-[20rem] grid-cols-[auto_1fr] items-start gap-10 overflow-hidden rounded-primary border-b-4 pr-4 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:pr-8"
         >
             <div className="h-full min-w-[14.3rem] max-w-[14.3rem] cursor-pointer overflow-hidden">
                 <Image

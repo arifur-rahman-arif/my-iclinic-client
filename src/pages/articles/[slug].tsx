@@ -10,14 +10,11 @@
 // export default noComponent;
 
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import Page from '@/components/Page';
-import { getCategories, getPageData, getPost, getPosts } from '@/lib';
+import { getCategories, getPageData, getPost } from '@/lib';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { BlogBody, Header } from '@/page-sections/SingleBlogComponents';
 import { PostInterface, WpPageResponseInterface } from '@/types';
-import { GetStaticPropsContext } from 'next';
-import { ParsedUrlQuery } from 'querystring';
 import usePostView from 'src/hooks/usePostView';
 
 interface SinglePostProps {
@@ -59,36 +56,37 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
     );
 }
 
-/**
- * Fetch all the post slug and defines static page paths
- *
- * @returns {Promise<{props: {posts: any}}>}
- */
-export async function getStaticPaths() {
-    const posts: Array<GeneralBlogInterface> = await getPosts();
-
-    // Map the slugs to the format required by `getStaticPaths`
-    const paths = posts.map((post) => ({ params: { slug: post.slug } }));
-
-    return {
-        paths,
-        fallback: false
-    };
-}
-
-interface SinglePageParamsInterface extends ParsedUrlQuery {
-    slug: string;
-}
+// /**
+//  * Fetch all the post slug and defines static page paths
+//  *
+//  * @returns {Promise<{props: {posts: any}}>}
+//  */
+// export async function getStaticPaths() {
+//     const posts: Array<GeneralBlogInterface> = await getPosts();
+//
+//     // Map the slugs to the format required by `getStaticPaths`
+//     const paths = posts.map((post) => ({ params: { slug: post.slug } }));
+//
+//     return {
+//         paths,
+//         fallback: false
+//     };
+// }
+//
+// interface SinglePageParamsInterface extends ParsedUrlQuery {
+//     slug: string;
+// }
 
 /**
  * Fetch the data from WordPress database
  *
- * @param {GetStaticPropsContext<SinglePageParamsInterface>}ctx
+ * @param {any} ctx
  * @returns {Promise<{props: {}}>}
  */
-export async function getStaticProps(ctx: GetStaticPropsContext<SinglePageParamsInterface>) {
+export async function getServerSideProps(ctx: any) {
     try {
-        const post: PostInterface = await getPost(ctx?.params?.slug || '');
+        const slug = ctx.query.slug;
+        const post: PostInterface = await getPost(slug || '');
         const categories: BlogCategoriesInterface[] = await getCategories();
 
         const data: WpPageResponseInterface<any> = await getPageData({
@@ -102,8 +100,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext<SinglePageParams
                 categories,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
         };
     } catch (error: any) {
         console.error(error);
