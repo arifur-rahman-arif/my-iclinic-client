@@ -402,7 +402,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
             `The most comforting part of our care is that our patients know their surgeon from the beginning; they will be your dedicated specialist throughout your consultation, treatment and aftercare.`,
             `Before your surgery day, our patient care coordinator will reach out and answer any extra information that will be helpful to you before your treatment.`,
             `On the day of your cataract surgery, our friendly nurse team will be with you before your treatment time and they will answer any questions you may have for your ease, care and comfort.`,
-            `Your cataract surgery will be completely painless and takes just an average of 60 minutes, depending on your lens options.`,
+            `Your cataract surgery will be completely painless and takes just an average of 10 minutes per eye, depending on your lens options.`,
             `Our nurses will be there after your surgery to help you through our at-home instructions which  will help you in your recovery time.`
         ]
     },
