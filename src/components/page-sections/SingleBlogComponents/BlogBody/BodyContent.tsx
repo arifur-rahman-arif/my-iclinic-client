@@ -2,6 +2,10 @@ import CtaSection3 from '@/page-sections/CtaSection/CtaSection3';
 import HTMLReactParser from 'html-react-parser';
 import styles from './styles/BlogBody.module.scss';
 
+import '@wordpress/block-library/build-style/style.css';
+import '@wordpress/block-library/build-style/theme.css';
+import '@wordpress/block-library/build-style/editor.css';
+
 interface BodyContentInterface {
     content: string;
     includeCta?: boolean;

@@ -23,6 +23,7 @@
     "@next/font": "^13.2.1",
     "@reduxjs/toolkit": "^1.9.3",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@wordpress/block-library": "^8.12.0",
     "gsap": "^3.11.4",
     "html-react-parser": "^3.0.9",
     "js-search": "^2.0.0",

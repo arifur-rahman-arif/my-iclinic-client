@@ -1,5 +1,6 @@
 import store from '@/store';
 import '@/styles/globals.scss';
+import '@/styles/wordpress-variables.scss';
 
 import { Lato, Mulish } from '@next/font/google';
 
