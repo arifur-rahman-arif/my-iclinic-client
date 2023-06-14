@@ -144,7 +144,7 @@ const Provider = ({ children }: ProviderProps) => {
 
     const defaultRoutes: RouteInterface[] = [
         {
-            active: true,
+            active: false,
             node: 0,
             screen: 'SuitabilityQuestionnaire',
             yesNode: 1,
@@ -194,7 +194,7 @@ const Provider = ({ children }: ProviderProps) => {
         },
         // What is your prescription? Left Eye: Right Eye:
         {
-            active: false,
+            active: true,
             node: 5,
             screen: 'QuestionTemplate',
             props: {
@@ -263,7 +263,7 @@ const Provider = ({ children }: ProviderProps) => {
             props: {
                 heading: `We are very sorry but you are unlikely to be suitable for our laser treatments as all retinal
                     detachments need to be treated before laser treatment. We do offer alternative vision correction
-                    treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold">implantable contact lenses.</a>
+                    treatments depending on your eye health within these conditions, such as <a href='/icl' class='text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold'>implantable contact lenses.</a>
                     Please leave your details and we can book you for a free suitability check with our treatment’s
                     specialist.`
             },
