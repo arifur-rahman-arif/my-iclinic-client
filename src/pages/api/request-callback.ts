@@ -10,7 +10,6 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
-            // const [firstName, lastName] = splitName(req.body.name);
             const dateObject = new Date(req.body.dateOriginal);
 
             const formattedDate = `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
@@ -21,7 +20,7 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // Ticket data to be created
             const payload = {
                 subject: `Request callback from ${req.body.name}`,
-                description: req.body.optionalMessage,
+                description: req.body.optionalMessage || 'N/A',
                 email: req.body.email,
                 phone: req.body.phone,
                 custom_fields: {
@@ -47,7 +46,9 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
                 throw new Error(`API error: ${freshdeskResponse.status} ${freshdeskResponse.statusText}`);
             }
 
+            // ===================================
             // Pabau integration
+            // ===================================
             // const pabauParameters: string[] = [
             //     `Fname=${firstName}`,
             //     `Lname=${lastName}`,
@@ -67,7 +68,9 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // if (pabauResponse.status !== 200) {
             //     return res.status(404).json({ message: 'Form submission failed. Please try again' });
             // }
+            // ===================================
             // End of pabau integration
+            // ===================================
 
             // Send the data to WordPress API
             postData({

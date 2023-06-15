@@ -99,38 +99,43 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
     ]);
 
     return (
-        <Stepper stepperList={stepperList} className={`${className || 'min-h-[50rem] !w-full max-w-[45rem] bg-white'}`}>
-            <PersonalInfo
-                name={name}
-                setName={setName}
-                nameError={nameError}
-                setNameError={setNameError}
-                phone={phone}
-                setPhone={setPhone}
-                phoneError={phoneError}
-                setPhoneError={setPhoneError}
-                email={email}
-                setEmail={setEmail}
-                emailError={emailError}
-                setEmailError={setEmailError}
-                checkInputsForNextStepActivation={checkInputsForNextStepActivation}
-            />
-            <DateAndTime
-                optionalMessage={optionalMessage}
-                setOptionalMessage={setOptionalMessage}
-                date={date}
-                setDate={setDate}
-                name={name}
-                setName={setName}
-                phone={phone}
-                setPhone={setPhone}
-                email={email}
-                setEmail={setEmail}
-                checkInputsForNextStepActivation={checkInputsForNextStepActivation}
-                setFormSubmitted={setFormSubmitted}
-            />
-            <Done date={date} formSubmitted={formSubmitted} />
-        </Stepper>
+        <form onSubmit={(e) => e.preventDefault()}>
+            <Stepper
+                stepperList={stepperList}
+                className={`${className || 'min-h-[50rem] !w-full max-w-[45rem] bg-white'}`}
+            >
+                <PersonalInfo
+                    name={name}
+                    setName={setName}
+                    nameError={nameError}
+                    setNameError={setNameError}
+                    phone={phone}
+                    setPhone={setPhone}
+                    phoneError={phoneError}
+                    setPhoneError={setPhoneError}
+                    email={email}
+                    setEmail={setEmail}
+                    emailError={emailError}
+                    setEmailError={setEmailError}
+                    checkInputsForNextStepActivation={checkInputsForNextStepActivation}
+                />
+                <DateAndTime
+                    optionalMessage={optionalMessage}
+                    setOptionalMessage={setOptionalMessage}
+                    date={date}
+                    setDate={setDate}
+                    name={name}
+                    setName={setName}
+                    phone={phone}
+                    setPhone={setPhone}
+                    email={email}
+                    setEmail={setEmail}
+                    checkInputsForNextStepActivation={checkInputsForNextStepActivation}
+                    setFormSubmitted={setFormSubmitted}
+                />
+                <Done date={date} formSubmitted={formSubmitted} />
+            </Stepper>
+        </form>
     );
 };
 
