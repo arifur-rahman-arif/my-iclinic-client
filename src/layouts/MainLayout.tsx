@@ -13,6 +13,7 @@ const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/B
     ssr: false
 });
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
+
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
 
 interface PropTypes {
@@ -51,18 +52,18 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatBot && <FreshChatScript/>}
+            {loadChatBot && <FreshChatScript />}
 
-            <FontResizer/>
+            <FontResizer />
 
-            <Header/>
+            <Header />
             {children}
-            <Footer/>
+            <Footer />
 
-            {showAlert && <Alert/>}
+            {showAlert && <Alert />}
 
-            <BottomMenu/>
-            {loadChatBot && <CookieConsent/>}
+            <BottomMenu />
+            {loadChatBot && <CookieConsent />}
         </div>
     );
 };

@@ -102,6 +102,9 @@ devDependencies:
   '@types/react-dom':
     specifier: 18.0.11
     version: 18.0.11
+  '@types/react-gtm-module':
+    specifier: ^2.0.1
+    version: 2.0.1
   '@types/react-lottie':
     specifier: ^1.2.6
     version: 1.2.6
@@ -1643,6 +1646,10 @@ packages:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
       '@types/react': 18.0.28
+
+  /@types/react-gtm-module@2.0.1:
+    resolution: {integrity: sha512-T/DN9gAbCYk5wJ1nxf4pSwmXz4d1iVjM++OoG+mwMfz9STMAotGjSb65gJHOS5bPvl6vLSsJnuC+y/43OQrltg==}
+    dev: true
 
   /@types/react-is@17.0.3:
     resolution: {integrity: sha512-aBTIWg1emtu95bLTLx0cpkxwGW3ueZv71nE2YFBpL8k/z5czEW8yYpOo8Dp+UUAFAtKwNaOsh/ioSeQnWlZcfw==}

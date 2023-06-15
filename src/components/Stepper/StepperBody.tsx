@@ -1,5 +1,6 @@
 import { StepperInterface } from './Stepper';
 import { cloneElement } from 'react';
+import styles from './Stepper.module.scss';
 
 interface StepperBodyInterface {
     steppers: StepperInterface[];
@@ -18,29 +19,19 @@ const StepperBody = ({ steppers, activateNextStepper, children }: StepperBodyInt
     return (
         <div className="stepper-body relative overflow-x-clip sm:overflow-x-visible">
             {steppers.map((stepper, index) => (
-                <div key={index}>
-                    <div
-                        className={`absolute top-0 left-0 grid h-full w-full grid-cols-1 ${
-                            index == 0 ? 'translate-x-0' : 'translate-x-1/4'
-                        }  ${stepper.isActive ? 'stepper-active' : 'stepper-inactive pointer-events-none opacity-0'}`}
-                    >
-                        {cloneElement(children[index], {
-                            activateNextStepper: activateNextStepper,
-                            shouldActivateNextStep: stepper.activateNextStep,
-                            stepperIndex: index,
-                            clonedElement: true,
-                            indicatorActive: stepper.indicatorActive
-                        })}
-                    </div>
-
-                    {/* Hidden actual element to take the actual space of the absolute element */}
-                    <div
-                        className={`h-full w-full ${
-                            stepper.isActive ? 'pointer-events-none invisible block' : 'hidden'
-                        }`}
-                    >
-                        {children[index]}
-                    </div>
+                <div
+                    key={index}
+                    className={`grid h-full w-full grid-cols-1 ${
+                        stepper.isActive ? `block ${styles.stepperActive}` : 'pointer-events-none hidden opacity-0'
+                    }`}
+                >
+                    {cloneElement(children[index], {
+                        activateNextStepper: activateNextStepper,
+                        shouldActivateNextStep: stepper.activateNextStep,
+                        stepperIndex: index,
+                        clonedElement: true,
+                        indicatorActive: stepper.indicatorActive
+                    })}
                 </div>
             ))}
         </div>

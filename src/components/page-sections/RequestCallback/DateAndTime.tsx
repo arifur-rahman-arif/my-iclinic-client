@@ -213,17 +213,17 @@ const DateAndTime = ({
         //     return;
         // }
 
-        if (!optionalMessage) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please leave us a message about your request',
-                    timeout: 4000
-                })
-            );
-            return;
-        }
+        // if (!optionalMessage) {
+        //     dispatch(
+        //         handleAlert({
+        //             showAlert: true,
+        //             alertType: 'error',
+        //             alertMessage: 'Please leave us a message about your request',
+        //             timeout: 4000
+        //         })
+        //     );
+        //     return;
+        // }
 
         const postId = localStorage.getItem('callback-id');
 
@@ -267,7 +267,6 @@ const DateAndTime = ({
                     type="textarea"
                     id="request-callback-form-message"
                     placeholder="Your message"
-                    important
                     onChange={(e) => {
                         setOptionalMessage(e.target.value);
                     }}
@@ -298,7 +297,7 @@ const DateAndTime = ({
             </div>
 
             <Button2
-                type="submit"
+                type="button"
                 text="Submit"
                 iconPosition="right"
                 className="next-button mr-1 gap-2 justify-self-end sm:mr-0"

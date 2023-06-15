@@ -1,5 +1,5 @@
-import gsap from 'gsap';
-import { useEffect, useState } from 'react';
+import { getElementTopPosition } from '@/utils/miscellaneous';
+import { useState } from 'react';
 
 import StepIndicator from './StepIndicator';
 import StepperBody from './StepperBody';
@@ -60,7 +60,7 @@ const Stepper = ({
             return [...tempState];
         });
 
-        // scrollStepperIntoView();
+        scrollStepperIntoView();
     };
 
     /**
@@ -86,38 +86,16 @@ const Stepper = ({
             return [...tempState];
         });
 
-        // scrollStepperIntoView();
+        scrollStepperIntoView();
     };
 
     /**
      * Change the stepper position to be visible for the user when user changes the stepper state
      */
-    // const scrollStepperIntoView = () => {
-    //     // const targetedElement = document.querySelector('.stepper-indicator');
-    //     // window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 200);
-    // };
-
-    useEffect(() => {
-        document.querySelector('.stepper-active') &&
-            gsap.to('.stepper-active', {
-                translateX: 0,
-                duration: 1,
-                opacity: 1,
-                pointerEvents: 'auto',
-                overwrite: true,
-                ease: 'elastic.out(0.6, 0.4)',
-                transformOrigin: 'center'
-            });
-
-        document.querySelectorAll('.stepper-active') &&
-            gsap.to('.stepper-inactive', {
-                translateX: '25%',
-                duration: 0,
-                overwrite: true,
-                pointerEvents: 'none',
-                opacity: 0
-            });
-    }, [steppers]);
+    const scrollStepperIntoView = () => {
+        const targetedElement = document.querySelector('.stepper-indicator');
+        window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 400);
+    };
 
     return (
         <div className={`${defaultClassName} ${className}`}>
