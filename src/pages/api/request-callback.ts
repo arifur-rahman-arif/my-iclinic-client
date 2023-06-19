@@ -10,6 +10,12 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
+            // Send the data to WordPress API
+            await postData({
+                url: `${process.env.CUSTOM_REST_URL}/request-callback`,
+                body: { ...req.body, status: 'Completed' }
+            });
+
             const dateObject = new Date(req.body.dateOriginal);
 
             const formattedDate = `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
@@ -71,12 +77,6 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // ===================================
             // End of pabau integration
             // ===================================
-
-            // Send the data to WordPress API
-            postData({
-                url: `${process.env.CUSTOM_REST_URL}/request-callback`,
-                body: { ...req.body, status: 'Completed' }
-            });
 
             res.status(200).json({ message: 'Form submitted successfully' });
         } else {
