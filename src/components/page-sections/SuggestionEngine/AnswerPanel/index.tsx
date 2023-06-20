@@ -1,5 +1,7 @@
-import ThankYou from '@/page-sections/SuggestionEngine/AnswerPanel/ThankYou';
-import { Context } from '@/page-sections/SuggestionEngine/Context';
+import EyePrescription from './Steps/EyePrescription';
+import MultipleChoiceQuestion from './Steps/MultipleChoiceQuestion';
+import ThankYou from './ThankYou';
+import { Context } from '../Context';
 import { Fragment, useContext } from 'react';
 import CtaScreen from './CtaScreen';
 import CtaScreen2 from './CtaScreen2';
@@ -27,17 +29,21 @@ const AnswerPanel = (): JSX.Element => {
     const renderScreen = (screen: string, props: any, node: number) => {
         switch (screen) {
             case 'SuitabilityQuestionnaire':
-                return <SuitabilityQuestionnaire />;
+                return <SuitabilityQuestionnaire/>;
             case 'UnderAgeStep':
-                return <UnderAgeStep />;
+                return <UnderAgeStep {...{ node }} />;
             case 'QuestionTemplate':
                 return <QuestionTemplate {...props} {...{ node }} />;
+            case 'EyePrescription':
+                return <EyePrescription {...{ node }} />;
+            case 'MultipleChoiceQuestion':
+                return <MultipleChoiceQuestion {...props} {...{ node }} />;
             case 'CtaScreen':
                 return <CtaScreen {...props} {...{ node }} />;
             case 'CtaScreen2':
                 return <CtaScreen2 {...props} {...{ node }} />;
             case 'ThankYou':
-                return <ThankYou />;
+                return <ThankYou/>;
             default:
                 return null;
         }

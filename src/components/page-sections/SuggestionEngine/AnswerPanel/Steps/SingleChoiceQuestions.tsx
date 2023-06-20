@@ -1,12 +1,18 @@
-import RadioButton2 from '@/components/Inputs/RadioButton/RadioButton2';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
+import Checkbox from 'src/components/Inputs/Checkbox';
 
 interface SingleChoiceQuestionsProps {
     node: number;
+}
+
+interface Options {
+    active: boolean;
+    label: string;
+    targetNode: number;
 }
 
 /**
@@ -19,13 +25,14 @@ interface SingleChoiceQuestionsProps {
 const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
     const ctx = useContext(Context);
     const dispatch = useDispatch();
-
+    
+    
     interface HandlerOnChangeProps {
         index: number;
         value: string;
         targetNode: number;
     }
-
+    
     /**
      * Function to handle the onChange event for a given input field.
      * It updates the options and routes in the context based on the provided parameters.
@@ -35,27 +42,38 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
      * @returns {void}
      */
     const handleOnChange = ({ index, value, targetNode }: HandlerOnChangeProps) => {
+        
         ctx.setOptions((prevState) => {
-            return prevState.map((state, i) => {
-                return {
-                    ...state,
-                    active: index === i
-                };
+            const newState = prevState.map((option, i) => {
+                if (index === i) {
+                    return { ...option, active: !option.active };
+                } else {
+                    return option;
+                }
             });
+            
+            ctx.addQuestionToQueue({
+                question: 'Do any of the following apply to you',
+                answer: getActiveOptions(newState),
+                questionIndex: `${node}`
+            });
+            
+            return newState;
         });
-
+        
         ctx.setRoutes((prevState) => {
             prevState[node].nextNode = targetNode;
             return prevState;
         });
-
-        ctx.addQuestionToQueue({
-            question: 'Do any of the following apply to you',
-            answer: value,
-            questionIndex: `${node}`
-        });
     };
-
+    
+    const getActiveOptions = (options: Options[]): string => {
+        if (!options) return '';
+        
+        const activeLabels = options?.filter((option) => option.active)?.map((option) => option.label);
+        return activeLabels.join(', ');
+    };
+    
     /**
      * Checks if any item in the options array has active value equal to true.
      *
@@ -69,7 +87,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
         }
         return false;
     };
-
+    
     /**
      * Handles the click event for the next button.
      * If no item is active, displays an error alert.
@@ -84,25 +102,36 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                     alertMessage: 'Please select one of the following options'
                 })
             );
-
+            
             return;
         }
-
+        
         ctx.setCompletedStep((ctx.completedStep += 1));
         ctx.navigateToStep(ctx.routes[node].nextNode as number);
     };
-
+    
     return (
         <>
             <div className="grid w-full content-start gap-6">
                 {ctx.options.map((option, index) => (
-                    <RadioButton2
+                    // <Checkbox
+                    //     key={i}
+                    //     label={option.label}
+                    //     onChange={() => handleOnChange(i)}
+                    //     value={option.value}
+                    //     checked={option.active}
+                    //     id={option.value}
+                    //     name={option.label}
+                    //     labelClassName="text-white font-mulishBold"
+                    // />
+                    <Checkbox
                         key={index}
                         id={`options-${index}`}
                         name="options"
                         value={option.label}
                         checked={option.active}
                         label={option.label}
+                        labelClassName="text-white"
                         onChange={(e) =>
                             handleOnChange({
                                 index,
@@ -113,7 +142,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                     />
                 ))}
             </div>
-
+            
             <div className="flex w-full items-center justify-between gap-12">
                 <button
                     className="flex cursor-pointer items-center justify-start gap-6 font-mulishBold text-[1.4rem] capitalize leading-8 text-[#CDCFD0]"
@@ -122,10 +151,10 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                         ctx.setCompletedStep((ctx.completedStep -= 1));
                     }}
                 >
-                    <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
+                    <BiArrowBack className="h-10 w-10 fill-[#C5CED2]"/>
                     Previous Question
                 </button>
-
+                
                 <button
                     className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
                     onClick={handleNextClick}

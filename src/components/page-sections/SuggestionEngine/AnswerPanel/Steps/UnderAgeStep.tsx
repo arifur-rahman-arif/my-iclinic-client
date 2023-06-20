@@ -1,4 +1,10 @@
+import { Context } from '@/page-sections/SuggestionEngine/Context';
+import { useContext } from 'react';
 import styles from '../styles/PanelReveal.module.scss';
+
+interface UnderAgeStepProps {
+    node: number;
+}
 
 /**
  * Renders the UnderAgeStep component.
@@ -7,7 +13,9 @@ import styles from '../styles/PanelReveal.module.scss';
  *
  * @returns {JSX.Element} The rendered UnderAgeStep component.
  */
-const UnderAgeStep = (): JSX.Element => {
+const UnderAgeStep = ({ node }: UnderAgeStepProps): JSX.Element => {
+    const ctx = useContext(Context);
+    
     return (
         <div className={`${styles.styles} grid h-full w-full place-items-center`}>
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
@@ -22,13 +30,23 @@ const UnderAgeStep = (): JSX.Element => {
                         Sorry, our eye specialists do not advise anybody under the age of 21 to have laser eye
                         treatment. This is because our eyes are still changing until we are 21, after then your
                         prescription is stable for treatment for long term vision correction.
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         If you do receive laser treatment before your prescription is stable, you would need glasses a
                         few years after which can be worse for your eye health. We will be very happy to review your
                         prescription and suitability for our laser treatment options once you are 21 years of age.
                     </p>
                 </div>
+                
+                <button
+                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                    onClick={() => {
+                        // ctx.setCompletedStep((ctx.completedStep += 1));
+                        ctx.navigateToStep(ctx.routes[node].nextNode as number);
+                    }}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );
