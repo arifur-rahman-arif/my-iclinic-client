@@ -12,8 +12,9 @@ const PhoneCall = () => {
         <div className={`group/wrapper rela flex h-20 w-20 flex-nowrap items-center justify-start`}>
             <Tooltip
                 text={
-                    <div className="grid justify-items-center gap-3">
-                        <span className="whitespace-nowrap font-mulishMedium text-[1.4rem] leading-[1.8rem] text-[#384043]">
+                    <div className="grid justify-items-center gap-3 py-6 px-8">
+                        <span
+                            className="whitespace-nowrap font-mulishMedium text-[1.4rem] leading-[1.8rem] text-[#384043]">
                             Click to call
                         </span>
                         <Link
@@ -41,18 +42,18 @@ const PhoneCall = () => {
                             />
                         </g>
                         <clipPath id="clip0_10615_53300">
-                            <rect width="16" height="16" fill="white" transform="translate(14 15.5)" />
+                            <rect width="16" height="16" fill="white" transform="translate(14 15.5)"/>
                         </clipPath>
                     </svg>
                 </Link>
             </Tooltip>
-
+            
             {/* <div className="flex items-center justify-center gap-2"> */}
             {/*     {[...Array(5)].map((item, index) => ( */}
             {/*         <span key={index} className="block h-[0.7rem] w-[0.7rem] rounded-full bg-heading2"></span> */}
             {/*     ))} */}
             {/* </div> */}
-
+            
             {/* <Link */}
             {/*     href="tel:0208 445 8877" */}
             {/*     className="whitespace-nowrap font-mulishBold text-[1.6rem] leading-[2.4rem] text-heading" */}

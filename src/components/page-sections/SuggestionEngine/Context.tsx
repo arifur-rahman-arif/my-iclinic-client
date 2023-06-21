@@ -57,10 +57,19 @@ export interface SuggestionEngineContext {
     completedStep: number;
     setCompletedStep: Dispatch<SetStateAction<number>>;
     resetAllRouteSteps: () => void;
+    eyePrescription: EyePrescription;
+    setEyePrescription: Dispatch<SetStateAction<EyePrescription>>;
 }
 
 interface ProviderProps {
     children: ReactNode;
+}
+
+interface EyePrescription {
+    sphere: {
+        leftEye: number | null;
+        rightEye: number | null;
+    };
 }
 
 export const Context = createContext<SuggestionEngineContext>({} as SuggestionEngineContext);
@@ -146,6 +155,13 @@ const Provider = ({ children }: ProviderProps) => {
         }
     ];
     const [options, setOptions] = useState<Options[]>(defaultOptions);
+    
+    const [eyePrescription, setEyePrescription] = useState<EyePrescription>({
+        sphere: {
+            leftEye: null,
+            rightEye: null
+        }
+    });
     
     const defaultRoutes: RouteInterface[] = [
         {
@@ -579,7 +595,9 @@ const Provider = ({ children }: ProviderProps) => {
                 setPreviousNode,
                 completedStep,
                 setCompletedStep,
-                resetAllRouteSteps
+                resetAllRouteSteps,
+                eyePrescription,
+                setEyePrescription
             }}
         >
             {children}
