@@ -65,11 +65,17 @@ interface ProviderProps {
     children: ReactNode;
 }
 
+type LeftRightEye = {
+    leftEye: number | null;
+    rightEye: number | null;
+}
+
 interface EyePrescription {
-    sphere: {
-        leftEye: number | null;
-        rightEye: number | null;
-    };
+    sphere: LeftRightEye;
+    cyl: LeftRightEye;
+    axis: LeftRightEye;
+    add: LeftRightEye;
+    unsure: boolean;
 }
 
 export const Context = createContext<SuggestionEngineContext>({} as SuggestionEngineContext);
@@ -160,12 +166,25 @@ const Provider = ({ children }: ProviderProps) => {
         sphere: {
             leftEye: null,
             rightEye: null
-        }
+        },
+        cyl: {
+            leftEye: null,
+            rightEye: null
+        },
+        axis: {
+            leftEye: null,
+            rightEye: null
+        },
+        add: {
+            leftEye: null,
+            rightEye: null
+        },
+        unsure: false
     });
     
     const defaultRoutes: RouteInterface[] = [
         {
-            active: false,
+            active: true,
             node: 0,
             screen: 'SuitabilityQuestionnaire',
             yesNode: 1,
@@ -205,11 +224,11 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'QuestionTemplate',
             props: {
                 questionNumber: 2,
-                questionText: 'Are you a glasses/contact lens wearer',
+                questionText: 'Are you a glasses/contact lenses wearer',
                 showBackButton: true
             },
-            yesNode: 6
-            // noNode: 7
+            yesNode: 6,
+            noNode: 9
         },
         {
             active: false,
@@ -223,15 +242,64 @@ const Provider = ({ children }: ProviderProps) => {
             // noNode: 7
         },
         {
-            active: true,
+            active: false,
             node: 7,
             screen: 'EyePrescription',
-            nextNode: null
-            // noNode: 7
+            yesNode: 8,
+            noNode: 10
         },
         {
             active: false,
-            node: 7,
+            node: 8,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 3,
+                questionText: 'Do any of the following apply to you',
+                includeAnswerButton: false,
+                includeRadioBoxes: true
+            },
+            nextNode: null
+        },
+        {
+            active: false,
+            node: 9,
+            screen: 'CtaScreen',
+            nextNode: 3
+        },
+        {
+            active: false,
+            node: 10,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 3,
+                questionText: 'What do you need your glasses or contact lenses for',
+                includeAnswerButton: false,
+                singleChoiceQuestions: {
+                    name: 'why-contact-lenses',
+                    options: [
+                        {
+                            label: 'Up close objects',
+                            value: 'Up close objects',
+                            active: false
+                        },
+                        {
+                            label: 'Intermediate objects',
+                            value: 'Intermediate objects',
+                            active: false
+                        },
+                        {
+                            label: 'Distance',
+                            value: 'Distance',
+                            active: false
+                        }
+                    ]
+                }
+            },
+            nextNode: 11
+        },
+        {
+            active: false,
+            node: 11,
             screen: 'MultipleChoiceQuestion',
             props: {
                 questionNumber: 3,
@@ -279,21 +347,10 @@ const Provider = ({ children }: ProviderProps) => {
                     }
                 ]
             },
-            nextNode: null
-            // noNode: 7
-        },
-        {
-            active: false,
-            node: 7,
-            screen: 'QuestionTemplate',
-            props: {
-                questionNumber: 3,
-                questionText: 'Do any of the following apply to you',
-                includeAnswerButton: false,
-                includeRadioBoxes: true
-            },
-            nextNode: null
+            nextNode: 8
         }
+        
+        
         // {
         //     active: true,
         //     node: 7,

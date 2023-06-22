@@ -114,16 +114,6 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
         <>
             <div className="grid w-full content-start gap-6">
                 {ctx.options.map((option, index) => (
-                    // <Checkbox
-                    //     key={i}
-                    //     label={option.label}
-                    //     onChange={() => handleOnChange(i)}
-                    //     value={option.value}
-                    //     checked={option.active}
-                    //     id={option.value}
-                    //     name={option.label}
-                    //     labelClassName="text-white font-mulishBold"
-                    // />
                     <Checkbox
                         key={index}
                         id={`options-${index}`}

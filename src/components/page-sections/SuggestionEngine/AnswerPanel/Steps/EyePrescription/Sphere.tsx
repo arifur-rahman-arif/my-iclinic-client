@@ -115,7 +115,7 @@ const Sphere = (): JSX.Element => {
                 <div className="grid gap-16 place-items-center">
                     <div className="grid grid-cols-[auto_auto] gap-x-2 gap-y-4 justify-start items-center">
                         <Image src="/images/icons/icon-left-eye-small.svg" alt="" width={16} height={17}/>
-                        <span className="text-[2.4rem] leading-[3.2rem] font-latoBold text-white">O.D</span>
+                        <span className="text-[2.4rem] leading-[3.2rem] font-latoBold text-white">O.S</span>
                         <span className="text-white text-[1.6rem] col-span-full">Left eye</span>
                     </div>
                     
@@ -124,7 +124,7 @@ const Sphere = (): JSX.Element => {
                 
                 <div className="grid gap-16 place-items-center">
                     <div className="grid grid-cols-[auto_auto] gap-x-2 gap-y-4 justify-start items-center">
-                        <span className="text-[2.4rem] leading-[3.2rem] font-latoBold text-white">O.S</span>
+                        <span className="text-[2.4rem] leading-[3.2rem] font-latoBold text-white">O.D</span>
                         <Image src="/images/icons/icon-right-eye-small.svg" alt="" width={16} height={17}/>
                         <span className="text-white text-[1.6rem] col-span-full">Right eye</span>
                     </div>
