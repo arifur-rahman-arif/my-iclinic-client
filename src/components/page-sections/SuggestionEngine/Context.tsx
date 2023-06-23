@@ -236,8 +236,8 @@ const Provider = ({ children }: ProviderProps) => {
             active: false
         },
         {
-            label: 'Distance',
-            value: 'Distance',
+            label: 'Distance objects',
+            value: 'Distance objects',
             active: false
         }
     ];

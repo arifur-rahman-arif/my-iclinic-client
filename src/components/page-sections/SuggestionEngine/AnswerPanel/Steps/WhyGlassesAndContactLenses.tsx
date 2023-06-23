@@ -1,8 +1,8 @@
-import { RadioButton2 } from '@/components/Inputs/RadioButton';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
+import Checkbox from 'src/components/Inputs/Checkbox';
 
 interface WhyGlassesAndContactLensesProps {
     node: number;
@@ -37,18 +37,24 @@ const WhyGlassesAndContactLenses = ({ node, questionText }: WhyGlassesAndContact
     const handleOnChange = ({ index, value }: HandlerOnChangeProps) => {
         ctx.setWhyGlassesAndLenses((prevState) => {
             return prevState.map((state, i) => {
-                return {
-                    ...state,
-                    active: index === i
-                };
+                if (index === i) {
+                    return { ...state, active: !state.active };
+                } else {
+                    return state;
+                }
             });
         });
+    };
 
-        ctx.addQuestionToQueue({
-            question: questionText,
-            answer: value,
-            questionIndex: `${node}`
-        });
+    /**
+     * Returns a string representation of the active options from the motiveOfGetRidGlasses array.
+     *
+     * @returns {string} A comma-separated string of active option labels.
+     */
+    const getActiveOptions = (): string => {
+        const activeOptions = ctx.whyGlassesAndLenses.filter((option) => option.active);
+        const activeLabels = activeOptions.map((option) => option.label);
+        return activeLabels.join(', ');
     };
 
     /**
@@ -81,6 +87,14 @@ const WhyGlassesAndContactLenses = ({ node, questionText }: WhyGlassesAndContact
         ctx.setPreviousNode(node, nextNode);
 
         ctx.navigateToStep(nextNode);
+
+        if (type === 'yes') {
+            ctx.addQuestionToQueue({
+                question: questionText,
+                answer: getActiveOptions(),
+                questionIndex: `${node}`
+            });
+        }
     };
 
     return (
@@ -91,12 +105,13 @@ const WhyGlassesAndContactLenses = ({ node, questionText }: WhyGlassesAndContact
                         key={index}
                         className="flex flex-wrap items-center justify-center gap-12 rounded-primary border border-white p-12 md:justify-between"
                     >
-                        <RadioButton2
+                        <Checkbox
                             id={`why-contact-lenses-${index}`}
-                            name="why-contact-lenses"
+                            name={`why-contact-lenses-${index}`}
                             value={currentOption.label}
                             checked={currentOption.active}
                             label={currentOption.label}
+                            labelClassName="text-white"
                             onChange={(e) =>
                                 handleOnChange({
                                     index,
