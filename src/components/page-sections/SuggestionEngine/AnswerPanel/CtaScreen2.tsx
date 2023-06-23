@@ -20,13 +20,13 @@ interface CtaScreen2 {
  * @param {boolean} includeSuitabilityButtons - Flag to include suitability buttons. Default is true.
  * @returns {JSX.Element} The rendered CTA Screen 2 component.
  */
-const CtaScreen2 = ({ heading, includeSuitabilityButtons = true, node }: CtaScreen2): JSX.Element => {
+const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScreen2): JSX.Element => {
     const ctx = useContext(Context);
     const selectedOption = ctx.options?.filter((option) => option.active);
 
     return (
         <div
-            className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+            className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
         >
             <div className="grid h-full place-items-center content-center gap-12 md:gap-24">
                 {selectedOption?.length ? (
@@ -35,17 +35,29 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = true, node }: CtaScre
                             You have selected:
                         </span>
                         <button
-                            className="col-start-2  row-span-2 cursor-pointer self-center font-mulishBold text-[1.4rem] uppercase leading-8 text-[#CACECF] underline-offset-4 hover:underline"
+                            className="col-start-2 row-span-2 mt-4 cursor-pointer self-start font-mulishBold text-[1.4rem] uppercase leading-8 text-[#CACECF] underline-offset-4 hover:underline"
                             onClick={() => {
                                 ctx.setCompletedStep((ctx.completedStep -= 1));
-                                ctx.navigateToStep(7);
+                                ctx.navigateToStep(8);
                             }}
                         >
                             Change
                         </button>
-                        <h3 className="!font-mulishBold text-[2.8rem] leading-[3.6rem] text-white">
-                            {selectedOption[0].label}
-                        </h3>
+                        <div className="grid content-start gap-6">
+                            {selectedOption.map((selected, i) => (
+                                <div key={i} className="flex items-start justify-start gap-4">
+                                    <span className="font-mulishBold text-[2rem] leading-[2.4rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                                        {i + 1}.
+                                    </span>
+                                    <span
+                                        className="!font-mulishBold text-[2rem] leading-[2.4rem] text-white md:text-[2.4rem] md:leading-[3.2rem]"
+                                        key={i}
+                                    >
+                                        {selected.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ) : null}
 

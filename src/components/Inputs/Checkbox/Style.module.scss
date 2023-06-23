@@ -1,3 +1,5 @@
+@import '/src/styles/utils/breakpoints';
+
 .styles {
   &,
   * {
@@ -5,7 +7,8 @@
   }
 
   label {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     transition: all 0.1s linear;
   }
 
@@ -19,10 +22,15 @@
       border: 0.2rem solid var(--color-white);
       border-radius: 0.5rem;
       display: grid;
-      height: 2.8rem;
       place-items: center;
       transition: all 300ms ease-out;
-      width: 2.8rem;
+      width: 2.4rem;
+      height: 2.4rem;
+
+      @include media-breakpoint-up(md) {
+        width: 2.6rem;
+        height: 2.6rem;
+      }
 
       svg {
         opacity: 0;

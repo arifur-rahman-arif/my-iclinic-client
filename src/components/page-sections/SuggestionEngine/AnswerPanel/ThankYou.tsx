@@ -1,4 +1,3 @@
-import Tooltip from '@/components/Tooltip/Tooltip';
 import ShareLinks from '@/page-sections/SingleBlogComponents/BlogBody/ShareLinks';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import Link from 'next/link';
@@ -18,7 +17,7 @@ const ThankYou = (): JSX.Element => {
 
     return (
         <div
-            className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+            className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
         >
             <button
                 className="absolute top-0 right-0 -translate-x-16 translate-y-16"
@@ -33,7 +32,7 @@ const ThankYou = (): JSX.Element => {
 
                 <span className="font-latoBold text-[3.6rem] leading-[4rem] text-white">Thank you!</span>
                 <p className="max-w-[40.6rem] text-center text-[1.6rem] text-white">
-                    We will be very happy to book your free suitability check in 3 months’ time.
+                    We will be very happy to book your free suitability.
                 </p>
 
                 <Link

@@ -1,5 +1,5 @@
+import WhyGlassesAndContactLenses from '@/page-sections/SuggestionEngine/AnswerPanel/Steps/WhyGlassesAndContactLenses';
 import EyePrescription from './EyePrescription';
-import SingleChoiceQuestion from './SingleChoiceQuestion';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
 import { memo, useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
@@ -13,10 +13,7 @@ interface QuestionTemplateProps {
     includeAnswerButton?: boolean;
     includeEyeButton?: boolean;
     includeRadioBoxes?: boolean;
-    singleChoiceQuestions: {
-        name: string;
-        options: Array<{ label: string, value: string, active: boolean }>
-    };
+    whyGlassesAndContactLenses?: boolean;
     node: number;
 }
 
@@ -43,11 +40,11 @@ const QuestionTemplate = memo(
         includeAnswerButton = true,
         includeEyeButton,
         includeRadioBoxes,
-        singleChoiceQuestions,
+        whyGlassesAndContactLenses,
         node
     }: QuestionTemplateProps): JSX.Element => {
         const ctx = useContext(Context);
-        
+
         /**
          * Handles click events for the component.
          * If ages are not selected yet, disables all ages except the current one and updates the ages in the context.
@@ -78,59 +75,58 @@ const QuestionTemplate = memo(
                         };
                     });
                 });
-                
+
                 ctx.setAgeSelected(true);
             }
-            
+
             ctx.setCompletedStep((ctx.completedStep += 1));
-            
+
             let nextNode;
-            
+
             if (type === 'yes') {
                 nextNode = ctx.routes[node].yesNode;
             } else {
                 nextNode = ctx.routes[node].noNode;
             }
-            
+
             if (!nextNode) return;
-            
+
             ctx.setPreviousNode(node, nextNode);
-            
+
             ctx.navigateToStep(nextNode);
-            
+
             ctx.addQuestionToQueue({
                 question: questionText,
                 answer: type,
                 questionIndex: `${node}`
             });
         };
-        
+
         return (
             <div
-                className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+                className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
             >
                 <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                     <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
                         Suitability Questionnaire
                     </span>
-                    
+
                     <div className="grid max-w-[57.2rem] gap-12">
                         <div className="grid grid-cols-[auto_1fr] gap-2">
-                            <span
-                                className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
+                            <span className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
                                 Q{questionNumber}
                             </span>
                             <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-[#4E6C7C]"></span>
                         </div>
-                        
+
                         <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}?</span>
                     </div>
-                    
-                    {includeRadioBoxes ? <SingleChoiceQuestions node={node}/> : null}
-                    {singleChoiceQuestions ?
-                        <SingleChoiceQuestion option={singleChoiceQuestions} questionText={questionText}
-                                              node={node}/> : null}
-                    
+
+                    {includeRadioBoxes ? <SingleChoiceQuestions node={node} /> : null}
+                    {whyGlassesAndContactLenses ? (
+                        <WhyGlassesAndContactLenses questionText={questionText} node={node} />
+                    ) : null}
+
                     {includeAnswerButton && (
                         <div className="flex flex-wrap items-center justify-start gap-6">
                             <button
@@ -147,9 +143,9 @@ const QuestionTemplate = memo(
                             </button>
                         </div>
                     )}
-                    
+
                     {includeEyeButton && <EyePrescription {...{ node, questionText }} />}
-                    
+
                     {showBackButton && (
                         <button
                             className="flex cursor-pointer items-center justify-start gap-6 font-mulishBold text-[1.4rem] capitalize leading-8 text-[#CDCFD0]"
@@ -158,7 +154,7 @@ const QuestionTemplate = memo(
                                 ctx.navigateToStep(ctx.routes[node].prevNode as number);
                             }}
                         >
-                            <BiArrowBack className="h-10 w-10 fill-[#C5CED2]"/>
+                            <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
                             Previous Question
                         </button>
                     )}

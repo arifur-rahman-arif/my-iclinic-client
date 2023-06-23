@@ -1,128 +1,106 @@
 import Checkbox from '@/components/Inputs/Checkbox';
-import styles from '../../styles/PanelReveal.module.scss';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-
-export interface Option {
-    active: boolean;
-    label: string;
-    value: string;
-}
+import styles from '../../styles/PanelReveal.module.scss';
 
 interface MultipleChoiceQuestionProps {
     questionNumber: number;
     questionText: string;
     node: number;
-    options?: Option[];
 }
 
-const MultipleChoiceQuestion = ({
+/**
+ * Component
+ *
+ * @param {number} questionNumber
+ * @param {string} questionText
+ * @param {number} node
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const MotiveOfGettingRidOfGlasses = ({
     questionNumber,
     questionText,
-    node,
-    options
+    node
 }: MultipleChoiceQuestionProps): JSX.Element => {
     const ctx = useContext(Context);
-    
+
     /**
-     * Handles click events for the component.
-     * If ages are not selected yet, disables all ages except the current one and updates the ages in the context.
-     * Increments the completed step in the context.
-     * Determines the next node based on the provided type and updates the previous node in the context.
-     * Navigate to the next step in the context.
-     * Add the question and answer to the queue in the context.
-     *
-     * @returns {void}
+     * Handles the click event for the next button.
+     * Retrieves the next node from the context routes based on the current node.
+     * If there is a next node, it updates the previous node, navigates to the next node,
+     * increases the completed step count, and adds a question to the queue.
      */
-    const handleClick = () => {
-        ctx.setCompletedStep((ctx.completedStep += 1));
-        
+    const handleNextClick = () => {
         const nextNode = ctx.routes[node].nextNode;
-        
+
         if (!nextNode) return;
-        
+
         ctx.setPreviousNode(node, nextNode);
-        
+
         ctx.navigateToStep(nextNode);
-        
+
+        ctx.setCompletedStep((ctx.completedStep += 1));
+
         ctx.addQuestionToQueue({
             question: questionText,
             answer: getActiveOptions(),
             questionIndex: `${node}`
         });
     };
-    
-    const [optionsState, setOptionsState] = useState<Option[]>(options || [
-        {
-            active: false,
-            label: 'A special occasion',
-            value: 'A special occasion'
-        },
-        {
-            active: false,
-            label: 'Hobbies require freedom from glasses',
-            value: 'Hobbies require freedom from glasses'
-        },
-        {
-            active: false,
-            label: 'Driving difficulty',
-            value: 'Driving difficulty'
-        },
-        {
-            active: false,
-            label: 'Work',
-            value: 'Work'
-        },
-        {
-            active: false,
-            label: 'Others',
-            value: 'Others'
-        }
-    ]);
-    
+
+    /**
+     * Returns a string representation of the active options from the motiveOfGetRidGlasses array.
+     *
+     * @returns {string} A comma-separated string of active option labels.
+     */
     const getActiveOptions = (): string => {
-        const activeOptions = optionsState.filter((option) => option.active);
+        const activeOptions = ctx.motiveOfGetRidGlasses.filter((option) => option.active);
         const activeLabels = activeOptions.map((option) => option.label);
         return activeLabels.join(', ');
     };
-    
+
+    /**
+     * Handle the change event
+     *
+     * @param {number} currentIndex
+     */
     const handleOnChange = (currentIndex: number) => {
-        const updatedOptions = optionsState.map((option, index) => {
+        const updatedOptions = ctx.motiveOfGetRidGlasses.map((option, index) => {
             if (currentIndex === index) {
                 return { ...option, active: !option.active };
             } else {
                 return option;
             }
         });
-        
+
         // Update the options in the state or context
         // For example, if options are stored in component state, you can use useState hook:
-        setOptionsState(updatedOptions);
+        ctx.setMotiveOfGetRidGlasses(updatedOptions);
     };
-    
+
     return (
         <div
-            className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+            className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
         >
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                 <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
                     Suitability Questionnaire
                 </span>
-                
+
                 <div className="grid max-w-[57.2rem] gap-12">
                     <div className="grid grid-cols-[auto_1fr] gap-2">
-                        <span
-                            className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
+                        <span className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
                             Q{questionNumber}
                         </span>
                         <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-[#4E6C7C]"></span>
                     </div>
-                    
+
                     <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}?</span>
-                    
-                    <div className="grid content-start gap-12 justify-start ">
-                        {optionsState.map((option, i) => (
+
+                    <div className="grid content-start justify-start gap-12 ">
+                        {ctx.motiveOfGetRidGlasses.map((option, i) => (
                             <Checkbox
                                 key={i}
                                 label={option.label}
@@ -136,7 +114,7 @@ const MultipleChoiceQuestion = ({
                         ))}
                     </div>
                 </div>
-                
+
                 <div className="flex w-full items-center justify-between gap-12">
                     <button
                         className="flex cursor-pointer items-center justify-start gap-6 font-mulishBold text-[1.4rem] capitalize leading-8 text-[#CDCFD0]"
@@ -145,13 +123,13 @@ const MultipleChoiceQuestion = ({
                             ctx.setCompletedStep((ctx.completedStep -= 1));
                         }}
                     >
-                        <BiArrowBack className="h-10 w-10 fill-[#C5CED2]"/>
+                        <BiArrowBack className="h-10 w-10 fill-[#C5CED2]" />
                         Previous Question
                     </button>
-                    
+
                     <button
-                        className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
-                        onClick={handleClick}
+                        className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-4 px-16 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:py-5 md:px-20 md:text-[1.8rem] md:leading-[2.8rem]"
+                        onClick={handleNextClick}
                     >
                         Next
                     </button>
@@ -161,4 +139,4 @@ const MultipleChoiceQuestion = ({
     );
 };
 
-export default MultipleChoiceQuestion;
+export default MotiveOfGettingRidOfGlasses;

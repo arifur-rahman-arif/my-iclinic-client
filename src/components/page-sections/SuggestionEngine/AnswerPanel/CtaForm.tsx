@@ -21,16 +21,16 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
     const ctx: SuggestionEngineContext = useContext(Context);
     const dispatch = useDispatch();
     const [submitForm, response] = useSubmitSuggestionMutation();
-
+    
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [typingTimer, setTypingTimer] = useState<any>();
-
+    
     const [nameError, setNameError] = useState<string>('');
     const [phoneError, setPhoneError] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
-
+    
     /**
      * Validate the input fields of the form
      *
@@ -45,14 +45,14 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
             setPhoneError('Please provide your phone');
             return true;
         }
-
+        
         const numberValid = await validatePhoneNumber(phone);
-
+        
         if (!numberValid) {
             setPhoneError('Please provide a valid phone number');
             return true;
         }
-
+        
         if (!email) {
             setEmailError('Please provide your email');
             return true;
@@ -61,15 +61,15 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
             setEmailError('Please provide a valid email address');
             return true;
         }
-
+        
         if (!ctx.questions) {
             setEmailError('There are no questions selected to submit');
             return true;
         }
-
+        
         return false;
     };
-
+    
     /**
      * Reset the form to its initial state
      */
@@ -78,37 +78,38 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
         setEmail('');
         setPhone('');
     };
-
+    
     /**
      * Submit the form
      * @returns {Promise<any>}
      */
     const formSubmit = async (): Promise<any> => {
-        // const formError = await showInputErrors();
-        //
-        //
-        // if (formError) return;
-        //
-        // const payload = {
-        //     name,
-        //     phone,
-        //     email,
-        //     questions: ctx.questions
-        // };
-        //
-        // submitForm(payload);
-
-        if (node === 14) {
-            ctx.setCompletedStep((ctx.completedStep += 2));
-        } else {
-            ctx.setCompletedStep((ctx.completedStep += 1));
-        }
-
+        const formError = await showInputErrors();
+        
+        if (formError) return;
+        
+        const payload = {
+            name,
+            phone,
+            email,
+            questions: ctx.questions
+        };
+        
+        submitForm(payload);
+        
+        // if (node === 14) {
+        //     ctx.setCompletedStep((ctx.completedStep += 2));
+        // } else {
+        //     ctx.setCompletedStep((ctx.completedStep += 1));
+        // }
+        
         const nextNode = ctx.routes[node].nextNode;
+        
         if (!nextNode) return;
+        
         ctx.navigateToStep(nextNode);
     };
-
+    
     /**
      * Handle the phone input for onchange event
      *
@@ -119,16 +120,16 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
         setPhone(value);
         setPhoneError('');
         clearTimeout(typingTimer);
-
+        
         const timeoutID = setTimeout(() => {
             formatPhoneNumber(value).then((res) => {
                 setPhone(res);
             });
         }, 1000);
-
+        
         setTypingTimer(timeoutID);
     };
-
+    
     useEffect(() => {
         try {
             // If it's a fetch error
@@ -143,7 +144,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 console.log(response.error);
                 return;
             }
-
+            
             if (response.isError) {
                 dispatch(
                     handleAlert({
@@ -155,10 +156,10 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 console.log(response.error);
                 return;
             }
-
+            
             if (response.isSuccess) {
                 resetForm();
-
+                
                 // Go to the next route
                 // if current node is 14 then increase the step by 2 as this route has only 4 routes
                 if (node === 14) {
@@ -166,7 +167,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 } else {
                     ctx.setCompletedStep((ctx.completedStep += 1));
                 }
-
+                
                 const nextNode = ctx.routes[node].nextNode;
                 if (!nextNode) return;
                 ctx.navigateToStep(nextNode);
@@ -181,7 +182,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
             );
         }
     }, [response, dispatch]);
-
+    
     return (
         <form
             className="grid w-full max-w-[40rem] grid-rows-[6rem_6rem_6rem_auto] gap-[4.5rem] justify-self-center"
@@ -202,17 +203,18 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 onClearValue={() => setName('')}
                 errorText={nameError}
             />
-
+            
             <TextField
                 value={phone}
                 type="text"
                 placeholder="Phone number"
                 important
                 onChange={handlePhoneInput}
-                onClearValue={() => {}}
+                onClearValue={() => {
+                }}
                 errorText={phoneError}
             />
-
+            
             <TextField
                 value={email}
                 type="text"
@@ -225,7 +227,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 onClearValue={() => setEmail('')}
                 errorText={emailError}
             />
-
+            
             <button
                 type="submit"
                 className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
@@ -244,7 +246,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 ) : (
                     <>
                         Send
-                        <Image src="/images/icons/icon-send-white.svg" alt="" width={20} height={20} />
+                        <Image src="/images/icons/icon-send-white.svg" alt="" width={20} height={20}/>
                     </>
                 )}
             </button>

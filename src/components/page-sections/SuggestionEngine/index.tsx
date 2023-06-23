@@ -12,10 +12,10 @@ import { QuestionPicker } from './QuestionPicker';
 const Engine = () => {
     return (
         <Section className="sm:!mt-24">
-            <Container className="grid overflow-hidden rounded-primary md:grid-cols-[auto_1fr]">
-                <QuestionPicker/>
-                
-                <AnswerPanel/>
+            <Container className="grid overflow-hidden !px-0 md:grid-cols-[auto_1fr] md:rounded-primary">
+                <QuestionPicker />
+
+                <AnswerPanel />
             </Container>
         </Section>
     );

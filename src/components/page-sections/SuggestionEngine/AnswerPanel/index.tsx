@@ -1,5 +1,6 @@
+import MotiveOfGettingRidOfGlasses from './Steps/MultipleChoiceQuestion/MotiveOfGettingRidOfGlasses';
+import WhyLaserTreatment from './Steps/MultipleChoiceQuestion/WhyLaserTreatment';
 import EyePrescription from './Steps/EyePrescription';
-import MultipleChoiceQuestion from './Steps/MultipleChoiceQuestion';
 import ThankYou from './ThankYou';
 import { Context } from '../Context';
 import { Fragment, useContext } from 'react';
@@ -17,7 +18,7 @@ import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
  */
 const AnswerPanel = (): JSX.Element => {
     const ctx = useContext(Context);
-    
+
     /**
      * Renders a screen based on the provided screen name and props.
      *
@@ -29,31 +30,34 @@ const AnswerPanel = (): JSX.Element => {
     const renderScreen = (screen: string, props: any, node: number) => {
         switch (screen) {
             case 'SuitabilityQuestionnaire':
-                return <SuitabilityQuestionnaire/>;
+                return <SuitabilityQuestionnaire />;
             case 'UnderAgeStep':
                 return <UnderAgeStep {...{ node }} />;
             case 'QuestionTemplate':
                 return <QuestionTemplate {...props} {...{ node }} />;
             case 'EyePrescription':
                 return <EyePrescription {...{ node }} />;
-            case 'MultipleChoiceQuestion':
-                return <MultipleChoiceQuestion {...props} {...{ node }} />;
+            case 'WhyLaserTreatment':
+                return <WhyLaserTreatment {...props} {...{ node }} />;
+            case 'MotiveOfGettingRidOfGlasses':
+                return <MotiveOfGettingRidOfGlasses {...props} {...{ node }} />;
             case 'CtaScreen':
                 return <CtaScreen {...props} {...{ node }} />;
             case 'CtaScreen2':
                 return <CtaScreen2 {...props} {...{ node }} />;
             case 'ThankYou':
-                return <ThankYou/>;
+                return <ThankYou />;
             default:
                 return null;
         }
     };
-    
+
     return (
-        <div className="bg-brand">
-            {ctx.routes?.map((route, index) => route.active && <Fragment key={index}>
-                {renderScreen(route.screen, route.props, index)}
-            </Fragment>)}
+        <div className="bg-brand py-12">
+            {ctx.routes?.map(
+                (route, index) =>
+                    route.active && <Fragment key={index}>{renderScreen(route.screen, route.props, index)}</Fragment>
+            )}
         </div>
     );
 };

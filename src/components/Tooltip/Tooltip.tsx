@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useRef } from 'react';
 import styles from './Styles.module.scss';
 
 interface TooltipProps {
@@ -19,29 +19,30 @@ interface TooltipProps {
  */
 const Tooltip = ({ text, className, children, arrowClassName }: TooltipProps) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null);
-    
-    
+
     return (
-        <div className={`relative ${styles.styles}`} onMouseEnter={() => {
-            tooltipRef.current?.classList.remove('hide');
-            tooltipRef.current?.classList.add('show');
-        }}
-             onMouseLeave={() => {
-                 tooltipRef.current?.classList.remove('show');
-                 tooltipRef.current?.classList.add('hide');
-             }}>
-            <div>
-                {children}
-            </div>
-            
+        <div
+            className={`relative ${styles.styles}`}
+            onMouseEnter={() => {
+                tooltipRef.current?.classList.remove('hide');
+                tooltipRef.current?.classList.add('show');
+            }}
+            onMouseLeave={() => {
+                tooltipRef.current?.classList.remove('show');
+                tooltipRef.current?.classList.add('hide');
+            }}
+        >
+            <div>{children}</div>
+
             <div
                 ref={tooltipRef}
-                className={`tooltip rounded-primary absolute top-full left-1/2 -translate-x-1/2 translate-y-4 bg-white drop-shadow-xl ${className}`}
+                className={`tooltip absolute top-full left-1/2 -translate-x-1/2 translate-y-4 rounded-primary bg-white drop-shadow-xl ${className}`}
             >
                 <div className="relative">
                     <div className="absolute bottom-full left-1/2 -z-[1] -translate-x-1/2">
                         <div
-                            className={`border-b-brand h-0 w-0 border-[0.8rem] border-l-transparent border-t-transparent border-r-transparent ${arrowClassName}`}></div>
+                            className={`h-0 w-0 border-[0.8rem] border-b-brand border-l-transparent border-t-transparent border-r-transparent ${arrowClassName}`}
+                        ></div>
                     </div>
                     {text}
                 </div>

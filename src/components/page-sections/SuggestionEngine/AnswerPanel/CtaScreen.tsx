@@ -17,7 +17,7 @@ interface CtaScreenProps {
 const CtaScreen = ({ description, node }: CtaScreenProps) => {
     return (
         <div
-            className={`${styles.styles} grid h-full w-full place-items-center px-12 py-12 md:px-24 md:py-24 xl:px-40`}
+            className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
         >
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                 <span className="max-w-[40rem] font-latoBold text-white md:text-[3.6rem] md:leading-[4rem]">

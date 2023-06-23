@@ -59,6 +59,12 @@ export interface SuggestionEngineContext {
     resetAllRouteSteps: () => void;
     eyePrescription: EyePrescription;
     setEyePrescription: Dispatch<SetStateAction<EyePrescription>>;
+    whyLaserTreatment: Option[];
+    setWhyLaserTreatment: Dispatch<SetStateAction<Option[]>>;
+    whyGlassesAndLenses: Option[];
+    setWhyGlassesAndLenses: Dispatch<SetStateAction<Option[]>>;
+    motiveOfGetRidGlasses: Option[];
+    setMotiveOfGetRidGlasses: Dispatch<SetStateAction<Option[]>>;
 }
 
 interface ProviderProps {
@@ -68,7 +74,7 @@ interface ProviderProps {
 type LeftRightEye = {
     leftEye: number | null;
     rightEye: number | null;
-}
+};
 
 interface EyePrescription {
     sphere: LeftRightEye;
@@ -76,6 +82,12 @@ interface EyePrescription {
     axis: LeftRightEye;
     add: LeftRightEye;
     unsure: boolean;
+}
+
+interface Option {
+    active: boolean;
+    label: string;
+    value: string;
 }
 
 export const Context = createContext<SuggestionEngineContext>({} as SuggestionEngineContext);
@@ -93,7 +105,7 @@ const Provider = ({ children }: ProviderProps) => {
     const [progress, setProgress] = useState<number>(0);
     const [questions, setQuestions] = useState<QuestionInterface | null>(null);
     const [ageSelected, setAgeSelected] = useState<boolean>(false);
-    
+
     const defaultAges: Age[] = [
         {
             active: false,
@@ -117,52 +129,52 @@ const Provider = ({ children }: ProviderProps) => {
         }
     ];
     const [ages, setAges] = useState<Age[]>(defaultAges);
-    
+
     const defaultOptions: Options[] = [
         {
             active: false,
             label: 'I am pregnant and/or Breastfeeding',
-            targetNode: 8
+            targetNode: 20
         },
         {
             active: false,
             label: 'I have had/have a herpes virus in my eye',
-            targetNode: 9
+            targetNode: 21
         },
         {
             active: false,
             label: 'I suffer from severe dry eyes that requires ongoing treatment',
-            targetNode: 9
+            targetNode: 21
         },
         {
             active: false,
             label: 'An eye specialist has told me I have keratoconus (A thin cornea)',
-            targetNode: 10
+            targetNode: 21
         },
         {
             active: false,
             label: 'I have a retinal detachment and haven’t had surgery',
-            targetNode: 11
+            targetNode: 21
         },
         {
             active: false,
             label: 'I have a retinal detachment and have had surgery',
-            targetNode: 12
+            targetNode: 21
         },
         {
             active: false,
             label: 'I suffer from Amblyopia (Lazy Eye)',
-            targetNode: 13
+            targetNode: 21
         },
         {
             active: false,
             label: 'None of the above applies to me',
-            targetNode: 13
+            targetNode: 21
         }
     ];
     const [options, setOptions] = useState<Options[]>(defaultOptions);
-    
-    const [eyePrescription, setEyePrescription] = useState<EyePrescription>({
+
+    const defaultPrescription: EyePrescription = {
         sphere: {
             leftEye: null,
             rightEye: null
@@ -180,8 +192,101 @@ const Provider = ({ children }: ProviderProps) => {
             rightEye: null
         },
         unsure: false
-    });
-    
+    };
+    const [eyePrescription, setEyePrescription] = useState<EyePrescription>(defaultPrescription);
+
+    const defaultWhyLaserTreatment: Option[] = [
+        {
+            active: false,
+            label: 'A special occasion',
+            value: 'A special occasion'
+        },
+        {
+            active: false,
+            label: 'Hobbies require freedom from glasses',
+            value: 'Hobbies require freedom from glasses'
+        },
+        {
+            active: false,
+            label: 'Driving difficulty',
+            value: 'Driving difficulty'
+        },
+        {
+            active: false,
+            label: 'Work',
+            value: 'Work'
+        },
+        {
+            active: false,
+            label: 'Others',
+            value: 'Others'
+        }
+    ];
+    const [whyLaserTreatment, setWhyLaserTreatment] = useState<Option[]>(defaultWhyLaserTreatment);
+
+    const defaultWhyGlassesAndLenses: Option[] = [
+        {
+            label: 'Up close objects',
+            value: 'Up close objects',
+            active: false
+        },
+        {
+            label: 'Intermediate objects',
+            value: 'Intermediate objects',
+            active: false
+        },
+        {
+            label: 'Distance',
+            value: 'Distance',
+            active: false
+        }
+    ];
+    const [whyGlassesAndLenses, setWhyGlassesAndLenses] = useState<Option[]>(defaultWhyGlassesAndLenses);
+
+    const defaultMotiveOfGetRidGlasses: Option[] = [
+        {
+            active: false,
+            label: 'A special occasion',
+            value: 'A special occasion'
+        },
+        {
+            active: false,
+            label: 'Hobbies require freedom from glasses',
+            value: 'Hobbies require freedom from glasses'
+        },
+        {
+            active: false,
+            label: 'Driving difficulty',
+            value: 'Driving difficulty'
+        },
+        {
+            active: false,
+            label: 'Falling asleep',
+            value: 'Falling asleep'
+        },
+        {
+            active: false,
+            label: 'Sports',
+            value: 'Sports'
+        },
+        {
+            active: false,
+            label: 'Cost of glasses and contact lenses',
+            value: 'Cost of glasses and contact lenses'
+        },
+        {
+            active: false,
+            label: 'Work',
+            value: 'Work'
+        },
+        {
+            active: false,
+            label: 'Other',
+            value: 'Others'
+        }
+    ];
+    const [motiveOfGetRidGlasses, setMotiveOfGetRidGlasses] = useState<Option[]>(defaultMotiveOfGetRidGlasses);
+
     const defaultRoutes: RouteInterface[] = [
         {
             active: true,
@@ -215,9 +320,13 @@ const Provider = ({ children }: ProviderProps) => {
                 questionNumber: 1,
                 questionText: 'Have you had laser eye surgery before'
             },
-            yesNode: 5
-            // noNode: 4
+            yesNode: 5,
+            noNode: 13
         },
+
+        // =====================
+        // Top Yes level routes
+        // =====================
         {
             active: false,
             node: 5,
@@ -233,13 +342,12 @@ const Provider = ({ children }: ProviderProps) => {
         {
             active: false,
             node: 6,
-            screen: 'MultipleChoiceQuestion',
+            screen: 'WhyLaserTreatment',
             props: {
                 questionNumber: 3,
                 questionText: 'Why are you seeking laser treatment at this point in time'
             },
             nextNode: 7
-            // noNode: 7
         },
         {
             active: false,
@@ -260,6 +368,7 @@ const Provider = ({ children }: ProviderProps) => {
             },
             nextNode: null
         },
+        // CTA Screen
         {
             active: false,
             node: 9,
@@ -274,256 +383,132 @@ const Provider = ({ children }: ProviderProps) => {
                 questionNumber: 3,
                 questionText: 'What do you need your glasses or contact lenses for',
                 includeAnswerButton: false,
-                singleChoiceQuestions: {
-                    name: 'why-contact-lenses',
-                    options: [
-                        {
-                            label: 'Up close objects',
-                            value: 'Up close objects',
-                            active: false
-                        },
-                        {
-                            label: 'Intermediate objects',
-                            value: 'Intermediate objects',
-                            active: false
-                        },
-                        {
-                            label: 'Distance',
-                            value: 'Distance',
-                            active: false
-                        }
-                    ]
-                }
+                whyGlassesAndContactLenses: true
             },
             nextNode: 11
         },
         {
             active: false,
             node: 11,
-            screen: 'MultipleChoiceQuestion',
+            screen: 'MotiveOfGettingRidOfGlasses',
             props: {
                 questionNumber: 3,
-                questionText: 'What is your motive to get rid of your glassless or contact lenses?',
-                options: [
-                    {
-                        active: false,
-                        label: 'A special occasion',
-                        value: 'A special occasion'
-                    },
-                    {
-                        active: false,
-                        label: 'Hobbies require freedom from glasses',
-                        value: 'Hobbies require freedom from glasses'
-                    },
-                    {
-                        active: false,
-                        label: 'Driving difficulty',
-                        value: 'Driving difficulty'
-                    },
-                    {
-                        active: false,
-                        label: 'Falling asleep',
-                        value: 'Falling asleep'
-                    },
-                    {
-                        active: false,
-                        label: 'Sports',
-                        value: 'Sports'
-                    },
-                    {
-                        active: false,
-                        label: 'Cost of glasses and contact lenses',
-                        value: 'Cost of glasses and contact lenses'
-                    },
-                    {
-                        active: false,
-                        label: 'Work',
-                        value: 'Work'
-                    },
-                    {
-                        active: false,
-                        label: 'Other',
-                        value: 'Others'
-                    }
-                ]
+                questionText: 'What is your motive to get rid of your glasses or contact lenses'
             },
-            nextNode: 8
+            nextNode: 12
+        },
+        {
+            active: false,
+            node: 12,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 3,
+                questionText: 'Do any of the following apply to you',
+                includeAnswerButton: false,
+                includeRadioBoxes: true
+            },
+            nextNode: null
+        },
+        // =====================
+        // Top No level routes
+        // =====================
+        {
+            active: false,
+            node: 13,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 2,
+                questionText: 'Are you a glasses/contact lenses wearer',
+                showBackButton: true
+            },
+            yesNode: 15,
+            noNode: 14
+        },
+        {
+            active: false,
+            node: 14,
+            screen: 'CtaScreen',
+            props: {
+                description:
+                    "If you don't currently wear glasses or contact lenses you are unlikely to need laser eye surgery. If you are experiencing any of the following: Dry eyes, glares around lights or sore eyes please chat to one of our specialists and we can support you with our treatment options."
+            },
+            nextNode: 9
+        },
+        {
+            active: false,
+            node: 15,
+            screen: 'WhyLaserTreatment',
+            props: {
+                questionNumber: 3,
+                questionText: 'Why are you seeking laser treatment at this point in time'
+            },
+            nextNode: 16
+        },
+        {
+            active: false,
+            node: 16,
+            screen: 'EyePrescription',
+            yesNode: 8,
+            noNode: 17
+        },
+        {
+            active: false,
+            node: 17,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 3,
+                questionText: 'What do you need your glasses or contact lenses for',
+                includeAnswerButton: false,
+                whyGlassesAndContactLenses: true
+            },
+            nextNode: 18
+        },
+        {
+            active: false,
+            node: 18,
+            screen: 'MotiveOfGettingRidOfGlasses',
+            props: {
+                questionNumber: 3,
+                questionText: 'What is your motive to get rid of your glasses or contact lenses'
+            },
+            nextNode: 19
+        },
+        {
+            active: false,
+            node: 19,
+            screen: 'QuestionTemplate',
+            props: {
+                questionNumber: 3,
+                questionText: 'Do any of the following apply to you',
+                includeAnswerButton: false,
+                includeRadioBoxes: true
+            },
+            nextNode: null
+        },
+        {
+            active: false,
+            node: 20,
+            screen: 'CtaScreen2',
+            props: {
+                includeSuitabilityButtons: false,
+                heading:
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you <span class="font-mulishBold text-[#FE8083]">3 months from this date</span> to book a suitability check:'
+            },
+            nextNode: 3
+        },
+        {
+            active: false,
+            node: 21,
+            screen: 'CtaScreen2',
+            props: {
+                heading:
+                    'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
+            },
+            nextNode: 3
         }
-        
-        
-        // {
-        //     active: true,
-        //     node: 7,
-        //     screen: 'QuestionTemplate',
-        //     props: {
-        //         questionNumber: 4,
-        //         questionText: 'What is your prescription',
-        //         showBackButton: true
-        //     },
-        //     yesNode: 5,
-        //     noNode: 7
-        // }
-        // // No node
-        // {
-        //     active: false,
-        //     node: 4,
-        //     screen: 'QuestionTemplate',
-        //     props: {
-        //         questionNumber: 2,
-        //         questionText: 'Are you a glasses/contact lense wearer',
-        //         showBackButton: true
-        //     },
-        //     yesNode: 15,
-        //     noNode: 14
-        // },
-        // // What is your prescription? Left Eye: Right Eye:
-        // {
-        //     active: true,
-        //     node: 5,
-        //     screen: 'QuestionTemplate',
-        //     props: {
-        //         questionNumber: 3,
-        //         questionText: 'What is your prescription',
-        //         includeAnswerButton: false,
-        //         showBackButton: true,
-        //         includeEyeButton: true
-        //     },
-        //     nextNode: 6
-        // },
-        // // Chat to an expert now to see how we can help (Talk to a specialist)- button
-        // {
-        //     active: false,
-        //     node: 6,
-        //     screen: 'CtaScreen',
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 7,
-        //     screen: 'QuestionTemplate',
-        //     props: {
-        //         questionNumber: 3,
-        //         questionText: 'Do any of the following apply to you',
-        //         includeAnswerButton: false,
-        //         includeRadioBoxes: true
-        //     },
-        //     nextNode: null
-        // },
-        // {
-        //     active: false,
-        //     node: 8,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         includeSuitabilityButtons: false,
-        //         heading:
-        //             'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you <span class="font-mulishBold text-[#FE8083]">3 months from this date</span> to book a suitability check:'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 9,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions, such as <a href="/icl" class="text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold">implantable contact lenses.</a> Please leave your details and we can book you for a free suitability check with our treatment’s specialist.'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 10,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'We are very sorry but you are unlikely to be suitable for our laser treatments. But don’t worry, we do offer alternative vision correction treatments depending on your eye health within these conditions. Please leave your details and we can book you for a free suitability check with our treatment’s specialist'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 11,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading: `We are very sorry but you are unlikely to be suitable for our laser treatments as all retinal
-        //             detachments need to be treated before laser treatment. We do offer alternative vision correction
-        //             treatments depending on your eye health within these conditions, such as <a href='/icl' class='text-white hover:decoration-white hover:underline underline-offset-4 font-mulishBold'>implantable contact lenses.</a>
-        //             Please leave your details and we can book you for a free suitability check with our treatment’s
-        //             specialist.`
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 12,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 13,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 14,
-        //     screen: 'CtaScreen',
-        //     props: {
-        //         description:
-        //             "If you don't currently wear glasses or contact lenses you are unlikely to need laser eye surgery. If you are experiencing any of the following: Dry eyes, glares around lights or sore eyes please chat to one of our specialists and we can support you with our treatment options."
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 15,
-        //     screen: 'QuestionTemplate',
-        //     props: {
-        //         questionNumber: 4,
-        //         questionText: 'What is your prescription',
-        //         includeAnswerButton: false,
-        //         showBackButton: true,
-        //         includeEyeButton: true
-        //     },
-        //     nextNode: 17
-        // },
-        // {
-        //     active: false,
-        //     node: 16,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 17,
-        //     screen: 'CtaScreen2',
-        //     props: {
-        //         heading:
-        //             'You may be suitable for our laser treatments. Have a free chat with our specialist before booking a full eye check and consultation with our doctor.'
-        //     },
-        //     nextNode: 18
-        // },
-        // {
-        //     active: false,
-        //     node: 18,
-        //     screen: 'ThankYou'
-        // }
     ];
     const [routes, setRoutes] = useState<RouteInterface[]>(defaultRoutes);
-    
+
     /**
      * Updates the active state of the age selector based on the provided index.
      *
@@ -540,7 +525,7 @@ const Provider = ({ children }: ProviderProps) => {
             });
         });
     };
-    
+
     /**
      * Adds a question to the queue of questions.
      *
@@ -554,7 +539,7 @@ const Provider = ({ children }: ProviderProps) => {
     const addQuestionToQueue = ({ question, answer, questionIndex }: AddQuestionQueueProps) => {
         setQuestions((prevState) => {
             const updatedQuestions = { ...prevState };
-            
+
             if (questionIndex !== undefined) {
                 // Update or add the question based on the questionIndex
                 updatedQuestions[questionIndex] = {
@@ -562,11 +547,11 @@ const Provider = ({ children }: ProviderProps) => {
                     answer
                 };
             }
-            
+
             return updatedQuestions;
         });
     };
-    
+
     /**
      * Navigates to a specific step in the navigation and updates the state accordingly.
      *
@@ -576,7 +561,7 @@ const Provider = ({ children }: ProviderProps) => {
     const navigateToStep = (navigationIndex: number) => {
         setRoutes((prevState) => {
             let tempState = [...prevState];
-            
+
             // Reset the active property of all routes to false
             tempState = tempState.map((state) => {
                 return {
@@ -584,24 +569,24 @@ const Provider = ({ children }: ProviderProps) => {
                     active: false
                 };
             });
-            
+
             tempState[navigationIndex].active = true;
-            
+
             return tempState;
         });
-        
+
         setQuestions((prevState) => {
             const tempState = { ...prevState };
-            
+
             // Remove the question at the specified index from the questions state
             if (tempState.hasOwnProperty(navigationIndex)) {
                 delete tempState[navigationIndex];
             }
-            
+
             return tempState;
         });
     };
-    
+
     /**
      * Update the previous node of the next node with the current node.
      *
@@ -615,7 +600,10 @@ const Provider = ({ children }: ProviderProps) => {
             return prevState;
         });
     };
-    
+
+    /**
+     * Resets all route steps and sets default values for various state variables.
+     */
     const resetAllRouteSteps = () => {
         setCompletedStep(0);
         setProgress(0);
@@ -623,13 +611,17 @@ const Provider = ({ children }: ProviderProps) => {
         setAgeSelected(false);
         setAges(defaultAges);
         setOptions(defaultOptions);
+        setEyePrescription(defaultPrescription);
+        setWhyLaserTreatment(defaultWhyLaserTreatment);
+        setWhyGlassesAndLenses(defaultWhyGlassesAndLenses);
+        setMotiveOfGetRidGlasses(defaultMotiveOfGetRidGlasses);
         setRoutes(defaultRoutes);
     };
-    
+
     useEffect(() => {
         setProgress((completedStep / totalSteps) * 100);
     }, [completedStep]);
-    
+
     return (
         <Context.Provider
             value={{
@@ -654,7 +646,13 @@ const Provider = ({ children }: ProviderProps) => {
                 setCompletedStep,
                 resetAllRouteSteps,
                 eyePrescription,
-                setEyePrescription
+                setEyePrescription,
+                whyLaserTreatment,
+                setWhyLaserTreatment,
+                whyGlassesAndLenses,
+                setWhyGlassesAndLenses,
+                motiveOfGetRidGlasses,
+                setMotiveOfGetRidGlasses
             }}
         >
             {children}
