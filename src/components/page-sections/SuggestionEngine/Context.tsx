@@ -261,8 +261,8 @@ const Provider = ({ children }: ProviderProps) => {
         },
         {
             active: false,
-            label: 'Falling asleep',
-            value: 'Falling asleep'
+            label: 'Tired or dried eyes',
+            value: 'Tired or dried eyes'
         },
         {
             active: false,

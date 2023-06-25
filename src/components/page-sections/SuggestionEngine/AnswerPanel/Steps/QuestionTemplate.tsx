@@ -57,7 +57,7 @@ const QuestionTemplate = memo(
          * @returns {void}
          */
         const handleClick = (type: 'yes' | 'no') => {
-            // If ages are not selected yet
+            // // If ages are not selected yet
             if (!ctx.ageSelected) {
                 /**
                  * Disable all the ages except the current one
@@ -67,15 +67,14 @@ const QuestionTemplate = memo(
                  * @param {function} prevState - A function that receives the previous state as an argument and returns the updated state.
                  * @returns {Array} - An array of updated age objects, where the 'disabled' property is set to the opposite value of 'active'.
                  */
-                ctx.setAges((prevState) => {
-                    return prevState.map((state, index) => {
-                        return {
-                            ...state,
-                            disabled: !state.active
-                        };
-                    });
-                });
-
+                // ctx.setAges((prevState) => {
+                //     return prevState.map((state, index) => {
+                //         return {
+                //             ...state,
+                //             disabled: !state.active
+                //         };
+                //     });
+                // });
                 ctx.setAgeSelected(true);
             }
 

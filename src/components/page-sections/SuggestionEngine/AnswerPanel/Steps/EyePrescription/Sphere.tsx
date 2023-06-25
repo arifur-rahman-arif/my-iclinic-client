@@ -1,5 +1,6 @@
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { Context } from '@/page-sections/SuggestionEngine/Context';
+import { prependSign } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import { useContext } from 'react';
 
@@ -92,10 +93,10 @@ const PointCounter = ({ eye }: PointCounterProps): JSX.Element => {
                     {eye === 'leftEye' ?
                         ctx.eyePrescription.sphere.leftEye === null ?
                             '----' :
-                            ctx.eyePrescription.sphere.leftEye :
+                            prependSign(ctx.eyePrescription.sphere.leftEye) :
                         ctx.eyePrescription.sphere.rightEye === null ?
                             '----' :
-                            ctx.eyePrescription.sphere.rightEye}
+                            prependSign(ctx.eyePrescription.sphere.rightEye)}
                 </span>
 
                 <button
@@ -118,7 +119,7 @@ const PointCounter = ({ eye }: PointCounterProps): JSX.Element => {
             >
                 <button
                     aria-label="Reset"
-                    className="grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border-2 border-brand bg-brand font-mulishExtraBold transition-all duration-500 hover:opacity-70"
+                    className="group/reset grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border-2 border-brand bg-brand font-mulishExtraBold transition-all duration-500 hover:opacity-70"
                     onClick={handleResetClick}
                 >
                     <svg

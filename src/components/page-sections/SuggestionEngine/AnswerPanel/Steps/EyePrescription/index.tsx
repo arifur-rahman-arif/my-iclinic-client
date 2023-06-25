@@ -157,6 +157,7 @@ const EyePrescription = ({ node }: EyePrescriptionProps) => {
                             options={ADDNumbers()}
                             leftValue={ctx.eyePrescription.add.leftEye}
                             rightValue={ctx.eyePrescription.add.rightEye}
+                            showSign
                         />
 
                         <p className="text-[1.6rem] leading-[2.4rem] text-white">

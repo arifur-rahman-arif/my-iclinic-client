@@ -1,3 +1,4 @@
+import { prependSign } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
@@ -11,6 +12,7 @@ interface SelectorProps {
     options: number[];
     leftValue: number | null;
     rightValue: number | null;
+    showSign?: boolean;
 }
 
 /**
@@ -24,7 +26,7 @@ interface SelectorProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const Selector = ({ eye, onSelect, options, leftValue, rightValue }: SelectorProps): JSX.Element => {
+const Selector = ({ eye, onSelect, options, leftValue, rightValue, showSign }: SelectorProps): JSX.Element => {
     const [open, setOpen] = useState<boolean>(false);
     const [zIndex, setZIndex] = useState<boolean>(false);
 
@@ -70,10 +72,14 @@ const Selector = ({ eye, onSelect, options, leftValue, rightValue }: SelectorPro
                         {eye === 'leftEye' ?
                             leftValue === null ?
                                 'Left eye' :
-                                leftValue :
+                                showSign ?
+                                    prependSign(leftValue) :
+                                    leftValue :
                             rightValue === null ?
                                 'Right eye' :
-                                rightValue}
+                                showSign ?
+                                    prependSign(rightValue) :
+                                    rightValue}
                     </span>
                     <FaAngleDown
                         className={`ml-4 h-[2.4rem] w-[2.4rem] fill-[#9B9FA1] transition-all duration-500 ${
@@ -93,7 +99,7 @@ const Selector = ({ eye, onSelect, options, leftValue, rightValue }: SelectorPro
                                 }}
                                 className="w-full text-[1.8rem] font-bold leading-[2.8rem] text-[#E6E7E8]"
                             >
-                                {number}
+                                {showSign ? prependSign(number) : number}
                             </button>
                         ))}
                     </div>

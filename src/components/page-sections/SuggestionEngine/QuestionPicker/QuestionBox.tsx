@@ -22,17 +22,15 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
                 } ${ctx.ages[index].active ? '!border-brand bg-brand' : 'bg-transparent'}`
             )}
             onClick={() => {
-                if (ctx.ageSelected) return;
+                if (ctx.ageSelected) ctx.resetAllRouteSteps();
 
                 let nextActiveIndex;
 
                 if (age === 'Under 20') {
-                    ctx.setCompletedStep(ctx.totalSteps);
                     nextActiveIndex = ctx.routes[0].yesNode;
                     ctx.setQuestions(null);
                     ctx.setProgress(100);
                 } else {
-                    ctx.setCompletedStep(1);
                     nextActiveIndex = ctx.routes[0].noNode;
                     ctx.addQuestionToQueue({
                         question: 'What is your age',
