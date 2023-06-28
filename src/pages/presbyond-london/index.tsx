@@ -200,8 +200,6 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 // }
             />
 
-            <div className="md:mt-24"></div>
-
             <LazyComponent>
                 <FeaturedPatient
                     h2Title="Presbyond Patient"

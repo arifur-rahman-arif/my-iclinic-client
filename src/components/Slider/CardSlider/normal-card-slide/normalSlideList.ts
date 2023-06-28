@@ -20,8 +20,8 @@ export const normalSlideListRelexSmile: NormalSlideInterface[] = [
 
 export const normalSlideListPresbyond: NormalSlideInterface[] = [
     {
-        description: `Having worn glasses/contact lenses for over 50 years (with prescription of -17 and -13.5), to being able to see long distance without either of them is nothing short of a miracle for me! I am still trying to kick the habit of reaching out for my glasses every morning when I get out of bed.`,
-        name: 'Mr. Wong',
+        description: `"My Presbyond experience was amazing! The whole team was very kind, exceedingly professional and the aftercare was exceptional.  Being able to see again without glasses is the best feeling. I would highly recommend, Thank you My-iClinic"`,
+        name: 'Hasina',
         title: 'Presbyond patient'
     },
     {
