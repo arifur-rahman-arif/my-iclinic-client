@@ -466,11 +466,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         descriptions: [
             `When you arrive for your Presbyond consultation with us, our friendly technicians will carry out some detailed assessments on your eyes.`,
             `These assessments will measure your eyes, your prescription and check the overall health for any other eye conditions you may have.`,
-            `Our laser specialist will then be able to assess your suitability for presbyond and they will talk you through the treatment and how Presbyond will best work for you and your lifestyle.`,
-            <>
-                We understand that laser treatment is a life-changing decision which is why our Presbyond consultation
-                is completely <strong>FREE</strong> without any obligation to commit to treatment!
-            </>
+            `Our laser specialist will then be able to assess your suitability for presbyond and they will talk you through the treatment and how Presbyond will best work for you and your lifestyle.`
         ]
     },
     {
@@ -499,7 +495,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
             `Our presbyond laser treatment uses a unique blended vision technique which extends the eyes ability to see from near through to intermediate and distant sight.`,
             `On the day of treatment, our friendly nurse team will greet you and talk you through the preparations for the treatment and will answer any questions you may have before meeting your specialist again.`,
             `They will carefully take care of administering anesthetic eye drops into your eyes so that the laser treatment will be completely painless.`,
-            `Your specialist will greet you in the treatment room and they will give clear, easy instruction as the laser reshapes your eye. The procedure itself takes up to 20 minutes per eye without any pain or discomfort. Once the treatment is finished, our nurse will talk you through any questions you may have and will show you the aftercare eye drops you will be required to use at home.`
+            `Your specialist will greet you in the treatment room and they will give clear, easy instruction as the laser reshapes your eye. The procedure itself takes up to 20 seconds per eye without any pain or discomfort. Once the treatment is finished, our nurse will talk you through any questions you may have and will show you the aftercare eye drops you will be required to use at home.`
         ]
     },
     {
