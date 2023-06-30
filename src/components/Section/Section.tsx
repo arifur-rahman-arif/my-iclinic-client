@@ -15,7 +15,7 @@ interface PropInterface {
  */
 const Section = forwardRef(
     (
-        { children, id, className, defaultClassName = 'mt-24 w-full sm:mt-36 lg:mt-48' }: PropInterface,
+        { children, id, className, defaultClassName = 'mt-24 w-full sm:mt-36 lg:mt-40' }: PropInterface,
         ref: any
     ): JSX.Element => {
         return (

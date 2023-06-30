@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import { Container } from '@/components/Container';
+// import { Container } from '@/components/Container';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
 import { InsurancePartners, Masthead, SideImageSection, TextColumn } from '@/components/page-sections';
@@ -14,7 +14,7 @@ import {
     pricePageList1,
     visionCorrectionPriceList
 } from '@/components/page-sections/SectionParts/GlaucomaPackages/GlaucomaPackages3';
-import { Section } from '@/components/Section';
+// import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
@@ -24,7 +24,7 @@ import { PageDataInterface, PricePageContentProps, WpPageResponseInterface } fro
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 
 import Image from 'next/image';
-import { BiRightArrowAlt } from 'react-icons/bi';
+// import { BiRightArrowAlt } from 'react-icons/bi';
 import { Button } from 'src/components/Buttons';
 
 interface DataInterface extends PricePageContentProps, PageDataInterface<PricePageContentProps> {}
@@ -73,7 +73,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 titleClassName="sticky top-[23rem]"
             />
 
-            <Section>
+            {/* <Section>
                 <Container className="grid place-items-center gap-12 md:gap-24">
                     <div className="grid gap-6">
                         <h2 className="normal-case">
@@ -102,7 +102,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                         <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
                     </div>
                 </Container>
-            </Section>
+            </Section> */}
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"

@@ -19,7 +19,7 @@ import Context, { TreatmentInterface } from '@/page-sections/FinanceCalculator/C
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import FullWidthImageSection4 from '@/page-sections/SideImageSection/FullWidthImageSection4';
 import { FinanceTreatmentPageContents, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import { getElementTopPosition } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 
@@ -28,11 +28,10 @@ import Image from 'next/image';
 import { FiHelpCircle } from 'react-icons/fi';
 
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {
-}
+interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {}
 
 interface FinancingYourTreatmentProps {
     data: DataInterface;
@@ -62,7 +61,7 @@ export default function FinancingYourTreatment({
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb/>
+            <BreadCrumb />
 
             <Masthead
                 imageMedium={
@@ -106,7 +105,7 @@ export default function FinancingYourTreatment({
                             type="button"
                             text="Our insurance partners"
                             iconPosition="left"
-                            className="group/chat-button normal-case"
+                            className="group/chat-button bg-heading2 normal-case"
                             onClick={() => {
                                 window.scrollTo(
                                     0,
@@ -138,32 +137,40 @@ export default function FinancingYourTreatment({
 
             <FullWidthImageSection4
                 boldHeading={
-                    <div className="font-latoBold text-white md:max-w-[54.4rem]">
+                    <div className="font-latoBold !normal-case text-white md:max-w-[54.4rem]">
                         {data?.section_1.heading || 'Correct your vision from just £150 per month'}
                     </div>
                 }
                 altText={data?.section_1.large_image?.alt}
-                description={
-                    (data?.section_1.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_1.descriptions)) || [
-                        <H3Variant2 className="text-white">
-                            How much do you currently spend on your glasses and contact lenses?
-                        </H3Variant2>,
-                        'Over time the cost of purchasing glasses and everyday contact lenses add up to a massive, inconvenient spend.'
-                    ]
-                }
+                // description={
+                //     (data?.section_1.descriptions?.length &&
+                //         stringArrayToElementArray(data?.section_1.descriptions)) || [
+                //         <H3Variant2 className="normal-case text-white !text-[2rem] !leading-[2.8rem]">
+                //             How much do you currently spend on your glasses and contact lenses?
+                //         </H3Variant2>,
+                //         'Over time the cost of purchasing glasses and everyday contact lenses add up to a massive, inconvenient spend.'
+                //     ]
+                // }
+                description={[
+                    <H3Variant2 className="!text-[2rem] !uppercase !leading-[2.8rem] text-white">
+                        How much do you currently spend on your glasses and contact lenses?
+                    </H3Variant2>,
+                    <p className="text-[#CCC]">
+                        Over time the cost of purchasing glasses and everyday contact lenses add up to a massive,
+                        inconvenient spend.
+                    </p>
+                ]}
                 image={data?.section_1.image?.url || '/images/section-images/monthly-spending-finance.png'}
                 desktopImage={data?.section_1.large_image?.url || '/images/section-images/monthly-spending-finance.png'}
-                containerClass="pb-16 !bg-heading2"
-                sectionClass="md:!bg-heading2"
+                containerClass="pb-16 !bg-[#013B59]"
+                sectionClass="md:!bg-[#013B59]"
                 largeImageClassName="!rounded-primary"
             />
 
             <Section>
                 <Container className="grid place-items-center gap-12">
-                    {data?.calculator_heading ? (
-                        HTMLReactParser(data.calculator_heading)
-                    ) : (
+                    {/** data?.calculator_heading */}
+                    {
                         <>
                             <div className="grid place-items-center gap-6">
                                 <span className="text-[2rem] leading-[2.8rem]">No more</span>
@@ -179,38 +186,30 @@ export default function FinancingYourTreatment({
 
                             <div className="grid max-w-[59.5rem] place-items-center gap-6">
                                 <p className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
-                                    Correct your vison permanently with{' '}
-                                    <span
-                                        className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
-                                        24 month finance
-                                    </span>
-                                    &nbsp; option from&nbsp;
-                                    <span
-                                        className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-[#FE8083] md:text-[2.4rem] md:leading-[3.2rem]">
-                                        £150/Per eye, per month.
-                                    </span>
+                                    Correct your vison permanently with <br />
+                                    24 month finance option from £150/Per eye, per month.
                                 </p>
-                                <p className="max-w-[39rem] text-center">
+                                <p className="max-w-[40rem] text-center">
                                     Our vision correction treatments provide a without the hassle of glasses and contact
                                     lenses.
                                 </p>
                             </div>
                         </>
-                    )}
+                    }
                 </Container>
             </Section>
 
             <div id="calculator">
                 <Context treatments={laserTreatments}>
-                    <FinanceCalculator excludeBottomBanner/>
+                    <FinanceCalculator excludeBottomBanner />
                 </Context>
 
                 <Context treatments={cataractTreatments}>
-                    <FinanceCalculator excludeBottomBanner/>
+                    <FinanceCalculator excludeBottomBanner />
                 </Context>
 
                 <Context treatments={iclTreatments}>
-                    <FinanceCalculator/>
+                    <FinanceCalculator />
                 </Context>
             </div>
 
@@ -234,35 +233,28 @@ export default function FinancingYourTreatment({
 
             <Section className="grid gap-12 px-8 md:gap-16">
                 <div className="mx-auto flex flex-wrap items-center justify-center gap-6">
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo1} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo1} alt="" />
                     </div>
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo2} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo2} alt="" />
                     </div>
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo3} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo3} alt="" />
                     </div>
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6]  shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo4} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6]  shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo4} alt="" />
                     </div>
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full object-contain" src={Logo5} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full object-contain" src={Logo5} alt="" />
                     </div>
-                    <div
-                        className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
-                        <Image className="max-h-full max-w-full scale-[0.8] object-contain" src={Logo6} alt=""/>
+                    <div className="grid h-[8rem] w-[18rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]">
+                        <Image className="max-h-full max-w-full scale-[0.8] object-contain" src={Logo6} alt="" />
                     </div>
                 </div>
 
                 <Container className="grid place-items-center gap-12 rounded-primary pb-24 shadow-shadow1">
-                    <div
-                        className="h-14 w-[calc(100%_+_4rem)] rounded-tl-primary rounded-tr-primary bg-[#FF393E] xl:w-full"></div>
+                    <div className="h-14 w-[calc(100%_+_4rem)] rounded-tl-primary rounded-tr-primary bg-heading2 xl:w-full"></div>
                     <Image
                         src="/images/section-images/image-lock.png"
                         alt=""
@@ -272,23 +264,22 @@ export default function FinancingYourTreatment({
                     />
 
                     <H3Variant2 className="block max-w-[73.9rem] text-center normal-case text-heading">
-                        We will require your{' '}
-                        <span
-                            className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-[#FF393E] md:text-[3rem] md:leading-[3.6rem]">
-                            pre-authorization code
+                        We will{' '}
+                        <span className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-[#F3411A] md:text-[3rem] md:leading-[3.6rem]">
+                            require your pre-authorization code
                         </span>{' '}
                         before your consultation
                     </H3Variant2>
 
-                    <p className="max-w-[50.9rem] text-center">
+                    <p className="max-w-[48.9rem] text-center">
                         It's always best to check with your healthcare insurance provider that they will cover your fees
-                        and provide a pre-authorisation code for you.
+                        and provide a <br /> pre-authorisation code for you.
                     </p>
 
                     {/* Cta section */}
                     <div className="grid place-items-center gap-6">
                         <div className="flex items-center justify-center gap-4">
-                            <FiHelpCircle className="h-[2.4rem] w-[2.4rem] stroke-heading"/>
+                            <FiHelpCircle className="h-[2.4rem] w-[2.4rem] stroke-heading" />
 
                             <span className="font-mulishExtraBold text-[1.8rem] leading-[2.8rem] text-heading">
                                 Need help?
@@ -321,20 +312,20 @@ export default function FinancingYourTreatment({
                                         </g>
                                         <defs>
                                             <clipPath id="clip0_7348_23262">
-                                                <rect width="20" height="20" fill="white"/>
+                                                <rect width="20" height="20" fill="white" />
                                             </clipPath>
                                         </defs>
                                     </svg>
                                 }
                             />
-                            <ChatWithUs/>
+                            <ChatWithUs />
                         </div>
                     </div>
                 </Container>
             </Section>
 
             <LazyComponent>
-                <CompanyLogos sectionClass="!mt-24"/>
+                <CompanyLogos sectionClass="!mt-24" />
             </LazyComponent>
         </Page>
     );

@@ -6,9 +6,7 @@ export const presbyondPriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your Presbyond consultation',
-        priceDescription: `After booking your Presbyond laser eye surgery we deduct your £200 consultation fee from your
-	treatment price, making your consultation`,
-        priceDescBoldText: '100% FREE.'
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,400 per eye',
@@ -21,8 +19,7 @@ export const relexSmilePriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your ReLEx SMILE consultation',
-        priceDescription: `After booking your ReLEx SMILE treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
-        priceDescBoldText: '100% FREE.'
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,400 per eye',
@@ -35,8 +32,7 @@ export const icPriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your ICL Consultation',
-        priceDescription: `After booking your ICL treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
-        priceDescBoldText: '100% FREE.'
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,750 per eye',
@@ -49,8 +45,7 @@ export const lasikPriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your LASIK consultation',
-        priceDescription: `After booking your LASIK treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
-        priceDescBoldText: '100% FREE.'
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,400 per eye',
@@ -63,8 +58,7 @@ export const cataractPriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your Cataract consultation',
-        priceDescription: `After booking your Cataract treatment we deduct your £200 consultation fee from your treatment price, making your consultation`,
-        priceDescBoldText: '100% FREE.'
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,400 per eye',
@@ -89,7 +83,7 @@ export const lasekPriceList: PriceSectionInterface[] = [
     {
         price: '£200',
         priceText: 'The price of your LASEK & PRK consultation',
-        priceDescription: `Lorem ipsum dolor sit amet consectetur. Magna molestie eget venenatis neque non pharetra ligula id. Sed proin aliquam ut nibh cras sit sem. Porttitor consequat lectus.`
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£2,400 per eye',
@@ -102,15 +96,7 @@ export const myopiaPriceList: PriceSectionInterface[] = [
     {
         price: '£400',
         priceText: 'All-inclusive of comprehensive eye assessments for your child',
-        priceDescription: (
-            <>
-                <strong className="whitespace-nowrap font-latoBold text-[2.8rem] leading-[3.2rem] md:text-[3.2rem] md:leading-[3.6rem]">
-                    All-inclusive
-                </strong>{' '}
-                of comprehensive eye assessments for your child with a private consultation with your child’s dedicated
-                Myopia specialist.
-            </>
-        )
+        priceDescription: `Your consultation fee is inclusive of eye assessments and a private one-to-one consultation with our ophthalmologist`
     },
     {
         price: '£250 per check up consultation',
