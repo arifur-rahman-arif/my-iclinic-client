@@ -13,7 +13,7 @@ const ChatWithUs = () => {
             type="button"
             text="Chat with us"
             iconPosition="left"
-            className="group/chat-button justify-center normal-case sm:justify-start sm:justify-self-start"
+            className="group/chat-button justify-center bg-heading2 normal-case sm:justify-start sm:justify-self-start"
             icon={
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
