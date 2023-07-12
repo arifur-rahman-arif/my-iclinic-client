@@ -2,11 +2,10 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
-import { getSpecialistPost, getSpecialistsPost } from '@/lib';
+import { getSpecialistPost } from '@/lib';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
-import { SpecialistPostsInterface } from 'src/lib/page-functions/our-specialists';
 
 interface DynamicPageProps {
     specialist: any;
@@ -38,7 +37,7 @@ export default function DynamicPage({ specialist }: DynamicPageProps): JSX.Eleme
                                 {specialist?.image && (
                                     <Image
                                         src={specialist?.image}
-                                        alt={'Mr. John Bolger'}
+                                        alt={specialist.name}
                                         width={500}
                                         height={375}
                                         unoptimized
@@ -80,37 +79,20 @@ export default function DynamicPage({ specialist }: DynamicPageProps): JSX.Eleme
 }
 
 /**
- * Fetch all the post slug and defines static page paths
- *
- * @returns {Promise<{props: {posts: any}}>}
- */
-export async function getStaticPaths() {
-    const specialists: SpecialistPostsInterface[] = await getSpecialistsPost();
-
-    // Map the slugs to the format required by `getStaticPaths`
-    const paths = specialists.map((post) => ({ params: { slug: post.slug } }));
-
-    return {
-        paths,
-        fallback: false
-    };
-}
-
-/**
  * Fetch the data from WordPress database
  *
- * @param {GetStaticPropsContext<SinglePageParamsInterface>}ctx
+ * @param {any} ctx
  * @returns {Promise<{props: {}}>}
  */
-export async function getStaticProps(ctx: any) {
+export async function getServerSideProps(ctx: any) {
     try {
-        const specialist: any = await getSpecialistPost(ctx.params.slug);
+        const slug = ctx.query.slug;
+        const specialist: any = await getSpecialistPost(slug);
 
         return {
             props: {
                 specialist
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
         };
     } catch (error: any) {
         console.error(error);
