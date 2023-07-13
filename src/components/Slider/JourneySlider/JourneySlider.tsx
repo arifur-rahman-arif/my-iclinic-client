@@ -31,7 +31,7 @@ const JourneySlider = ({ sliderList }: StackSliderInterface): JSX.Element => {
     }, [sectionRefPosition]);
 
     return (
-        <Section>
+        <Section id="journey">
             {showSlider ? (
                 <Slider {...{ sliderList }} />
             ) : (

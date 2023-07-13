@@ -144,8 +144,8 @@ export const presbyondFaqList: FaqListInterface[] = [
         an implant into the eyes in order to achieve better vision. If you are suitable for Presbyond and
         Monovision, and depending on the health of your eyes and the lifestyle you have, we would
         advise Presbyond as the best treatment option for you. If you are undecided between Presbyond
-        and other laser treatments we offer, please feel free to contact us on 0208 445 8877 to get a
-        suitability check and/or private consultation with our laser specialist.`
+        and other laser treatments we offer, please feel free to contact us on 0208 445 8877 to get <a href="/suitability-check">a
+        suitability check</a> and/or private consultation with our laser specialist.`
     },
     {
         title: 'Can multifocal implants get rid of reading glasses?',
@@ -159,7 +159,7 @@ export const presbyondFaqList: FaqListInterface[] = [
     {
         title: 'How much does Presbyond laser eye surgery cost?',
         description: `Our presbyond laser treatment is an all inclusive fee of £2,400 per eye (inclusive of your
-            suitability check and private consultation with your laser specialist).`
+            <a href="/suitability-check">suitability check</a> and private consultation with your laser specialist).`
     },
     {
         title: 'Do you offer finance options for Presbyond Laser Eye Surgery?',
@@ -779,7 +779,7 @@ export const cataractFaqList: FaqListInterface[] = [
         after your procedure) and
         management of any
         unforeseen complications.`,
-        description: `<div class='grid gap-6 content-start'>
+        description: `<div class="grid gap-6 content-start">
             <p>
             This price covers patients for
             all surgery costs, including
@@ -1283,7 +1283,7 @@ export const lasekFaqList: FaqListInterface[] = [
     },
     {
         title: `What is the recovery period for LASEK, PRK or PTK laser eye surgery?`,
-        description: `Whether you have LASEK, PRK or PTK laser eye treatment, we recommend a 1 week recovery period. After your treatment, you will be given eye drops and detailed aftercare instructions from our friendly nurse which you will need to complete at home while your eyes heal and adjust. We advise resting for this 1 week period and not to not participate in swimming, sports and any other strenuous activity until you attend your aftercare appointment with your laser specialist. Our friendly team is always here to help answer any questions you may have about your recovery after treatment. Please call us on <a href='tel:0208 445 8877'>0208 445 8877</a> and our patient care coordinator will be able to help you with any questions.`
+        description: `Whether you have LASEK, PRK or PTK laser eye treatment, we recommend a 1 week recovery period. After your treatment, you will be given eye drops and detailed aftercare instructions from our friendly nurse which you will need to complete at home while your eyes heal and adjust. We advise resting for this 1 week period and not to not participate in swimming, sports and any other strenuous activity until you attend your aftercare appointment with your laser specialist. Our friendly team is always here to help answer any questions you may have about your recovery after treatment. Please call us on <a href="tel:0208 445 8877">0208 445 8877</a> and our patient care coordinator will be able to help you with any questions.`
     }
 ];
 
@@ -1576,11 +1576,11 @@ export const astigmatismFaqList: FaqListInterface[] = [
         shortDescription:
             'If you are over the age of 21 years old, we will check if your prescription is stable with a FREE',
         description: `If you are over the age of 21 years old, we will check if your prescription is stable with a FREE suitability check for our vision correction procedures:
-        <div class='grid gap-6 content-start'>
-            <ul class='mt-6 grid gap-8 list-disc pl-12'>
-                <li class='list-item list-disc'><strong><a href='/relex-smile-london'>ReLEx SMILE:</a> Correcting vision for ages 21-39</strong></li>
-                <li class='list-item list-disc'><strong><a href='/presbyond-london'>Presbyond:</a> Correcting vision for ages 40+</strong></li>
-                <li class='list-item list-disc'><strong><a href='/lasek-prk'>LASIK, LASEK, PRK & PTK:</a> correcting vision for all ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery and/or with an existing, complicated eye condition.</strong></li>
+        <div class="grid gap-6 content-start">
+            <ul class="mt-6 grid gap-8 list-disc pl-12">
+                <li class="list-item list-disc"><strong><a href="/relex-smile-london">ReLEx SMILE:</a> Correcting vision for ages 21-39</strong></li>
+                <li class="list-item list-disc"><strong><a href="/presbyond-london">Presbyond:</a> Correcting vision for ages 40+</strong></li>
+                <li class="list-item list-disc"><strong><a href="/lasek-prk">LASIK, LASEK, PRK & PTK:</a> correcting vision for all ages unsuitable for ReLEx SMILE or Presbyond laser eye surgery and/or with an existing, complicated eye condition.</strong></li>
             </ul>
         </div>`
     },

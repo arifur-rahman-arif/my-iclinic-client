@@ -1,8 +1,11 @@
-import { memo, ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
+import styles from './Styles.module.scss';
 
 interface TooltipProps {
     text: ReactNode;
     children: ReactNode;
+    className?: string;
+    arrowClassName?: string;
 }
 
 /**
@@ -14,21 +17,38 @@ interface TooltipProps {
  * @param {React.ReactNode} props.children - The wrapped elements that trigger the tooltip on hover.
  * @returns {React.ReactNode} The Tooltip component.
  */
-const Tooltip = memo(({ text, children }: TooltipProps) => {
-    return (
-        <div className="group/tooltip relative">
-            {children}
+const Tooltip = ({ text, className, children, arrowClassName }: TooltipProps) => {
+    const tooltipRef = useRef<HTMLDivElement | null>(null);
 
-            <div className="pointer-events-none absolute left-1/2 z-10 mt-5 -translate-x-1/2 -translate-y-8 transform rounded-primary bg-white opacity-0 drop-shadow-xl transition-all duration-500 group-hover/tooltip:pointer-events-auto group-hover/tooltip:translate-y-0 group-hover/tooltip:opacity-100">
+    return (
+        <div
+            className={`relative ${styles.styles}`}
+            onMouseEnter={() => {
+                tooltipRef.current?.classList.remove('hide');
+                tooltipRef.current?.classList.add('show');
+            }}
+            onMouseLeave={() => {
+                tooltipRef.current?.classList.remove('show');
+                tooltipRef.current?.classList.add('hide');
+            }}
+        >
+            <div>{children}</div>
+
+            <div
+                ref={tooltipRef}
+                className={`tooltip absolute top-full left-1/2 -translate-x-1/2 translate-y-4 rounded-primary bg-white drop-shadow-xl ${className}`}
+            >
                 <div className="relative">
-                    <div className="absolute top-0 left-1/2 -z-[1] -translate-x-1/2">
-                        <div className="h-6 w-6 -translate-y-2 rotate-45 transform bg-heading2"></div>
+                    <div className="absolute bottom-full left-1/2 -z-[1] -translate-x-1/2">
+                        <div
+                            className={`h-0 w-0 border-[0.8rem] border-b-brand border-l-transparent border-t-transparent border-r-transparent ${arrowClassName}`}
+                        ></div>
                     </div>
-                    <div className="z-[1] rounded-primary bg-white py-6 px-8">{text}</div>
+                    {text}
                 </div>
             </div>
         </div>
     );
-});
+};
 
 export default Tooltip;

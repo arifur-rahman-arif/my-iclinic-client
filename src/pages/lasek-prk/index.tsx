@@ -168,7 +168,8 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 description={
                     <>
                         Need to talk to a specialist before booking a laser consultation? If you are unsure whether you
-                        are suitable for our laser treatments, you can attend a <strong>FREE suitability check </strong>
+                        are suitable for our laser treatments, you can attend a{' '}
+                        <a href="/suitability-check">FREE suitability check </a>
                         with our laser specialist. They will talk you through your prescription history and the best
                         treatment options we offer for vision correction.
                     </>

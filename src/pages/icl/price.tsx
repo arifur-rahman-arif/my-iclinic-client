@@ -2,6 +2,7 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
+import LinkText from '@/components/Link/LinkText';
 import Page from '@/components/Page';
 import {
     BulletPoint,
@@ -89,9 +90,11 @@ export default function IclPricing({ seo, yoastJson }: IclPricingProps): JSX.Ele
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p className="">
-                                <strong>A FREE</strong> suitability check with our ICL specialist (a comprehensive
-                                assessment of your suitability and how implantable contact lenses will suit your
-                                lifestyle).
+                                <LinkText href="/suitability-check">
+                                    <strong>A FREE suitability</strong>
+                                </LinkText>{' '}
+                                check with our ICL specialist (a comprehensive assessment of your suitability and how
+                                implantable contact lenses will suit your lifestyle).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">

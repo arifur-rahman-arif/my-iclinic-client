@@ -178,7 +178,7 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                 title="Friendly vision correction treatment for dry eyes"
                 descriptions={[
                     'If you are experiencing dry eye symptoms and have difficulty with short sightedness or near sightedness (a refractive error in your eye), we offer vision correction treatment options which can eliminate the need for wearing glasses and/or uncomfortable contact lenses.',
-                    'Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we can offer you a FREE suitability check for our implantable contact lenses.'
+                    'Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we can offer you a <a href="/suitability-check">FREE suitability check</a> for our implantable contact lenses.'
                 ]}
                 button1Text="Book A FREE suitability"
                 excludeSloganText

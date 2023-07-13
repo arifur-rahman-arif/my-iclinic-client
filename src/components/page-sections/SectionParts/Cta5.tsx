@@ -1,4 +1,3 @@
-import { BookConsultation } from '@/components/page-sections';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
@@ -31,61 +30,50 @@ const Cta5 = ({
         <>
             <div className={`flex flex-wrap items-center justify-start gap-6 ${className}`}>
                 {/* Modal */}
-                <BookConsultation
-                    modalElement={
-                        <>
-                            <iframe
-                                src="https://calendly.com/myiclinic/free_visioncorrection_consultation"
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
-                    buttonClassName={`${button1ClassName} group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary`}
+                <Link
+                    href="/suitability-check"
+                    className={`${button1ClassName} group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent`}
+                    aria-label="Book a free screening test"
                 >
-                    <button className="" aria-label="Book a free screening test">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                            />
-                            <path
-                                d="M13.334 1.66699V5.00033"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                            />
-                            <path
-                                d="M6.66602 1.66699V5.00033"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                            />
-                            <path
-                                d="M2.5 8.33301H17.5"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                            />
-                        </svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                        />
+                        <path
+                            d="M13.334 1.66699V5.00033"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                        />
+                        <path
+                            d="M6.66602 1.66699V5.00033"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                        />
+                        <path
+                            d="M2.5 8.33301H17.5"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                        />
+                    </svg>
 
-                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                            {button1Text || 'Book a free screening test'}
-                        </span>
-                    </button>
-                </BookConsultation>
+                    <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                        {button1Text || 'Book a suitability check'}
+                    </span>
+                </Link>
 
                 {/* Phone number */}
                 <Link

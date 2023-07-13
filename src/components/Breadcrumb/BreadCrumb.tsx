@@ -1,15 +1,16 @@
 import { Container } from '@/components/Container';
-import IconArrow from '@/icons/icon-double-arrow.svg';
-import { generateBreadcrumbs } from '@/utils/miscellaneous';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
 import IconHome from './IconHome';
 
 interface BreadCrumbProps {
     className?: string;
 }
+
+const NestedRoutes = dynamic(() => import('./NestedRoutes'), {
+    ssr: false
+});
 
 /**
  * Breadcrumb component
@@ -18,8 +19,7 @@ interface BreadCrumbProps {
  */
 const BreadCrumb = ({ className }: BreadCrumbProps): JSX.Element => {
     const router = useRouter();
-    const paths = generateBreadcrumbs(router);
-    const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing', '/laser-eye-surgery'];
+
     return (
         <Container
             className={`breadcrumb-container mt-4 flex items-center justify-start gap-4 overflow-x-auto overflow-y-hidden pb-4 md:hidden md:pb-0 ${className}`}
@@ -39,25 +39,7 @@ const BreadCrumb = ({ className }: BreadCrumbProps): JSX.Element => {
                 </Link>
             )}
 
-            {paths.map((path, index) => (
-                <Fragment key={index}>
-                    {!excludeUrls.includes(path.url) && (
-                        <div className="flex min-w-max items-center justify-start gap-2" key={index}>
-                            <Image src={IconArrow} alt="" className="h-8 w-8 translate-y-[0.1rem]" />
-
-                            <Link href={!excludeUrls.includes(path.url) ? path.url : '/'}>
-                                <span
-                                    className={`whitespace-nowrap font-mulishBold text-[1.2rem] capitalize leading-[1.6rem] md:text-[1.5rem] ${
-                                        index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
-                                    }`}
-                                >
-                                    {path.name}
-                                </span>
-                            </Link>
-                        </div>
-                    )}
-                </Fragment>
-            ))}
+            <NestedRoutes router={router} />
         </Container>
     );
 };

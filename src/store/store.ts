@@ -1,6 +1,7 @@
 import { alertSlice } from '@/features/index';
 import { abandonedCallbackApi } from '@/services/abandoned-cb';
 import { businessFormApi } from '@/services/businessInfo';
+import { suggestionRequestApi } from '@/services/suggestionRequest';
 
 import { downloadFormApi } from '@/services/downloadForm';
 import { navMenuApi } from '@/services/navMenuData';
@@ -24,7 +25,8 @@ export const makeStore = () => {
             [abandonedCallbackApi.reducerPath]: abandonedCallbackApi.reducer,
             [reviewsApi.reducerPath]: reviewsApi.reducer,
             [navMenuApi.reducerPath]: navMenuApi.reducer,
-            [businessFormApi.reducerPath]: businessFormApi.reducer
+            [businessFormApi.reducerPath]: businessFormApi.reducer,
+            [suggestionRequestApi.reducerPath]: suggestionRequestApi.reducer
         },
         middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware) =>
             getDefaultMiddleware().concat(
@@ -33,7 +35,8 @@ export const makeStore = () => {
                 requestCallbackApi.middleware,
                 abandonedCallbackApi.middleware,
                 navMenuApi.middleware,
-                businessFormApi.middleware
+                businessFormApi.middleware,
+                suggestionRequestApi.middleware
             )
     });
 };
