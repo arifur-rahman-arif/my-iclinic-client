@@ -263,6 +263,25 @@ body {
       right: 10px !important;
     }
   }
+
+  a[href="/suitability-check"] {
+    font-family: var(--mulish-bold);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: var(--color-brand);
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration-color: var(--color-brand);
+    text-underline-offset: 4px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
 }
 
 ::-webkit-scrollbar {

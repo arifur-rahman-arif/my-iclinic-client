@@ -1,0 +1,50 @@
+.styles {
+  :global {
+    .tooltip {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-3rem) translateX(-50%);
+    }
+
+    .show {
+      &:local {
+        animation: tooltipReveal 0.8s ease-in-out forwards;
+      }
+    }
+
+    .hide {
+      &:local {
+        animation: tooltipHide 0.5s ease-in-out forwards;
+      }
+    }
+  }
+
+  @keyframes tooltipReveal {
+    0% {
+      transform: translateY(-3rem) translateX(-50%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(1.6rem) translateX(-50%);
+      opacity: .5;
+    }
+    100% {
+      transform: translateY(1.2rem) translateX(-50%);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @keyframes tooltipHide {
+    0% {
+      transform: translateY(1.2rem) translateX(-50%);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    100% {
+      transform: translateY(-1rem) translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

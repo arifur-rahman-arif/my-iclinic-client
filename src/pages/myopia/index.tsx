@@ -13,7 +13,6 @@ import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
 import { myopiaFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListMyopia } from '@/page-sections/ImageGallery';
 import {
-    BookConsultation,
     CoverFlowSliderSection,
     CtaSection2,
     FullWidthImageSection,
@@ -613,56 +612,59 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                             we can offer you a
                         </span>
                         <span className="max-w-[40.8rem] font-mulishBold text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[2.8rem]">
-                            FREE suitability check for our vision correction treatments.
+                            <a href="/suitability-check">FREE suitability check</a> for our vision correction
+                            treatments.
                         </span>
-                        <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
-                            <button className="" aria-label="Book your FREE suitability check">
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                    />
-                                    <path
-                                        d="M13.334 1.66699V5.00033"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                    />
-                                    <path
-                                        d="M6.66602 1.66699V5.00033"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                    />
-                                    <path
-                                        d="M2.5 8.33301H17.5"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                    />
-                                </svg>
+                        <Link
+                            href="/suitability-check"
+                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent"
+                            aria-label="Book your FREE suitability check"
+                        >
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                />
+                                <path
+                                    d="M13.334 1.66699V5.00033"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                />
+                                <path
+                                    d="M6.66602 1.66699V5.00033"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                />
+                                <path
+                                    d="M2.5 8.33301H17.5"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                />
+                            </svg>
 
-                                <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                                    Book your FREE suitability check
-                                </span>
-                            </button>
-                        </BookConsultation>
+                            <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                                Book your FREE suitability check
+                            </span>
+                        </Link>
                         <span className="mt-10 max-w-[38.6rem] font-mulishMedium text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[3.2rem]">
                             Enjoy life at all distances again, free from visual aids.
                         </span>

@@ -15,7 +15,7 @@ const ContactDetails = (): JSX.Element => {
             <div className="grid content-start gap-6">
                 <div className="flex items-center justify-start gap-6">
                     <Image
-                        src="/images/icons/icon-clock-outline-dark.svg"
+                        src="/images/icons/icon-clock-white.svg"
                         alt=""
                         width={20}
                         height={20}
@@ -41,7 +41,7 @@ const ContactDetails = (): JSX.Element => {
 
                 <div className="flex items-center justify-start gap-6">
                     <Image
-                        src="/images/icons/icon-mail-outline-dark.svg"
+                        src="/images/icons/icon-mail-white.svg"
                         alt=""
                         width={20}
                         height={20}

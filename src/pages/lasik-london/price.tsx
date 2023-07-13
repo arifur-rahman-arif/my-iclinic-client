@@ -97,9 +97,9 @@ export default function LasikPricing({ seo, yoastJson }: LasikPricingProps): JSX
                             {/* <Image src={IconEyeTesting} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
-                                <strong>A FREE</strong> suitability laser check with our laser specialist (a
-                                comprehensive assessment of your suitability and how LASIK laser eye surgery will suit
-                                your lifestyle).
+                                <a href="/suitability-check">A FREE suitability</a> laser check with our laser
+                                specialist (a comprehensive assessment of your suitability and how LASIK laser eye
+                                surgery will suit your lifestyle).
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">

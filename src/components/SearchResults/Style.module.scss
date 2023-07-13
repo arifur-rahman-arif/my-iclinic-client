@@ -1,0 +1,29 @@
+.styles {
+  :global {
+
+    .ais-Highlight-highlighted {
+      color: var(--color-orange);
+      font-family: var(--mulish-bold);
+      font-style: normal !important;
+    }
+
+    .search-result-title {
+      .ais-Highlight {
+        * {
+          font-size: 2rem;
+          line-height: 2.8rem;
+          font-family: var(--mulish-bold);
+          font-style: normal !important;
+        }
+      }
+
+      .ais-Highlight-nonHighlighted {
+        color: var(--color-heading);
+
+        * {
+          color: var(--color-heading)
+        }
+      }
+    }
+  }
+}

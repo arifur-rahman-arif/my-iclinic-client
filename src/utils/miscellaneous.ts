@@ -303,3 +303,17 @@ export const openFreshdeskChat = (): Element | null => {
 
     return freshChatIcon;
 };
+
+/**
+ * Adds a sign prefix to a given number.
+ *
+ * @param {number | null} number - The number to which the sign will be prepended. Can be null.
+ * @returns {string | number} - The modified number with the sign prefix. If the input number is null, the function returns null as well.
+ */
+export const prependSign = (number: number | null): string | number | null => {
+    if (number === null) return number;
+
+    if (number > 0) return `+${number}`;
+
+    return number;
+};

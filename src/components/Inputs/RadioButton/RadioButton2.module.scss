@@ -1,0 +1,126 @@
+.styles {
+    :global {
+        --c-active: #275efe;
+        --c-active-inner: #ffffff;
+        --c-black: #1b1b22;
+        --c-default: #d2d6e9;
+        --c-default-dark: #c7cbdf;
+
+        .radio {
+            div {
+                position: relative;
+                border-radius: var(--border-radius, 12px) var(--border-radius-corner, 12px) var(--border-radius, 12px)
+                    var(--border-radius, 12px);
+            }
+
+            input {
+                display: block;
+                width: var(--input-width, 24px);
+                height: var(--input-height, 24px);
+                margin: 0;
+                padding: 0;
+                cursor: pointer;
+                border: none;
+                border-radius: inherit;
+                outline: none;
+                background: var(--input-background, none);
+                appearance: none;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                display: block;
+                transform: scale(1.01) translateZ(0);
+                pointer-events: none;
+                fill: var(--c-active-inner);
+            }
+        }
+
+        .radio {
+            input {
+                box-shadow: inset 0 0 0 var(--border-width) var(--border-color);
+                --border-color: var(--c-default);
+                --border-width: 2px;
+
+                &:checked {
+                    --border-color: var(--color-heading2);
+                }
+
+                &:not(:checked) {
+                    transition: box-shadow 0.25s;
+
+                    &:hover {
+                        --border-color: #ffffff;
+                        --border-width: 3px;
+                    }
+                }
+            }
+        }
+
+        .radio {
+            input {
+                position: relative;
+
+                & ~ .selected-dot {
+                    transform: translate(-50%, -50%) scale(0);
+                }
+
+                &:checked {
+                    --border-width: 6.75px;
+
+                    & ~ .selected-dot {
+                        &:local {
+                            animation-name: checkedDot;
+                            animation-duration: 0.5s;
+                            animation-delay: 0.3s;
+                            animation-fill-mode: forwards;
+                        }
+
+                        @keyframes checkedDot {
+                            from {
+                                transform: translate(-50%, -50%) scale(0);
+                            }
+                            to {
+                                transform: translate(-50%, -50%) scale(1);
+                            }
+                        }
+                    }
+                }
+
+                & + svg {
+                    --top-s-x: 1.75;
+                    --top-s-y: 1;
+                    --dot-y: -17px;
+                    --drop-y: -14px;
+                    --top-y: 0;
+
+                    .top {
+                        transform: translateY(var(--top-y)) scale(var(--top-s-x), var(--top-s-y)) translateZ(0);
+                        transform-origin: 12px -12px;
+                    }
+
+                    .dot {
+                        transform: translateY(var(--dot-y)) translateZ(0);
+                    }
+
+                    .drop {
+                        transform: translateY(var(--drop-y)) translateZ(0);
+                    }
+                }
+            }
+        }
+
+        * {
+            box-sizing: inherit;
+
+            &:before,
+            &:after {
+                box-sizing: inherit;
+            }
+        }
+    }
+}

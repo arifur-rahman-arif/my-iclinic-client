@@ -1,6 +1,7 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
+import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
@@ -88,9 +89,11 @@ export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX
                         className="sm:!ml-0"
                         list={[
                             <>
-                                <strong>A FREE</strong> suitability laser check with our laser specialist
-                                (acomprehensive assessment of your suitability and how LASEK or PRK laser eye surgery
-                                will suit your lifestyle).
+                                <LinkText href="/suitability-check">
+                                    <strong>A FREE suitability</strong>
+                                </LinkText>{' '}
+                                laser check with our laser specialist (acomprehensive assessment of your suitability and
+                                how LASEK or PRK laser eye surgery will suit your lifestyle).
                             </>,
                             'A comprehensive consultation with your dedicated laser specialist (inclusive of all eye assessment and eye scans).',
                             'Your laser surgery performed in our private laser suite with your dedicated specialist and our friendly team.',
@@ -213,9 +216,9 @@ export default function LasekPricing({ seo, yoastJson }: LasekPricingProps): JSX
                             'A comprehensive consultation with your dedicated laser specialist (inclusive of all eye assessment and eye scans).',
                             'Your PTK surgery was performed in our private laser suite with your dedicated specialist and our friendly team.',
                             <>
-                                <strong>A FREE</strong> suitability laser check with our laser specialist
-                                (acomprehensive assessment of your suitability and how LASEK or PRK laser eye surgery
-                                will suit your lifestyle).
+                                <a href="/suitability-check">A FREE suitability</a> laser check with our laser
+                                specialist (acomprehensive assessment of your suitability and how LASEK or PRK laser eye
+                                surgery will suit your lifestyle).
                             </>
                         ]}
                     />

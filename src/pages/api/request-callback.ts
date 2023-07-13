@@ -77,7 +77,6 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // ===================================
             // End of pabau integration
             // ===================================
-
             res.status(200).json({ message: 'Form submitted successfully' });
         } else {
             res.status(404).json({ message: 'Request url not found' });

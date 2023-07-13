@@ -78,14 +78,24 @@ const FooterHeaderLinks = (): JSX.Element => {
             {/* </div> */}
 
             <div className="flex items-center justify-start gap-4">
-                <Image
-                    src="/images/icons/icon-mail-outline-dark.svg"
-                    alt=""
-                    quality={70}
-                    width={20}
-                    height={20}
-                    className="h-8 w-8"
-                />
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.33366 4.31934H16.667C17.5837 4.31934 18.3337 5.06934 18.3337 5.986V15.986C18.3337 16.9027 17.5837 17.6527 16.667 17.6527H3.33366C2.41699 17.6527 1.66699 16.9027 1.66699 15.986V5.986C1.66699 5.06934 2.41699 4.31934 3.33366 4.31934Z"
+                        stroke="#051821"
+                        strokeOpacity="0.9"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M18.3337 5.98633L10.0003 11.8197L1.66699 5.98633"
+                        stroke="#051821"
+                        strokeOpacity="0.9"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                </svg>
                 <a
                     href="mailto:reception@my-iclinic.co.uk"
                     className="relative block font-mulishBold text-[1.6rem] leading-[2.4rem] text-heading"
