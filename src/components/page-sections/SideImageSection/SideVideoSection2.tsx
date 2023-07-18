@@ -5,6 +5,7 @@ import { useOnScreen } from '@/hooks';
 import { BookConsultation } from '@/page-sections/index';
 import { ImageType2 } from '@/types';
 import gsap from 'gsap';
+import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useEffect, useRef } from 'react';
@@ -73,7 +74,7 @@ const SideVideoSection2 = ({
                 <div className="grid gap-12 md:max-w-[48.7rem]">
                     {descriptions.map((desc, index) => (
                         <p key={index} className={`${textColor}`}>
-                            {desc}
+                            {HTMLReactParser(desc as string)}
                         </p>
                     ))}
 

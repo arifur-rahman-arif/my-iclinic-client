@@ -12,7 +12,7 @@ const PhoneCall = () => {
         <div className={`group/wrapper rela flex h-20 w-20 flex-nowrap items-center justify-start`}>
             <Tooltip
                 text={
-                    <div className="grid justify-items-center gap-3">
+                    <div className="grid justify-items-center gap-3 px-6 py-3">
                         <span className="whitespace-nowrap font-mulishMedium text-[1.4rem] leading-[1.8rem] text-[#384043]">
                             Click to call
                         </span>
@@ -24,6 +24,7 @@ const PhoneCall = () => {
                         </Link>
                     </div>
                 }
+                className=""
             >
                 <Link
                     href="tel:0208 445 8877"
