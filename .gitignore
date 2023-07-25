@@ -36,7 +36,7 @@ yarn-error.log*
 
 .env
 
-public/sitemap.xml
-public/sitemap-0.xml
+public/*.xml
+robots.txt
 .vscode
 .idea

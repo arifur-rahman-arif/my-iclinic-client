@@ -93,15 +93,20 @@ const Header = (): JSX.Element => {
                 ref={headerRef}
                 className="sticky top-0 left-0 z-[99] w-full bg-white shadow-md transition-all duration-500 xl:shadow-none"
             >
-                <Container className="grid grid-cols-[auto_1fr] items-center gap-12 gap-y-4 gap-x-40 xl:py-12">
+                <Container
+                    className={`grid grid-cols-[auto_1fr] items-center gap-12 gap-y-4 gap-x-12 xl:gap-x-24 ${
+                        scrollDirection || scrollPosition < 100 ? 'xl:py-12' : 'xl:py-8'
+                    } `}
+                >
                     <Link href="/" className="self-start py-4">
                         <Image
                             src="/images/logos/logo-iclinic-desktop.png"
                             alt="My-iClinic"
-                            width={154}
-                            height={36}
+                            width={200}
+                            height={90}
                             quality={100}
                             priority
+                            className="max-h-[3.6rem] max-w-[15.9rem] object-contain xl:max-h-full xl:max-w-full"
                         />
                     </Link>
 

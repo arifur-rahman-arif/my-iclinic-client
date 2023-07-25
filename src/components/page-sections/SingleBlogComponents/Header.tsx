@@ -40,6 +40,7 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                         alt={title}
                         quality={100}
                         priority={true}
+                        unoptimized={true}
                         className="max-h-[43.8rem] rounded-primary object-cover transition-all duration-[0.45s] group-hover/header:scale-105"
                     />
                 </div>

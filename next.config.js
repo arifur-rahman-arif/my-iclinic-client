@@ -97,12 +97,12 @@ const nextConfig = {
             }
         ];
     },
-    async rewrites() {
-        return [{
-            source: '/robots.txt',
-            destination: '/api/robots'
-        }];
-    },
+    // async rewrites() {
+    //     return [{
+    //         source: '/robots.txt',
+    //         destination: '/api/robots'
+    //     }];
+    // },
     async redirects() {
         return [
             {
@@ -593,20 +593,20 @@ const nextConfig = {
                 destination: '/relex-smile-london',
                 permanent: true
             },
-            { source: '/our-prices', destination: '/pricing-and-financing/our-prices', permanent: true },
-            { source: '/blog-post-template', destination: '/', permanent: true },
-            { source: '/eye-treatments', destination: '/', permanent: true },
-            { source: '/__trashed-2', destination: '/', permanent: true },
-            { source: '/the-top-wallets-of-2019', destination: '/', permanent: true },
-            { source: '/amd-awareness-month-bp/feed', destination: '/', permanent: true },
-            { source: '/portfolio-items', destination: '/', permanent: true },
-            { source: '/amd-awareness-month', destination: '/', permanent: true },
-            { source: '/amd-awareness-month-bp', destination: '/', permanent: true },
-            { source: '/embed', destination: '/', permanent: true },
-            { source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true },
-            { source: '/glasses-are-not-a-solution/feed', destination: '/', permanent: true },
-            { source: '/author/sashamossman', destination: '/', permanent: true },
-            { source: '/iselfie', destination: '/', permanent: true },
+            {source: '/our-prices', destination: '/pricing-and-financing/our-prices', permanent: true},
+            {source: '/blog-post-template', destination: '/', permanent: true},
+            {source: '/eye-treatments', destination: '/', permanent: true},
+            {source: '/__trashed-2', destination: '/', permanent: true},
+            {source: '/the-top-wallets-of-2019', destination: '/', permanent: true},
+            {source: '/amd-awareness-month-bp/feed', destination: '/', permanent: true},
+            {source: '/portfolio-items', destination: '/', permanent: true},
+            {source: '/amd-awareness-month', destination: '/', permanent: true},
+            {source: '/amd-awareness-month-bp', destination: '/', permanent: true},
+            {source: '/embed', destination: '/', permanent: true},
+            {source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true},
+            {source: '/glasses-are-not-a-solution/feed', destination: '/', permanent: true},
+            {source: '/author/sashamossman', destination: '/', permanent: true},
+            {source: '/iselfie', destination: '/', permanent: true},
             {
                 source: '/glasses-are-not-a-solution',
                 destination: '/',
@@ -889,13 +889,13 @@ const nextConfig = {
             },
             {
                 source: '/eye-conditions/dry-eyes',
-                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                has: [{type: 'query', key: 'fb-edit', value: '1'}],
                 destination: '/dry-eyes-treatment-london',
                 permanent: true
             },
             {
                 source: '/dry-eyes',
-                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                has: [{type: 'query', key: 'fb-edit', value: '1'}],
                 destination: '/dry-eyes-treatment-london',
                 permanent: true
             },
@@ -1015,11 +1015,6 @@ const nextConfig = {
                 permanent: true
             },
             {
-                source: '/paediatric-eye-care',
-                destination: '/paediatric-eye-care',
-                permanent: true
-            },
-            {
                 source: '/laser-treatment/presbyopia-correction',
                 destination: '/presbyond-london',
                 permanent: true
@@ -1081,7 +1076,7 @@ const nextConfig = {
             },
             {
                 source: '/book-an-appointment',
-                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                has: [{type: 'query', key: 'fb-edit', value: '1'}],
                 destination: '/contact-us',
                 permanent: true
             },

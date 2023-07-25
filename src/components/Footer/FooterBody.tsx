@@ -22,7 +22,7 @@ const FooterBody = (): JSX.Element => {
                             {list.listLinks.map((link, index) => (
                                 <li key={index}>
                                     <LinkText
-                                        href={link.url}
+                                        href={link.url || '#'}
                                         className="!text-[1.6rem] !leading-[2.4rem] text-[#E9EAEB]"
                                         indicatorColor="bg-[#E9EAEB]"
                                     >
