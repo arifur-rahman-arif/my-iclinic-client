@@ -63,24 +63,20 @@ const footerList: FooterListInterface[] = [
         listHeading: 'Why choose us?',
         listLinks: [
             {
-                text: 'Affordable high-quality vision correction',
-                url: '/relex-smile-london'
-            },
-            {
                 text: '5 star technology and treatment',
                 url: '/our-specialists/our-eye-diagnostics-technology'
             },
             {
-                text: 'Conveniently located in North London',
-                url: ''
+                text: 'Located In North London',
+                url: '/contact-us'
             },
             {
-                text: 'Top visual outcomes',
-                url: ''
+                text: 'Our Specialist Team',
+                url: '/our-specialists'
             },
             {
-                text: 'Care Quality Commission',
-                url: 'https://www.cqc.org.uk/location/1-482726029'
+                text: 'Our Clinic',
+                url: '/about-us'
             }
         ]
     },
