@@ -16,11 +16,11 @@ const FooterBottomLinks = (): JSX.Element => {
                         Privacy Policy
                     </LinkText>
                 </li>
-                <li>
-                    <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
-                        Terms and condition
-                    </LinkText>
-                </li>
+                {/* <li> */}
+                {/*    <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white"> */}
+                {/*        Terms and condition */}
+                {/*    </LinkText> */}
+                {/* </li> */}
                 <li>
                     <LinkText href="/cookie-policy" className="text-white" indicatorColor="bg-white">
                         Cookies Policy
@@ -29,6 +29,11 @@ const FooterBottomLinks = (): JSX.Element => {
                 <li>
                     <LinkText href="/complaint" className="text-white" indicatorColor="bg-white">
                         Complaints Procedure
+                    </LinkText>
+                </li>
+                <li>
+                    <LinkText href="/sitemap" className="text-white" indicatorColor="bg-white">
+                        Sitemap
                     </LinkText>
                 </li>
             </ul>
