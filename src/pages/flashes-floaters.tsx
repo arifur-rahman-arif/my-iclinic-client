@@ -20,7 +20,6 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import { WpPageResponseInterface } from '@/types';
-import { stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -170,16 +169,13 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     </>
                 }
                 h3BoldHeading="private consultation?"
-                descriptions={
-                    (data?.section_3?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_3?.descriptions)) || [
-                        <>
-                            A private consultation with our ophthalmologist is an all-inclusive{' '}
-                            <strong>cost of £300</strong>
-                        </>,
-                        'This includes:'
-                    ]
-                }
+                descriptions={[
+                    <>
+                        A private consultation with our ophthalmologist is an all-inclusive{' '}
+                        <strong>cost of £300</strong>
+                    </>,
+                    'This includes:'
+                ]}
                 sectionImage={{
                     url: data?.section_3?.image || '/images/section-images/cornea-consultation-large.png',
                     width: 390,
@@ -210,8 +206,8 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             <FullWidthImageSection
                 h3Title={
                     <>
-                        {data?.full_width_image_section?.heading ? (
-                            HTMLReactParser(data?.full_width_image_section?.heading)
+                        {data?.section_4?.heading ? (
+                            HTMLReactParser(data?.section_4?.heading)
                         ) : (
                             <>Retinal detachments</>
                         )}

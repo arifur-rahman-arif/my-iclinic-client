@@ -264,7 +264,7 @@ body {
     }
   }
 
-  a[href="/suitability-check"] {
+  a[href="/suitability-check"]:not(.sitemap-link) {
     color: var(--color-brand);
     cursor: pointer;
     display: inline-block;

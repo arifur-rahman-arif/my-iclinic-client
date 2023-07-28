@@ -38,7 +38,8 @@ interface BlogPageProps {
 export default function Blogs({ posts, categories, postsPerPageValue, seo, yoastJson }: BlogPageProps): JSX.Element {
     return (
         <Page title="Articles" description="List of all blogs" seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb className="md:!flex" />
+
             {posts?.length > 0 ? (
                 <BlogList blogList={posts} categoryList={categories} postsPerPageValue={postsPerPageValue} />
             ) : (
