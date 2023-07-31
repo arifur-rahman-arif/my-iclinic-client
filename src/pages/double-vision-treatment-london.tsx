@@ -81,6 +81,8 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 priceText={data?.masthead_price || <></>}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>

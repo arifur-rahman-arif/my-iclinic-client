@@ -1,19 +1,47 @@
 import { BulletPoint } from '@/components/page-sections';
+import HTMLReactParser from 'html-react-parser';
+interface StackedColumnInterface {
+    savingMoneytitle: string|'';
+    savingmoneyContent: string|'';
+    savingTimetitle: string|'';
+    savingtimeContent: string|'';
+    savingVisiontitle: string|'';
+    savingvisionContent: string|'';
+    savingPlanettitle: string|'';
+    savingplanetContent: string|'';
+}
 
 /**
  * Stack column for the side image section
  *
+ * @param {StackedColumnInterface} { savingMoneytitle,
+    savingmoneyContent,
+    savingTimetitle,
+    savingtimeContent,
+    savingVisiontitle,
+    savingvisionContent,
+    savingPlanettitle,
+    savingplanetContent}
  * @returns {*}  {JSX.Element}
  */
-const StackColumn = (): JSX.Element => {
+const StackColumn = ({
+    savingMoneytitle,
+    savingmoneyContent,
+    savingTimetitle,
+    savingtimeContent,
+    savingVisiontitle,
+    savingvisionContent,
+    savingPlanettitle,
+    savingplanetContent
+}: StackedColumnInterface): JSX.Element => {
     return (
         <div className="grid gap-12 self-center">
             {/* Grid item 1 */}
             <div className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-4">
                 <BulletPoint />
-                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">Saving Money</h3>
+                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">{ savingMoneytitle || 'Saving Money'}</h3>
                 <div className="col-span-2 grid gap-6">
-                    <p>
+                 <>  { savingmoneyContent ? HTMLReactParser(savingmoneyContent) : HTMLReactParser(` <p>
                         <strong>One custom lens means one all- time purchase.</strong>
                     </p>
                     <p>
@@ -29,41 +57,41 @@ const StackColumn = (): JSX.Element => {
                     <p>
                         Implantable Contact Lenses are a great long-term investment for permanently clear vision without
                         any plastic waste!
-                    </p>
+                    </p>`)}</>
                 </div>
             </div>
             {/* Grid item 2 */}
             <div className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-4">
                 <BulletPoint />
 
-                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">Saving Time</h3>
+                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">{savingTimetitle || 'Saving Time'}</h3>
                 <div className="col-span-2 grid gap-6">
-                    <p>
+                 <>   { savingtimeContent ? HTMLReactParser(savingtimeContent) : HTMLReactParser(`<p>
                         <strong>Where are my contacts?</strong>
                     </p>
-                    <p>Wake up in the morning with your sight ready before you are!</p>
+                    <p>Wake up in the morning with your sight ready before you are!</p>`)}</>
                 </div>
             </div>
             {/* Grid item 3 */}
             <div className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-4">
                 <BulletPoint />
-                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">Saving Vision</h3>
+                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">{savingVisiontitle || 'Saving Vision'}</h3>
                 <div className="col-span-2 grid gap-6">
-                    <p>
+                 <>   { savingvisionContent ? HTMLReactParser(savingvisionContent) : HTMLReactParser(`<p>
                         <strong>No risk of infections, dry eyes or blindness</strong>
                     </p>
-                    <p>Your eye health is safely cared for.</p>
+                    <p>Your eye health is safely cared for.</p>`)}</>
                 </div>
             </div>
             {/* Grid item 4 */}
             <div className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-4">
                 <BulletPoint />
 
-                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">Saving Our Planet</h3>
+                <h3 className="font-latoBold text-[2rem] leading-[2.4rem]">{savingPlanettitle || 'Saving Our Planet'}</h3>
                 <div className="col-span-2 grid gap-6">
-                    <p>
+                  <>  { savingplanetContent ? HTMLReactParser(savingplanetContent) : HTMLReactParser(`<p>
                         <strong>Sustainable contact lenses for a sustainable future.</strong>
-                    </p>
+                    </p>`)}</>
                 </div>
             </div>
         </div>

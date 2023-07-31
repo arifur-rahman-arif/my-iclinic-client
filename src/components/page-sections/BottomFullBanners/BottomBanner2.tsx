@@ -1,5 +1,6 @@
 import { Container, ContainerFluid } from '@/components/Container';
 import { Section } from '@/components/Section';
+// eslint-disable-next-line no-unused-vars
 import GirlHoldingGlass from '@/section-images/girl-holding-glass.png';
 import { pinAnimation } from '@/utils/gsapFunctions';
 import Image from 'next/image';
@@ -7,6 +8,11 @@ import { useRef } from 'react';
 
 interface BottomBanner2Interface {
     subtitle?: string;
+    title?: string;
+    image?: string;
+    subheading?: string;
+    description?: string;
+    bestpriceline?: string;
 }
 
 /**
@@ -18,7 +24,12 @@ interface BottomBanner2Interface {
  * @returns {*}  {JSX.Element}
  */
 const BottomBanner2 = ({
-    subtitle = 'With 24 Months Interest-Free Finance Available!'
+    title = '£2,400 Per Eye',
+    subtitle = 'With 24 Months Interest-Free Finance Available!',
+    // image = '@/section-images/girl-holding-glass.png',
+    subheading = 'Saving an average of £1,000 For Your treatment',
+    description = 'When you come to My-iClinic.',
+    bestpriceline = 'The best laser eye surgery price in London'
 }: BottomBanner2Interface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);
@@ -40,7 +51,7 @@ const BottomBanner2 = ({
                     {/* Grid item 2 */}
                     <div className="grid md:py-24">
                         <span className="font-latoBold text-[2.4rem] leading-[3.6rem] md:text-[4rem] md:leading-[4rem]">
-                            £2,400 Per Eye
+                        {title}
                         </span>
                         <p className="mt-6 font-mulishMedium text-[2rem] lowercase leading-[3.2rem] first-letter:uppercase md:max-w-[34.5rem]">
                             {subtitle}
@@ -57,13 +68,13 @@ const BottomBanner2 = ({
                             />
                         </div>
                         <p className="mt-6 font-mulishBold text-[2.4rem] lowercase leading-[2.8rem] first-letter:uppercase md:max-w-[34.8rem]">
-                            Saving an average of £1,000 For Your treatment
+                            {subheading}
                         </p>
                         <p className="mt-6 font-mulishMedium text-[2rem] leading-[3rem]">
-                            When you come to My-iClinic.
+                            {description}
                         </p>
                         <p className="mt-8 font-mulishBold uppercase leading-[3rem] text-heading2 md:mt-12">
-                            The best laser eye surgery price in London{' '}
+                            {bestpriceline}
                         </p>
                     </div>
 

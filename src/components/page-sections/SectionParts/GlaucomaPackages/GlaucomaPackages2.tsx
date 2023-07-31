@@ -2,7 +2,7 @@ import { Container } from '@/components/Container';
 import { H3Variant3 } from '@/components/Headings';
 import { TextColumn } from '@/components/page-sections';
 import { Section } from '@/components/Section';
-import { ReactNode } from 'react';
+import { Key, ReactNode } from 'react';
 
 interface GlaucomaPackageInterface {
     title: string;
@@ -36,13 +36,18 @@ const packageList: GlaucomaPackageInterface[] = [
     }
 ];
 
+
+interface GlaucomaPackages2Props {
+    datapackList: GlaucomaPackageInterface[]
+}
+
 /**
  * Glaucoma packages
  *
  * @returns {JSX.Element}
  * @constructor
  */
-const GlaucomaPackages2 = (): JSX.Element => {
+const GlaucomaPackages2 = ( { datapackList }: GlaucomaPackages2Props ): JSX.Element => {
     return (
         <Section>
             <Container className="grid gap-12 md:gap-32">
@@ -58,7 +63,8 @@ const GlaucomaPackages2 = (): JSX.Element => {
                 />
 
                 <div className="grid max-w-[95rem] gap-12 md:ml-14 md:gap-28">
-                    {packageList.map((item, index) => (
+                    {(datapackList?.length && datapackList || packageList).map((item: JSX.IntrinsicAttributes
+                     & GlaucomaPackageInterface, index: Key | null | undefined) => (
                         <Package {...item} key={index} />
                     ))}
                 </div>

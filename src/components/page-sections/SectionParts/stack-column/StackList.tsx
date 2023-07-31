@@ -21,7 +21,7 @@ export const StackList = ({ pillText, title, description }: StackListInterface):
             <span className="font-latoBold text-[2.4rem] normal-case leading-[2.8rem] md:text-[2.8rem] md:leading-[3.2rem]">
                 {title}
             </span>
-            {description.length > 0 && description.map((item, index) => <p key={index}>{item}</p>)}
+            {description?.length > 0 && description.map((item, index) => <p key={index}>{item}</p>)}
         </div>
     );
 };

@@ -15,7 +15,7 @@ type ImageType = {
 export interface SideVideoSectionInterface {
     h2Heading?: string;
     h3Heading?: string;
-    descriptions?: ReactNode[];
+    descriptions?: string[] | ReactNode[];
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: string;

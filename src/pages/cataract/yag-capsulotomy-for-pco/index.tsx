@@ -16,9 +16,11 @@ import MastheadImageMedium from '@/masthead/masthead-yag-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-yag-small.png';
 import SimpleProcessImageLarge from '@/section-images/yag-laser-treatment-large.png';
 import SimpleProcessImage from '@/section-images/yag-laser-treatment.png';
-import { WpPageResponseInterface } from '@/types';
+import { YagCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
@@ -37,8 +39,10 @@ const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRi
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends YagCataractContentInterface, PageDataInterface<YagCataractContentInterface> {}
+
 interface YagCapsulotomyForPcoProps {
-    data: any;
+    data: DataInterface;
     seo: any;
     yoastJson: any;
 }
@@ -53,8 +57,8 @@ interface YagCapsulotomyForPcoProps {
 export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsulotomyForPcoProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'YAG Capsulotomy Laser Treatment London';
-    const subheading = 'Reducing PCO symptoms after Cataract Surgery.';
+    const heading = data?.masthead_heading ||'YAG Capsulotomy Laser Treatment London';
+    const subheading = data?.masthead_subheading ||'Reducing PCO symptoms after Cataract Surgery.';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -63,6 +67,37 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+
+    // LEFT RIGHT SECTION
+    const leftRightsectiondata = data?.leftRightsection ?
+        data.leftRightsection.map((item:
+             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
+            ...item,
+            mobileImage: (
+            <Image
+            src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+            width={390}
+            height={390}
+            quality={70}
+            className="rounded-primary md:hidden"
+            alt=""
+          />
+            ),
+            desktopImage: (
+          <Image
+            src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+            width={695}
+            height={580}
+            quality={70}
+            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+            alt=""
+          />
+            ),
+            title: item?.title,
+            descriptions: stringArrayToElementArray(item?.descriptions)
+        })) :
+        null;
 
     return (
         <Page
@@ -74,9 +109,9 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url ||MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url ||MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url ||MastheadImageLarge}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
@@ -90,8 +125,8 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             <FullWidthImageSection
                 h3Title={
                     <>
-                        {data?.section_1_title ? (
-                            HTMLReactParser(data.section_1_title)
+                        {data?.section_3?.heading?.length ? (
+                            HTMLReactParser(data?.section_3?.heading)
                         ) : (
                             <>
                                 YAG Laser Treatment after
@@ -102,13 +137,13 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                     </>
                 }
                 altText=""
-                image={SimpleProcessImage}
-                desktopImage={SimpleProcessImageLarge}
+                image={ data?.section_3?.image || SimpleProcessImage}
+                desktopImage={ data?.section_3?.imageLarge ||SimpleProcessImageLarge}
                 includeScrollDownButton
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListYag} />
+                <LeftRightSection childrenList={ leftRightsectiondata || leftRightListYag} />
             </LazyComponent>
 
             {/* <LazyComponent> */}
@@ -128,13 +163,13 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             <Section>
                 <Container className="grid place-items-center gap-12 md:gap-24">
                     <H2Variant1 className="max-w-[56.5rem] text-center !normal-case">
-                        Find out more about YAG laser treatment price
+                        { data?.section_6?.title || 'Find out more about YAG laser treatment price'}
                     </H2Variant1>
                     <Button2 type="anchor" text="Yag treatment price" link="/cataract/yag-capsulotomy-for-pco/price" />
                 </Container>
             </Section>
 
-            <CtaSection subtitle="Find out your options" />
+            <CtaSection title={data?.sectionspeakteam?.title} subtitle={ data?.sectionspeakteam?.sub_heading || 'Find out your options'} />
 
             <LazyComponent>
                 <CompanyLogos />
@@ -180,7 +215,39 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
-                    ...data?.acf
+                    ...data?.acf,
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                    }, // 2
+                    section_2: {
+                        ...data?.acf?.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                    }, // 2\
+                    section_3: {
+                        ...data?.acf?.section_3,
+                    }, // 2
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions)
+                    }, // 2
+                    section_5: {
+                        ...data?.acf?.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                    },
+                    section_6: {
+                        ...data?.acf?.section_6,
+                    },
+                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                        ? data?.acf.leftRightsection.map((ListData) => {
+                              return {
+                                  ...ListData,
+                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
+                        : [],
+                    
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

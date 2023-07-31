@@ -1,6 +1,5 @@
 import { SlideInterface } from '@/components/Slider/OffscreenSlider/Slide2';
-import Image from 'next/image';
-import Link from 'next/link';
+
 
 // export const offScreenSliderListOld: SlideInterface[] = [
 //     {
@@ -60,7 +59,7 @@ import Link from 'next/link';
 export const offScreenSliderList: SlideInterface[] = [
     {
         title: 'Saving Vision',
-        description: (
+        description: (`
             <>
                 <div className="grid gap-6">
                     <p className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">Safely care for your eyes</p>
@@ -72,14 +71,14 @@ export const offScreenSliderList: SlideInterface[] = [
                 <p className="font-latoLight text-[2.4rem] leading-[3.2rem] text-[#E9EAEBE5] opacity-90">
                     A no risk of contact lens infections, dry eyes or blindness.
                 </p>
-            </>
+            </>`
         ),
         image: '/images/section-images/offscreen-slider-image-1.png',
         largeImage: '/images/section-images/offscreen-slider-image-large-1.png'
     },
     {
         title: 'Saving Money',
-        description: (
+        description: (`
             <>
                 <div className="grid gap-6">
                     <p className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
@@ -94,7 +93,7 @@ export const offScreenSliderList: SlideInterface[] = [
                     <Image src="/images/icons/icon-arrow-right-2-white.svg" alt="" width={24} height={24} />
                     <p className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
                         One Laser Eye Surgery or Implantable Contact Lens treatment saves the average glasses & contact
-                        lens wearer £13,000+ for the future.{' '}
+                        lens wearer £13,000+ for the future.
                     </p>
                 </div>
 
@@ -104,17 +103,17 @@ export const offScreenSliderList: SlideInterface[] = [
                         className="font-latoMedium text-[2.4rem] leading-[3.2rem] text-[#E9EAEBE5] underline underline-offset-2 opacity-90 transition-all duration-500 hover:opacity-40"
                     >
                         Calculate
-                    </Link>{' '}
+                    </Link>
                     your treatment with our 24 months finance calculator
                 </p>
-            </>
+            </>`
         ),
         image: '/images/section-images/offscreen-slider-image-2.png',
         largeImage: '/images/section-images/offscreen-slider-image-large-2.png'
     },
     {
         title: 'Saving Time',
-        description: (
+        description: (`
             <>
                 <div className="grid gap-6">
                     <p className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
@@ -125,14 +124,14 @@ export const offScreenSliderList: SlideInterface[] = [
                 <p className="font-latoLight text-[2.4rem] leading-[3.2rem] text-[#E9EAEBE5] opacity-90">
                     Wake up in the morning with your eyes ready before you are!
                 </p>
-            </>
+            </>`
         ),
         image: '/images/section-images/offscreen-slider-image-3.png',
         largeImage: '/images/section-images/offscreen-slider-image-large-3.png'
     },
     {
         title: 'Saving Your Planet',
-        description: (
+        description: (`
             <>
                 <div className="grid gap-6">
                     <p className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
@@ -148,7 +147,7 @@ export const offScreenSliderList: SlideInterface[] = [
                 <p className="font-latoLight text-[2.4rem] leading-[3.2rem] text-[#E9EAEBE5] opacity-90">
                     Reducing our carbon footprint
                 </p>
-            </>
+            </>`
         ),
         image: '/images/section-images/offscreen-slider-image-4.png',
         largeImage: '/images/section-images/offscreen-slider-image-large-4.png'

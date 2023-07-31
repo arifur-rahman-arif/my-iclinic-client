@@ -1,10 +1,11 @@
 import { BulletPoint } from '@/components/page-sections';
+import HTMLReactParser from 'html-react-parser';
 import { ReactNode } from 'react';
 
 interface FinanceExtraInterface {
     priceText?: string;
+    paragraphs: string | '';
     priceDescription?: string;
-    paragraphs?: ReactNode[];
     list: ReactNode[];
 }
 
@@ -28,12 +29,12 @@ const FinanceExtra = ({ priceText, priceDescription, paragraphs, list }: Finance
                     </span>
                 )}
             </div>
-
-            {paragraphs?.map((paragraph, index) => (
+                      <>{ HTMLReactParser(paragraphs) }</>
+            {/* {paragraphs?.map((paragraph, index) => (
                 <p className="mt-6" key={index}>
                     {paragraph}
                 </p>
-            ))}
+            ))} */}
 
             <ul className="ml-12 mt-12 grid gap-6">
                 {list.map((item, index) => (

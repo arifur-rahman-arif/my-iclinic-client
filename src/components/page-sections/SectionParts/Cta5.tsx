@@ -32,7 +32,7 @@ const Cta5 = ({
                 {/* Modal */}
                 <Link
                     href="/suitability-check"
-                    className={`${button1ClassName} group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent`}
+                    className={`${button1ClassName} group/consultation !grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent`}
                     aria-label="Book a free screening test"
                 >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

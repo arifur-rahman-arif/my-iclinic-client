@@ -11,8 +11,6 @@ import { getServerSideSitemapLegacy } from 'next-sitemap';
 export const getServerSideProps = async (ctx: any) => {
     const posts: Array<GeneralBlogInterface> = await getPosts();
 
-    console.log(posts);
-
     const fields = posts?.map((post) => ({
         loc: `${process.env.SITE_URL}/articles/${post.slug}`,
         lastmod: new Date().toISOString()

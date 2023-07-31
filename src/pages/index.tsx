@@ -1,3 +1,6 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Card, cardList } from '@/components/Card';
 import ComponentLoader from '@/components/ComponentLoader';
@@ -13,15 +16,19 @@ import {
     SideImageSection,
     SideVideoSection2
 } from '@/components/page-sections';
+import HTMLReactParser from 'html-react-parser';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
 import { getPageData } from '@/lib';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
-import { WpPageResponseInterface } from '@/types';
+import { HomeContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { CardInterface } from '@/components/Card/Card';
+import { Key } from 'react';
 
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -36,7 +43,10 @@ const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSl
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {}
+
 interface HomeProps {
+    data?: DataInterface;
     seo?: any;
     yoastJson?: any;
     navMenuData: any;
@@ -50,9 +60,65 @@ interface HomeProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
-    const heading = "North London's Private Eye Clinic";
-    const subheading = 'Premium eye care for all the family';
+export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
+    const heading = data?.masthead_heading || 'North Londons Private Eye Clinic';
+    const subheading = data?.masthead_subheading || 'Premium eye care for all the family';
+
+    // const savingslider: any = data?.savingsliderSection ?
+    //     data?.savingsliderSection.map((service) => {
+    //         return {
+    //             ...service,
+    //             title: service?.title,
+    //             description: service?.description,
+    //             image: service?.image,
+    //             largeImage: service?.large
+    //         };
+    //     }) :
+    //     null;
+
+    // JOURNEY SLIDER
+    const journeySliderdata: any = data?.journeySlider ?
+        data?.journeySlider.map((service) => {
+            return {
+                ...service,
+                title: service?.title,
+                description: stringArrayToElementArray(service?.list),
+                image: service?.image
+            };
+        }) :
+        null;
+
+    // MISSION SLIDER
+    const missionimageSlider: any = data?.imageSlider ?
+        data?.imageSlider.map((service) => {
+            return {
+                //   ...service,
+                image: {
+                    url: service?.image,
+                    width: 390,
+                    height: 390
+                },
+                largeImage: {
+                    url: service?.largeImage,
+                    width: 660,
+                    height: 485
+                }
+            };
+        }) :
+        null;
+
+    const Listcard: any = data?.private_eye_card ?
+        data?.private_eye_card.map((service) => {
+            return {
+                ...service,
+                title: HTMLReactParser(service?.title),
+                pillText: service?.pillText,
+                cardList: stringArrayToElementArray(service?.cardList),
+                image: service?.image,
+                cardLink: service?.cardLink
+            };
+        }) :
+        null;
 
     return (
         <Page
@@ -64,40 +130,57 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
             <BreadCrumb />
 
             <Masthead
-                imageMedium={'/images/masthead/masthead-home.png'}
+                imageSmall={data?.masthead_image?.image?.url || '/images/masthead/masthead-home-small.png'}
+                imageMedium={data?.masthead_image?.image_medium?.url || '/images/masthead/masthead-home.png'}
+                imageLarge={data?.masthead_image?.image_large?.url || '/images/masthead/masthead-home-large.png'}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 bannerExtraComponents={<ChatWithUs />}
+                priceText={data?.masthead_price}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
-
+            {/*  Private Eye */}
             <SideImageSection
                 h3LightHeading={
                     <>
-                        Private Eye
+                        {data?.section_1?.heading?.light_heading || 'Private Eye'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Care Services"
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Care Services'}
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
-                    <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 md:mt-12 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
-                        {cardList.map((list, index) => (
-                            <Card key={index} {...list} />
-                        ))}
-                    </div>
+                    <>
+                        <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 md:mt-12 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
+                            {((Listcard?.length && Listcard) || cardList).map(
+                                (list: JSX.IntrinsicAttributes & CardInterface, index: Key | null | undefined) => (
+                                    <Card key={index} {...list} />
+                                )
+                            )}
+                        </div>
+                        {/* <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 md:mt-12 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
+                            {cardList.map((list, index) => (
+                                <Card key={index} {...list} />
+                            ))}
+                        </div>
+                         */}
+                    </>
                 }
             />
 
             <SideVideoSection2
                 title={
                     <strong className="block text-white sm:max-w-[58.2rem]">
-                        Are you considering Vision Correction Treatment?
+                        {data?.section_2?.heading || 'Are you considering Vision Correction Treatment?'}
                     </strong>
                 }
-                descriptions={[
-                    'We have the latest vision correction treatments to achieve clear vision at all distances for all ages.',
-                    'Book your <a href="/suitability-check" class="!text-white hover:underline !underline-offset-4">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.'
-                ]}
+                descriptions={
+                    (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
+                        `We have the latest vision correction treatments to achieve clear vision at all distances for all ages.`,
+                        `Book your <a href="/suitability-check">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
+                    ]
+                }
                 containerClassName="md:!pl-[15rem]"
                 textColor="!text-white"
                 sloganTextColor="!text-[#CDCFD0]"
@@ -116,12 +199,12 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
                 }
                 hoverIcon={<Image src="/images/icons/icon-calendar-outline-white.svg" alt="" width={20} height={20} />}
                 sectionImage={{
-                    url: '/images/section-images/image-eye-outline.png',
+                    url: data?.section_2?.image || '/images/section-images/image-eye-outline.png',
                     width: 364,
                     height: 258
                 }}
                 sectionImageLarge={{
-                    url: '/images/section-images/image-eye-outline-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/image-eye-outline-large.png',
                     width: 496,
                     height: 350
                 }}
@@ -129,6 +212,7 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
 
             <ImageGallery galleryList={galleryListHome} />
 
+            {/* SAVING SLIDER SECTION -- */}
             <LazyComponent>
                 <OffScreenSliderSection sliderList={offScreenSliderList} />
             </LazyComponent>
@@ -138,7 +222,8 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <JourneySlider sliderList={journeySliderListHome} />
+                {/* <JourneySlider sliderList={(visionslider.length && visionslider) || journeySliderListHome} /> */}
+                <JourneySlider sliderList={(journeySliderdata?.length && journeySliderdata) || journeySliderListHome} />
             </LazyComponent>
 
             <div className="w-full md:h-[0.1rem] lg:mt-12"></div>
@@ -158,86 +243,118 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
             <SideImageSection
                 h3LightHeading={
                     <>
-                        Our
+                        {data?.section_3?.heading?.light_heading || 'Our'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Mission"
-                descriptions={[
-                    'For the past ten years My-iClinic has provided excellent patient care for anybody wanting clear, natural vision.',
-                    'With leading opthalmologists Mr. Bolger and Ms. Odufuwa-Bolger, our North London team is here to make sure every patient receives the best treatment suitable for their eye health.',
-                    'We understand how delicate and important our eyes are, which is why we with you through every step of your patient journey.'
-                ]}
+                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'Mission'}
+                descriptions={
+                    (data?.section_3?.descriptions?.length && data?.section_3?.descriptions) || [
+                        'For the past ten years My-iClinic has provided excellent patient care for anybody wanting clear, natural vision.',
+                        'With leading opthalmologists Mr. Bolger and Ms. Odufuwa-Bolger, our North London team is here to make sure every patient receives the best treatment suitable for their eye health.',
+                        'We understand how delicate and important our eyes are, which is why we with you through every step of your patient journey.'
+                    ]
+                }
                 sectionClass="pb-12 md:pb-0 overflow-hidden"
                 containerClassName="!px-0"
                 textColumnClassName="px-8"
-                customColumn={<ImageSliderSectionPart sliderList={sliderListHome} />}
+                customColumn={
+                    <ImageSliderSectionPart
+                        sliderList={(missionimageSlider?.length && missionimageSlider) || sliderListHome}
+                    />
+                }
             />
 
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree
-                        h2Heading="plastic free life"
-                        h3LightHeading="Vision correction is the key to living"
-                        h3BoldHeading="a sustainable, plastic free life!"
-                        descriptions={[
-                            `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
+                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
+                        h3LightHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
+                            'Vision correction is the key to living'
+                        }
+                        h3BoldHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
+                            'a sustainable, plastic free life!'
+                        }
+                        descriptions={
+                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section?.plastic_free_life?.descriptions
+                                )) || [
+                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
                     free of plastic waste from your glasses and contact lenses!`
-                        ]}
+                            ]
+                        }
+                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
+                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
+                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
                     />
 
                     <SideImageSection
-                        h2Heading="gift of a tree"
+                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
+                            (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
+                                HTMLReactParser(
+                                    data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
+                                )) ||
+                            HTMLReactParser('Saving the planet <br />')
                         }
-                        h3BoldHeading="One eye at a time!"
-                        descriptions={[
-                            `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
-                    a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
-                            `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
-                        ]}
+                        h3BoldHeading={
+                            (data?.sustainability_section?.gift_of_a_tree?.heading?.bold_heading?.length &&
+                                HTMLReactParser(data?.sustainability_section?.gift_of_a_tree?.heading?.bold_heading)) ||
+                            HTMLReactParser('One eye at a time!')
+                        }
+                        descriptions={
+                            (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section?.gift_of_a_tree?.descriptions
+                                )) || [
+                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
+                     difference to the environment. For every 10 years of contact lens wearing the amount of plastic
+                      that ends up in the ocean is roughly the same as your own body weight.`,
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Our gift to you…
+                                </span>,
+                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Here at My-iClinic we give all of our laser patients a real forest tree!
+                                </span>,
+                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
+                     value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
+                      contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
+                      to replace it.`,
+                                `This is our big thank you for choosing a natural, green living eye-style.`
+                            ]
+                        }
                         sectionImage={{
-                            url: '/images/section-images/gift-of-a-tree.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
+                                '/images/section-images/gift-of-a-tree.png',
                             width: 390,
                             height: 390
                         }}
                         sectionImageDesktop={{
-                            url: '/images/section-images/gift-of-a-tree-desktop.png',
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
+                                '/images/section-images/gift-of-a-tree-desktop.png',
                             width: 554,
                             height: 496
                         }}
-                        textColumnExtras={
-                            <div className="grid gap-6">
-                                <span className="max-w-[44.5rem] font-latoBold text-[2rem] leading-[2.4rem] text-heading">
-                                    We want to take our impact on the environment a step further and this is where the
-                                    gift of a tree comes in!
-                                </span>
-                            </div>
+                        altText={
+                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
+                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
                         }
                     />
-                    <ClimateChange />
+                    <ClimateChange
+                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
+                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
+                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
+                        image={data?.sustainability_section?.clearer_vision?.image?.url}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
+                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
+                    />
                 </SustainableSlider>
-
-                {/* <Section> */}
-                {/*     <Container className="grid gap-12 justify-center"> */}
-                {/*         <h2 className="normal-case text-center"> */}
-                {/*             Funding your <strong>treatment</strong> */}
-                {/*         </h2> */}
-                {/*         <Button */}
-                {/*             type="button" */}
-                {/*             text="Select a treatment" */}
-                {/*             className="normal-case !bg-transparent justify-self-center" */}
-                {/*             iconPosition="right" */}
-                {/*             icon={ */}
-                {/*                 <Image src="/images/icons/icon-arrow-circle-down.svg" alt="" width={24} height={24} /> */}
-                {/*             } */}
-                {/*         /> */}
-                {/*     </Container> */}
-                {/* </Section> */}
 
                 <CompanyLogos2 />
             </LazyComponent>
@@ -252,14 +369,82 @@ export default function Home({ seo, yoastJson }: HomeProps): JSX.Element {
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'home' });
-        // const navMenuData = await getNavMenuData();
+        const data: WpPageResponseInterface<HomeContentInterface> = await getPageData({ slug: 'home' });
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || null,
-                yoastJson: data?.yoast_head_json || null
+                yoastJson: data?.yoast_head_json || null,
+                //Private consultation
+                data: {
+                    ...data?.acf,
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
+                    }, // CORNEA CONSULTATION
+                    section_2: {
+                        ...data?.acf?.section_2,
+                        // lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
+                    }, // EYES CARD
+                    private_eye_card: Array.isArray(data?.acf?.private_eye_card)
+                        ? data?.acf.private_eye_card.map((sectionData) => {
+                              return {
+                                  ...sectionData,
+                                  cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
+                              };
+                          })
+                        : [],
+                    savingsliderSection: Array.isArray(data?.acf?.savingsliderSection)
+                        ? data?.acf.savingsliderSection.map((sliderData) => {
+                              return {
+                                  ...sliderData
+                                  //   description: convertArrayOfObjectsToStrings(sliderData?.description)
+                              };
+                          })
+                        : [],
+                    journeySlider: Array.isArray(data?.acf?.journeySlider)
+                        ? data?.acf.journeySlider.map((sliderData) => {
+                              return {
+                                  ...sliderData,
+                                  list: convertArrayOfObjectsToStrings(sliderData?.list)
+                              };
+                          })
+                        : [],
+                    section_3: {
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                    },
+                    imageSlider: Array.isArray(data?.acf?.imageSlider)
+                        ? data?.acf.imageSlider.map((sliderData) => {
+                              return {
+                                  ...sliderData
+                                  //   description: convertArrayOfObjectsToStrings(sliderData?.description)
+                              };
+                          })
+                        : [],
+                    sustainability_section: {
+                        plastic_free_life: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                            )
+                        },
+                        gift_of_a_tree: {
+                            ...data?.acf?.sustainability_section?.gift_of_a_tree,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                            )
+                        },
+                        clearer_vision: {
+                            ...data?.acf?.sustainability_section?.clearer_vision,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.clearer_vision.descriptions
+                            )
+                        }
+                    }
+                }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

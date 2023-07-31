@@ -6,9 +6,7 @@ import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconAngle from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-dry-eyes-large.png';
 import MastheadImageMedium from '@/masthead/masthead-dry-eyes-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-dry-eyes-small.png';
 import { dryEyeFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
@@ -19,7 +17,8 @@ import {
     StackColumn2
 } from '@/page-sections/index';
 import { lazyEyesList } from '@/page-sections/SectionParts/stack-column/list';
-import { WpPageResponseInterface } from '@/types';
+import { DryEyesContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -39,10 +38,12 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends DryEyesContentInterface, PageDataInterface<DryEyesContentInterface> {}
+
 interface DryEyesProps {
+    data: DataInterface;
     seo: any;
     yoastJson: any;
-    data: any;
 }
 
 /**
@@ -54,8 +55,8 @@ interface DryEyesProps {
 export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyesProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'Dry Eyes';
-    const subheading = 'Monitor your dry eye symptoms with our private ophthalmologist';
+    const heading = data?.masthead_heading || 'Dry Eyes';
+    const subheading = data?.masthead_subheading || 'Monitor your dry eye symptoms with our private ophthalmologist';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -64,6 +65,13 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    const section1Descriptions = data?.section_1?.descriptions?.length ?
+        data?.section_1?.descriptions :
+            [
+                'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
+                'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
+            ];
 
     return (
         <Page
@@ -75,54 +83,58 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText={<></>}
+                priceText={<>{data?.masthead_price}</>}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
             <FullWidthImageSection
-                h3Title="Dry eye syndrome symptoms and vision testing"
+                h3Title={data?.section_1?.subheading || 'Dry eye syndrome symptoms and vision testing'}
                 description={[
                     <H2Variant1 className="normal-case xl:whitespace-nowrap">
-                        Private consultation for dry eyes
+                        {data?.section_1?.heading || 'Private consultation for dry eyes'}
                     </H2Variant1>,
-                    'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
-                    'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
+                    ...section1Descriptions
                 ]}
-                image="/images/section-images/dry-eye-private-consultation-large.jpg"
-                desktopImage="/images/section-images/dry-eye-private-consultation-large.jpg"
+                image={data?.section_1?.image || '/images/section-images/dry-eye-private-consultation-large.jpg'}
+                desktopImage={
+                    data?.section_1?.large_image || '/images/section-images/dry-eye-private-consultation-large.jpg'
+                }
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
 
             <SideImageSection
-                h2Heading="Dry eye consultation"
+                h2Heading={data?.section_2?.subheading || 'Dry eye consultation'}
                 h3LightHeading={
                     <>
-                        What is included in my
+                        {data?.section_2?.heading?.light_heading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading="private consultation?"
-                descriptions={[
-                    <>
-                        A private consultation with our ophthalmologist is an all-inclusive{' '}
-                        <strong>cost of £200</strong>
-                    </>,
-                    'This includes:'
-                ]}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'private consultation?'}
+                descriptions={
+                    (data?.section_2?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_2?.descriptions)) || [
+                        <>
+                            A private consultation with our ophthalmologist is an all-inclusive{' '}
+                            <strong>cost of £200</strong>
+                        </>,
+                        'This includes:'
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/dry-eye-consultation-large.jpg',
+                    url: data?.section_2?.image || '/images/section-images/dry-eye-consultation-large.jpg',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/dry-eye-consultation-large.jpg',
+                    url: data?.section_2?.large_image || '/images/section-images/dry-eye-consultation-large.jpg',
                     width: 631,
                     height: 582
                 }}
@@ -132,12 +144,14 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                     <div className="ml-12 grid gap-6">
                         <BulletList
                             className="!ml-0"
-                            list={[
-                                'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
-                                'A medical diagnosis of your eye condition with treatment planning.',
-                                'A referral for surgical treatment and/or a signed prescription (if required).',
-                                'A dedicated eye care team to support you throughout your eye care journey.'
-                            ]}
+                            list={
+                                (data?.section_2?.list?.length && stringArrayToElementArray(data?.section_2?.list)) || [
+                                    'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
+                                    'A medical diagnosis of your eye condition with treatment planning.',
+                                    'A referral for surgical treatment and/or a signed prescription (if required).',
+                                    'A dedicated eye care team to support you throughout your eye care journey.'
+                                ]
+                            }
                             bulletPoint={
                                 <Image src={IconAngle} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
                             }
@@ -146,40 +160,48 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                 }
             />
 
+            {/*  Section 3  */}
             <SideImageSection
-                h2Heading="eye syndrome"
+                h2Heading={data?.section_3?.subheading || 'eye syndrome'}
                 h3LightHeading={
                     <>
-                        Managing your
+                        {data?.section_3?.heading?.light_heading || 'Managing your'}
                         <br />
                     </>
                 }
-                h3BoldHeading="dry eye syndrome"
-                descriptions={[
-                    <strong>
-                        Our consultants will help you manage your dry eye syndrome for a clearer, brighter quality of
-                        life.
-                    </strong>
-                ]}
+                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'dry eye syndrome'}
+                descriptions={
+                    (data?.section_3?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_3?.descriptions)) || [
+                        <strong>
+                            Our consultants will help you manage your dry eye syndrome for a clearer, brighter quality
+                            of life.
+                        </strong>
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/macular-treatment.png',
+                    url: data?.section_3?.image || '/images/section-images/macular-treatment.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/macular-treatment-large.png',
+                    url: data?.section_3?.large_image || '/images/section-images/macular-treatment-large.png',
                     width: 658,
                     height: 459
                 }}
-                customColumn={<StackColumn2 list={lazyEyesList} />}
+                customColumn={<StackColumn2 list={(data?.section_3?.list as any) || lazyEyesList} />}
             />
 
+            {/* Section_4   Friendly vision correction  */}
             <CtaSection2
-                title="Friendly vision correction treatment for dry eyes"
-                descriptions={[
-                    'If you are experiencing dry eye symptoms and have difficulty with short sightedness or near sightedness (a refractive error in your eye), we offer vision correction treatment options which can eliminate the need for wearing glasses and/or uncomfortable contact lenses.',
-                    'Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we can offer you a <a href="/suitability-check">FREE suitability check</a> for our implantable contact lenses.'
-                ]}
+                title={data?.section_4?.heading || 'Friendly vision correction treatment for dry eyes'}
+                descriptions={
+                    (data?.section_4?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_4?.descriptions)) || [
+                        'If you are experiencing dry eye symptoms and have difficulty with short sightedness or near sightedness (a refractive error in your eye), we offer vision correction treatment options which can eliminate the need for wearing glasses and/or uncomfortable contact lenses.',
+                        'Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we can offer you a <a href="/suitability-check">FREE suitability check</a> for our implantable contact lenses.'
+                    ]
+                }
                 button1Text="Book A FREE suitability"
                 excludeSloganText
             />
@@ -211,7 +233,9 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'dry-eyes-treatment-london' });
+        const data: WpPageResponseInterface<DryEyesContentInterface> = await getPageData({
+            slug: 'dry-eyes-treatment-london'
+        });
 
         return {
             /* eslint-disable */
@@ -219,7 +243,36 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
-                    ...data?.acf
+                    ...data?.acf,
+                    //                    	Dry eye syndrome symptoms
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
+                    },
+                    // Dry eye consultation
+                    section_2: {
+                        ...data?.acf?.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
+                        list: convertArrayOfObjectsToStrings(data?.acf?.section_2?.list)
+                    },
+                    //  Managing your EYE SYNDROME TEST
+                    section_3: {
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions),
+                        list: Array.isArray(data?.acf?.section_3?.list)
+                            ? data?.acf.section_3?.list.map((item) => {
+                                  return {
+                                      ...item,
+                                      description: convertArrayOfObjectsToStrings(item.descriptions)
+                                  };
+                              })
+                            : []
+                    },
+                    // section 4 Friendly vision correction
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions)
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

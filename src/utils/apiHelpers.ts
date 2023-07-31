@@ -66,10 +66,21 @@ export const convertArrayOfObjectsToStrings = (arrayOfObjects: Array<any> | unde
 /**
  * Convert an array of strings to array of JSX Elements
  *
- * @param {Array<any>} arrayOfObjects
- * @returns {string[]}
+//  * @param {Array<any>} arrayOfObjects
+//  * @returns {string[]}
+//  */
+// export const stringArrayToElementArray = (arrayOfObjects: Array<string> | undefined): JSX.Element[] => {
+//     if (!arrayOfObjects?.length) return [] as JSX.Element[];
+//     return (arrayOfObjects?.map((obj) => HTMLReactParser(obj)) || []) as JSX.Element[];
+// };
+
+/**
+ * Converts an array of strings to an array of JSX elements.
+ * @param {Array<string> | undefined} arrayOfObjects - The array of strings to convert.
+ * @returns {JSX.Element[]} The array of JSX elements.
  */
 export const stringArrayToElementArray = (arrayOfObjects: Array<string> | undefined): JSX.Element[] => {
-    if (!arrayOfObjects?.length) return [] as JSX.Element[];
-    return (arrayOfObjects?.map((obj) => HTMLReactParser(obj)) || []) as JSX.Element[];
+    if (!arrayOfObjects || !Array.isArray(arrayOfObjects)) return [] as JSX.Element[];
+    const validStrings = arrayOfObjects.filter((obj) => typeof obj === 'string');
+    return validStrings.map((obj) => HTMLReactParser(obj)) as JSX.Element[];
 };
