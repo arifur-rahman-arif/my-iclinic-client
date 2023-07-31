@@ -12,6 +12,14 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost'
+            }, 
+            {
+                protocol: 'http',
+                hostname: 'localhost:3000'
+            }, 
+            {
+                protocol: 'http',
+                hostname: 'digilab.local'
             },
             {
                 protocol: 'http',
@@ -568,11 +576,11 @@ const nextConfig = {
                 destination: '/our-specialists/our-eye-diagnostics-technology',
                 permanent: true
             },
-            {
-                source: '/eye-treatments/paediatric-eye-care',
-                destination: '/paediatric-eye-care',
-                permanent: true
-            },
+            // {
+            //     source: '/eye-treatments/paediatric-eye-care',
+            //     destination: '/paediatric-eye-care',
+            //     permanent: true
+            // },
             {
                 source: '/eye-conditions/presbyopia-reading-glasses',
                 destination: '/presbyond-london',
@@ -1014,6 +1022,11 @@ const nextConfig = {
                 destination: '/paediatric-eye-care',
                 permanent: true
             },
+            // {
+            //     source: '/paediatric-eye-care',
+            //     destination: '/paediatric-eye-care',
+            //     permanent: true
+            // },
             {
                 source: '/laser-treatment/presbyopia-correction',
                 destination: '/presbyond-london',

@@ -60,7 +60,7 @@ const Card = ({ image, title, description, list, borderColor, cardBg, index }: C
                 <H3Variant2>{title}</H3Variant2>
 
                 <div className="mt-6 grid gap-6">
-                    {description.map((desc, index) => (
+                    { description.map((desc, index) => (
                         <p key={index}>{desc}</p>
                     ))}
                 </div>

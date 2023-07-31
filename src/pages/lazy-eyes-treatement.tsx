@@ -80,7 +80,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 altText={data?.masthead_image?.image_large?.alt}
                 imagePosition="2xl:object-[-35rem_top] xl:object-[-20rem_top]"
                 h1Title={<h1>{heading}</h1>}
-                priceText={<></>}
+                priceText={<>{data?.masthead_price}</>}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
             />

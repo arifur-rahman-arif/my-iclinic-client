@@ -2,7 +2,7 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import Card, { CardInterface } from './Card';
 
-const cardList: CardInterface[] = [
+const defaultCardList: CardInterface[] = [
     {
         image: {
             url: '/images/section-images/card-improved-vision.png'
@@ -15,8 +15,8 @@ const cardList: CardInterface[] = [
         borderColor: 'border-[#FFBE99]',
         cardBg: 'bg-[#FFEFE5]',
         list: [
-            'All the colours around me are bright again; I can’t believe the detail',
-            'The real plus is that I don’t have to wear contact lenses and can see better',
+            'All the colours around me are bright again; I can\'t believe the detail',
+            'The real plus is that I don\'t have to wear contact lenses and can see better',
             'When I go for country walks, I can now see the birds in the trees, or a bunny hopping...',
             'Now I can finally read all the motorway signs when I drive…'
         ]
@@ -74,27 +74,49 @@ const cardList: CardInterface[] = [
     }
 ];
 
+interface HalfRoundedCardProps {
+    cardList: CardInterface[]
+}
+
 /**
  * Half rounded Card component
  *
  * @returns {*}  {JSX.Element}
  */
-const HalfRoundedCard = (): JSX.Element => {
+const HalfRoundedCard = ({ cardList }: HalfRoundedCardProps): JSX.Element => {
     return (
         <Section>
             <Container className="flex flex-wrap justify-center gap-12">
-                {cardList.map((list, index) => (
-                    <Card
-                        title={list.title}
-                        key={index}
-                        description={list.description}
-                        cardBg={list.cardBg}
-                        borderColor={list.borderColor}
-                        list={list.list}
-                        image={list.image}
-                        index={index}
-                    />
-                ))}
+                {((cardList.length && cardList) || defaultCardList).map((list, index) => {
+                    let cardColor = 'bg-[#FFEFE5]';
+                    let borderColor = 'border-[#FFBE99]';
+
+                    if (index === 0) {
+                        borderColor = 'border-[#FFBE99]';
+                        cardColor = 'bg-[#FFEFE5]';
+                    } else if (index === 1) {
+                        borderColor = 'border-[#99ECFF]';
+                        cardColor = 'bg-[#E6FAFF80]';
+                    } else if (index === 2) {
+                        borderColor = 'border-[#99ECFF]';
+                        cardColor = 'bg-[#EAFAFB]';
+                    } else {
+                        borderColor = 'border-[#99ECFF]';
+                        cardColor = 'bg-[#FFF8E5]';
+                    }
+                    return (
+                        <Card
+                            title={list.title}
+                            key={index}
+                            description={list.description}
+                            cardBg={cardColor}
+                            borderColor={borderColor}
+                            list={list.list}
+                            image={list.image}
+                            index={index}
+                        />
+                    );
+                })}
             </Container>
         </Section>
     );

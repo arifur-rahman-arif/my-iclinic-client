@@ -7,11 +7,14 @@ import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-sli
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasik.png';
 import { lasikFaqList } from '@/page-sections/Faq/faqList';
 import { lasikSliders } from '@/page-sections/FeaturedPatient';
+import HTMLReactParser from 'html-react-parser';
+import React from 'react';
 import {
     ClimateChange,
     CtaSection2,
@@ -27,7 +30,7 @@ import { lasikStackList } from '@/page-sections/StackedSection';
 import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
-import { WpPageResponseInterface } from '@/types';
+import { LasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -63,10 +66,12 @@ const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/
     loading: () => <ComponentLoader />
 });
 
+interface DataInterface extends LasiklondonContentInterface, PageDataInterface<LasiklondonContentInterface> {}
+
 interface LasikProps {
     seo: any;
     yoastJson: any;
-    data: any;
+    data: DataInterface;
 }
 
 /**
@@ -80,8 +85,9 @@ interface LasikProps {
 export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'LASIK Laser Eye Surgery London';
+    const heading = data?.masthead_heading || 'LASIK Laser Eye Surgery London';
     const subheading =
+        data?.masthead_subheading ||
         'The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!';
 
     useEffect(() => {
@@ -91,6 +97,81 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    // LEFT RIGHT SECTION
+    const leftRightsectiondata = data?.leftRightsection ?
+        data.leftRightsection.map((item:
+             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
+            ...item,
+            mobileImage: (
+          <Image
+            src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+            width={390}
+            height={390}
+            quality={70}
+            className="rounded-primary md:hidden"
+            alt=""
+          />
+            ),
+            desktopImage: (
+          <Image
+            src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+            width={695}
+            height={580}
+            quality={70}
+            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+            alt=""
+          />
+            ),
+            title: item?.title,
+            descriptions: stringArrayToElementArray(item?.descriptions)
+        })) :
+        null;
+
+    //
+    const lasikSliderdata: any = Array.isArray(data?.lasikSlider) && data.lasikSlider.length > 0 ?
+        data.lasikSlider.map((service: { desktopimage: any;
+            image: any; title: any; descriptions: string[] | undefined; }) => {
+            return {
+                ...service,
+                image: {
+                    url: service?.image ||'/images/section-images/walking-into-room.png',
+                    width: 392,
+                    height: 256
+                },
+                desktopImage: {
+                    url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                    width: 447,
+                    height: 349
+                },
+                title: service?.title,
+                descriptions: stringArrayToElementArray(service?.descriptions)
+            };
+        }) :
+        null;
+
+
+    // reviewSliderdata
+    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+        data.reviewSlider.map((service) => {
+            return {
+                ...service,
+                title: service?.title,
+                name: service?.name,
+                description: service?.description
+            };
+        }) :
+        null;
+
+    /// /reviewimageSlider
+    const reviewimageSliderdata: any = Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0 ?
+        data.reviewimageSlider.map((service) => {
+            return {
+                ...service,
+                imageURL: service?.imageURL
+            };
+        }) :
+        null;
 
     return (
         <Page
@@ -102,102 +183,113 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText="£2,400 per eye"
+                priceText={data?.masthead_price || '£2,400 per eye'}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
+            {/* SECTION 1 */}
             <FullWidthImageSection
-                h3Title="LASIK may be the suitable alternative to correct your vision"
-                description={[
-                    `Do you own multiple pairs of reading glasses or varifocals? While they’re a fact of aging, you most likely feel you shouldn't need them yet. Our lifestyles shouldn't be compromised by the limitations of our vision.`,
-                    ` If you’d really like to get rid of your glasses, but you’re not sure where to begin, our LASIK procedure is safe and effective for someone like you.`
-                ]}
+                h3Title={data?.section_1?.heading || 'LASIK may be the suitable alternative to correct your vision'}
+                description={
+                    (data?.section_1?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
+                        `Do you own multiple pairs of reading glasses or varifocals? While they’re a fact of aging, you most likely feel you shouldn't need them yet. Our lifestyles shouldn't be compromised by the limitations of our vision.`,
+                        ` If you’d really like to get rid of your glasses, but you’re not sure where to begin, our LASIK procedure is safe and effective for someone like you.`
+                    ]
+                }
                 altText=""
-                image={LasikImage}
-                desktopImage={LasikImageLarge}
+                image={data?.section_1?.image || LasikImage}
+                desktopImage={data?.section_1?.large_image || LasikImageLarge}
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListLasik} />
+                <LeftRightSection childrenList={ leftRightsectiondata || leftRightListLasik} />
             </LazyComponent>
-
+            {/* section 2 */}
             <FullWidthImageSection
-                h3Title="Whatever the view,"
+                h3Title={data?.section_2?.title || 'Whatever the view,'}
                 boldHeading={
                     <>
-                        Remember it with
+                        {data?.section_2?.bold_heading_1 || 'Remember it with'}
                         <br />
-                        Clear vision
+                        {data?.section_2?.bold_heading_2 || 'Clear vision'}
                     </>
                 }
                 altText=""
-                image={ClearVisionImage}
-                desktopImage={ClearVisionImage}
+                image={data?.section_2?.image || ClearVisionImage}
+                desktopImage={data?.section_2?.large_image || ClearVisionImage}
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 md:!py-0"
                 overlayAnimation={true}
                 textColumnOverlay
                 sectionClass="bg-brandLight relative"
             />
-
+            {/* SECTION 3 */}
             <LazyComponent>
                 <SideVideoSection
-                    h2Heading="What our Lasik patients say after treatment"
-                    h3Heading="Hear from a patient"
-                    descriptions={[
-                        `When you choose My-iClinic’s 5-star rated services, you can rest assured that you’ve made the best possible choice for your eyesight.`,
-                        `Our specialist optometrists carefully work with you to evaluate your eyes to offer you the best possible course of treatment – allowing you to re-discover a life of normal vision.`
-                    ]}
-                    videoUrl="/videos/lasik.mp4"
-                    videoPoster="oO_Sh8m3fIE"
+                    h2Heading={data?.section_3?.heading || 'What our Lasik patients say after treatment'}
+                    h3Heading={data?.section_3?.sub_heading || 'Hear from a patient'}
+                    descriptions={
+                        (data?.section_3?.descriptions?.length && data?.section_3?.descriptions) || [
+                            `When you choose My-iClinic’s 5-star rated services, you can rest assured that you’ve made the best possible choice for your eyesight.`,
+                            `Our specialist optometrists carefully work with you to evaluate your eyes to offer you the best possible course of treatment – allowing you to re-discover a life of normal vision.`
+                        ]
+                    }
+                    videoUrl={data?.section_3?.videoUrl || '/videos/lasik.mp4'}
+                    videoPoster={data?.section_3?.videoPoster || 'oO_Sh8m3fIE'}
                 />
             </LazyComponent>
-
+            {/* section 4 */}
             <LazyComponent>
                 <FeaturedPatient
-                    h2Title="LASIK Patient"
-                    h3Title="Life after LASIK laser eye surgery"
-                    bandImageDescription={[
-                        `From the first moment I stepped in, the detail and the quality of care was amazing.`
-                    ]}
-                    bandImageTitle="Helen"
-                    bandImageURL="/images/section-images/helen.png"
-                    reviewDescription={[`Absolutely phenomenal.`]}
+                    h2Title={data?.section_4?.heading || 'LASIK Patient'}
+                    h3Title={data?.section_4?.sub_heading || 'Life after LASIK laser eye surgery'}
+                    bandImageDescription={
+                        (data?.section_4?.branddescriptions?.length && data?.section_4?.branddescriptions) || [
+                            `From the first moment I stepped in, the detail and the quality of care was amazing.`
+                        ]
+                    }
+                    bandImageTitle={data?.section_4?.brandImageTitle || 'Helen'}
+                    bandImageURL={data?.section_4?.bandImageURL || '/images/section-images/helen.png'}
+                    reviewDescription={data?.section_4?.branddescriptions || [`Absolutely phenomenal.`]}
                     reviewTitle={
                         <>
-                            I take every opportunity to
-                            <br /> recommend this Clinic
+                            {HTMLReactParser(data?.section_4?.reviewTitle) ||
+                                HTMLReactParser('I take every opportunity to <br /> recommend this Clinic')}
                         </>
                     }
-                    sliders={lasikSliders}
+                    sliders={reviewimageSliderdata || lasikSliders}
                     bandColor="bg-[#FF5C00]"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={liskListCataract} />
+                <NormalSlideSection sliderList={reviewSliderdata || liskListCataract} />
             </LazyComponent>
-
+            {/* SECTION 5 */}
             <SideImageSection
-                h2Heading="Transparent Price"
-                h3LightHeading="LASIK Laser eye surgery"
-                h3BoldHeading="cost"
-                descriptions={[
-                    `We do our best to understand your needs and aims so we can offer you the best vision correction options with a fair, transparent price!`
-                ]}
+                h2Heading={data?.section_5?.sub_heading || 'Transparent Price'}
+                h3LightHeading={data?.section_5?.heading?.light_heading || 'LASIK Laser eye surgery'}
+                h3BoldHeading={data?.section_5?.heading?.bold_heading || 'cost'}
+                descriptions={
+                    (data?.section_5?.descriptions?.length && data?.section_5?.descriptions) || [
+                        `We do our best to understand your needs and aims so we can offer you the best vision correction options with a fair, transparent price!`
+                    ]
+                }
                 sectionImage={{
-                    url: '/images/section-images/lasik-transparent-price.png',
+                    url: data?.section_5?.image || '/images/section-images/lasik-transparent-price.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/lasik-transparent-price-large.png',
+                    url: data?.section_5?.large_image || '/images/section-images/lasik-transparent-price-large.png',
                     width: 650,
                     height: 558
                 }}
@@ -205,18 +297,23 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 textColumnExtras={
                     <>
                         <FinanceExtra
-                            priceText="£2,400 per eye"
-                            priceDescription="With 12 Months Interest-Free Finance available!"
-                            paragraphs={[
-                                `The best laser eye surgery price in London, saving an average of £1,000 for your treatment
-                        when you come to My-iClinic.`
-                            ]}
-                            list={[
-                                <>
-                                    One dedicated Lasik specialist for <br /> your treatment
-                                </>,
-                                'Most affordable price in London'
-                            ]}
+                            priceText={data?.section_5?.price || '£2,400 per eye'}
+                            priceDescription={
+                                data?.section_5?.priceDescription || 'With 12 Months Interest-Free Finance available!'
+                            }
+                            paragraphs={
+                                data?.section_5?.paragraphs ||
+                                    `The best laser eye surgery price in London, saving an average of £1,000 for your treatment
+                        when you come to My-iClinic. `
+                            }
+                            list={
+                                (data?.section_5?.list?.length && stringArrayToElementArray(data?.section_5?.list)) || [
+                                    <>
+                                        One dedicated Lasik specialist for <br /> your treatment
+                                    </>,
+                                    'Most affordable price in London'
+                                ]
+                            }
                         />
                         <Button
                             type="anchor"
@@ -224,7 +321,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                             icon={
                                 <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2" />
                             }
-                            text="Pricing & Financing"
+                            text={data?.section_5?.button_text || 'Pricing & Financing'}
                             iconPosition="left"
                             className="group/finance mt-6 !gap-2 justify-self-center md:justify-self-start"
                         />
@@ -233,12 +330,14 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             />
 
             <SideImageSection
-                h2Heading="better vision"
-                h3LightHeading="Achieve better vision"
-                h3BoldHeading="with LASIK today"
+                h2Heading={data?.section_6?.sub_heading || 'better vision'}
+                h3LightHeading={data?.section_6?.heading.light_heading || 'Achieve better vision'}
+                h3BoldHeading={data?.section_6?.heading?.bold_heading || 'with LASIK today'}
                 descriptions={[
                     <>
-                        If you’ve made the decision to improve your eyesight – whether you currently have{' '}
+                        {(data?.section_6?.descriptions?.length &&
+                            stringArrayToElementArray(data?.section_6?.descriptions)) ||
+                            'If you’ve made the decision to improve your eyesight – whether you currently have'}
                         <LinkText
                             href="/myopia"
                             indicatorColor="bg-blue"
@@ -262,12 +361,12 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     </>
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/better-vision-lasik.png',
+                    url: data?.section_6?.image || '/images/section-images/better-vision-lasik.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/better-vision-lasik-large.png',
+                    url: data?.section_6?.large_image || '/images/section-images/better-vision-lasik-large.png',
                     width: 682,
                     height: 686
                 }}
@@ -344,19 +443,23 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     </div>
                 }
             />
-
+            {/* section 7  */}
             <LazyComponent>
                 <StackedSection
-                    stackList={lasikStackList}
-                    h3LightHeading="Why do our patients choose our"
-                    descriptions={[
-                        `The answer is simple – they want to escape limitations and take charge of their life`
-                    ]}
-                    h3BoldHeading="LASIK?"
+                    stackList={lasikSliderdata || lasikStackList}
+                    h3LightHeading={data?.section_7?.heading?.light_heading || 'Why do our patients choose our'}
+                    descriptions={
+                        (data?.section_7?.descriptions?.length && data?.section_7?.descriptions) || [
+                            `The answer is simple – they want to escape limitations and take charge of their life`
+                        ]
+                    }
+                    h3BoldHeading={data?.section_7?.heading?.bold_heading || 'LASIK?'}
                 />
             </LazyComponent>
-
-            <CtaSection2 title="Do you think LASIK could be the right treatment for you?" />
+            {/* section 8  */}
+            <CtaSection2
+                title={data?.section_8?.heading || 'Do you think LASIK could be the right treatment for you?'}
+            />
 
             {/* <LazyComponent>
                 <BottomBanner
@@ -378,17 +481,30 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     height: 234
                 }}
             /> */}
-
+            {/* section 9  */}
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading="plastic free life"
-                        h3LightHeading="LASIK is the biggest step in living"
-                        h3BoldHeading="a sustainable, plastic free life!"
-                        descriptions={[
-                            `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
-                        ]}
+                <SustainableSlider><PlasticFree
+                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
+                        h3LightHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
+                            'LASIK is the biggest step in living'}
+                        h3BoldHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
+                            'a sustainable, plastic free life!'}
+
+                            descriptions={
+                                (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
+                                    stringArrayToElementArray(
+                                        data?.sustainability_section?.plastic_free_life?.descriptions
+                                    )) || [
+                                    `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
+                                ]
+                            }
+                            image={data?.sustainability_section?.plastic_free_life?.image?.url}
+                            largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
+                            altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
                     />
+
 
                     {/* <DrawLine
                 image={{
@@ -428,49 +544,57 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     height: 234
                 }}
             /> */}
-
                     <SideImageSection
-                        h2Heading="gift of a tree"
-                        h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading="One eye at a time!"
-                        descriptions={[
-                            <>
-                                When undergoing laser eye surgery, you may not realize it but you are already making a
-                                positive difference to the environment. For every 10 years of contact lens wearing the
-                                amount of plastic that ends up in the ocean is roughly the same as your own body weight.
-                            </>,
-                            <strong className="font-latoBold text-[2rem] leading-[2.4rem]">Our gift to you…</strong>,
-                            <>
-                                We want to take our impact on the environment a step further and this is where the gift
-                                of a tree comes in!
-                            </>,
-                            <strong className="font-latoBold text-[2rem] leading-[2.4rem]">
-                                Here at My-iClinic we give all of our laser patients a real forest tree!
-                            </strong>,
-                            <>
-                                Over your tree’s long life, you can visit it, introduce it to your family and track its
-                                growth and value! Over the lifetime of the tree, it will more than offset the carbon
-                                you've used with your contacts/glasses. When the tree is harvested, its value will be
-                                yours and new trees are planted to replace it.
-                            </>,
-                            <>This is our big thank you for choosing a natural, green living eye-style.</>
-                        ]}
-                        sectionImage={{
-                            url: '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        sectionImageDesktop={{
-                            url: '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                    />
+                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
+                        h3LightHeading={HTMLReactParser(
+                            data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
+                                'Saving the planet <br />'
+                        )}
+                        h3BoldHeading={ (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
+                            HTMLReactParser(
+                                data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
+                            )) || HTMLReactParser('One eye at a time!')}
+                            descriptions={
+                                (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
+                                    stringArrayToElementArray(
+                                        data?.sustainability_section?.gift_of_a_tree?.descriptions
+                                    )) || [
+                                    `When undergoing laser eye surgery, you may not realize it but you are already making a positive
+                         difference to the environment. For every 10 years of contact lens wearing the amount of plastic
+                          that ends up in the ocean is roughly the same as your own body weight.`,
+                                    <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                        Our gift to you…
+                                    </span>,
+                                    `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
+                                    <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                        Here at My-iClinic we give all of our laser patients a real forest tree!
+                                    </span>,
+                                    `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
+                         value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
+                          contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
+                          to replace it.`,
+                                    `This is our big thank you for choosing a natural, green living eye-style.`
+                                ]}
+
+                                sectionImage={{
+                                    url:
+                                        data?.sustainability_section?.gift_of_a_tree?.image?.url ||
+                                        '/images/section-images/gift-of-a-tree.png',
+                                    width: 390,
+                                    height: 390
+                                }}
+                                sectionImageDesktop={{
+                                    url:
+                                        data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
+                                        '/images/section-images/gift-of-a-tree-desktop.png',
+                                    width: 554,
+                                    height: 496
+                                }}
+                                altText={
+                                    data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
+                                    'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
+                                } />
+
 
                     {/* <DrawLine
                 image={{
@@ -484,8 +608,13 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     height: 234
                 }}
             /> */}
-
-                    <ClimateChange />
+     <ClimateChange h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
+                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
+                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
+                        image={data?.sustainability_section?.clearer_vision?.image?.url}
+                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
+                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
+                    />
                 </SustainableSlider>
             </LazyComponent>
 
@@ -535,7 +664,92 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
-                    ...data?.acf
+                    ...data?.acf,
+                    // SECTION 1
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
+                    }, // 2
+                    section_2: {
+                        ...data?.acf?.section_2
+                    }, // VIDEO
+                    section_3: {
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                    }, // 2
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        branddescriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.branddescriptions),
+                        reviewDescription: convertArrayOfObjectsToStrings(data?.acf?.section_4?.reviewDescription)
+                    }, // 2
+                    section_5: {
+                        ...data?.acf?.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions),
+                        list: convertArrayOfObjectsToStrings(data?.acf?.section_5?.list)
+                    }, // 2
+
+                    section_6: {
+                        ...data?.acf?.section_6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                    }, // 2
+
+                    section_7: {
+                        ...data?.acf?.section_7,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_7?.descriptions)
+                    }, // 2
+                    section_8: {
+                        ...data?.acf?.section_8
+                    }, // 2
+                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                        ? data?.acf.leftRightsection.map((ListData) => {
+                              return {
+                                  ...ListData,
+                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
+                        : [],
+                    lasikSlider: Array.isArray(data?.acf?.lasikSlider)
+                        ? data?.acf.lasikSlider.map((sectionData: { descriptions: any[] | undefined; }) => {
+                              return {
+                                  ...sectionData,
+                                  descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
+                              };
+                          })
+                        : [],
+                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
+                            ? data?.acf.reviewSlider.map((ListData) => {
+                                  return {
+                                      ...ListData,
+                                  };
+                              })
+                            : [],
+                    reviewimageSlider:Array.isArray(data?.acf?.reviewimageSlider)
+                                ? data?.acf.reviewimageSlider.map((ListData) => {
+                                      return {
+                                          ...ListData,
+                                      };
+                                  })
+                                : [],
+                                sustainability_section: {
+                                    plastic_free_life: {
+                                        ...data?.acf?.sustainability_section?.plastic_free_life,
+                                        descriptions: convertArrayOfObjectsToStrings(
+                                            data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                                        )
+                                    },
+                                    gift_of_a_tree: {
+                                        ...data?.acf?.sustainability_section?.gift_of_a_tree,
+                                        descriptions: convertArrayOfObjectsToStrings(
+                                            data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                                        )
+                                    },
+                                    clearer_vision: {
+                                        ...data?.acf?.sustainability_section?.clearer_vision,
+                                        descriptions: convertArrayOfObjectsToStrings(
+                                            data?.acf?.sustainability_section?.clearer_vision.descriptions
+                                        )
+                                    }
+                                }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

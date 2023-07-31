@@ -18,7 +18,8 @@ import {
     NormalSection5,
     SideImageSection
 } from '@/page-sections/index';
-import { WpPageResponseInterface } from '@/types';
+import { MacularContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -38,10 +39,14 @@ const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/Nor
     loading: () => <ComponentLoader />
 });
 
+
+interface DataInterface extends MacularContentInterface, PageDataInterface<MacularContentInterface> {}
+
+
 interface MacularDegenerationProps {
     seo: any;
     yoastJson: any;
-    data: any;
+    data: DataInterface;
 }
 
 /**
@@ -53,8 +58,8 @@ interface MacularDegenerationProps {
 export default function MacularDegeneration({ seo, yoastJson, data }: MacularDegenerationProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = 'Macular Degeneration Treatment London';
-    const subheading = 'Monitor your macular degeneration symptoms with our private clinic';
+    const heading = data?.masthead_heading ||'Macular Degeneration Treatment London';
+    const subheading = data?.masthead_subheading ||'Monitor your macular degeneration symptoms with our private clinic';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -63,6 +68,18 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    // reviewSliderdata
+    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+        data.reviewSlider.map((service) => {
+            return {
+                ...service,
+                description: service?.description,
+                name: service?.name,
+                title: service?.title
+            };
+        }) :
+        null;
 
     return (
         <Page
@@ -74,13 +91,15 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText="From £200"
+                priceText={ data?.masthead_price || 'From £200'}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
@@ -88,42 +107,44 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
             <FullWidthImageSection
                 boldHeading={
                     <div className="md:max-w-[54.4rem]">
-                        <strong className="normal-case">Macular degeneration (AMD)</strong>
+                        <strong className="normal-case">{ data?.section_3?.heading || 'Macular degeneration (AMD)'}</strong>
                     </div>
                 }
                 altText=""
-                description={[
+                description={data?.section_3?.descriptions?.length &&
+                   stringArrayToElementArray(data?.section_3?.descriptions) || [
                     'Macular degeneration (AMD) is a common age-related eye disease which affects the clarity of your central vision. The incidence of macular degeneration increases with age, and about three people per 1000 over the age of 50 will develop macular degeneration.',
                     'Macular degeneration is categorised as an “age-related” eye condition meaning that it occurs mainly in older people.'
                 ]}
-                image="/images/section-images/macular-degeneration.png"
-                desktopImage="/images/section-images/macular-degeneration-large.png"
+                image={ data?.section_3?.image || '/images/section-images/macular-degeneration.png'}
+                desktopImage={ data?.section_3?.imagelarge || '/images/section-images/macular-degeneration-large.png'}
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
 
             <SideImageSection
-                h2Heading="diagnosis"
+                h2Heading={ data?.section_4?.sub_heading || 'diagnosis'}
                 h3LightHeading={
                     <>
-                        Diagnosis and treatment for
+                        {data?.section_4?.heading?.light_heading ||'Diagnosis and treatment for'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Macular degeneration"
-                descriptions={[
+                h3BoldHeading={data?.section_4?.heading?.dark_heading ||'Macular degeneration'}
+                descriptions={ data?.section_4?.descriptions?.length &&
+                   stringArrayToElementArray(data?.section_4?.descriptions) || [
                     <strong>Understanding Macular Degeneration</strong>,
                     "The macula is the area of the retina that's responsible for seeing clearly in the centre of your vision.",
                     'If you are experiencing blurriness, distortion or blank spots in your central vision, our ophthalmologists can carry out comprehensive eye assessments to check the condition of your eyes and diagnose the type of macular degeneration you are experiencing.',
                     <strong>There are two types of macular degeneration conditions:</strong>
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/macular-degeneration-diagnosis.png',
+                    url: data?.section_4?.image || '/images/section-images/macular-degeneration-diagnosis.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/macular-degeneration-diagnosis-large.png',
+                    url: data?.section_4?.imagelarge ||'/images/section-images/macular-degeneration-diagnosis-large.png',
                     width: 631,
                     height: 582
                 }}
@@ -131,10 +152,11 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
                 altText=""
                 textColumnExtras={
                     <div className="ml-12 grid gap-6">
-                        <span className="font-mulishBold">Dry age-related macular degeneration:</span>
+                        <span className="font-mulishBold">{data?.section_4?.list_heading ||'Dry age-related macular degeneration:'}</span>
                         <BulletList
                             className="!ml-0"
-                            list={[
+                            list={data?.section_4?.lists?.length &&
+                               stringArrayToElementArray(data?.section_4?.lists) || [
                                 <>
                                     Have a transient (or intermittent) diplopia condition
                                     <br />
@@ -159,27 +181,28 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
             />
 
             <SideImageSection
-                h2Heading="treatment"
+                h2Heading={data?.section_5?.sub_heading ||'treatment'}
                 h3LightHeading={
                     <>
-                        Macular degeneration
+                       {data?.section_5?.heading?.light_heading || ' Macular degeneration'}
                         <br />
                     </>
                 }
-                h3BoldHeading="treatment"
-                descriptions={[
+                h3BoldHeading={data?.section_5?.heading?.dark_heading ||'treatment'}
+                descriptions={ data?.section_5?.descriptions?.length &&
+                    stringArrayToElementArray(data?.section_5?.descriptions) || [
                     'Although there is no definite treatment to reverse any current symptoms of macular degeneration, our ophthalmologist can help prevent or slow the progression of the disease.',
                     'After diagnosing your condition, your specialist will begin the treatment process.',
                     'If you are diagnosed with wet macular degeneration, your specialist will repeat Anti-VEGF and/or other injections to preserve and stabilise your vision. This treatment will require regular checkups and monitoring of your vision.',
                     'Dry macular degeneration requires frequent monitoring and checkups of the eyes. Dry macular degeneration is a less damaging condition for your eyes and does not require injections for treatment.'
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/macular-treatment.png',
+                    url: data?.section_5?.image ||'/images/section-images/macular-treatment.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/macular-treatment-large.png',
+                    url: data?.section_5?.imagelarge ||'/images/section-images/macular-treatment-large.png',
                     width: 658,
                     height: 459
                 }}
@@ -187,14 +210,16 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
             />
 
             <NormalSection5
-                heading="Reduce your Macular Degeneration symptoms today"
-                description="Book a private consultation today with our specialist for all-inclusive eye assessments and treatment planning"
+                heading={data?.reduce?.heading ||'Reduce your Macular Degeneration symptoms today'}
+                description={data?.reduce?.description ||'Book a private consultation today with our specialist for all-inclusive eye assessments and treatment planning'}
             />
 
-            <CtaSection subtitle="Book a private consultation" />
+            <CtaSection title={data?.section_6?.title}
+             subtitle={ data?.section_6?.subheading || 'Book a private consultation'}
+             />
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListDoubleVision} />
+                <NormalSlideSection sliderList={ reviewSliderdata || normalSlideListDoubleVision} />
             </LazyComponent>
 
             <LazyComponent>
@@ -228,7 +253,33 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
-                    ...data?.acf
+                    ...data?.acf,
+                    section_3: {
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                    },
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists)
+                    },
+                    section_5: {
+                        ...data?.acf?.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                    },
+                    reduce: {
+                        ...data?.acf?.reduce,
+                    },
+                    section_6: {
+                        ...data?.acf?.section_6
+                    },
+                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
+                        ? data?.acf.reviewSlider.map((ListData) => {
+                              return {
+                                  ...ListData,
+                              };
+                          })
+                        : [], 
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

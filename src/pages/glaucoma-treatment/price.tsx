@@ -9,15 +9,20 @@ import MastheadImageLarge from '@/masthead/masthead-glaucoma-pricing-large.png';
 import MastheadImageMedium from '@/masthead/masthead-glaucoma-pricing-medium.png';
 import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/page-sections/index';
 import { GlaucomaPackages3 } from '@/page-sections/SectionParts/GlaucomaPackages';
-import { WpPageResponseInterface } from '@/types';
+import { PriceGlaucomaContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
+interface DataInterface extends PriceGlaucomaContentInterface, PageDataInterface<PriceGlaucomaContentInterface> {}
+
 
 interface PriceProps {
+    data: DataInterface;
     seo: any;
     yoastJson: any;
 }
@@ -30,31 +35,45 @@ interface PriceProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
-    const heading = 'Glaucoma treatment and management cost London';
-    const subheading = 'The cost of Glaucoma management';
+export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element {
+    const heading = data?.masthead_heading ||'Glaucoma treatment and management cost London';
+    const subheading = data?.masthead_subheading ||'The cost of Glaucoma management';
+
+
+    const Glaucoma2Section: any = data?.section_2 ?
+        data?.section_2.map((item) => {
+            return {
+                ...item,
+                title: item?.title,
+                price: item?.price,
+                description: HTMLReactParser(item?.description)
+            };
+        }) :
+        null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
             <Masthead
-                imageSmall={MastheadImageMedium}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageMedium={data?.masthead_image?.image_medium?.url ||MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url ||MastheadImageLarge}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText="£400 per eye"
+                priceText={data?.masthead_price || '£400 per eye'}
+                googleReviews={data?.google_reviews}
+                trustPilotReviews={data?.trustpilot_reviews}
             />
             <SideImageSection
-                h2Heading="Your consultation"
+                h2Heading={data?.section_1?.sub_heading ||'Your consultation'}
                 h3LightHeading={
                     <>
-                        The cost of
+                        {data?.section_1?.heading?.light_heading ||'The cost of'}
                         <br />
                     </>
                 }
-                h3BoldHeading="Glaucoma management"
-                descriptions={[
+                h3BoldHeading={ data?.section_1?.heading?.bold_heading || 'Glaucoma management'}
+                descriptions={ data?.section_1?.descriptions?.length &&
+                    stringArrayToElementArray(data?.section_1?.descriptions) || [
                     <strong className="block font-mulishBold text-[2rem] leading-[2.8rem] sm:max-w-[37.1rem]">
                         The price of your private glaucoma consultation
                     </strong>,
@@ -67,12 +86,12 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                     </div>
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/private-consultation-glaucoma-large.png',
+                    url: data?.section_1?.image ||'/images/section-images/private-consultation-glaucoma-large.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/private-consultation-glaucoma-large.png',
+                    url: data?.section_1?.large_image ||'/images/section-images/private-consultation-glaucoma-large.png',
                     width: 656,
                     height: 518
                 }}
@@ -85,34 +104,36 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
             </LazyComponent>
             <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
 
-            <GlaucomaPackages2 />
+            <GlaucomaPackages2 datapackList={Glaucoma2Section} />
 
-            <GlaucomaPackages3 />
+            <GlaucomaPackages3 packageList={data?.privateTreatment} />
 
             <SideImageSection
                 h3LightHeading={
                     <>
-                        Thinking about paying with <br />
+                        { data?.section_4?.heading?.light_heading || 'Thinking about paying with'} <br />
                     </>
                 }
-                h3BoldHeading="health insurance?"
-                descriptions={[
+                h3BoldHeading={ data?.section_4?.heading?.bold_heading ||'health insurance?'}
+                descriptions={ data?.section_4?.descriptions?.length &&
+                   stringArrayToElementArray(data?.section_4?.descriptions) || [
                     `We are partnered with health insurance companies to make the cost of your treatment easier! We are partnered with:`
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/glaucoma-health-insurance-large.png',
+                    url: data?.section_4?.image ||'/images/section-images/glaucoma-health-insurance-large.png',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/glaucoma-health-insurance-large.png',
+                    url: data?.section_4?.large_image ||'/images/section-images/glaucoma-health-insurance-large.png',
                     width: 622,
                     height: 568
                 }}
                 textColumnExtras={
                     <div className="grid gap-12">
                         <BulletList
-                            list={[
+                            list={ data?.section_4?.lists?.length &&
+                                data?.section_4?.lists || [
                                 'Aviva',
                                 'WPA',
                                 'Freedom',
@@ -145,9 +166,9 @@ export default function Price({ seo, yoastJson }: PriceProps): JSX.Element {
                         </div>
                         <div>
                             <strong>
-                                It's always best to check with your healthcare insurance provider that they will cover
+                                { HTMLReactParser(data?.section_4?.descriptions2) ||`It's always best to check with your healthcare insurance provider that they will cover
                                 your fees and produce a pre-authorisation code for you. We will require your
-                                pre-authorization code before your consultation and cataract surgery.
+                                pre-authorization code before your consultation and cataract surgery.`}
                             </strong>
                         </div>
                     </div>
@@ -170,7 +191,42 @@ export async function getStaticProps() {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    // SECTION 1
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions),
+                    }, // 2
+                    // // SECTION 2
+                    // section_2: {
+                    //     ...data?.acf?.section_2,
+                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
+                    //     lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.lists)
+                    // }, // 2
+                    
+                    section_2: Array.isArray(data?.acf?.section_2)
+                    ? data?.acf.section_2.map((priceData) => {
+                          return {
+                              ...priceData,
+                          };
+                      })
+                    : [],
+                    section_3: {
+                        ...data?.acf?.section_3
+                    },
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),                        
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists),
+
+                    },
+                    speaktoteam:{
+                        ...data?.acf?.speaktoteam
+                    },
+                }
+
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

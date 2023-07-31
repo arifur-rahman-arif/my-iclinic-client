@@ -67,6 +67,7 @@ const LeftRightTextColumn = ({
                         {title}
                     </h3>
                 )}
+
                 {descriptions?.map((description, index) => (
                     <FadeIn key={index}>
                         <div>{description}</div>

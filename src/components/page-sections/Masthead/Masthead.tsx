@@ -56,7 +56,7 @@ const Masthead = ({
                     alt={altText || ''}
                     width={1140}
                     height={633}
-                    className={`h-full max-h-[43rem] w-full object-cover md:max-h-full md:rounded-tl-primary md:rounded-bl-primary md:object-[-15rem_center]`}
+                    className={`h-full max-h-[43rem] w-full object-cover md:max-h-full md:rounded-tl-primary md:rounded-bl-primary 2xl:object-[-15rem_center]`}
                     quality={100}
                     placeholder={typeof imageMedium === 'string' ? 'empty' : 'blur'}
                     priority={true}

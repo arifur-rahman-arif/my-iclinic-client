@@ -12,7 +12,6 @@ export interface CardInterface {
     cardList: ReactNode[];
     cardLink: string;
 }
-
 /**
  * Card component
  *

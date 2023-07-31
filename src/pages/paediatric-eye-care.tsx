@@ -14,7 +14,9 @@ import MastheadImageSmall from '@/masthead/masthead-paediatric-small.png';
 import { paediatricFaqList } from '@/page-sections/Faq/faqList';
 import { CtaSection, FullWidthImageSection, Masthead, SideImageSection } from '@/page-sections/index';
 import { leftRightListPaediatric, leftRightListPaediatricAftercare } from '@/page-sections/LeftRight/leftRightList';
-import { WpPageResponseInterface } from '@/types';
+import { PardiatricContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -35,8 +37,12 @@ const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRig
     loading: () => <ComponentLoader />
 });
 
+
+interface DataInterface extends PardiatricContentInterface, PageDataInterface<PardiatricContentInterface> {}
+
+
 interface PaediatricEyeCareProps {
-    data: any;
+    data: DataInterface;
     seo: any;
     yoastJson: any;
 }
@@ -52,7 +58,8 @@ interface PaediatricEyeCareProps {
 export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEyeCareProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = "Children's Eye Care London";
+    const heading = data?.masthead_heading || "Children's Eye Care London";
+    const subheading = data?.masthead_subheading;
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -61,6 +68,79 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
+
+    //   LEFT RIGHT SECTION
+    const leftRightsectiondata = data?.leftRightsection ?
+        data.leftRightsection.map((item:
+             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
+            ...item,
+            mobileImage: (
+            <Image
+            src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+            width={390}
+            height={390}
+            quality={70}
+            className="rounded-primary md:hidden"
+            alt=""
+          />
+            ),
+            desktopImage: (
+          <Image
+            src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+            width={695}
+            height={580}
+            quality={70}
+            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+            alt=""
+          />
+            ),
+            title: item?.title,
+            descriptions: stringArrayToElementArray(item?.descriptions)
+        })) :
+        null;
+
+    // leftRightsection2
+    const leftRightsection2data = data?.leftRightsection2 ?
+        data.leftRightsection2.map((item:
+     { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
+            ...item,
+            mobileImage: (
+    <Image
+    src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+    width={390}
+    height={390}
+    quality={70}
+    className="rounded-primary md:hidden"
+    alt=""
+  />
+            ),
+            desktopImage: (
+  <Image
+    src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+    width={695}
+    height={580}
+    quality={70}
+    className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+    alt=""
+  />
+            ),
+            title: item?.title,
+            descriptions: stringArrayToElementArray(item?.descriptions)
+        })) :
+        null;
+
+
+    // reviewSliderdata
+    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+        data.reviewSlider.map((service) => {
+            return {
+                ...service,
+                title: service?.title,
+                name: service?.name,
+                description: service?.description
+            };
+        }) :
+        null;
 
     return (
         <Page
@@ -72,11 +152,12 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url ||MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url ||MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url ||MastheadImageLarge}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
+                h2Title={<h2>{subheading}</h2>}
                 priceText={data?.masthead_price || 'From £200'}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
@@ -87,21 +168,22 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             <FullWidthImageSection
                 h3Title={
                     <>
-                        <strong>Paediatric</strong> services for children
+                        <strong>{ data?.section_3?.heading || 'Paediatric'}</strong> {data?.section_3?.lightheading || 'services for children'}
                     </>
                 }
-                description={[
+                description={data?.section_3?.descriptions?.length &&
+                   stringArrayToElementArray(data?.section_3?.descriptions) ||[
                     'Paediatric eye care is for infants and young children who have problems with their vision.',
                     "If your child is experiencing complications with their vision, or you believe there is a potential problem with their eyes, we can provide a detailed assessment to confirm the health of your child's eyes."
                 ]}
                 altText=""
-                image="/images/section-images/paediatric-children-large.png"
-                desktopImage="/images/section-images/paediatric-children-large.png"
+                image={ data?.section_3?.image || '/images/section-images/paediatric-children-large.png'}
+                desktopImage={ data?.section_3?.imageLarge || '/images/section-images/paediatric-children-large.png'}
                 includeScrollDownButton
             />
-
+{/* leftRightsectiondata */}
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListPaediatric} />
+                <LeftRightSection childrenList={leftRightsectiondata || leftRightListPaediatric} />
             </LazyComponent>
 
             <Section>
@@ -109,15 +191,15 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     <div className="relative z-[2] rounded-primary bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-24">
                         <H3Variant3>
                             <strong>
-                                We specialise in treating children with a wide range of eye care conditions. Our team
+                               { HTMLReactParser(data?.Imagesection2?.descriptions) || ` We specialise in treating children with a wide range of eye care conditions. Our team
                                 has years of experience working with children who have autism, dyslexia, and other
-                                learning difficulties.
+                                learning difficulties.`}
                             </strong>
                         </H3Variant3>
                     </div>
                     <div className="row-start-1 h-full md:col-span-2 md:col-start-2 md:row-start-1">
                         <Image
-                            src="/images/section-images/paediatric-banner.png"
+                            src={data?.Imagesection2?.image ||'/images/section-images/paediatric-banner.png'}
                             alt=""
                             width={619}
                             height={316}
@@ -128,30 +210,32 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             </Section>
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightListPaediatricAftercare} positionReversed />
+                <LeftRightSection childrenList={leftRightsection2data ||
+                     leftRightListPaediatricAftercare} positionReversed />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection />
+                <NormalSlideSection sliderList={reviewSliderdata} />
             </LazyComponent>
 
-            <CtaSection subtitle="Speak to our friendly team" />
+            <CtaSection title={ data?.sectionspeakteam?.title } subtitle={ data?.sectionspeakteam?.sub_heading || 'Speak to our friendly team'} />
 
             <SideImageSection
-                h2Heading="About ophthalmologist"
-                h3LightHeading="What does a Paediatric"
-                h3BoldHeading="ophthalmologist do?"
-                descriptions={[
+                h2Heading={ data?.section_1?.sub_heading || 'About ophthalmologist'}
+                h3LightHeading={data?.section_1?.heading?.light_heading ||'What does a Paediatric'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading ||'ophthalmologist do?'}
+                descriptions={data?.section_1?.descriptions?.length &&
+                    stringArrayToElementArray(data?.section_1?.descriptions) || [
                     'Our Paediatric ophthalmologist is an expert in assessing, diagnosing, treating and managing children who develop eye conditions from 1 year old to 18 years old.',
                     "Our Paediatric ophthalmologist will be the best eye doctor to help you understand your child's eye condition and, most importantly, help your child understand."
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/about-ophthalmologist.png',
+                    url: data?.section_1?.image ||'/images/section-images/about-ophthalmologist.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/about-ophthalmologist-large.png',
+                    url: data?.section_1?.large_image ||'/images/section-images/about-ophthalmologist-large.png',
                     width: 640,
                     height: 610
                 }}
@@ -159,10 +243,11 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
             />
 
             <SideImageSection
-                h2Heading="ophthalmologist consultations"
-                h3LightHeading="Do you offer consultations and"
-                h3BoldHeading="treatment for young infants?"
-                descriptions={[
+                h2Heading={data?.section_2?.sub_heading ||'ophthalmologist consultations'}
+                h3LightHeading={data?.section_2?.heading?.light_heading ||'Do you offer consultations and'}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading ||'treatment for young infants?'}
+                descriptions={ data?.section_2?.descriptions?.length &&
+                   stringArrayToElementArray(data?.section_2?.descriptions) || [
                     <>
                         Our clinic provides private Paediatric eye care to infants from the{' '}
                         <strong>age of 1 years old.</strong>
@@ -175,12 +260,12 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     </>
                 ]}
                 sectionImage={{
-                    url: '/images/section-images/ophthalmologist-consultations.png',
+                    url: data?.section_2?.image ||'/images/section-images/ophthalmologist-consultations.png',
                     width: 635,
                     height: 503
                 }}
                 sectionImageDesktop={{
-                    url: '/images/section-images/ophthalmologist-consultations-large.png',
+                    url: data?.section_2?.large_image ||'/images/section-images/ophthalmologist-consultations-large.png',
                     width: 635,
                     height: 503
                 }}
@@ -217,8 +302,77 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
-                    ...data?.acf
+                    ...data?.acf,
+                    // SECTION 1
+                    section_1: {
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
+                    }, // 2
+                    section_2: {
+                        ...data?.acf?.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
+                    }, // 2\
+                    section_3: {
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                    }, // 2
+                    Imagesection2: {
+                        ...data?.acf?.Imagesection2
+                    }, // 2
+                    section_4: {
+                        ...data?.acf?.section_4,
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions)
+                    }, // 2
+                    section_5: {
+                        ...data?.acf?.section_5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                    },
+                    section_6: {
+                        ...data?.acf?.section_6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                    },
+                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                        ? data?.acf.leftRightsection.map((ListData) => {
+                              return {
+                                  ...ListData,
+                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
+                        : [],
+                    leftRightsection2:Array.isArray(data?.acf?.leftRightsection2)
+                    ? data?.acf.leftRightsection2.map((ListData) => {
+                          return {
+                              ...ListData,
+                            descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                          };
+                      })
+                    : [],  
+                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
+                        ? data?.acf.reviewSlider.map((ListData) => {
+                              return {
+                                  ...ListData,
+                              };
+                          })
+                        : [],
+                        InfoCards:Array.isArray(data?.acf?.InfoCards)
+                            ? data?.acf.InfoCards.map((ListData) => {
+                                  return {
+                                      ...ListData,
+                                      content: convertArrayOfObjectsToStrings(ListData?.content),
+                                      bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
+                                  };
+                              })
+                            : [],
+                        sectionspeakteam: {
+                            ...data?.acf?.sectionspeakteam
+                        },
+                        bettervision: {
+                            ...data?.acf?.bettervision,
+                            descriptions: convertArrayOfObjectsToStrings(data?.acf?.bettervision?.descriptions)
+                        },
                 }
+
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
