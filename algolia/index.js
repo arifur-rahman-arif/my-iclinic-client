@@ -15,14 +15,23 @@ const index = client.initIndex(indexName);
  * @param {string} string
  * @returns {*[]}
  */
-const sliceStringByWords = (string) => {
+const sliceStringByWordsAndSizeLimit = (string) => {
     const words = string.split(' ');
     const totalWords = words.length;
     const result = [];
+    let currentSize = 0;
 
     for (let i = 0; i < totalWords; i += 500) {
         const limitedWords = words.slice(i, i + 500);
-        result.push(limitedWords.join(' '));
+        const limitedString = limitedWords.join(' ');
+        const limitedSize = limitedString.length;
+
+        if (currentSize + limitedSize > 10000) {
+            break; // Stop if adding the next string would exceed the size limit
+        }
+
+        result.push(limitedString);
+        currentSize += limitedSize;
     }
 
     return result;
@@ -48,7 +57,7 @@ const getPosts = async () => {
     return data.map((post) => ({
         objectID: post.id,
         title: post?.title?.rendered || '',
-        content: sliceStringByWords(striptags(post?.content?.rendered)),
+        content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered)),
         section: `/articles/${post.slug}`,
         type: 'article'
     }));
@@ -84,7 +93,7 @@ const getSpecialistsPost = async () => {
             objectID: post.id,
             title: post?.title?.rendered || '',
             designation: post.acf.specialist_data.degree || '' + ' ' + post.acf.specialist_data.title || '',
-            content: sliceStringByWords(striptags(post?.content?.rendered)),
+            content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered)),
             section: `/our-specialists/${post.slug}`,
             type: 'specialist'
         };
