@@ -20,7 +20,7 @@ import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import FullWidthImageSection4 from '@/page-sections/SideImageSection/FullWidthImageSection4';
 import { FinanceTreatmentPageContents, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
-import { getElementTopPosition } from '@/utils/miscellaneous';
+import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 
 import dynamic from 'next/dynamic';
@@ -182,16 +182,28 @@ export default function FinancingYourTreatment({
                                 />
                             </div>
 
-                            <H2Variant1 className="normal-case">Permanent clear vision</H2Variant1>
+                            <H2Variant1 className="normal-case">
+                                {data?.section_2?.heading || 'Permanent clear vision'}
+                            </H2Variant1>
 
                             <div className="grid max-w-[59.5rem] place-items-center gap-6">
-                                <p className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
-                                    Correct your vison permanently with <br />
-                                    24 month finance option from £150/Per eye, per month.
-                                </p>
+                                <div className="text-center font-latoBold text-[2rem] leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
+                                    {(data?.section_2?.subheading &&
+                                        HTMLReactParser(stripInitialTags(data?.section_2?.subheading))) || (
+                                        <>
+                                            Correct your vison permanently with <br />
+                                            24 month finance option from £150/Per eye, per month.
+                                        </>
+                                    )}
+                                </div>
                                 <p className="max-w-[40rem] text-center">
-                                    Our vision correction treatments provide a without the hassle of glasses and contact
-                                    lenses.
+                                    {(data?.section_2?.description &&
+                                        HTMLReactParser(stripInitialTags(data?.section_2?.description))) || (
+                                        <>
+                                            Our vision correction treatments provide a without the hassle of glasses and
+                                            contact lenses.
+                                        </>
+                                    )}
                                 </p>
                             </div>
                         </>

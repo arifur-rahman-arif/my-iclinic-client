@@ -2,6 +2,8 @@ import { CountryCode } from 'libphonenumber-js';
 import { NextRouter } from 'next/router';
 import path from 'path';
 
+const striptags = require('striptags');
+
 /**
  * Trim the text to a specified length with ...
  *
@@ -316,4 +318,14 @@ export const prependSign = (number: number | null): string | number | null => {
     if (number > 0) return `+${number}`;
 
     return number;
+};
+
+/**
+ * Removes the initial <p> tag if it is the only parent <p> tag from the provided HTML string.
+ *
+ * @param {string} html - The input HTML string.
+ * @returns {string} The modified HTML string with the initial <p> tag stripped, if applicable.
+ */
+export const stripInitialTags = (html: string): string => {
+    return striptags(html, new Set(['div', 'b', 'strong', 'em', 'u', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br']));
 };
