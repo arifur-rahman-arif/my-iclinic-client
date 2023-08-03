@@ -67,6 +67,7 @@ const Sitemap = ({ articles }: SitemapPropsI): JSX.Element => {
         { name: 'Search', url: '/search' },
         { name: 'Sitemap', url: '/sitemap' },
         { name: 'Suitability Check', url: '/suitability-check' },
+        { name: 'Terms and Conditions', url: '/terms-and-conditions' },
         { name: 'Translation Service', url: '/translation-service' }
     ];
 

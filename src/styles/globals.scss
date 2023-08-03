@@ -82,6 +82,10 @@ body {
     }
   }
 
+  a {
+    text-decoration: none;
+  }
+
   b,
   strong {
     font-family: var(--mulish-bold);

@@ -21,10 +21,8 @@ interface BodyContentInterface {
  */
 const BodyContent = ({ content, includeCta }: BodyContentInterface): JSX.Element => {
     return (
-        <div>
-            <div className={`${styles.styles} grid content-start gap-12 md:pr-12`}>
-                {content && HTMLReactParser(content)}
-            </div>
+        <div className={styles.styles}>
+            <div className={`wp-content grid content-start gap-12 md:pr-12`}>{content && HTMLReactParser(content)}</div>
 
             <div className="md:pr-12">{includeCta && <CtaSection3 />}</div>
         </div>

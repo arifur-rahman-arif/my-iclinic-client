@@ -2435,6 +2435,33 @@ const objects = [
         ],
         image: '/images/section-images/new-myopia-consultation.png',
         section: '/myopia/price/#new_myopia_consulation'
+    },
+    {
+        objectID: 223,
+        title: 'Terms and Conditions',
+        content: [
+            'These Website Terms and Conditions ("Terms") govern your use of our website at www.my-iclinic.co.uk. By accessing or using our Website, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please refrain from using our Website.',
+            'Intellectual Property',
+            "The content, design, logos, trademarks, and any other intellectual property on this Website are owned by or licensed to My-iClinic and are protected by applicable copyright and trademark laws. You may not reproduce, distribute, modify, or use any part of the Website's content without our prior written consent.",
+            'Use of the Website',
+            'Eligibility: By using this Website, you affirm that you are at least 18 years old or have the necessary legal capacity to enter into these Terms.',
+            'Lawful Use: You agree to use our Website only for lawful purposes and in a manner that does not violate any applicable laws or regulations.',
+            'Account Creation: Some features of our Website may require you to create an account. You are responsible for maintaining the confidentiality of your account information and any activities that occur under your account.',
+            'User Content: If you submit or post any content on our Website, you grant My-iClinic a non-exclusive, royalty-free, worldwide, and perpetual license to use, reproduce, modify, adapt, publish, translate, create derivative works from, and distribute such content for any purpose.',
+            'Medical Disclaimer',
+            'The content on this Website is provided for informational purposes only and is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your qualified healthcare provider with any questions you may have regarding a medical condition.',
+            'Privacy Policy',
+            'Our Privacy Policy explains how we collect, use, and protect your personal information when you use our Website. By using our Website, you consent to the practices described in our Privacy Policy.',
+            'Limitation of Liability',
+            'To the fullest extent permitted by law, My-iClinic and its affiliates, directors, officers, employees, agents, and suppliers shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or use, arising out of or relating to your use of the Website.',
+            'Indemnification',
+            "You agree to indemnify and hold harmless My-iClinic and its affiliates, directors, officers, employees, agents, and suppliers from any claims, damages, liabilities, and expenses (including attorney's fees) arising out of or related to your use of the Website or any violation of these Terms.",
+            'Modification of Terms',
+            'My-iClinic reserves the right to modify these Terms at any time. Changes will be effective immediately upon posting on the Website. Your continued use of the Website after the posting of the revised Terms constitutes your acceptance of such changes.',
+            'Governing Law and Jurisdiction',
+            'These Terms shall be governed by and construed in accordance with English Law. Any dispute arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of the United Kingdom / London. The company is My-iCare Limited, 960 High Road, London, N12 9RY.'
+        ],
+        section: '/terms-and-conditions'
     }
 ];
 
