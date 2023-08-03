@@ -33,8 +33,8 @@ export const MonthlyPayment = ({ index }: MonthlyPaymentProps) => {
                 </div>
             </div>
             <hr className="mx-auto w-full max-w-md border border-[#003C55]" />
-            <div className="flex flex-wrap items-center justify-center gap-8 pb-12">
-                <div className="flex h-full w-72 flex-col items-center rounded-primary border border-white px-10 py-7 text-center">
+            <div className="grid justify-center justify-items-center gap-8 pb-12 md:grid-cols-[auto_auto]">
+                <div className="flex w-72 flex-col items-center rounded-primary border border-white px-10 py-7 text-center">
                     <p className="font-mulishBold text-[2rem] capitalize leading-[2.8rem] text-white">Surgery cost</p>
                     <p className="mt-9 mb-3 font-mulishBold text-[2rem] leading-[2.8rem] text-white">
                         £{treatmentCost}
@@ -44,7 +44,7 @@ export const MonthlyPayment = ({ index }: MonthlyPaymentProps) => {
                     </p>
                 </div>
 
-                <div className="flex h-full w-72 flex-col items-center rounded-primary border border-white px-10 py-7 text-center">
+                <div className="flex w-72 flex-col items-center rounded-primary border border-white px-10 py-7 text-center">
                     <p className="font-mulishBold text-[2rem] capitalize leading-[2.8rem] text-white">Deposit</p>
                     <p className="mt-9 font-mulishBold text-[2rem] leading-[2.8rem] text-white">
                         £{(treatmentCost * ctx.treatmentList[index].defaultUpfront) / 100}

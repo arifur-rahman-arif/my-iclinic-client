@@ -79,8 +79,16 @@ const CtaSection3 = (): JSX.Element => {
                     </BookConsultation>
 
                     <Link href="tel:0208 445 8877" className="flex items-center justify-center gap-4">
-                        <Image src="/images/icons/icon-phone-white.svg" alt="" width={20} height={20} />
-                        <span className="font-latoBold text-[1.6rem] leading-[2.4rem] text-white">0208 445 8877</span>
+                        <Image
+                            src="/images/icons/icon-phone-white.svg"
+                            alt=""
+                            width={20}
+                            height={20}
+                            className="h-8 !w-8"
+                        />
+                        <span className="whitespace-nowrap font-latoBold text-[1.6rem] leading-[2.4rem] !text-white !underline-offset-4">
+                            0208 445 8877
+                        </span>
                     </Link>
                 </div>
             </div>
