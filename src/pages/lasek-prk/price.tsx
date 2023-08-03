@@ -188,7 +188,7 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
                 }
             />
 
-            <PriceSection priceList={ priceSection || lasekPriceList} />
+            <PriceSection priceList={priceSection || lasekPriceList} />
             {/* SECTIOn 3 */}
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'LASEK & PRK Laser eye surgery couldn’t be more cost-effective!'}
@@ -221,8 +221,7 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
                 sectionClass="relative lg:!mt-0 bg-brandLight"
             />
 
-            <NormalSection4 title={data?.ptkeyesurgerycost?.title}
-            description={data?.ptkeyesurgerycost?.description} />
+            <NormalSection4 title={data?.ptkeyesurgerycost?.title} description={data?.ptkeyesurgerycost?.description} />
             {/* SECTION 5 */}
             <SideImageSection
                 h2Heading={data?.section_5?.sub_heading || 'Your consultation'}
@@ -297,19 +296,19 @@ export async function getStaticProps() {
                         ...data?.acf?.section_3
                     },
                     lsk_price: Array.isArray(data?.acf?.lsk_price)
-                    ? data?.acf.lsk_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
+                        ? data?.acf.lsk_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
                     section_4: {
                         ...data?.acf?.section_4
                     },
-                    speaktoteam:{
+                    speaktoteam: {
                         ...data?.acf?.speaktoteam
                     },
-                    ptkeyesurgerycost:{
+                    ptkeyesurgerycost: {
                         ...data?.acf?.ptkeyesurgerycost
                     },
                     section_5: {

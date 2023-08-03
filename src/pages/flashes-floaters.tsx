@@ -8,9 +8,7 @@ import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-flashes-floaters-large.png';
 import MastheadImageMedium from '@/masthead/masthead-flashes-floaters-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-flashes-floaters-small.png';
 import { flashesFaqList } from '@/page-sections/Faq/faqList';
 import {
     BulletList,
@@ -39,7 +37,6 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
-
 
 interface DataInterface extends FlashesContentInterface, PageDataInterface<FlashesContentInterface> {}
 
@@ -70,16 +67,17 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
     }, [deviceSize]);
 
     // j reviewSliderdata
-    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-        data.reviewSlider.map((service) => {
-            return {
-                ...service,
-                description: service?.description,
-                name: service?.name,
-                title: service?.title
-            };
-        }) :
-        null;
+    const reviewSliderdata: any =
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+            data.reviewSlider.map((service) => {
+                return {
+                    ...service,
+                    description: service?.description,
+                    name: service?.name,
+                    title: service?.title
+                };
+            }) :
+            null;
     return (
         <Page
             title="Eye Flashes & Floaters Treatment in London"
@@ -90,7 +88,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             <BreadCrumb />
 
             <Masthead
-                imageMedium={ data?.masthead_image.image_medium.url || MastheadImageMedium}
+                imageMedium={data?.masthead_image.image_medium.url || MastheadImageMedium}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
@@ -102,36 +100,38 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
             <SideImageSection
-                h2Heading={ data?.section_1?.subheading || 'children and adults'}
+                h2Heading={data?.section_1?.subheading || 'children and adults'}
                 h3LightHeading={
                     <>
-                        {data?.section_1?.lightheading ||'Eye flashes & floaters'}
+                        {data?.section_1?.lightheading || 'Eye flashes & floaters'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_1?.boldheading ||'in children and adults'}
+                h3BoldHeading={data?.section_1?.boldheading || 'in children and adults'}
                 descriptions={[
-                    data?.section_1?.first_line_text ||'Flashes & floaters are presented in your vision as:',
+                    data?.section_1?.first_line_text || 'Flashes & floaters are presented in your vision as:',
                     <BulletList
-                        list={ data?.section_1?.lists?.length &&
-                            data?.section_1?.lists ||
-                             ['Dark and/or clear spots and lines', 'Small spots of flashing lights']}
+                        list={
+                            (data?.section_1?.lists?.length && data?.section_1?.lists) || [
+                                'Dark and/or clear spots and lines',
+                                'Small spots of flashing lights'
+                            ]
+                        }
                         listClassName="!gap-6"
                         bulletPoint={
                             <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
                         }
                     />,
-                    ( (data?.section_1?.descriptions?.length &&
+                    (data?.section_1?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_1?.descriptions)) ||
-                  ( `Eye flashes & floaters can be monitored with regular eye checks and the appearance of flashes and floaters in your vision is usually nothing to be concerned about.
+                        `Eye flashes & floaters can be monitored with regular eye checks and the appearance of flashes and floaters in your vision is usually nothing to be concerned about.
                     Flashes & floaters indicate that there is a change in the vitreous gel in the back of your eye.
                     If you have short-sightedness (myopia), you may experience flashes & floaters earlier in life.
                     For people over the age of 50, eye flashes & floaters may indicate early signs of a retinal tear
                         or detachment. Retinal tears and detachments happen when the retina in the back of the eye
-                        becomes loose and may suggest a more serious eye condition such as`+ <LinkStyle url="/macular-degeneration">macular degeneration.</LinkStyle> )
-                    )
+                        becomes loose and may suggest a more serious eye condition such as` +
+                            <LinkStyle url="/macular-degeneration">macular degeneration.</LinkStyle>
                     // <LinkStyle url="/macular-degeneration">macular degeneration.</LinkStyle>
-
                 ]}
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/eye-flashes-&-floaters-large.png',
@@ -146,20 +146,22 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             />
 
             <SideImageSection
-                h2Heading={ data?.section_2?.subheading || 'Diagnosis, treatment'}
+                h2Heading={data?.section_2?.subheading || 'Diagnosis, treatment'}
                 h3LightHeading={
                     <>
-                       { data?.section_2?.lightheading ||' Diagnosis, treatment &'}
+                        {data?.section_2?.lightheading || ' Diagnosis, treatment &'}
                         <br />
                     </>
                 }
-                h3BoldHeading={ data?.section_2?.boldheading ||'management for eye flashes & floaters'}
-                descriptions={ data?.section_2?.descriptions?.length &&
-                   stringArrayToElementArray(data?.section_2?.descriptions) ||[
-                    'We offer a private consultation with our ophthalmologist to check the health of your eye and provide a diagnosis of any eye conditions you may have, including floater treatment advice and surgery planning if required.',
-                    'Although you may experience eye floaters and flashes of light, it is rare to be given a diagnosis for an eye condition as these floaters are generally nothing to worry about in early adulthood.',
-                    'For people over the age of 50, flashes & floaters may indicate early signs of more serious eye conditions. If you are over the age of 50 and experiencing eye flashes & floaters, please contact our support team for a private consultation with our ophthalmologist.'
-                ]}
+                h3BoldHeading={data?.section_2?.boldheading || 'management for eye flashes & floaters'}
+                descriptions={
+                    (data?.section_2?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_2?.descriptions)) || [
+                        'We offer a private consultation with our ophthalmologist to check the health of your eye and provide a diagnosis of any eye conditions you may have, including floater treatment advice and surgery planning if required.',
+                        'Although you may experience eye floaters and flashes of light, it is rare to be given a diagnosis for an eye condition as these floaters are generally nothing to worry about in early adulthood.',
+                        'For people over the age of 50, flashes & floaters may indicate early signs of more serious eye conditions. If you are over the age of 50 and experiencing eye flashes & floaters, please contact our support team for a private consultation with our ophthalmologist.'
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_2?.image || '/images/section-images/eye-flashes-diagnosis-large.png',
                     width: 390,
@@ -173,20 +175,17 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 positionReversed
             />
 
-            <CtaSection
-                title={data?.speak_to_our_team?.title}
-                subtitle={data?.speak_to_our_team?.subtitle}
-            />
+            <CtaSection title={data?.speak_to_our_team?.title} subtitle={data?.speak_to_our_team?.subtitle} />
 
             <SideImageSection
-                h2Heading={ data?.section_3?.subheading || 'consultation'}
+                h2Heading={data?.section_3?.subheading || 'consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_3?.lightheading ||'What is included in my'}
+                        {data?.section_3?.lightheading || 'What is included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_3?.boldheading ||'private consultation?'}
+                h3BoldHeading={data?.section_3?.boldheading || 'private consultation?'}
                 descriptions={
                     (data?.section_3?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_3?.descriptions)) || [
@@ -209,13 +208,14 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 }}
                 textColumnExtras={
                     <BulletList
-                        list={ (data?.section_3?.lists?.length &&
-                            stringArrayToElementArray(data?.section_3?.lists)) ||[
-                            'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
-                            'A medical diagnosis of your eye condition with treatment planning.',
-                            'A referral for surgical treatment and/or a signed prescription (if required).',
-                            'A dedicated eye care team to support you throughout your eye care journey.'
-                        ]}
+                        list={
+                            (data?.section_3?.lists?.length && stringArrayToElementArray(data?.section_3?.lists)) || [
+                                'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
+                                'A medical diagnosis of your eye condition with treatment planning.',
+                                'A referral for surgical treatment and/or a signed prescription (if required).',
+                                'A dedicated eye care team to support you throughout your eye care journey.'
+                            ]
+                        }
                         listClassName="!gap-6"
                         bulletPoint={
                             <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
@@ -235,23 +235,26 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                         )}
                     </>
                 }
-                description={ data?.section_4?.descriptions?.length &&
-                   stringArrayToElementArray(data?.section_4?.descriptions) || [
-                    <>
-                        <H3Variant3>Retinal detachments signs & treatment </H3Variant3>
-                    </>,
-                    'Flashes & floaters may indicate signs of retinal detachments:'
-                ]}
+                description={
+                    (data?.section_4?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_4?.descriptions)) || [
+                        <>
+                            <H3Variant3>Retinal detachments signs & treatment </H3Variant3>
+                        </>,
+                        'Flashes & floaters may indicate signs of retinal detachments:'
+                    ]
+                }
                 textColumnExtraBottomElements={
                     <BulletList
                         className="mt-12"
-                        list={ data?.section_4?.lists?.length &&
-                            stringArrayToElementArray(data?.section_4?.lists) ||[
-                            'Dark floaters affecting your vision',
-                            'Sudden blurry and/or distorted vision',
-                            'Flashes of light in one or both eyes ( known as ‘photopsia’)',
-                            'Shadows over your field of vision'
-                        ]}
+                        list={
+                            (data?.section_4?.lists?.length && stringArrayToElementArray(data?.section_4?.lists)) || [
+                                'Dark floaters affecting your vision',
+                                'Sudden blurry and/or distorted vision',
+                                'Flashes of light in one or both eyes ( known as ‘photopsia’)',
+                                'Shadows over your field of vision'
+                            ]
+                        }
                         listClassName="!gap-6"
                         bulletPoint={
                             <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
@@ -259,34 +262,36 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     />
                 }
                 altText=""
-                image={ data?.section_4?.image ||'/images/section-images/retinal-detachments.png'}
-                desktopImage={ data?.section_4?.image_large ||'/images/section-images/retinal-detachments.png'}
+                image={data?.section_4?.image || '/images/section-images/retinal-detachments.png'}
+                desktopImage={data?.section_4?.image_large || '/images/section-images/retinal-detachments.png'}
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
             />
 
             <CtaSection2
-            image={{
-                url: data?.bookingsec?.image || '/images/section-images/glasses-free-presbyond-large.png',
-                width: 640,
-                height: 514
-            }}
-            imageLarge={{
-                url: data?.bookingsec?.imageLarge ||'/images/section-images/glasses-free-presbyond-large.png',
-                width: 640,
-                height: 514
-            }}
-                title={ data?.bookingsec?.title ||'Friendly vision correction treatment for dry eyes'}
-                descriptions={ data?.bookingsec?.descriptions?.length &&
-                   stringArrayToElementArray(data?.bookingsec?.descriptions) || [
-                    'If you are experiencing dry eye symptoms and have difficulty with short sightedness or near sightedness (a refractive error in your eye), we offer vision correction treatment options which can eliminate the need for wearing glasses and/or uncomfortable contact lenses.',
-                    <>
-                        Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye
-                        syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we
-                        can offer you a <a href="/suitability-check">FREE suitability</a> check for our implantable
-                        contact lenses.
-                    </>
-                ]}
+                image={{
+                    url: data?.bookingsec?.image || '/images/section-images/glasses-free-presbyond-large.png',
+                    width: 640,
+                    height: 514
+                }}
+                imageLarge={{
+                    url: data?.bookingsec?.imageLarge || '/images/section-images/glasses-free-presbyond-large.png',
+                    width: 640,
+                    height: 514
+                }}
+                title={data?.bookingsec?.title || 'Friendly vision correction treatment for dry eyes'}
+                descriptions={
+                    (data?.bookingsec?.descriptions?.length &&
+                        stringArrayToElementArray(data?.bookingsec?.descriptions)) || [
+                        'If you are experiencing dry eye symptoms and have difficulty with short sightedness or near sightedness (a refractive error in your eye), we offer vision correction treatment options which can eliminate the need for wearing glasses and/or uncomfortable contact lenses.',
+                        <>
+                            Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye
+                            syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses
+                            we can offer you a <a href="/suitability-check">FREE suitability</a> check for our
+                            implantable contact lenses.
+                        </>
+                    ]
+                }
                 button1Text="Book A FREE suitability"
                 excludeSloganText
             />
@@ -328,38 +333,38 @@ export async function getStaticProps() {
                 data: {
                     ...data?.acf,
                     section_1: {
-                    ...data?.acf?.section_1,                    
-                    descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions),                    
-                    lists: convertArrayOfObjectsToStrings(data?.acf?.section_1?.lists)
+                        ...data?.acf?.section_1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions),
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_1?.lists)
                     },
                     section_2: {
-                        ...data?.acf?.section_2,                    
+                        ...data?.acf?.section_2,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
-                        },
+                    },
                     speak_to_our_team: {
-                            ...data?.acf?.speak_to_our_team,
-                        },
+                        ...data?.acf?.speak_to_our_team
+                    },
                     section_3: {
-                            ...data?.acf?.section_3,                    
-                            descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions),                    
-                            lists: convertArrayOfObjectsToStrings(data?.acf?.section_3?.lists)
-                            },
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions),
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_3?.lists)
+                    },
                     section_4: {
-                        ...data?.acf?.section_4,                    
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),                    
+                        ...data?.acf?.section_4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
                         lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists)
-                        },
+                    },
                     bookingsec: {
-                        ...data?.acf?.bookingsec,                    
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.bookingsec?.descriptions),
-                    },    
-                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
-                    ? data?.acf.reviewSlider.map((ListData) => {
-                          return {
-                              ...ListData,
-                          };
-                      })
-                    : [], 
+                        ...data?.acf?.bookingsec,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.bookingsec?.descriptions)
+                    },
+                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
+                        ? data?.acf.reviewSlider.map((ListData) => {
+                              return {
+                                  ...ListData
+                              };
+                          })
+                        : []
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

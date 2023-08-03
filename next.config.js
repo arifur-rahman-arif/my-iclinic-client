@@ -12,11 +12,11 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost'
-            }, 
+            },
             {
                 protocol: 'http',
                 hostname: 'localhost:3000'
-            }, 
+            },
             {
                 protocol: 'http',
                 hostname: 'digilab.local'
@@ -1027,6 +1027,11 @@ const nextConfig = {
             //     destination: '/paediatric-eye-care',
             //     permanent: true
             // },
+            {
+                source: '/paediatric-eye-care',
+                destination: '/paediatric-eye-care',
+                permanent: true
+            },
             {
                 source: '/laser-treatment/presbyopia-correction',
                 destination: '/presbyond-london',

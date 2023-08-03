@@ -74,7 +74,6 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
         }) :
         null;
 
-
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
@@ -182,7 +181,9 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                         }
                     />
                 }
-                midExtras={<h4 className="normal-case">{ data?.section_2?.subheading || 'Finance available for Presbyond'}</h4>}
+                midExtras={
+                    <h4 className="normal-case">{data?.section_2?.subheading || 'Finance available for Presbyond'}</h4>
+                }
             />
 
             <PriceSection priceList={priceSection || presbyondPriceList} />
@@ -195,8 +196,10 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                 }
             />
 
-            <CtaSection subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
-            title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team' } />
+            <CtaSection
+                subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
+                title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team'}
+            />
 
             <FullWidthImageSection
                 sectionClass="lg:!mt-0 bg-brandLight relative"
@@ -252,15 +255,15 @@ export async function getStaticProps() {
                         ...data?.acf?.section_4
                     },
                     smile_price: Array.isArray(data?.acf?.smile_price)
-                    ? data?.acf.smile_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
+                        ? data?.acf.smile_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
                     call_section: {
                         ...data?.acf?.call_section
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

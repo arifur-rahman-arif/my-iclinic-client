@@ -205,7 +205,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 textColumnExtras={
                     <BulletList
                         list={
-                            (data?.section_3?.list.length && data.section_2.list) || [
+                            (data?.section_3?.list.length && data.section_3.list) || [
                                 'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
                                 'A medical diagnosis of your eye condition with treatment planning.',
                                 'A referral for surgical treatment and/or a signed prescription (if required).',
@@ -307,7 +307,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                             type="phone"
                             text={data?.section_6?.phone || '0208 445 8877'}
                             iconPosition="left"
-                            className="!min-w-[18.6rem] place-content-center border-orange !bg-transparent md:min-w-[23.3rem]"
+                            className="!min-w-[18.6rem] place-content-center border-orange !bg-transparent !text-heading md:min-w-[23.3rem]"
                             icon={
                                 <Image
                                     src="/images/icons/icon-phone-dark.svg"

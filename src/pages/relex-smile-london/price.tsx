@@ -213,7 +213,7 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                 }
             />
 
-            <PriceSection priceList={ priceSection || relexSmilePriceList} />
+            <PriceSection priceList={priceSection || relexSmilePriceList} />
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'ReLEx SMILE surgery couldn’t be more cost-effective!'}
@@ -223,8 +223,10 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                 }
             />
 
-            <CtaSection subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
-            title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team' } />
+            <CtaSection
+                subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
+                title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team'}
+            />
 
             <FullWidthImageSection
                 h3Title={
@@ -283,15 +285,15 @@ export async function getStaticProps() {
                         ...data?.acf?.section_4
                     },
                     relex_smile_price: Array.isArray(data?.acf?.relex_smile_price)
-                    ? data?.acf.relex_smile_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
+                        ? data?.acf.relex_smile_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
                     call_section: {
                         ...data?.acf?.call_section
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

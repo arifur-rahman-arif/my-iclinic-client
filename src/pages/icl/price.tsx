@@ -83,14 +83,14 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 h1Title={<h1 className="xs:max-w-[40rem]">{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                priceText={ data?.masthead_price || '£2,750 per eye'}
+                priceText={data?.masthead_price || '£2,750 per eye'}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading ||'ICL consultation'}
-                h3LightHeading={ data?.section_1?.heading?.light_heading || 'What’s included in my'}
+                h2Heading={data?.section_1?.sub_heading || 'ICL consultation'}
+                h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/private-consultation-icl.png',
@@ -110,11 +110,11 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                         list={
                             (data?.section_1?.lists?.length && stringArrayToElementArray(data?.section_1?.lists)) || [
                                 <>
-                                   <LinkText href="/suitability-check">
-                                    <strong>A FREE suitability</strong>
-                                </LinkText>{' '}
-                                check with our ICL specialist (a comprehensive assessment of your suitability and how
-                                implantable contact lenses will suit your lifestyle).
+                                    <LinkText href="/suitability-check">
+                                        <strong>A FREE suitability</strong>
+                                    </LinkText>{' '}
+                                    check with our ICL specialist (a comprehensive assessment of your suitability and
+                                    how implantable contact lenses will suit your lifestyle).
                                 </>,
                                 'A comprehensive consultation with your dedicated ICL specialist (inclusive of all eye assessment and eye scans)',
                                 'Your Implantable Contact Lens treatment performed in our private suite with your dedicated specialist and our friendly team.',
@@ -176,9 +176,9 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
             <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
 
             <SideImageSection
-                h2Heading={ data?.section_2?.title || 'ICL finance'}
+                h2Heading={data?.section_2?.title || 'ICL finance'}
                 h3LightHeading={data?.section_2?.heading?.light_heading || 'Want to pay for your'}
-                h3BoldHeading={data?.section_2?.heading?.bold_heading ||'treatment each month?'}
+                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'treatment each month?'}
                 midExtras={
                     <h4 className="text-[2rem] normal-case leading-[2.4rem] sm:max-w-[49.1rem] md:text-[2.8rem] md:leading-[3.2rem]">
                         {data?.section_2?.subheading || 'Finance available for Implantable Contact Lenses (ICL)'}
@@ -187,8 +187,9 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
-                    `We understand having ICL to correct your vision is a great investment in your eye health and lifestyle. We offer 10 months interest- free finance to help make that investment become a reality!`
-                    ]}
+                        `We understand having ICL to correct your vision is a great investment in your eye health and lifestyle. We offer 10 months interest- free finance to help make that investment become a reality!`
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_2?.image || '/images/section-images/icl-finance.png',
                     width: 370,
@@ -201,20 +202,24 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 }}
                 textColumnExtras={
                     <FinanceList
-                        list={(data?.section_2?.lists?.length &&
-                            stringArrayToElementArray(data?.section_2?.lists)) || [
-                            'You are eligible for our 24 months interest-free finance',
-                            'Calculate your monthly spend for your ICL treatment'
-                        ]}
+                        list={
+                            (data?.section_2?.lists?.length && stringArrayToElementArray(data?.section_2?.lists)) || [
+                                'You are eligible for our 24 months interest-free finance',
+                                'Calculate your monthly spend for your ICL treatment'
+                            ]
+                        }
                     />
                 }
             />
 
-            <PriceSection priceList={ priceSection ? priceSection : icPriceList} />
+            <PriceSection priceList={priceSection ? priceSection : icPriceList} />
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'ICL eye surgery couldn’t be more cost-effective!'}
-                description={data?.section_3?.description || 'Our London ICL specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'}
+                description={
+                    data?.section_3?.description ||
+                    'Our London ICL specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
+                }
                 image={data?.section_3?.image}
                 largeImage={data?.section_3?.large_image}
             />
@@ -224,10 +229,11 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
             <FullWidthImageSection
                 h3Title={
                     HTMLReactParser(data?.section_4.title) || (
-                    <>
-                        <strong className="normal-case">Permanently correct your vision</strong> with our all-inclusive
-                        cost.
-                    </> )
+                        <>
+                            <strong className="normal-case">Permanently correct your vision</strong> with our
+                            all-inclusive cost.
+                        </>
+                    )
                 }
                 boldHeading={true}
                 altText=""
@@ -273,18 +279,18 @@ export async function getStaticProps() {
                         ...data?.acf?.section_3
                     },
                     lsk_price: Array.isArray(data?.acf?.lsk_price)
-                    ? data?.acf.lsk_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
+                        ? data?.acf.lsk_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
                     section_4: {
                         ...data?.acf?.section_4
                     },
-                    speaktoteam:{
+                    speaktoteam: {
                         ...data?.acf?.speaktoteam
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

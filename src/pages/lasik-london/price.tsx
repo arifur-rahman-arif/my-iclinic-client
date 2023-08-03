@@ -210,7 +210,7 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                 largeImage={data?.section_3?.large_image || '/images/section-images/lasik-finance-large.png'}
             />
 
-<CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
+            <CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
 
             {/* SECTION 4 */}
             <FullWidthImageSection
@@ -268,15 +268,15 @@ export async function getStaticProps() {
                         ...data?.acf?.section_4
                     },
                     smile_price: Array.isArray(data?.acf?.smile_price)
-                    ? data?.acf.smile_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
-                    speaktoteam:{
+                        ? data?.acf.smile_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
+                    speaktoteam: {
                         ...data?.acf?.speaktoteam
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
