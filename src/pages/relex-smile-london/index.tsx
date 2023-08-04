@@ -419,46 +419,6 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
                     />
 
-                    {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-2.svg',
-                    width: 232,
-                    height: 234
-                }}
-                altText="Beautiful forest. Climate change awareness from plastic glasses and contact lenses."
-            /> */}
-
-                    {/* <Section className="!mt-4">
-                <Container>
-                    <Image
-                        src="/images/section-images/mountain-image-2.png"
-                        alt=""
-                        width={638}
-                        height={137}
-                        quality={70}
-                        className="mx-auto md:h-auto md:w-auto"
-                    />
-                </Container>
-            </Section>
-
-            <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-3-desktop.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
-
                     <SideImageSection
                         h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={HTMLReactParser(
@@ -627,13 +587,13 @@ export async function getStaticProps() {
                             )
                         },
                         gift_of_a_tree: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            ...data?.acf?.sustainability_section?.gift_of_a_tree,
                             descriptions: convertArrayOfObjectsToStrings(
                                 data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
                             )
                         },
                         clearer_vision: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            ...data?.acf?.sustainability_section?.clearer_vision,
                             descriptions: convertArrayOfObjectsToStrings(
                                 data?.acf?.sustainability_section?.clearer_vision.descriptions
                             )

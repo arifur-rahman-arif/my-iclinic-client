@@ -46,7 +46,7 @@ const SustainableSlider = ({ children }: SustainableSliderInterface): JSX.Elemen
                 clickable: true
             }}
             autoplay={{
-                delay: 5000,
+                delay: 10000,
                 disableOnInteraction: false
             }}
             speed={800}

@@ -196,7 +196,7 @@ export async function getStaticProps() {
                     }, // CORNEA CONSULTATION
                     section_2: {
                         ...data?.acf?.section_2,
-                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.lists),
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
                     }, // TREATMENTS FOR BLEPHARITIS
                     section_3: {
