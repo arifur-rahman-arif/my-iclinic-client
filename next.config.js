@@ -1022,16 +1022,6 @@ const nextConfig = {
                 destination: '/paediatric-eye-care',
                 permanent: true
             },
-            // {
-            //     source: '/paediatric-eye-care',
-            //     destination: '/paediatric-eye-care',
-            //     permanent: true
-            // },
-            {
-                source: '/paediatric-eye-care',
-                destination: '/paediatric-eye-care',
-                permanent: true
-            },
             {
                 source: '/laser-treatment/presbyopia-correction',
                 destination: '/presbyond-london',

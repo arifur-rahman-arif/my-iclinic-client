@@ -216,7 +216,6 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                 containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 smallImageClassName="!w-auto"
                 largeImageClassName="!rounded-none"
-                overlayAnimation
             />
         </Page>
     );

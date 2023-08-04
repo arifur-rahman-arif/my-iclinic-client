@@ -32,7 +32,7 @@ const Slide = ({ desktopImage, title, descriptions, altText, boxIcon }: StackSli
         <div
             className={`relative mx-auto ${
                 desktopImage && 'mt-36'
-            } flex flex-col rounded-primary p-12 sm:shadow-shadow1 md:mt-0 md:grid md:grid-cols-[auto_1fr] md:gap-16 lg:gap-0 lg:py-12 xl:py-16`}
+            } flex flex-col rounded-primary px-12 sm:shadow-shadow1 md:mt-0 md:grid md:grid-cols-[auto_1fr] md:gap-16 lg:gap-0 lg:py-12 xl:py-16`}
         >
             {desktopImage && (
                 <div className="mx-auto h-full max-h-[24rem] -translate-y-[30%] overflow-hidden rounded-primary shadow-shadow1 md:h-[30rem] md:max-h-min md:w-[37rem] md:-translate-x-0 md:translate-y-0 md:self-center lg:-translate-x-[20%] xl:-translate-x-[30%]">

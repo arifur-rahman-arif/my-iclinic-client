@@ -96,69 +96,71 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
 
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map((item:
-             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
-            ...item,
-            mobileImage: (
-          <Image
-            src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
-            width={390}
-            height={390}
-            quality={70}
-            className="rounded-primary md:hidden"
-            alt=""
-          />
-            ),
-            desktopImage: (
-          <Image
-            src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
-            width={695}
-            height={580}
-            quality={70}
-            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-            alt=""
-          />
-            ),
-            title: item?.title,
-            descriptions: stringArrayToElementArray(item?.descriptions)
-        })) :
+        data.leftRightsection.map(
+            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                ...item,
+                mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                ),
+                desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                ),
+                title: item?.title,
+                descriptions: stringArrayToElementArray(item?.descriptions)
+            })
+        ) :
         null;
-
 
     // reviewSliderdata
-    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-        data.reviewSlider.map((service) => {
-            return {
-                ...service,
-                description: service?.description,
-                name: service?.name,
-                title: service?.title
-            };
-        }) :
-        null;
+    const reviewSliderdata: any =
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+            data.reviewSlider.map((service) => {
+                return {
+                    ...service,
+                    description: service?.description,
+                    name: service?.name,
+                    title: service?.title
+                };
+            }) :
+            null;
 
     // lensesSlider
-    const lensesSliderdata: any = Array.isArray(data?.lensesSlider) && data.lensesSlider.length > 0 ?
-        data.lensesSlider.map((service: {
-             desktopimage: any; image: any; title: any; descriptions: string[] | undefined; }) => {
-            return {
-                ...service,
-                image: {
-                    url: service?.image || '/images/section-images/biocompatibility.png',
-                    width: 392,
-                    height: 256
-                },
-                desktopImage: {
-                    url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                    width: 447,
-                    height: 349
-                },
-                title: service?.title,
-                descriptions: stringArrayToElementArray(service?.descriptions)
-            };
-        }) :
-        null;
-
+    const lensesSliderdata: any =
+        Array.isArray(data?.lensesSlider) && data.lensesSlider.length > 0 ?
+            data.lensesSlider.map(
+                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                    return {
+                        ...service,
+                        image: {
+                            url: service?.image || '/images/section-images/biocompatibility.png',
+                            width: 392,
+                            height: 256
+                        },
+                        desktopImage: {
+                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                            width: 447,
+                            height: 349
+                        },
+                        title: service?.title,
+                        descriptions: stringArrayToElementArray(service?.descriptions)
+                    };
+                }
+            ) :
+            null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
@@ -191,14 +193,17 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 }
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'for glasses and contact lens wearers'}
                 altText=""
-                descriptions={ data?.section_1?.descriptions?.length &&
-                   stringArrayToElementArray(data?.section_1?.descriptions) || [
-                    <>
-                        If you are ready to break from compromising with your everyday contact lenses or glasses, take a
-                        look at our <span className="font-mulishBold font-extrabold ">biocompatible ICL</span> lenses
-                        made by EVO Visian - a groundbreaking Evolution in Visual Freedom!
-                    </>
-                ]}
+                descriptions={
+                    (data?.section_1?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
+                        <>
+                            If you are ready to break from compromising with your everyday contact lenses or glasses,
+                            take a look at our{' '}
+                            <span className="font-mulishBold font-extrabold ">biocompatible ICL</span> lenses made by
+                            EVO Visian - a groundbreaking Evolution in Visual Freedom!
+                        </>
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/icl-vision-correction.png',
                     width: 370,
@@ -212,7 +217,7 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={ leftRightsectiondata ? leftRightsectiondata : leftRightListIcl} />
+                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListIcl} />
             </LazyComponent>
             {/* SECTIOn 4 */}
             <SideImageSection
@@ -236,33 +241,41 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 }}
                 altText=""
                 textColumnImage={true}
-                customColumn={<StackColumnIcl
-                savingMoneytitle={data?.section_4?.rightsection?.savingMoneytitle}
-                savingmoneyContent={data?.section_4?.rightsection?.savingmoneyContent}
-
-                savingTimetitle={data?.section_4?.rightsection?.savingTimetitle}
-                savingtimeContent={data?.section_4?.rightsection?.savingtimeContent}
-
-                savingVisiontitle={data?.section_4?.rightsection?.savingVisiontitle}
-                savingvisionContent={data?.section_4?.rightsection?.savingvisionContent}
-
-                savingPlanettitle={data?.section_4?.rightsection?.savingPlanettitle}
-                savingplanetContent={data?.section_4?.rightsection?.savingplanetContent}
-                 />}
+                customColumn={
+                    <StackColumnIcl
+                        savingMoneytitle={data?.section_4?.rightsection?.savingMoneytitle}
+                        savingmoneyContent={data?.section_4?.rightsection?.savingmoneyContent}
+                        savingTimetitle={data?.section_4?.rightsection?.savingTimetitle}
+                        savingtimeContent={data?.section_4?.rightsection?.savingtimeContent}
+                        savingVisiontitle={data?.section_4?.rightsection?.savingVisiontitle}
+                        savingvisionContent={data?.section_4?.rightsection?.savingvisionContent}
+                        savingPlanettitle={data?.section_4?.rightsection?.savingPlanettitle}
+                        savingplanetContent={data?.section_4?.rightsection?.savingplanetContent}
+                    />
+                }
                 textColumnTopElements={
                     <ul className="ml-16 mt-12 grid gap-6">
-                        <><li className="flex items-start justify-start gap-4">
+                        <>
+                            <li className="flex items-start justify-start gap-4">
                                 <BulletPoint />
-                                <p className="font-mulishBold">{data?.section_4?.lists?.list_1 ||'99.4% of people would choose to have ICL again'}</p>
-                            </li><li className="flex items-start justify-start gap-4">
-                                    <BulletPoint />
+                                <p className="font-mulishBold">
+                                    {data?.section_4?.lists?.list_1 || '99.4% of people would choose to have ICL again'}
+                                </p>
+                            </li>
+                            <li className="flex items-start justify-start gap-4">
+                                <BulletPoint />
 
-                                    <p className="font-mulishBold">{data?.section_4?.lists?.list_2 ||'2,000,000+ ICL procedures worldwide'}</p>
-                                </li><li className="flex items-start justify-start gap-4">
-                                    <BulletPoint />
-                                    <p className="font-mulishBold">{data?.section_4?.lists?.list_3 ||'20+ years of premium ICL performance'}</p>
-                                </li></>
-
+                                <p className="font-mulishBold">
+                                    {data?.section_4?.lists?.list_2 || '2,000,000+ ICL procedures worldwide'}
+                                </p>
+                            </li>
+                            <li className="flex items-start justify-start gap-4">
+                                <BulletPoint />
+                                <p className="font-mulishBold">
+                                    {data?.section_4?.lists?.list_3 || '20+ years of premium ICL performance'}
+                                </p>
+                            </li>
+                        </>
                     </ul>
                 }
             />
@@ -304,7 +317,9 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                             //                            come to My-iClinic.`
                             //                                ]
                             //                            }
-                            paragraphs={ (data?.section_7?.price_description ) || `The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
+                            paragraphs={
+                                data?.section_7?.price_description ||
+                                `The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
                             come to My-iClinic.`
                             }
                             list={
@@ -323,10 +338,12 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                         <Button
                             type="anchor"
                             link="/icl/price"
-                            icon={<FaPoundSign className="h-[1.7rem] w-[1.7rem]" />}
+                            icon={
+                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/button:fill-brand" />
+                            }
                             text={data?.section_7?.button_text || 'Pricing & Financing'}
                             iconPosition="left"
-                            className="mt-6 !gap-2 justify-self-center md:justify-self-start"
+                            className="group/button mt-6 !gap-2 justify-self-center md:justify-self-start"
                         />
                     </>
                 }
@@ -344,14 +361,13 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                     height: 554
                 }}
                 title={data?.section_6?.title || 'Book a consultation today to see if ICL eye surgery is right for you'}
-                descriptions={ data?.section_6?.descriptions?.length &&
-                    data?.section_6?.descriptions || [
-                            `Discuss your options and eligibility for implantable contact lens surgery with one of our
+                descriptions={
+                    (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
+                        `Discuss your options and eligibility for implantable contact lens surgery with one of our
                             experts.`,
-                             `We will give you clear advice on your suitability and best vision correction
+                        `We will give you clear advice on your suitability and best vision correction
                             options for your circumstances.`
-
-                ]
+                    ]
                 }
             />
 
@@ -401,9 +417,11 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                     }
                     bandImageTitle={data?.section_3?.bandImageTitle || 'Elit'}
                     bandImageURL={data?.section_3?.bandImageURL || '/images/section-images/eliete.png'}
-                    reviewDescription={ (data?.section_3?.review_Description?.length &&
-                         data?.section_3?.review_Description ) || [
-                            `It’s just been amazing and I would do it again…`]}
+                    reviewDescription={
+                        (data?.section_3?.review_Description?.length && data?.section_3?.review_Description) || [
+                            `It’s just been amazing and I would do it again…`
+                        ]
+                    }
                     reviewTitle={data?.section_3?.reviewtitle || 'Thank you My-iClinic'}
                     sliders={iclSliders}
                     bandColor="bg-[#7000FF]"
@@ -411,7 +429,7 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={ reviewSliderdata ? reviewSliderdata : iclListCataract} />
+                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : iclListCataract} />
             </LazyComponent>
             {/* section_2 */}
             <LazyComponent>
@@ -425,21 +443,23 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                         <div className="mt-20 ml-14 grid gap-6">
                             <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">
                                 <span className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2">
-                                    { data?.section_2?.lists?.first_data?.percentage ||'99.4%'}</span>
+                                    {data?.section_2?.lists?.first_data?.percentage || '99.4%'}
+                                </span>
                                 <Image src={IconPin} alt="" />
                                 <div className="col-span-2">
-                                   { data?.section_2?.lists?.first_data?.text?.length &&
-                                   HTMLReactParser(data?.section_2?.lists?.first_data?.text) ||
-                                    HTMLReactParser('Of peoples surveyed would have the <br /> procedure again')}
+                                    {(data?.section_2?.lists?.first_data?.text?.length &&
+                                        HTMLReactParser(data?.section_2?.lists?.first_data?.text)) ||
+                                        HTMLReactParser('Of peoples surveyed would have the <br /> procedure again')}
                                 </div>
                             </div>
                             <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">
                                 <span className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2">
-                                {data?.section_2?.lists?.second_data?.percentage ||'2 Million'}
+                                    {data?.section_2?.lists?.second_data?.percentage || '2 Million'}
                                 </span>
                                 <Image src={IconPin} alt="" />
-                                <p className="col-span-2">{data?.section_2?.lists?.second_data?.text ||
-                                'Lenses distributed'}</p>
+                                <p className="col-span-2">
+                                    {data?.section_2?.lists?.second_data?.text || 'Lenses distributed'}
+                                </p>
                             </div>
                         </div>
                     }
@@ -463,82 +483,87 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
 
             <LazyComponent>
                 <SustainableSlider>
-                <PlasticFree
-                    h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                    h3LightHeading={
-                        data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
-                        'Green living with'}
-                    h3BoldHeading={
-                        data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
-                        'Implantable Contact Lenses'}
-
+                    <PlasticFree
+                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
+                        h3LightHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
+                            'Green living with'
+                        }
+                        h3BoldHeading={
+                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
+                            'Implantable Contact Lenses'
+                        }
                         descriptions={
                             (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
                                 stringArrayToElementArray(
                                     data?.sustainability_section?.plastic_free_life?.descriptions
                                 )) || [
                                 `The most sustainable, green living lifestyle is when you have a plastic free eye-style.
-                                 When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic 
+                                 When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic
                                  waste produced by glasses and contact lenses!`
                             ]
                         }
                         image={data?.sustainability_section?.plastic_free_life?.image?.url}
                         largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
                         altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                />
+                    />
 
-
-<SideImageSection h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
+                    <SideImageSection
+                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={
                             <>
                                 Saving the planet
                                 <br />
                             </>
                         }
-                        h3BoldHeading={ (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
-                            HTMLReactParser(
-                                data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
-                            )) || HTMLReactParser('One eye at a time!')}
-                            descriptions={
-                                data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
-                                    stringArrayToElementArray(
-                                        data?.sustainability_section?.gift_of_a_tree?.descriptions
-                                    ) || [
-                                    `When undergoing laser eye surgery, you may not realize it but you are already making a positive
+                        h3BoldHeading={
+                            (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
+                                HTMLReactParser(
+                                    data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
+                                )) ||
+                            HTMLReactParser('One eye at a time!')
+                        }
+                        descriptions={
+                            (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
+                                stringArrayToElementArray(
+                                    data?.sustainability_section?.gift_of_a_tree?.descriptions
+                                )) || [
+                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
                          difference to the environment. For every 10 years of contact lens wearing the amount of plastic
                           that ends up in the ocean is roughly the same as your own body weight.`,
-                                    <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                        Our gift to you…
-                                    </span>,
-                                    `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                    <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                        Here at My-iClinic we give all of our laser patients a real forest tree!
-                                    </span>,
-                                    `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Our gift to you…
+                                </span>,
+                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
+                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                    Here at My-iClinic we give all of our laser patients a real forest tree!
+                                </span>,
+                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
                          value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
                           contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
                           to replace it.`,
-                                    `This is our big thank you for choosing a natural, green living eye-style.`
-                                ]}
-
-                                sectionImage={{
-                                    url:
-                                        data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                        '/images/section-images/gift-of-a-tree.png',
-                                    width: 390,
-                                    height: 390
-                                }}
-                                sectionImageDesktop={{
-                                    url:
-                                        data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                        '/images/section-images/gift-of-a-tree-desktop.png',
-                                    width: 554,
-                                    height: 496
-                                }}
-                                altText={
-                                    data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
-                                    'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
-                                } />
+                                `This is our big thank you for choosing a natural, green living eye-style.`
+                            ]
+                        }
+                        sectionImage={{
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
+                                '/images/section-images/gift-of-a-tree.png',
+                            width: 390,
+                            height: 390
+                        }}
+                        sectionImageDesktop={{
+                            url:
+                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
+                                '/images/section-images/gift-of-a-tree-desktop.png',
+                            width: 554,
+                            height: 496
+                        }}
+                        altText={
+                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
+                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
+                        }
+                    />
                     <ClimateChange
                         h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
                         h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
@@ -611,13 +636,13 @@ export async function getStaticProps() {
                         ...data?.acf?.section_2
                     }, // 2\
                     section_3: {
-                                           ...data?.acf?.section_3,
-                                           descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions),
-                                           review_Description: convertArrayOfObjectsToStrings(data?.acf?.section_3?.review_Description)
+                        ...data?.acf?.section_3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions),
+                        review_Description: convertArrayOfObjectsToStrings(data?.acf?.section_3?.review_Description)
                     }, // 2
                     section_4: {
-                        ...data?.acf?.section_4,
-                    }, // 2 
+                        ...data?.acf?.section_4
+                    }, // 2
                     section_5: {
                         ...data?.acf?.section_5,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
@@ -633,23 +658,23 @@ export async function getStaticProps() {
                     section_8: {
                         ...data?.acf?.section_8
                     },
-                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                    leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
                               return {
                                   ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
                               };
                           })
                         : [],
-                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
+                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
                               return {
-                                  ...ListData,
+                                  ...ListData
                               };
                           })
-                        : [], 
+                        : [],
                     lensesSlider: Array.isArray(data?.acf?.lensesSlider)
-                        ? data?.acf.lensesSlider.map((sectionData: { descriptions: any[] | undefined; }) => {
+                        ? data?.acf.lensesSlider.map((sectionData: { descriptions: any[] | undefined }) => {
                               return {
                                   ...sectionData,
                                   descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
@@ -676,7 +701,6 @@ export async function getStaticProps() {
                             )
                         }
                     }
-
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

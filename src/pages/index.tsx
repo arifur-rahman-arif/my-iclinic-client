@@ -286,9 +286,6 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                     free of plastic waste from your glasses and contact lenses!`
                             ]
                         }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
                     />
 
                     <SideImageSection

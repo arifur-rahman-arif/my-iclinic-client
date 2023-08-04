@@ -617,7 +617,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         </span>
                         <Link
                             href="/suitability-check"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent"
+                            className="group/consultation !grid cursor-pointer grid-flow-col place-items-center gap-5 justify-self-start rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent"
                             aria-label="Book your FREE suitability check"
                         >
                             <svg

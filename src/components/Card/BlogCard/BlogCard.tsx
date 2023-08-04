@@ -1,8 +1,8 @@
-import { getTheMonthName, trimText } from '@/utils/miscellaneous';
+import { getTheMonthName } from '@/utils/miscellaneous';
+import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import HTMLReactParser from 'html-react-parser';
 
 export interface BlogCardInterface {
     image: string;
@@ -47,8 +47,8 @@ const BlogCard = ({ image, backgroundImage, postingDate, title, url }: BlogCardI
                 <span className="font-mulishBold text-[1.2rem] uppercase leading-[1.8rem]">
                     Posted: {date?.getDate()}-{getTheMonthName(date?.getMonth())}-{date?.getFullYear()}
                 </span>
-                <span className="mt-6 block w-full max-w-[20.9rem] font-mulishBold text-[1.8rem] leading-[2.8rem]">
-                    {HTMLReactParser(trimText(title, 40))}
+                <span className="mt-6 block w-full max-w-[20.9rem] font-mulishBold text-[1.8rem] leading-[2.8rem] line-clamp-2">
+                    {HTMLReactParser(title || '')}
                 </span>
                 <Link
                     title="Learn more"

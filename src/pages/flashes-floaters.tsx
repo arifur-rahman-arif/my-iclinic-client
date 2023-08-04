@@ -307,7 +307,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             <LazyComponent>
                 <Faq
                     faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || flashesFaqList}
-                    titleLight="Conjunctivitis"
+                    titleLight="Flashes & Floaters"
                     titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />

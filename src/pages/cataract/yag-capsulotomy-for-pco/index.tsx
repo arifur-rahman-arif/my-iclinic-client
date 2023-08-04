@@ -57,8 +57,8 @@ interface YagCapsulotomyForPcoProps {
 export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsulotomyForPcoProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading ||'YAG Capsulotomy Laser Treatment London';
-    const subheading = data?.masthead_subheading ||'Reducing PCO symptoms after Cataract Surgery.';
+    const heading = data?.masthead_heading || 'YAG Capsulotomy Laser Treatment London';
+    const subheading = data?.masthead_subheading || 'Reducing PCO symptoms after Cataract Surgery.';
 
     useEffect(() => {
         if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
@@ -68,35 +68,35 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
         }, 2500);
     }, [deviceSize]);
 
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map((item:
-             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
-            ...item,
-            mobileImage: (
-            <Image
-            src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
-            width={390}
-            height={390}
-            quality={70}
-            className="rounded-primary md:hidden"
-            alt=""
-          />
-            ),
-            desktopImage: (
-          <Image
-            src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
-            width={695}
-            height={580}
-            quality={70}
-            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-            alt=""
-          />
-            ),
-            title: item?.title,
-            descriptions: stringArrayToElementArray(item?.descriptions)
-        })) :
+        data.leftRightsection.map(
+            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                ...item,
+                mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                ),
+                desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                ),
+                title: item?.title,
+                descriptions: stringArrayToElementArray(item?.descriptions)
+            })
+        ) :
         null;
 
     return (
@@ -109,9 +109,9 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image?.url ||MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url ||MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url ||MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 altText=""
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
@@ -137,13 +137,13 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                     </>
                 }
                 altText=""
-                image={ data?.section_3?.image || SimpleProcessImage}
-                desktopImage={ data?.section_3?.imageLarge ||SimpleProcessImageLarge}
+                image={data?.section_3?.image || SimpleProcessImage}
+                desktopImage={data?.section_3?.imageLarge || SimpleProcessImageLarge}
                 includeScrollDownButton
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={ leftRightsectiondata || leftRightListYag} />
+                <LeftRightSection childrenList={leftRightsectiondata || leftRightListYag} />
             </LazyComponent>
 
             {/* <LazyComponent> */}
@@ -163,13 +163,16 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             <Section>
                 <Container className="grid place-items-center gap-12 md:gap-24">
                     <H2Variant1 className="max-w-[56.5rem] text-center !normal-case">
-                        { data?.section_6?.title || 'Find out more about YAG laser treatment price'}
+                        {data?.section_6?.title || 'Find out more about YAG laser treatment price'}
                     </H2Variant1>
-                    <Button2 type="anchor" text="Yag treatment price" link="/cataract/yag-capsulotomy-for-pco/price" />
+                    <Button2 type="anchor" text="YAG treatment price" link="/cataract/yag-capsulotomy-for-pco/price" />
                 </Container>
             </Section>
 
-            <CtaSection title={data?.sectionspeakteam?.title} subtitle={ data?.sectionspeakteam?.sub_heading || 'Find out your options'} />
+            <CtaSection
+                title={data?.sectionspeakteam?.title}
+                subtitle={data?.sectionspeakteam?.sub_heading || 'Find out your options'}
+            />
 
             <LazyComponent>
                 <CompanyLogos />
@@ -225,7 +228,7 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
                     }, // 2\
                     section_3: {
-                        ...data?.acf?.section_3,
+                        ...data?.acf?.section_3
                     }, // 2
                     section_4: {
                         ...data?.acf?.section_4,
@@ -237,17 +240,16 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
                     },
                     section_6: {
-                        ...data?.acf?.section_6,
+                        ...data?.acf?.section_6
                     },
-                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                    leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
                               return {
                                   ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
                               };
                           })
-                        : [],
-                    
+                        : []
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
