@@ -353,7 +353,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 <PdfDownload
                     downloadFile={data?.email_contents?.download_file}
                     title="Get the guide to Cataract treatment"
-                    description="Robotic laser vision correction"
+                    description="Modern Cataract Surgery"
                     pageSlug="cataract"
                 />
             </LazyComponent>
