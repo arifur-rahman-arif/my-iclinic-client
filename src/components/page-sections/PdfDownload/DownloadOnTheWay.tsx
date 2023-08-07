@@ -1,4 +1,3 @@
-import { LinkText } from '@/components/Link';
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import H3Variant3 from 'src/components/Headings/H3Variant3';
 
@@ -28,14 +27,26 @@ const DownloadOnTheWay = ({
     const anchorRef = useRef<HTMLAnchorElement | null>(null);
 
     useEffect(() => {
-        return () => {
-            setTimeout(() => {
-                showDownloadOnTheWayTemplate && anchorRef.current?.click();
-                setShowThankYouTemplate(true);
-                setShowDownloadOnTheWayTemplate(false);
-            }, 2000);
-        };
+        const timeout = setTimeout(() => {
+            showDownloadOnTheWayTemplate && anchorRef.current?.click();
+            setShowThankYouTemplate(true);
+            setShowDownloadOnTheWayTemplate(false);
+        }, 2000);
+
+        // Clear the timeout when the component unmounts or if the dependencies change
+        return () => clearTimeout(timeout);
     }, []);
+
+    useEffect(() => {
+        if (!showDownloadOnTheWayTemplate) {
+            // Automatically trigger the download after 3 seconds
+            const downloadTimeout = setTimeout(() => {
+                anchorRef.current?.click();
+            }, 3000);
+
+            return () => clearTimeout(downloadTimeout);
+        }
+    }, [showDownloadOnTheWayTemplate]);
 
     return (
         <div
@@ -59,9 +70,13 @@ const DownloadOnTheWay = ({
 
             <p className="mt-12 text-center">
                 If download is not starting{' '}
-                <LinkText href="" className="!font-mulishBold text-[1.8rem] text-blue" indicatorColor="bg-blue">
+                <a
+                    href={downloadFile}
+                    download
+                    className="relative inline-block font-mulishBold text-[1.8rem] leading-[2.4rem] text-blue decoration-blue underline-offset-4 transition-all duration-500 hover:underline"
+                >
                     Click here
-                </LinkText>{' '}
+                </a>{' '}
                 to download manually
             </p>
             <a href={downloadFile} ref={anchorRef} download></a>
