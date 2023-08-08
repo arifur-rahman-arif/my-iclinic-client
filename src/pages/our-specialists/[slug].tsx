@@ -32,7 +32,7 @@ export default function DynamicPage({ specialist, slug }: DynamicPageProps): JSX
 
             <Section className="specialist-single-post mt-12 lg:!mt-32">
                 <Container className="grid justify-items-center gap-12 md:gap-24 lg:grid-cols-[minmax(40rem,_1fr)_1fr]">
-                    <div className="group/card grid content-start self-start overflow-hidden rounded-primary bg-white pb-12 shadow-md transition-all duration-500 hover:shadow-shadow1 md:max-w-[50rem]">
+                    <div className="group/card grid w-full content-start self-start overflow-hidden rounded-primary bg-white pb-12 shadow-md transition-all duration-500 hover:shadow-shadow1 md:max-w-[50rem]">
                         <div className="max-h-[37.5rem] overflow-hidden">
                             {specialist?.image && (
                                 <Image

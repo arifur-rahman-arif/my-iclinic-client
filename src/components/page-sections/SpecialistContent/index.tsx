@@ -93,6 +93,33 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
 
     const url = router.pathname.replaceAll('[slug]', slug);
 
+    useEffect(() => {
+        // Your conditions to modify the tabs
+        let modifiedTabs = [...defaultTabs];
+
+        if (!specialist.specialties) {
+            modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'specialties');
+        }
+        if (!specialist.education) {
+            modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'education');
+        }
+        if (!specialist.awards) {
+            modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'awards');
+        }
+        if (!specialist.media.content && !specialist.media.fellowships_and_memberships) {
+            modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'in-the-media');
+        }
+        if (!specialist.about) {
+            modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'about');
+        }
+
+        if (modifiedTabs.length > 0) {
+            modifiedTabs[0].active = true;
+        }
+
+        setTabs(modifiedTabs);
+    }, [router.asPath, specialist]); // Run the effect when route changes or specialist data changes
+
     /**
      * Handle the click of th tabs
      * @param {number} index
@@ -185,7 +212,7 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
                     ref={filterRef}
                 >
                     <div className="flex items-center justify-start gap-4">
-                        {tabs.map((tab, index) => (
+                        {tabs?.map((tab, index) => (
                             <button
                                 key={index}
                                 title={tab.label}
@@ -229,7 +256,7 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
                 </div>
             </div>
 
-            {tabs.length ? (
+            {tabs?.length ? (
                 <div className={styles.styles}>
                     {tabs[0]?.active ? <Specialties specialties={specialist.specialties} /> : null}
                     {tabs[1]?.active ? <Education education={specialist.education} /> : null}
