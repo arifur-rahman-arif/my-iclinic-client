@@ -1,0 +1,27 @@
+@import '/src/styles/utils/breakpoints';
+
+.styles {
+  :global {
+    blockquote {
+      border-left: 8px solid var(--color-heading2);
+      border-radius: var(--border-radius);
+      font-style: italic;
+      line-height: 1.6;
+      padding: 2rem 2rem 2rem 6rem;
+
+      position: relative;
+      @include media-breakpoint-up(md) {
+        padding: 1.2em 30px 1.2em 75px;
+      }
+    }
+
+    blockquote::before {
+      color: var(--color-secondary);
+      content: "\201C";
+      font-size: 4em;
+      left: 10px;
+      position: absolute;
+      top: -10px;
+    }
+  }
+}

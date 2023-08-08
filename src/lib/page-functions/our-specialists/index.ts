@@ -1,7 +1,7 @@
 import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
 import { getPageData } from '@/lib';
 import { WpPageResponseInterface } from '@/types';
-import { getData } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, getData } from '@/utils/apiHelpers';
 
 export interface SpecialistPostsInterface extends ConsultantCardInterface {
     slug: string;
@@ -61,7 +61,7 @@ export const getSpecialistsPost = async (): Promise<SpecialistPostsInterface[]> 
  */
 export const getSpecialistPost = async (slug: string): Promise<any> => {
     const data: WpPageResponseInterface<any> = await getPageData({
-        url: `${process.env.WP_REST_URL}/specialist?slug=${slug}&_fields=title,content,featured_media,acf,yoast_head,yoast_head_json`
+        url: `${process.env.WP_REST_URL}/specialist?slug=${slug}&_fields=title,featured_media,acf,yoast_head,yoast_head_json`
     });
 
     const imageUrlApiResponse: Response = await getData({
@@ -75,8 +75,20 @@ export const getSpecialistPost = async (slug: string): Promise<any> => {
         image: imageUrl?.source_url || '',
         degree: data.acf.specialist_data.degree || '',
         title: data.acf.specialist_data.title || '',
-        content: data.content?.rendered || '',
         yoast_head: data.yoast_head || '',
-        yoast_head_json: data.yoast_head_json || ''
+        yoast_head_json: data.yoast_head_json || '',
+        specialties:
+            data?.acf?.specialties &&
+            data?.acf?.specialties?.map((speciality: any) => ({
+                ...speciality,
+                specialities: convertArrayOfObjectsToStrings(speciality.specialities)
+            })),
+        education: data?.acf?.education || '',
+        awards: data?.acf?.awards || '',
+        media: {
+            content: data?.acf?.media?.content || '',
+            fellowships_and_memberships: convertArrayOfObjectsToStrings(data?.acf?.media?.fellowships_and_memberships)
+        },
+        about: data?.acf?.about || ''
     };
 };

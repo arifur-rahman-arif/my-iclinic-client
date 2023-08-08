@@ -1,0 +1,61 @@
+.styles {
+  :global {
+    .wp-block-columns {
+      gap: 3rem;
+    }
+
+    a {
+      &,
+      * {
+        color: var(--color-blue);
+        font-family: var(--mulish-bold);
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .wp-block-media-text {
+      gap: 3rem;
+    }
+
+    .wp-block-media-text__content {
+      padding: 0 !important;
+    }
+
+    figure, img {
+      width: 100%;
+    }
+
+    strong, b {
+      &,
+      * {
+        font-family: var(--mulish-bold);
+      }
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 2rem;
+
+      li {
+        &:not(:first-child) {
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    ol {
+      list-style: decimal;
+      margin-left: 2rem;
+
+      li {
+        &:not(:first-child) {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

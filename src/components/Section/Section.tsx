@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface PropInterface {
     children: JSX.Element | JSX.Element[];
@@ -19,7 +20,7 @@ const Section = forwardRef(
         ref: any
     ): JSX.Element => {
         return (
-            <section ref={ref} className={`${defaultClassName || ''} ${className || ''}`} id={id || ''}>
+            <section ref={ref} className={twMerge(defaultClassName, className)} id={id || ''}>
                 {children}
             </section>
         );
