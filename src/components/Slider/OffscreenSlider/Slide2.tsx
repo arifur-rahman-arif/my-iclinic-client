@@ -1,10 +1,10 @@
-import Image from 'next/image';
 // import { ReactNode } from 'react';
-import HTMLReactParser from 'html-react-parser';
+import Image from 'next/image';
+import { ReactNode } from 'react';
 
 export interface SlideInterface {
     title: string;
-    description: string;
+    description: ReactNode;
     image: string;
     largeImage: string;
 }
@@ -35,7 +35,7 @@ const Slide2 = ({ title, description, image, largeImage }: SlideInterface): JSX.
             <div className="grid gap-12 px-12 md:max-w-[60rem] md:content-start md:pb-12 md:pt-32">
                 <h2 className="font-latoLight text-[4.8rem] capitalize leading-[4.8rem] text-white">{title}</h2>
 
-                { HTMLReactParser(description)}
+                {description || ''}
             </div>
         </div>
     );

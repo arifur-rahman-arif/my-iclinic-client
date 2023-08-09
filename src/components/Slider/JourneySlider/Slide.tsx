@@ -30,13 +30,13 @@ export interface SlideInterface {
  */
 const Slide = ({ index, title, active, image, list, swiperRef, sliderListLength }: SlideInterface): JSX.Element => {
     return (
-        <div className="grid bg-[#013c5a] md:grid-cols-[1fr_auto]">
+        <div className="grid bg-[#013c5a] md:grid-cols-[1fr_minmax(30rem,_1fr)]">
             <Image
                 src={image}
                 alt=""
                 width={631}
                 height={600}
-                className="max-h-[35rem] w-full md:h-full md:max-h-full md:max-w-[63.1rem]"
+                className="max-h-[35rem] w-full object-cover md:h-full md:max-h-full md:max-w-[63.1rem] md:justify-self-end"
             />
             <div className="relative px-12 pt-12 pb-[13rem] md:col-start-1 md:row-start-1 md:pt-24 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] xl:pr-28">
                 <Image src="/images/section-images/journey-bg.png" alt="" fill className="z-[-1] h-full w-full" />
