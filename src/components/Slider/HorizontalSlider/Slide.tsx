@@ -98,7 +98,7 @@ const Slide = ({ name, title, description, reviewLink, star = 5, avatarUrl }: Sl
                     <span className="font-latoBold text-[1.8rem] leading-[2.4rem]">{name}</span>
                 </div>
 
-                <span className="block font-latoBold leading-[2.4rem] sm:text-[2rem]">{trimText(title, 40)}</span>
+                <span className="block font-latoBold leading-[2.4rem] line-clamp-1 sm:text-[2rem]">{title}</span>
 
                 <p>
                     {trimText(description, 90)}&nbsp;&nbsp;

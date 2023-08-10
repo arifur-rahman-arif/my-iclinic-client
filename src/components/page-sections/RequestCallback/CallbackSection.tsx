@@ -30,13 +30,6 @@ const CallbackSection = (): JSX.Element => {
         try {
             if (isError) {
                 setSliders(sliderList);
-                // dispatch(
-                //     handleAlert({
-                //         showAlert: true,
-                //         alertType: 'error',
-                //         alertMessage: 'Failed to load reviews'
-                //     })
-                // );
                 return;
             }
 
@@ -45,13 +38,6 @@ const CallbackSection = (): JSX.Element => {
             }
         } catch (err: any) {
             setSliders(sliderList);
-            // dispatch(
-            //     handleAlert({
-            //         showAlert: true,
-            //         alertType: 'error',
-            //         alertMessage: err.message
-            //     })
-            // );
         }
     }, [data, error]);
 

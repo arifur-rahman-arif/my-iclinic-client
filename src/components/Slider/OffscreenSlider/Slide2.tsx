@@ -32,7 +32,7 @@ const Slide2 = ({ title, description, image, largeImage }: SlideInterface): JSX.
                 className="hidden h-full md:block xl:max-h-[60rem]"
             />
 
-            <div className="grid gap-12 px-12 md:max-w-[60rem] md:content-start md:pb-12 md:pt-32">
+            <div className="grid gap-12 px-12 md:max-w-[60rem] md:content-start md:pb-48 md:pt-32">
                 <h2 className="font-latoLight text-[4.8rem] capitalize leading-[4.8rem] text-white">{title}</h2>
 
                 {description || ''}

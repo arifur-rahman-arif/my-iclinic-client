@@ -1,6 +1,6 @@
 import { useFontZoom } from '@/hooks';
-import Image from 'next/image';
 import LetterIcon from '@/icons/icon-letter-aa-large.svg';
+import Image from 'next/image';
 
 /**
  * Increase or decrease the font size of the website

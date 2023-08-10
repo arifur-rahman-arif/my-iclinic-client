@@ -261,7 +261,7 @@ body {
 
   #fc_frame {
     z-index: 101 !important;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(xl) {
       bottom: 85px !important;
       opacity: 0;
       right: 10px !important;

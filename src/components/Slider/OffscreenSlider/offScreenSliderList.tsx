@@ -104,7 +104,7 @@ export const offScreenSliderList: SlideInterface[] = [
                         className="font-latoMedium text-[2.4rem] leading-[3.2rem] text-[#E9EAEBE5] underline underline-offset-2 opacity-90 transition-all duration-500 hover:opacity-40"
                     >
                         Calculate
-                    </Link>
+                    </Link>{' '}
                     your treatment with our 24 months finance calculator
                 </p>
             </>
