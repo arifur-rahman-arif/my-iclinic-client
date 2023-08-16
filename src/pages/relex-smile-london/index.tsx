@@ -7,8 +7,6 @@ import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-relex-smile-large.png';
-import MastheadImageSmall from '@/masthead/masthead-relex-smile-small.png';
 import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
 import { relexSmileFaqList } from '@/page-sections/Faq/faqList';
 import { relexSliders } from '@/page-sections/FeaturedPatient';
@@ -128,9 +126,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
                 imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 altText={
                     data?.masthead_image?.image_large?.alt || 'Man travelling without glasses for vision correction'
                 }
