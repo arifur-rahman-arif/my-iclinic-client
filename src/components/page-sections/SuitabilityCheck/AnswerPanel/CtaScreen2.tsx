@@ -74,7 +74,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                             modalElement={
                                 <>
                                     <iframe
-                                        src="https://calendly.com/myiclinic/free_visioncorrection_consultation"
+                                        src="https://calendly.com/myiclinic/free-laser-consultation"
                                         width={600}
                                         height={700}
                                         className="w-full md:min-h-[70rem]"
