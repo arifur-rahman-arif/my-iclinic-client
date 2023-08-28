@@ -18,10 +18,12 @@ export interface MastheadInterface {
     excludePriceComponent?: boolean;
     list?: string[];
     bannerExtraComponents?: ReactNode;
+    suitabilityButton?: ReactNode;
     googleReviews?: string;
     trustPilotReviews?: string;
     smallImageDefaultClassName?: string;
     smallImageClassName?: string;
+    bannerClassName?: string;
 }
 
 /**
@@ -40,8 +42,10 @@ const Masthead = ({
     excludePriceComponent = false,
     list,
     bannerExtraComponents,
+    suitabilityButton,
     googleReviews,
-    trustPilotReviews
+    trustPilotReviews,
+    bannerClassName
 }: MastheadInterface): JSX.Element => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
@@ -82,6 +86,8 @@ const Masthead = ({
                     bannerExtraComponents={bannerExtraComponents}
                     googleReviews={googleReviews}
                     trustPilotReviews={trustPilotReviews}
+                    suitabilityButton={suitabilityButton}
+                    bannerClassName={bannerClassName}
                 />
             </Container>
         </Section>

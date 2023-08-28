@@ -92,9 +92,6 @@ const Package = ({
     packageList,
     titleClassName
 }: GlaucomaPackageInterface): JSX.Element => {
-    // Separate the HTML content from the JSX element
-    const headingtext = '  ' + title + '  ';
-
     return (
         <div
             className={`grid grid-cols-1 items-center gap-12 md:gap-24 lg:grid-cols-[45.5rem_1fr] lg:gap-32 ${itemClassName}`}
@@ -103,7 +100,8 @@ const Package = ({
                 className={`grid min-h-[25.7rem] place-items-center rounded-tl-primary rounded-tr-primary bg-darkBlue p-12 sm:p-32 md:rounded-tr-none md:rounded-bl-primary lg:max-w-[45.5rem] ${cardClassName}`}
             >
                 <H3Variant1 className={`!font-latoLight text-white ${titleClassName}`}>
-                { HTMLReactParser(headingtext)}</H3Variant1>
+                    {typeof title === 'string' ? HTMLReactParser(title) : title}
+                </H3Variant1>
             </div>
             <div className="grid content-center gap-12 px-8 xl:px-0">
                 {packageList.map((item, index) => (

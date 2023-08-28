@@ -1,8 +1,5 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable require-jsdoc */
-/* eslint-disable no-unused-vars */
-import { BreadCrumb } from '@/components/Breadcrumb';
 import { Card, cardList } from '@/components/Card';
+import { CardInterface } from '@/components/Card/Card';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -11,24 +8,23 @@ import {
     CompanyLogos2,
     ImageGallery,
     ImageSliderSectionPart,
-    Masthead,
     PlasticFree,
     SideImageSection,
     SideVideoSection2
 } from '@/components/page-sections';
-import HTMLReactParser from 'html-react-parser';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
 import { getPageData } from '@/lib';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { galleryListHome } from '@/page-sections/ImageGallery';
-import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
+import UspSection from '@/page-sections/Usp/UspSection';
 import { HomeContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { CardInterface } from '@/components/Card/Card';
 import { Key } from 'react';
+import Masthead2 from 'src/components/page-sections/Masthead/Masthead2';
 
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -64,20 +60,8 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     const heading = data?.masthead_heading || 'North Londons Private Eye Clinic';
     const subheading = data?.masthead_subheading || 'Premium eye care for all the family';
 
-    // const savingslider: any = data?.savingsliderSection ?
-    //     data?.savingsliderSection.map((service) => {
-    //         return {
-    //             ...service,
-    //             title: service?.title,
-    //             description: service?.description,
-    //             image: service?.image,
-    //             largeImage: service?.large
-    //         };
-    //     }) :
-    //     null;
-
     // JOURNEY SLIDER
-    const journeySliderdata: any = data?.journeySlider ?
+    const journeySliderData: any = data?.journeySlider ?
         data?.journeySlider.map((service) => {
             return {
                 ...service,
@@ -107,7 +91,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
         }) :
         null;
 
-    const Listcard: any = data?.private_eye_card ?
+    const cardListData: any = data?.private_eye_card ?
         data?.private_eye_card.map((service) => {
             return {
                 ...service,
@@ -127,19 +111,14 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb />
-
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || '/images/masthead/masthead-home-small.png'}
-                imageMedium={data?.masthead_image?.image_medium?.url || '/images/masthead/masthead-home.png'}
-                imageLarge={data?.masthead_image?.image_large?.url || '/images/masthead/masthead-home-large.png'}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={<ChatWithUs />}
-                priceText={data?.masthead_price}
+            <Masthead2
+                title={heading}
+                subTitle={subheading}
+                image={data?.masthead_image?.image_medium?.url}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
             />
+
             {/*  Private Eye */}
             <SideImageSection
                 h3LightHeading={
@@ -153,7 +132,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 customColumn={
                     <>
                         <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] justify-items-center gap-x-12 gap-y-6 md:mt-12 lg:grid-cols-[repeat(auto-fit,_minmax(37rem,_1fr))]">
-                            {((Listcard?.length && Listcard) || cardList).map(
+                            {((cardListData?.length && cardListData) || cardList).map(
                                 (list: JSX.IntrinsicAttributes & CardInterface, index: Key | null | undefined) => (
                                     <Card key={index} {...list} />
                                 )
@@ -169,6 +148,8 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 }
             />
 
+            <UspSection />
+
             <SideVideoSection2
                 title={
                     <strong className="block text-white sm:max-w-[58.2rem]">
@@ -178,7 +159,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `We have the latest vision correction treatments to achieve clear vision at all distances for all ages.`,
-                        `Book your <a href="/suitability-check">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
+                        `Book your <a href="/suitability-check" class="!text-white">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
                     ]
                 }
                 containerClassName="md:!pl-[15rem]"
@@ -222,7 +203,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             </LazyComponent>
 
             <LazyComponent>
-                <JourneySlider sliderList={(journeySliderdata?.length && journeySliderdata) || journeySliderListHome} />
+                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
             </LazyComponent>
 
             <div className="w-full md:h-[0.1rem] lg:mt-12"></div>

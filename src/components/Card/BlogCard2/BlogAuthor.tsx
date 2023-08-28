@@ -20,10 +20,11 @@ const BlogAuthor = ({ author }: BlogAuthorInterface): JSX.Element => {
     return (
         <div className="flex items-center justify-start gap-4">
             <Image
-                src={author?.logo || '/images/logos/iclinic-rounded.png'}
+                src={author?.logo || '/images/logos/logo-iclinic-small.png'}
                 width={author?.logo?.width || 32}
                 height={author?.logo?.height || 32}
                 alt=""
+                unoptimized
                 className="overflow-hidden rounded-full object-cover"
             />
             <span className="block overflow-hidden text-ellipsis whitespace-nowrap font-mulishBold text-[1.4rem] leading-8">

@@ -8,10 +8,11 @@ import { BiRightArrowAlt } from 'react-icons/bi';
 export interface CardInterface {
     image: string;
     title: ReactNode;
-    pillText: string;
+    pillText?: string;
     cardList: ReactNode[];
     cardLink: string;
 }
+
 /**
  * Card component
  *
@@ -32,9 +33,11 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
         >
             <div className="flex items-center justify-between px-4 pt-[1.2rem]">
                 <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">{title}</span>
-                <span className="self-start justify-self-end rounded-primary bg-[#0C4969] py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] text-white ">
-                    {pillText}
-                </span>
+                {pillText ? (
+                    <span className="self-start justify-self-end rounded-primary bg-[#0C4969] py-[0.4rem] px-[0.8rem] font-mulishExtraBold text-[1.4rem] uppercase leading-[2rem] text-white ">
+                        {pillText}
+                    </span>
+                ) : null}
             </div>
 
             <div className="max-w-full overflow-hidden p-[1.2rem] transition-all duration-500 group-hover/card:m-[1.2rem] group-hover/card:rounded-primary group-hover/card:p-0">

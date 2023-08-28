@@ -29,8 +29,8 @@
 
   /* Selection style for Chrome */
   ::selection {
-    background: var(--color-brand);
-    color: #ffffff;
+    background: var(--color-brand-light);
+    color: var(--color-brand);
   }
 
   // Hide the number input arrows

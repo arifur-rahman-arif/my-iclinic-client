@@ -4,6 +4,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
+import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
 import Image from 'next/image';
 import { normalSlideListPresbyond } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
@@ -93,81 +94,84 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
         }, 2500);
     }, [deviceSize]);
 
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map((item:
-             { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined; }) => ({
-            ...item,
-            mobileImage: (
-          <Image
-            src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
-            width={390}
-            height={390}
-            quality={70}
-            className="rounded-primary md:hidden"
-            alt=""
-          />
-            ),
-            desktopImage: (
-          <Image
-            src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
-            width={695}
-            height={580}
-            quality={70}
-            className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-            alt=""
-          />
-            ),
-            title: item?.title,
-            descriptions: stringArrayToElementArray(item?.descriptions)
-        })) :
+        data.leftRightsection.map(
+            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                ...item,
+                mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                ),
+                desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                ),
+                title: item?.title,
+                descriptions: stringArrayToElementArray(item?.descriptions)
+            })
+        ) :
         null;
 
     // reviewSliderdata
-    const reviewSliderdata: any = Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-        data.reviewSlider.map((service) => {
-            return {
-                ...service,
-                title: service?.title,
-                name: service?.name,
-                description: service?.description
-            };
-        }) :
-        null;
+    const reviewSliderdata: any =
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
+            data.reviewSlider.map((service) => {
+                return {
+                    ...service,
+                    title: service?.title,
+                    name: service?.name,
+                    description: service?.description
+                };
+            }) :
+            null;
 
     // laserSlider
-    const laserSliderdata: any = Array.isArray(data?.laserSlider) && data.laserSlider.length > 0 ?
-        data.laserSlider.map((service: { desktopimage: any;
-             image: any; title: any; descriptions: string[] | undefined; }) => {
-            return {
-                ...service,
-                image: {
-                    url: service?.image || '/images/section-images/laser-surgery-card.png',
-                    width: 329,
-                    height: 220
-                },
-                desktopImage: {
-                    url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                    width: 447,
-                    height: 349
-                },
-                boxWidth: '51.4rem',
-                title: service?.title,
-                descriptions: stringArrayToElementArray(service?.descriptions)
-            };
-        }) :
-        null;
+    const laserSliderdata: any =
+        Array.isArray(data?.laserSlider) && data.laserSlider.length > 0 ?
+            data.laserSlider.map(
+                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                    return {
+                        ...service,
+                        image: {
+                            url: service?.image || '/images/section-images/laser-surgery-card.png',
+                            width: 329,
+                            height: 220
+                        },
+                        desktopImage: {
+                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                            width: 447,
+                            height: 349
+                        },
+                        boxWidth: '51.4rem',
+                        title: service?.title,
+                        descriptions: stringArrayToElementArray(service?.descriptions)
+                    };
+                }
+            ) :
+            null;
     /// /reviewimageSlider
-    const reviewimageSliderdata: any = Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0 ?
-        data.reviewimageSlider.map((service) => {
-            return {
-                ...service,
-                imageURL: service?.imageURL
-            };
-        }) :
-        null;
-
+    const reviewimageSliderdata: any =
+        Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0 ?
+            data.reviewimageSlider.map((service) => {
+                return {
+                    ...service,
+                    imageURL: service?.imageURL
+                };
+            }) :
+            null;
 
     return (
         <Page
@@ -188,6 +192,12 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 priceText={data?.masthead_price}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
+                bannerClassName="lg:gap-12"
+                suitabilityButton={
+                    <div className="grid gap-6 md:gap-12">
+                        <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
+                    </div>
+                }
             />
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
@@ -214,14 +224,16 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 //                        for an easier, clearer way of life.`
                 //                    ]
                 //                }
-                descriptions={ data?.section_1?.description?.length &&
-                     stringArrayToElementArray(data?.section_1?.description) || [
-                    `Always wanted to know what your vision could be like without the need for reading
+                descriptions={
+                    (data?.section_1?.description?.length &&
+                        stringArrayToElementArray(data?.section_1?.description)) || [
+                        `Always wanted to know what your vision could be like without the need for reading
                     glasses?`,
-                    `If you suffer from presbyopia (also known as long sightedness, farsightedness,
+                        `If you suffer from presbyopia (also known as long sightedness, farsightedness,
                         hypermetropia and hyperopia), our Presbyond laser surgery can fix your refractive error
                         for an easier, clearer way of life.`
-                ]}
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/presbyond-laser-treatment.png',
                     width: 370,
@@ -247,8 +259,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
             </LazyComponent>
 
             <LazyComponent>
-                <LeftRightSection childrenList={ leftRightsectiondata ?
-                    leftRightsectiondata : leftRightListPresbyond} />
+                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListPresbyond} />
             </LazyComponent>
             {/* SECTION 2 */}
             <FullWidthImageSection
@@ -263,11 +274,13 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 //                description={
                 //                    (data?.section_2?.description?.length && HTMLReactParser(data?.section_2?.description)) ||
                 //                }
-                description={ data?.section_2?.description?.length &&
-                    stringArrayToElementArray(data?.section_2?.description) || [
-                    'Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!',
-                    'Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.'
-                ]}
+                description={
+                    (data?.section_2?.description?.length &&
+                        stringArrayToElementArray(data?.section_2?.description)) || [
+                        'Saving vision, time, money and the planet! Having Presbyond is a brilliant achievement for your vision, your time, your long-term savings and the sustainability of our planet. We want all of our patients to be well-informed about their recovery process after Presbyond surgery!',
+                        'Our team takes your aftercare very seriously, which is why our laser specialist will have follow up assessments and appointments with you throughout the year after your treatment date.'
+                    ]
+                }
                 videoUrl={data?.section_2?.videoUrl || '/videos/presbyond.mp4'}
                 videoPoster={data?.section_2?.videoPoster || 'IEVaY-Rj4RA'}
                 // TextColumnExtraBottomElements={
@@ -330,13 +343,12 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                         ]
                     }
                     reviewTitle={data?.section_3?.reviewtitle || 'Thank you My-iClinic'}
-                    sliders={ reviewimageSliderdata ? reviewimageSliderdata : presbyondSliders}
+                    sliders={reviewimageSliderdata ? reviewimageSliderdata : presbyondSliders}
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={ reviewSliderdata ?
-                    reviewSliderdata : normalSlideListPresbyond} />
+                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : normalSlideListPresbyond} />
             </LazyComponent>
 
             {/* SECTION 4 */}
@@ -355,11 +367,13 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 //                        `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
                 //                    ]
                 //                }
-                descriptions={ data?.section_4?.description?.length &&
-                    stringArrayToElementArray(data?.section_4?.description) ||[
-                    `Having to wear glasses and contact lenses is a big financial burden overtime. We never subject the safety of people’s eye health to a cheap deal like glasses and contact lenses do and we also understand you don’t want to pay more than what’s fair.`,
-                    `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
-                ]}
+                descriptions={
+                    (data?.section_4?.description?.length &&
+                        stringArrayToElementArray(data?.section_4?.description)) || [
+                        `Having to wear glasses and contact lenses is a big financial burden overtime. We never subject the safety of people’s eye health to a cheap deal like glasses and contact lenses do and we also understand you don’t want to pay more than what’s fair.`,
+                        `Our advanced Presbyond treatment with our London specialists is an all inclusive cost with a dedicated team for your aftercare!`
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_4?.image || '/images/section-images/transparent-price.png',
                     width: 390,
@@ -378,8 +392,8 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                             priceDescription={
                                 data?.section_4?.price_subheading || 'With 10 Months Interest-Free Finance available!'
                             }
-                            paragraphs={ data?.section_4?.price_description?.length &&
-                                 data?.section_4?.price_description || (
+                            paragraphs={
+                                (data?.section_4?.price_description?.length && data?.section_4?.price_description) ||
                                 `The best laser eye surgery price in London, saving an average of £1,000 for your treatment when you come
                             to My-iClinic.
                                 Want to know more about our <LinkText
@@ -389,7 +403,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                                         Finance Options?
                                     </LinkText>
                                 </>`
-                            ) }
+                            }
                             list={
                                 (data?.section_4?.lists?.length && data?.section_4?.lists) || [
                                     <>
@@ -415,14 +429,15 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                     </>
                 }
             />
-{/* CTA SECTION */}
+            {/* CTA SECTION */}
             <CtaSection
-            title={data?.sectionspeakteam?.title || 'Speak To Our Friendly Team'}
-                subtitle={data?.sectionspeakteam?.sub_heading || 'OUR OPTIONS AVAILABLE'} />
+                title={data?.sectionspeakteam?.title || 'Speak To Our Friendly Team'}
+                subtitle={data?.sectionspeakteam?.sub_heading || 'OUR OPTIONS AVAILABLE'}
+            />
             {/* SECTION 5 */}
             <LazyComponent>
                 <StackedSection
-                    stackList={ laserSliderdata ? laserSliderdata : presbyondStackList}
+                    stackList={laserSliderdata ? laserSliderdata : presbyondStackList}
                     h3LightHeading={data?.section_5?.heading?.light_heading || 'Why do our patients choose our'}
                     h3BoldHeading={data?.section_5?.heading?.bold_heading || 'Presbyond laser surgery?'}
                     descriptions={
@@ -717,7 +732,7 @@ export async function getStaticProps() {
                     ...data?.acf,
                     // SECTION 1
                     section_1: {
-                        ...data?.acf?.section_1,                        
+                        ...data?.acf?.section_1,
                         description: convertArrayOfObjectsToStrings(data?.acf?.section_1?.description)
                     }, // 2
                     section_2: {
@@ -741,60 +756,60 @@ export async function getStaticProps() {
                         ...data?.acf?.section_6,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
                     },
-                    leftRightsection:Array.isArray(data?.acf?.leftRightsection)
+                    leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
                               return {
                                   ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
                               };
                           })
                         : [],
-                    laserSlider:Array.isArray(data?.acf?.laserSlider)
+                    laserSlider: Array.isArray(data?.acf?.laserSlider)
                         ? data?.acf.laserSlider.map((ListData) => {
                               return {
                                   ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
                               };
                           })
                         : [],
-                        reviewimageSlider:Array.isArray(data?.acf?.reviewimageSlider)
-                            ? data?.acf.reviewimageSlider.map((ListData) => {
-                                  return {
-                                      ...ListData,
-                                  };
-                              })
-                            : [],
-                    reviewSlider:Array.isArray(data?.acf?.reviewSlider)
+                    reviewimageSlider: Array.isArray(data?.acf?.reviewimageSlider)
+                        ? data?.acf.reviewimageSlider.map((ListData) => {
+                              return {
+                                  ...ListData
+                              };
+                          })
+                        : [],
+                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
                               return {
-                                  ...ListData,
+                                  ...ListData
                               };
                           })
                         : [],
-                        sectionspeakteam: {
-                            ...data?.acf?.sectionspeakteam
+                    sectionspeakteam: {
+                        ...data?.acf?.sectionspeakteam
+                    },
+
+                    sustainability_section: {
+                        plastic_free_life: {
+                            ...data?.acf?.sustainability_section?.plastic_free_life,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                            )
                         },
-                        
-                        sustainability_section: {
-                            plastic_free_life: {
-                                ...data?.acf?.sustainability_section?.plastic_free_life,
-                                descriptions: convertArrayOfObjectsToStrings(
-                                    data?.acf?.sustainability_section?.plastic_free_life.descriptions
-                                )
-                            },
-                            gift_of_a_tree: {
-                                ...data?.acf?.sustainability_section?.gift_of_a_tree,
-                                descriptions: convertArrayOfObjectsToStrings(
-                                    data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
-                                )
-                            },
-                            clearer_vision: {
-                                ...data?.acf?.sustainability_section?.clearer_vision,
-                                descriptions: convertArrayOfObjectsToStrings(
-                                    data?.acf?.sustainability_section?.clearer_vision.descriptions
-                                )
-                            }
+                        gift_of_a_tree: {
+                            ...data?.acf?.sustainability_section?.gift_of_a_tree,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                            )
+                        },
+                        clearer_vision: {
+                            ...data?.acf?.sustainability_section?.clearer_vision,
+                            descriptions: convertArrayOfObjectsToStrings(
+                                data?.acf?.sustainability_section?.clearer_vision.descriptions
+                            )
                         }
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

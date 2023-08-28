@@ -53,7 +53,7 @@ interface ContextProps {
 const Context = ({ children }: ContextProps): JSX.Element => {
     const [tabs, setTabs] = useState<TabsInterface[]>([
         {
-            name: 'Business information',
+            name: 'Contact information',
             active: true
         },
         {

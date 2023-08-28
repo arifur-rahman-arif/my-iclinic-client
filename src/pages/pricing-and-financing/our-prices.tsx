@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-// import { Container } from '@/components/Container';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
 import { InsurancePartners, Masthead, SideImageSection, TextColumn } from '@/components/page-sections';
@@ -14,17 +13,20 @@ import {
     pricePageList1,
     visionCorrectionPriceList
 } from '@/components/page-sections/SectionParts/GlaucomaPackages/GlaucomaPackages3';
-// import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-price-large.png';
 import MastheadImageMedium from '@/masthead/masthead-price-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-price-small.png';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
+import {
+    botoxSurgeryPriceList,
+    vitrectomySurgeryPriceList
+} from '@/page-sections/SectionParts/GlaucomaPackages/GlaucomaPackages3/packageList';
+import UspSection from '@/page-sections/Usp/UspSection';
 import { PageDataInterface, PricePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 
 import Image from 'next/image';
-// import { BiRightArrowAlt } from 'react-icons/bi';
 import { Button } from 'src/components/Buttons';
 
 interface DataInterface extends PricePageContentProps, PageDataInterface<PricePageContentProps> {}
@@ -62,8 +64,6 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
 
             <div className="mt-24 block h-[0.1rem] w-full md:hidden"></div>
 
-            {/* <UspSection list={homeUspList} /> */}
-
             <GlaucomaPackages3
                 dynamicSectionHead={<></>}
                 packageList={data?.section_1 || pricePageList1}
@@ -72,37 +72,6 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 packageContainerClassName="md:!ml-0"
                 titleClassName="sticky top-[23rem]"
             />
-
-            {/* <Section>
-                <Container className="grid place-items-center gap-12 md:gap-24">
-                    <div className="grid gap-6">
-                        <h2 className="normal-case">
-                            Our health <strong className="normal-case">insurance partners</strong>
-                        </h2>
-                        <LinkStyle
-                            url="/pricing-and-financing/financing-your-treatment#insurance"
-                            className="group/link item-center flex justify-center gap-1"
-                        >
-                            Fund your treatment with our health insurance partners
-                            <BiRightArrowAlt className="h-10 w-10 fill-blue" />
-                        </LinkStyle>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:gap-14">
-                        <Image
-                            src="/images/logos/healthcare-practice.png"
-                            width={185}
-                            height={50}
-                            alt=""
-                            quality={100}
-                        />
-                        <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
-                        <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
-                        <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
-                        <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
-                        <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
-                    </div>
-                </Container>
-            </Section> */}
 
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
@@ -119,6 +88,13 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={<></>}
                 packageList={data?.section_3 || visionCorrectionPriceList}
+                itemClassName="!items-stretch"
+            />
+
+            <GlaucomaPackages3
+                packageContainerClassName="md:!ml-0"
+                dynamicSectionHead={<></>}
+                packageList={data?.section_11 || vitrectomySurgeryPriceList}
                 itemClassName="!items-stretch"
             />
 
@@ -162,7 +138,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                             link="/pricing-and-financing/financing-your-treatment#calculator"
                             text="Calculate your monthly spend"
                             iconPosition="left"
-                            className="!border-orange !bg-orange !text-heading hover:!bg-transparent"
+                            className="group/button hover:!bg-transparent"
                             icon={
                                 <Image
                                     src="/images/icons/icon-calculator-dark.svg"
@@ -170,7 +146,7 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                                     width={20}
                                     height={20}
                                     quality={2}
-                                    className="h-8 w-8"
+                                    className="h-8 w-8 invert group-hover/button:invert-0"
                                 />
                             }
                         />
@@ -206,8 +182,6 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 itemClassName="!items-stretch"
             />
 
-            <InsurancePartners />
-
             <GlaucomaPackages3
                 packageContainerClassName="md:!ml-0"
                 dynamicSectionHead={
@@ -230,6 +204,17 @@ export default function OurPrices({ seo, yoastJson, data }: OurPricesProps): JSX
                 packageList={data?.section_9?.package || diagnosisPriceList}
                 itemClassName="!items-stretch"
             />
+
+            <GlaucomaPackages3
+                packageContainerClassName="md:!ml-0"
+                dynamicSectionHead={<></>}
+                packageList={data?.section_10 || botoxSurgeryPriceList}
+                itemClassName="!items-stretch"
+            />
+
+            <UspSection />
+
+            <InsurancePartners />
         </Page>
     );
 }

@@ -47,9 +47,12 @@ const ContactDetails = (): JSX.Element => {
                         height={20}
                         className="translate-y-[0.1rem]"
                     />
-                    <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-white">
+                    <a
+                        href="mailto:reception@my-iclinic.co.uk"
+                        className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-white"
+                    >
                         reception@my-iclinic.co.uk
-                    </span>
+                    </a>
                 </div>
 
                 <div className="flex items-center justify-start gap-6">

@@ -9,6 +9,7 @@ import MastheadImageLarge from '@/masthead/masthead-about-us-large.png';
 import MastheadImageSmall from '@/masthead/masthead-about-us-medium.png';
 import MastheadImageMedium from '@/masthead/masthead-about-us.png';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
+import UspSection from '@/page-sections/Usp/UspSection';
 import { AboutUsPageContent, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -22,6 +23,7 @@ interface AboutUsProps {
     yoastJson: any;
     data: DataInterface;
 }
+
 /**
  * Home page component for the App
  *
@@ -169,6 +171,8 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     height: 477
                 }}
             />
+
+            <UspSection />
 
             <SideImageSection
                 dynamicTextColumn={

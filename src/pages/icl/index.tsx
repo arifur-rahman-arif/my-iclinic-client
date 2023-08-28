@@ -22,6 +22,7 @@ import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slid
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import IconPin from '@/icons/icon-pin-small.svg';
+import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { getPageData } from '@/lib';
 import { IclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
@@ -181,6 +182,15 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                         With 24 Months Interest
                         <br /> Free Finance available!
                     </span>
+                }
+                bannerClassName="lg:gap-12"
+                suitabilityButton={
+                    <div className="grid gap-6 md:gap-12">
+                        <SuitabilityLink
+                            text="Would you like to know if you are suitable for ICL?"
+                            textClassName="max-w-[45rem]"
+                        />
+                    </div>
                 }
             />
 

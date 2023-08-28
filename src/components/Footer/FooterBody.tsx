@@ -51,7 +51,7 @@ const FooterBody = (): JSX.Element => {
                 <FooterBottomLinks />
 
                 <span className="mt-6 text-center font-mulishLight text-[1.2rem] leading-[1.6rem] text-white">
-                    Copy Right © My-Clinic {new Date().getFullYear()} | All Right Reserved
+                    Copyrights © My-Clinic {new Date().getFullYear()} | All Rights Reserved
                 </span>
             </div>
         </Container>

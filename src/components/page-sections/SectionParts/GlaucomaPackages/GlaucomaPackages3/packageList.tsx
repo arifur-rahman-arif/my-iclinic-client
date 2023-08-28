@@ -438,3 +438,63 @@ export const diagnosisPriceList: GlaucomaPackageInterface[] = [
         ]
     }
 ];
+
+export const botoxSurgeryPriceList: GlaucomaPackageInterface[] = [
+    {
+        title: <>Botox</>,
+        packageList: [
+            {
+                title: '1 area',
+                price: <>£200</>
+            },
+            {
+                title: '2 areas',
+                price: <>£300</>
+            },
+            {
+                title: '3+ areas',
+                price: <>£400</>
+            }
+        ]
+    }
+];
+
+export const vitrectomySurgeryPriceList: GlaucomaPackageInterface[] = [
+    {
+        title: <>Vitrectomy</>,
+        packageList: [
+            {
+                title: 'Vitrectomy',
+                price: (
+                    <>
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £5800
+                    </>
+                )
+            },
+            {
+                title: 'Vitrectomy with cataract',
+                price: (
+                    <>
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £6800
+                    </>
+                )
+            },
+            {
+                title: 'Complex vitrectomy',
+                price: (
+                    <>
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £6500
+                    </>
+                )
+            },
+            {
+                title: 'Complex vitrectomy with cataract',
+                price: (
+                    <>
+                        <span className="font-mulishBold text-[1.6rem] leading-[2.4rem]">From</span> £7500
+                    </>
+                )
+            }
+        ]
+    }
+];

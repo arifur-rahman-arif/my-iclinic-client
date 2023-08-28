@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { twMerge } from 'tailwind-merge';
 import { MastheadInterface } from './Masthead';
 import styles from './styles/Heading.module.scss';
 
@@ -24,7 +25,9 @@ const Banner = ({
     list,
     bannerExtraComponents,
     googleReviews,
-    trustPilotReviews
+    trustPilotReviews,
+    suitabilityButton,
+    bannerClassName
 }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement | null>(null);
     const bannerRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +43,10 @@ const Banner = ({
 
     return (
         <div
-            className={`masthead-banner grid grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white px-8 md:mt-0 md:p-12 lg:gap-24 xl:pb-24 ${bannerWidth} md:grid-cols-[auto_1fr]`}
+            className={twMerge(
+                `masthead-banner grid grid-cols-1 items-start justify-start gap-12 rounded-primary bg-white px-8 md:mt-0 md:p-12 lg:gap-24 xl:pb-24 ${bannerWidth} md:grid-cols-[auto_1fr]`,
+                bannerClassName
+            )}
             ref={bannerRef}
         >
             <BreadCrumb className="hidden md:col-span-full md:!flex" />
@@ -115,6 +121,7 @@ const Banner = ({
             )}
 
             {bannerExtraComponents && bannerExtraComponents}
+            {suitabilityButton ? <div className="col-span-full">{suitabilityButton}</div> : null}
         </div>
     );
 };

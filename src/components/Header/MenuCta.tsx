@@ -26,7 +26,7 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
                     }}
                 >
                     <Image
-                        src="/images/icons/icon-chat.svg"
+                        src="/images/icons/icon-chat-dark.svg"
                         alt=""
                         width={24}
                         height={24}

@@ -30,7 +30,7 @@ export const cardList: CardInterface[] = [
     {
         image: '/images/section-images/eye-care-service-card-2.png',
         title: 'Cataract Treatment',
-        pillText: 'Age 55+',
+        //        pillText: 'Age 55+',
         cardList: [
             <>
                 Best treatment for{' '}
@@ -77,7 +77,7 @@ export const cardList: CardInterface[] = [
                 <span className="hidden md:invisible md:block">Glaucoma Care</span>
             </>
         ),
-        pillText: 'Age 40+',
+        //        pillText: 'Age 40+',
         cardList: [
             <>
                 Best treatment for all{' '}

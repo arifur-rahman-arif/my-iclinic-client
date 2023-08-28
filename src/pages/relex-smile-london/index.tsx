@@ -22,6 +22,7 @@ import {
     StackColumn
 } from '@/page-sections/index';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
+import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
 import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
@@ -135,6 +136,12 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 priceText={data?.masthead_price}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
+                bannerClassName="lg:gap-12"
+                suitabilityButton={
+                    <div className="grid gap-6 md:gap-12">
+                        <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
+                    </div>
+                }
             />
 
             <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>

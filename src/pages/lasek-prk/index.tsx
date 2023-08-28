@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
+import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
 
 import Image from 'next/image';
 import LazyComponent from '@/components/LazyComponent';
@@ -177,6 +178,12 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 trustPilotReviews={data?.trustpilot_reviews}
                 bannerWidth="md:max-w-[65.1rem]"
                 imagePosition="object-[-20rem_center]"
+                bannerClassName="lg:gap-12"
+                suitabilityButton={
+                    <div className="grid gap-6 md:gap-12">
+                        <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
+                    </div>
+                }
             />
 
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
