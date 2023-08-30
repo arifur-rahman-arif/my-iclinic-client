@@ -226,5 +226,12 @@ export const consultantCardList: ConsultantCardInterface[] = [
         degree: 'MBBS, BSc (intercal), MSc, FRCOPhth, PG Dip CRS, Cert LRS',
         title: 'Consultant and Surgeon',
         url: '/our-specialists/tina-khanam'
+    },
+    {
+        image: '/images/avaters/sheila-luk.jpg',
+        name: 'Sheila Luk',
+        degree: 'MBBS DO FRCS (Ed) FRCOphth MSc CertLRS; PGDip LRS',
+        title: 'Consultant and Surgeon',
+        url: '/our-specialists/sheila-luk'
     }
 ];

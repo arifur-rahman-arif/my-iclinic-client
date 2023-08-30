@@ -24,7 +24,7 @@ const Specialists = ({}: SpecialistsProps): JSX.Element => {
 
             {/* Blogs */}
             <div className="grid grid-cols-[repeat(auto-fit,_minmax(30rem,_1fr))] gap-y-12 gap-x-24">
-                {consultantCardList.slice(0, 7).map((item, index) => (
+                {consultantCardList.map((item, index) => (
                     <Link
                         href={item.url}
                         key={index}
