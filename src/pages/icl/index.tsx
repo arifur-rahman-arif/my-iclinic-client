@@ -425,7 +425,7 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                             `I just feel a lot more confident. I feel as though I have my eyes, not some plastic thing on my face.`
                         ]
                     }
-                    bandImageTitle={data?.section_3?.bandImageTitle || 'Elit'}
+                    bandImageTitle={data?.section_3?.bandImageTitle || 'Eliete'}
                     bandImageURL={data?.section_3?.bandImageURL || '/images/section-images/eliete.png'}
                     reviewDescription={
                         (data?.section_3?.review_Description?.length && data?.section_3?.review_Description) || [
