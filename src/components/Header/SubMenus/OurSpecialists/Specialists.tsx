@@ -52,7 +52,9 @@ const Specialists = ({}: SpecialistsProps): JSX.Element => {
                                 width={60}
                                 height={60}
                                 unoptimized
-                                className="h-24 w-24 overflow-hidden rounded-full object-cover"
+                                className={`h-24 w-24 overflow-hidden rounded-full object-cover ${
+                                    index === 7 && 'brightness-[1.2]'
+                                }`}
                             />
                             <span className="font-mulishBold text-[1.6rem] leading-8 line-clamp-1">{item.name}</span>
                         </div>
