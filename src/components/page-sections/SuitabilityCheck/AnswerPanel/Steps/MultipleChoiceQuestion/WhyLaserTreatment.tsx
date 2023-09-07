@@ -91,7 +91,7 @@ const WhyLaserTreatment = ({ questionNumber, questionText, node }: MultipleChoic
 
                 <div className="grid max-w-[57.2rem] gap-12">
                     <div className="grid grid-cols-[auto_1fr] gap-2">
-                        <span className="leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
+                        <span className="question-number leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
                             Q{questionNumber}
                         </span>
                         <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-[#4E6C7C]"></span>

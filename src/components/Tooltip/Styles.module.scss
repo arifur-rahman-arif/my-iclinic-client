@@ -13,9 +13,7 @@
     }
 
     .hide {
-      &:local {
-        animation: tooltipHide 0.5s ease-in-out forwards;
-      }
+      display: none;
     }
   }
 

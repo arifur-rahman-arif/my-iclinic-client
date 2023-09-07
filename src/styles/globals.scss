@@ -244,6 +244,11 @@ body {
     opacity: 0.9;
   }
 
+  .plyr__control--overlaid {
+    background: var(--color-brand)
+  }
+
+
   .plyr__time {
     color: var(--color-white);
     font-family: var(--lato-bold);

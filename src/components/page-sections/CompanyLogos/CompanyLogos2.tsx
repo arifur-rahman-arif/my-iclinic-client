@@ -14,9 +14,9 @@ import H3Variant1 from 'src/components/Headings/H3Variant1';
  *
  * @returns {*}  {JSX.Element}
  */
-const CompanyLogos = (): JSX.Element => {
+const CompanyLogos2 = (): JSX.Element => {
     return (
-        <Section className="!mt-24">
+        <Section>
             <Container className="grid place-items-center gap-16">
                 <H3Variant1 className="!font-latoLight">
                     Funding your{' '}
@@ -49,4 +49,4 @@ const CompanyLogos = (): JSX.Element => {
     );
 };
 
-export default CompanyLogos;
+export default CompanyLogos2;

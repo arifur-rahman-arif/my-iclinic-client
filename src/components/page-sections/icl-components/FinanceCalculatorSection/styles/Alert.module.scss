@@ -1,0 +1,55 @@
+@import '/src/styles/utils/breakpoints';
+
+.styles {
+  transform: translateX(calc(-100% - 2rem));
+  transform-origin: left;
+
+
+  &:local {
+    animation: slideAnimation 1.5s ease-in-out forwards;
+
+    @include media-breakpoint-up(lg) {
+      animation: slideUpAnimation 1.2s ease-in-out forwards;
+    }
+
+    @include media-breakpoint-up(xl) {
+      animation: slideUpAnimationLarge 1.2s ease-in-out forwards;
+    }
+  }
+
+  @keyframes slideAnimation {
+    0% {
+      transform: translateX(calc(-100% - 2rem));
+    }
+    70% {
+      transform: translateX(3rem);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideUpAnimation {
+    0% {
+      transform: translateY(100%);
+    }
+    70% {
+      transform: translateY(-3rem);
+    }
+    100% {
+      transform: translateY(8.5rem);
+    }
+  }
+
+  @keyframes slideUpAnimationLarge {
+    0% {
+      transform: translateY(100%);
+    }
+    70% {
+      transform: translateY(-3rem);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+}

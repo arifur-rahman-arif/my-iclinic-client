@@ -17,7 +17,7 @@ const UnderAgeStep = ({ node }: UnderAgeStepProps): JSX.Element => {
     const ctx = useContext(Context);
 
     return (
-        <div className={`${styles.styles} grid h-full w-full place-items-center`}>
+        <div className={`${styles.styles} grid h-full w-full place-items-center px-8`}>
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
                 <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
                     Suitability Questionnaire

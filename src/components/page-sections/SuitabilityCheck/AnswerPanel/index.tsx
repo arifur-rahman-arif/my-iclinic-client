@@ -9,13 +9,17 @@ import QuestionTemplate from './Steps/QuestionTemplate';
 import SuitabilityQuestionnaire from './SuitabilityQuestionnaire';
 import ThankYou from './ThankYou';
 
+interface AnswerPanelProps {
+    answerPanelBg?: string;
+}
+
 /**
  * Answer panel component
  *
  * @returns {JSX.Element}
  * @constructor
  */
-const AnswerPanel = (): JSX.Element => {
+const AnswerPanel = ({ answerPanelBg }: AnswerPanelProps): JSX.Element => {
     const ctx = useContext(Context);
 
     /**
@@ -50,7 +54,7 @@ const AnswerPanel = (): JSX.Element => {
     };
 
     return (
-        <div className="bg-brand py-12">
+        <div className={`${answerPanelBg || 'bg-brand'} py-12`} id="answer-panel">
             {ctx.routes?.map(
                 (route, index) =>
                     route.active && <Fragment key={index}>{renderScreen(route.screen, route.props, index)}</Fragment>

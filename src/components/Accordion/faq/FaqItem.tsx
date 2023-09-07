@@ -1,4 +1,5 @@
-import { getElementTopPosition } from '@/utils/miscellaneous';
+import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
+import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import styles from './styles/FaqItem.module.scss';
@@ -26,7 +27,9 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
     const descriptionRef = useRef<HTMLDivElement | null>(null);
 
     return (
-        <div className={`${styles.styles} grid grid-cols-[auto_1fr] gap-x-12 gap-y-10 transition-all duration-1000`}>
+        <div
+            className={`${styles.styles} grid grid-cols-[auto_1fr] content-start gap-x-12 gap-y-10 transition-all duration-1000`}
+        >
             <span
                 onClick={() => {
                     setExpanded(!expanded);
@@ -77,7 +80,7 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
                     !expanded ? 'max-h-[2.5rem]' : 'max-h-[300rem]'
                 } transition-all duration-1000`}
             >
-                <p dangerouslySetInnerHTML={{ __html: description }}></p>
+                <p>{HTMLReactParser(stripInitialTags(description))}</p>
                 <div className={`mt-20 ${expanded ? 'w-full' : 'w-0'} transition-all duration-1000`}>
                     <div className="relative h-4 w-full">
                         <Image src="/images/icons/icon-pin-long.svg" quality={70} alt="" fill className="w-full" />

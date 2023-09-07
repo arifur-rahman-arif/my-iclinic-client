@@ -1,0 +1,30 @@
+.styles {
+
+  :global {
+    @for $i from 1 through 3 {
+      div:nth-child(#{$i}) {
+        .animation-line {
+          animation-delay: $i * 0.5s;
+        }
+      }
+    }
+
+    .animation-line {
+      transform: scaleX(0);
+      transform-origin: left;
+
+      &:local {
+        animation: slideAnimation 1s ease-in-out forwards;
+      }
+    }
+
+    @keyframes slideAnimation {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { Context } from '@/page-sections/SuitabilityCheck/Context';
+import { getElementTopPosition } from '@/utils/miscellaneous';
 import { memo, useContext } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
@@ -41,6 +42,15 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
 
                 ctx.setActiveAge(index);
                 ctx.navigateToStep(nextActiveIndex as number);
+
+                const windowSize = window.innerWidth;
+
+                if (windowSize < 769) {
+                    window.scrollTo(
+                        0,
+                        getElementTopPosition(document.querySelector('#answer-panel') as HTMLElement) - 150
+                    );
+                }
             }}
         >
             {ctx.ages[index].active && <AiOutlineCheck className="h-9 w-9 fill-white" />}

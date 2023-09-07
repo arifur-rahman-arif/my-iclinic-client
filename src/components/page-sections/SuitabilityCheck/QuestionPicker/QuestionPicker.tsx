@@ -1,7 +1,12 @@
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { Context } from '@/page-sections/SuitabilityCheck/Context';
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import QuestionBox from './QuestionBox';
+
+interface QuestionPickerProps {
+    questionPickerBg?: string;
+    questionPickerTopElement?: ReactNode;
+}
 
 /**
  * Question picker component
@@ -9,11 +14,17 @@ import QuestionBox from './QuestionBox';
  * @returns {JSX.Element}
  * @constructor
  */
-const QuestionPicker = () => {
+const QuestionPicker = ({ questionPickerBg, questionPickerTopElement }: QuestionPickerProps) => {
     const ctx = useContext(Context);
 
     return (
-        <div className="grid place-items-center content-start gap-12 bg-heading2 p-12 md:gap-24 md:p-24 md:px-24">
+        <div
+            className={`grid place-items-center content-start gap-12 p-12 ${
+                questionPickerTopElement ? 'md:gap-16 xl:p-24 xl:pl-0' : 'md:gap-24 md:p-24'
+            } ${questionPickerBg || 'bg-heading2'}`}
+        >
+            {questionPickerTopElement || null}
+
             {/* <ProgressMenu percentage={ctx.progress} /> */}
             <Tooltip
                 text={

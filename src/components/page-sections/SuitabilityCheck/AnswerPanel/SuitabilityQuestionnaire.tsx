@@ -12,7 +12,7 @@ const SuitabilityQuestionnaire = (): JSX.Element => {
     return (
         <div className={`${styles.styles} grid h-full w-full place-items-center`}>
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
-                <span className="flex items-center justify-center gap-3 text-[#CDCFD0]">
+                <span className="initial-step flex items-center justify-center gap-3 text-[#CDCFD0]">
                     <AiOutlineClockCircle className="h-8 w-8 fill-white" />
                     Completion time : <strong className="text-white">2min</strong>
                 </span>

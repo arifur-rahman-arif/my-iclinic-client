@@ -1,11 +1,13 @@
 import Plyr from 'plyr';
 import { useEffect, useRef } from 'react';
 import 'plyr/dist/plyr.css';
+import { twMerge } from 'tailwind-merge';
 
 interface VideoPlayerInterface {
     videoUrl: string;
     videoPoster?: string | boolean;
     localPoster?: string;
+    className?: string;
 }
 
 /**
@@ -13,7 +15,7 @@ interface VideoPlayerInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const VideoPlayer = ({ videoUrl, videoPoster, localPoster }: VideoPlayerInterface): JSX.Element => {
+const VideoPlayer = ({ videoUrl, videoPoster, localPoster, className }: VideoPlayerInterface): JSX.Element => {
     const videoPlayer = useRef<HTMLVideoElement | null>(null);
     useEffect(() => {
         if (!videoPlayer.current) return;
@@ -42,7 +44,10 @@ const VideoPlayer = ({ videoUrl, videoPoster, localPoster }: VideoPlayerInterfac
     }, []);
     return (
         <div
-            className={`row-start-1 mb-4 w-full overflow-hidden md:mb-0 md:min-w-[40rem] lg:row-start-auto lg:max-w-[65rem] lg:justify-self-auto lg:pr-8`}
+            className={twMerge(
+                'row-start-1 mb-4 w-full overflow-hidden md:mb-0 md:min-w-[40rem] lg:row-start-auto lg:max-w-[65rem] lg:justify-self-auto lg:pr-8',
+                className
+            )}
         >
             <div className="overflow-hidden rounded-primary lg:rounded-primary">
                 <video

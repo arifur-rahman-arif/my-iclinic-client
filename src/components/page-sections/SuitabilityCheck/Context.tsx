@@ -147,8 +147,23 @@ const Provider = ({ children }: ProviderProps) => {
         },
         {
             active: false,
-            label: 'An eye specialist has told me I have keratoconus (A thin cornea)',
+            label: 'An eye specialist has told me I have keratoconus (A round dome-shaped cornea)',
             targetNode: 20
+        },
+        {
+            active: false,
+            label: 'An eye specialist has told me I have a thin cornea',
+            targetNode: 22
+        },
+        {
+            active: false,
+            label: 'I have dry eye concerns and dry eye risk factors',
+            targetNode: 22
+        },
+        {
+            active: false,
+            label: 'I want a removable solution for peace of mind',
+            targetNode: 22
         },
         {
             active: false,
@@ -315,7 +330,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'WhyLaserTreatment',
             props: {
                 questionNumber: 3,
-                questionText: 'Why are you seeking laser treatment at this point in time'
+                questionText: 'Why are you seeking a vision correction procedure at this point in time'
             },
             nextNode: 7
         },
@@ -400,7 +415,7 @@ const Provider = ({ children }: ProviderProps) => {
             screen: 'WhyLaserTreatment',
             props: {
                 questionNumber: 3,
-                questionText: 'Why are you seeking laser treatment at this point in time'
+                questionText: 'Why are you seeking a vision correction procedure at this point in time'
             },
             nextNode: 15
         },

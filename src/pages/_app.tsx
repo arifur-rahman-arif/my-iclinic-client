@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 
 import { MainLayout, NoNavigationLayout } from 'src/layouts';
 import '../../build/styles/tailwind.css';
+import IclLayout from 'src/layouts/IclLayout';
 
 const latoLight = Lato({
     weight: '300',
@@ -62,7 +63,8 @@ const muslishExtraBold = Mulish({
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
     const navLayouts = {
         mainLayout: MainLayout,
-        noNavigationLayout: NoNavigationLayout
+        noNavigationLayout: NoNavigationLayout,
+        iclLayout: IclLayout
     };
 
     // @ts-ignore

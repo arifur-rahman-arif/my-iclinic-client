@@ -192,7 +192,7 @@ export default function FinancingYourTreatment({
                                         HTMLReactParser(stripInitialTags(data?.section_2?.subheading))) || (
                                         <>
                                             Correct your vison permanently with <br />
-                                            24 month finance option from £150/Per eye, per month.
+                                            24 month finance option from £50/Per eye, per month.
                                         </>
                                     )}
                                 </div>

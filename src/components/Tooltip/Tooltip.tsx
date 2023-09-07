@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import styles from './Styles.module.scss';
 
 interface TooltipProps {
@@ -6,6 +6,7 @@ interface TooltipProps {
     children: ReactNode;
     className?: string;
     arrowClassName?: string;
+    showTooltip?: boolean;
 }
 
 /**
@@ -17,8 +18,18 @@ interface TooltipProps {
  * @param {React.ReactNode} props.children - The wrapped elements that trigger the tooltip on hover.
  * @returns {React.ReactNode} The Tooltip component.
  */
-const Tooltip = ({ text, className, children, arrowClassName }: TooltipProps) => {
+const Tooltip = ({ text, className, children, arrowClassName, showTooltip }: TooltipProps) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (showTooltip) {
+            tooltipRef.current?.classList.remove('hide');
+            tooltipRef.current?.classList.add('show');
+        } else {
+            tooltipRef.current?.classList.remove('show');
+            tooltipRef.current?.classList.add('hide');
+        }
+    }, [showTooltip]);
 
     return (
         <div
@@ -36,7 +47,9 @@ const Tooltip = ({ text, className, children, arrowClassName }: TooltipProps) =>
 
             <div
                 ref={tooltipRef}
-                className={`tooltip absolute top-full left-1/2 -translate-x-1/2 translate-y-4 rounded-primary bg-white drop-shadow-xl ${className}`}
+                className={`tooltip absolute top-full left-1/2 -translate-x-1/2 translate-y-4 rounded-primary bg-white opacity-0 drop-shadow-xl ${className} ${
+                    showTooltip && 'show'
+                }`}
             >
                 <div className="relative">
                     <div className="absolute bottom-full left-1/2 -z-[1] -translate-x-1/2">

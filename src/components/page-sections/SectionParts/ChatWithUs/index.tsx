@@ -1,5 +1,11 @@
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
+import { twMerge } from 'tailwind-merge';
+
+interface ChatWithUsProps {
+    className?: string;
+    svgClassName?: string;
+}
 
 /**
  * Chat with us button component for calling the freshdesk widget
@@ -7,13 +13,16 @@ import { openFreshdeskChat } from '@/utils/miscellaneous';
  * @returns {JSX.Element}
  * @constructor
  */
-const ChatWithUs = () => {
+const ChatWithUs = ({ className, svgClassName }: ChatWithUsProps) => {
     return (
         <Button2
             type="button"
             text="Chat with us"
             iconPosition="left"
-            className="group/chat-button justify-center bg-heading2 normal-case sm:justify-start sm:justify-self-start"
+            className={twMerge(
+                'group/chat-button justify-center bg-heading2 normal-case sm:justify-start sm:justify-self-start',
+                className
+            )}
             icon={
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -22,7 +31,10 @@ const ChatWithUs = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="transition-all duration-500 group-hover/chat-button:stroke-heading2"
+                        className={twMerge(
+                            'transition-all duration-500 group-hover/chat-button:stroke-heading2',
+                            svgClassName
+                        )}
                     />
                 </svg>
             }

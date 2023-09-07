@@ -15,6 +15,7 @@ const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/B
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
 
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
+const GoodbyeModal = dynamic(() => import('@/components/GoodbyeModal'));
 
 interface PropTypes {
     children: ReactNode;
@@ -52,7 +53,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
                 }}
             />
             {/* @ts-ignore */}
-            {loadChatBot && <FreshChatScript />}
+            <FreshChatScript />
 
             <FontResizer />
 
@@ -64,6 +65,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
 
             <BottomMenu />
             {loadChatBot && <CookieConsent />}
+            {loadChatBot && <GoodbyeModal />}
         </div>
     );
 };

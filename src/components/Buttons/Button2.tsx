@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface ButtonInterface {
     type: 'button' | 'anchor' | 'submit' | 'phone';
@@ -84,7 +85,7 @@ const Button2 = ({
 
             {(type === 'button' || type === 'submit') && (
                 <button
-                    className={`${defaultClassName} ${className} ${
+                    className={`${twMerge(defaultClassName, className)} ${
                         buttonDisabled || mockDisabled ? 'cursor-not-allowed opacity-50' : ''
                     }`}
                     onClick={onClick}

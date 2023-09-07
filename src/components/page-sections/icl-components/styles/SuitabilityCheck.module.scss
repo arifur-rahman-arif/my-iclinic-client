@@ -1,0 +1,16 @@
+.styles {
+  :global {
+    .question-number {
+      color: #ffffff;
+
+      & + span {
+        background: #ffffff;
+      }
+    }
+
+    .initial-step {
+      color: #ffffff;
+      font-family: var(--mulish-bold);
+    }
+  }
+}
