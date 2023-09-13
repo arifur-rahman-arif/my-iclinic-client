@@ -150,9 +150,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                     </>
                 }
             />
-
             <UspSection />
-
             <SideVideoSection2
                 title={
                     <strong className="block text-white sm:max-w-[58.2rem]">
@@ -193,24 +191,18 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                     height: 350
                 }}
             />
-
             <ImageGallery galleryList={galleryListHome} />
-
             {/* SAVING SLIDER SECTION -- */}
             <LazyComponent>
                 <OffScreenSliderSection sliderList={offScreenSliderList} />
             </LazyComponent>
-
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>
-
             <LazyComponent>
                 <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
             </LazyComponent>
-
             <div className="w-full md:h-[0.1rem] lg:mt-12"></div>
-
             {/* <Section> */}
             {/*     <Container className=""> */}
             {/*         <LazyComponent> */}
@@ -222,7 +214,6 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             {/*         </LazyComponent> */}
             {/*     </Container> */}
             {/* </Section> */}
-
             <SideImageSection
                 h3LightHeading={
                     <>
@@ -247,7 +238,6 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                     />
                 }
             />
-
             <LazyComponent>
                 <SustainableSlider>
                     <PlasticFree

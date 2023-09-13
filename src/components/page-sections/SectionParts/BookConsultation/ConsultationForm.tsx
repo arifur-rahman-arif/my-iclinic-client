@@ -49,7 +49,7 @@ const ConsultationForm = ({
             }}
             className={styles.styles}
         >
-            <div className="relative h-full w-full pt-20 sm:pt-16">
+            <div className="relative h-full w-full px-8 pt-20 sm:pt-16">
                 <IoIosCloseCircleOutline
                     className="absolute top-0 right-0 h-12 w-12 translate-y-3 -translate-x-3 cursor-pointer fill-secondary"
                     onClick={() => {

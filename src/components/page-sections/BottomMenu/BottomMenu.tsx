@@ -106,7 +106,7 @@ const BottomMenu = (): JSX.Element => {
                             modalElement={
                                 <>
                                     <iframe
-                                        src="https://calendly.com/myiclinic/free-laser-consultation"
+                                        src="https://connect.pabau.com/bookings.php?compid=11842"
                                         width={600}
                                         height={700}
                                         className="w-full md:min-h-[70rem]"
