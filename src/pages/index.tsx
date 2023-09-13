@@ -15,6 +15,7 @@ import {
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
 import { getPageData } from '@/lib';
+// import SurgerySection from '@/page-sections/HomePage/SurgerySection';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
 import UspSection from '@/page-sections/Usp/UspSection';
@@ -106,8 +107,8 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 
     return (
         <Page
-            title="Top Rated Eye Surgery Specialists London"
-            description="Our specialist consultants offer a selection of laser eye surgery and lens surgery treatments that allow you to discover crystal clear vision."
+            title="London's No1 Eye Clinic For Laser Eye Surgery & Vision Correction"
+            description="Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options."
             seo={seo}
             yoastJson={yoastJson}
         >
@@ -118,6 +119,8 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
             />
+
+            {/* <SurgerySection /> */}
 
             {/*  Private Eye */}
             <SideImageSection
@@ -159,7 +162,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `We have the latest vision correction treatments to achieve clear vision at all distances for all ages.`,
-                        `Book your <a href="/suitability-check" class="!text-white">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
+                        `Book your <a href='/suitability-check' class='!text-white'>FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
                     ]
                 }
                 containerClassName="md:!pl-[15rem]"

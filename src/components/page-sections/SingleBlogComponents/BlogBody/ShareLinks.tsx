@@ -28,8 +28,6 @@ const ShareLinks = ({ className, disableLabel, whiteIcon, siteUrl }: ShareLinksP
 
     siteUrl = siteUrl || `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/articles/${router.query.slug}`;
 
-    console.log(siteUrl);
-
     return (
         <div className={twMerge('flex flex-wrap items-center gap-8 md:flex-col', className)}>
             {!disableLabel && <span className="font-mulishBold text-[2rem] leading-[2.8rem] md:mb-4">Share</span>}
@@ -47,24 +45,24 @@ const ShareLinks = ({ className, disableLabel, whiteIcon, siteUrl }: ShareLinksP
                     return false;
                 }}
             >
-                <svg width="23" height="22" viewBox="0 0 23 22" fill="" xmlns="http://www.w3.org/2000/svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                     <path
-                        d="M15.166 7.33301C16.6247 7.33301 18.0237 7.91247 19.0551 8.94392C20.0866 9.97537 20.666 11.3743 20.666 12.833V19.2497H16.9993V12.833C16.9993 12.3468 16.8062 11.8805 16.4624 11.5366C16.1186 11.1928 15.6522 10.9997 15.166 10.9997C14.6798 10.9997 14.2135 11.1928 13.8697 11.5366C13.5258 11.8805 13.3327 12.3468 13.3327 12.833V19.2497H9.66602V12.833C9.66602 11.3743 10.2455 9.97537 11.2769 8.94392C12.3084 7.91247 13.7073 7.33301 15.166 7.33301Z"
-                        stroke={whiteIcon ? '#fff' : '#697072'}
+                        d="M15.1667 7.33331C16.6253 7.33331 18.0243 7.91278 19.0557 8.94423C20.0872 9.97568 20.6667 11.3746 20.6667 12.8333V19.25H17V12.8333C17 12.3471 16.8068 11.8808 16.463 11.537C16.1192 11.1931 15.6529 11 15.1667 11C14.6804 11 14.2141 11.1931 13.8703 11.537C13.5265 11.8808 13.3333 12.3471 13.3333 12.8333V19.25H9.66666V12.8333C9.66666 11.3746 10.2461 9.97568 11.2776 8.94423C12.309 7.91278 13.708 7.33331 15.1667 7.33331Z"
+                        stroke="#697072"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
                     <path
-                        d="M6.00065 8.25H2.33398V19.25H6.00065V8.25Z"
-                        stroke={whiteIcon ? '#fff' : '#697072'}
+                        d="M6.00001 8.25H2.33334V19.25H6.00001V8.25Z"
+                        stroke="#697072"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
                     <path
-                        d="M4.16732 5.49967C5.17984 5.49967 6.00065 4.67886 6.00065 3.66634C6.00065 2.65382 5.17984 1.83301 4.16732 1.83301C3.1548 1.83301 2.33398 2.65382 2.33398 3.66634C2.33398 4.67886 3.1548 5.49967 4.16732 5.49967Z"
-                        stroke={whiteIcon ? '#fff' : '#697072'}
+                        d="M4.16668 5.49998C5.1792 5.49998 6.00001 4.67917 6.00001 3.66665C6.00001 2.65412 5.1792 1.83331 4.16668 1.83331C3.15415 1.83331 2.33334 2.65412 2.33334 3.66665C2.33334 4.67917 3.15415 5.49998 4.16668 5.49998Z"
+                        stroke="#697072"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"

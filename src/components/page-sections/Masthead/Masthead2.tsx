@@ -76,7 +76,7 @@ const Masthead2 = ({ title, subTitle, image, googleReviews, trustPilotReviews }:
                     <SuitabilityLink />
                 </div>
 
-                <div className="grid max-h-[58.2rem] gap-4 xs:grid-cols-[minmax(23rem,_1fr)_1fr] lg:gap-6 xl:grid-rows-[1fr_auto] xl:gap-10">
+                <div className="grid gap-4 xs:grid-cols-[minmax(23rem,_1fr)_1fr] md:max-h-[58.2rem] lg:gap-6 xl:grid-rows-[1fr_auto] xl:gap-10">
                     <p className="grid rounded-primary border border-[#E6E7E8] p-4 font-latoMedium text-[1.8rem] leading-[2.8rem] tracking-wide text-[#061014E5] opacity-90 shadow-sm xl:place-items-center xl:p-10 xl:text-[3rem] xl:leading-[3.6rem]">
                         The average contact lens wearer uses over 20,000 litres of water, 82kg of plastic and spends 670
                         hours inserting and removing their contacts. Their vision correction would take 26 seconds and

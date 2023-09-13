@@ -1,14 +1,3 @@
-/**
- * Stop component until wordpress setup is done
- *
- * @returns {JSX.Element}
- */
-// const noComponent = () => {
-//     return <></>;
-// };
-//
-// export default noComponent;
-
 import { BreadCrumb } from '@/components/Breadcrumb';
 import Page from '@/components/Page';
 import { getCategories, getPageData, getPost } from '@/lib';
@@ -83,7 +72,7 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
  * @param {any} ctx
  * @returns {Promise<{props: {}}>}
  */
-export async function getServerSideProps(ctx: any) {
+export async function getServerSideProps(ctx: any): Promise<{ props: {} }> {
     try {
         const slug = ctx.query.slug;
         const post: PostInterface = await getPost(slug || '');
