@@ -15,7 +15,7 @@ import {
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
 import { offScreenSliderList } from '@/components/Slider/OffscreenSlider/offScreenSliderList';
 import { getPageData } from '@/lib';
-// import SurgerySection from '@/page-sections/HomePage/SurgerySection';
+import SurgerySection from '@/page-sections/HomePage/SurgerySection';
 import { galleryListHome } from '@/page-sections/ImageGallery';
 import { sliderListHome } from '@/page-sections/SectionParts/image-slider/sliderList';
 import UspSection from '@/page-sections/Usp/UspSection';
@@ -120,7 +120,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            {/* <SurgerySection /> */}
+            <SurgerySection />
 
             {/*  Private Eye */}
             <SideImageSection
