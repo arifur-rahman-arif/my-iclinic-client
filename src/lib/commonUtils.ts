@@ -29,7 +29,7 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
 
     return {
         ...data,
-        yoast_head: yoastHeadReplacement(data?.yoast_head),
+        yoast_head: yoastHeadReplacement(data?.yoast_head?.replace(/http(?=:\/\/)/g, 'https')),
         yoast_head_json: {
             ...(data?.yoast_head_json || null),
             schema: replaceSchemaUrl(data?.yoast_head_json?.schema || null)
@@ -64,7 +64,12 @@ const yoastHeadReplacement = (headText: string) => {
  */
 const replaceSchemaUrl = (schema: any) => {
     if (!schema) return null;
-    return JSON.parse(JSON.stringify(schema).replaceAll(`${process.env.WP_URL}`, `${process.env.SITE_URL}`));
+
+    let stringifyData = JSON.stringify(schema);
+
+    stringifyData = stringifyData.replace(/http(?=:\/\/)/g, 'https');
+
+    return JSON.parse(JSON.stringify(stringifyData).replaceAll(`${process.env.WP_URL}`, `${process.env.SITE_URL}`));
 };
 
 /**

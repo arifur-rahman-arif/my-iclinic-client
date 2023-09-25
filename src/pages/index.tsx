@@ -160,7 +160,7 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `We have the latest vision correction treatments to achieve clear vision at all distances for all ages.`,
-                        `Book your <a href='/suitability-check' class='!text-white'>FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
+                        `Book your <a href="/suitability-check" class="!text-white">FREE suitability</a> check today to find out if you are suitable for our ReLEx SMILE, Presbyond, Implantable Contact Lenses or LASIK vision correction treatments.`
                     ]
                 }
                 containerClassName="md:!pl-[15rem]"
