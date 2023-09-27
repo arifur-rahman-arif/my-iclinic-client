@@ -76,6 +76,7 @@ export async function getServerSideProps(ctx: any): Promise<{ props: {} }> {
     try {
         const slug = ctx.query.slug;
         const post: PostInterface = await getPost(slug || '');
+
         const categories: BlogCategoriesInterface[] = await getCategories();
 
         const data: WpPageResponseInterface<any> = await getPageData({

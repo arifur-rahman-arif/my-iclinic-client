@@ -15,6 +15,7 @@ export interface GeneralBlogInterface {
     author?: {
         logo?: ImageType;
         name: string;
+        profile?: string;
     };
     title: string;
     categories?: BlogCategoriesInterface[];

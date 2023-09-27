@@ -42,7 +42,7 @@ const BlogRelatedCard = ({
                 />
             </div>
             <div className="grid content-start gap-6 py-6">
-                <BlogAuthor author={author} />
+                <BlogAuthor author={author} excludeLink={true} />
 
                 <span className="overflow-hidden overflow-ellipsis whitespace-nowrap font-mulishBold text-[2rem] leading-[2.4rem]">
                     {title}

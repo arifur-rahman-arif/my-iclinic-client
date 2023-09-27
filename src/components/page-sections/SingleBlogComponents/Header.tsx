@@ -4,6 +4,7 @@ import { Section } from '@/components/Section';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { ImageType } from '@/types';
 import Image from 'next/image';
+import BlogAuthor from 'src/components/Card/BlogCard2/BlogAuthor';
 
 interface HeaderInterface {
     image: ImageType;
@@ -11,6 +12,7 @@ interface HeaderInterface {
     author?: {
         logo?: ImageType;
         name: string;
+        profile?: string;
     };
     readTime: string;
     views: number;
@@ -58,19 +60,19 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                     <div className="mt-12 flex flex-col items-center justify-between gap-12 md:flex-row">
                         {/* Blog meta data */}
                         <div className="flex items-center justify-start gap-6 text-[#697072]">
-                            <div className="flex items-center justify-start gap-4">
-                                <Image
-                                    src={author?.logo || '/images/logos/iclinic-rounded.png'}
-                                    width={author?.logo?.width || 32}
-                                    height={author?.logo?.height || 32}
-                                    alt=""
-                                    className="overflow-hidden rounded-full object-cover"
-                                />
-                                <span className="font-mulishBold text-[1.4rem] leading-8">
-                                    {author?.name || 'My Iclinic'}
-                                </span>
-                            </div>
-                            |{/* Post read time */}
+                            {/* <div className="flex items-center justify-start gap-4"> */}
+                            {/*     <Image */}
+                            {/*         src={author?.logo || '/images/logos/iclinic-rounded.png'} */}
+                            {/*         width={author?.logo?.width || 32} */}
+                            {/*         height={author?.logo?.height || 32} */}
+                            {/*         alt="" */}
+                            {/*         className="overflow-hidden rounded-full object-cover" */}
+                            {/*     /> */}
+                            {/*     <span className="font-mulishBold text-[1.4rem] leading-8"> */}
+                            {/*         {author?.name || 'My Iclinic'} */}
+                            {/*     </span> */}
+                            {/* </div> */}
+                            <BlogAuthor author={author} />|
                             <div
                                 className="flex items-center justify-start gap-4"
                                 title={`Reading Time: ${readTime || null}`}
