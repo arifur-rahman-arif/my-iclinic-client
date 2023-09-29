@@ -53,8 +53,6 @@ interface IclAProps {
 const IclA = ({ seo, yoastJson, data, iclTreatments }: IclAProps): JSX.Element => {
     return (
         <Page
-            seo={seo}
-            yoastJson={yoastJson}
             title="ICL Surgery Specialists in London - My-iClinic"
             description="Free yourself from glasses with Implantable Contact Lenses, an innovative alternative to laser eye surgery. Interest-free finance available!"
         >
