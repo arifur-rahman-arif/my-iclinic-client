@@ -24,13 +24,6 @@ const Context = ({ children }: PropInterface): JSX.Element => {
     const [navMenus, setNavMenus] = useState<NavMenuType[]>([
         ...navMenuList,
         {
-            name: 'Articles',
-            url: '/articles',
-            slug: 'articles',
-            subMenuOpen: false,
-            submenu: []
-        },
-        {
             name: 'About Us',
             url: '/about-us',
             slug: 'about-us',
@@ -57,6 +50,11 @@ const Context = ({ children }: PropInterface): JSX.Element => {
                     metaDescription: 'Understand your care journey with us'
                 }
             ]
+        },
+        {
+            name: 'Articles',
+            url: '/articles',
+            slug: 'articles'
         },
         {
             name: 'Contact Us',

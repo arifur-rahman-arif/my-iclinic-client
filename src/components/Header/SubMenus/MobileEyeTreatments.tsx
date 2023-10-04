@@ -1,97 +1,46 @@
-import { ReactNode } from 'react';
+import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
+import { NextRouter } from 'next/router';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { FaAngleRight } from 'react-icons/fa';
 
-export interface NavMenuType {
-    name: ReactNode;
-    url: string;
-    slug: string;
-    submenu?: NavMenuType[];
-    subMenuOpen?: boolean;
-    megaMenu?: boolean;
-    metaDescription?: string;
+interface SubmenuType {
+    active?: boolean;
+    name: string;
+    menus: Array<{
+        name: string;
+        url: string;
+        slug: string;
+        metaDescription: string;
+    }>;
 }
 
-export const navMenuList: NavMenuType[] = [
-    {
-        name: 'EVO ICL',
-        url: '/icl',
-        slug: 'icl'
-    },
-    {
-        name: 'Cataract',
-        url: '/cataract',
-        slug: 'cataract',
-        subMenuOpen: false,
-        submenu: [
+interface MobileEyeTreatmentsProps {
+    router: NextRouter;
+    submenus?: SubmenuType[];
+    setOpenMobileMenu?: Dispatch<SetStateAction<boolean>> | undefined;
+}
+
+/**
+ * MobileEyeTreatments is a React component that displays a mobile-friendly list of eye treatment options
+ * with collapsible submenus.
+ *
+ * @param {Object} props - The component's props.
+ * @param {Object} props.router - The router object used for navigation.
+ * @param {Array} props.submenus - An array of submenu data containing treatment options.
+ * @param {function} props.setOpenMobileMenu - A function to control the mobile menu state.
+ * @returns {JSX.Element} A React JSX element representing the mobile eye treatments component.
+ */
+const MobileEyeTreatments = ({
+    router,
+    submenus: propSubmenus,
+    setOpenMobileMenu
+}: MobileEyeTreatmentsProps): JSX.Element => {
+    const [submenus, setSubmenus] = useState<SubmenuType[]>(
+        propSubmenus || [
             {
-                name: 'Cataract surgery',
-                url: '/cataract',
-                slug: 'cataract',
-                metaDescription: 'Cataract Surgery Made Easy.'
-            },
-            {
-                name: 'Freedom from glasses after cataract surgery',
-                url: '/cataract/premium-lenses',
-                slug: 'cataract/premium-lenses',
-                metaDescription: 'Lenses Inside, Vision Outside.'
-            },
-            {
-                name: 'YAG capsulotomy for PCO',
-                url: '/cataract/yag-capsulotomy-for-pco',
-                slug: 'cataract/yag-capsulotomy-for-pco',
-                metaDescription: 'Discover a clear future'
-            }
-        ]
-    },
-    {
-        name: 'Laser eye surgery',
-        url: '/vision-correction',
-        slug: 'vision-correction',
-        subMenuOpen: false,
-        submenu: [
-            {
-                name: 'ReLEx SMILE',
-                url: '/relex-smile-london',
-                slug: 'relex-smile-london',
-                metaDescription: 'Smile, See Clearly: Relex.'
-            },
-            {
-                name: 'Implantable Contact Lenses',
-                url: '/icl',
-                slug: 'icl',
-                metaDescription: 'Lenses Inside, Vision Outside.'
-            },
-            {
-                name: 'Presbyond',
-                url: '/presbyond-london',
-                slug: 'presbyond-london',
-                metaDescription: 'Liberating Vision Beyond Presbyopia.'
-            },
-            {
-                name: 'LASIK',
-                url: '/lasik-london',
-                slug: 'lasik-london',
-                metaDescription: 'Life in Focus.'
-            },
-            {
-                name: 'LASEK, PRK, PTK',
-                url: '/lasek-prk',
-                slug: 'lasek-prk',
-                metaDescription: 'Refine Your Vision.'
-            }
-        ]
-    },
-    {
-        name: 'Eye Treatments',
-        url: '/eye-treatments',
-        slug: 'eye-treatments',
-        subMenuOpen: false,
-        megaMenu: true,
-        submenu: [
-            {
+                active: true,
                 name: 'Eye conditions',
-                url: '/other-eye-conditions',
-                slug: 'other-eye-conditions',
-                submenu: [
+                menus: [
                     {
                         name: 'Astigmatism',
                         url: '/astigmatism-treatment',
@@ -132,9 +81,7 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: 'Corneal diseases & treatments',
-                url: '/corneal-diseases-treatments',
-                slug: 'corneal-diseases-treatments',
-                submenu: [
+                menus: [
                     {
                         name: 'Corneal Treatments',
                         url: '/corneal-treatments',
@@ -157,9 +104,7 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: "Children's Eyes",
-                url: '/childrens-eyes',
-                slug: 'childrens-eyes',
-                submenu: [
+                menus: [
                     {
                         name: 'Myopia Control',
                         url: '/myopia',
@@ -178,9 +123,7 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: 'Glaucoma care',
-                url: '/glaucoma-treatment',
-                slug: 'glaucoma-treatment',
-                submenu: [
+                menus: [
                     {
                         name: 'Glaucoma Care clinic',
                         url: '/glaucoma-treatment',
@@ -192,9 +135,7 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: 'Eyelid surgery',
-                url: '/eyelid-surgery-london',
-                slug: 'eyelid-surgery-london',
-                submenu: [
+                menus: [
                     {
                         name: 'Eyelid Surgery (cosmetic & medical treatments)',
                         url: '/eyelid-surgery-london',
@@ -206,9 +147,7 @@ export const navMenuList: NavMenuType[] = [
             },
             {
                 name: 'Macular diseases & treatments',
-                url: '/macular-diseases-treatments',
-                slug: 'macular-diseases-treatments',
-                submenu: [
+                menus: [
                     {
                         name: 'Macular degeneration',
                         url: '/macular-degeneration',
@@ -219,46 +158,77 @@ export const navMenuList: NavMenuType[] = [
                 ]
             }
         ]
-    },
-    {
-        name: 'Pricing & Financing',
-        url: '/pricing-and-financing',
-        slug: 'pricing-and-financing',
-        subMenuOpen: false,
-        submenu: [
-            {
-                name: 'Our prices',
-                url: '/pricing-and-financing/our-prices',
-                slug: 'pricing-and-financing/our-prices',
-                metaDescription: 'Our private consultation and treatment prices'
-            },
-            {
-                name: 'Financing your treatment',
-                url: '/pricing-and-financing/financing-your-treatment',
-                slug: 'pricing-and-financing/financing-your-treatment',
-                metaDescription: 'Let the cost of clear vision make sense'
-            }
-        ]
-    },
-    {
-        name: 'Our Specialists',
-        url: '/our-specialists',
-        slug: 'our-specialists',
-        subMenuOpen: false,
-        submenu: [
-            {
-                name: 'Our specialist team',
-                url: '/our-specialists',
-                slug: 'our-specialists',
-                metaDescription:
-                    'Our commitment to the highest possible care standards are reflected in the dedicated practice from our care specialists.'
-            },
-            {
-                name: 'Our eye diagnostics & technology',
-                url: '/our-specialists/our-eye-diagnostics-technology',
-                slug: 'our-specialists/our-eye-diagnostics-technology',
-                metaDescription: 'My-iClinic diagnostics center for vision testing & optometry practice.'
-            }
-        ]
-    }
-];
+    );
+
+    /**
+     * Handles a click event on a submenu item, toggling its active state and deactivating other submenus.
+     *
+     * @param {number} index - The index of the clicked submenu item.
+     */
+    const handleClick = (index: number) => {
+        setSubmenus((prevState) => {
+            return prevState.map((treatment, i) => {
+                if (index === i) {
+                    // Toggle the active property for the clicked submenu
+                    return {
+                        ...treatment,
+                        active: !treatment.active
+                    };
+                } else {
+                    // Deactivate other submenu items
+                    return {
+                        ...treatment,
+                        active: false
+                    };
+                }
+            });
+        });
+    };
+
+    return (
+        <div className="grid">
+            {submenus.map((menu, key) => (
+                <div key={key} className="relative cursor-pointer py-6 px-6">
+                    <div
+                        className="relative z-[2] flex items-center justify-start gap-4  transition-all duration-500"
+                        onClick={() => {
+                            handleClick(key);
+                        }}
+                    >
+                        <span
+                            className={`h-[1.4rem] w-[1.4rem] rounded-full border-[0.3rem] border-solid border-white bg-[#0052A0] transition-all duration-500 ${
+                                menu.active && 'bg-white'
+                            }`}
+                        ></span>
+                        <strong className="text-[1.6rem] text-white">{menu.name}</strong>
+                        <FaAngleRight
+                            className={`h-6 w-6 -translate-x-2 translate-y-[0.1rem] fill-white transition-all duration-1000 ${
+                                menu.active ? 'rotate-90' : 'rotate-0'
+                            }`}
+                        />
+                    </div>
+
+                    <div
+                        className={`grid max-h-0 gap-4 overflow-hidden transition-all duration-1000 ${
+                            menu.active && 'max-h-[100rem]'
+                        }`}
+                    >
+                        <div className="mt-6 grid">
+                            {menu.menus?.map((menu, i) => (
+                                <SubMenuLink
+                                    {...menu}
+                                    isActive={router.pathname === menu.url}
+                                    key={i}
+                                    className="pr-0 first:pt-10 last:pb-10"
+                                    setOpenMobileMenu={setOpenMobileMenu}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+export default MobileEyeTreatments;

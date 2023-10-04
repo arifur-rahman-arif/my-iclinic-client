@@ -1,20 +1,15 @@
-import ComponentLoader from '@/components/ComponentLoader';
 import { AppContextInterface, AppCtx } from '@/components/Header/Context';
-import { InnerAppContext, MobileNavbarContext } from '@/components/Header/MobileNavbar/MobileNavbar';
 import { NavMenuType } from '@/components/Header/navMenuList';
-import { Articles } from '@/components/Header/SubMenus/Articles';
-import { SubMenu } from '@/components/Header/SubMenus/Cataract';
+import MobileEyeTreatments from '@/components/Header/SubMenus/MobileEyeTreatments';
+import OurSpecialistsMobile from '@/components/Header/SubMenus/OurSpecialists/OurSpecialistsMobile';
 import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
-import { LinkStyle } from '@/components/Link';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
-import { Dispatch, SetStateAction, useContext } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
-import EyeTreatments from '../SubMenus/EyeTreatments/EyeTreatments';
-import OurSpecialists from '../SubMenus/OurSpecialists/OurSpecialists';
-import PricingFinancing from '../SubMenus/PricingFinancing/PricingFinancing';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
 
-interface NavMenuProps {}
+interface NavMenuProps {
+    setOpenMobileMenu: Dispatch<SetStateAction<boolean>>;
+}
 
 /**
  * Navigation menu component
@@ -22,96 +17,167 @@ interface NavMenuProps {}
  * @returns {JSX.Element}
  * @constructor
  */
-const NavMenu = ({}: NavMenuProps): JSX.Element => {
+const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
     const router = useRouter();
     const appCtx: AppContextInterface | null = useContext(AppCtx);
-    const innerAppCtx: InnerAppContext | null = useContext(MobileNavbarContext);
+    // const innerAppCtx: InnerAppContext | null = useContext(MobileNavbarContext);
 
     return (
-        <div className="mobile-navbar px-6">
+        <div className="px-6">
             <ul className="grid w-full content-start justify-items-start">
                 {appCtx?.navMenus.map((menu: NavMenuType, index) => (
-                    <li
-                        key={index}
-                        className="leading-16 min-h-16 block w-full cursor-pointer py-6"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            menu.submenu && appCtx?.toggleSubmenu({ index });
-                        }}
-                    >
-                        {/* Parent menus */}
+                    <li key={index} className="leading-16 block w-full cursor-pointer">
                         <ParentMenuItem
                             menu={menu}
                             router={router}
-                            setOpenMobileMenu={innerAppCtx?.setOpenMobileMenu}
+                            setOpenMobileMenu={setOpenMobileMenu}
+                            index={index}
+                            appCtx={appCtx}
                         />
 
                         {/* Submenus */}
                         {menu.submenu && (
                             <div
-                                className={`mb-1 grid max-h-0 gap-4 overflow-hidden transition-all duration-500 ${
-                                    menu.subMenuOpen && 'mt-8 max-h-[200rem]'
+                                className={`grid max-h-0 gap-4 overflow-hidden transition-all duration-1000 ${
+                                    menu.subMenuOpen && 'max-h-[100rem]'
                                 }`}
                             >
                                 {menu.slug === 'cataract' && (
-                                    <SubMenu
-                                        router={router}
-                                        submenu={menu.submenu}
-                                        subMenuTitle="Cataract"
-                                        blogsTitle="More about cataract surgery"
-                                        posts={innerAppCtx?.navMenuData?.cataractPosts}
-                                    />
-                                )}
-                                {menu.slug === 'vision-correction' && (
-                                    <SubMenu
-                                        router={router}
-                                        submenu={menu.submenu}
-                                        subMenuTitle="Vision correction"
-                                        blogsTitle="More about vision correction"
-                                        posts={innerAppCtx?.navMenuData?.surgeryPosts}
-                                    />
-                                )}
-                                {menu.slug === 'eye-treatments' && (
-                                    <EyeTreatments router={router} submenu={menu.submenu} />
-                                )}
-                                {menu.slug === 'our-specialists' && (
-                                    <OurSpecialists router={router} submenu={menu.submenu} />
-                                )}
-                                {menu.slug === 'pricing-and-financing' && (
-                                    <PricingFinancing
-                                        router={router}
-                                        submenu={menu.submenu}
-                                        posts={innerAppCtx?.navMenuData?.iclinicPosts}
-                                    />
-                                )}
-                                {menu.slug === 'articles' && (
-                                    <div className="grid gap-12">
-                                        {innerAppCtx?.navMenuData.articles ? (
-                                            <Articles articlesData={innerAppCtx?.navMenuData.articles} />
-                                        ) : (
-                                            <ComponentLoader />
-                                        )}
-                                        <div className="flex items-center justify-center gap-2">
-                                            <LinkStyle
-                                                url="/articles"
-                                                className="justify-self-center font-mulishBold !text-[1.6rem] leading-8"
-                                                onClick={() => {
-                                                    innerAppCtx?.setOpenMobileMenu(false);
-                                                }}
-                                            >
-                                                View full articles lists
-                                            </LinkStyle>
-                                            <FaArrowRight className="h-6 w-6 translate-y-[0.1rem] fill-blue" />
-                                        </div>
-                                    </div>
-                                )}
-                                {menu.slug === 'about-us' && (
-                                    <div className="grid content-start gap-4">
+                                    <div className="mt-4 grid">
                                         {menu.submenu?.map((menu, i) => (
-                                            <SubMenuLink {...menu} isActive={router.pathname === menu.url} key={i} />
+                                            <SubMenuLink
+                                                {...menu}
+                                                isActive={router.pathname === menu.url}
+                                                key={i}
+                                                className="first:pt-8 last:pb-8"
+                                                setOpenMobileMenu={setOpenMobileMenu}
+                                            />
                                         ))}
                                     </div>
+                                )}
+                                {menu.slug === 'vision-correction' && (
+                                    <div className="mt-4 grid">
+                                        {menu.submenu?.map((menu, i) => (
+                                            <SubMenuLink
+                                                {...menu}
+                                                isActive={router.pathname === menu.url}
+                                                key={i}
+                                                className="first:pt-8 last:pb-8"
+                                                setOpenMobileMenu={setOpenMobileMenu}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                                {menu.slug === 'eye-treatments' && (
+                                    <MobileEyeTreatments router={router} setOpenMobileMenu={setOpenMobileMenu} />
+                                )}
+
+                                {menu.slug === 'pricing-and-financing' && (
+                                    <MobileEyeTreatments
+                                        setOpenMobileMenu={setOpenMobileMenu}
+                                        router={router}
+                                        submenus={[
+                                            {
+                                                active: true,
+                                                name: 'Consultation prices',
+                                                menus: [
+                                                    {
+                                                        name: 'Our prices',
+                                                        url: '/pricing-and-financing/our-prices',
+                                                        slug: 'pricing-and-financing/our-prices',
+                                                        metaDescription: 'Our private consultation and treatment prices'
+                                                    },
+                                                    {
+                                                        name: 'Financing your treatment',
+                                                        url: '/pricing-and-financing/financing-your-treatment',
+                                                        slug: 'pricing-and-financing/financing-your-treatment',
+                                                        metaDescription: 'Let the cost of clear vision make sense'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                name: 'Insurance partners & finance',
+                                                menus: [
+                                                    {
+                                                        name: 'Our health insurance partners',
+                                                        url: '/pricing-and-financing/financing-your-treatment#insurance',
+                                                        slug: 'our-health-insurance-partners',
+                                                        metaDescription:
+                                                            'Fund your treatment with our health insurance partners'
+                                                    },
+                                                    {
+                                                        name: 'Finance calculator',
+                                                        url: '/pricing-and-financing/financing-your-treatment#calculator',
+                                                        slug: 'our-health-insurance-partners',
+                                                        metaDescription: '24 month finance option'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                name: 'Treatment prices',
+                                                menus: [
+                                                    {
+                                                        name: 'Cataract surgery cost',
+                                                        url: '/cataract/price',
+                                                        slug: 'cataract-surgery-cost',
+                                                        metaDescription:
+                                                            'Save you an average of £1,000 for your cataract treatment'
+                                                    },
+                                                    {
+                                                        name: 'ReLEx SMILE treatments cost',
+                                                        url: '/relex-smile-london/price',
+                                                        slug: 'relex-smile-treatments-cost',
+                                                        metaDescription:
+                                                            'ReLEx SMILE laser eye surgery is a new vision correction treatment to fix short-sightedness, blurriness & astigmatism. Learn more about fixing your vision with our treatments.'
+                                                    },
+                                                    {
+                                                        name: 'Presbyond treatments cost',
+                                                        url: '/presbyond-london/price',
+                                                        slug: 'presbyond-treatments-cost',
+                                                        metaDescription: 'Save an average of £1,000'
+                                                    },
+                                                    {
+                                                        name: 'Glaucoma surgery cost',
+                                                        url: '/glaucoma-treatment/price',
+                                                        slug: 'glaucoma-surgery-cost',
+                                                        metaDescription: 'Glaucoma treatment and management cost London'
+                                                    },
+                                                    {
+                                                        name: 'Myopia Treatment cost',
+                                                        url: '/myopia/price',
+                                                        slug: 'myopia-treatment-cost',
+                                                        metaDescription:
+                                                            'Myopia control management & treatment cost London'
+                                                    },
+                                                    {
+                                                        name: 'YAG laser capsulotomy surgery cost',
+                                                        url: '/cataract/yag-capsulotomy-for-pco/price',
+                                                        slug: 'yag-capsulotomy-for-pco',
+                                                        metaDescription:
+                                                            'A comprehensive consultation and YAG laser treatment'
+                                                    }
+                                                ]
+                                            }
+                                        ]}
+                                    />
+                                )}
+
+                                {menu.slug === 'about-us' && (
+                                    <div className="mt-4 grid">
+                                        {menu.submenu?.map((menu, i) => (
+                                            <SubMenuLink
+                                                {...menu}
+                                                isActive={router.pathname === menu.url}
+                                                key={i}
+                                                className="first:pt-8 last:pb-8"
+                                                setOpenMobileMenu={setOpenMobileMenu}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+
+                                {menu.slug === 'our-specialists' && (
+                                    <OurSpecialistsMobile router={router} setOpenMobileMenu={setOpenMobileMenu} />
                                 )}
                             </div>
                         )}
@@ -128,26 +194,38 @@ interface ParentMenuItemProps {
     menu: NavMenuType;
     router: NextRouter;
     setOpenMobileMenu: Dispatch<SetStateAction<boolean>> | undefined;
+    appCtx: AppContextInterface;
+    index: number;
 }
 
 /**
  * Parent menu item component
  *
  * @param {NavMenuType} menu
- * @param {boolean} isMenuActive
+ * @param {NextRouter} router
+ * @param {Dispatch<SetStateAction<boolean>> | undefined} setOpenMobileMenu
+ * @param {AppContextInterface} appCtx
+ * @param {number} index
  * @returns {JSX.Element}
  * @constructor
  */
-const ParentMenuItem = ({ menu, router, setOpenMobileMenu }: ParentMenuItemProps) => {
+const ParentMenuItem = ({ menu, router, setOpenMobileMenu, appCtx, index }: ParentMenuItemProps): JSX.Element => {
     const isMenuActive = router.pathname === menu.url;
 
     return (
-        <span className="flex items-center justify-between gap-2">
+        <span
+            className="flex items-center justify-between gap-2 py-6"
+            onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.submenu && appCtx?.toggleSubmenu({ index });
+            }}
+        >
             {menu.submenu ? (
                 <>
                     <span
-                        className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
-                            isMenuActive && 'text-[#9B9FA1]'
+                        className={`font-mulishBold text-[1.6rem] capitalize leading-8 ${
+                            isMenuActive ? 'text-[#09F]' : 'text-white'
                         }`}
                     >
                         {menu.name}
@@ -165,7 +243,7 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu }: ParentMenuItemProps
                     >
                         <path
                             d="M1 1L7 7L13 1"
-                            stroke="#222D30"
+                            stroke="#fff"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -178,15 +256,15 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu }: ParentMenuItemProps
             ) : (
                 <Link
                     href={menu.url}
-                    className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
-                        isMenuActive && 'text-[#9B9FA1]'
+                    className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 ${
+                        isMenuActive ? 'text-[#09F]' : 'text-white'
                     }`}
                     onClick={() => setOpenMobileMenu && setOpenMobileMenu(false)}
                 >
                     {menu.name}
 
                     {isMenuActive && (
-                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
                     )}
                 </Link>
             )}

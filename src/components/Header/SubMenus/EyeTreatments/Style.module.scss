@@ -1,0 +1,28 @@
+.styles {
+  :global {
+	.active {
+	  @for $i from 1 through 8 {
+		.mega-menu-link:nth-child(#{$i}) {
+		  animation-delay: ($i - 1) * 0.1s;
+		}
+	  }
+	  
+	  .mega-menu-link {
+		&:local {
+		  animation: revealAnimation 800ms ease-in-out forwards;
+		}
+	  }
+	}
+  }
+  
+  @keyframes revealAnimation {
+	from {
+	  transform: translateY(2rem);
+	  opacity: 0;
+	}
+	to {
+	  transform: translateY(0);
+	  opacity: 1;
+	}
+  }
+}

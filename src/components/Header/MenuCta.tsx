@@ -1,11 +1,12 @@
-import { Container } from '@/components/Container';
 import { BookConsultation } from '@/page-sections/index';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
-import Image from 'next/image';
+import Link from 'next/link';
 import { Dispatch, SetStateAction } from 'react';
+import { HiOutlineArrowSmRight } from 'react-icons/hi';
 
 interface MenuCtaProps {
     setOpenMobileMenu?: Dispatch<SetStateAction<boolean>>;
+    className?: string;
+    centerText?: boolean;
 }
 
 /**
@@ -14,28 +15,48 @@ interface MenuCtaProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
+const MenuCta = ({ setOpenMobileMenu, className, centerText }: MenuCtaProps): JSX.Element => {
     return (
-        <div className="h-[6.7rem] w-full bg-[#003C5526]">
-            <Container className="flex h-full items-center justify-center gap-6 !px-4 sm:justify-start sm:gap-12 xl:!px-0">
-                <button
-                    className="flex -translate-y-2 cursor-pointer items-center justify-start gap-2 transition-all duration-500 hover:opacity-40 sm:gap-4"
+        <div className={`${className} grid`}>
+            <div className="bg-[#0099FF] px-14 py-6">
+                <Link
+                    href="/pricing-and-financing/financing-your-treatment"
+                    className={`flex items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
+                        centerText ? 'justify-center' : 'justify-start'
+                    }`}
                     onClick={() => {
+                        const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
+
+                        parentMenus.forEach((element: HTMLElement | null) => {
+                            if (element) {
+                                element.style.pointerEvents = 'none';
+
+                                setTimeout(() => {
+                                    element.style.pointerEvents = 'auto';
+                                }, 1000);
+                            }
+                        });
+
                         setOpenMobileMenu && setOpenMobileMenu(false);
-                        openFreshdeskChat();
                     }}
                 >
-                    <Image
-                        src="/images/icons/icon-chat-dark.svg"
-                        alt=""
-                        width={24}
-                        height={24}
-                        className="h-[2.4rem] w-[2.4rem]"
-                    />
-                    <span className="font-latoExtraBold text-[1.4rem] leading-8 line-clamp-1">Chat with us</span>
-                </button>
-                <span className="h-10 w-[0.1rem] bg-[#9B9FA1]"></span>
+                    0% Finance
+                    <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
+                        <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
+                    </span>
+                </Link>
+            </div>
+
+            <div
+                className="bg-[#0052A0] px-14 py-6"
+                onClick={() => {
+                    setOpenMobileMenu && setOpenMobileMenu(false);
+                }}
+            >
                 <BookConsultation
+                    buttonClassName={`flex w-full items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
+                        centerText ? 'justify-center' : 'justify-start'
+                    }`}
                     modalElement={
                         <>
                             <iframe
@@ -47,23 +68,15 @@ const MenuCta = ({ setOpenMobileMenu }: MenuCtaProps): JSX.Element => {
                         </>
                     }
                     maxWidth="70rem"
-                    buttonClassName="flex h-full cursor-pointer items-start justify-start gap-2 sm:gap-4 transition-all duration-500 hover:opacity-40"
                 >
                     <button>
-                        <Image
-                            src="/images/icons/icon-calendar-outline-darker.svg"
-                            alt=""
-                            width={24}
-                            height={24}
-                            className="h-[2.4rem] w-[2.4rem] translate-y-2"
-                        />
-                        <span className="text-left font-latoExtraBold text-[1.4rem] leading-8 line-clamp-2">
-                            Book a free consultation
-                            <br /> for vision correction
+                        Free screening
+                        <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
+                            <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
                         </span>
                     </button>
                 </BookConsultation>
-            </Container>
+            </div>
         </div>
     );
 };

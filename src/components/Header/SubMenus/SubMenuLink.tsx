@@ -1,13 +1,15 @@
-import { InnerAppContext, MobileNavbarContext } from '@/components/Header/MobileNavbar/MobileNavbar';
 import { NavMenuType } from '@/components/Header/navMenuList';
 import Link from 'next/link';
-import { ReactNode, useContext } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface SubMenuLinkProps extends NavMenuType {
     url: string;
     name: ReactNode;
     isActive: boolean;
     metaDescription?: string;
+    className?: string;
+    setOpenMobileMenu?: Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 /**
@@ -17,24 +19,24 @@ interface SubMenuLinkProps extends NavMenuType {
  * @param {string} name
  * @param {boolean} isActive
  * @param {string | undefined} metaDescription
+ * @param {string | undefined} className
+ * @param {Dispatch<SetStateAction<boolean>> | undefined} setOpenMobileMenu
  * @returns {JSX.Element}
  * @constructor
  */
-const SubMenuLink = ({ url, name, isActive, metaDescription }: SubMenuLinkProps): JSX.Element => {
-    // Context will be provided only for mobile menu
-    const context = useContext(MobileNavbarContext);
-    let innerAppCtx: InnerAppContext | null;
-    if (context !== undefined) {
-        innerAppCtx = context;
-    }
-
+const SubMenuLink = ({
+    url,
+    name,
+    isActive,
+    metaDescription,
+    className,
+    setOpenMobileMenu
+}: SubMenuLinkProps): JSX.Element => {
     return (
         <Link
             href={url}
             title={name as string}
-            className={`grid max-w-[38rem] cursor-pointer gap-2 border-l py-6 pr-6 transition-all duration-500 hover:border-heading2 hover:bg-[#D9E2E566] hover:pl-6 ${
-                isActive ? 'border-heading2 bg-[#D9E2E566] pl-6' : 'border-l-transparent'
-            }`}
+            className={twMerge('group/submenu-link relative px-10 py-10 first:pt-12 last:pb-12', className)}
             onClick={() => {
                 const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
 
@@ -48,13 +50,28 @@ const SubMenuLink = ({ url, name, isActive, metaDescription }: SubMenuLinkProps)
                     }
                 });
 
-                innerAppCtx?.setOpenMobileMenu(false);
+                setOpenMobileMenu && setOpenMobileMenu(false);
             }}
         >
-            <strong className="text-[1.6rem] leading-8 xl:text-[1.8rem]">{name}</strong>
-            <span className="block font-mulishMedium text-[1.4rem] leading-8 text-[#51585B] line-clamp-1">
-                {metaDescription ||
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}
+            <span
+                className={twMerge(
+                    'absolute left-0 bottom-0 h-[0.2rem] w-full bg-[#005DAF] transition-all duration-1000 group-hover/submenu-link:h-full',
+                    isActive && 'h-full'
+                )}
+            ></span>
+
+            <span className="relative z-[2] grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
+                <span
+                    className={twMerge(
+                        'h-[1.4rem] w-[1.4rem] translate-y-[0.5rem] rounded-full border-[0.3rem] border-solid border-white bg-[#0052A0] transition-all duration-500 group-hover/submenu-link:bg-white xl:h-[1.6rem] xl:w-[1.6rem] xl:translate-y-1',
+                        isActive && 'bg-white'
+                    )}
+                ></span>
+                <span className="font-mulishBold text-white">{name}</span>
+                <span className="col-start-2 block font-mulishMedium text-[#D1E8FE] line-clamp-1">
+                    {metaDescription ||
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}
+                </span>
             </span>
         </Link>
     );

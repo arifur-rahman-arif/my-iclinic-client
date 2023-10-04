@@ -36,7 +36,8 @@ module.exports = {
                 latoExtraBold: 'var(--lato-extra-bold)'
             },
             borderRadius: {
-                primary: 'var(--border-radius)'
+                primary: 'var(--border-radius)',
+                radius2: 'var(--border-radius2)'
             },
             boxShadow: {
                 'shadow1': 'var(--shadow1)',

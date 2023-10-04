@@ -2,6 +2,7 @@ import { FontResizer } from '@/components/FontResizer';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { AlertInterface } from '@/features/alert/alertSlice';
+import BottomMenu from '@/page-sections/BottomMenu/BottomMenu';
 import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
@@ -9,9 +10,6 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Alert = dynamic(() => import('@/components/Alert/Alert'));
-const BottomMenu = dynamic(() => import('@/components/page-sections/BottomMenu/BottomMenu'), {
-    ssr: false
-});
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
 
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
