@@ -29,7 +29,7 @@ interface LinkInterface {
 const LinkText = ({
     href,
     className,
-    defaultClassName = 'font-mulishMedium text-[1.6rem] md:text-[1.7rem] leading-[2.4rem] relative inline-block',
+    defaultClassName = 'font-mulishMedium text-[1.6rem] leading-[2.4rem] relative inline-block',
     indicatorColor,
     children,
     onClick,

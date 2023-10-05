@@ -19,7 +19,7 @@ interface FooterProps {
  */
 const Footer = ({ excludeFooterHeader, excludeFooterLinks }: FooterProps): JSX.Element => {
     return (
-        <footer className="mt-20 w-full bg-[#063147] pb-44 sm:mt-36 sm:pb-16 md:pb-28 lg:mt-40">
+        <footer className="mt-20 w-full bg-[#003E79] pb-44 sm:mt-36 sm:pb-16 md:pb-28 lg:mt-40">
             {!excludeFooterHeader ? (
                 <LazyComponent>
                     <FooterHeader />

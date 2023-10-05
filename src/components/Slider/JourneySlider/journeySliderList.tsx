@@ -5,7 +5,7 @@ export interface SliderListInterface
 
 export const journeySliderListHome: SliderListInterface[] = [
     {
-        title: 'Begin your care Journey',
+        title: 'Begin your care journey',
         list: [
             'Easy booking with our patient care liaison',
             'Accessible resources available from our specialists',

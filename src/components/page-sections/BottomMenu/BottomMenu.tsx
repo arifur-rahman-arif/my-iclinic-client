@@ -1,6 +1,7 @@
 import IconTelephoneOutline from '/public/images/icons/icon-call-outgoing.svg';
 import IconConsultation from '/public/images/icons/icon-free-consullt.svg';
 import IconMapOutline from '/public/images/icons/icon-map-pin-darker.svg';
+import { useOnclickOutside } from '@/hooks';
 import IconChat from '@/icons/icon-chat-outline-blue-bg.svg';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
@@ -29,6 +30,11 @@ const BottomMenu = (): JSX.Element => {
         }
     });
 
+    // // Close the navigation submenus if users clicks outside the navigation menu
+    const ref = useOnclickOutside(() => {
+        setShowDropDown(false);
+    });
+
     return (
         <div
             className={`fixed bottom-0 left-0 z-10 h-32 w-full bg-white py-12 px-8 sm:px-12 xl:hidden ${
@@ -43,7 +49,7 @@ const BottomMenu = (): JSX.Element => {
                     <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">Chat</span>
                 </li>
 
-                <li className={`relative cursor-pointer`}>
+                <li className={`relative cursor-pointer`} ref={ref}>
                     <button
                         className={`grid place-items-center gap-2 transition-all duration-500 ${
                             showDropDown && 'opacity-50'

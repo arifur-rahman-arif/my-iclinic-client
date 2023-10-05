@@ -18,7 +18,7 @@ interface SliderProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const Slider = ({ sliderList }: SliderProps) => {
+const Slider = ({ sliderList }: SliderProps): JSX.Element => {
     const swiperRef = useRef<SwiperRef | null>(null);
     const { onEnter } = useOnScreen({ ref: swiperRef, repeat: true });
     const { onLeave } = useOnScreen({ ref: swiperRef, triggerPosition: '40%', repeat: true });
@@ -38,8 +38,6 @@ const Slider = ({ sliderList }: SliderProps) => {
         } else {
             swiperRef.current?.swiper.autoplay.stop();
         }
-
-        // SwiperRef.current?.swiper.autoplay.stop();
     }, [onEnter, onLeave]);
 
     return (
@@ -47,11 +45,14 @@ const Slider = ({ sliderList }: SliderProps) => {
             effect="fade"
             autoplay={{
                 delay: 5000,
-                disableOnInteraction: false
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
             }}
             autoHeight={true}
             speed={800}
             navigation={true}
+            grabCursor={false}
+            allowTouchMove={false}
             modules={[EffectFade, Navigation, Autoplay]}
             className={`${styles.style} ${styles.fadeIn} ${styles.offScreenSlider} ${styles.journeySlider}`}
             ref={swiperRef}

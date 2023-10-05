@@ -55,7 +55,7 @@ const Header = (): JSX.Element => {
             )}
             <header
                 ref={headerRef}
-                className="sticky top-0 left-0 z-[99] mb-8 w-full bg-white shadow-md transition-all duration-500 xl:mb-12 xl:shadow-none"
+                className="sticky top-0 left-0 z-[99] w-full bg-white shadow-md transition-all duration-500 xl:shadow-none"
             >
                 <TopBar setOpenSearch={setOpenSearch} />
 

@@ -49,7 +49,7 @@ const Button2 = ({
     disabled = false,
     mockDisabled = false,
     className,
-    defaultClassName = 'grid cursor-pointer text-white grid-flow-col place-items-center gap-4 whitespace-nowrap rounded-primary border-2 border-brand bg-brand py-6 px-6 font-latoBold text-[1.6rem] capitalize outline-0 transition-all duration-500 focus-within:border-2 hover:bg-white focus:border-2 focus:border-brand hover:text-brand hover:shadow-shadow1 focus-visible:border-2 sm:px-8',
+    defaultClassName = 'grid cursor-pointer text-white grid-flow-col place-items-center gap-4 whitespace-nowrap rounded-[0.5rem] border-2 border-[#003E79] bg-[#003E79] py-6 px-6 font-latoBold text-[1.6rem] outline-0 transition-all duration-500 focus-within:border-2 hover:bg-white focus:border-2 focus:border-[#003E79] hover:text-[#003E79] hover:shadow-shadow1 focus-visible:border-2 sm:px-8',
     onClick,
     ...other
 }: ButtonInterface): JSX.Element => {
@@ -59,7 +59,7 @@ const Button2 = ({
     return (
         <>
             {type === 'anchor' && (
-                <Link href={link || '#'} className={`${defaultClassName} ${className}`} {...other}>
+                <Link href={link || '#'} className={twMerge(defaultClassName, className)} {...other}>
                     {iconPosition === 'left' && Icon}
                     {text || ''}
                     {iconPosition === 'right' && Icon}
@@ -69,7 +69,7 @@ const Button2 = ({
             {type === 'phone' && (
                 <a
                     href={`tel:${text}`}
-                    className={`${defaultClassName} ${className}`}
+                    className={twMerge(defaultClassName, className)}
                     onMouseEnter={() => {
                         hoverIcon && setShowHoverIcon(true);
                     }}

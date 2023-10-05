@@ -1,5 +1,6 @@
 import { LinkText } from '@/components/Link';
 import { MouseEvent, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface LinkStyleInterface {
     url?: string;
@@ -19,8 +20,8 @@ const LinkStyle = ({ url, children, excludeAnimation, className, onClick }: Link
     return (
         <LinkText
             href={url || '#'}
-            indicatorColor="bg-blue"
-            className={`font-mulishBold font-extrabold text-blue ${className}`}
+            indicatorColor="bg-[#09F]"
+            className={twMerge('font-mulishBold font-extrabold text-[#09F]', className)}
             excludeAnimation={excludeAnimation}
             onClick={onClick}
         >

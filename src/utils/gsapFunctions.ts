@@ -10,7 +10,7 @@ export const barAnimation = () => {
     if (document.querySelectorAll('.bar-animation-inactive').length) {
         gsap.to('.bar-animation-inactive', {
             width: '0%',
-            duration: 0.4,
+            duration: 0.8,
             overwrite: true
         });
     }

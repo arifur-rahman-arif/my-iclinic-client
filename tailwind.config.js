@@ -45,7 +45,7 @@ module.exports = {
                 'shadow3': 'var(--shadow3)'
             },
             screens: {
-                'xs': '380px'
+                'xs': '400px'
             }
         }
     },

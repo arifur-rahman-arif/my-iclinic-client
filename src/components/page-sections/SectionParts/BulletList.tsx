@@ -1,5 +1,6 @@
 import { BulletPoint } from '@/components/page-sections';
 import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface BulletListInterface {
     list: ReactNode[];
@@ -27,7 +28,7 @@ const BulletList = ({
     bulletPoint
 }: BulletListInterface): JSX.Element => {
     return (
-        <ul className={`${defaultClassName} ${className}`}>
+        <ul className={twMerge(defaultClassName, className)}>
             {list.map((item, index) => (
                 <li className={`grid grid-cols-[auto_1fr] gap-4 ${listClassName}`} key={index}>
                     {bulletPoint ? bulletPoint : <BulletPoint />}
