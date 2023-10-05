@@ -53,16 +53,16 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
             if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
         }, 2500);
     }, [deviceSize]);
-    const priceSection: any = data?.myopia_price ?
-        data?.myopia_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: HTMLReactParser(service?.priceDescription)
-            };
-        }) :
-        null;
+    const priceSection: any = data?.myopia_price
+        ? data?.myopia_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: HTMLReactParser(service?.priceDescription)
+              };
+          })
+        : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
@@ -101,7 +101,7 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                 }}
                 descriptions={
                     (data?.section_1?.descriptions?.length &&
-                         stringArrayToElementArray(data?.section_1?.descriptions)) || [
+                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
                         "We can provide Atropine treatment and management check ups to monitor your child's eye health with our private Myopia specialist in London."
                     ]
                 }
@@ -137,7 +137,6 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                             inform the clinic
                             <strong className="text-brand">72 hours before your appointment time</strong> to ensure you
                             do not lose your appointment fee.
-
                         </>,
                         'Any cancellations that are not communicated before after our 72 hour period policy is subject to be held by the clinic and any new appointment will need to be booked again.'
                     ]
@@ -200,12 +199,12 @@ export async function getStaticProps() {
                         ...data?.acf?.section_3
                     },
                     myopia_price: Array.isArray(data?.acf?.myopia_price)
-                    ? data?.acf.myopia_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
+                        ? data?.acf.myopia_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : []
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

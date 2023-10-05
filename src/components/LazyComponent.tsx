@@ -14,8 +14,7 @@ interface LazyComponentInterface {
 const Fallback = (): JSX.Element => {
     return (
         <div className="mt-24 grid w-full place-items-center sm:mt-36 lg:mt-48">
-            <span
-                className="mx-auto justify-self-center bg-brandLight px-12 py-6 font-mulishBold text-secondary shadow-shadow1">
+            <span className="mx-auto justify-self-center bg-brandLight px-12 py-6 font-mulishBold text-secondary shadow-shadow1">
                 Please wait. Section loading...
             </span>
         </div>
@@ -34,7 +33,7 @@ const LazyComponent = ({ children, triggerPosition }: LazyComponentInterface): J
 
     return (
         <div ref={divRef} className="w-full">
-            <Suspense fallback={<Fallback/>}>{onEnter && children}</Suspense>
+            <Suspense fallback={<Fallback />}>{onEnter && children}</Suspense>
         </div>
     );
 };

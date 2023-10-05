@@ -98,11 +98,11 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
         }, 2500);
     }, [deviceSize]);
 
-    const serviceList: any = Array.isArray(data?.section_3) ?
-        data?.section_3.map((service) => {
-            return {
-                ...service,
-                mobileImage: (
+    const serviceList: any = Array.isArray(data?.section_3)
+        ? data?.section_3.map((service) => {
+              return {
+                  ...service,
+                  mobileImage: (
                       <Image
                           src={service.mobileImage?.url || ''}
                           width={390}
@@ -111,8 +111,8 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                           className="md:hidden"
                           alt={service.mobileImage?.alt || ''}
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={service.desktopImage?.url || ''}
                           width={685}
@@ -121,29 +121,29 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                           className="hidden md:block md:scale-90 2xl:scale-100"
                           alt={service.desktopImage?.alt || ''}
                       />
-                ),
-                descriptions: stringArrayToElementArray(service.descriptions),
-                excludeNumbers: true
-            };
-        }) :
-        null;
+                  ),
+                  descriptions: stringArrayToElementArray(service.descriptions),
+                  excludeNumbers: true
+              };
+          })
+        : null;
 
-    const glaucomaServices: any = Array.isArray(data?.section_6) ?
-        data?.section_6.map((service) => {
-            const returnObject = {
-                ...service,
-                alternativeHeading: service?.alternativeHeading ? (
+    const glaucomaServices: any = Array.isArray(data?.section_6)
+        ? data?.section_6.map((service) => {
+              const returnObject = {
+                  ...service,
+                  alternativeHeading: service?.alternativeHeading ? (
                       <H3Variant3>{service.alternativeHeading}</H3Variant3>
-                ) : (
+                  ) : (
                       <></>
-                ),
-                descriptions: stringArrayToElementArray(service.descriptions)
-            };
+                  ),
+                  descriptions: stringArrayToElementArray(service.descriptions)
+              };
 
-            if (service.mobileImage.url || service.desktopImage?.url) {
-                return {
-                    ...returnObject,
-                    mobileImage: (
+              if (service.mobileImage.url || service.desktopImage?.url) {
+                  return {
+                      ...returnObject,
+                      mobileImage: (
                           <Image
                               src={service.mobileImage.url}
                               width={390}
@@ -152,8 +152,8 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                               className="md:hidden"
                               alt={service.mobileImage?.alt || ''}
                           />
-                    ),
-                    desktopImage: (
+                      ),
+                      desktopImage: (
                           <Image
                               src={service.desktopImage.url}
                               width={685}
@@ -162,23 +162,23 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                               className="hidden md:block md:scale-90 2xl:scale-100"
                               alt={service.desktopImage?.alt || ''}
                           />
-                    )
-                };
-            } else if (service.lottieComponent) {
-                return {
-                    ...returnObject,
-                    lottieComponent: <LottieComponent animationData={GlaucomaTrabeculectomyLottie} loop={false} />
-                };
-            } else {
-                return {
-                    ...returnObject,
-                    dynamicMediaColumn: (
+                      )
+                  };
+              } else if (service.lottieComponent) {
+                  return {
+                      ...returnObject,
+                      lottieComponent: <LottieComponent animationData={GlaucomaTrabeculectomyLottie} loop={false} />
+                  };
+              } else {
+                  return {
+                      ...returnObject,
+                      dynamicMediaColumn: (
                           <VideoColumn poster={service?.video?.poster} source={service?.video?.source} />
-                    )
-                };
-            }
-        }) :
-        null;
+                      )
+                  };
+              }
+          })
+        : null;
 
     return (
         <Page

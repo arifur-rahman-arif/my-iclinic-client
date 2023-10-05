@@ -105,13 +105,13 @@ const PointCounter = ({ eye, node }: PointCounterProps): JSX.Element => {
                 </button>
 
                 <span className="font-mulishBold text-[2rem] leading-[2.4rem] text-white">
-                    {eye === 'leftEye' ?
-                        ctx.eyePrescription.sphere.leftEye === null ?
-                            '----' :
-                            prependSign(ctx.eyePrescription.sphere.leftEye) :
-                        ctx.eyePrescription.sphere.rightEye === null ?
-                            '----' :
-                            prependSign(ctx.eyePrescription.sphere.rightEye)}
+                    {eye === 'leftEye'
+                        ? ctx.eyePrescription.sphere.leftEye === null
+                            ? '----'
+                            : prependSign(ctx.eyePrescription.sphere.leftEye)
+                        : ctx.eyePrescription.sphere.rightEye === null
+                        ? '----'
+                        : prependSign(ctx.eyePrescription.sphere.rightEye)}
                 </span>
 
                 <button

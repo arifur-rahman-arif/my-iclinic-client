@@ -48,8 +48,8 @@ const TabHeadings = (): JSX.Element => {
 
     return (
         <div className="flex flex-col items-center justify-items-center gap-8 sm:flex-row md:gap-24">
-            {appCtx?.tabs ?
-                appCtx.tabs.map((tab, index) => (
+            {appCtx?.tabs
+                ? appCtx.tabs.map((tab, index) => (
                       <button
                           key={index}
                           className={`grid gap-4 font-latoBold text-[1.8rem] leading-[2.8rem] transition-all duration-500 md:text-[2.4rem] md:leading-[3.2rem] ${
@@ -66,8 +66,8 @@ const TabHeadings = (): JSX.Element => {
                               }`}
                           ></span>
                       </button>
-                )) :
-                null}
+                  ))
+                : null}
         </div>
     );
 };

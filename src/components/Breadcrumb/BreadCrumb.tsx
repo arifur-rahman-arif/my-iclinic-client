@@ -7,6 +7,7 @@ import IconHome from './IconHome';
 
 interface BreadCrumbProps {
     className?: string;
+    textClassName?: string;
 }
 
 const NestedRoutes = dynamic(() => import('./NestedRoutes'), {
@@ -18,7 +19,7 @@ const NestedRoutes = dynamic(() => import('./NestedRoutes'), {
  *
  * @returns {*}  {JSX.Element}
  */
-const BreadCrumb = ({ className }: BreadCrumbProps): JSX.Element => {
+const BreadCrumb = ({ className, textClassName }: BreadCrumbProps): JSX.Element => {
     const router = useRouter();
 
     return (
@@ -43,7 +44,7 @@ const BreadCrumb = ({ className }: BreadCrumbProps): JSX.Element => {
                 </Link>
             )}
 
-            <NestedRoutes router={router} />
+            <NestedRoutes router={router} textClassName={textClassName} />
         </Container>
     );
 };

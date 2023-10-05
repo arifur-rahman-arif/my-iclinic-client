@@ -218,9 +218,9 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
                                 title={tab.label}
                                 onClick={() => handleTabClick(index)}
                                 className={`${
-                                    tab.active ?
-                                        'border-[#003C55] bg-[#CCD8DD] text-[#003C55]' :
-                                        'border-transparent text-[#9B9FA1] hover:text-[#003C55]'
+                                    tab.active
+                                        ? 'border-[#003C55] bg-[#CCD8DD] text-[#003C55]'
+                                        : 'border-transparent text-[#9B9FA1] hover:text-[#003C55]'
                                 }  whitespace-nowrap rounded-[6rem] border-2 px-8 py-4 font-mulishBold transition-all duration-500 md:py-6 md:px-10 md:text-[2rem] md:leading-[2.8rem]`}
                             >
                                 {tab.label}

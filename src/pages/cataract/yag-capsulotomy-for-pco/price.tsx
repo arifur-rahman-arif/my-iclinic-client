@@ -39,51 +39,50 @@ interface IclPricingProps {
  * @returns {JSX.Element}
  */
 export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): JSX.Element {
-    const heading = data?.masthead_heading ||'YAG laser Capsulotomy surgery cost London';
-    const subheading = data?.masthead_subheading ||'data?.masthead_heading ||Save an average of £1,000';
+    const heading = data?.masthead_heading || 'YAG laser Capsulotomy surgery cost London';
+    const subheading = data?.masthead_subheading || 'data?.masthead_heading ||Save an average of £1,000';
 
-
-    const priceSection: any = data?.lsk_price ?
-        data?.lsk_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: service?.priceDescription
-            };
-        }) :
-        null;
+    const priceSection: any = data?.lsk_price
+        ? data?.lsk_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: service?.priceDescription
+              };
+          })
+        : null;
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
             <Masthead
-                imageSmall={data?.masthead_image?.image?.url ||MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url ||MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url ||MastheadImageLarge}
+                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
+                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
+                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
-                priceText={ data?.masthead_price || '£395 per eye'}
+                priceText={data?.masthead_price || '£395 per eye'}
             />
 
             <SideImageSection
-                h2Heading={ data?.section_1?.sub_heading || 'Your consultation'}
+                h2Heading={data?.section_1?.sub_heading || 'Your consultation'}
                 h3LightHeading={
                     <>
-                        {data?.section_1?.heading?.light_heading ||'What’s included in my'}
+                        {data?.section_1?.heading?.light_heading || 'What’s included in my'}
                         <br />
                     </>
                 }
-                h3BoldHeading={data?.section_1?.heading?.bold_heading ||'private consultation and treatment?'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image ||'/images/section-images/private-consultation-yag.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-yag.png',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image ||'/images/section-images/private-consultation-yag-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-yag-large.png',
                     width: 577,
                     height: 534
                 }}
@@ -92,11 +91,12 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 textColumnExtras={
                     <BulletList
                         className="!ml-0"
-                        list={ data?.section_1?.lists?.length &&
-                           stringArrayToElementArray(data?.section_1?.lists) || [
-                            'A comprehensive consultation and YAG laser treatment performed in our private laser suite with your dedicated specialist and our friendly team',
-                            'FREE aftercare appointments with your dedicated YAG laser specialist.'
-                        ]}
+                        list={
+                            (data?.section_1?.lists?.length && stringArrayToElementArray(data?.section_1?.lists)) || [
+                                'A comprehensive consultation and YAG laser treatment performed in our private laser suite with your dedicated specialist and our friendly team',
+                                'FREE aftercare appointments with your dedicated YAG laser specialist.'
+                            ]
+                        }
                     />
                 }
             />
@@ -113,10 +113,13 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
             />
 
             <FullWidthImageSection2
-                title={ data?.section_3?.title || 'The cost of YAG Laser capsulotomy couldn’t be easier!'}
-                description={ data?.section_3?.description || 'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'}
-                largeImage={ data?.section_3?.large_image || '/images/section-images/yag-capsulotomy-large.png'}
-                image={data?.section_3?.image ||'/images/section-images/yag-capsulotomy.png'}
+                title={data?.section_3?.title || 'The cost of YAG Laser capsulotomy couldn’t be easier!'}
+                description={
+                    data?.section_3?.description ||
+                    'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
+                }
+                largeImage={data?.section_3?.large_image || '/images/section-images/yag-capsulotomy-large.png'}
+                image={data?.section_3?.image || '/images/section-images/yag-capsulotomy.png'}
             />
 
             <CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
@@ -158,15 +161,15 @@ export async function getStaticProps() {
                         ...data?.acf?.section_4
                     },
                     smile_price: Array.isArray(data?.acf?.smile_price)
-                    ? data?.acf.smile_price.map((priceData) => {
-                          return {
-                              ...priceData,
-                          };
-                      })
-                    : [],
-                    speaktoteam:{
+                        ? data?.acf.smile_price.map((priceData) => {
+                              return {
+                                  ...priceData
+                              };
+                          })
+                        : [],
+                    speaktoteam: {
                         ...data?.acf?.speaktoteam
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

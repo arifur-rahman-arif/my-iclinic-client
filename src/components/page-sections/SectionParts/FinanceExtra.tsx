@@ -29,7 +29,7 @@ const FinanceExtra = ({ priceText, priceDescription, paragraphs, list }: Finance
                     </span>
                 )}
             </div>
-                      <>{ HTMLReactParser(paragraphs) }</>
+            <>{HTMLReactParser(paragraphs)}</>
             {/* {paragraphs?.map((paragraph, index) => (
                 <p className="mt-6" key={index}>
                     {paragraph}

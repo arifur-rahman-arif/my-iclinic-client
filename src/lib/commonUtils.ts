@@ -1,6 +1,8 @@
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 import { WpPageResponseInterface } from '@/types';
 import { getData } from '@/utils/apiHelpers';
 import { wordpressPageFields } from '@/utils/miscellaneous';
+
 import * as process from 'process';
 
 interface GetPageDataProps {

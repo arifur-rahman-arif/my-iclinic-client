@@ -64,27 +64,27 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
         }, 2500);
     }, [deviceSize]);
 
-    const crossListdata: any = data?.crossList ?
-        data?.crossList.map((item) => {
-            return {
-                ...item,
-                title: item?.title,
-                description: item?.descriptions?.length && stringArrayToElementArray(item?.descriptions)
-            };
-        }) :
-        null;
+    const crossListdata: any = data?.crossList
+        ? data?.crossList.map((item) => {
+              return {
+                  ...item,
+                  title: item?.title,
+                  description: item?.descriptions?.length && stringArrayToElementArray(item?.descriptions)
+              };
+          })
+        : null;
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    description: service?.description,
-                    name: service?.name,
-                    title: service?.title
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      description: service?.description,
+                      name: service?.name,
+                      title: service?.title
+                  };
+              })
+            : null;
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />

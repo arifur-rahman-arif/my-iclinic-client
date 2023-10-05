@@ -95,11 +95,11 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
     }, [deviceSize]);
 
     // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
                           width={390}
@@ -108,8 +108,8 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
                           width={695}
@@ -118,60 +118,60 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
+            : null;
 
     // laserSlider
     const laserSliderdata: any =
-        Array.isArray(data?.laserSlider) && data.laserSlider.length > 0 ?
-            data.laserSlider.map(
-                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
-                    return {
-                        ...service,
-                        image: {
-                            url: service?.image || '/images/section-images/laser-surgery-card.png',
-                            width: 329,
-                            height: 220
-                        },
-                        desktopImage: {
-                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                            width: 447,
-                            height: 349
-                        },
-                        boxWidth: '51.4rem',
-                        title: service?.title,
-                        descriptions: stringArrayToElementArray(service?.descriptions)
-                    };
-                }
-            ) :
-            null;
+        Array.isArray(data?.laserSlider) && data.laserSlider.length > 0
+            ? data.laserSlider.map(
+                  (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                      return {
+                          ...service,
+                          image: {
+                              url: service?.image || '/images/section-images/laser-surgery-card.png',
+                              width: 329,
+                              height: 220
+                          },
+                          desktopImage: {
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              width: 447,
+                              height: 349
+                          },
+                          boxWidth: '51.4rem',
+                          title: service?.title,
+                          descriptions: stringArrayToElementArray(service?.descriptions)
+                      };
+                  }
+              )
+            : null;
     /// /reviewimageSlider
     const reviewimageSliderdata: any =
-        Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0 ?
-            data.reviewimageSlider.map((service) => {
-                return {
-                    ...service,
-                    imageURL: service?.imageURL
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0
+            ? data.reviewimageSlider.map((service) => {
+                  return {
+                      ...service,
+                      imageURL: service?.imageURL
+                  };
+              })
+            : null;
 
     return (
         <Page

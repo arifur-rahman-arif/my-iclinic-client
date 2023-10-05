@@ -48,21 +48,21 @@ const ShareLinks = ({ className, disableLabel, whiteIcon, siteUrl }: ShareLinksP
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                     <path
                         d="M15.1667 7.33331C16.6253 7.33331 18.0243 7.91278 19.0557 8.94423C20.0872 9.97568 20.6667 11.3746 20.6667 12.8333V19.25H17V12.8333C17 12.3471 16.8068 11.8808 16.463 11.537C16.1192 11.1931 15.6529 11 15.1667 11C14.6804 11 14.2141 11.1931 13.8703 11.537C13.5265 11.8808 13.3333 12.3471 13.3333 12.8333V19.25H9.66666V12.8333C9.66666 11.3746 10.2461 9.97568 11.2776 8.94423C12.309 7.91278 13.708 7.33331 15.1667 7.33331Z"
-                        stroke="#697072"
+                        stroke="#fff"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
                     <path
                         d="M6.00001 8.25H2.33334V19.25H6.00001V8.25Z"
-                        stroke="#697072"
+                        stroke="#fff"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
                     <path
                         d="M4.16668 5.49998C5.1792 5.49998 6.00001 4.67917 6.00001 3.66665C6.00001 2.65412 5.1792 1.83331 4.16668 1.83331C3.15415 1.83331 2.33334 2.65412 2.33334 3.66665C2.33334 4.67917 3.15415 5.49998 4.16668 5.49998Z"
-                        stroke="#697072"
+                        stroke="#fff"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"

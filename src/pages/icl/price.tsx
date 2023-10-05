@@ -62,16 +62,16 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
         }, 2500);
     }, [deviceSize]);
 
-    const priceSection: any = data?.lsk_price ?
-        data?.lsk_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: HTMLReactParser(service?.priceDescription)
-            };
-        }) :
-        null;
+    const priceSection: any = data?.lsk_price
+        ? data?.lsk_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: HTMLReactParser(service?.priceDescription)
+              };
+          })
+        : null;
 
     return (
         <Page title="Implantable Contact Lens cost London" description="" seo={seo} yoastJson={yoastJson}>

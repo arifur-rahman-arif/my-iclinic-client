@@ -61,16 +61,16 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
         }, 2500);
     }, [deviceSize]);
 
-    const priceSection: any = data?.lsk_price ?
-        data?.lsk_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: HTMLReactParser(service?.priceDescription)
-            };
-        }) :
-        null;
+    const priceSection: any = data?.lsk_price
+        ? data?.lsk_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: HTMLReactParser(service?.priceDescription)
+              };
+          })
+        : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>

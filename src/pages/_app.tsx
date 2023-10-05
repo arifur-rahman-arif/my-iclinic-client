@@ -37,6 +37,11 @@ const muslishLight = Mulish({
     subsets: ['latin'],
     display: 'block'
 });
+const muslishRegular = Mulish({
+    weight: '400',
+    subsets: ['latin'],
+    display: 'block'
+});
 const muslishMedium = Mulish({
     weight: '500',
     subsets: ['latin'],
@@ -82,6 +87,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                     --lato-extra-bold: ${latoExtraBold.style.fontFamily};
 
                     --mulish-light: ${muslishLight.style.fontFamily};
+                    --mulish-regular: ${muslishRegular.style.fontFamily};
                     --mulish-medium: ${muslishMedium.style.fontFamily};
                     --mulish-bold: ${muslishBold.style.fontFamily};
                     --mulish-extra-bold: ${muslishExtraBold.style.fontFamily};

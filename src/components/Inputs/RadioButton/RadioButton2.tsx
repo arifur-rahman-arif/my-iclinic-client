@@ -129,8 +129,7 @@ const RadioButton2 = ({
                         <circle className="drop" cx="12" cy="12" r="2" />
                     </svg>
 
-                    <span
-                        className="selected-dot absolute top-1/2 left-1/2 block h-[1.2rem] w-[1.2rem] -translate-y-1/2 -translate-x-1/2 rounded-full bg-white"></span>
+                    <span className="selected-dot absolute top-1/2 left-1/2 block h-[1.2rem] w-[1.2rem] -translate-y-1/2 -translate-x-1/2 rounded-full bg-white"></span>
                 </div>
 
                 <span

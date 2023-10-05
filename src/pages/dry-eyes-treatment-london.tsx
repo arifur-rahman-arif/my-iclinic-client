@@ -66,12 +66,12 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
         }, 2500);
     }, [deviceSize]);
 
-    const section1Descriptions = data?.section_1?.descriptions?.length ?
-        data?.section_1?.descriptions :
-            [
-                'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
-                'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
-            ];
+    const section1Descriptions = data?.section_1?.descriptions?.length
+        ? data?.section_1?.descriptions
+        : [
+              'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
+              'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
+          ];
 
     return (
         <Page

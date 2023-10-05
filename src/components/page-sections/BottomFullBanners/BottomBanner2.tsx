@@ -51,7 +51,7 @@ const BottomBanner2 = ({
                     {/* Grid item 2 */}
                     <div className="grid md:py-24">
                         <span className="font-latoBold text-[2.4rem] leading-[3.6rem] md:text-[4rem] md:leading-[4rem]">
-                        {title}
+                            {title}
                         </span>
                         <p className="mt-6 font-mulishMedium text-[2rem] lowercase leading-[3.2rem] first-letter:uppercase md:max-w-[34.5rem]">
                             {subtitle}
@@ -70,9 +70,7 @@ const BottomBanner2 = ({
                         <p className="mt-6 font-mulishBold text-[2.4rem] lowercase leading-[2.8rem] first-letter:uppercase md:max-w-[34.8rem]">
                             {subheading}
                         </p>
-                        <p className="mt-6 font-mulishMedium text-[2rem] leading-[3rem]">
-                            {description}
-                        </p>
+                        <p className="mt-6 font-mulishMedium text-[2rem] leading-[3rem]">{description}</p>
                         <p className="mt-8 font-mulishBold uppercase leading-[3rem] text-heading2 md:mt-12">
                             {bestpriceline}
                         </p>

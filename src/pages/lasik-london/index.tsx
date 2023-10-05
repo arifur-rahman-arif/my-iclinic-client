@@ -100,11 +100,11 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
     }, [deviceSize]);
 
     // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
                           width={390}
@@ -113,8 +113,8 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
                           width={695}
@@ -123,60 +123,60 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     //
     const lasikSliderdata: any =
-        Array.isArray(data?.lasikSlider) && data.lasikSlider.length > 0 ?
-            data.lasikSlider.map(
-                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
-                    return {
-                        ...service,
-                        image: {
-                            url: service?.image || '/images/section-images/walking-into-room.png',
-                            width: 392,
-                            height: 256
-                        },
-                        desktopImage: {
-                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                            width: 447,
-                            height: 349
-                        },
-                        title: service?.title,
-                        descriptions: stringArrayToElementArray(service?.descriptions)
-                    };
-                }
-            ) :
-            null;
+        Array.isArray(data?.lasikSlider) && data.lasikSlider.length > 0
+            ? data.lasikSlider.map(
+                  (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                      return {
+                          ...service,
+                          image: {
+                              url: service?.image || '/images/section-images/walking-into-room.png',
+                              width: 392,
+                              height: 256
+                          },
+                          desktopImage: {
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              width: 447,
+                              height: 349
+                          },
+                          title: service?.title,
+                          descriptions: stringArrayToElementArray(service?.descriptions)
+                      };
+                  }
+              )
+            : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
+            : null;
 
     /// /reviewimageSlider
     const reviewimageSliderdata: any =
-        Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0 ?
-            data.reviewimageSlider.map((service) => {
-                return {
-                    ...service,
-                    imageURL: service?.imageURL
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0
+            ? data.reviewimageSlider.map((service) => {
+                  return {
+                      ...service,
+                      imageURL: service?.imageURL
+                  };
+              })
+            : null;
 
     return (
         <Page

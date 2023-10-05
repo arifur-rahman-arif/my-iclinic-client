@@ -35,8 +35,7 @@ const ProgressMenu = ({ percentage }: ProgressMenuProps) => {
     return (
         <div className="grid place-items-center gap-6">
             <span className="font-mulishBold uppercase text-white">Your progress</span>
-            <div
-                className="relative flex h-[16.2rem] w-[16.2rem] items-center justify-center overflow-hidden rounded-full bg-[#EDEEEF]">
+            <div className="relative flex h-[16.2rem] w-[16.2rem] items-center justify-center overflow-hidden rounded-full bg-[#EDEEEF]">
                 <div className="relative z-[2] grid h-[12.5rem] w-[12.5rem] place-items-center rounded-full bg-white">
                     <span className="font-mulishBold text-[2rem] leading-[2.4rem]">{percentage}%</span>
                 </div>

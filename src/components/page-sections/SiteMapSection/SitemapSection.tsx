@@ -89,8 +89,8 @@ const TabHeadings = ({ tabs, setTabs }: TabHeadingsI): JSX.Element => {
 
     return (
         <div className="flex items-center justify-items-center gap-12 md:gap-24">
-            {tabs ?
-                tabs.map((tab, index) => (
+            {tabs
+                ? tabs.map((tab, index) => (
                       <button
                           key={index}
                           className={`grid gap-4 font-latoBold text-[1.8rem] leading-[2.8rem] transition-all duration-500 md:text-[2.4rem] md:leading-[3.2rem] ${
@@ -107,8 +107,8 @@ const TabHeadings = ({ tabs, setTabs }: TabHeadingsI): JSX.Element => {
                               }`}
                           ></span>
                       </button>
-                )) :
-                null}
+                  ))
+                : null}
         </div>
     );
 };
@@ -130,8 +130,8 @@ interface SiteMapLinkProps {
 const SiteMapLink = ({ list }: SiteMapLinkProps) => {
     return (
         <div className="grid content-start justify-items-start gap-8">
-            {list.length ?
-                list.map((item, index) => (
+            {list.length
+                ? list.map((item, index) => (
                       <Link
                           href={item.url || '#'}
                           className="group/category sitemap-link flex items-center justify-start gap-3"
@@ -142,8 +142,8 @@ const SiteMapLink = ({ list }: SiteMapLinkProps) => {
                               {item.name}
                           </span>
                       </Link>
-                )) :
-                null}
+                  ))
+                : null}
         </div>
     );
 };

@@ -69,11 +69,11 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
     }, [deviceSize]);
 
     //   LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
                           width={390}
@@ -82,8 +82,8 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
                           width={695}
@@ -92,19 +92,19 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     // leftRightsection2
-    const leftRightsection2data = data?.leftRightsection2 ?
-        data.leftRightsection2.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsection2data = data?.leftRightsection2
+        ? data.leftRightsection2.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
                           width={390}
@@ -113,8 +113,8 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
                           width={695}
@@ -123,26 +123,26 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                alternativeHeading: <PaediatricHeading />,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  alternativeHeading: <PaediatricHeading />,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
+            : null;
 
     return (
         <Page

@@ -27,6 +27,7 @@ module.exports = {
             },
             fontFamily: {
                 mulishLight: 'var(--mulish-light)',
+                mulishRegular: 'var(--mulish-regular)',
                 mulishMedium: 'var(--mulish-medium)',
                 mulishBold: 'var(--mulish-bold)',
                 mulishExtraBold: 'var(--mulish-extra-bold)',

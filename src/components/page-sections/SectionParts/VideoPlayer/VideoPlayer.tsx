@@ -49,13 +49,13 @@ const VideoPlayer = ({ videoUrl, videoPoster, localPoster, className }: VideoPla
                 className
             )}
         >
-            <div className="overflow-hidden rounded-primary lg:rounded-primary">
+            <div className="h-full overflow-hidden rounded-primary lg:rounded-primary">
                 <video
                     ref={videoPlayer}
                     playsInline
                     controls
                     data-poster={localPoster || `https://img.youtube.com/vi/${videoPoster}/maxresdefault.jpg`}
-                    className="xl:min-w-[75rem]"
+                    className="h-full xl:min-w-[75rem]"
                 >
                     <source src={videoUrl} type="video/mp4" />
                 </video>

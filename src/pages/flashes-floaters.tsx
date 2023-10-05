@@ -68,16 +68,16 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
 
     // j reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    description: service?.description,
-                    name: service?.name,
-                    title: service?.title
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      description: service?.description,
+                      name: service?.name,
+                      title: service?.title
+                  };
+              })
+            : null;
     return (
         <Page
             title="Eye Flashes & Floaters Treatment in London"

@@ -190,7 +190,7 @@ export const formatNumberWithComma = (number: number | null): string => {
  * Split a full name into first name & last name
  *
  * @param {string} fullName
- * @returns {[string, string] | ""}
+ * @returns {[string, string] | ''}
  */
 export const splitName = (fullName: string): [string, string] => {
     if (!fullName) return ['', ''];

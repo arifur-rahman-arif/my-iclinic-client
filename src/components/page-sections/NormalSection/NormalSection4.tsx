@@ -44,9 +44,7 @@ const NormalSection4 = ({
                     <strong>{title}</strong>
                 </h2>
                 <div className="grid items-center justify-center gap-6">
-                    <p className="text-center">
-                        {description}
-                    </p>
+                    <p className="text-center">{description}</p>
                 </div>
             </Container>
         </Section>

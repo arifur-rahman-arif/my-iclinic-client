@@ -96,11 +96,11 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
     }, [deviceSize]);
 
     // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
                           width={390}
@@ -109,8 +109,8 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
                           width={695}
@@ -119,44 +119,44 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     // MyclinicSlider
     const clinicSliderdata: any =
-        Array.isArray(data?.clinicSlider) && data.clinicSlider.length > 0 ?
-            data.clinicSlider.map(
-                (service: { desktopimage: any; title: any; descriptions: string[] | undefined }) => {
-                    return {
-                        ...service,
-                        desktopImage: {
-                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                            width: 447,
-                            height: 349
-                        },
-                        title: service?.title,
-                        descriptions: stringArrayToElementArray(service?.descriptions)
-                    };
-                }
-            ) :
-            null;
+        Array.isArray(data?.clinicSlider) && data.clinicSlider.length > 0
+            ? data.clinicSlider.map(
+                  (service: { desktopimage: any; title: any; descriptions: string[] | undefined }) => {
+                      return {
+                          ...service,
+                          desktopImage: {
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              width: 447,
+                              height: 349
+                          },
+                          title: service?.title,
+                          descriptions: stringArrayToElementArray(service?.descriptions)
+                      };
+                  }
+              )
+            : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
+            : null;
     return (
         <Page
             title="Laser Eye Surgery Specialists in London"

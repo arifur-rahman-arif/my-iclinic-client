@@ -61,16 +61,16 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
         }, 2500);
     }, [deviceSize]);
 
-    const priceSection: any = data?.relex_smile_price ?
-        data?.relex_smile_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: service?.priceDescription
-            };
-        }) :
-        null;
+    const priceSection: any = data?.relex_smile_price
+        ? data?.relex_smile_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: service?.priceDescription
+              };
+          })
+        : null;
 
     return (
         <Page

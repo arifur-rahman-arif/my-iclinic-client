@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { Fragment } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface NestedRoutesProps {
     router: NextRouter;
+    textClassName?: string;
 }
 
 /**
@@ -16,7 +18,7 @@ interface NestedRoutesProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const NestedRoutes = ({ router }: NestedRoutesProps): JSX.Element => {
+const NestedRoutes = ({ router, textClassName }: NestedRoutesProps): JSX.Element => {
     const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing', '/laser-eye-surgery'];
     const paths = generateBreadcrumbs(router);
 
@@ -30,9 +32,12 @@ const NestedRoutes = ({ router }: NestedRoutesProps): JSX.Element => {
 
                             <Link href={!excludeUrls.includes(path.url) ? path.url : '/'} className="no-underline">
                                 <span
-                                    className={`whitespace-nowrap font-mulishBold text-[1.2rem] capitalize leading-[1.6rem] md:text-[1.5rem] ${
-                                        index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
-                                    }`}
+                                    className={twMerge(
+                                        `whitespace-nowrap font-mulishBold text-[1.2rem] capitalize leading-[1.6rem] md:text-[1.5rem] ${
+                                            index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
+                                        }`,
+                                        textClassName
+                                    )}
                                 >
                                     {path.name}
                                 </span>

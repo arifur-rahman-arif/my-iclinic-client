@@ -113,9 +113,9 @@ const FinanceCalculator = (): JSX.Element => {
 
     return (
         <>
-            {ctx.treatmentList.length ?
-                ctx.treatmentList.map((treatment, index) => {
-                    return (
+            {ctx.treatmentList.length
+                ? ctx.treatmentList.map((treatment, index) => {
+                      return (
                           <div className="relative grid" key={index}>
                               {showAlert && (
                                   <div
@@ -134,9 +134,9 @@ const FinanceCalculator = (): JSX.Element => {
                                   <ResultColumn {...{ index, setShowAlert, setAlertMessages }} />
                               </div>
                           </div>
-                    );
-                }) :
-                null}
+                      );
+                  })
+                : null}
         </>
     );
 };

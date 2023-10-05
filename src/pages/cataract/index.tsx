@@ -84,11 +84,11 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
     }, [deviceSize]);
 
     // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
                           width={390}
@@ -97,8 +97,8 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
                           width={695}
@@ -107,40 +107,40 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0 ?
-            data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            }) :
-            null;
+        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+            ? data.reviewSlider.map((service) => {
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
+            : null;
     const InfoCardsdata =
-        Array.isArray(data?.InfoCards) && data.InfoCards.length > 0 ?
-            data.InfoCards.map(
-                (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
-                    return {
-                        image: {
-                            url: service.image || '/images/section-images/card-improved-vision.png'
-                        },
-                        title: service.title || 'Improved Vision',
-                        description: service.content?.length ? service.content : undefined,
-                        list: service.bulletpoints?.length ? service.bulletpoints : undefined
-                    };
-                }
-            ) :
-            null;
+        Array.isArray(data?.InfoCards) && data.InfoCards.length > 0
+            ? data.InfoCards.map(
+                  (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
+                      return {
+                          image: {
+                              url: service.image || '/images/section-images/card-improved-vision.png'
+                          },
+                          title: service.title || 'Improved Vision',
+                          description: service.content?.length ? service.content : undefined,
+                          list: service.bulletpoints?.length ? service.bulletpoints : undefined
+                      };
+                  }
+              )
+            : null;
 
     return (
         <Page title="Cataract" description="We’re here to make cataract surgery easy" seo={seo} yoastJson={yoastJson}>

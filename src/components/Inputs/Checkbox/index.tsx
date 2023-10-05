@@ -33,16 +33,7 @@ interface RadioButtonProps {
  * }
  * @returns {*}  {JSX.Element}
  */
-const Checkbox = ({
-    label,
-    id,
-    value,
-    name,
-    checked,
-    onChange,
-    className,
-    labelClassName
-}: RadioButtonProps) => {
+const Checkbox = ({ label, id, value, name, checked, onChange, className, labelClassName }: RadioButtonProps) => {
     return (
         <div className={styles.styles}>
             <label htmlFor={id} className={twMerge('flex items-center justify-start gap-4', className)}>
@@ -67,7 +58,10 @@ const Checkbox = ({
                     </svg>
                 </span>
                 <span
-                    className={twMerge('font-mulishBold text-[1.6rem] leading-8 md:text-[1.8rem] md:leading-[2.8rem]', labelClassName)}
+                    className={twMerge(
+                        'font-mulishBold text-[1.6rem] leading-8 md:text-[1.8rem] md:leading-[2.8rem]',
+                        labelClassName
+                    )}
                 >
                     {label}
                 </span>

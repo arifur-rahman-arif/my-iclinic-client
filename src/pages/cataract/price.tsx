@@ -59,16 +59,16 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
         }, 2500);
     }, [deviceSize]);
 
-    const priceSection: any = data?.lsk_price ?
-        data?.lsk_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: service?.priceDescription
-            };
-        }) :
-        null;
+    const priceSection: any = data?.lsk_price
+        ? data?.lsk_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: service?.priceDescription
+              };
+          })
+        : null;
 
     return (
         <Page
@@ -113,27 +113,27 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p className="">
-                                {data?.section_1?.bullet_1 ?
-                                    HTMLReactParser(data?.section_1?.bullet_1) :
-                                    `A comprehensive consultation with your dedicated cataract specialist (inclusive of all
+                                {data?.section_1?.bullet_1
+                                    ? HTMLReactParser(data?.section_1?.bullet_1)
+                                    : `A comprehensive consultation with your dedicated cataract specialist (inclusive of all
                                 eye assessment and eye scans)`}
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p className="">
-                                {data?.section_1?.bullet_2 ?
-                                    HTMLReactParser(data?.section_1?.bullet_2) :
-                                    `Your cataract treatment was performed in our private theater with your dedicated
+                                {data?.section_1?.bullet_2
+                                    ? HTMLReactParser(data?.section_1?.bullet_2)
+                                    : `Your cataract treatment was performed in our private theater with your dedicated
                                 specialist and our friendly team.`}
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p className="">
-                                {data?.section_1?.bullet_3 ?
-                                    HTMLReactParser(data?.section_1?.bullet_3) :
-                                    `FREE aftercare appointments with your dedicated cataract specialist (inclusive of eye
+                                {data?.section_1?.bullet_3
+                                    ? HTMLReactParser(data?.section_1?.bullet_3)
+                                    : `FREE aftercare appointments with your dedicated cataract specialist (inclusive of eye
                                 assessments and eye scans).`}
                             </p>
                         </li>
@@ -174,18 +174,18 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p>
-                                {data?.section_2?.bullet_1 ?
-                                    HTMLReactParser(data?.section_2?.bullet_1) :
-                                    `It's always best to check with your <strong>healthcare insurance provider</strong> that
+                                {data?.section_2?.bullet_1
+                                    ? HTMLReactParser(data?.section_2?.bullet_1)
+                                    : `It's always best to check with your <strong>healthcare insurance provider</strong> that
                                 they will cover your fees and produce a <strong>pre-authorisation code</strong> for you.`}
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
                             <BulletPoint />
                             <p>
-                                {data?.section_2?.bullet_2 ?
-                                    HTMLReactParser(data?.section_2?.bullet_2) :
-                                    `We will require your <strong>pre-authorization code</strong> before your consultation
+                                {data?.section_2?.bullet_2
+                                    ? HTMLReactParser(data?.section_2?.bullet_2)
+                                    : `We will require your <strong>pre-authorization code</strong> before your consultation
                                 and cataract surgery.`}
                             </p>
                         </li>

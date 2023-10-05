@@ -36,9 +36,8 @@ const packageList: GlaucomaPackageInterface[] = [
     }
 ];
 
-
 interface GlaucomaPackages2Props {
-    datapackList: GlaucomaPackageInterface[]
+    datapackList: GlaucomaPackageInterface[];
 }
 
 /**
@@ -47,7 +46,7 @@ interface GlaucomaPackages2Props {
  * @returns {JSX.Element}
  * @constructor
  */
-const GlaucomaPackages2 = ( { datapackList }: GlaucomaPackages2Props ): JSX.Element => {
+const GlaucomaPackages2 = ({ datapackList }: GlaucomaPackages2Props): JSX.Element => {
     return (
         <Section>
             <Container className="grid gap-12 md:gap-32">
@@ -63,10 +62,11 @@ const GlaucomaPackages2 = ( { datapackList }: GlaucomaPackages2Props ): JSX.Elem
                 />
 
                 <div className="grid max-w-[95rem] gap-12 md:ml-14 md:gap-28">
-                    {(datapackList?.length && datapackList || packageList).map((item: JSX.IntrinsicAttributes
-                     & GlaucomaPackageInterface, index: Key | null | undefined) => (
-                        <Package {...item} key={index} />
-                    ))}
+                    {((datapackList?.length && datapackList) || packageList).map(
+                        (item: JSX.IntrinsicAttributes & GlaucomaPackageInterface, index: Key | null | undefined) => (
+                            <Package {...item} key={index} />
+                        )
+                    )}
                 </div>
             </Container>
         </Section>

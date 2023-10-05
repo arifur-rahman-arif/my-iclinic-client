@@ -88,11 +88,11 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
         }, 2500);
     }, [deviceSize]);
 
-    const serviceList: any = data?.section_2.length ?
-        data?.section_2.map((service) => {
-            return {
-                ...service,
-                mobileImage: (
+    const serviceList: any = data?.section_2.length
+        ? data?.section_2.map((service) => {
+              return {
+                  ...service,
+                  mobileImage: (
                       <Image
                           src={service.mobileImage?.url || ''}
                           width={390}
@@ -101,8 +101,8 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                           className="md:hidden"
                           alt={service.mobileImage?.alt || ''}
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={service.desktopImage?.url || ''}
                           width={685}
@@ -111,11 +111,11 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                           className="hidden md:block md:scale-90 2xl:scale-100"
                           alt={service.desktopImage?.alt || ''}
                       />
-                ),
-                descriptions: stringArrayToElementArray(service.descriptions)
-            };
-        }) :
-        null;
+                  ),
+                  descriptions: stringArrayToElementArray(service.descriptions)
+              };
+          })
+        : null;
 
     return (
         <Page

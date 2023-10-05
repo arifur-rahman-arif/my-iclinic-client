@@ -63,16 +63,16 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
         }, 2500);
     }, [deviceSize]);
 
-    const priceSection: any = data?.smile_price ?
-        data?.smile_price.map((service) => {
-            return {
-                ...service,
-                price: service?.price,
-                priceText: service?.priceText,
-                priceDescription: service?.priceDescription
-            };
-        }) :
-        null;
+    const priceSection: any = data?.smile_price
+        ? data?.smile_price.map((service) => {
+              return {
+                  ...service,
+                  price: service?.price,
+                  priceText: service?.priceText,
+                  priceDescription: service?.priceDescription
+              };
+          })
+        : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>

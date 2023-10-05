@@ -36,7 +36,6 @@ const NormalSection3 = ({
         trigger: pinAnimationTrigger
     });
 
-
     // /**
     //  * Normal section component
     //  *
@@ -46,17 +45,12 @@ const NormalSection3 = ({
     return (
         <Section>
             <Container className="grid max-w-[111.3rem] grid-cols-1 gap-12 md:grid-cols-2 md:gap-24 xl:gap-32">
-                <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">
-                    {title}
-                </h2>
+                <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">{title}</h2>
                 <div className="grid gap-6 justify-self-start">
-<>
-                     { HTMLReactParser(description) }
-                     </>
+                    <>{HTMLReactParser(description)}</>
                     <p>
                         If you do not require PTK medically, it is most likely that our other laser eye treatments are
-                        suitable for you such as: our{' '}
-                        <LinkStyle url="/relex-smile-london">ReLEX SMILE</LinkStyle>,{' '}
+                        suitable for you such as: our <LinkStyle url="/relex-smile-london">ReLEX SMILE</LinkStyle>,{' '}
                         <LinkStyle url="/presbyond-london">Presbyond</LinkStyle> and{' '}
                         <LinkStyle url="/lasik-london">LASIK treatment</LinkStyle>.
                     </p>

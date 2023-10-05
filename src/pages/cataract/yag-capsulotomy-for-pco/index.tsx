@@ -69,11 +69,11 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
     }, [deviceSize]);
 
     // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection ?
-        data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
+    const leftRightsectiondata = data?.leftRightsection
+        ? data.leftRightsection.map(
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
                       <Image
                           src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
                           width={390}
@@ -82,8 +82,8 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                           className="rounded-primary md:hidden"
                           alt=""
                       />
-                ),
-                desktopImage: (
+                  ),
+                  desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
                           width={695}
@@ -92,12 +92,12 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                           className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
                           alt=""
                       />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        ) :
-        null;
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
+        : null;
 
     return (
         <Page

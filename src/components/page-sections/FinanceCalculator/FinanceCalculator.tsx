@@ -23,9 +23,9 @@ const FinanceCalculator = ({ excludeBottomBanner, version }: FinanceCalculatorIn
     return (
         <Section className="grid gap-48">
             <Container className="">
-                {ctx.treatmentList.length ?
-                    ctx.treatmentList.map((treatment, index) => {
-                        return (
+                {ctx.treatmentList.length
+                    ? ctx.treatmentList.map((treatment, index) => {
+                          return (
                               <div
                                   className={`gap-12 md:gap-8 lg:grid-cols-[auto_1fr] xl:grid-cols-[auto_55.5rem] ${
                                       treatment.active ? 'grid' : 'hidden'
@@ -38,9 +38,9 @@ const FinanceCalculator = ({ excludeBottomBanner, version }: FinanceCalculatorIn
                                   {/* Grid item 2 */}
                                   <ResultColumn index={index} />
                               </div>
-                        );
-                    }) :
-                    null}
+                          );
+                      })
+                    : null}
 
                 {/* <div className="grid md:grid-cols-[auto_1fr]"> */}
                 {/*     <div className="grid content-start"> */}
@@ -79,18 +79,18 @@ const FinanceCalculator = ({ excludeBottomBanner, version }: FinanceCalculatorIn
 
             {!excludeBottomBanner ? (
                 <div id="average-spend-large">
-                    {ctx.treatmentList.length ?
-                        ctx.treatmentList.map((treatment, index) => {
-                            if (!treatment.active) return null;
-                            const averageSpend = treatment.averageSpend;
+                    {ctx.treatmentList.length
+                        ? ctx.treatmentList.map((treatment, index) => {
+                              if (!treatment.active) return null;
+                              const averageSpend = treatment.averageSpend;
 
-                            return (
+                              return (
                                   <div className="col-span-full" key={index}>
                                       <AverageSpend {...(averageSpend as unknown as any)} />
                                   </div>
-                            );
-                        }) :
-                        null}
+                              );
+                          })
+                        : null}
                 </div>
             ) : (
                 <></>

@@ -90,9 +90,9 @@ const Card = ({ title, list, backgroundImage, backgroundImageLarge, index }: Car
     return (
         <div
             className={`relative grid px-12 py-16 ${
-                index === 2 ?
-                    'min-h-[30rem] content-center' :
-                    'min-h-[63rem] content-start xl:min-h-[48rem]  xl:justify-start xl:pl-12'
+                index === 2
+                    ? 'min-h-[30rem] content-center'
+                    : 'min-h-[63rem] content-start xl:min-h-[48rem]  xl:justify-start xl:pl-12'
             } xl:min-[34rem] xl:content-center xl:p-0`}
         >
             <Image

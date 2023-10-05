@@ -69,17 +69,17 @@ const Selector = ({ eye, onSelect, options, leftValue, rightValue, showSign }: S
                     </div>
 
                     <span className="text-[1.6rem] text-white">
-                        {eye === 'leftEye' ?
-                            leftValue === null ?
-                                'Left eye' :
-                                showSign ?
-                                    prependSign(leftValue) :
-                                    leftValue :
-                            rightValue === null ?
-                                'Right eye' :
-                                showSign ?
-                                    prependSign(rightValue) :
-                                    rightValue}
+                        {eye === 'leftEye'
+                            ? leftValue === null
+                                ? 'Left eye'
+                                : showSign
+                                ? prependSign(leftValue)
+                                : leftValue
+                            : rightValue === null
+                            ? 'Right eye'
+                            : showSign
+                            ? prependSign(rightValue)
+                            : rightValue}
                     </span>
                     <FaAngleDown
                         className={`ml-4 h-[2.4rem] w-[2.4rem] fill-[#9B9FA1] transition-all duration-500 ${

@@ -32,14 +32,10 @@ interface PropInterface {
 
 const defaultContext: CalculatorContext = {
     treatmentList: [],
-    setTreatmentList: () => {
-    },
-    setEyeCount: (index: number, value: number) => {
-    },
-    setUpfrontPercentage: (index: number, value: number) => {
-    },
-    setInstallment: (index: number, value: number) => {
-    },
+    setTreatmentList: () => {},
+    setEyeCount: (index: number, value: number) => {},
+    setUpfrontPercentage: (index: number, value: number) => {},
+    setInstallment: (index: number, value: number) => {},
     getMonthlyPaymentValue: (index) => 0
 };
 

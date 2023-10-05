@@ -15,8 +15,8 @@ const defaultCardList: CardInterface[] = [
         borderColor: 'border-[#FFBE99]',
         cardBg: 'bg-[#FFEFE5]',
         list: [
-            'All the colours around me are bright again; I can\'t believe the detail',
-            'The real plus is that I don\'t have to wear contact lenses and can see better',
+            "All the colours around me are bright again; I can't believe the detail",
+            "The real plus is that I don't have to wear contact lenses and can see better",
             'When I go for country walks, I can now see the birds in the trees, or a bunny hopping...',
             'Now I can finally read all the motorway signs when I drive…'
         ]
@@ -75,7 +75,7 @@ const defaultCardList: CardInterface[] = [
 ];
 
 interface HalfRoundedCardProps {
-    cardList: CardInterface[]
+    cardList: CardInterface[];
 }
 
 /**
