@@ -7,7 +7,8 @@ import IconHome from './IconHome';
 
 interface BreadCrumbProps {
     className?: string;
-    textClassName?: string;
+    pathClassName?: string;
+    linkClassName?: string;
 }
 
 const NestedRoutes = dynamic(() => import('./NestedRoutes'), {
@@ -19,7 +20,7 @@ const NestedRoutes = dynamic(() => import('./NestedRoutes'), {
  *
  * @returns {*}  {JSX.Element}
  */
-const BreadCrumb = ({ className, textClassName }: BreadCrumbProps): JSX.Element => {
+const BreadCrumb = ({ className, pathClassName, linkClassName }: BreadCrumbProps): JSX.Element => {
     const router = useRouter();
 
     return (
@@ -31,7 +32,7 @@ const BreadCrumb = ({ className, textClassName }: BreadCrumbProps): JSX.Element 
         >
             {router.pathname === '/' ? (
                 <Link href="/" aria-label="Home" className="flex items-center justify-start gap-6">
-                    <IconHome active={true} />
+                    <IconHome active={true} pathClassName={pathClassName} />
                     <span
                         className={`translate-y-[0.1rem] cursor-pointer whitespace-nowrap font-mulishBold text-[1.2rem] capitalize leading-[1.6rem] text-heading md:text-[1.5rem]`}
                     >
@@ -40,11 +41,11 @@ const BreadCrumb = ({ className, textClassName }: BreadCrumbProps): JSX.Element 
                 </Link>
             ) : (
                 <Link href="/" aria-label="Home">
-                    <IconHome active={false} />
+                    <IconHome active={false} pathClassName={pathClassName} />
                 </Link>
             )}
 
-            <NestedRoutes router={router} textClassName={textClassName} />
+            <NestedRoutes router={router} pathClassName={pathClassName} linkClassName={linkClassName} />
         </Container>
     );
 };

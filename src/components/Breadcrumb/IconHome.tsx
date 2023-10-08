@@ -1,6 +1,7 @@
 interface IconHomeInterface {
     className?: string;
     active?: boolean;
+    pathClassName?: string;
 }
 
 /**
@@ -8,7 +9,7 @@ interface IconHomeInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const IconHome = ({ className, active = false }: IconHomeInterface): JSX.Element => {
+const IconHome = ({ className, active = false, pathClassName }: IconHomeInterface): JSX.Element => {
     return (
         <svg
             width="20"
@@ -24,6 +25,7 @@ const IconHome = ({ className, active = false }: IconHomeInterface): JSX.Element
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className={pathClassName}
             />
             <path
                 d="M9 22V12H15V22"
@@ -31,6 +33,7 @@ const IconHome = ({ className, active = false }: IconHomeInterface): JSX.Element
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className={pathClassName}
             />
         </svg>
     );

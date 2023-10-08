@@ -58,7 +58,7 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
                 bulletPoint={<Image src={IconArrow} alt="" className="h-[1.4rem] w-[2.03rem] translate-y-2" />}
             />
 
-            <span className="col-span-2 mt-16 justify-self-end rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-[1.4rem] leading-8 text-white transition-all duration-500 hover:border-t-transparent hover:border-l-transparent hover:border-r-transparent hover:bg-transparent hover:text-[#003E79]">
+            <span className="col-span-2 mt-16 self-end justify-self-end rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-[1.4rem] leading-8 text-white transition-all duration-500 hover:border-t-transparent hover:border-l-transparent hover:border-r-transparent hover:bg-transparent hover:text-[#003E79]">
                 Learn more
             </span>
         </Link>

@@ -23,11 +23,11 @@ const MastheadVitreoretinalSurgery = ({ masthead }: Masthead3Props): JSX.Element
                 className="absolute top-0 left-0 -z-[1] h-full w-full"
             />
 
-            <BreadCrumb className="mt-0 hidden pt-20 md:flex" textClassName="text-white" />
+            <BreadCrumb className="mt-0 hidden pt-20 md:flex" linkClassName="text-white" />
 
             <div className="grid gap-8 pt-16 md:grid-cols-2 xl:grid-cols-2 xl:pt-0 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 <div className="grid content-center gap-6 px-8 md:pb-24 xl:px-0">
-                    <BreadCrumb className="mt-0 !px-0 md:hidden" textClassName="text-white" />
+                    <BreadCrumb className="mt-0 !px-0 md:hidden" linkClassName="text-white" />
 
                     <h1 className="font-latoBold text-[3.6rem] leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                         {masthead?.heading}

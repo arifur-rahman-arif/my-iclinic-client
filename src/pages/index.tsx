@@ -64,16 +64,16 @@ interface HomeProps {
  */
 export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     // JOURNEY SLIDER
-    const journeySliderData: any = data?.journeySlider ?
-        data?.journeySlider.map((service) => {
-            return {
-                ...service,
-                title: service?.title,
-                description: stringArrayToElementArray(service?.list),
-                image: service?.image
-            };
-        }) :
-        null;
+    const journeySliderData: any = data?.journeySlider
+        ? data?.journeySlider.map((service) => {
+              return {
+                  ...service,
+                  title: service?.title,
+                  description: stringArrayToElementArray(service?.list),
+                  image: service?.image
+              };
+          })
+        : null;
 
     // MISSION SLIDER
     // const missionimageSlider: any = data?.imageSlider ?
@@ -94,18 +94,18 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     //     }) :
     //     null;
 
-    const cardListData: any = data?.private_eye_card ?
-        data?.private_eye_card.map((service) => {
-            return {
-                ...service,
-                title: HTMLReactParser(service?.title),
-                pillText: service?.pillText,
-                cardList: stringArrayToElementArray(service?.cardList),
-                image: service?.image,
-                cardLink: service?.cardLink
-            };
-        }) :
-        null;
+    const cardListData: any = data?.private_eye_card
+        ? data?.private_eye_card.map((service) => {
+              return {
+                  ...service,
+                  title: HTMLReactParser(service?.title),
+                  pillText: service?.pillText,
+                  cardList: stringArrayToElementArray(service?.cardList),
+                  image: service?.image,
+                  cardLink: service?.cardLink
+              };
+          })
+        : null;
 
     return (
         <Page
