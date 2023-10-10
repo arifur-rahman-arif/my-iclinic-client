@@ -1,5 +1,6 @@
 import { consultantCardList } from '@/components/Card';
 import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
+import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
@@ -32,20 +33,14 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
     const [submenus, setSubmenus] = useState<SubmenuType[]>([
         {
             active: true,
-            name: 'Our specialist team'
-        },
-        {
-            name: 'Our technology',
-            menus: [
-                {
-                    name: 'Our eye diagnostics & technology',
-                    url: '/our-specialists/our-eye-diagnostics-technology',
-                    slug: 'our-specialists/our-eye-diagnostics-technology',
-                    metaDescription: 'My-iClinic diagnostics center for vision testing & optometry practice.'
-                }
-            ]
+            name: 'Our specialist'
         }
     ]);
+
+    // {
+    //     name: 'Our eye diagnostics & technology',
+    //         url: '/our-specialists/our-eye-diagnostics-technology'
+    // }
 
     /**
      * Handles a click event on an item in a list of submenus, toggling the active state of the clicked item
@@ -72,6 +67,17 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
             });
         });
     };
+
+    const extraLinks = [
+        {
+            name: 'Meat the team',
+            url: '/our-specialists'
+        },
+        {
+            name: 'Our eye diagnostics & technology',
+            url: '/our-specialists/our-eye-diagnostics-technology'
+        }
+    ];
 
     return (
         <div className="grid">
@@ -131,6 +137,26 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
                         )}
                     </div>
                 </div>
+            ))}
+
+            {extraLinks.map((item, key) => (
+                <Link
+                    href={item.url}
+                    key={key}
+                    className="relative cursor-pointer py-6 px-6"
+                    onClick={() => {
+                        setOpenMobileMenu && setOpenMobileMenu(false);
+                    }}
+                >
+                    <div className="relative z-[2] flex items-center justify-start gap-4  transition-all duration-500">
+                        <span
+                            className={`h-[1.4rem] w-[1.4rem] rounded-full border-[0.3rem] border-solid border-white bg-[#0052A0] transition-all duration-500 ${
+                                router.pathname === item.url && 'bg-white'
+                            }`}
+                        ></span>
+                        <strong className="text-[1.6rem] text-white">{item.name}</strong>
+                    </div>
+                </Link>
             ))}
         </div>
     );

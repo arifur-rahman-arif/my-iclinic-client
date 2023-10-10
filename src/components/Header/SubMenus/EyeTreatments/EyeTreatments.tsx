@@ -256,9 +256,9 @@ const EyeTreatments = ({
                             {!menu.prev && (
                                 <span
                                     className={`absolute left-0 w-full  ${
-                                        menu.active ?
-                                            'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]' :
-                                            'top-full h-[0.2rem] bg-[#005DAF]'
+                                        menu.active
+                                            ? 'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]'
+                                            : 'top-full h-[0.2rem] bg-[#005DAF]'
                                     }`}
                                 ></span>
                             )}

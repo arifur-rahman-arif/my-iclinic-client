@@ -247,7 +247,7 @@ export const navMenuList: NavMenuType[] = [
         subMenuOpen: false,
         submenu: [
             {
-                name: 'Our specialist team',
+                name: 'Our specialist',
                 url: '/our-specialists',
                 slug: 'our-specialists',
                 metaDescription:

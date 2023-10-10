@@ -42,10 +42,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
     const [submenus, setSubmenus] = useState<SubmenuType[]>([
         {
             active: true,
-            name: 'Our specialist team'
-        },
-        {
-            name: 'Our technology'
+            name: 'Our specialist'
         }
     ]);
 
@@ -64,6 +61,17 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
             ]
         }
     ]);
+
+    const extraLinks = [
+        {
+            name: 'Meat the team',
+            url: '/our-specialists'
+        },
+        {
+            name: 'Our eye diagnostics & technology',
+            url: '/our-specialists/our-eye-diagnostics-technology'
+        }
+    ];
 
     /**
      * Handles a click event on an item, updating the state of both inner submenus and main submenus.
@@ -129,9 +137,9 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                             {!menu.prev && (
                                 <span
                                     className={`absolute left-0 w-full  ${
-                                        menu.active ?
-                                            'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]' :
-                                            'top-full h-[0.2rem] bg-[#005DAF]'
+                                        menu.active
+                                            ? 'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]'
+                                            : 'top-full h-[0.2rem] bg-[#005DAF]'
                                     }`}
                                 ></span>
                             )}
@@ -164,6 +172,43 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                             )}
                         </div>
                     ))}
+
+                    <div className="grid px-10 pt-8">
+                        {extraLinks.map((item, key) => (
+                            <Link
+                                key={key}
+                                href={item.url}
+                                className={`submenu-link group/submenu-link relative cursor-pointer py-4`}
+                                onClick={() => {
+                                    const parentMenus: NodeListOf<HTMLElement> =
+                                        document.querySelectorAll('.parent-menu');
+
+                                    parentMenus.forEach((element: HTMLElement | null) => {
+                                        if (element) {
+                                            element.style.pointerEvents = 'none';
+
+                                            setTimeout(() => {
+                                                element.style.pointerEvents = 'auto';
+                                            }, 800);
+                                        }
+                                    });
+                                }}
+                            >
+                                <div
+                                    className={`relative z-[2] flex items-center justify-start gap-4  transition-all duration-500 ${
+                                        router.pathname === item.url && 'opacity-60'
+                                    }`}
+                                >
+                                    <span
+                                        className={`h-[1.6rem] w-[1.6rem] rounded-full border-solid border-white bg-[#0052A0] transition-all duration-500 group-hover/submenu-link:border-8 ${
+                                            router.pathname === item.url ? 'border-8' : 'border-[0.3rem]'
+                                        }`}
+                                    ></span>
+                                    <strong className="text-white">{item.name}</strong>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
