@@ -44,7 +44,7 @@ const ReviewSlider = ({ sliders }: ReviewSliderProps): JSX.Element => {
     }, [onEnter, onLeave]);
 
     return (
-        <div className="relative max-w-[50rem] justify-self-center overflow-hidden md:justify-self-start">
+        <div className="relative w-full max-w-[50rem] justify-self-center overflow-hidden md:justify-self-start">
             <Swiper
                 effect="fade"
                 autoplay={{

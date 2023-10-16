@@ -28,7 +28,7 @@ const list: ItemProps[] = [
 const SurgerySection = (): JSX.Element => {
     return (
         <Section className="px-8">
-            <Container className="grid items-start justify-center gap-12 rounded-radius2 bg-[#E1F1FF] py-12 md:grid-cols-2 xl:gap-28 xl:px-10 xl:py-24">
+            <Container className="grid items-center justify-center gap-12 rounded-radius2 bg-[#E1F1FF] py-12 md:grid-cols-2 xl:gap-28 xl:px-10 xl:py-24">
                 {list.map((item, i) => (
                     <Item key={i} {...item} />
                 ))}
@@ -59,7 +59,7 @@ interface ItemProps {
  */
 const Item = ({ title, description, image, largeImage }: ItemProps): JSX.Element => {
     return (
-        <div className="grid w-full content-start justify-items-start gap-6 md:gap-y-6 md:gap-x-12 lg:grid-cols-2 xl:grid-cols-[auto_1fr]">
+        <div className="grid w-full content-start justify-items-start gap-6 md:gap-12 lg:grid-cols-2  xl:grid-cols-[auto_1fr]">
             <Image
                 src={image}
                 alt={title}
@@ -74,12 +74,14 @@ const Item = ({ title, description, image, largeImage }: ItemProps): JSX.Element
                 width={146}
                 height={189}
                 quality={100}
-                className="row-span-2 row-start-1 hidden h-full w-full rounded-radius2 lg:block"
+                className="hidden h-full w-full min-w-[16rem] rounded-radius2 lg:block"
             />
-            <span className="mt-6 font-latoBold text-[2rem] leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
-                {title}
-            </span>
-            <p className="">{description}</p>
+            <div className="grid content-start gap-6">
+                <span className="mt-6 font-latoBold text-[2rem] leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
+                    {title}
+                </span>
+                <p className="">{description}</p>
+            </div>
         </div>
     );
 };
