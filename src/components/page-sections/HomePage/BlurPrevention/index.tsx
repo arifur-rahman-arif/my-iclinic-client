@@ -28,7 +28,7 @@ const BlurPrevention = (): JSX.Element => {
                     <p className="-mt-6 text-center text-[#E1F1FF]">Reach out and see the world more clearly!</p>
 
                     <div className="grid justify-items-center gap-2">
-                        <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-white">
+                        <span className="text-center font-mulishBold text-[2rem] leading-[2.8rem] text-white">
                             See how much you can save!
                         </span>
                         <LinkStyle url="/pricing-and-financing/financing-your-treatment#calculator">
@@ -41,7 +41,7 @@ const BlurPrevention = (): JSX.Element => {
                     </span>
                     <Link
                         href="tel:0208 445 8877"
-                        className="-mt-6 justify-self-center rounded-[0.5rem] border-2 border-solid border-[#09F] bg-[#09F] py-6 px-32 text-center text-white transition-all duration-500 hover:bg-transparent hover:text-[#09F]"
+                        className="-mt-6 justify-self-center rounded-[0.5rem] border-2 border-solid border-[#09F] bg-[#09F] py-6 px-12 text-center text-white transition-all duration-500 hover:bg-transparent hover:text-[#09F] xs:px-32"
                     >
                         0208 445 8877
                     </Link>

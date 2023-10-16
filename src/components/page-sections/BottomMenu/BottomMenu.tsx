@@ -57,7 +57,7 @@ const BottomMenu = (): JSX.Element => {
                         onClick={() => setShowDropDown(!showDropDown)}
                     >
                         <Image src={IconConsultation} alt="" />
-                        <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">
+                        <span className="text-center text-center font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">
                             Free consult
                         </span>
                     </button>
@@ -69,10 +69,10 @@ const BottomMenu = (): JSX.Element => {
                     />
 
                     <div
-                        className={`absolute top-0 left-0 grid min-w-[32rem] -translate-x-16 gap-12 rounded-primary bg-white p-12 drop-shadow-lg transition-all duration-500 ${
-                            showDropDown ?
-                                'pointer-events-auto -translate-y-[calc(100%_+_2.5rem)] opacity-100' :
-                                'pointer-events-none -translate-y-full opacity-0'
+                        className={`absolute top-0 left-0 grid min-w-[30rem] -translate-x-32 gap-12 rounded-primary bg-white p-12 drop-shadow-lg transition-all duration-500 xs:min-w-[32rem] xs:-translate-x-16 ${
+                            showDropDown
+                                ? 'pointer-events-auto -translate-y-[calc(100%_+_2.5rem)] opacity-100'
+                                : 'pointer-events-none -translate-y-full opacity-0'
                         }`}
                         onClick={() => setShowDropDown(false)}
                     >
@@ -144,7 +144,7 @@ const BottomMenu = (): JSX.Element => {
                                     width={24}
                                     height={24}
                                 />
-                                <span className="relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1]">
+                                <span className="relative cursor-pointer text-left font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1]">
                                     Book a free laser screening
                                 </span>
                             </button>
@@ -171,8 +171,8 @@ const BottomMenu = (): JSX.Element => {
                 <li>
                     <Link href="tel:(+44) 0208 445 8877" aria-label="Call" className="grid place-items-center gap-2">
                         <Image src={IconTelephoneOutline} alt="" quality={100} />
-                        <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">
-                            Free consult
+                        <span className="text-center font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">
+                            Call us
                         </span>
                     </Link>
                 </li>
