@@ -17,25 +17,25 @@ import CtaSection from '@/page-sections/VitreoretinalSurgery/CtaSection';
  * @export
  * @returns {JSX.Element}
  */
-export default function OphthalmologyClinic(): JSX.Element {
+export default function RetinaTreatments(): JSX.Element {
     return (
         <Page
-            title="London Ophthalmology Clinic For Eye Health"
+            title="London Retina treatments For Eye Health"
             description="Ophthalmology for eye health solutions including, cataracts, glaucoma, diabetic retinopathy, macular degeneration & corneal diseases."
         >
-            <BreadCrumb className="md:hidden" />
+            <BreadCrumb className="md:hidden"/>
 
-            <MastheadOphthalmologyClinic />
+            <MastheadOphthalmologyClinic/>
 
-            <OphthalmologistDoctors />
+            <OphthalmologistDoctors/>
 
-            <WhyMyIClinic />
+            <WhyMyIClinic/>
 
-            <YvonneLuo />
+            <YvonneLuo/>
 
-            <Floaters />
+            <Floaters/>
 
-            <RetinalDetachment />
+            <RetinalDetachment/>
 
             <RetinalDetachment
                 heading="Macular Hole"
@@ -64,7 +64,7 @@ export default function OphthalmologyClinic(): JSX.Element {
                 textColumnClassName="md:col-start-2"
             />
 
-            <EpiretinalMembrane />
+            <EpiretinalMembrane/>
 
             <RetinalDetachment
                 heading="Diabetic Retinopathy"
@@ -92,7 +92,7 @@ export default function OphthalmologyClinic(): JSX.Element {
                 specialistCtaButton
             />
 
-            <CtaSection />
+            <CtaSection/>
         </Page>
     );
 }

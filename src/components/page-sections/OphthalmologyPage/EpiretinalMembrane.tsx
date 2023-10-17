@@ -4,7 +4,7 @@ import SectionTextColumn from '@/components/SectionTextColumn';
 import Image from 'next/image';
 
 /**
- * `EpiretinalMembrane` is a React functional component that represents a section of the London Ophthalmology Clinic
+ * `EpiretinalMembrane` is a React functional component that represents a section of the London Retina treatments
  * website dedicated to providing information about the medical condition known as Epiretinal Membrane. It displays an
  * image related to the condition and a description of the condition's characteristics, causes, and treatment options.
  *
@@ -13,7 +13,8 @@ import Image from 'next/image';
 const EpiretinalMembrane = (): JSX.Element => {
     return (
         <Section className="px-8 xl:px-0">
-            <Container className="grid items-center gap-12 rounded-primary bg-brandLight py-12 md:grid-cols-2 lg:gap-24 lg:py-24 xl:gap-28">
+            <Container
+                className="grid items-center gap-12 rounded-primary bg-brandLight py-12 md:grid-cols-2 lg:gap-24 lg:py-24 xl:gap-28">
                 <Image
                     src="/images/section-images/epiretinal-membrane.png"
                     alt=""

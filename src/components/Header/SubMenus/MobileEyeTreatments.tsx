@@ -1,4 +1,5 @@
 import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
+import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
@@ -18,6 +19,10 @@ interface MobileEyeTreatmentsProps {
     router: NextRouter;
     submenus?: SubmenuType[];
     setOpenMobileMenu?: Dispatch<SetStateAction<boolean>> | undefined;
+    soloLinks?: Array<{
+        name: string;
+        url: string;
+    }>;
 }
 
 /**
@@ -33,7 +38,8 @@ interface MobileEyeTreatmentsProps {
 const MobileEyeTreatments = ({
     router,
     submenus: propSubmenus,
-    setOpenMobileMenu
+    setOpenMobileMenu,
+    soloLinks
 }: MobileEyeTreatmentsProps): JSX.Element => {
     const [submenus, setSubmenus] = useState<SubmenuType[]>(
         propSubmenus || [
@@ -45,37 +51,37 @@ const MobileEyeTreatments = ({
                         name: 'Astigmatism',
                         url: '/astigmatism-treatment',
                         slug: 'astigmatism-treatment',
-                        metaDescription: 'Astigmatism Resolved, Sight Improved.'
+                        metaDescription: 'Astigmatism Resolved, Sight Improved'
                     },
                     {
                         name: 'Flashes & Floaters',
                         url: '/flashes-floaters',
                         slug: 'flashes-floaters',
-                        metaDescription: 'Flashes, Floaters, Clearer Vision.'
+                        metaDescription: 'Flashes, Floaters, Clearer Vision'
                     },
                     {
                         name: 'Conjunctivitis',
                         url: '/conjuctivitis-treatment-london',
                         slug: 'conjuctivitis-treatment-london',
-                        metaDescription: 'Redness Vanished, Eyes Relieved.'
+                        metaDescription: 'Redness Vanished, Eyes Relieved'
                     },
                     {
                         name: 'Dry eyes',
                         url: '/dry-eyes-treatment-london',
                         slug: 'dry-eyes-treatment-london',
-                        metaDescription: 'Eyes Hydrated, Dryness Gone.'
+                        metaDescription: 'Eyes Hydrated, Dryness Gone'
                     },
                     {
                         name: 'Double Vision',
                         url: '/double-vision-treatment-london',
                         slug: 'double-vision-treatment-london',
-                        metaDescription: 'Single Focus, Clear Vision.'
+                        metaDescription: 'Single Focus, Clear Vision'
                     },
                     {
                         name: 'Lazy eyes',
                         url: '/lazy-eyes-treatement',
                         slug: 'lazy-eyes-treatement',
-                        metaDescription: 'Empowering Lazy Eyes.'
+                        metaDescription: 'Empowering Lazy Eyes'
                     }
                 ]
             },
@@ -86,19 +92,19 @@ const MobileEyeTreatments = ({
                         name: 'Corneal Treatments',
                         url: '/corneal-treatments',
                         slug: 'corneal-treatments',
-                        metaDescription: 'Corneal eye treatments at My-iClinic'
+                        metaDescription: 'Healthy Cornea, Better Vision'
                     },
                     {
                         name: 'Keratoconus',
                         url: '/keratoconus',
                         slug: 'keratoconus',
-                        metaDescription: "Keratoconus treatment with London's leading cornea specialists"
+                        metaDescription: 'Keratoconus Managed, Eyes Rejoice'
                     },
                     {
                         name: 'Blepharitis',
                         url: '/blepharitis-treatment',
                         slug: 'blepharitis-treatment',
-                        metaDescription: 'London’s best treatment for Blepharitis symptoms'
+                        metaDescription: 'Healthy Lids - Happy Lids'
                     }
                 ]
             },
@@ -109,15 +115,13 @@ const MobileEyeTreatments = ({
                         name: 'Myopia Control',
                         url: '/myopia',
                         slug: 'myopia',
-                        metaDescription:
-                            'Our specialists can provide you with the appropriate treatment for mitigating your Myopia, no matter how severe. Find out more about our services here.'
+                        metaDescription: 'Myopia Managed, Brighter Future'
                     },
                     {
                         name: 'Paediatric eye care',
                         url: '/paediatric-eye-care',
                         slug: 'paediatric-eye-care',
-                        metaDescription:
-                            'Our trusted paediatric ophthalmologists deliver the best treatment for any eye problems in children. Learn more about our paediatric eye care services.'
+                        metaDescription: 'Little Eyes, Big Care'
                     }
                 ]
             },
@@ -128,8 +132,7 @@ const MobileEyeTreatments = ({
                         name: 'Glaucoma Care clinic',
                         url: '/glaucoma-treatment',
                         slug: 'glaucoma-treatment',
-                        metaDescription:
-                            'Glaucoma is an eye condition where the optic nerve connecting the eye to the brain becomes damaged. Find out about our glaucoma treatment here.'
+                        metaDescription: 'Glaucoma: Watch, Protect, Prevail'
                     }
                 ]
             },
@@ -140,8 +143,7 @@ const MobileEyeTreatments = ({
                         name: 'Eyelid Surgery (cosmetic & medical treatments)',
                         url: '/eyelid-surgery-london',
                         slug: 'eyelid-surgery-london',
-                        metaDescription:
-                            'Our trusted oculoplastic surgeons deliver the best treatment for eyelid conditions. Find out more about our treatments and how we can help you.'
+                        metaDescription: 'Lifted Confidence, Youthful Look'
                     }
                 ]
             },
@@ -152,8 +154,7 @@ const MobileEyeTreatments = ({
                         name: 'Macular degeneration',
                         url: '/macular-degeneration',
                         slug: 'macular-degeneration',
-                        metaDescription:
-                            'Our Macular Degeneration specialists are experienced in treating and providing patients with the efficient care they need. Contact us today to book an appointment.'
+                        metaDescription: 'Defy Degeneration, Protect Vision'
                     }
                 ]
             }
@@ -226,6 +227,26 @@ const MobileEyeTreatments = ({
                         </div>
                     </div>
                 </div>
+            ))}
+
+            {soloLinks?.map((item, key) => (
+                <Link
+                    href={item.url}
+                    key={key}
+                    className="relative cursor-pointer py-6 px-6"
+                    onClick={() => {
+                        setOpenMobileMenu && setOpenMobileMenu(false);
+                    }}
+                >
+                    <div className="relative z-[2] flex items-center justify-start gap-4  transition-all duration-500">
+                        <span
+                            className={`h-[1.4rem] w-[1.4rem] rounded-full border-[0.3rem] border-solid border-white bg-[#0052A0] transition-all duration-500 ${
+                                router.pathname === item.url && 'bg-white'
+                            }`}
+                        ></span>
+                        <strong className="text-[1.6rem] text-white">{item.name}</strong>
+                    </div>
+                </Link>
             ))}
         </div>
     );

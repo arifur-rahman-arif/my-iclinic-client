@@ -26,19 +26,19 @@ export const navMenuList: NavMenuType[] = [
                 name: 'Cataract surgery',
                 url: '/cataract',
                 slug: 'cataract',
-                metaDescription: 'Cataract Surgery Made Easy.'
+                metaDescription: 'Cataract Surgery Made Easy'
             },
             {
                 name: 'Freedom from glasses after cataract surgery',
                 url: '/cataract/premium-lenses',
                 slug: 'cataract/premium-lenses',
-                metaDescription: 'Lenses Inside, Vision Outside.'
+                metaDescription: 'No More Glasses Post Cataract'
             },
             {
                 name: 'YAG capsulotomy for PCO',
                 url: '/cataract/yag-capsulotomy-for-pco',
                 slug: 'cataract/yag-capsulotomy-for-pco',
-                metaDescription: 'Discover a clear future'
+                metaDescription: 'Restoring vision, removing haze'
             }
         ]
     },
@@ -52,25 +52,25 @@ export const navMenuList: NavMenuType[] = [
                 name: 'ReLEx SMILE',
                 url: '/relex-smile-london',
                 slug: 'relex-smile-london',
-                metaDescription: 'Smile, See Clearly: Relex.'
+                metaDescription: 'Pioneering Vision Correction with Precision'
             },
             {
                 name: 'Presbyond',
                 url: '/presbyond-london',
                 slug: 'presbyond-london',
-                metaDescription: 'Liberating Vision Beyond Presbyopia.'
+                metaDescription: 'Presbyond: Clarity Beyond Years'
             },
             {
                 name: 'LASIK',
                 url: '/lasik-london',
                 slug: 'lasik-london',
-                metaDescription: 'Life in Focus.'
+                metaDescription: 'LASIK: Life in Focus'
             },
             {
                 name: 'LASEK, PRK, PTK',
                 url: '/lasek-prk',
                 slug: 'lasek-prk',
-                metaDescription: 'Refine Your Vision.'
+                metaDescription: 'Surface Reshaping, Precision & Clarity'
             }
         ]
     },

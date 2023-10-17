@@ -115,7 +115,7 @@ const AchievementColumn = ({ section6 }: AchievementsAndBeyondProps): JSX.Elemen
                 : null}
 
             <Link
-                href="#"
+                href="/our-specialists/yvonne-luo/?slug=awards"
                 className="group/link flex items-center justify-start gap-3 justify-self-start font-mulishBold text-[1.4rem] uppercase leading-8 text-[#09F]"
             >
                 And 12 more

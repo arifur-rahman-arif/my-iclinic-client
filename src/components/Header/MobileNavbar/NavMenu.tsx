@@ -69,7 +69,16 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                     </div>
                                 )}
                                 {menu.slug === 'eye-treatments' && (
-                                    <MobileEyeTreatments router={router} setOpenMobileMenu={setOpenMobileMenu} />
+                                    <MobileEyeTreatments
+                                        router={router}
+                                        setOpenMobileMenu={setOpenMobileMenu}
+                                        soloLinks={[
+                                            {
+                                                name: 'Retina treatments',
+                                                url: '/retina-treatments'
+                                            }
+                                        ]}
+                                    />
                                 )}
 
                                 {menu.slug === 'pricing-and-financing' && (
@@ -85,13 +94,13 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                                         name: 'Our prices',
                                                         url: '/pricing-and-financing/our-prices',
                                                         slug: 'pricing-and-financing/our-prices',
-                                                        metaDescription: 'Our private consultation and treatment prices'
+                                                        metaDescription: 'Our vision treatment prices'
                                                     },
                                                     {
                                                         name: 'Financing your treatment',
                                                         url: '/pricing-and-financing/financing-your-treatment',
                                                         slug: 'pricing-and-financing/financing-your-treatment',
-                                                        metaDescription: 'Let the cost of clear vision make sense'
+                                                        metaDescription: 'Keep existing'
                                                     }
                                                 ]
                                             },
@@ -102,14 +111,13 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                                         name: 'Our health insurance partners',
                                                         url: '/pricing-and-financing/financing-your-treatment#insurance',
                                                         slug: 'our-health-insurance-partners',
-                                                        metaDescription:
-                                                            'Fund your treatment with our health insurance partners'
+                                                        metaDescription: 'For the insured patients'
                                                     },
                                                     {
                                                         name: 'Finance calculator',
                                                         url: '/pricing-and-financing/financing-your-treatment#calculator',
                                                         slug: 'our-health-insurance-partners',
-                                                        metaDescription: '24 month finance option'
+                                                        metaDescription: 'Spread the cost to fit your budget'
                                                     }
                                                 ]
                                             },
@@ -177,7 +185,7 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                 )}
 
                                 {menu.slug === 'our-specialists' && (
-                                    <OurSpecialistsMobile router={router} setOpenMobileMenu={setOpenMobileMenu} />
+                                    <OurSpecialistsMobile router={router} setOpenMobileMenu={setOpenMobileMenu}/>
                                 )}
                             </div>
                         )}
@@ -264,7 +272,8 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu, appCtx, index }: Pare
                     {menu.name}
 
                     {isMenuActive && (
-                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
+                        <span
+                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
                     )}
                 </Link>
             )}

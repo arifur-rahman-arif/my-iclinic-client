@@ -1,5 +1,6 @@
 import MenuCta from '@/components/Header/MenuCta';
 import { NavMenuType } from '@/components/Header/navMenuList';
+import { SoloLink } from '@/components/Header/SubMenus/OurSpecialists/OurSpecialists';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { ReactNode, useState } from 'react';
@@ -12,6 +13,10 @@ interface EyeTreatmentsProps {
     submenus?: SubmenuType[];
     innerMenuList?: InnerMenuList[];
     className?: string;
+    soloLinks?: Array<{
+        name: string;
+        url: string;
+    }>;
 }
 
 interface SubmenuType {
@@ -42,6 +47,7 @@ const EyeTreatments = ({
     router,
     submenus: propSubmenus,
     innerMenuList,
+    soloLinks,
     className
 }: EyeTreatmentsProps): JSX.Element => {
     const [submenus, setSubmenus] = useState<SubmenuType[]>(
@@ -54,7 +60,7 @@ const EyeTreatments = ({
                 name: 'Corneal diseases & treatments'
             },
             {
-                name: "Children's Eyes"
+                name: 'Children\'s Eyes'
             },
             {
                 name: 'Glaucoma care'
@@ -77,37 +83,37 @@ const EyeTreatments = ({
                         name: 'Astigmatism',
                         url: '/astigmatism-treatment',
                         slug: 'astigmatism-treatment',
-                        metaDescription: 'Astigmatism Resolved, Sight Improved.'
+                        metaDescription: 'Astigmatism Resolved, Sight Improved'
                     },
                     {
                         name: 'Flashes & Floaters',
                         url: '/flashes-floaters',
                         slug: 'flashes-floaters',
-                        metaDescription: 'Flashes, Floaters, Clearer Vision.'
+                        metaDescription: 'Flashes, Floaters, Clearer Vision'
                     },
                     {
                         name: 'Conjunctivitis',
                         url: '/conjuctivitis-treatment-london',
                         slug: 'conjuctivitis-treatment-london',
-                        metaDescription: 'Redness Vanished, Eyes Relieved.'
+                        metaDescription: 'Redness Vanished, Eyes Relieved'
                     },
                     {
                         name: 'Dry eyes',
                         url: '/dry-eyes-treatment-london',
                         slug: 'dry-eyes-treatment-london',
-                        metaDescription: 'Eyes Hydrated, Dryness Gone.'
+                        metaDescription: 'Eyes Hydrated, Dryness Gone'
                     },
                     {
                         name: 'Double Vision',
                         url: '/double-vision-treatment-london',
                         slug: 'double-vision-treatment-london',
-                        metaDescription: 'Single Focus, Clear Vision.'
+                        metaDescription: 'Single Focus, Clear Vision'
                     },
                     {
                         name: 'Lazy eyes',
                         url: '/lazy-eyes-treatement',
                         slug: 'lazy-eyes-treatement',
-                        metaDescription: 'Empowering Lazy Eyes.'
+                        metaDescription: 'Empowering Lazy Eyes'
                     }
                 ]
             },
@@ -117,19 +123,19 @@ const EyeTreatments = ({
                         name: 'Corneal Treatments',
                         url: '/corneal-treatments',
                         slug: 'corneal-treatments',
-                        metaDescription: 'Corneal eye treatments at My-iClinic'
+                        metaDescription: 'Healthy Cornea, Better Vision'
                     },
                     {
                         name: 'Keratoconus',
                         url: '/keratoconus',
                         slug: 'keratoconus',
-                        metaDescription: "Keratoconus treatment with London's leading cornea specialists"
+                        metaDescription: 'Keratoconus Managed, Eyes Rejoice'
                     },
                     {
                         name: 'Blepharitis',
                         url: '/blepharitis-treatment',
                         slug: 'blepharitis-treatment',
-                        metaDescription: 'London’s best treatment for Blepharitis symptoms'
+                        metaDescription: 'Healthy Lids - Happy Lids'
                     }
                 ]
             },
@@ -139,15 +145,13 @@ const EyeTreatments = ({
                         name: 'Myopia Control',
                         url: '/myopia',
                         slug: 'myopia',
-                        metaDescription:
-                            'Our specialists can provide you with the appropriate treatment for mitigating your Myopia, no matter how severe. Find out more about our services here.'
+                        metaDescription: 'Myopia Managed, Brighter Future'
                     },
                     {
                         name: 'Paediatric eye care',
                         url: '/paediatric-eye-care',
                         slug: 'paediatric-eye-care',
-                        metaDescription:
-                            'Our trusted paediatric ophthalmologists deliver the best treatment for any eye problems in children. Learn more about our paediatric eye care services.'
+                        metaDescription: 'Little Eyes, Big Care'
                     }
                 ]
             },
@@ -157,8 +161,7 @@ const EyeTreatments = ({
                         name: 'Glaucoma Care clinic',
                         url: '/glaucoma-treatment',
                         slug: 'glaucoma-treatment',
-                        metaDescription:
-                            'Glaucoma is an eye condition where the optic nerve connecting the eye to the brain becomes damaged. Find out about our glaucoma treatment here.'
+                        metaDescription: 'Glaucoma: Watch, Protect, Prevail'
                     }
                 ]
             },
@@ -168,8 +171,7 @@ const EyeTreatments = ({
                         name: 'Eyelid Surgery (cosmetic & medical treatments)',
                         url: '/eyelid-surgery-london',
                         slug: 'eyelid-surgery-london',
-                        metaDescription:
-                            'Our trusted oculoplastic surgeons deliver the best treatment for eyelid conditions. Find out more about our treatments and how we can help you.'
+                        metaDescription: 'Lifted Confidence, Youthful Look'
                     }
                 ]
             },
@@ -179,8 +181,7 @@ const EyeTreatments = ({
                         name: 'Macular degeneration',
                         url: '/macular-degeneration',
                         slug: 'macular-degeneration',
-                        metaDescription:
-                            'Our Macular Degeneration specialists are experienced in treating and providing patients with the efficient care they need. Contact us today to book an appointment.'
+                        metaDescription: 'Defy Degeneration, Protect Vision'
                     }
                 ]
             }
@@ -220,7 +221,7 @@ const EyeTreatments = ({
     return (
         <div
             className={twMerge(
-                'absolute top-full left-0 z-10 grid max-h-0 min-w-[95rem] -translate-x-1/2 overflow-hidden rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[80rem]',
+                'absolute top-full left-0 z-10 grid max-h-0 min-w-[95rem] -translate-x-1/2 overflow-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]',
                 className
             )}
         >
@@ -274,7 +275,7 @@ const EyeTreatments = ({
                                         fill="none"
                                         className="absolute right-0 top-0 -translate-y-full"
                                     >
-                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79" />
+                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79"/>
                                     </svg>
 
                                     <svg
@@ -285,12 +286,14 @@ const EyeTreatments = ({
                                         fill="none"
                                         className="absolute right-0 top-full"
                                     >
-                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79" />
+                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79"/>
                                     </svg>
                                 </>
                             )}
                         </div>
                     ))}
+
+                    {soloLinks && soloLinks?.length && <SoloLink soloLinks={soloLinks} router={router}/>}
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
@@ -302,12 +305,12 @@ const EyeTreatments = ({
                             }`}
                         >
                             {treatment.menus.map((menuItem, key) => (
-                                <SubMenuLink {...menuItem} isActive={router.pathname === menuItem.url} key={key} />
+                                <SubMenuLink {...menuItem} isActive={router.pathname === menuItem.url} key={key}/>
                             ))}
                         </div>
                     ))}
 
-                    <MenuCta className="grid-cols-2" centerText />
+                    <MenuCta className="grid-cols-2" centerText/>
                 </div>
             </div>
         </div>
@@ -367,7 +370,7 @@ export const SubMenuLink = ({ url, name, isActive, metaDescription, className }:
                 <strong className="text-white">{name}</strong>
                 <span className="col-start-2 block font-mulishMedium text-[#D1E8FE] line-clamp-1">
                     {metaDescription ||
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since'}
                 </span>
             </span>
         </Link>

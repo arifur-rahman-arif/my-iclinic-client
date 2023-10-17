@@ -4,7 +4,7 @@ import { SectionHeading } from '@/components/SectionTextColumn';
 import Image from 'next/image';
 
 /**
- * `Floaters` is a React functional component that represents a section of the London Ophthalmology Clinic
+ * `Floaters` is a React functional component that represents a section of the London Retina treatments
  * website providing information about the eye condition known as Floaters. It includes a description of what
  * floaters are, their common causes, associated symptoms, and potential treatments.
  *
@@ -15,7 +15,7 @@ const Floaters = (): JSX.Element => {
         <Section>
             <Container className="grid gap-12 md:grid-cols-2 lg:gap-24 xl:gap-28">
                 <div className="grid grid-cols-[auto_1fr] content-start gap-y-6 gap-x-6">
-                    <SectionHeading heading="Floaters" />
+                    <SectionHeading heading="Floaters"/>
                     <strong className="col-start-2 text-[1.6rem] uppercase">
                         Floaters are black, or grey opacities in the vision.
                     </strong>

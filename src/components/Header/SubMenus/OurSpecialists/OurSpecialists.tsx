@@ -104,7 +104,8 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
     };
 
     return (
-        <div className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-hidden rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[80rem]">
+        <div
+            className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-y-scroll overflow-x-hidden rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (
@@ -155,7 +156,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-0 -translate-y-full"
                                     >
-                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79" />
+                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79"/>
                                     </svg>
 
                                     <svg
@@ -166,49 +167,14 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-full"
                                     >
-                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79" />
+                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79"/>
                                     </svg>
                                 </>
                             )}
                         </div>
                     ))}
 
-                    <div className="grid px-10 pt-8">
-                        {extraLinks.map((item, key) => (
-                            <Link
-                                key={key}
-                                href={item.url}
-                                className={`submenu-link group/submenu-link relative cursor-pointer py-4`}
-                                onClick={() => {
-                                    const parentMenus: NodeListOf<HTMLElement> =
-                                        document.querySelectorAll('.parent-menu');
-
-                                    parentMenus.forEach((element: HTMLElement | null) => {
-                                        if (element) {
-                                            element.style.pointerEvents = 'none';
-
-                                            setTimeout(() => {
-                                                element.style.pointerEvents = 'auto';
-                                            }, 800);
-                                        }
-                                    });
-                                }}
-                            >
-                                <div
-                                    className={`relative z-[2] flex items-center justify-start gap-4  transition-all duration-500 ${
-                                        router.pathname === item.url && 'opacity-60'
-                                    }`}
-                                >
-                                    <span
-                                        className={`h-[1.6rem] w-[1.6rem] rounded-full border-solid border-white bg-[#0052A0] transition-all duration-500 group-hover/submenu-link:border-8 ${
-                                            router.pathname === item.url ? 'border-8' : 'border-[0.3rem]'
-                                        }`}
-                                    ></span>
-                                    <strong className="text-white">{item.name}</strong>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                    <SoloLink soloLinks={extraLinks} router={router}/>
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
@@ -251,7 +217,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                         }
                     })}
 
-                    <MenuCta className="grid-cols-2" centerText />
+                    <MenuCta className="grid-cols-2" centerText/>
                 </div>
             </div>
         </div>
@@ -344,3 +310,59 @@ export const ConsultantItem = ({
 };
 
 export default OurSpecialists;
+
+export interface SoloLinkProps {
+    soloLinks: Array<{
+        name: string;
+        url: string;
+    }>;
+    router: NextRouter;
+}
+
+/**
+ * Solo links inside a mega menu without having any submenu
+ *
+ * @param {Array<{name: string, url: string}>} soloLinks
+ * @param {NextRouter} router
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export const SoloLink = ({ soloLinks, router }: SoloLinkProps): JSX.Element => {
+    return (
+        <div className="grid px-10 pt-8">
+            {soloLinks.map((item, key) => (
+                <Link
+                    key={key}
+                    href={item.url}
+                    className={`submenu-link group/submenu-link relative cursor-pointer py-4`}
+                    onClick={() => {
+                        const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
+
+                        parentMenus.forEach((element: HTMLElement | null) => {
+                            if (element) {
+                                element.style.pointerEvents = 'none';
+
+                                setTimeout(() => {
+                                    element.style.pointerEvents = 'auto';
+                                }, 800);
+                            }
+                        });
+                    }}
+                >
+                    <div
+                        className={`relative z-[2] flex items-center justify-start gap-4  transition-all duration-500 ${
+                            router.pathname === item.url && 'opacity-60'
+                        }`}
+                    >
+                        <span
+                            className={`h-[1.6rem] w-[1.6rem] rounded-full border-solid border-white bg-[#0052A0] transition-all duration-500 group-hover/submenu-link:border-8 ${
+                                router.pathname === item.url ? 'border-8' : 'border-[0.3rem]'
+                            }`}
+                        ></span>
+                        <strong className="text-white">{item.name}</strong>
+                    </div>
+                </Link>
+            ))}
+        </div>
+    );
+};

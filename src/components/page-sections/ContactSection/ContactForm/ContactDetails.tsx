@@ -70,6 +70,23 @@ const ContactDetails = (): JSX.Element => {
                         0208 445 8877
                     </Link>
                 </div>
+
+                <div className="flex items-center justify-start gap-6">
+                    <Image
+                        src="/images/icons/icon-whatsapp-white.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="translate-y-[0.1rem]"
+                    />
+                    <Link
+                        href="https://wa.me/+447850395332"
+                        target="_blank"
+                        className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-white"
+                    >
+                        WhatsApp
+                    </Link>
+                </div>
             </div>
 
             {/* Grid item #2 */}

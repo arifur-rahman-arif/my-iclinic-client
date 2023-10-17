@@ -26,6 +26,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 alt=""
                 className="absolute inset-0 -z-[1] h-full w-full object-cover md:hidden"
                 fill
+                priority
             />
 
             <Image
@@ -33,6 +34,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 alt=""
                 className="absolute inset-0 -z-[1] hidden h-full w-full md:block"
                 fill
+                priority
             />
 
             <Image

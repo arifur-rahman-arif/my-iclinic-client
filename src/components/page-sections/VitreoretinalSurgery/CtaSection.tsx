@@ -96,14 +96,18 @@ const LeftColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
 const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
     return (
         <div className="grid content-start justify-items-center gap-6">
-            <Image
-                src={section7?.specialist.image || '/images/section-images/yvonne-luo-cta.png'}
-                alt=""
-                width={192}
-                height={221}
-                className="rounded-primary"
-            />
-            <strong className="text-[1.8rem] text-white">{section7?.specialist.name || 'Yvonne Luo'}</strong>
+            <Link href="/vitreoretinal-surgery" className="group/link grid gap-6">
+                <Image
+                    src={section7?.specialist.image || '/images/section-images/yvonne-luo-cta.png'}
+                    alt=""
+                    width={192}
+                    height={221}
+                    className="rounded-primary"
+                />
+                <strong className="text-center text-[1.8rem] text-white transition-all duration-500 group-hover/link:text-blue">
+                    {section7?.specialist.name || 'Yvonne Luo'}
+                </strong>
+            </Link>
 
             <div className="flex items-center justify-center gap-4">
                 <Image src="/images/icons/icon-ranking.svg" alt="" width={32} height={32} />

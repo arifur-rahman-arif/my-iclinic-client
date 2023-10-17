@@ -1,5 +1,6 @@
 import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
+import { LinkStyle } from '@/components/Link';
 import { Section } from '@/components/Section';
 import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';
@@ -118,6 +119,10 @@ const TextColumn = (): JSX.Element => {
                     treatments and personalised patient care in the heart of London.
                 </strong>
             </div>
+
+            <LinkStyle url="/vitreoretinal-surgery" className="justify-self-start text-[1.8rem]">
+                Learn more about Yvonne
+            </LinkStyle>
 
             <BookConsultation buttonClassName="justify-self-start border-white focus:border-white">
                 <Button2 type="button" text="Book a consultation" />
