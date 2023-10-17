@@ -1,4 +1,4 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';

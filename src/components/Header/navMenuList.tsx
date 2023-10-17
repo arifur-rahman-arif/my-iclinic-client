@@ -55,12 +55,6 @@ export const navMenuList: NavMenuType[] = [
                 metaDescription: 'Smile, See Clearly: Relex.'
             },
             {
-                name: 'Implantable Contact Lenses',
-                url: '/icl',
-                slug: 'icl',
-                metaDescription: 'Lenses Inside, Vision Outside.'
-            },
-            {
                 name: 'Presbyond',
                 url: '/presbyond-london',
                 slug: 'presbyond-london',
