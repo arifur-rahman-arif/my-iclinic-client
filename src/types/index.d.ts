@@ -1,4 +1,5 @@
 import DryEyesContentInterface from 'src/types/pages/dryEyes';
+import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import TranslationPageProps from 'src/types/pages/translation';
 import VitreoretinalSurgeryContent from './pages/vitreoretinal-surgery';
 import ComplaintPageProps from './pages/complaint';
@@ -47,6 +48,7 @@ import FlashesContentInterface from './pages/flashes-floaters';
 
 
 export type {
+    RetinaTreatmentsContents,
     TranslationPageProps,
     ComplaintPageProps,
     AboutUsPageContent,

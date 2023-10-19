@@ -4,7 +4,10 @@ import { LinkStyle } from '@/components/Link';
 import { Section } from '@/components/Section';
 import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';
+import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import { twMerge } from 'tailwind-merge';
+
+interface YvonneLuoProps extends Pick<RetinaTreatmentsContents, 'section3'> {}
 
 /**
  * `YvonneLuo` is a React functional component that represents a section of the website showcasing Yvonne Luo, likely
@@ -13,12 +16,12 @@ import { twMerge } from 'tailwind-merge';
  *
  * @returns {JSX.Element} The JSX element representing the Yvonne Luo section.
  */
-const YvonneLuo = (): JSX.Element => {
+const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
     return (
         <Section>
             <Container className="grid overflow-hidden !px-0 md:grid-cols-2 md:!px-8 xl:grid-cols-[1fr_auto]">
                 <Image
-                    src="/images/section-images/yvone-leo-small.png"
+                    src={section3?.image || '/images/section-images/yvone-leo-small.png'}
                     alt="Yvonne Luo"
                     width={426}
                     height={481}
@@ -26,7 +29,7 @@ const YvonneLuo = (): JSX.Element => {
                 />
                 <div className="relative hidden md:col-start-2 md:row-start-1 md:block">
                     <Image
-                        src="/images/section-images/yvone-leo.png"
+                        src={section3?.largeImage || '/images/section-images/yvone-leo.png'}
                         alt="Yvonne Luo"
                         width={699}
                         height={870}
@@ -35,7 +38,7 @@ const YvonneLuo = (): JSX.Element => {
 
                     <Awards className="absolute left-0 bottom-0 translate-x-8 -translate-y-8 lg:translate-x-12 lg:-translate-y-12 xl:grid-cols-2 xl:gap-24" />
                 </div>
-                <TextColumn />
+                <TextColumn {...section3} />
             </Container>
         </Section>
     );
@@ -81,12 +84,19 @@ const Awards = ({ className }: AwardsProps): JSX.Element => {
     );
 };
 
-const descriptions = [
+const defaultDescriptions = [
     'Yvonne Luo is an accomplished and highly skilled eye surgeon who brings her exceptional expertise to the esteemed team at My-iClinic in London.',
     'With a stellar background in ophthalmology and a commitment to delivering the highest standard of eye care, Yvonne is a valuable asset to the clinic.',
     'Her extensive training and experience encompass a wide range of eye conditions and surgical procedures, including cataract surgery, complex lens surgery, trauma repair , and treatments for various retinal disorders.',
     "Yvonne's dedication to patient well-being, coupled with her innovative approach to eye care, ensures that individuals seeking top-tier ophthalmological services at My-iClinic receive comprehensive and compassionate care, underpinned by the latest advancements in the field."
 ];
+
+interface TextColumnProps {
+    heading: string;
+    designation: string;
+    descriptions: string[];
+    subheading: string;
+}
 
 /**
  * `TextColumn` is a React functional component that represents a text column within a section, typically used to
@@ -95,28 +105,26 @@ const descriptions = [
  *
  * @returns {JSX.Element} The JSX element representing the text column.
  */
-const TextColumn = (): JSX.Element => {
+const TextColumn = ({ heading, designation, descriptions, subheading }: Partial<TextColumnProps>): JSX.Element => {
     return (
         <div className="grid w-full content-start gap-12 bg-[#003E79] py-12 px-8 md:rounded-tl-primary md:rounded-bl-primary md:px-12 lg:px-20 xl:px-24">
             <Awards className="md:hidden" />
 
             <div className="grid gap-2">
-                <h2 className="text-white">Yvonne Luo</h2>
+                <h2 className="text-white">{heading || 'Yvonne Luo'}</h2>
                 <span className="font-mulishBold text-[#0099FF] md:text-[1.8rem] md:leading-[2.8rem]">
-                    Consultant and Surgeon
+                    {designation || 'Consultant and Surgeon'}
                 </span>
             </div>
 
             <div className="grid content-start gap-6">
-                {descriptions.map((item, key) => (
-                    <p key={key} className="text-white">
-                        {item}
-                    </p>
+                {((descriptions?.length && descriptions) || defaultDescriptions).map((item, key) => (
+                    <p key={key} className="text-white [&>*]:text-white" dangerouslySetInnerHTML={{ __html: item }}></p>
                 ))}
 
                 <strong className="text-[2rem] leading-[2.8rem] text-white">
-                    Her presence at the clinic reinforces its reputation as a leading center for cutting-edge eye
-                    treatments and personalised patient care in the heart of London.
+                    {subheading ||
+                        'Her presence at the clinic reinforces its reputation as a leading center for cutting-edge eye treatments and personalised patient care in the heart of London.'}
                 </strong>
             </div>
 

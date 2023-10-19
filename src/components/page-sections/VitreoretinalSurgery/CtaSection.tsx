@@ -46,10 +46,10 @@ const LeftColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
         <div className="grid content-start gap-12 md:gap-24">
             <h2 className="flex flex-col gap-2">
                 <span className="font-latoBold text-[4.8rem] normal-case leading-[4.8rem] text-[#09F] lg:text-[9.6rem] lg:leading-[7.6rem]">
-                    {section7?.heading.heading1 || 'Your eyes'}
+                    {section7?.heading?.heading1 || 'Your eyes'}
                 </span>
                 <span className="font-latoBold text-[4.8rem] normal-case leading-[4.8rem] text-white lg:text-[9.6rem] lg:leading-[7.6rem]">
-                    {section7?.heading.heading2 || 'deserve it.'}
+                    {section7?.heading?.heading2 || 'deserve it.'}
                 </span>
             </h2>
 
@@ -98,24 +98,24 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
         <div className="grid content-start justify-items-center gap-6">
             <Link href="/vitreoretinal-surgery" className="group/link grid gap-6">
                 <Image
-                    src={section7?.specialist.image || '/images/section-images/yvonne-luo-cta.png'}
+                    src={section7?.specialist?.image || '/images/section-images/yvonne-luo-cta.png'}
                     alt=""
                     width={192}
                     height={221}
                     className="rounded-primary"
                 />
                 <strong className="text-center text-[1.8rem] text-white transition-all duration-500 group-hover/link:text-blue">
-                    {section7?.specialist.name || 'Yvonne Luo'}
+                    {section7?.specialist?.name || 'Yvonne Luo'}
                 </strong>
             </Link>
 
             <div className="flex items-center justify-center gap-4">
                 <Image src="/images/icons/icon-ranking.svg" alt="" width={32} height={32} />
-                <span className="text-white">{section7?.specialist.title || 'PhD Clinical ophthalmology'}</span>
+                <span className="text-white">{section7?.specialist?.title || 'PhD Clinical ophthalmology'}</span>
             </div>
 
             <span className="text-center font-mulishBold uppercase text-[#0099FF]">
-                {section7?.specialist.designation || 'Award winner Consultant and Surgeon'}
+                {section7?.specialist?.designation || 'Award winner Consultant and Surgeon'}
             </span>
 
             <h5 className="max-w-[42.1rem] text-center text-white">

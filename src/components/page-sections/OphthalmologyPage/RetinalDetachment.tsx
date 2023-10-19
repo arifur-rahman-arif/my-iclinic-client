@@ -64,29 +64,23 @@ const RetinalDetachment = ({
     return (
         <Section>
             <Container className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 xl:gap-28">
-                {sectionImage ? (
-                    <Image {...sectionImage} alt="" className="justify-self-center md:hidden" />
-                ) : (
-                    <Image
-                        src="/images/section-images/opthamology-retinal-detachment.png"
-                        alt=""
-                        width={395}
-                        height={806}
-                        className="justify-self-center md:hidden"
-                    />
-                )}
+                <Image
+                    src="/images/section-images/opthamology-retinal-detachment.png"
+                    alt=""
+                    width={395}
+                    height={806}
+                    className="justify-self-center md:hidden"
+                    {...sectionImage}
+                />
 
-                {sectionImageLarge ? (
-                    <Image {...sectionImageLarge} alt="" className="hidden md:block" />
-                ) : (
-                    <Image
-                        src="/images/section-images/opthamology-retinal-detachment-large.png"
-                        alt=""
-                        width={621}
-                        height={919}
-                        className="hidden md:block"
-                    />
-                )}
+                <Image
+                    src="/images/section-images/opthamology-retinal-detachment-large.png"
+                    alt=""
+                    width={621}
+                    height={919}
+                    className="hidden md:block"
+                    {...sectionImageLarge}
+                />
 
                 <div className={twMerge('grid gap-12 md:col-start-1 md:row-start-1', textColumnClassName)}>
                     <SectionTextColumn

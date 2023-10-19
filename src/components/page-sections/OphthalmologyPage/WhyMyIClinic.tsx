@@ -2,6 +2,7 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
 import Image from 'next/image';
+import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 
 const cardList: CardProps[] = [
     {
@@ -23,6 +24,8 @@ const cardList: CardProps[] = [
     }
 ];
 
+interface WhyMyIClinicProps extends Pick<RetinaTreatmentsContents, 'section2'> {}
+
 /**
  * `WhyMyIClinic` is a React functional component that represents a section of the My-iClinic website, providing
  * reasons why patients should choose My-iClinic for their eye care needs. It displays a list of key features or
@@ -30,19 +33,28 @@ const cardList: CardProps[] = [
  *
  * @returns {JSX.Element} The JSX element representing the "Why My-iClinic" section.
  */
-const WhyMyIClinic = (): JSX.Element => {
+const WhyMyIClinic = ({ section2 }: Partial<WhyMyIClinicProps>): JSX.Element => {
+    const mergedCardList = cardList.map((card, index) => {
+        const newData = section2?.cards[index];
+        return {
+            title: newData?.title || card.title,
+            description: newData?.description || card.description,
+            icon: newData?.icon ? newData.icon : card.icon
+        };
+    });
+
     return (
         <Section>
             <Container className="grid gap-12 md:gap-24">
-                <SectionTextColumn heading="Why my-iclinic" />
+                <SectionTextColumn heading={section2?.heading || 'Why my-iclinic'} />
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[auto_auto_auto_1fr]">
-                    {cardList.map((card, index) => (
+                    {((mergedCardList.length && mergedCardList) || cardList).map((card, index) => (
                         <Card key={index} {...card} />
                     ))}
                     <div className="group/card relative overflow-hidden rounded-primary">
                         <Image
-                            src="/images/section-images/state-of-the-art-equipment.png"
+                            src={section2?.lastCard?.image || '/images/section-images/state-of-the-art-equipment.png'}
                             alt="State-of-the-art Equipment"
                             width={202}
                             height={316}
@@ -53,7 +65,7 @@ const WhyMyIClinic = (): JSX.Element => {
                             <Image src="/images/icons/icon-cyber-eye.svg" alt="Icon" width={30} height={30} />
                             <span className="h-[0.1rem] w-full max-w-[13.6rem] bg-white"></span>
                             <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">
-                                State-of-the-art Equipment
+                                {section2?.lastCard?.title || 'State-of-the-art Equipment'}
                             </span>
                         </div>
                     </div>
@@ -89,7 +101,7 @@ const Card = ({ icon, title, description }: CardProps): JSX.Element => {
         <div className="grid content-start gap-6 rounded-primary border border-solid border-[#EAECF0] p-12 shadow-sm transition-all duration-500 hover:shadow-shadow1 xl:max-w-[33rem]">
             <Image src={icon} alt={title} width={56} height={56} />
             <h3 className="mt-6 font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>
-            <p>{description}</p>
+            <p dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
     );
 };
