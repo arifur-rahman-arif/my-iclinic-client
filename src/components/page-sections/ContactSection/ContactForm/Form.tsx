@@ -303,7 +303,7 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
                 }
             }}
         >
-            <InputLabel id="finding-options-label" className="ml-6 font-latoMedium text-[1.6rem] !text-secondary">
+            <InputLabel id="finding-options-label" className="!ml-6 !font-latoMedium !text-[1.6rem] !text-secondary">
                 How did you find us
                 <span className="ml-2 scale-110 text-red-600">*</span>
             </InputLabel>
@@ -315,7 +315,7 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
                 onChange={handleChange}
             >
                 {['Friend', 'Google Ads', 'Search', 'Other'].map((option, key) => (
-                    <MenuItem value={option} className="py-4 text-[1.6rem] leading-[2.4rem]" key={key}>
+                    <MenuItem value={option} className="!py-4 !text-[1.6rem] leading-[2.4rem]" key={key}>
                         {option}
                     </MenuItem>
                 ))}
