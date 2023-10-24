@@ -1,6 +1,5 @@
 import { useOnclickOutside } from '@/hooks';
 import algoliasearch from 'algoliasearch';
-import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -139,8 +138,7 @@ const Hit = ({ hit, setOpenSearch, setSearchText }: HitProps): JSX.Element => {
             >
                 <div className="flex items-start gap-4">
                     <Image src="/images/icons/icon-search-outline.svg" alt="" width={24} height={24} />
-                    {/* <span>{item.title}</span> */}
-                    <span className="line-clamp-1">{HTMLReactParser(hit.title || '')}</span>
+                    <span className="line-clamp-1" dangerouslySetInnerHTML={{ __html: hit?.title || '' }}></span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
                     <g stroke="#51585B" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>

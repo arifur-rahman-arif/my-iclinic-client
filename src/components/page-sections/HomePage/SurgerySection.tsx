@@ -77,9 +77,9 @@ const Item = ({ title, description, image, largeImage }: ItemProps): JSX.Element
                 className="hidden h-full w-full min-w-[16rem] rounded-radius2 lg:block"
             />
             <div className="grid content-start gap-6">
-                <span className="mt-6 font-latoBold text-[2rem] leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
+                <h2 className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
                     {title}
-                </span>
+                </h2>
                 <p className="">{description}</p>
             </div>
         </div>

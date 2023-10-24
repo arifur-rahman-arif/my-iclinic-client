@@ -18,4 +18,5 @@ export default interface PostInterface {
     readTime: string;
     recentPosts: Array<RecentArticlesInterface>;
     relatedPosts: Omit<GeneralBlogInterface, 'description'>[];
+    publishedDate: string;
 }

@@ -50,6 +50,10 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  scroll-margin: 20rem; /* Adjust the value as needed */
+}
+
 body {
   font-size: 1.6rem;
   overflow-x: hidden;
@@ -291,6 +295,28 @@ body {
 	  text-decoration: underline;
 	}
   }
+  
+  .description-box {
+	a {
+	  font-family: var(--mulish-bold);
+	  font-size: 1.6rem;
+	  line-height: 2.4rem;
+	  position: relative;
+	  display: inline-block;
+	  cursor: pointer;
+	  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	  transition-duration: 150ms;
+	  transition-property: all;
+	  color: var(--color-blue);
+	  text-decoration-color: var(--color-blue);
+	  text-underline-offset: 4px;
+	  
+	  &:hover {
+		text-decoration: underline;
+	  }
+	}
+  }
+  
 }
 
 ::-webkit-scrollbar {
@@ -343,4 +369,12 @@ input:-webkit-autofill:focus {
 
 #calculator {
   scroll-margin-top: 10rem; /* or any other value */
+}
+
+.MuiPaper-root.MuiPaper-elevation {
+  box-shadow: var(--shadow1) !important;
+}
+
+.MuiMenu-list {
+  padding: 0;
 }

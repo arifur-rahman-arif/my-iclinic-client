@@ -24,6 +24,7 @@ export interface GeneralBlogInterface {
     readTime: string;
     slug?: string;
     ID?: number;
+    publishedDate?: string;
 }
 
 /**
@@ -48,7 +49,8 @@ const BlogCard2 = ({
     description,
     views,
     readTime,
-    slug
+    slug,
+    publishedDate
 }: GeneralBlogInterface): JSX.Element => {
     return (
         <div className="group/card grid max-w-[40rem] items-start overflow-hidden rounded-primary border-b-4 pb-12 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1">
@@ -85,7 +87,7 @@ const BlogCard2 = ({
                     </LinkText>
                 </p>
 
-                <BlogMeta views={views} readTime={readTime} />
+                <BlogMeta views={views} readTime={readTime} publishedDate={publishedDate} />
             </div>
         </div>
     );

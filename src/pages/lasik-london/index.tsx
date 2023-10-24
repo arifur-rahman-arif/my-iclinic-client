@@ -32,7 +32,7 @@ import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
 import { LasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -344,33 +344,33 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 h2Heading={data?.section_6?.sub_heading || 'better vision'}
                 h3LightHeading={data?.section_6?.heading.light_heading || 'Achieve better vision'}
                 h3BoldHeading={data?.section_6?.heading?.bold_heading || 'with LASIK today'}
-                descriptions={[
-                    <>
-                        {(data?.section_6?.descriptions?.length &&
-                            stringArrayToElementArray(data?.section_6?.descriptions)) ||
-                            'If you’ve made the decision to improve your eyesight – whether you currently have'}
-                        <LinkText
-                            href="/myopia"
-                            indicatorColor="bg-blue"
-                            className="font-mulishBold font-extrabold text-blue"
-                        >
-                            Myopia,
-                        </LinkText>{' '}
-                        <span className="font-mulishBold font-extrabold">Hyperopia</span>{' '}
-                        <LinkText
-                            href="/astigmatism-treatment"
-                            indicatorColor="bg-blue"
-                            className="font-mulishBold font-extrabold text-blue"
-                        >
-                            Astigmatism,
-                        </LinkText>{' '}
-                        LASIK could change your life.
-                    </>,
-                    <>
-                        To find out if LASIK surgery is right for you, book an in-person assessment with one of our
-                        LASIK specialists today to begin a life of normal vision.
-                    </>
-                ]}
+                descriptions={
+                    (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
+                        <>
+                            If you’ve made the decision to improve your eyesight – whether you currently have{' '}
+                            <LinkText
+                                href="/myopia"
+                                indicatorColor="bg-blue"
+                                className="font-mulishBold font-extrabold text-blue"
+                            >
+                                Myopia,
+                            </LinkText>{' '}
+                            <span className="font-mulishBold font-extrabold">Hyperopia</span>{' '}
+                            <LinkText
+                                href="/astigmatism-treatment"
+                                indicatorColor="bg-blue"
+                                className="font-mulishBold font-extrabold text-blue"
+                            >
+                                Astigmatism,
+                            </LinkText>{' '}
+                            LASIK could change your life.
+                        </>,
+                        <>
+                            To find out if LASIK surgery is right for you, book an in-person assessment with one of our
+                            LASIK specialists today to begin a life of normal vision.
+                        </>
+                    ]
+                }
                 sectionImage={{
                     url: data?.section_6?.image || '/images/section-images/better-vision-lasik.png',
                     width: 390,
@@ -706,7 +706,9 @@ export async function getStaticProps() {
 
                     section_6: {
                         ...data?.acf?.section_6,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     }, // 2
 
                     section_7: {

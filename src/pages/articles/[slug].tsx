@@ -38,6 +38,7 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
                 views={post.views}
                 categories={post.categories || []}
                 author={post.author}
+                publishedDate={post.publishedDate}
             />
 
             <BlogBody post={post} categories={categories} />

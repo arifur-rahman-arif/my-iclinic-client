@@ -4,6 +4,7 @@ import { Section } from '@/components/Section';
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { ImageType } from '@/types';
 import Image from 'next/image';
+import { CgCalendarDates } from 'react-icons/cg';
 import BlogAuthor from 'src/components/Card/BlogCard2/BlogAuthor';
 
 interface HeaderInterface {
@@ -17,6 +18,7 @@ interface HeaderInterface {
     readTime: string;
     views: number;
     categories: BlogCategoriesInterface[];
+    publishedDate: string;
 }
 
 // eslint-disable-next-line valid-jsdoc
@@ -32,7 +34,7 @@ interface HeaderInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const Header = ({ image, title, author, readTime, views, categories }: HeaderInterface): JSX.Element => {
+const Header = ({ image, title, author, readTime, views, categories, publishedDate }: HeaderInterface): JSX.Element => {
     return (
         <Section className="!mt-24">
             <Container className="grid">
@@ -72,24 +74,29 @@ const Header = ({ image, title, author, readTime, views, categories }: HeaderInt
                             {/*         {author?.name || 'My Iclinic'} */}
                             {/*     </span> */}
                             {/* </div> */}
-                            <BlogAuthor author={author} />|
-                            <div
-                                className="flex items-center justify-start gap-4"
-                                title={`Reading Time: ${readTime || null}`}
-                            >
-                                <Image
-                                    src="/images/icons/icon-clock-outline-dark.svg"
-                                    width={18}
-                                    height={18}
-                                    alt=""
-                                    className="mt-1"
-                                />
+                            <BlogAuthor author={author} />|{/* <div */}
+                            {/*     className="flex items-center justify-start gap-4" */}
+                            {/*     title={`Reading Time: ${readTime || null}`} */}
+                            {/* > */}
+                            {/*     <Image */}
+                            {/*         src="/images/icons/icon-clock-outline-dark.svg" */}
+                            {/*         width={18} */}
+                            {/*         height={18} */}
+                            {/*         alt="" */}
+                            {/*         className="mt-1" */}
+                            {/*     /> */}
+                            {/*     <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]"> */}
+                            {/*         {readTime} */}
+                            {/*     </span> */}
+                            {/* </div> */}
+                            <div className="flex items-center justify-start gap-2" title={`Reading Time: ${readTime}`}>
+                                <CgCalendarDates className="h-8 w-8 fill-brand" />
                                 <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">
-                                    {readTime}
+                                    {publishedDate || ''}
                                 </span>
                             </div>
                             |{/* Post views */}
-                            <div className="flex items-center justify-start gap-4" title={`Total View: ${views || 0}`}>
+                            <div className="flex items-center justify-start gap-2" title={`Total View: ${views || 0}`}>
                                 <Image
                                     src="/images/icons/icon-eye-outline-dark.svg"
                                     width={18}

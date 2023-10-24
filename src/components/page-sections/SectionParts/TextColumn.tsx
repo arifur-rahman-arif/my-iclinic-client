@@ -66,14 +66,14 @@ const TextColumn = ({
                     {midExtras}
 
                     {descriptions?.length && (
-                        <div className="flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
+                        <div className="description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
                             {descriptions.map((desc, index) => {
                                 return paragraphAnimation ? (
                                     <FadeIn key={index}>
                                         <div>{desc}</div>
                                     </FadeIn>
                                 ) : (
-                                    <div key={index}>{desc}</div>
+                                    <div key={index} dangerouslySetInnerHTML={{ __html: desc as string }}></div>
                                 );
                             })}
                         </div>

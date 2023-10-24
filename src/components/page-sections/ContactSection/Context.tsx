@@ -15,6 +15,8 @@ export interface ContactContext {
     setEmail: Dispatch<SetStateAction<string>>;
     phone: string;
     setPhone: Dispatch<SetStateAction<string>>;
+    findingOption: string;
+    setFindingOption: Dispatch<SetStateAction<string>>;
     message: string;
     setMessage: Dispatch<SetStateAction<string>>;
     formSubmitted: boolean;
@@ -31,6 +33,8 @@ const defaultContactContext: ContactContext = {
     setEmail: () => {},
     phone: '',
     setPhone: () => {},
+    findingOption: '',
+    setFindingOption: () => {},
     message: '',
     setMessage: () => {},
     formSubmitted: false,
@@ -69,6 +73,7 @@ const Context = ({ children }: ContextProps): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
+    const [findingOption, setFindingOption] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
     /**
@@ -100,6 +105,8 @@ const Context = ({ children }: ContextProps): JSX.Element => {
                 setEmail,
                 phone,
                 setPhone,
+                findingOption,
+                setFindingOption,
                 message,
                 setMessage,
                 formSubmitted,

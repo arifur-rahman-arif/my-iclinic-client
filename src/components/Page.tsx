@@ -19,7 +19,7 @@ interface PropInterface {
  * @param {string | undefined} description
  * @param {any} seo
  * @param {any} yoastJson
- * @param {Omit<PropInterface, "description" | "title" | "seo" | "children" | "yoastJson">} other
+ * @param {Omit<PropInterface, 'description' | 'title' | 'seo' | 'children' | 'yoastJson'>} other
  * @returns {JSX.Element}
  * @constructor
  */

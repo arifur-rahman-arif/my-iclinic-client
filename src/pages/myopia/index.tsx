@@ -143,6 +143,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             />
 
             <SideImageSection
+                sectionId="research"
                 h3LightHeading={data?.section_3?.heading?.light_heading || 'Myopia'}
                 h3BoldHeading={data?.section_3?.heading?.bold_heading || 'Research?'}
                 descriptions={

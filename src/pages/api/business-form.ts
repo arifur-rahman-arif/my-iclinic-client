@@ -12,12 +12,13 @@ const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: Nex
         if (req.method === 'POST') {
             // Ticket data to be created
             const payload = {
-                subject: `Request callback from ${req.body.name}`,
+                subject: `Contact request from ${req.body.name}`,
                 description: req.body.message,
                 email: req.body.email,
                 phone: req.body.phone,
                 custom_fields: {
-                    cf_full_name: req.body.name
+                    cf_full_name: req.body.name,
+                    cf_finding_method: req.body.findingOption
                 },
                 priority: 1,
                 status: 2

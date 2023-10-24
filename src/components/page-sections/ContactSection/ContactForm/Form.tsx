@@ -9,7 +9,8 @@ import {
     validateEmail,
     validatePhoneNumber
 } from '@/utils/miscellaneous';
-import { useContext, useEffect, useState } from 'react';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { ContactContext, ContactCtx } from '../Context';
@@ -29,6 +30,7 @@ const Form = (): JSX.Element => {
     const [nameError, setNameError] = useState<string>('');
     const [phoneError, setPhoneError] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
+    const [optionsError, setOptionsError] = useState<string>('');
     const [messageError, setMessageError] = useState<string>('');
 
     const [typingTimer, setTypingTimer] = useState<any>();
@@ -66,6 +68,11 @@ const Form = (): JSX.Element => {
             return true;
         }
 
+        if (!appCtx.findingOption) {
+            setOptionsError('Please select an option');
+            return true;
+        }
+
         if (!appCtx.message) {
             setMessageError('Please leave us a message about your request');
             return true;
@@ -92,6 +99,7 @@ const Form = (): JSX.Element => {
             email: appCtx.email,
             name: appCtx?.name,
             phone: internationalPhoneNumber,
+            findingOption: appCtx.findingOption,
             message: appCtx?.message
         };
 
@@ -159,7 +167,7 @@ const Form = (): JSX.Element => {
     }, [response, dispatch]);
 
     return (
-        <form className="grid grid-rows-[6rem,_6rem,_6rem,_17rem,_auto] gap-14" onSubmit={formSubmit}>
+        <form className="grid grid-rows-[6rem,_6rem,_6rem,_6rem,_17rem,_auto] gap-14" onSubmit={formSubmit}>
             <TextField
                 value={appCtx.name}
                 type="text"
@@ -217,6 +225,8 @@ const Form = (): JSX.Element => {
                 }}
             />
 
+            <SelectBox setOptionsError={setOptionsError} optionsError={optionsError} />
+
             <TextField
                 value={appCtx.message}
                 type="textarea"
@@ -245,6 +255,80 @@ const Form = (): JSX.Element => {
                 iconPosition="right"
             />
         </form>
+    );
+};
+
+interface SelectBoxProps {
+    optionsError: string;
+    setOptionsError: Dispatch<SetStateAction<string>>;
+}
+
+/**
+ * Select box component
+ *
+ * @param {string} optionsError
+ * @param {Dispatch<SetStateAction<string>>} setOptionsError
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Element => {
+    const appCtx: ContactContext | null = useContext(ContactCtx);
+
+    /**
+     * Handle the input change event
+     * @param {SelectChangeEvent} event
+     */
+    const handleChange = (event: SelectChangeEvent) => {
+        setOptionsError('');
+        appCtx?.setFindingOption(event.target.value);
+    };
+    return (
+        <FormControl
+            sx={{
+                minWidth: 120,
+                '.MuiInputBase-root': {
+                    borderRadius: 'var(--border-radius)',
+                    height: '100%'
+                },
+                '.MuiOutlinedInput-notchedOutline': {
+                    border: '1px solid var(--color-secondary) !important'
+                },
+                '.MuiOutlinedInput-notchedOutline legend span': {
+                    paddingLeft: '0',
+                    paddingRight: '0'
+                },
+                '.MuiSelect-select': {
+                    fontSize: '1.6rem',
+                    padding: '2.5rem 1.5rem 1rem 1.5rem'
+                }
+            }}
+        >
+            <InputLabel id="finding-options-label" className="ml-6 font-latoMedium text-[1.6rem] !text-secondary">
+                How did you find us
+                <span className="ml-2 scale-110 text-red-600">*</span>
+            </InputLabel>
+            <Select
+                labelId="finding-options-label"
+                id="finding-options"
+                value={appCtx.findingOption}
+                label="How did you find us"
+                onChange={handleChange}
+            >
+                {['Friend', 'Google Ads', 'Search', 'Other'].map((option, key) => (
+                    <MenuItem value={option} className="py-4 text-[1.6rem] leading-[2.4rem]" key={key}>
+                        {option}
+                    </MenuItem>
+                ))}
+            </Select>
+
+            <span
+                className={`pointer-events-none absolute left-4 bottom-0 text-[1.4rem] text-red-500 transition-all duration-500 ${
+                    optionsError ? 'translate-y-10' : '-translate-y-[50%] scale-50 opacity-0'
+                }`}
+            >
+                {optionsError}
+            </span>
+        </FormControl>
     );
 };
 
