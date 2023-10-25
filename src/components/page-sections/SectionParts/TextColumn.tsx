@@ -70,10 +70,16 @@ const TextColumn = ({
                             {descriptions.map((desc, index) => {
                                 return paragraphAnimation ? (
                                     <FadeIn key={index}>
-                                        <div>{desc}</div>
+                                        <div dangerouslySetInnerHTML={{ __html: desc as string }}></div>
                                     </FadeIn>
                                 ) : (
-                                    <div key={index} dangerouslySetInnerHTML={{ __html: desc as string }}></div>
+                                    <>
+                                        {typeof desc === 'string' ? (
+                                            <div key={index} dangerouslySetInnerHTML={{ __html: desc as string }}></div>
+                                        ) : (
+                                            <div key={index}>{desc}</div>
+                                        )}
+                                    </>
                                 );
                             })}
                         </div>

@@ -1,5 +1,4 @@
 import { SideImageSection } from '@/components/page-sections';
-import { stringArrayToElementArray } from '@/utils/apiHelpers';
 
 interface ClimateChangeProps {
     h2Heading: string | undefined;
@@ -40,27 +39,27 @@ const ClimateChange = ({
             }}
             imageYPosition="bottom"
             descriptions={
-                (descriptions?.length && stringArrayToElementArray(descriptions)) || [
-                    <span className="block font-latoBold text-[2rem] leading-[2.4rem] text-heading md:mt-24">
+                (descriptions?.length && descriptions) || [
+                    `<span class="block font-latoBold text-[2rem] leading-[2.4rem] text-heading md:mt-24">
                         Did you know that blurry
                         <br /> vision is rapidly rising?
-                    </span>,
-                    <p>We call this ‘Myopia’ but you might already know Myopia as ‘Nearsightedness’.</p>,
-                    <p>
+                    </span>`,
+                    `<p>We call this ‘Myopia’ but you might already know Myopia as ‘Nearsightedness’.</p>`,
+                    `<p>
                         By 2050 the World Health Organization predicts 4.9 million people will suffer from Myopia which
                         not only affects people's natural sight and quality of life, but also contributes to the masses
                         of plastic waste in our climate.
-                    </p>,
-                    <span className="mt-6 font-latoBold text-[2rem] leading-[2.4rem] text-heading">
+                    </p>`,
+                    `<span class="mt-6 font-latoBold text-[2rem] leading-[2.4rem] text-heading">
                         All of our My-iClinic
                         <br />
                         specialists are very climate conscious
-                    </span>,
-                    <p>
+                    </span>`,
+                    ` <p>
                         We understand how vision correction treatment is a healthier and natural way to not only restore
                         your clear vision, but as an opportunity to see our climate become clean and bright for future
                         generations to come!
-                    </p>
+                    </p>`
                 ]
             }
         />

@@ -20,7 +20,7 @@ interface Masthead3Props {
  */
 const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
     return (
-        <div className="relative grid min-h-[74rem] content-start md:min-h-max md:grid-cols-2">
+        <div className="relative grid min-h-[74rem] content-start md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
             <Image
                 src={MastheadImageSmall}
                 alt=""
@@ -39,12 +39,12 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
 
             <Image
                 src={image}
-                width={989}
-                height={735}
-                quality={100}
+                width={810}
+                height={600}
+                unoptimized
                 priority={true}
                 alt=""
-                className="col-start-2 row-span-2 row-start-1 hidden self-stretch object-cover object-[-25rem_center] md:block lg:object-[-12rem_center] xl:justify-self-end xl:object-center"
+                className="col-start-2 row-span-2 row-start-2 hidden self-stretch object-cover md:block md:justify-self-end xl:row-start-1 xl:self-end xl:justify-self-end xl:object-center"
             />
 
             <div className="grid content-start px-8 pt-12 md:pt-24 lg:pl-12 xl:pt-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
@@ -90,7 +90,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
             <Link
                 href="/suitability-check"
                 title="Free suitability check"
-                className="sitemap-link group/link mt-12 grid w-full max-w-[55.5rem] grid-cols-[auto_1fr] content-start gap-1 rounded-tr-[6rem] bg-[#003E79] py-10 px-8 pr-16 lg:pl-12 xl:col-span-2 xl:col-start-1 xl:row-start-2 xl:self-end xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] 2xl:max-w-[80rem]"
+                className="sitemap-link group/link mt-12 grid w-full max-w-[55.5rem] grid-cols-[auto_1fr] content-start gap-1 rounded-tr-[6rem] bg-[#003E79] py-10 px-8 pr-16 md:row-span-2 md:self-end lg:pl-12 xl:col-span-2 xl:col-start-1 xl:row-span-1 xl:row-start-2 xl:self-end xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] 2xl:max-w-[80rem]"
             >
                 <span className="flex items-center justify-start gap-4">
                     <span className="h-[1.2rem] w-[1.2rem] rounded-full bg-[#00BFFF]"></span>
@@ -122,7 +122,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
  */
 const Reviews = (): JSX.Element => {
     return (
-        <div className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-[36.1rem] md:self-end lg:self-center xl:justify-self-center xl:px-0 xl:pt-24 xl:pb-0">
+        <div className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:mx-0 md:max-w-[36.1rem] md:self-end lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start xl:mt-[10rem] xl:justify-self-start xl:px-0 xl:pt-24 xl:pb-0">
             <div className="flex flex-wrap items-end justify-start gap-10 md:justify-center">
                 {/* Review 1 */}
                 <div className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">

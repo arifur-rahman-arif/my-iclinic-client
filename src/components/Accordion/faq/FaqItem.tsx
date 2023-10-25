@@ -1,5 +1,4 @@
 import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
-import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import styles from './styles/FaqItem.module.scss';
@@ -26,6 +25,8 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
     const [expanded, setExpanded] = useState<boolean>(index === 0);
     const descriptionRef = useRef<HTMLDivElement | null>(null);
 
+    const windowWidth = window.innerWidth;
+
     return (
         <div
             className={`${styles.styles} grid grid-cols-[auto_1fr] content-start gap-x-12 gap-y-10 transition-all duration-1000`}
@@ -33,7 +34,9 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
             <span
                 onClick={() => {
                     setExpanded(!expanded);
-                    window.scrollTo(0, getElementTopPosition(descriptionRef.current) - 300);
+                    if (windowWidth < 600) {
+                        window.scrollTo(0, getElementTopPosition(descriptionRef.current) - 300);
+                    }
                 }}
                 className="grid cursor-pointer place-items-start"
             >
@@ -80,7 +83,7 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
                     !expanded ? 'max-h-[2.5rem]' : 'max-h-[300rem]'
                 } transition-all duration-1000`}
             >
-                <p>{HTMLReactParser(stripInitialTags(description))}</p>
+                <p dangerouslySetInnerHTML={{ __html: stripInitialTags(description) }}></p>
                 <div className={`mt-20 ${expanded ? 'w-full' : 'w-0'} transition-all duration-1000`}>
                     <div className="relative h-4 w-full">
                         <Image src="/images/icons/icon-pin-long.svg" quality={70} alt="" fill className="w-full" />

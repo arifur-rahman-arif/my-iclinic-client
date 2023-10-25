@@ -41,6 +41,13 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                     }}
                 />
                 {/* End Google Tag Manager */}
+                <script async={true} src="https://www.googletagmanager.com/gtag/js?id=AW-970733853"></script>
+                <script
+                    async
+                    dangerouslySetInnerHTML={{
+                        __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-970733853');`
+                    }}
+                />
 
                 {!yoastJson?.title && <title>{title}</title>}
                 {!yoastJson?.description && <meta name="description" content={description} />}

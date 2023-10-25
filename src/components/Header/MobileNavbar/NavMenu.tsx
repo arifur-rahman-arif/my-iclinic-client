@@ -100,7 +100,7 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                                         name: 'Financing your treatment',
                                                         url: '/pricing-and-financing/financing-your-treatment',
                                                         slug: 'pricing-and-financing/financing-your-treatment',
-                                                        metaDescription: 'Keep existing'
+                                                        metaDescription: 'Tailored plans to suit your budget'
                                                     }
                                                 ]
                                             },
@@ -185,7 +185,7 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                 )}
 
                                 {menu.slug === 'our-specialists' && (
-                                    <OurSpecialistsMobile router={router} setOpenMobileMenu={setOpenMobileMenu}/>
+                                    <OurSpecialistsMobile router={router} setOpenMobileMenu={setOpenMobileMenu} />
                                 )}
                             </div>
                         )}
@@ -272,8 +272,7 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu, appCtx, index }: Pare
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
                     )}
                 </Link>
             )}

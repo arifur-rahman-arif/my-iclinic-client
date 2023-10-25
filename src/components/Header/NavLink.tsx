@@ -32,7 +32,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
             }`}
         >
             {/* Parent menus */}
-            <ParentMenuItem router={router} menu={menu}/>
+            <ParentMenuItem router={router} menu={menu} />
 
             {/* Submenus */}
             {menu.submenu?.length && (
@@ -45,7 +45,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'vision-correction' && <SubMenu router={router} submenu={menu.submenu}/>}
+                    {menu.slug === 'vision-correction' && <SubMenu router={router} submenu={menu.submenu} />}
 
                     {menu.slug === 'eye-treatments' && (
                         <EyeTreatments
@@ -89,7 +89,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                                             name: 'Financing your treatment',
                                             url: '/pricing-and-financing/financing-your-treatment',
                                             slug: 'pricing-and-financing/financing-your-treatment',
-                                            metaDescription: 'Keep existing'
+                                            metaDescription: 'Tailored plans to suit your budget'
                                         }
                                     ]
                                 },
@@ -154,7 +154,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'our-specialists' && <OurSpecialists router={router}/>}
+                    {menu.slug === 'our-specialists' && <OurSpecialists router={router} />}
                 </>
             )}
         </li>
@@ -179,7 +179,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
             {menu.submenu ? (
                 <>
                     {menu.slug === 'our-specialists' ? (
-                        <SpecialistMenu isMenuActive={isMenuActive}/>
+                        <SpecialistMenu isMenuActive={isMenuActive} />
                     ) : (
                         <>
                             <span
@@ -211,8 +211,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                     )}
                 </Link>
             )}

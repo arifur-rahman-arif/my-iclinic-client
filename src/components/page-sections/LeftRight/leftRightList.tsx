@@ -2248,7 +2248,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/CAIRS.jpg"
                 width={390}
                 height={390}
                 quality={70}
@@ -2258,7 +2258,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/CAIRS.jpg"
                 width={711}
                 height={522}
                 quality={70}
@@ -2328,7 +2328,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
     {
         mobileImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/DMEK.jpg"
                 width={390}
                 height={390}
                 quality={70}
@@ -2338,7 +2338,7 @@ export const leftRightListCornealTreatments: Array<LeftRightSectionChildrenInter
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/placeholder-image.png"
+                src="/images/section-images/DMEK.jpg"
                 width={544}
                 height={392}
                 quality={70}

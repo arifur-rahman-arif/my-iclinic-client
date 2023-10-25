@@ -431,9 +431,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         )}
                         descriptions={
                             (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section.plastic_free_life.descriptions
-                                )) || [
+                                data?.sustainability_section.plastic_free_life.descriptions) || [
                                 `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
                     free of plastic waste from your glasses and contact lenses!`
                             ]
@@ -454,9 +452,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         )}
                         descriptions={
                             (data?.sustainability_section?.gift_of_a_tree?.descriptions.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section.gift_of_a_tree.descriptions
-                                )) || [
+                                data?.sustainability_section.gift_of_a_tree.descriptions) || [
                                 `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
                     a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
                                 `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`

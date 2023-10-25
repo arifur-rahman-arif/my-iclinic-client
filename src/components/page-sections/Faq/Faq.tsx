@@ -2,6 +2,7 @@ import { Accordion } from '@/components/Accordion';
 import { Container } from '@/components/Container';
 import { FaqListInterface } from '@/components/page-sections/Faq/faqList';
 import { Section } from '@/components/Section';
+import { stripInitialTags } from '@/utils/miscellaneous';
 import { ReactNode, useState } from 'react';
 import FaqSearch from './FaqSearch';
 
@@ -55,7 +56,7 @@ const Faq = ({ faqs, titleLight, titleBold, description }: FaqInterface): JSX.El
                         </strong>
                     </h2>
                     <p className="mt-16 text-center font-mulishLight text-[1.8rem] leading-[3.2rem] sm:text-[2rem] sm:leading-[2.8rem] md:mt-24">
-                        {description}
+                        {typeof description === 'string' ? stripInitialTags(description) : description}
                     </p>
 
                     <FaqSearch filterFaq={filterFaq} />

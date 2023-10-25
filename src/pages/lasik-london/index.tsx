@@ -507,9 +507,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                         }
                         descriptions={
                             (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section?.plastic_free_life?.descriptions
-                                )) || [
+                                data?.sustainability_section?.plastic_free_life?.descriptions) || [
                                 `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
                             ]
                         }
@@ -571,19 +569,17 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                         }
                         descriptions={
                             (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section?.gift_of_a_tree?.descriptions
-                                )) || [
+                                data?.sustainability_section?.gift_of_a_tree?.descriptions) || [
                                 `When undergoing laser eye surgery, you may not realize it but you are already making a positive
                          difference to the environment. For every 10 years of contact lens wearing the amount of plastic
                           that ends up in the ocean is roughly the same as your own body weight.`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                ` <span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
                                     Our gift to you…
-                                </span>,
+                                </span>`,
                                 `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
+                                ` <span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
                                     Here at My-iClinic we give all of our laser patients a real forest tree!
-                                </span>,
+                                </span>`,
                                 `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
                          value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
                           contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
