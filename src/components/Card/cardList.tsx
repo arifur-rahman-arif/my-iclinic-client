@@ -216,8 +216,8 @@ export const consultantCardList: ConsultantCardInterface[] = [
     {
         image: '/images/avaters/ms-maria-dimitry.png',
         name: 'Maria Dimitry',
-        degree: 'MBBS, MSc, FRCOphth',
-        title: 'Consultant ophthalmic surgeon',
+        degree: 'MBBS, MSc, FRCOphth, CertLRS',
+        title: 'Consultant and Surgeon',
         url: '/our-specialists/maria-dimitry'
     },
     {
@@ -233,5 +233,12 @@ export const consultantCardList: ConsultantCardInterface[] = [
         degree: 'MBBS DO FRCS (Ed) FRCOphth MSc CertLRS; PGDip LRS',
         title: 'Consultant and Surgeon',
         url: '/our-specialists/sheila-luk'
+    },
+    {
+        image: '/images/avaters/qiang-kwong.jpeg',
+        name: 'Mr Qiang Kwong',
+        degree: 'MA (Cantab) BM BCh (Oxon) FEBO FRCOphth CERTLRS',
+        title: 'Consultant and Surgeon',
+        url: '/our-specialists/qiang-kwong'
     }
 ];

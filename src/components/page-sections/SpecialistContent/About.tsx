@@ -14,6 +14,7 @@ interface AboutProps {
  * @constructor
  */
 const About = ({ content }: AboutProps): JSX.Element => {
+    console.log(content);
     return <div className={`${animation.styles} md:px-12 ${styles.styles}`}>{HTMLReactParser(content || '')}</div>;
 };
 

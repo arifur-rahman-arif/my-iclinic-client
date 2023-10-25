@@ -56,11 +56,11 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
             slug: 'education'
         },
         {
-            label: 'Awards',
+            label: 'Research',
             slug: 'awards'
         },
         {
-            label: 'In the media',
+            label: 'Affiliations',
             slug: 'in-the-media'
         },
         {
@@ -81,7 +81,8 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
     if (!specialist.about) {
         defaultTabs = defaultTabs.filter((tab) => tab.slug !== 'about');
     }
-    if (!specialist.media.content && !specialist.media.fellowships_and_memberships) {
+
+    if (!specialist.media.content && !specialist.media.fellowships_and_memberships?.length) {
         defaultTabs = defaultTabs.filter((tab) => tab.slug !== 'in-the-media');
     }
 
@@ -106,7 +107,7 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
         if (!specialist.awards) {
             modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'awards');
         }
-        if (!specialist.media.content && !specialist.media.fellowships_and_memberships) {
+        if (!specialist.media.content && !specialist.media.fellowships_and_memberships?.length) {
             modifiedTabs = modifiedTabs.filter((tab) => tab.slug !== 'in-the-media');
         }
         if (!specialist.about) {
@@ -204,6 +205,8 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
         handleMouseMove(deltaX);
     };
 
+    const activeTab = tabs.find((tab) => tab.active);
+
     return (
         <div className="grid content-start gap-12 md:gap-24">
             <div className="grid gap-4">
@@ -256,16 +259,16 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
                 </div>
             </div>
 
-            {tabs?.length ? (
+            {tabs ? (
                 <div className={styles.styles}>
-                    {tabs[0]?.active ? <Specialties specialties={specialist.specialties} /> : null}
-                    {tabs[1]?.active ? <Education education={specialist.education} /> : null}
-                    {tabs[2]?.active ? <Awards awards={specialist.awards} /> : null}
-                    {tabs[3]?.active ? (
+                    {activeTab?.slug === 'specialties' ? <Specialties specialties={specialist.specialties} /> : null}
+                    {activeTab?.slug === 'education' ? <Education education={specialist.education} /> : null}
+                    {activeTab?.slug === 'awards' ? <Awards awards={specialist.awards} /> : null}
+                    {activeTab?.slug === 'in-the-media' ? (
                         <Media content={specialist.media.content} list={specialist.media.fellowships_and_memberships} />
                     ) : null}
 
-                    {tabs[4]?.active ? <About content={specialist.about} /> : null}
+                    {activeTab?.slug === 'about' ? <About content={specialist.about} /> : null}
                 </div>
             ) : null}
         </div>

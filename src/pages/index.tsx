@@ -20,32 +20,26 @@ import dynamic from 'next/dynamic';
 import { Key } from 'react';
 import TripleWinSection from 'src/components/page-sections/HomePage/TripleWinSection';
 
-// const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-//     loading: () => <ComponentLoader />
-// });
-
 const SpeakToSpecialist = dynamic(() => import('@/page-sections/HomePage/SpeakToSpecialist'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
 const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 //
 // const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
 //     loading: () => <ComponentLoader />
 // });
 const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/JourneySlider'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 // const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection2'), {
 //     loading: () => <ComponentLoader />
 // });
-// const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
-//     loading: () => <ComponentLoader />
-// });
 
-interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {}
+interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {
+}
 
 interface HomeProps {
     data?: DataInterface;
@@ -66,13 +60,13 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     // JOURNEY SLIDER
     const journeySliderData: any = data?.journeySlider
         ? data?.journeySlider.map((service) => {
-              return {
-                  ...service,
-                  title: service?.title,
-                  description: stringArrayToElementArray(service?.list),
-                  image: service?.image
-              };
-          })
+            return {
+                ...service,
+                title: service?.title,
+                description: stringArrayToElementArray(service?.list),
+                image: service?.image
+            };
+        })
         : null;
 
     // MISSION SLIDER
@@ -96,44 +90,44 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 
     const cardListData: any = data?.private_eye_card
         ? data?.private_eye_card.map((service) => {
-              return {
-                  ...service,
-                  title: HTMLReactParser(service?.title),
-                  pillText: service?.pillText,
-                  cardList: stringArrayToElementArray(service?.cardList),
-                  image: service?.image,
-                  cardLink: service?.cardLink
-              };
-          })
+            return {
+                ...service,
+                title: HTMLReactParser(service?.title),
+                pillText: service?.pillText,
+                cardList: stringArrayToElementArray(service?.cardList),
+                image: service?.image,
+                cardLink: service?.cardLink
+            };
+        })
         : null;
 
     return (
         <Page
             title="London's No1 Eye Clinic For Laser Eye Surgery & Vision Correction"
-            description="Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options."
+            description='Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options.'
             seo={seo}
             yoastJson={yoastJson}
         >
             <Masthead3
-                title="London private eye clinic"
-                subTitle="Premium eye care for all the family"
-                image="/images/masthead/masthead-home-large.png"
+                title='London private eye clinic'
+                subTitle='Premium eye care for all the family'
+                image='/images/masthead/masthead-home-large.png'
             />
 
-            <SurgerySection />
+            <SurgerySection/>
 
             {/*  Private Eye */}
             <SideImageSection
                 h3LightHeading={
                     <>
                         {data?.section_1?.heading?.light_heading || 'Private Eye'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Care Services'}
-                containerClassName="md:!grid-cols-1 md:!gap-12"
+                containerClassName='md:!grid-cols-1 md:!gap-12'
                 customColumn={
-                    <div className="grid justify-center gap-6 md:mt-12  md:grid-cols-[auto_auto] xl:grid-cols-3">
+                    <div className='grid justify-center gap-6 md:mt-12  md:grid-cols-[auto_auto] xl:grid-cols-3'>
                         {((cardListData?.length && cardListData) || cardList).map(
                             (list: JSX.IntrinsicAttributes & CardInterface, index: Key | null | undefined) => (
                                 <Card key={index} {...list} />
@@ -143,11 +137,11 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 }
             />
 
-            <UspSection />
+            <UspSection/>
 
-            <VisionCorrection />
+            <VisionCorrection/>
 
-            <TripleWinSection />
+            <TripleWinSection/>
 
             {/* /!* SAVING SLIDER SECTION -- *!/ */}
             {/* <LazyComponent> */}
@@ -155,25 +149,25 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             {/* </LazyComponent> */}
 
             <LazyComponent>
-                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
+                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome}/>
             </LazyComponent>
 
             {/* <LazyComponent> */}
             {/*     <CallbackSection /> */}
             {/* </LazyComponent>  */}
             <LazyComponent>
-                <SpeakToSpecialist />
+                <SpeakToSpecialist/>
             </LazyComponent>
 
-            <OurMission />
+            <OurMission/>
 
             <LazyComponent>
-                <EnvironmentalImpact />
+                <EnvironmentalImpact/>
             </LazyComponent>
 
-            <FundingTreatment />
+            <FundingTreatment/>
 
-            <BlurPrevention />
+            <BlurPrevention/>
         </Page>
     );
 }
@@ -205,11 +199,11 @@ export async function getStaticProps() {
                     // }, // EYES CARD
                     private_eye_card: Array.isArray(data?.acf?.private_eye_card)
                         ? data?.acf.private_eye_card.map((sectionData) => {
-                              return {
-                                  ...sectionData,
-                                  cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
-                              };
-                          })
+                            return {
+                                ...sectionData,
+                                cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
+                            };
+                        })
                         : [],
                     // savingsliderSection: Array.isArray(data?.acf?.savingsliderSection)
                     //     ? data?.acf.savingsliderSection.map((sliderData) => {
@@ -221,11 +215,11 @@ export async function getStaticProps() {
                     //     : [],
                     journeySlider: Array.isArray(data?.acf?.journeySlider)
                         ? data?.acf.journeySlider.map((sliderData) => {
-                              return {
-                                  ...sliderData,
-                                  list: convertArrayOfObjectsToStrings(sliderData?.list)
-                              };
-                          })
+                            return {
+                                ...sliderData,
+                                list: convertArrayOfObjectsToStrings(sliderData?.list)
+                            };
+                        })
                         : []
                     // section_3: {
                     //     ...data?.acf?.section_3,
