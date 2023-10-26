@@ -236,7 +236,7 @@ export const consultantCardList: ConsultantCardInterface[] = [
     },
     {
         image: '/images/avaters/qiang-kwong.jpeg',
-        name: 'Mr Qiang Kwong',
+        name: 'Qiang Kwong',
         degree: 'MA (Cantab) BM BCh (Oxon) FEBO FRCOphth CERTLRS',
         title: 'Consultant and Surgeon',
         url: '/our-specialists/qiang-kwong'
