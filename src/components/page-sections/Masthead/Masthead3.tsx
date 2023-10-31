@@ -139,7 +139,7 @@ const Reviews = (): JSX.Element => {
                         Trust Pilot
                     </span>
                     <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        4.8 | 315{' '}
+                        4.9 | 73{' '}
                         <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                             reviews
                         </span>

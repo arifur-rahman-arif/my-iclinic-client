@@ -70,7 +70,7 @@ const Banner = ({
                         Google
                     </span>
                     <span className="col-span-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        {googleReviews || '4.8 | 35 reviews'}
+                        {googleReviews || '4.9 | 73 reviews'}
                     </span>
                 </div>
                 {/* Review 2 */}

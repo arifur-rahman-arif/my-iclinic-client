@@ -82,5 +82,10 @@ export const getPost = async (slug: string): Promise<PostInterface> => {
 
     const { data } = await postResponse.json();
 
-    return data.data;
+    let httpsData = data.data;
+
+    // Replace all possible http to https
+    httpsData = JSON.stringify(httpsData).replace(/http(?=:\/\/)/g, 'https');
+
+    return JSON.parse(httpsData);
 };

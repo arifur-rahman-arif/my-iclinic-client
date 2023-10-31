@@ -86,7 +86,7 @@ const Reviews = (): JSX.Element => {
                     Google
                 </span>
                 <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                    4.8 | 35{' '}
+                    4.9 | 73{' '}
                     <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
