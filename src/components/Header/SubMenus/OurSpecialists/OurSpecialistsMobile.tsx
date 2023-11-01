@@ -70,7 +70,7 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
 
     const extraLinks = [
         {
-            name: 'Meat the team',
+            name: 'Meet the team',
             url: '/our-specialists'
         },
         {

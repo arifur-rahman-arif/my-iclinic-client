@@ -64,7 +64,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
 
     const extraLinks = [
         {
-            name: 'Meat the team',
+            name: 'Meet the team',
             url: '/our-specialists'
         },
         {
