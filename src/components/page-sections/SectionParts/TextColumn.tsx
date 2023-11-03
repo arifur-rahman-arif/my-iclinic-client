@@ -1,7 +1,7 @@
 import { FadeIn } from '@/components/Animations';
 import { SpanVariant1 } from '@/components/Headings';
 import { SideImageSectionInterface } from '@/components/page-sections';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import TextColumnImage from './TextColumnImage';
 
@@ -28,6 +28,8 @@ const TextColumn = ({
     h3LightHeading,
     h3BoldHeading,
     descriptions,
+    descriptionWrapperClass,
+    textColumnClassName,
     sectionImage,
     sectionImageDesktop,
     textColumnExtras,
@@ -35,8 +37,7 @@ const TextColumn = ({
     textColumnImage,
     textColumnTopElements,
     paragraphAnimation,
-    textColumnDefaultClassName,
-    textColumnClassName
+    textColumnDefaultClassName
 }: TextColumnInterface): JSX.Element => {
     return (
         <div className={twMerge(`${textColumnDefaultClassName || 'grid gap-12'}`, textColumnClassName)}>
@@ -66,22 +67,29 @@ const TextColumn = ({
                     {midExtras}
 
                     {descriptions?.length && (
-                        <div className="description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]">
-                            {descriptions.map((desc, index) => {
-                                return paragraphAnimation ? (
-                                    <FadeIn key={index}>
-                                        <div dangerouslySetInnerHTML={{ __html: desc as string }}></div>
-                                    </FadeIn>
-                                ) : (
-                                    <>
-                                        {typeof desc === 'string' ? (
-                                            <div key={index} dangerouslySetInnerHTML={{ __html: desc as string }}></div>
-                                        ) : (
-                                            <div key={index}>{desc}</div>
-                                        )}
-                                    </>
-                                );
-                            })}
+                        <div
+                            className={twMerge(
+                                'description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]',
+                                descriptionWrapperClass
+                            )}
+                        >
+                            {descriptions.map((desc, index) => (
+                                <Fragment key={index}>
+                                    {paragraphAnimation ? (
+                                        <FadeIn>
+                                            <div dangerouslySetInnerHTML={{ __html: desc as string }}></div>
+                                        </FadeIn>
+                                    ) : (
+                                        <>
+                                            {typeof desc === 'string' ? (
+                                                <div dangerouslySetInnerHTML={{ __html: desc as string }}></div>
+                                            ) : (
+                                                <div>{desc}</div>
+                                            )}
+                                        </>
+                                    )}
+                                </Fragment>
+                            ))}
                         </div>
                     )}
 

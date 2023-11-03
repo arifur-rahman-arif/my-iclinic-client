@@ -16,6 +16,7 @@ export interface SideImageSectionInterface {
     h3LightHeading?: ReactNode;
     h3BoldHeading?: ReactNode;
     descriptions?: string[] | ReactNode[];
+    descriptionWrapperClass?: string;
     sectionImage?: ImageType;
     sectionImageDesktop?: ImageType;
     normalLightHeading?: ReactNode;
@@ -63,6 +64,7 @@ const SideImageSection = ({
     h3LightHeading,
     h3BoldHeading,
     descriptions,
+    descriptionWrapperClass,
     sectionImage,
     sectionImageDesktop,
     normalLightHeading,
@@ -99,6 +101,7 @@ const SideImageSection = ({
                         h2Heading={h2Heading}
                         h3BoldHeading={h3BoldHeading}
                         descriptions={descriptions}
+                        descriptionWrapperClass={descriptionWrapperClass}
                         textColumnExtras={textColumnExtras}
                         h3LightHeading={h3LightHeading}
                         midExtras={midExtras}

@@ -327,5 +327,8 @@ export const prependSign = (number: number | null): string | number | null => {
  * @returns {string} The modified HTML string with the initial <p> tag stripped, if applicable.
  */
 export const stripInitialTags = (html: string): string => {
-    return striptags(html, new Set(['div', 'b', 'strong', 'em', 'u', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br']));
+    return striptags(
+        html,
+        new Set(['div', 'b', 'strong', 'em', 'u', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'span'])
+    );
 };
