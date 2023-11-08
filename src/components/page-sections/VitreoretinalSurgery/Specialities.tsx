@@ -82,7 +82,9 @@ const SpecialityItem = ({ title, items, icon, className }: SpecialityItemProps):
             <span className="grid h-[5.4rem] w-[5.4rem] place-items-center rounded-full bg-white">
                 <Image src={icon} alt="" width={42} height={24} />
             </span>
-            <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-white">{title}</span>
+            <span className="font-mulishBold text-[2rem] lowercase leading-[2.8rem] text-white first-letter:uppercase">
+                {title}
+            </span>
 
             <ul className="grid max-w-[20.6rem] gap-4">
                 {items.length

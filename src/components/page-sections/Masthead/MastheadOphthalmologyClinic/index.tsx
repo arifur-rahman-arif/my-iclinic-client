@@ -25,7 +25,7 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
             />
 
             <div className="grid gap-6 bg-[#0052A0] px-8 py-12 md:bg-transparent xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
-                <h1 className="max-w-[56rem] font-latoExtraBold text-[3.6rem] normal-case leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
+                <h1 className="max-w-[56rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                     {masthead?.heading || 'The London Retina treatments'}
                 </h1>
                 <p className="max-w-[44rem] font-mulishBold uppercase text-[#D1E8FE]">

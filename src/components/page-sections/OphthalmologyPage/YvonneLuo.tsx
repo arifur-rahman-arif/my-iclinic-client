@@ -112,7 +112,7 @@ const TextColumn = ({ heading, designation, descriptions, subheading }: Partial<
 
             <div className="grid gap-2">
                 <h2 className="text-white">{heading || 'Yvonne Luo'}</h2>
-                <span className="font-mulishBold text-[#0099FF] md:text-[1.8rem] md:leading-[2.8rem]">
+                <span className="font-mulishBold text-[#94CAFF] md:text-[1.8rem] md:leading-[2.8rem]">
                     {designation || 'Consultant and Surgeon'}
                 </span>
             </div>

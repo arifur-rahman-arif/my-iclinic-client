@@ -109,8 +109,14 @@ const TextColumn = ({ section3 }: EducationJourneyProps): JSX.Element => {
             <ul className="-mt-6 ml-10 grid gap-6">
                 {section3?.list
                     ? section3.list.map((item, key) => (
-                          <li key={key} className="grid grid-cols-[auto_1fr] gap-2">
-                              <Image src="/images/icons/icon-box-check-blue.svg" alt="" width={25} height={24} />
+                          <li key={key} className="grid grid-cols-[auto_1fr] items-start gap-4">
+                              <Image
+                                  src="/images/icons/icon-dotted-arrow.svg"
+                                  alt=""
+                                  width={20}
+                                  height={20}
+                                  className="translate-y-[0.7rem]"
+                              />
                               <span className="text-[#293C4E]">{item}</span>
                           </li>
                       ))

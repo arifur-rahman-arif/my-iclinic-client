@@ -29,12 +29,10 @@ const MastheadVitreoretinalSurgery = ({ masthead }: Masthead3Props): JSX.Element
                 <div className="grid content-center gap-6 px-8 md:pb-24 xl:px-0">
                     <BreadCrumb className="mt-0 !px-0 md:hidden" linkClassName="text-white" />
 
-                    <h1 className="font-latoBold text-[3.6rem] leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
+                    <h1 className="font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                         {masthead?.heading}
                     </h1>
-                    <h2 className="-mt-6 font-latoBold text-[3rem] normal-case leading-[3.6rem] text-[#0099FF]">
-                        {masthead?.subheading}
-                    </h2>
+                    <p className="font-mulishBold uppercase text-[#95ABED]">{masthead?.subheading}</p>
                     <p className="mt-6 max-w-[32rem] font-mulishRegular text-white md:max-w-[47.6rem]">
                         {stripInitialTags(masthead?.description || '')}
                     </p>

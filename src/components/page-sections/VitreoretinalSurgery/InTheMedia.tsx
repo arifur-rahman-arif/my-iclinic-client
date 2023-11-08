@@ -63,12 +63,12 @@ const TextColumn = ({ section5 }: InTheMediaProps): JSX.Element => {
             <ul className="ml-10 grid gap-6">
                 {section5?.list
                     ? section5.list.map((item, key) => (
-                          <li key={key} className="grid grid-cols-[auto_1fr] items-center gap-2">
+                          <li key={key} className="grid grid-cols-[auto_1fr] items-center gap-3">
                               <Image
-                                  src="/images/icons/icon-box-check-blue.svg"
+                                  src="/images/icons/icon-dotted-arrow.svg"
                                   alt=""
-                                  width={25}
-                                  height={24}
+                                  width={20}
+                                  height={20}
                                   className="mt-[0.1rem]"
                               />
                               <span className="text-[#293C4E]">{item}</span>

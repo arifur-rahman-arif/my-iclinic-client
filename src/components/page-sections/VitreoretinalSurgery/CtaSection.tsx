@@ -43,17 +43,17 @@ const list = ['Vision correction', 'Cataract surgery', 'Treatment for a complex 
  */
 const LeftColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
     return (
-        <div className="grid content-start gap-12 md:gap-24">
+        <div className="grid content-start gap-12">
             <h2 className="flex flex-col gap-2">
-                <span className="font-latoBold text-[4.8rem] normal-case leading-[4.8rem] text-[#09F] lg:text-[9.6rem] lg:leading-[7.6rem]">
+                <span className="font-latoBold text-[3rem] uppercase leading-[3.6rem] text-[#09F] lg:text-[3.6rem] lg:leading-[4rem]">
                     {section7?.heading?.heading1 || 'Your eyes'}
                 </span>
-                <span className="font-latoBold text-[4.8rem] normal-case leading-[4.8rem] text-white lg:text-[9.6rem] lg:leading-[7.6rem]">
+                <span className="font-latoBold text-[3rem] uppercase leading-[3.6rem] text-white lg:text-[3.6rem] lg:leading-[4rem]">
                     {section7?.heading?.heading2 || 'deserve it.'}
                 </span>
             </h2>
 
-            <h5 className="max-w-[47rem] text-white">
+            <h5 className="max-w-[47rem] uppercase text-white">
                 {section7?.subheading || 'World-class eye care with Yvonne Luo at My-iClinic in London.'}
             </h5>
             <p
@@ -68,14 +68,14 @@ const LeftColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
 
             <h5 className="max-w-[47rem] text-white">{section7?.listTitle || "Whether you're seeking..."}</h5>
 
-            <ul className="-mt-5 ml-6 grid gap-6 md:-mt-16">
-                {((section7?.list && section7.list) || list).map((item, key) => (
-                    <li key={key} className="grid grid-cols-[auto_1fr] items-center gap-2">
+            <ul className="-mt-5 ml-6 grid gap-6">
+                {((section7?.list?.length && section7.list) || list).map((item, key) => (
+                    <li key={key} className="grid grid-cols-[auto_1fr] items-center gap-4">
                         <Image
-                            src="/images/icons/icon-box-check-white.svg"
+                            src="/images/icons/icon-dotted-arrow-white.svg"
                             alt=""
-                            width={25}
-                            height={24}
+                            width={20}
+                            height={20}
                             className="mt-[0.1rem]"
                         />
                         <span className="text-white">{item}</span>
@@ -114,7 +114,7 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
                 <span className="text-white">{section7?.specialist?.title || 'PhD Clinical ophthalmology'}</span>
             </div>
 
-            <span className="text-center font-mulishBold uppercase text-[#0099FF]">
+            <span className="text-center font-mulishBold uppercase text-[#94CAFF]">
                 {section7?.specialist?.designation || 'Award winner Consultant and Surgeon'}
             </span>
 
@@ -124,7 +124,7 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
 
             <div className="mt-8 grid place-items-center gap-8">
                 <BookConsultation
-                    buttonClassName="rounded-[1rem] flex items-center justify-center gap-4 py-5 px-12 transition-all duration-500 hover:bg-transparent bg-[#09F] hover:border-white border-2 border-solid border-[#09F]"
+                    buttonClassName="rounded-[1rem] group/button flex items-center justify-center gap-4 py-5 px-12 transition-all duration-500 hover:bg-transparent bg-[#94CAFF] hover:border-[#94CAFF] border-2 border-solid border-[#94CAFF]"
                     modalElement={
                         <>
                             <iframe
@@ -138,8 +138,10 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
                     maxWidth="70rem"
                 >
                     <button>
-                        <Image src="/images/icons/icon-communication.svg" alt="" width={24} height={24} />
-                        <span className="font-mulishBold uppercase text-white">Book a consultation</span>
+                        {/* <Image src="/images/icons/icon-communication.svg" alt="" width={24} height={24} /> */}
+                        <span className="font-mulishBold text-brand transition-all duration-500 group-hover/button:text-white">
+                            Book a consultation
+                        </span>
                     </button>
                 </BookConsultation>
 
