@@ -53,7 +53,7 @@ const FeatureSlider = ({ children }: StackSliderInterface): JSX.Element => {
             speed={800}
             autoHeight={false}
             modules={[EffectFade, Pagination, Navigation, Autoplay]}
-            className={`${styles.style} ${styles.fadeIn} ${styles.featureSlider} w-full`}
+            className={`${styles.style} ${styles.fadeIn} ${styles.featureSlider} w-full [&>.swiper-wrapper]:!pb-0`}
             ref={swiperRef}
         >
             {children}

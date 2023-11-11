@@ -1,0 +1,29 @@
+@import 'src/styles/utils/breakpoints';
+
+.styles {
+  
+  @for $i from 2 through 4 {
+	& > div:nth-child(#{$i}) {
+	  animation-delay: $i * 1s;
+	}
+  }
+  
+  :global {
+	.card {
+	  &:local {
+		@include media-breakpoint-up(xl) {
+		  animation: slideUpAnimation 1s ease-in-out forwards;
+		}
+	  }
+	}
+  }
+  
+  @keyframes slideUpAnimation {
+	from {
+	  transform: translateY(100%);
+	}
+	to {
+	  transform: translateY(0);
+	}
+  }
+}

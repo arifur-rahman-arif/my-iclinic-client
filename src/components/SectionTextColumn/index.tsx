@@ -36,7 +36,12 @@ const SectionTextColumn = ({
             {heading ? <SectionHeading {...{ heading, headingClassName, barClassName }} /> : null}
 
             {descriptions && descriptions?.length > 0 && (
-                <div className={twMerge('col-start-2 grid max-w-[47.5rem] gap-6', descriptionContainerClassName)}>
+                <div
+                    className={twMerge(
+                        'description-box col-start-2 grid max-w-[47.5rem] gap-6',
+                        descriptionContainerClassName
+                    )}
+                >
                     {descriptions.map((item, key) => (
                         <p className={descriptionClassName} key={key} dangerouslySetInnerHTML={{ __html: item }}></p>
                     ))}

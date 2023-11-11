@@ -17,7 +17,7 @@ export interface BandImageInterface {
 const BandImage = ({ title, imageURL, bandColor }: BandImageInterface): JSX.Element => {
     return (
         <div className="relative max-w-[40rem] self-start justify-self-center md:justify-self-end">
-            <div className="relative z-[1] flex flex-col items-center justify-start gap-14 rounded-primary bg-white p-8 shadow-shadow1 sm:p-10 sm:py-12">
+            <div className="relative z-[1] flex flex-col items-center justify-start gap-14 rounded-primary bg-white p-8 shadow-[0px_1px_3px_0px_rgba(0,21,41,0.06),0px_1px_2px_0px_rgba(0,21,41,0.04)] sm:p-10 sm:py-12">
                 <div className="overflow-hidden rounded-primary">
                     <Image
                         src={imageURL}

@@ -1,42 +1,24 @@
-/* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import {
-    BulletPoint,
-    ClimateChange,
-    CtaSection,
-    CtaSection2,
-    FinanceExtra,
-    Masthead,
-    PlasticFree,
-    SideImageSection,
-    StackColumnIcl
-} from '@/components/page-sections';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
-import { leftRightListIcl } from '@/components/page-sections/LeftRight/leftRightList';
-import { iclStackList } from '@/components/page-sections/StackedSection';
 import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconPin from '@/icons/icon-pin-small.svg';
-import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { getPageData } from '@/lib';
+import ContactComponent from '@/page-sections/IclComponents/ContactComponent';
+import ContactLensComponent from '@/page-sections/IclComponents/ContactLensComponent';
+import EyeCareComponent from '@/page-sections/IclComponents/EyeCareComponent';
+import EyeConsultation from '@/page-sections/IclComponents/EyeConsultation';
+import EyeSurgeryConsultation from '@/page-sections/IclComponents/EyeSurgeryConsultation';
+import LensBenefits from '@/page-sections/IclComponents/LensBenefits';
+import VisionBenefits from '@/page-sections/IclComponents/VisionBenefits';
+import VisionCorrectionPromo from '@/page-sections/IclComponents/VisionCorrectionPromo';
+import MastheadICL from '@/page-sections/Masthead/MastheadICL';
 import { IclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import MastheadImageLarge from '@/masthead/masthead-icl-large.png';
-import MastheadImageSmall from '@/masthead/masthead-icl-small.png';
-import MastheadImageMedium from '@/masthead/masthead-icl.png';
-import HTMLReactParser from 'html-react-parser';
-import React from 'react';
+import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
-import { FaPoundSign } from 'react-icons/fa';
-import { Button } from 'src/components/Buttons';
+import React from 'react';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -56,13 +38,8 @@ const FeaturedPatient = dynamic(() => import('@/components/page-sections/Feature
 const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
     loading: () => <ComponentLoader />
 });
-const StackedSection = dynamic(() => import('@/components/page-sections/StackedSection/StackedSection'), {
-    loading: () => <ComponentLoader />
-});
-const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
-});
-const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'), {
+
+const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
 
@@ -81,52 +58,9 @@ interface IclProps {
  * @returns {JSX.Element}
  */
 export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-
     const heading = data?.masthead_heading || 'ICL Surgery in London';
     const subheading = data?.masthead_subheading || 'Implantable Contact Lenses';
 
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    // LEFT RIGHT SECTION
-    const leftRightsectiondata = data?.leftRightsection
-        ? data.leftRightsection.map(
-              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                  ...item,
-                  mobileImage: (
-                      <Image
-                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
-                          width={390}
-                          height={390}
-                          quality={70}
-                          className="rounded-primary md:hidden"
-                          alt=""
-                      />
-                  ),
-                  desktopImage: (
-                      <Image
-                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
-                          width={695}
-                          height={580}
-                          quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                          alt=""
-                      />
-                  ),
-                  title: item?.title,
-                  descriptions: stringArrayToElementArray(item?.descriptions)
-              })
-          )
-        : null;
-
-    // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
@@ -139,280 +73,363 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
               })
             : null;
 
-    // lensesSlider
-    const lensesSliderdata: any =
-        Array.isArray(data?.lensesSlider) && data.lensesSlider.length > 0
-            ? data.lensesSlider.map(
-                  (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
-                      return {
-                          ...service,
-                          image: {
-                              url: service?.image || '/images/section-images/biocompatibility.png',
-                              width: 392,
-                              height: 256
-                          },
-                          desktopImage: {
-                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                              width: 447,
-                              height: 349
-                          },
-                          title: service?.title,
-                          descriptions: stringArrayToElementArray(service?.descriptions)
-                      };
-                  }
-              )
-            : null;
-
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText=""
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || '£2,750 per eye'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                priceTextExtra={
-                    <span className="font-mulishBold text-[1.8rem] lowercase leading-[2.4rem] text-heading2 first-letter:uppercase">
-                        With 24 Months Interest
-                        <br /> Free Finance available!
-                    </span>
-                }
-                bannerClassName="lg:gap-12"
-                suitabilityButton={
-                    <div className="grid gap-6 md:gap-12">
-                        <SuitabilityLink
-                            text="Would you like to know if you are suitable for ICL?"
-                            textClassName="max-w-[45rem]"
-                        />
-                    </div>
-                }
-            />
-
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-            {/* SECTIOn 1 */}
-            <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Vision correction treatment'}
-                h3LightHeading={
-                    data?.section_1?.heading?.light_heading || 'London’s latest vision correction treatment'
-                }
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'for glasses and contact lens wearers'}
-                altText=""
-                descriptions={
-                    (data?.section_1?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
-                        <>
-                            If you are ready to break from compromising with your everyday contact lenses or glasses,
-                            take a look at our{' '}
-                            <span className="font-mulishBold font-extrabold ">biocompatible ICL</span> lenses made by
-                            EVO Visian - a groundbreaking Evolution in Visual Freedom!
-                        </>
-                    ]
-                }
-                sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/icl-vision-correction.png',
-                    width: 370,
-                    height: 328
+            <MastheadICL
+                title="Implantable contact Lenses <span>(ICL)</span> Surgery in London"
+                largeImage={{
+                    src: '/images/masthead/masthead-icl.png',
+                    width: 541,
+                    height: 735,
+                    alt: 'Implantable contact Lenses ICL Surgery in London'
                 }}
-                sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/icl-vision-correction-large.png',
-                    width: 675,
-                    height: 642
+                smallImage={{
+                    src: '/images/masthead/masthead-icl-small.png',
+                    width: 191,
+                    height: 189,
+                    alt: ''
                 }}
+                priceText="£2750/Per eye"
+                financeText="24 months 0% finance"
+                reviewsText={{
+                    google: '4.9 | 71',
+                    trustpilot: '4.8 | 315'
+                }}
+                cardList={[
+                    {
+                        icon: {
+                            src: '/images/icons/icon-timer.svg'
+                        },
+                        title: 'Saving time',
+                        description: 'Wake up in the morning with your sight ready before you are!',
+                        className: 'xl:rounded-tl-primary'
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icon-vision.svg'
+                        },
+                        title: 'Saving vision',
+                        description: 'No risk of infections, dry eyes or blindness',
+                        className: 'md:bg-[#005DAF] md:[&>*]:text-white'
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icon-planet.svg'
+                        },
+                        title: 'Saving our planet',
+                        description: 'Sustainable contact lenses for a sustainable future.',
+                        className:
+                            'bg-[#005DAF] [&>*]:text-white md:bg-[#94CAFF] md:[&>*]:text-[#003E79] xl:rounded-tr-primary'
+                    }
+                ]}
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListIcl} />
+                <CallbackSection />
             </LazyComponent>
-            {/* SECTIOn 4 */}
-            <SideImageSection
-                h2Heading={data?.section_4?.sub_heading || 'Life quality improvement'}
-                h3LightHeading={
-                    <>
-                        {data?.section_4?.heading?.light_heading || 'Life after Implantable'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_4?.heading?.dark_heading || 'Contact Lenses!'}
-                sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/icl-quality-improvement.png',
-                    width: 370,
-                    height: 328
-                }}
-                sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/icl-quality-improvement-large.png',
-                    width: 682,
-                    height: 686
-                }}
-                altText=""
-                textColumnImage={true}
-                customColumn={
-                    <StackColumnIcl
-                        savingMoneytitle={data?.section_4?.rightsection?.savingMoneytitle}
-                        savingmoneyContent={data?.section_4?.rightsection?.savingmoneyContent}
-                        savingTimetitle={data?.section_4?.rightsection?.savingTimetitle}
-                        savingtimeContent={data?.section_4?.rightsection?.savingtimeContent}
-                        savingVisiontitle={data?.section_4?.rightsection?.savingVisiontitle}
-                        savingvisionContent={data?.section_4?.rightsection?.savingvisionContent}
-                        savingPlanettitle={data?.section_4?.rightsection?.savingPlanettitle}
-                        savingplanetContent={data?.section_4?.rightsection?.savingplanetContent}
-                    />
-                }
-                textColumnTopElements={
-                    <ul className="ml-16 mt-12 grid gap-6">
-                        <>
-                            <li className="flex items-start justify-start gap-4">
-                                <BulletPoint />
-                                <p className="font-mulishBold">
-                                    {data?.section_4?.lists?.list_1 || '99.4% of people would choose to have ICL again'}
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <BulletPoint />
 
-                                <p className="font-mulishBold">
-                                    {data?.section_4?.lists?.list_2 || '2,000,000+ ICL procedures worldwide'}
-                                </p>
-                            </li>
-                            <li className="flex items-start justify-start gap-4">
-                                <BulletPoint />
-                                <p className="font-mulishBold">
-                                    {data?.section_4?.lists?.list_3 || '20+ years of premium ICL performance'}
-                                </p>
-                            </li>
-                        </>
-                    </ul>
-                }
-            />
-            {/* SECTIOn 7 */}
-            <SideImageSection
-                h3LightHeading={
-                    <>
-                        {data?.section_7?.heading?.light_heading || 'Our Implantable Contact Lenses'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_7?.heading?.bold_heading || 'Are transparent in price too!'}
-                sectionImage={{
-                    url: data?.section_7?.image || '/images/section-images/icl-transparent-price.png',
-                    width: 390,
-                    height: 390
+            <VisionCorrectionPromo
+                heading={'No more glasses & contact lenses hassle'}
+                subHeading={'London’s latest vision correction treatment for glasses and contact lens wearers'}
+                descriptions={[
+                    'If you are ready to break from compromising with your everyday contact lenses or glasses, take a look at our <a href="" title="biocompatible ICL">biocompatible ICL</a> lenses made by EVO Visian - a groundbreaking Evolution in Visual Freedom!'
+                ]}
+                image1={{
+                    src: '/images/section-images/vision-correction-promo-1.png',
+                    width: 364,
+                    height: 387,
+                    alt: 'No more glasses & contact lenses hassle'
                 }}
-                sectionImageDesktop={{
-                    url: data?.section_7?.large_image || '/images/section-images/icl-transparent-price-large.png',
-                    width: 680,
-                    height: 558
+                image2={{
+                    src: '/images/section-images/vision-correction-promo-2.png',
+                    width: 364,
+                    height: 387,
+                    alt: 'No more glasses & contact lenses hassle'
                 }}
-                altText={
-                    data?.section_7?.alt_text ||
-                    'Happy couple on a hike in the mountains after correcting their long-sighted vision.'
-                }
-                textColumnExtras={
-                    <>
-                        <FinanceExtra
-                            priceText={data?.section_7?.price_title || '£2750 per eye'}
-                            priceDescription={
-                                data?.section_7?.price_subheading || 'With 10 Months Interest-Free Finance available!'
-                            }
-                            //                            These line needs to be fixed I'm commenting out now
-                            //                            paragraphs={
-                            //                                (data?.section_7?.price_description?.length &&
-                            //                                    HTMLReactParser(data?.section_7?.price_description)) || [
-                            //                                    `The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
-                            //                            come to My-iClinic.`
-                            //                                ]
-                            //                            }
-                            paragraphs={
-                                data?.section_7?.price_description ||
-                                `The best ICL surgery price in London, saving an average of £2,000 in your treatment when you
-                            come to My-iClinic.`
-                            }
-                            list={
-                                (data?.section_7?.lists?.length &&
-                                    stringArrayToElementArray(data?.section_7?.lists)) || [
-                                    '0% finance available',
-                                    <>
-                                        One dedicated ICL specialist
-                                        <br />
-                                        for your treatment
-                                    </>,
-                                    'Most affordable price in London'
-                                ]
-                            }
-                        />
-                        <Button
-                            type="anchor"
-                            link="/icl/price"
-                            icon={
-                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/button:fill-brand" />
-                            }
-                            text={data?.section_7?.button_text || 'Pricing & Financing'}
-                            iconPosition="left"
-                            className="group/button mt-6 !gap-2 justify-self-center md:justify-self-start"
-                        />
-                    </>
-                }
             />
-            {/* SECTIOn 6 */}
-            <CtaSection2
+
+            <EyeConsultation
+                sectionId={'icl-consultation'}
+                heading={'ICL consultation'}
+                descriptions={[
+                    `An ICL consultation for Implantable contact lenses couldn’t be easier! Our friendly team will guide you through some eye assessments which will take approximately one hour.`,
+                    `Once complete, your specialist will advise you on the best lens size for your eyes.`,
+                    `During your eye assessments, we will need to dilate your pupil with drops to take detailed measurements of your retina and your exact prescription.`,
+                    `Prior to your ICL appointment, we will advise that you do not wear contact lenses for two weeks to ensure your eye is ready for measurements to be taken.`,
+                    `None of these measurements are invasive or uncomfortable and our ophthalmic technician will support you through these assessments.`,
+                    `The eye drops will make your vision blurry so we advise that you have a friend or family member to help transport you home.`,
+                    `Based on your ICL assessments, our specialist will talk with you about proceeding with the treatment and how this treatment can best suit your lifestyle!`
+                ]}
                 image={{
-                    url: data?.section_6?.image,
-                    width: 431,
-                    height: 360
+                    src: '/images/section-images/icl-consultation.png',
+                    width: 692,
+                    height: 617,
+                    alt: 'ICL consultation'
                 }}
-                imageLarge={{
-                    url: data?.section_6?.imageLarge,
-                    width: 636,
-                    height: 554
-                }}
-                title={data?.section_6?.title || 'Book a consultation today to see if ICL eye surgery is right for you'}
-                descriptions={
-                    (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
-                        `Discuss your options and eligibility for implantable contact lens surgery with one of our
-                            experts.`,
-                        `We will give you clear advice on your suitability and best vision correction
-                            options for your circumstances.`
-                    ]
-                }
             />
 
-            {/* <LazyComponent>
-                <BottomBanner
-                    bannerImage={IclBannerImage}
-                    bannerTitle="Book a consultation today to see if ICL eye surgery is right for you"
-                    bannerBg="/images/section-images/icl-banner-bg-large.png"
-                    bannerDescription="Discuss your options and eligibility for implantable contact lens surgery with one of our experts. We will give you clear advice on your suitability and best vision correction options for your circumstances."
-                />
-            </LazyComponent> */}
+            <EyeConsultation
+                sectionId={'icl-treatment'}
+                heading={'ICL treatment'}
+                descriptions={[
+                    `On the day of your ICL treatment, it’s best not to wear eye makeup or to put drops in your eyes.`,
+                    `Once arriving at our ICL clinic, our friendly nurse will explain what to expect during and after the procedure. Once ready you will be escorted into the procedure room.`,
+                    `A drop of anesthetic is placed on your cornea which also dilates your eyes.`,
+                    `The surgeon will be giving you clear and easy instructions to guide you throughout the procedure while they insert the contact lens implant.`,
+                    `Once the procedure is finished our nurse will discuss our aftercare advice and how to use your new eye drops before your aftercare appointment with your specialist.`,
+                    `Our Implantable contact Lens procedure lasts for two hours from when you arrive and when you return back home.`
+                ]}
+                image={{
+                    src: '/images/section-images/icl-treatment.png',
+                    width: 692,
+                    height: 617,
+                    alt: 'ICL treatment'
+                }}
+                imageClassName="md:order-2"
+            />
 
-            {/* SECTION 8 */}
-            <LazyComponent>
-                <StackedSection
-                    stackList={lensesSliderdata ? lensesSliderdata : iclStackList}
-                    h3LightHeading={
-                        <>
-                            {(data?.section_8?.heading?.light_heading?.length &&
-                                HTMLReactParser(data?.section_8?.heading?.light_heading)) ||
-                                'The benefits of  <br /> Implantable Contact  <br /> '}
-                        </>
-                    }
-                    h3BoldHeading={
-                        <>
-                            {(data?.section_8?.heading?.bold_heading?.length &&
-                                HTMLReactParser(data?.section_8?.heading?.bold_heading)) ||
-                                'Lenses for Clear, long- <br />  term vision!'}
-                        </>
-                    }
-                />
-            </LazyComponent>
+            <EyeConsultation
+                sectionId={'icl-aftercare'}
+                heading={'ICL aftercare'}
+                descriptions={[
+                    `For Implantable Contact Lens treatment there is a one-week recovery period where minimal activity is required before attending an aftercare appointment with your specialist.`,
+                    `During the one week recovery period, our team is always here to answer any other questions you may have so that you can live confidently and comfortably following your ICL surgery.`,
+                    `Once you attend an aftercare appointment with the ICL specialist you will be able to begin life without glasses or disposable contact lenses again!`
+                ]}
+                image={{
+                    src: '/images/section-images/icl-aftercare.png',
+                    width: 692,
+                    height: 617,
+                    alt: 'ICL aftercare'
+                }}
+            />
 
-            <div className="md:mt-24"></div>
-            {/* SECTION 3 */}
+            <EyeCareComponent
+                sectionId="eye-care"
+                cardList={[
+                    {
+                        icon: {
+                            src: '/images/icons/icons-check-outline-blue.svg',
+                            width: 48,
+                            height: 48,
+                            alt: ''
+                        },
+                        title: '99.4% of people',
+                        description: 'Would choose to have ICL again'
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icons-check-outline-blue.svg',
+                            width: 48,
+                            height: 48,
+                            alt: ''
+                        },
+                        title: '2,000,000+ ICL',
+                        description: 'Procedures worldwide'
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icons-check-outline-blue.svg',
+                            width: 48,
+                            height: 48,
+                            alt: ''
+                        },
+                        title: '20+ years',
+                        description: 'Of premium ICL performance'
+                    }
+                ]}
+            />
+
+            <LensBenefits
+                sectionId="lens-benefits"
+                heading={'Life after implantable contact lenses!'}
+                cardList={[
+                    {
+                        image: {
+                            src: '/images/section-images/saving-money.png',
+                            width: 294,
+                            height: 167,
+                            alt: 'Saving Money'
+                        },
+                        title: 'Saving Money',
+                        shortDescription: 'Saves the average contact lens buyer <strong>£13,200!</strong>',
+                        descriptions: [
+                            'Saves the average contact lens buyer <strong>£13,200!</strong>',
+                            'One custom lens means one all- time purchase.',
+                            'Never waste money by repeatedly buying plastic contact lenses to throw away. One ICL procedure saves the average contact lens buyer <strong>£13,200!</strong>'
+                        ]
+                    },
+                    {
+                        image: {
+                            src: '/images/section-images/saving-time.png',
+                            width: 294,
+                            height: 167,
+                            alt: 'Saving Time'
+                        },
+                        title: 'Saving Time',
+                        shortDescription:
+                            'Where are my contacts? Wake up in the morning with your sight ready before you are!',
+                        descriptions: [
+                            'Where are my contacts? Wake up in the morning with your sight ready before you are!',
+                            'Skip the daily lens routine for hassle-free clarity.',
+                            'Reclaim your time and enjoy immediate, ready-to-go vision.'
+                        ]
+                    },
+                    {
+                        image: {
+                            src: '/images/section-images/saving-vision.png',
+                            width: 294,
+                            height: 167,
+                            alt: 'Saving Vision'
+                        },
+                        title: 'Saving Vision',
+                        shortDescription: 'No risk of infections, dry eyes or blindness',
+                        descriptions: [
+                            'No risk of infections, dry eyes or blindness',
+                            'Enjoy sharp, stable vision without discomfort.',
+                            'Pursue your passions worry-free with constant clear vision.'
+                        ]
+                    },
+                    {
+                        image: {
+                            src: '/images/section-images/save-planet.png',
+                            width: 294,
+                            height: 167,
+                            alt: 'Saving Our Planet'
+                        },
+                        title: 'Saving Our Planet',
+                        shortDescription: 'Sustainable contact lenses for a sustainable future.',
+                        descriptions: [
+                            'Sustainable contact lenses for a sustainable future.',
+                            'Reduce your environmental footprint by eliminating the need for disposable plastic lenses that end up in landfills.',
+                            'Less plastic waste means less harm to our oceans and wildlife. Be part of the solution to plastic pollution.'
+                        ]
+                    }
+                ]}
+            />
+
+            <ContactLensComponent
+                sectionId={'contact-lens'}
+                heading={'Our implantable contact lenses are transparent in price too!'}
+                priceText={'£2750 per eye'}
+                subHeading={'With 10 months interest-free finance available!'}
+                description={
+                    'The best ICL surgery price in London, saving an average of £2,000 in your treatment when you come to My-iClinic.'
+                }
+                list={[
+                    '0% finance available',
+                    'One dedicated ICL specialist for your treatment',
+                    'Most affordable price in London'
+                ]}
+                image={{
+                    src: '/images/section-images/underwater-diving.png',
+                    width: 665,
+                    height: 490,
+                    alt: 'Our implantable contact lenses'
+                }}
+            />
+
+            <EyeSurgeryConsultation
+                sectionId={'eye-surgery-consultation'}
+                heading={'Book a consultation today to see if ICL eye surgery is right for you'}
+                description={
+                    'Discuss your options and eligibility for implantable contact lens surgery with one of our experts. We will give you clear advice on your suitability and best vision correction options for your circumstances.'
+                }
+                image={{
+                    src: '/images/section-images/eye-surgery-consultation.png',
+                    width: 728,
+                    height: 600,
+                    alt: 'My-iClinic Doctors'
+                }}
+            />
+
+            <VisionBenefits
+                sectionId="vision-benefits"
+                heading={'The benefits of implantable contact Lenses for clear, long-term vision!'}
+                beneficialItems={[
+                    {
+                        icon: {
+                            src: '/images/icons/icon-biocompatibility.svg',
+                            width: 80,
+                            height: 80,
+                            alt: 'Biocompatibility'
+                        },
+                        title: 'Biocompatibility',
+                        descriptions: [
+                            'Our Implantable lenses are made of biocompatible Collamer – proprietary material used exclusively by STAAR Surgical.',
+                            'Collamer is a unique material that contains collagen which means the lens is made to naturally harmonize with your eye.',
+                            'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
+                        ],
+                        image: {
+                            src: '/images/section-images/biocompatibility.png',
+                            width: 697,
+                            height: 519,
+                            alt: 'Biocompatibility'
+                        }
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icon-dry-eyes.svg',
+                            width: 80,
+                            height: 80,
+                            alt: 'No more dry eyes'
+                        },
+                        title: 'No more dry eyes',
+                        descriptions: [
+                            'ICL can be described as additive vision correction. Unlike other procedures, the ICL procedure does not remove corneal tissue, but works in harmony with your natural eyes to provide exceptional quality of vision.',
+                            'Because the cornea is left intact with no reshaping or removal of the corneal tissue it does not induce any dry eye symptoms and can help with any existing dry eye syndrome you may be experiencing from your everyday plastic contact lenses.'
+                        ],
+                        image: {
+                            src: '/images/section-images/dry-eyes.png',
+                            width: 697,
+                            height: 519,
+                            alt: 'No more dry eyes'
+                        }
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icon-icl-procedure.svg',
+                            width: 80,
+                            height: 80,
+                            alt: ''
+                        },
+                        title: 'A quick ICL procedure and recovery',
+                        descriptions: [
+                            'Our Implantable lenses are made of biocompatible Collamer – proprietary material used exclusively by STAAR Surgical.',
+                            'Collamer is a unique material that contains collagen which means the lens is made to naturally harmonize with your eye.',
+                            'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
+                        ],
+                        image: {
+                            src: '/images/section-images/icl-procedure.png',
+                            width: 697,
+                            height: 519,
+                            alt: 'A quick ICL procedure and recovery'
+                        }
+                    },
+                    {
+                        icon: {
+                            src: '/images/icons/icon-removability.svg',
+                            width: 80,
+                            height: 80,
+                            alt: ''
+                        },
+                        title: 'Removability',
+                        descriptions: [
+                            'Though the ICL is designed to remain in the eye without maintenance, permanently correcting your vision, the lens can be completely removed providing flexibility for the future.',
+                            'In the event of a major prescription change or the availability of new vision correction options, ICL is completely removable. Allowing you to keep pace with advancing technology and your future prescription if needed.'
+                        ],
+                        image: {
+                            src: '/images/section-images/icl-removability.png',
+                            width: 697,
+                            height: 519,
+                            alt: 'Removability'
+                        }
+                    }
+                ]}
+            />
+
             <LazyComponent>
                 <FeaturedPatient
                     h2Title={data?.section_3?.sub_heading || 'ICL Patient'}
@@ -438,161 +455,20 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                 />
             </LazyComponent>
 
-            <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : iclListCataract} />
-            </LazyComponent>
-            {/* section_2 */}
-            <LazyComponent>
-                <SideVideoSection
-                    h2Heading={data?.section_2?.heading || 'Is ICL for me?'}
-                    noPin
-                    beforeAttribute
-                    videoUrl={data?.section_2?.videoUrl || '/videos/icl.mp4'}
-                    videoPoster={data?.section_2?.videoPoster || 'txmJk2sY-yI'}
-                    textColumnExtras={
-                        <div className="mt-20 ml-14 grid gap-6">
-                            <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">
-                                <span className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2">
-                                    {data?.section_2?.lists?.first_data?.percentage || '99.4%'}
-                                </span>
-                                <Image src={IconPin} alt="" />
-                                <div className="col-span-2">
-                                    {(data?.section_2?.lists?.first_data?.text?.length &&
-                                        HTMLReactParser(data?.section_2?.lists?.first_data?.text)) ||
-                                        HTMLReactParser('Of peoples surveyed would have the <br /> procedure again')}
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-[auto_1fr] items-center gap-y-4 gap-x-6">
-                                <span className="font-latoBold text-[2rem] leading-[2.4rem] text-heading2">
-                                    {data?.section_2?.lists?.second_data?.percentage || '2 Million'}
-                                </span>
-                                <Image src={IconPin} alt="" />
-                                <p className="col-span-2">
-                                    {data?.section_2?.lists?.second_data?.text || 'Lenses distributed'}
-                                </p>
-                            </div>
-                        </div>
-                    }
-                />
-            </LazyComponent>
-
-            <CtaSection />
-            {/*
-            <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
+            <ContactComponent
+                sectionId="icl-contact"
+                heading={'Is ICL for me?'}
+                backgroundImage={{
+                    src: '/images/section-images/icl-contact-bg.png',
+                    alt: ''
                 }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
+            />
 
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                        h3LightHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
-                            'Green living with'
-                        }
-                        h3BoldHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
-                            'Implantable Contact Lenses'
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                data?.sustainability_section?.plastic_free_life?.descriptions) || [
-                                `The most sustainable, green living lifestyle is when you have a plastic free eye-style.
-                                 When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic
-                                 waste produced by glasses and contact lenses!`
-                            ]
-                        }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                    />
-
-                    <SideImageSection
-                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
-                        h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading={
-                            (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
-                                HTMLReactParser(
-                                    data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
-                                )) ||
-                            HTMLReactParser('One eye at a time!')
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
-                                data?.sustainability_section?.gift_of_a_tree?.descriptions) || [
-                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
-                         difference to the environment. For every 10 years of contact lens wearing the amount of plastic
-                          that ends up in the ocean is roughly the same as your own body weight.`,
-                                `<span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Our gift to you…
-                                </span>`,
-                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                `<span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Here at My-iClinic we give all of our laser patients a real forest tree!
-                                </span>`,
-                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
-                         value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
-                          contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
-                          to replace it.`,
-                                `This is our big thank you for choosing a natural, green living eye-style.`
-                            ]
-                        }
-                        sectionImage={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        sectionImageDesktop={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                        altText={
-                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
-                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
-                        }
-                    />
-                    <ClimateChange
-                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
-                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
-                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image?.url}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
-                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
-                    />
-                </SustainableSlider>
+                <EnvironmentalImpact />
             </LazyComponent>
 
-            {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-4-desktop.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
+            {/* <CtaSection /> */}
 
             <LazyComponent>
                 <CompanyLogos />
@@ -604,6 +480,10 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
                     pageSlug="icl"
                     downloadFile={data?.email_contents?.download_file}
                 />
+            </LazyComponent>
+
+            <LazyComponent>
+                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : iclListCataract} />
             </LazyComponent>
 
             <LazyComponent>

@@ -59,7 +59,7 @@ const Button2 = ({
     return (
         <>
             {type === 'anchor' && (
-                <Link href={link || '#'} className={twMerge(defaultClassName, className)} {...other}>
+                <Link href={link || '#'} title={title} className={twMerge(defaultClassName, className)} {...other}>
                     {iconPosition === 'left' && Icon}
                     {text || ''}
                     {iconPosition === 'right' && Icon}

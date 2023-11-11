@@ -13,7 +13,7 @@ let modalShowCount: boolean;
  * @returns {JSX.Element}
  * @constructor
  */
-const GoodbyeModal = () => {
+const GoodbyeModal = (): JSX.Element => {
     const [showModal, setShowModal] = useState(false);
     const outsideRef = useOnclickOutside(() => setShowModal(false));
 
