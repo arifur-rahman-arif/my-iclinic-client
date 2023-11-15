@@ -38,8 +38,7 @@ const defaultCardList: CardProps[] = [
             alt: 'Saving Time'
         },
         title: 'Saving Time',
-        shortDescription:
-            'Where are my contacts? Wake up in the morning with your sight ready before you are!',
+        shortDescription: 'Where are my contacts? Wake up in the morning with your sight ready before you are!',
         descriptions: [
             'Where are my contacts? Wake up in the morning with your sight ready before you are!',
             'Skip the daily lens routine for hassle-free clarity.',
@@ -99,17 +98,17 @@ const LensBenefits = ({ sectionId, heading, cardList }: LensBenefitsProps): JSX.
 
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-            image: card.image.src ? card.image : defaultCardList[index].image,
-            title: card.title || defaultCardList[index].title,
-            shortDescription: card.shortDescription || defaultCardList[index].shortDescription,
-            descriptions: card.descriptions || defaultCardList[index].descriptions
-        }))
+              image: card.image.src ? card.image : defaultCardList[index].image,
+              title: card.title || defaultCardList[index].title,
+              shortDescription: card.shortDescription || defaultCardList[index].shortDescription,
+              descriptions: card.descriptions || defaultCardList[index].descriptions
+          }))
         : defaultCardList;
 
     return (
         <Section id={sectionId}>
             <Container ref={containerRef} className="grid gap-12 md:gap-24 ">
-                <SectionTextColumn heading={heading}/>
+                <SectionTextColumn heading={heading} />
                 <div
                     className={`${
                         onEnter && styles.styles
@@ -149,15 +148,13 @@ const Card = ({ image, title, shortDescription, descriptions }: CardProps) => {
     const [isClicked, setIsClicked] = useState(false);
 
     return (
-        <div
-            className="group/card relative grid w-full translate-y-12 grid-rows-[auto_1fr] gap-12 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] pb-12 opacity-0 shadow-sm transition-shadow duration-500 hover:shadow-xl">
+        <div className="group/card relative grid w-full translate-y-12 grid-rows-[auto_1fr] gap-12 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] pb-12 opacity-0 shadow-sm transition-shadow duration-500 hover:shadow-xl">
             <Image
                 {...image}
                 className="h-full w-full rounded-tl-radius2 rounded-tr-radius2 transition-all duration-500 group-hover/card:scale-105"
             />
             <div className="grid h-full justify-items-start gap-6 px-12">
-                <span
-                    className="font-latoBold text-[2rem] capitalize leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
+                <span className="font-latoBold text-[2rem] capitalize leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
                     {title}
                 </span>
                 <p dangerouslySetInnerHTML={{ __html: shortDescription }}></p>
@@ -177,8 +174,7 @@ const Card = ({ image, title, shortDescription, descriptions }: CardProps) => {
                     isClicked ? 'pointer-events-auto scale-100' : 'pointer-events-none scale-0'
                 }`}
             >
-                <span
-                    className="font-latoBold text-[2rem] capitalize leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
+                <span className="font-latoBold text-[2rem] capitalize leading-[2.8rem] text-heading md:text-[2.4rem] md:leading-[3.2rem]">
                     {title}
                 </span>
                 {descriptions.map((item, key) => (

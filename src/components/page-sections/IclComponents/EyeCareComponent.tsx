@@ -64,10 +64,10 @@ const EyeCareComponent = ({ sectionId, cardList }: EyeCareComponentProps) => {
 
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
-            title: card.title || defaultCardList[index].title,
-            description: card.description || defaultCardList[index].description
-        }))
+              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+              title: card.title || defaultCardList[index].title,
+              description: card.description || defaultCardList[index].description
+          }))
         : defaultCardList;
 
     return (
@@ -109,8 +109,7 @@ const Card = ({ icon, title, description }: CardProps) => {
     return (
         <div className="grid translate-y-12 content-start justify-items-center gap-4 opacity-0">
             <Image {...icon} />
-            <span
-                className="font-latoBold text-[2.8rem] leading-[3.2rem] text-heading md:text-[3rem] md:leading-[3.6rem]">
+            <span className="font-latoBold text-[2.8rem] leading-[3.2rem] text-heading md:text-[3rem] md:leading-[3.6rem]">
                 {title}
             </span>
             <p>{description}</p>
