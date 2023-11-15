@@ -11,6 +11,7 @@ export interface ConsultantCardInterface {
     degree: string;
     title: string;
     url: string;
+    imageClass?: string;
 }
 
 /**

@@ -104,8 +104,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
     };
 
     return (
-        <div
-            className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-y-scroll overflow-x-hidden rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
+        <div className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (
@@ -156,7 +155,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-0 -translate-y-full"
                                     >
-                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79"/>
+                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79" />
                                     </svg>
 
                                     <svg
@@ -167,14 +166,14 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-full"
                                     >
-                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79"/>
+                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79" />
                                     </svg>
                                 </>
                             )}
                         </div>
                     ))}
 
-                    <SoloLink soloLinks={extraLinks} router={router}/>
+                    <SoloLink soloLinks={extraLinks} router={router} />
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
@@ -217,7 +216,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                         }
                     })}
 
-                    <MenuCta className="grid-cols-2" centerText/>
+                    <MenuCta className="grid-cols-2" centerText />
                 </div>
             </div>
         </div>
@@ -261,7 +260,8 @@ export const ConsultantItem = ({
     className,
     imgWidth,
     imgHeight,
-    imgClassName
+    imgClassName,
+    imageClass
 }: ConsultantItemProps): JSX.Element => {
     return (
         <Link
@@ -294,7 +294,10 @@ export const ConsultantItem = ({
                     width={imgWidth || 112}
                     height={imgHeight || 112}
                     unoptimized={true}
-                    className={twMerge('h-[11.2rem] w-[11.2rem] rounded-full object-cover', imgClassName)}
+                    className={twMerge(
+                        'h-[11.2rem] w-[11.2rem] rounded-full object-cover',
+                        `${imgClassName} ${imageClass}`
+                    )}
                 />
 
                 <div className="grid content-start gap-4">

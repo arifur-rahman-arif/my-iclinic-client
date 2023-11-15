@@ -240,5 +240,13 @@ export const consultantCardList: ConsultantCardInterface[] = [
         degree: 'MA (Cantab) BM BCh (Oxon) FEBO FRCOphth CERTLRS',
         title: 'Consultant and Surgeon',
         url: '/our-specialists/qiang-kwong'
+    },
+    {
+        image: '/images/avaters/fatima-mangera.jpg',
+        name: 'Fatima Mangera',
+        degree: 'MCOptom BSc (Hons) Optometry, MmedSci (Orthoptics) BSc (Orthoptics)',
+        title: 'Orthoptist/Optometrist',
+        url: '/our-specialists/fatima-mangera',
+        imageClass: 'object-[1px_center]'
     }
 ];

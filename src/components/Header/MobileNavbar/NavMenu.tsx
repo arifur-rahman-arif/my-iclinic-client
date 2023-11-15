@@ -39,7 +39,7 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                         {menu.submenu && (
                             <div
                                 className={`grid max-h-0 gap-4 overflow-hidden transition-all duration-1000 ${
-                                    menu.subMenuOpen && 'max-h-[100rem]'
+                                    menu.subMenuOpen && 'max-h-[120rem]'
                                 }`}
                             >
                                 {menu.slug === 'cataract' && (

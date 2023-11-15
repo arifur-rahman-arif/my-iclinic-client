@@ -104,7 +104,7 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
 
                     <div
                         className={`grid max-h-0 gap-4 overflow-hidden transition-all duration-1000 ${
-                            menu.active && 'max-h-[100rem]'
+                            menu.active && 'max-h-[120rem]'
                         }`}
                     >
                         {key === 0 ? (
