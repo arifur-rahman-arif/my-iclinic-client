@@ -1,4 +1,5 @@
 import { Button2 } from '@/components/Buttons';
+import { BookConsultation } from '@/page-sections/index';
 import { ImageType3 } from '@/types';
 import smallBg from '@/section-images/icl-small-bg.png';
 import largeBg from '@/section-images/icl-masthead-bg.png';
@@ -25,6 +26,32 @@ interface MastheadICLProps {
     }>;
 }
 
+const defaultCardList = [
+    {
+        icon: {
+            src: '/images/icons/icon-timer.svg'
+        },
+        title: 'Saving time',
+        description: 'Wake up in the morning with your sight ready before you are!',
+        className: 'xl:rounded-tl-primary'
+    },
+    {
+        icon: {
+            src: '/images/icons/icon-vision.svg'
+        },
+        title: 'Saving vision',
+        description: 'No risk of infections, dry eyes or blindness',
+        className: 'md:bg-[#005DAF] md:[&>*]:text-white'
+    },
+    {
+        icon: {
+            src: '/images/icons/icon-planet.svg'
+        },
+        title: 'Saving our planet',
+        description: 'Sustainable contact lenses for a sustainable future.',
+        className: 'bg-[#005DAF] [&>*]:text-white md:bg-[#94CAFF] md:[&>*]:text-[#003E79] xl:rounded-tr-primary'
+    }
+];
 
 /**
  * MastheadICL Component
@@ -47,17 +74,26 @@ interface MastheadICLProps {
  * @returns {JSX.Element} - The MastheadICL component JSX representation.
  */
 const MastheadICL = ({
-                         title,
-                         largeImage,
-                         smallImage,
-                         priceText,
-                         financeText,
-                         reviewsText,
-                         cardList
-                     }: MastheadICLProps): JSX.Element => {
+    title,
+    largeImage,
+    smallImage,
+    priceText,
+    financeText,
+    reviewsText,
+    cardList
+}: MastheadICLProps): JSX.Element => {
+    const mergedCardList = cardList
+        ? cardList.map((card, index) => ({
+              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+              title: card.title || defaultCardList[index].title,
+              description: card.description || defaultCardList[index].description,
+              className: card.className || defaultCardList[index].className
+          }))
+        : defaultCardList;
+
     return (
         <div className="relative grid overflow-hidden">
-            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block"/>
+            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block" />
 
             <div className="relative grid xl:-ml-24 xl:justify-self-center">
                 <Image
@@ -87,39 +123,46 @@ const MastheadICL = ({
                             className="max-w-[55.4rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white lg:text-[4.8rem] lg:leading-[4.8rem] [&>span]:text-[3.6rem] [&>span]:text-[#FFB800] lg:[&>span]:text-[4.8rem] lg:[&>span]:leading-[4.8rem]"
                             dangerouslySetInnerHTML={{ __html: title }}
                         ></h1>
-                        <Button2
-                            type="anchor"
-                            text="FREE suitability check"
-                            link="/suitability-check"
-                            title="FREE suitability check"
-                            className="sitemap-link justify-self-start border-[#94CAFF] bg-[#94CAFF] text-center text-[#003E79] hover:border-white"
-                        />
 
-                        <div className="-mt-6 grid gap-2 md:mt-12">
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                        <div className="-mt-6 grid gap-2 md:mt-0">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
                         </div>
+
                         <Reviews {...reviewsText} />
+
+                        <div className="flex flex-wrap items-center justify-start gap-4 xl:mt-12">
+                            <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white">
+                                <Button2 type="button" text="FREE Consultaion" />
+                            </BookConsultation>
+
+                            <Button2
+                                type="anchor"
+                                text="FREE suitability check"
+                                link="/suitability-check"
+                                title="FREE suitability check"
+                                className="sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white"
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div
-                    className={`grid grid-cols-2 md:grid-cols-3 xl:max-w-[116rem] xl:justify-self-center ${styles.styles}`}>
+                    className={`grid grid-cols-2 md:grid-cols-3 xl:max-w-[116rem] xl:justify-self-center ${styles.styles}`}
+                >
                     <div className="bg-[#005DAF] md:hidden">
-                        <Image {...smallImage} className="h-full w-full object-cover"/>
+                        <Image {...smallImage} className="h-full w-full object-cover" />
                     </div>
                     <>
-                        {cardList.map((card, index) => (
+                        {mergedCardList.map((card, index) => (
                             <div
                                 key={index}
                                 className={twMerge(
-                                    'grid xl:translate-y-full card content-start justify-items-center gap-2 bg-[#94CAFF] py-12 px-4 md:p-12',
+                                    'card grid content-start justify-items-center gap-2 bg-[#94CAFF] py-12 px-4 md:p-12 xl:translate-y-full',
                                     card.className
                                 )}
                             >
@@ -128,6 +171,7 @@ const MastheadICL = ({
                                     width={71}
                                     height={71}
                                     {...(card.icon as any)}
+                                    priority={true}
                                     className="max-h-[3.6rem] max-w-[3.6rem] md:max-h-max md:max-w-max"
                                 />
                                 <span className="font-mulishBold text-[#003E79]">{card.title}</span>
@@ -162,43 +206,34 @@ interface ReviewsProps {
  */
 const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
     return (
-        <div
-            className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
+        <div className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
-            <div
-                className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
+            <div className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
                 <span className="grid place-items-start">
-                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
+                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70} />
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
                     Trust Pilot
                 </span>
-                <span
-                    className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {trustpilot}{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
             </div>
 
             {/* Review 2 */}
-            <div
-                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
+            <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
                 <span className="grid place-items-center">
-                    <FcGoogle className="h-[2rem] w-[2rem]"/>
+                    <FcGoogle className="h-[2rem] w-[2rem]" />
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span
-                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {google}{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>

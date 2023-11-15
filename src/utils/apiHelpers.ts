@@ -66,9 +66,9 @@ export const convertArrayOfObjectsToStrings = (arrayOfObjects: Array<any> | unde
 /**
  * Convert an array of strings to array of JSX Elements
  *
-//  * @param {Array<any>} arrayOfObjects
-//  * @returns {string[]}
-//  */
+ //  * @param {Array<any>} arrayOfObjects
+ //  * @returns {string[]}
+ //  */
 // export const stringArrayToElementArray = (arrayOfObjects: Array<string> | undefined): JSX.Element[] => {
 //     if (!arrayOfObjects?.length) return [] as JSX.Element[];
 //     return (arrayOfObjects?.map((obj) => HTMLReactParser(obj)) || []) as JSX.Element[];
@@ -83,4 +83,24 @@ export const stringArrayToElementArray = (arrayOfObjects: Array<string> | undefi
     if (!arrayOfObjects || !Array.isArray(arrayOfObjects)) return [] as JSX.Element[];
     const validStrings = arrayOfObjects.filter((obj) => typeof obj === 'string');
     return validStrings.map((obj) => HTMLReactParser(obj)) as JSX.Element[];
+};
+
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * Sort the image data into specified format
+ * @param {any} img
+ */
+export const formatImage = (img: any) => {
+    // Check if all properties exist and are truthy
+    if (img?.url && img?.width && img?.height) {
+        return {
+            src: img.url,
+            width: img.width,
+            height: img.height
+        };
+    } else {
+        // Handle the case where one or more properties are missing or falsy
+        return null; // You can return null, throw an error, or handle it differently as needed
+    }
 };

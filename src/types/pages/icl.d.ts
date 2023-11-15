@@ -1,125 +1,103 @@
-import ImageApiType from 'src/types/api/image';
+import { BeneficialItemsProps } from '@/page-sections/IclComponents/VisionBenefits';
+import { ImageType3 } from '@/types';
 import { Sustainibility } from './component/sustainibility';
-import { ImageType2 } from '../image';
 
 export default interface IclContentInterface extends Sustainibility {
-	//	London’s best treatment
-	section_1: {
-		sub_heading: string;
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-		descriptions: string[];
-		image: string;
-		large_image: string;
-	},
-	//Life after Implantable
-	section_4: {
-		sub_heading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			dark_heading: string; // Bold Heading
-		}
-		lists: {
-			list_1: string;
-			list_2: string;
-			list_3: string;
-		}
-		rightsection:{
-			savingMoneytitle: string;
-			savingmoneyContent: string;
-			savingTimetitle:string;
-			savingtimeContent:string;
-			savingVisiontitle:string;
-			savingvisionContent:string;
-			savingPlanettitle:string;
-			savingplanetContent:string;
-		}
-		image: string;
-		large_image: string;
-	},
-// 	ICL PATIENT
-	section_3: {
-		sub_heading: string; // Subheading
-		heading: string; // Bold Heading
-		descriptions: string[];
-		bandImageTitle: string;
-		bandImageURL: string;
-		review_Description: string[];
-		reviewtitle: string;
-	},
-
-//	//	Book with our Blepharitis specialist
-	section_5: {
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-		descriptions: string[];
-	},
-	// VIDEO
-	section_2: {
-		heading: string; // Bold Heading
-		lists: { 
-			first_data: {
-				// Heading
-			percentage: string; // Light Heading
-			text: string; // Bold Heading
-			},
-			second_data: {
-				percentage: string; // Light Heading
-				text: string; 
-			}
-		}
-		videoUrl: string;
-		alt_text: string;
-		videoPoster: string;
-	},
-	section_6: {
-		title: string;
-		descriptions: string[];
-		image: string;
-		imageLarge: string;
-	},
-	// Our Implantable Contact Lenses
-	section_7: {
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-		price_title: string;
-		price_subheading: string;
-		price_description: string;
-		lists: string[];
-		button_text: string;
-		image: string;
-		large_image: string;
-		alt_text: string;
-	},
-	section_8: {
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-	},
-	leftRightsection:{
-        [x: string]: any;
-		mobileImage: string;
-		desktopImage: string;
-		title: string;
-		descriptions: string[];
-	},
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
-	lensesSlider:{
-        map: any;
-		desktopimage: string;
-		image: string;
-		title: string;
-		descriptions: string[];
-	}
+    //	London’s best treatment
+    masthead: {
+        title: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+        priceText: string;
+        financeText: string;
+        reviewsText: {
+            google: string;
+            trustpilot: string;
+        };
+        cardList: Array<{
+            icon: Partial<ImageType3>;
+            title: string;
+            description: string;
+            className?: string;
+        }>;
+    },
+    section1: {
+        heading: string;
+        subHeading: string;
+        descriptions: string[];
+        image1: ImageType3;
+        image2: ImageType3;
+    },
+    // ICL consultation
+    section2: {
+        heading: string;
+        descriptions: string[];
+        image: ImageType3;
+    },
+    // ICL treatment
+    section3: {
+        heading: string;
+        descriptions: string[];
+        image: ImageType3;
+    },
+    // ICL aftercare
+    section4: {
+        heading: string;
+        descriptions: string[];
+        image: ImageType3;
+    },
+    // USP List
+    section5: {
+        cardList: Array<{
+            icon: ImageType3;
+            title: string;
+            description: string;
+        }>
+    },
+    // Life after implantable contact lenses!
+    section6: {
+        heading: string;
+        cardList: Array<{
+            image: ImageType3;
+            title: string;
+            shortDescription: string;
+            descriptions: string[];
+        }>
+    },
+    // Our implantable contact lenses are transparent in price too!
+    section7: {
+        heading: string;
+        priceText: string;
+        subHeading: string;
+        description: string;
+        list: string[];
+        image: ImageType3;
+    },
+    // ICL Consultation
+    section8: {
+        heading: string;
+        description: string;
+        image: ImageType3;
+    },
+    // Vision Benefits
+    section9: {
+        heading: string;
+        beneficialItems: BeneficialItemsProps[]
+    },
+    // Patient Reviews
+    section10: {
+        patientName: string;
+        patientFrontImage: string;
+        heading: string;
+        title: string;
+        descriptions: string[]
+        patientImages: Array<{
+            imageURL: string
+        }>
+    },
+    reviewSlider: {
+        title: string;
+        name: string;
+        description: string;
+    }
 }

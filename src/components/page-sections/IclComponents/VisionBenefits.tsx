@@ -12,6 +12,87 @@ interface VisionBenefitsProps {
     beneficialItems: BeneficialItemsProps[];
 }
 
+const defaultItems: BeneficialItemsProps[] = [
+    {
+        icon: {
+            src: '/images/icons/icon-biocompatibility.svg',
+            width: 80,
+            height: 80,
+            alt: 'Biocompatibility'
+        },
+        title: 'Biocompatibility',
+        descriptions: [
+            'Our Implantable lenses are made of biocompatible Collamer – proprietary material used exclusively by STAAR Surgical.',
+            'Collamer is a unique material that contains collagen which means the lens is made to naturally harmonize with your eye.',
+            'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
+        ],
+        image: {
+            src: '/images/section-images/biocompatibility.png',
+            width: 697,
+            height: 519,
+            alt: 'Biocompatibility'
+        }
+    },
+    {
+        icon: {
+            src: '/images/icons/icon-dry-eyes.svg',
+            width: 80,
+            height: 80,
+            alt: 'No more dry eyes'
+        },
+        title: 'No more dry eyes',
+        descriptions: [
+            'ICL can be described as additive vision correction. Unlike other procedures, the ICL procedure does not remove corneal tissue, but works in harmony with your natural eyes to provide exceptional quality of vision.',
+            'Because the cornea is left intact with no reshaping or removal of the corneal tissue it does not induce any dry eye symptoms and can help with any existing dry eye syndrome you may be experiencing from your everyday plastic contact lenses.'
+        ],
+        image: {
+            src: '/images/section-images/dry-eyes.png',
+            width: 697,
+            height: 519,
+            alt: 'No more dry eyes'
+        }
+    },
+    {
+        icon: {
+            src: '/images/icons/icon-icl-procedure.svg',
+            width: 80,
+            height: 80,
+            alt: ''
+        },
+        title: 'A quick ICL procedure and recovery',
+        descriptions: [
+            'Our Implantable lenses are made of biocompatible Collamer – proprietary material used exclusively by STAAR Surgical.',
+            'Collamer is a unique material that contains collagen which means the lens is made to naturally harmonize with your eye.',
+            'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
+        ],
+        image: {
+            src: '/images/section-images/icl-procedure.png',
+            width: 697,
+            height: 519,
+            alt: 'A quick ICL procedure and recovery'
+        }
+    },
+    {
+        icon: {
+            src: '/images/icons/icon-removability.svg',
+            width: 80,
+            height: 80,
+            alt: 'Removability'
+        },
+        title: 'Removability',
+        descriptions: [
+            'Though the ICL is designed to remain in the eye without maintenance, permanently correcting your vision, the lens can be completely removed providing flexibility for the future.',
+            'In the event of a major prescription change or the availability of new vision correction options, ICL is completely removable. Allowing you to keep pace with advancing technology and your future prescription if needed.'
+        ],
+        image: {
+            src: '/images/section-images/icl-removability.png',
+            width: 697,
+            height: 519,
+            alt: 'Removability'
+        }
+    }
+];
+
 /**
  * VisionBenefits Component
  *
@@ -28,13 +109,22 @@ interface VisionBenefitsProps {
  * @returns {JSX.Element} - The VisionBenefits component JSX representation.
  */
 const VisionBenefits = ({ sectionId, heading, beneficialItems }: VisionBenefitsProps): JSX.Element => {
+    const mergedBeneficialItems = beneficialItems
+        ? beneficialItems.map((item, index) => ({
+              icon: item.icon.src ? item.icon : defaultItems[index].icon,
+              image: item.image.src ? item.image : defaultItems[index].image,
+              title: item.title || defaultItems[index].title,
+              descriptions: item.descriptions || defaultItems[index].descriptions
+          }))
+        : defaultItems;
+
     return (
         <Section id={sectionId}>
             <Container className="grid gap-16 md:gap-32">
-                <SectionTextColumn heading={heading}/>
+                <SectionTextColumn heading={heading} />
 
                 <div className="grid gap-12 md:gap-24">
-                    {beneficialItems.map((item, key) => (
+                    {mergedBeneficialItems.map((item, key) => (
                         <BeneficialItems key={key} {...item} />
                     ))}
                 </div>
@@ -43,7 +133,7 @@ const VisionBenefits = ({ sectionId, heading, beneficialItems }: VisionBenefitsP
     );
 };
 
-interface BeneficialItemsProps {
+export interface BeneficialItemsProps {
     icon: ImageType3;
     title: string;
     descriptions: string[];
@@ -78,8 +168,11 @@ const BeneficialItems = ({ icon, title, descriptions, image }: BeneficialItemsPr
                 className="md:order-2 md:h-full md:w-full md:rounded-tr-radius2 md:rounded-br-radius2 md:object-cover xl:rounded-radius2 xl:object-contain"
             />
             <div
-                className={`relative z-[2] grid max-w-[calc(100%_-_4rem)] content-start gap-8 rounded-radius2 border border-solid border-[#EAECF0] bg-white p-12 px-8 md:mt-0 md:max-w-full md:gap-12 md:rounded-tr-none md:rounded-br-none lg:w-full lg:p-12 transition-all duration-1000 xl:rounded-radius2 ${onEnter ? 'xl:translate-x-32 xl:opacity-100 -mt-20' : 'xl:translate-x-0 xl:opacity-0'}`}>
-                <Image {...icon} className="max-h-[6rem] max-w-[6rem]"/>
+                className={`relative z-[2] grid max-w-[calc(100%_-_4rem)] content-start gap-8 rounded-radius2 border border-solid border-[#EAECF0] bg-white p-12 px-8 transition-all duration-1000 md:mt-0 md:max-w-full md:gap-12 md:rounded-tr-none md:rounded-br-none lg:w-full lg:p-12 xl:rounded-radius2 ${
+                    onEnter ? '-mt-20 xl:translate-x-32 xl:opacity-100' : 'xl:translate-x-0 xl:opacity-0'
+                }`}
+            >
+                <Image {...icon} className="max-h-[6rem] max-w-[6rem]" />
                 <h3 className="max-w-[46.7rem] font-latoBold text-[3rem] normal-case leading-[4rem] md:text-[4rem]">
                     {title}
                 </h3>

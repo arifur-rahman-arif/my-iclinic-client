@@ -29,15 +29,15 @@ interface EyeSurgeryConsultationProps {
  * @returns {JSX.Element} - The EyeSurgeryConsultation component JSX representation.
  */
 const EyeSurgeryConsultation = ({
-                                    sectionId,
-                                    heading,
-                                    description,
-                                    image
-                                }: EyeSurgeryConsultationProps): JSX.Element => {
+    sectionId,
+    heading,
+    description,
+    image
+}: EyeSurgeryConsultationProps): JSX.Element => {
     return (
         <Section id={sectionId}>
             <div className="grid md:grid-cols-2">
-                <Image {...image} className="h-full w-full object-cover" unoptimized={true}/>
+                <Image {...image} className="h-full w-full object-cover" unoptimized={true} />
 
                 <div className="grid content-center gap-12 bg-[#003E79] px-12 py-20 lg:p-20 xl:p-32">
                     <h2 className="max-w-[52.8rem] normal-case text-white">{heading}</h2>
@@ -58,7 +58,7 @@ const EyeSurgeryConsultation = ({
                             }
                             maxWidth="70rem"
                         >
-                            <Button2 type="button" text="Book a consultation"/>
+                            <Button2 type="button" text="Book a consultation" />
                         </BookConsultation>
 
                         <Link

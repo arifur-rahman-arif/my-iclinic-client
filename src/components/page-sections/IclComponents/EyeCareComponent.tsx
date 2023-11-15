@@ -8,8 +8,41 @@ import styles from './styles/EyeCare.module.scss';
 
 interface EyeCareComponentProps {
     sectionId: string;
-    cardList: CardProps[];
+    cardList?: CardProps[];
 }
+
+const defaultCardList = [
+    {
+        icon: {
+            src: '/images/icons/icons-check-outline-blue.svg',
+            width: 48,
+            height: 48,
+            alt: ''
+        },
+        title: '99.4% of people',
+        description: 'Would choose to have ICL again'
+    },
+    {
+        icon: {
+            src: '/images/icons/icons-check-outline-blue.svg',
+            width: 48,
+            height: 48,
+            alt: ''
+        },
+        title: '2,000,000+ ICL',
+        description: 'Procedures worldwide'
+    },
+    {
+        icon: {
+            src: '/images/icons/icons-check-outline-blue.svg',
+            width: 48,
+            height: 48,
+            alt: ''
+        },
+        title: '20+ years',
+        description: 'Of premium ICL performance'
+    }
+];
 
 /**
  * EyeCareComponent Component
@@ -29,6 +62,14 @@ const EyeCareComponent = ({ sectionId, cardList }: EyeCareComponentProps) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { onEnter } = useOnScreen({ ref: containerRef });
 
+    const mergedCardList = cardList
+        ? cardList.map((card, index) => ({
+            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+            title: card.title || defaultCardList[index].title,
+            description: card.description || defaultCardList[index].description
+        }))
+        : defaultCardList;
+
     return (
         <Section id={sectionId}>
             <Container
@@ -37,7 +78,7 @@ const EyeCareComponent = ({ sectionId, cardList }: EyeCareComponentProps) => {
                     onEnter && styles.styles
                 }`}
             >
-                {cardList?.length && cardList.map((card, key) => <Card key={key} {...card} />)}
+                {mergedCardList?.length && mergedCardList.map((card, key) => <Card key={key} {...card} />)}
             </Container>
         </Section>
     );

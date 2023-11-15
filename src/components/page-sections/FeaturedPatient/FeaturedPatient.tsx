@@ -104,7 +104,7 @@ const FeaturedPatient = ({
 
                         <div className="flex flex-col gap-6">
                             {bandImageDescription.map((desc, index) => (
-                                <div key={index}>{desc}</div>
+                                <p key={index} dangerouslySetInnerHTML={{ __html: desc?.toString() || '' }}></p>
                             ))}
                         </div>
 

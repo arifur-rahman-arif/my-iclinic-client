@@ -22,16 +22,17 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends CornealtreatmentContentInterface, PageDataInterface<CornealtreatmentContentInterface> {}
+interface DataInterface extends CornealtreatmentContentInterface, PageDataInterface<CornealtreatmentContentInterface> {
+}
 
 interface CornealTreatmentsProps {
     data: DataInterface;
@@ -47,7 +48,8 @@ interface CornealTreatmentsProps {
  */
 const ConsultationButton = (): JSX.Element => {
     return (
-        <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
+        <BookConsultation
+            buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-heading2 rounded-primary">
             <button className="" aria-label="Request a callback">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -84,7 +86,8 @@ const ConsultationButton = (): JSX.Element => {
                     />
                 </svg>
 
-                <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                <span
+                    className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
                     Request a callback
                 </span>
             </button>
@@ -117,7 +120,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
     // @ts-ignore
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -132,7 +135,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
 
             {/* SECTION 1 */}
             <FullWidthImageSection
@@ -164,7 +167,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 h3LightHeading={
                     <>
                         {data?.section_2?.heading?.light_heading || 'What is included in my'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_2?.heading?.bold_heading || 'private consultation?'}
@@ -201,13 +204,13 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                         }
                         listClassName="!gap-6"
                         bulletPoint={
-                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]"/>
                         }
                     />
                 }
             />
 
-            <CtaSection subtitle={data?.section_3?.subtitle} title={data?.section_3?.title} />
+            <CtaSection subtitle={data?.section_3?.subtitle} title={data?.section_3?.title}/>
 
             <SideImageSection
                 h3LightHeading={
@@ -242,7 +245,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     width: 643,
                     height: 461
                 }}
-                textColumnExtras={<ConsultationButton />}
+                textColumnExtras={<ConsultationButton/>}
             />
 
             <CorneaOfferings
@@ -258,7 +261,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                         'This is why cross-linking is used as an early surgical intervention to treat the condition before keratoconus progresses any further.'
                     ]
                 }
-                ctaButton={<ConsultationButton />}
+                ctaButton={<ConsultationButton/>}
                 image={{
                     src: '/images/section-images/corneal-cross-linking-large.jpg',
                     width: 711,
@@ -276,7 +279,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                         'A Lamellar corneal graft is a minimally invasive surgery which replaces the anterior layer of the cornea with new cornea tissue. This surgery strengthens the corneas structure and can improve vision.'
                     ]
                 }
-                ctaButton={<ConsultationButton />}
+                ctaButton={<ConsultationButton/>}
                 image={{
                     src: '/images/section-images/lamellar-corneal-large.jpg',
                     width: 711,
@@ -295,7 +298,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                         'CAIRS avoids possible complications that are associated with implanting synthetic material in the cornea such as: corneal melting, ring extrusion and intrusion, corneal necrosis; and infection.'
                     ]
                 }
-                ctaButton={<ConsultationButton />}
+                ctaButton={<ConsultationButton/>}
                 image={{
                     src: '/images/section-images/CAIRS.jpg',
                     width: 711,
@@ -307,14 +310,14 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
             <CorneaOfferings
                 reversed
                 heading={data?.section8?.heading || 'DMEK'}
-                descriptiveLabel={data?.section8?.descriptiveLabel || "Descemet's Membrane Endothelial Keratoplasty"}
+                descriptiveLabel={data?.section8?.descriptiveLabel || 'Descemet\'s Membrane Endothelial Keratoplasty'}
                 descriptions={
                     (data?.section8?.descriptions?.length && data?.section8?.descriptions) || [
-                        "DMEK is a Keratoplasty procedure which maintains the tensile strength of the cornea to restore clear, natural vision. DMEk helps restore symptoms of corneal endothelial diseases such as: Fuchs' dystrophy.",
+                        'DMEK is a Keratoplasty procedure which maintains the tensile strength of the cornea to restore clear, natural vision. DMEk helps restore symptoms of corneal endothelial diseases such as: Fuchs\' dystrophy.',
                         'This procedure is a minimally invasive surgery where only the posterior layer of the corneal is replaced as opposed to translanting the anterior chamber of your eye.'
                     ]
                 }
-                ctaButton={<ConsultationButton />}
+                ctaButton={<ConsultationButton/>}
                 image={{
                     src: '/images/section-images/DMEK.jpg',
                     width: 711,
@@ -324,11 +327,11 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
             />
 
             <LazyComponent>
-                <NormalSlideSection />
+                <NormalSlideSection/>
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos/>
             </LazyComponent>
         </Page>
     );

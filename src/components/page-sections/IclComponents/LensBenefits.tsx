@@ -11,8 +11,72 @@ import styles from './styles/EyeCare.module.scss';
 interface LensBenefitsProps {
     sectionId: string;
     heading: string;
-    cardList: CardProps[];
+    cardList?: CardProps[];
 }
+
+const defaultCardList: CardProps[] = [
+    {
+        image: {
+            src: '/images/section-images/saving-money.png',
+            width: 294,
+            height: 167,
+            alt: 'Saving Money'
+        },
+        title: 'Saving Money',
+        shortDescription: 'Saves the average contact lens buyer <strong>£13,200!</strong>',
+        descriptions: [
+            'Saves the average contact lens buyer <strong>£13,200!</strong>',
+            'One custom lens means one all- time purchase.',
+            'Never waste money by repeatedly buying plastic contact lenses to throw away. One ICL procedure saves the average contact lens buyer <strong>£13,200!</strong>'
+        ]
+    },
+    {
+        image: {
+            src: '/images/section-images/saving-time.png',
+            width: 294,
+            height: 167,
+            alt: 'Saving Time'
+        },
+        title: 'Saving Time',
+        shortDescription:
+            'Where are my contacts? Wake up in the morning with your sight ready before you are!',
+        descriptions: [
+            'Where are my contacts? Wake up in the morning with your sight ready before you are!',
+            'Skip the daily lens routine for hassle-free clarity.',
+            'Reclaim your time and enjoy immediate, ready-to-go vision.'
+        ]
+    },
+    {
+        image: {
+            src: '/images/section-images/saving-vision.png',
+            width: 294,
+            height: 167,
+            alt: 'Saving Vision'
+        },
+        title: 'Saving Vision',
+        shortDescription: 'No risk of infections, dry eyes or blindness',
+        descriptions: [
+            'No risk of infections, dry eyes or blindness',
+            'Enjoy sharp, stable vision without discomfort.',
+            'Pursue your passions worry-free with constant clear vision.'
+        ]
+    },
+    {
+        image: {
+            src: '/images/section-images/save-planet.png',
+            width: 294,
+            height: 167,
+            alt: 'Saving Our Planet'
+        },
+        title: 'Saving Our Planet',
+        shortDescription: 'Sustainable contact lenses for a sustainable future.',
+        descriptions: [
+            'Sustainable contact lenses for a sustainable future.',
+            'Reduce your environmental footprint by eliminating the need for disposable plastic lenses that end up in landfills.',
+            'Less plastic waste means less harm to our oceans and wildlife. Be part of the solution to plastic pollution.'
+        ]
+    }
+];
 
 /**
  * LensBenefits Component
@@ -33,6 +97,15 @@ const LensBenefits = ({ sectionId, heading, cardList }: LensBenefitsProps): JSX.
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { onEnter } = useOnScreen({ ref: containerRef });
 
+    const mergedCardList = cardList
+        ? cardList.map((card, index) => ({
+            image: card.image.src ? card.image : defaultCardList[index].image,
+            title: card.title || defaultCardList[index].title,
+            shortDescription: card.shortDescription || defaultCardList[index].shortDescription,
+            descriptions: card.descriptions || defaultCardList[index].descriptions
+        }))
+        : defaultCardList;
+
     return (
         <Section id={sectionId}>
             <Container ref={containerRef} className="grid gap-12 md:gap-24 ">
@@ -42,7 +115,7 @@ const LensBenefits = ({ sectionId, heading, cardList }: LensBenefitsProps): JSX.
                         onEnter && styles.styles
                     } grid grid-cols-[repeat(auto-fit,_minmax(27rem,_1fr))] justify-items-center gap-6 xl:grid-cols-4`}
                 >
-                    {cardList?.length && cardList.map((card, key) => <Card key={key} {...card} />)}
+                    {mergedCardList?.length && mergedCardList.map((card, key) => <Card key={key} {...card} />)}
                 </div>
             </Container>
         </Section>
