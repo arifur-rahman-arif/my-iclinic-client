@@ -74,26 +74,26 @@ const defaultCardList = [
  * @returns {JSX.Element} - The MastheadICL component JSX representation.
  */
 const MastheadICL = ({
-    title,
-    largeImage,
-    smallImage,
-    priceText,
-    financeText,
-    reviewsText,
-    cardList
-}: MastheadICLProps): JSX.Element => {
+                         title,
+                         largeImage,
+                         smallImage,
+                         priceText,
+                         financeText,
+                         reviewsText,
+                         cardList
+                     }: MastheadICLProps): JSX.Element => {
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
-              title: card.title || defaultCardList[index].title,
-              description: card.description || defaultCardList[index].description,
-              className: card.className || defaultCardList[index].className
-          }))
+            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+            title: card.title || defaultCardList[index].title,
+            description: card.description || defaultCardList[index].description,
+            className: card.className || defaultCardList[index].className
+        }))
         : defaultCardList;
 
     return (
         <div className="relative grid overflow-hidden">
-            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block" />
+            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block"/>
 
             <div className="relative grid xl:-ml-24 xl:justify-self-center">
                 <Image
@@ -125,29 +125,19 @@ const MastheadICL = ({
                         ></h1>
 
                         <div className="-mt-6 grid gap-2 md:mt-0">
-                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span
+                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
-                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span
+                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
                         </div>
 
                         <Reviews {...reviewsText} />
 
-                        <div className="flex flex-wrap items-center justify-start gap-4 xl:mt-12">
-                            <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white">
-                                <Button2 type="button" text="FREE Consultaion" />
-                            </BookConsultation>
-
-                            <Button2
-                                type="anchor"
-                                text="FREE suitability check"
-                                link="/suitability-check"
-                                title="FREE suitability check"
-                                className="sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white"
-                            />
-                        </div>
+                        <MastheadCtaButtons/>
                     </div>
                 </div>
 
@@ -155,7 +145,7 @@ const MastheadICL = ({
                     className={`grid grid-cols-2 md:grid-cols-3 xl:max-w-[116rem] xl:justify-self-center ${styles.styles}`}
                 >
                     <div className="bg-[#005DAF] md:hidden">
-                        <Image {...smallImage} className="h-full w-full object-cover" />
+                        <Image {...smallImage} className="h-full w-full object-cover"/>
                     </div>
                     <>
                         {mergedCardList.map((card, index) => (
@@ -206,34 +196,43 @@ interface ReviewsProps {
  */
 const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
     return (
-        <div className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
+        <div
+            className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
-            <div className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
+            <div
+                className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
                 <span className="grid place-items-start">
-                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70} />
+                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
                 </span>
-                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                <span
+                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
                     Trust Pilot
                 </span>
-                <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span
+                    className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {trustpilot}{' '}
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span
+                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
             </div>
 
             {/* Review 2 */}
-            <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
+            <div
+                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
                 <span className="grid place-items-center">
-                    <FcGoogle className="h-[2rem] w-[2rem]" />
+                    <FcGoogle className="h-[2rem] w-[2rem]"/>
                 </span>
-                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span
+                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span
+                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {google}{' '}
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span
+                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
@@ -243,3 +242,33 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
 };
 
 export default MastheadICL;
+
+interface MastheadCtaButtonsProps {
+    className?: string;
+    button1Class?: string;
+    button2Class?: string;
+}
+
+/**
+ * Masthead CTA button
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export const MastheadCtaButtons = ({ className, button1Class, button2Class }: MastheadCtaButtonsProps): JSX.Element => {
+    return (
+        <div className={twMerge('flex flex-wrap items-center justify-start gap-4 xl:mt-12', className)}>
+            <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}>
+                <Button2 type="button" text="FREE Consultaion"/>
+            </BookConsultation>
+
+            <Button2
+                type="anchor"
+                text="FREE suitability check"
+                link="/suitability-check"
+                title="FREE suitability check"
+                className={twMerge('sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white', button2Class)}
+            />
+        </div>
+    );
+};

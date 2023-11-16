@@ -7,15 +7,11 @@ import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-sli
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
 import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
 import MastheadImageMedium from '@/masthead/masthead-lasik.png';
 import { lasikFaqList } from '@/page-sections/Faq/faqList';
 import { lasikSliders } from '@/page-sections/FeaturedPatient';
-import HTMLReactParser from 'html-react-parser';
-import React from 'react';
 import {
     ClimateChange,
     CtaSection2,
@@ -26,48 +22,52 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import { leftRightListLasik } from '@/page-sections/LeftRight/leftRightList';
+import { MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { lasikStackList } from '@/page-sections/StackedSection';
 import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
 import { LasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaPoundSign } from 'react-icons/fa';
 import { Button } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends LasiklondonContentInterface, PageDataInterface<LasiklondonContentInterface> {}
+interface DataInterface extends LasiklondonContentInterface, PageDataInterface<LasiklondonContentInterface> {
+}
 
 interface LasikProps {
     seo: any;
@@ -102,80 +102,80 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                  ...item,
-                  mobileImage: (
-                      <Image
-                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
-                          width={390}
-                          height={390}
-                          quality={70}
-                          className="rounded-primary md:hidden"
-                          alt=""
-                      />
-                  ),
-                  desktopImage: (
-                      <Image
-                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
-                          width={695}
-                          height={580}
-                          quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                          alt=""
-                      />
-                  ),
-                  title: item?.title,
-                  descriptions: stringArrayToElementArray(item?.descriptions)
-              })
-          )
+            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                ...item,
+                mobileImage: (
+                    <Image
+                        src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+                        width={390}
+                        height={390}
+                        quality={70}
+                        className="rounded-primary md:hidden"
+                        alt=""
+                    />
+                ),
+                desktopImage: (
+                    <Image
+                        src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+                        width={695}
+                        height={580}
+                        quality={70}
+                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                        alt=""
+                    />
+                ),
+                title: item?.title,
+                descriptions: stringArrayToElementArray(item?.descriptions)
+            })
+        )
         : null;
 
     //
     const lasikSliderdata: any =
         Array.isArray(data?.lasikSlider) && data.lasikSlider.length > 0
             ? data.lasikSlider.map(
-                  (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
-                      return {
-                          ...service,
-                          image: {
-                              url: service?.image || '/images/section-images/walking-into-room.png',
-                              width: 392,
-                              height: 256
-                          },
-                          desktopImage: {
-                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                              width: 447,
-                              height: 349
-                          },
-                          title: service?.title,
-                          descriptions: stringArrayToElementArray(service?.descriptions)
-                      };
-                  }
-              )
+                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                    return {
+                        ...service,
+                        image: {
+                            url: service?.image || '/images/section-images/walking-into-room.png',
+                            width: 392,
+                            height: 256
+                        },
+                        desktopImage: {
+                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                            width: 447,
+                            height: 349
+                        },
+                        title: service?.title,
+                        descriptions: stringArrayToElementArray(service?.descriptions)
+                    };
+                }
+            )
             : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
+                return {
+                    ...service,
+                    title: service?.title,
+                    name: service?.name,
+                    description: service?.description
+                };
+            })
             : null;
 
     /// /reviewimageSlider
     const reviewimageSliderdata: any =
         Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0
             ? data.reviewimageSlider.map((service) => {
-                  return {
-                      ...service,
-                      imageURL: service?.imageURL
-                  };
-              })
+                return {
+                    ...service,
+                    imageURL: service?.imageURL
+                };
+            })
             : null;
 
     return (
@@ -185,7 +185,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -198,14 +198,20 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
                 bannerClassName="lg:gap-12"
+                // suitabilityButton={
+                //     <div className="grid gap-6 md:gap-12">
+                //         <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
+                //     </div>
+                // }
                 suitabilityButton={
-                    <div className="grid gap-6 md:gap-12">
-                        <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
-                    </div>
+                    <MastheadCtaButtons
+                        button1Class="hover:!border-[#003E79] !border-2"
+                        button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                    />
                 }
             />
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection && <CallbackSection/>}</LazyComponent>
             {/* SECTION 1 */}
             <FullWidthImageSection
                 h3Title={data?.section_1?.heading || 'LASIK may be the suitable alternative to correct your vision'}
@@ -222,7 +228,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightsectiondata || leftRightListLasik} />
+                <LeftRightSection childrenList={leftRightsectiondata || leftRightListLasik}/>
             </LazyComponent>
             {/* section 2 */}
             <FullWidthImageSection
@@ -230,7 +236,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 boldHeading={
                     <>
                         {data?.section_2?.bold_heading_1 || 'Remember it with'}
-                        <br />
+                        <br/>
                         {data?.section_2?.bold_heading_2 || 'Clear vision'}
                     </>
                 }
@@ -282,7 +288,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata || liskListCataract} />
+                <NormalSlideSection sliderList={reviewSliderdata || liskListCataract}/>
             </LazyComponent>
             {/* SECTION 5 */}
             <SideImageSection
@@ -320,7 +326,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                             list={
                                 (data?.section_5?.list?.length && stringArrayToElementArray(data?.section_5?.list)) || [
                                     <>
-                                        One dedicated Lasik specialist for <br /> your treatment
+                                        One dedicated Lasik specialist for <br/> your treatment
                                     </>,
                                     'Most affordable price in London'
                                 ]
@@ -330,7 +336,8 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                             type="anchor"
                             link="/lasik-london/price"
                             icon={
-                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2" />
+                                <FaPoundSign
+                                    className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2"/>
                             }
                             text={data?.section_5?.button_text || 'Pricing & Financing'}
                             iconPosition="left"
@@ -385,7 +392,8 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                 textColumnExtras={
                     <div className="flex flex-col items-center justify-start gap-12 sm:flex-row">
                         <div className="place-items-end xl:grid">
-                            <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
+                            <BookConsultation
+                                buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
                                 <button className="" aria-label="Request a callback">
                                     <svg
                                         width="20"
@@ -428,7 +436,8 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                                         />
                                     </svg>
 
-                                    <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                                    <span
+                                        className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
                                         Request a callback
                                     </span>
                                 </button>
@@ -558,7 +567,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                         h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={HTMLReactParser(
                             data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
-                                'Saving the planet <br />'
+                            'Saving the planet <br />'
                         )}
                         h3BoldHeading={
                             (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
@@ -631,7 +640,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos/>
             </LazyComponent>
 
             <LazyComponent>
@@ -639,7 +648,7 @@ export default function Lasik({ seo, yoastJson, data }: LasikProps): JSX.Element
                     title={
                         <>
                             Get the guide to
-                            <br />
+                            <br/>
                             LASIK treatment
                         </>
                     }
@@ -699,14 +708,14 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions),
                         list: convertArrayOfObjectsToStrings(data?.acf?.section_5?.list)
                     }, // 2
-
+                    
                     section_6: {
                         ...data?.acf?.section_6,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions).map((item) =>
                             stripInitialTags(item)
                         )
                     }, // 2
-
+                    
                     section_7: {
                         ...data?.acf?.section_7,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_7?.descriptions)
@@ -716,33 +725,33 @@ export async function getStaticProps() {
                     }, // 2
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                              return {
-                                  ...ListData,
-                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                              };
-                          })
+                            return {
+                                ...ListData,
+                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                            };
+                        })
                         : [],
                     lasikSlider: Array.isArray(data?.acf?.lasikSlider)
                         ? data?.acf.lasikSlider.map((sectionData: { descriptions: any[] | undefined }) => {
-                              return {
-                                  ...sectionData,
-                                  descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
-                              };
-                          })
+                            return {
+                                ...sectionData,
+                                descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
+                            };
+                        })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
+                            return {
+                                ...ListData
+                            };
+                        })
                         : [],
                     reviewimageSlider: Array.isArray(data?.acf?.reviewimageSlider)
                         ? data?.acf.reviewimageSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
+                            return {
+                                ...ListData
+                            };
+                        })
                         : [],
                     sustainability_section: {
                         plastic_free_life: {

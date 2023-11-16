@@ -22,7 +22,7 @@ import {
     StackColumn
 } from '@/page-sections/index';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
-import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
+import { MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
@@ -32,35 +32,36 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 // Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends RelexSmilePageContentProps, PageDataInterface<RelexSmilePageContentProps> {}
+interface DataInterface extends RelexSmilePageContentProps, PageDataInterface<RelexSmilePageContentProps> {
+}
 
 interface RelexSmileLondonProps {
     seo: any;
@@ -90,31 +91,31 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
 
     const serviceList: any = data?.section_2.length
         ? data?.section_2.map((service) => {
-              return {
-                  ...service,
-                  mobileImage: (
-                      <Image
-                          src={service.mobileImage?.url || ''}
-                          width={390}
-                          height={390}
-                          quality={70}
-                          className="md:hidden"
-                          alt={service.mobileImage?.alt || ''}
-                      />
-                  ),
-                  desktopImage: (
-                      <Image
-                          src={service.desktopImage?.url || ''}
-                          width={685}
-                          height={557}
-                          quality={70}
-                          className="hidden md:block md:scale-90 2xl:scale-100"
-                          alt={service.desktopImage?.alt || ''}
-                      />
-                  ),
-                  descriptions: stringArrayToElementArray(service.descriptions)
-              };
-          })
+            return {
+                ...service,
+                mobileImage: (
+                    <Image
+                        src={service.mobileImage?.url || ''}
+                        width={390}
+                        height={390}
+                        quality={70}
+                        className="md:hidden"
+                        alt={service.mobileImage?.alt || ''}
+                    />
+                ),
+                desktopImage: (
+                    <Image
+                        src={service.desktopImage?.url || ''}
+                        width={685}
+                        height={557}
+                        quality={70}
+                        className="hidden md:block md:scale-90 2xl:scale-100"
+                        alt={service.desktopImage?.alt || ''}
+                    />
+                ),
+                descriptions: stringArrayToElementArray(service.descriptions)
+            };
+        })
         : null;
 
     return (
@@ -124,7 +125,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
@@ -137,14 +138,20 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
                 bannerClassName="lg:gap-12"
+                // suitabilityButton={
+                //     <div className="grid gap-6 md:gap-12">
+                //         <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]"/>
+                //     </div>
+                // }
                 suitabilityButton={
-                    <div className="grid gap-6 md:gap-12">
-                        <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
-                    </div>
+                    <MastheadCtaButtons
+                        button1Class="hover:!border-[#003E79] !border-2"
+                        button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                    />
                 }
             />
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection && <CallbackSection/>}</LazyComponent>
 
             <FullWidthImageSection
                 h3Title={
@@ -153,8 +160,8 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                             HTMLReactParser(data.section_1.heading)
                         ) : (
                             <>
-                                Say hello to clear vision <br /> with ReLEx SMILE Laser
-                                <br /> Eye Surgery!
+                                Say hello to clear vision <br/> with ReLEx SMILE Laser
+                                <br/> Eye Surgery!
                             </>
                         )}
                     </>
@@ -169,7 +176,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={serviceList || leftRightListRelexSmileLondon} />
+                <LeftRightSection childrenList={serviceList || leftRightListRelexSmileLondon}/>
             </LazyComponent>
 
             <LazyComponent>
@@ -193,7 +200,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             </LazyComponent>
 
             <LazyComponent>
-                <BottomBanner2 />
+                <BottomBanner2/>
             </LazyComponent>
 
             <CtaSection
@@ -206,7 +213,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 h2Heading={data?.section_4?.subheading || 'Why RELEX SMILE'}
                 h3LightHeading={
                     <>
-                        {data?.section_4.heading?.light_heading || 'The benefits of ReLEx'} <br />
+                        {data?.section_4.heading?.light_heading || 'The benefits of ReLEx'} <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_4.heading?.bold_heading || 'Smile laser eye surgery!'}
@@ -220,15 +227,15 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                      to re-discover a life of clear, natural vision.`
                     ]
                 }
-                customColumn={<GridColumn cardList={data?.section_4.card_list} />}
+                customColumn={<GridColumn cardList={data?.section_4.card_list}/>}
             />
 
             <SideImageSection
-                h2Heading={data?.section_5?.subheading || "improve your life's quality"}
+                h2Heading={data?.section_5?.subheading || 'improve your life\'s quality'}
                 h3LightHeading={
                     <>
                         {data?.section_5.heading?.light_heading || 'Step closer to a life of'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_5.heading?.bold_heading || 'Clear, natural vision!'}
@@ -254,7 +261,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 altText={data?.section_5?.large_image?.alt}
                 textColumnExtras={
                     <p className="font-mulishBold text-[2rem] leading-[2.4rem]">
-                        A better quality of life is just <br />
+                        A better quality of life is just <br/>
                         around the corner.
                     </p>
                 }
@@ -291,7 +298,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                             `Dr John Bolger has taken great care in assessing my vision and health, and explaining the surgery.
                          He performed the correcting procedure with great care, and after 15 minutes I walked out
                           of the surgery on my own without any visual aids or help!`,
-                            "The next day I was already back at work (software development), gym the following day (weight lifting) and swimming just a week after - if that is not a miracle, I don't know what is!"
+                            'The next day I was already back at work (software development), gym the following day (weight lifting) and swimming just a week after - if that is not a miracle, I don\'t know what is!'
                         ]
                     }
                     bandImageTitle={data?.section_9?.name || 'Mr. Lukicov'}
@@ -303,14 +310,14 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListRelexSmile} />
+                <NormalSlideSection sliderList={normalSlideListRelexSmile}/>
             </LazyComponent>
 
             <FullWidthImageSection
                 h3Title="Whatever the view,"
                 boldHeading={
                     <>
-                        Remember it with <br /> Clear vision
+                        Remember it with <br/> Clear vision
                     </>
                 }
                 altText=""
@@ -324,7 +331,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 h3LightHeading={
                     <>
                         {data?.section_6?.heading?.light_heading || 'Why consider our ReLEx SMILE Laser eye surgery'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={
@@ -342,7 +349,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 }}
                 altText={data?.section_6?.large_image?.alt || 'Male athlete on bike after laser eye surgery'}
                 textColumnImage={true}
-                customColumn={<StackColumn stackList={data?.section_6?.list} />}
+                customColumn={<StackColumn stackList={data?.section_6?.list}/>}
                 containerClassName="!items-start"
             />
 
@@ -351,7 +358,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 h3LightHeading={
                     <>
                         {data?.section_7?.heading?.light_heading || 'Do you think ReLEx SMILE could'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_7?.heading?.bold_heading || 'Be the right treatment for you?'}
@@ -377,7 +384,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                 altText={
                     data?.section_7?.large_image?.alt || 'Woman smiling without needing glasses for short-sightedness'
                 }
-                textColumnExtras={<Cta6 />}
+                textColumnExtras={<Cta6/>}
             />
 
             {/* <LazyComponent>
@@ -403,11 +410,11 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
                         h3LightHeading={HTMLReactParser(
                             data?.sustainability_section?.plastic_free_life?.heading.light_heading ||
-                                'ReLEx SMILE is the key<br /> to living'
+                            'ReLEx SMILE is the key<br /> to living'
                         )}
                         h3BoldHeading={HTMLReactParser(
                             data?.sustainability_section?.plastic_free_life?.heading.bold_heading ||
-                                'a sustainable, <br /> plastic free life!'
+                            'a sustainable, <br /> plastic free life!'
                         )}
                         descriptions={
                             (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
@@ -426,7 +433,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
                         h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={HTMLReactParser(
                             data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
-                                'Saving the planet <br />'
+                            'Saving the planet <br />'
                         )}
                         h3BoldHeading={HTMLReactParser(
                             data?.sustainability_section?.gift_of_a_tree?.heading.bold_heading || 'One eye at a time!'
@@ -497,7 +504,7 @@ export default function RelexSmileLondon({ seo, yoastJson, data }: RelexSmileLon
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos/>
             </LazyComponent>
 
             <LazyComponent>
@@ -541,11 +548,11 @@ export async function getStaticProps() {
                     ...data?.acf,
                     section_2: Array.isArray(data?.acf?.section_2)
                         ? data?.acf.section_2.map((sectionData) => {
-                              return {
-                                  ...sectionData,
-                                  descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
-                              };
-                          })
+                            return {
+                                ...sectionData,
+                                descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
+                            };
+                        })
                         : [],
                     section_3: {
                         ...data?.acf.section_3,
@@ -563,11 +570,11 @@ export async function getStaticProps() {
                         ...data?.acf?.section_6,
                         list: Array.isArray(data?.acf.section_6?.list)
                             ? data?.acf.section_6?.list.map((item) => {
-                                  return {
-                                      ...item,
-                                      descriptions: convertArrayOfObjectsToStrings(item.descriptions)
-                                  };
-                              })
+                                return {
+                                    ...item,
+                                    descriptions: convertArrayOfObjectsToStrings(item.descriptions)
+                                };
+                            })
                             : []
                     },
                     section_7: {
