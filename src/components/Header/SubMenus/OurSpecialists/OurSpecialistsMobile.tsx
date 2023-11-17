@@ -33,7 +33,7 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
     const [submenus, setSubmenus] = useState<SubmenuType[]>([
         {
             active: true,
-            name: 'Our specialist'
+            name: 'Our specialists'
         }
     ]);
 
