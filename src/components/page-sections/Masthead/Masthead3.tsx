@@ -1,3 +1,4 @@
+import { useReviewHook } from '@/hooks';
 import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';
@@ -20,7 +21,8 @@ interface Masthead3Props {
  */
 const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
     return (
-        <div className="relative grid min-h-[74rem] content-start md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
+        <div
+            className="relative grid min-h-[74rem] content-start md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
             <Image
                 src={MastheadImageSmall}
                 alt=""
@@ -47,7 +49,8 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 className="col-start-2 row-span-2 row-start-2 hidden self-stretch object-cover md:block md:justify-self-end xl:row-start-1 xl:self-end xl:justify-self-end xl:object-center"
             />
 
-            <div className="grid content-start px-8 pt-12 md:pt-24 lg:pl-12 xl:pt-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div
+                className="grid content-start px-8 pt-12 md:pt-24 lg:pl-12 xl:pt-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 <h1 className="max-w-[31.6rem] text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]">
                     {title}
                 </h1>
@@ -71,7 +74,8 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                     </h2>
                 </div>
                 <div className="mt-12 grid gap-2">
-                    <strong className="font-latoBold text-[2rem] leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                    <strong
+                        className="font-latoBold text-[2rem] leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                         Did you know?
                     </strong>
 
@@ -85,7 +89,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 </div>
             </div>
 
-            <Reviews />
+            <Reviews/>
 
             <Link
                 href="/suitability-check"
@@ -115,17 +119,30 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
     );
 };
 
+
+export interface ReviewsProps {
+    trustpilot: {
+        total: string
+        average: string
+    };
+}
+
 /**
  * Reviews is a component that displays reviews and ratings from different sources such as Trust Pilot and Google.
  *
  * @returns {JSX.Element} The rendered Reviews component.
  */
 const Reviews = (): JSX.Element => {
+    const { data, isLoading } = useReviewHook();
+
     return (
-        <div className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:mx-0 md:max-w-[36.1rem] md:self-end lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start xl:mt-[10rem] xl:justify-self-start xl:px-0 xl:pt-24 xl:pb-0">
+        <div
+            className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:mx-0 md:max-w-[36.1rem] md:self-end lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start xl:mt-[10rem] xl:justify-self-start xl:px-0 xl:pt-24 xl:pb-0">
             <div className="flex flex-wrap items-end justify-start gap-10 md:justify-center">
                 {/* Review 1 */}
-                <div className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
+                <Link href="https://www.trustpilot.com/review/my-iclinic.co.uk" title="Trustpilot all reviews"
+                      target="_blank"
+                      className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
                     <span className="grid place-items-start">
                         <Image
                             src="/images/icons/icon-trustpilot-stars.svg"
@@ -135,44 +152,61 @@ const Reviews = (): JSX.Element => {
                             quality={70}
                         />
                     </span>
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
-                        Trust Pilot
-                    </span>
-                    <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        4.9 | 73{' '}
-                        <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
-                            reviews
-                        </span>
-                    </span>
-                </div>
+                    {isLoading ?
+                        <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24}/> :
+                        <>
+                            <span
+                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                                Trust Pilot
+                            </span>
+                            <span
+                                className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                            {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
+                                <span
+                                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                                reviews
+                            </span>
+                            </span>
+                        </>
+                    }
+                </Link>
 
                 {/* Review 2 */}
-                <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
+                <Link
+                    href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
+                    target="_blank"
+                    title="All google reviews"
+                    className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
                     <span className="grid place-items-center">
-                        <FcGoogle className="h-[2.4rem] w-[2.4rem]" />
+                        <FcGoogle className="h-[2.4rem] w-[2.4rem]"/>
                     </span>
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span
+                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         Google
                     </span>
-                    <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        4.8 | 35{' '}
-                        <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span
+                        className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        4.9 | 75{' '}
+                        <span
+                            className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                             reviews
                         </span>
                     </span>
-                </div>
+                </Link>
             </div>
 
             <p className="font-mulishBold text-[1.4rem] leading-8 text-heading md:text-[1.6rem] md:leading-[2.4rem] xl:mt-7 xl:max-w-[30rem] xl:justify-self-center xl:px-8">
                 Over{' '}
-                <span className="font-mulishBold text-[1.4rem] leading-8 text-[#893277] md:text-[1.6rem] md:leading-[2.4rem]">
+                <span
+                    className="font-mulishBold text-[1.4rem] leading-8 text-[#893277] md:text-[1.6rem] md:leading-[2.4rem]">
                     100,000 successful
                 </span>{' '}
                 cataract operations have been performed by the My iClinic surgeons.
             </p>
 
             <div className="mt-4 grid place-items-center gap-2 xl:w-full xl:place-items-stretch">
-                <span className="font-mulishBold text-[1.4rem] uppercase leading-8 text-[#893277] xl:justify-self-center xl:text-[2rem] xl:leading-[2.8rem]">
+                <span
+                    className="font-mulishBold text-[1.4rem] uppercase leading-8 text-[#893277] xl:justify-self-center xl:text-[2rem] xl:leading-[2.8rem]">
                     0% Finance available
                 </span>
 

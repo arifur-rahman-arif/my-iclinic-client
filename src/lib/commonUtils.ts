@@ -2,6 +2,7 @@
 import { WpPageResponseInterface } from '@/types';
 import { getData } from '@/utils/apiHelpers';
 import { wordpressPageFields } from '@/utils/miscellaneous';
+import axios from 'axios';
 
 import * as process from 'process';
 
@@ -241,3 +242,33 @@ const replaceSchemaUrl = (schema: any) => {
 //         open: index === 0
 //     };
 // };
+
+
+/**
+ * Get trustpilot reviews
+ * @returns {Promise<{average: string, total: string}>}
+ */
+export const getReviews = async (): Promise<any> => {
+    const trustpilotPage = await axios.get('https://uk.trustpilot.com/review/my-iclinic.co.uk');
+    if (trustpilotPage.status !== 200) throw new Error('Unable to get reviews');
+    const trustPilotResponse = trustpilotPage.data;
+
+    const jsdom = require('jsdom');
+    const { JSDOM } = jsdom;
+    const trustpilotDom = new JSDOM(trustPilotResponse);
+
+    const trustPilotTotalReview = trustpilotDom.window.document
+        .querySelector('.typography_body-l__KUYFJ.typography_appearance-default__AAY17')
+        .textContent.split(' ')[0];
+
+    const trustPilotAverageReview = trustpilotDom.window.document.querySelector(
+        '#__next > div > div > main > div > div.styles_mainContent__nFxAv > section > div.paper_paper__1PY90.paper_outline__lwsUX.card_card__lQWDv.styles_reviewsOverview__mVIJQ > div.styles_header__yrrqf > h2 > span'
+    ).textContent;
+
+    return {
+        trustpilot: {
+            total: trustPilotTotalReview,
+            average: trustPilotAverageReview
+        }
+    };
+};

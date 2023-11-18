@@ -1,9 +1,11 @@
 import { Button2 } from '@/components/Buttons';
+import { useReviewHook } from '@/hooks';
 import { BookConsultation } from '@/page-sections/index';
 import { ImageType3 } from '@/types';
 import smallBg from '@/section-images/icl-small-bg.png';
 import largeBg from '@/section-images/icl-masthead-bg.png';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { twMerge } from 'tailwind-merge';
 import styles from './styles/Icl.module.scss';
@@ -195,31 +197,44 @@ interface ReviewsProps {
  * @returns {JSX.Element} - The Reviews component JSX representation.
  */
 const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
+    const { data, isLoading } = useReviewHook();
+
     return (
         <div
             className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
-            <div
+            <Link
+                href="https://www.trustpilot.com/review/my-iclinic.co.uk" title="Trustpilot all reviews"
+                target="_blank"
                 className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
                 <span className="grid place-items-start">
                     <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
-                    Trust Pilot
-                </span>
-                <span
-                    className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                    {trustpilot}{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
-                        reviews
-                    </span>
-                </span>
-            </div>
+
+                {isLoading ?
+                    <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24}/> :
+                    <>
+                         <span
+                             className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                            Trustpilot
+                         </span>
+                        <span
+                            className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                            {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
+                            <span
+                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                                reviews
+                            </span>
+                        </span>
+                    </>
+                }
+            </Link>
 
             {/* Review 2 */}
-            <div
+            <Link
+                href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
+                target="_blank"
+                title="All google reviews"
                 className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
                 <span className="grid place-items-center">
                     <FcGoogle className="h-[2rem] w-[2rem]"/>
@@ -236,7 +251,7 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
                         reviews
                     </span>
                 </span>
-            </div>
+            </Link>
         </div>
     );
 };

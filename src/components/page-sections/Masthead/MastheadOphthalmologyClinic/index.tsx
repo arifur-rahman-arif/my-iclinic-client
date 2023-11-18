@@ -1,9 +1,11 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
+import { useReviewHook } from '@/hooks';
 import mastheadImage from '@/masthead/masthead-ophthalmology-clinic.png';
 import smallBg from '@/section-images/masthead-icl-mobile-bg.png';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import styles from './Style.module.scss';
@@ -88,27 +90,43 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
  * @returns {JSX.Element} The JSX element representing the reviews section.
  */
 const Reviews = (): JSX.Element => {
+    const { data, isLoading } = useReviewHook();
+
     return (
         <div
             className="relative z-[2] mt-6 flex flex-wrap items-stretch justify-start gap-4 self-start justify-self-start md:mt-24 md:grid md:grid-cols-2 md:items-end md:rounded-[0.5rem] md:bg-white md:px-8 md:py-2 xl:mt-24">
             {/* Review 1 */}
-            <div
-                className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:col-start-2 md:row-start-1 md:w-full md:max-w-[19.8rem] md:place-items-start md:py-4 xl:gap-2">
+            <Link
+                href="https://www.trustpilot.com/review/my-iclinic.co.uk" title="Trustpilot all reviews"
+                target="_blank"
+                className="grid grid-cols-1 place-items-center justify-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:col-start-2 md:row-start-1 md:w-full md:max-w-[19.8rem] md:place-items-start md:py-4 xl:gap-2">
                 <span className="grid place-items-start">
                     <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
                 </span>
-                <span
-                    className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                    4.8 | 315{' '}
+                {isLoading ?
                     <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
-                        reviews
-                    </span>
-                </span>
-            </div>
+                        className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                          Loading...
+                        </span> :
+                    <>
+                       <span
+                           className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                           {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
+                           <span
+                               className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                                reviews
+                            </span>
+                        </span>
+                    </>
+                }
+
+            </Link>
 
             {/* Review 2 */}
-            <div
+            <Link
+                href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
+                target="_blank"
+                title="All google reviews"
                 className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-start md:gap-0 md:py-4 ">
                 <span className="grid place-items-center">
                     <FcGoogle className="h-[2.4rem] w-[2.4rem]"/>
@@ -125,7 +143,7 @@ const Reviews = (): JSX.Element => {
                         reviews
                     </span>
                 </span>
-            </div>
+            </Link>
         </div>
     );
 };

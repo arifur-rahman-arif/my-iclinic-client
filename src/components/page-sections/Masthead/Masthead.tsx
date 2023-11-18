@@ -32,21 +32,21 @@ export interface MastheadInterface {
  * @returns {*}  {JSX.Element}
  */
 const Masthead = ({
-    imageMedium,
-    h1Title,
-    h2Title,
-    altText,
-    priceText,
-    priceTextExtra,
-    bannerWidth = 'md:max-w-[60.5rem]',
-    excludePriceComponent = false,
-    list,
-    bannerExtraComponents,
-    suitabilityButton,
-    googleReviews,
-    trustPilotReviews,
-    bannerClassName
-}: MastheadInterface): JSX.Element => {
+                      imageMedium,
+                      h1Title,
+                      h2Title,
+                      altText,
+                      priceText,
+                      priceTextExtra,
+                      bannerWidth = 'md:max-w-[60.5rem]',
+                      excludePriceComponent = false,
+                      list,
+                      bannerExtraComponents,
+                      suitabilityButton,
+                      googleReviews,
+                      trustPilotReviews,
+                      bannerClassName
+                  }: MastheadInterface): JSX.Element => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     return (
@@ -54,7 +54,8 @@ const Masthead = ({
             defaultClassName="w-full relative relative masthead grid gap-12"
             className="md:min-h-[50rem] md:grid-cols-[1fr_40rem_1fr] xl:ml-[calc(calc(100%_-_var(--container-width))_/_2)] xl:grid-cols-[20rem_auto_auto]"
         >
-            <div className="relative md:col-span-full md:col-start-2 md:row-start-1 lg:min-h-[63.3rem] xl:max-h-[70rem]">
+            <div
+                className="relative md:col-span-full md:col-start-2 md:row-start-1 lg:min-h-[63.3rem] xl:max-h-[70rem]">
                 <Image
                     src={imageMedium}
                     alt={altText || ''}
@@ -74,7 +75,8 @@ const Masthead = ({
                 )}
             </div>
 
-            <Container className="relative z-[1] grid h-full grid-cols-1 items-center justify-start md:col-span-2 md:col-start-1 md:row-start-1">
+            <Container
+                className="relative z-[1] grid h-full grid-cols-1 items-center justify-start md:col-span-2 md:col-start-1 md:row-start-1">
                 <Banner
                     h1Title={h1Title}
                     h2Title={h2Title}
