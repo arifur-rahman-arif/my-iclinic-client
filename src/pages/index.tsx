@@ -5,7 +5,7 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { SideImageSection } from '@/components/page-sections';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
-import { getPageData } from '@/lib';
+import { getPageData, getReviews } from '@/lib';
 import BlurPrevention from '@/page-sections/HomePage/BlurPrevention';
 import FundingTreatment from '@/page-sections/HomePage/FundingTreatment';
 import OurMission from '@/page-sections/HomePage/OurMission';
@@ -104,14 +104,14 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     return (
         <Page
             title="London's No1 Eye Clinic For Laser Eye Surgery & Vision Correction"
-            description='Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options.'
+            description="Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options."
             seo={seo}
             yoastJson={yoastJson}
         >
             <Masthead3
-                title='London private eye clinic'
-                subTitle='Premium eye care for all the family'
-                image='/images/masthead/masthead-home-large.png'
+                title="London private eye clinic"
+                subTitle="Premium eye care for all the family"
+                image="/images/masthead/masthead-home-large.png"
             />
 
             <SurgerySection/>
@@ -125,9 +125,9 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                     </>
                 }
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Care Services'}
-                containerClassName='md:!grid-cols-1 md:!gap-12'
+                containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
-                    <div className='grid justify-center gap-6 md:mt-12  md:grid-cols-[auto_auto] xl:grid-cols-3'>
+                    <div className="grid justify-center gap-6 md:mt-12  md:grid-cols-[auto_auto] xl:grid-cols-3">
                         {((cardListData?.length && cardListData) || cardList).map(
                             (list: JSX.IntrinsicAttributes & CardInterface, index: Key | null | undefined) => (
                                 <Card key={index} {...list} />
@@ -180,12 +180,14 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<HomeContentInterface> = await getPageData({ slug: 'home' });
+        const reviews = await getReviews();
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || null,
                 yoastJson: data?.yoast_head_json || null,
+                reviews,
                 data: {
                     ...data?.acf,
                     // section_1: {

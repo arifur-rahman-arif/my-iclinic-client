@@ -22,19 +22,20 @@ import { useEffect, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends AstigmatismPageContentInterface, PageDataInterface<AstigmatismPageContentInterface> {}
+interface DataInterface extends AstigmatismPageContentInterface, PageDataInterface<AstigmatismPageContentInterface> {
+}
 
 interface AstigmatismProps {
     data: DataInterface;
@@ -68,7 +69,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -81,14 +82,14 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
 
             <SideImageSection
                 h2Heading={data?.section_1?.subheading || 'Correct your vision'}
                 h3LightHeading={
                     <>
                         {data?.section_1?.heading?.light_heading || 'Astigmatism in'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_1.heading?.bold_heading || 'children and adults'}
@@ -120,7 +121,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 h3LightHeading={
                     <>
                         {data?.section_2.heading?.light_heading || 'Diagnosis and vision'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_2.heading?.bold_heading || 'correction for astigmatism'}
@@ -156,7 +157,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                             }
                             listClassName="!gap-6"
                             bulletPoint={
-                                <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                                <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]"/>
                             }
                         />
 
@@ -178,7 +179,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 h3LightHeading={
                     <>
                         {data?.section_3?.heading?.light_heading || 'What is included in my'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_3?.heading?.bold_heading || 'private consultation?'}
@@ -217,7 +218,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                         }
                         listClassName="!gap-6"
                         bulletPoint={
-                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]"/>
                         }
                     />
                 }
@@ -276,7 +277,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
             </Section>
 
             <LazyComponent>
-                <NormalSlideSection />
+                <NormalSlideSection/>
             </LazyComponent>
 
             <CtaSection
@@ -290,13 +291,13 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 h3LightHeading={
                     <>
                         {data?.section_5.heading?.light_heading || 'Astigmatism treatment'}
-                        <br />
+                        <br/>
                     </>
                 }
                 h3BoldHeading={data?.section_5.heading?.bold_heading || 'for children'}
                 descriptions={
                     (data?.section_5.descriptions.length && data?.section_5.descriptions) || [
-                        "Our children's paediatrician will carry out comprehensive eye assessments to diagnose the cause of your child's astigmatism.",
+                        'Our children\'s paediatrician will carry out comprehensive eye assessments to diagnose the cause of your child\'s astigmatism.',
                         <>
                             Astigmatism may be present on its own but is typically associated with{' '}
                             <LinkStyle url="/myopia">Myopia.</LinkStyle> or <strong>Hyperopia.</strong>
@@ -306,7 +307,8 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                             <strong>Read more about </strong>
                             <span className="group/link flex items-center justify-start gap-4">
                                 <LinkStyle url="/myopia">Myopia Control for Children</LinkStyle>
-                                <AiOutlineArrowRight className="h-8 w-8 fill-blue transition-all duration-500 group-hover/link:translate-x-4" />
+                                <AiOutlineArrowRight
+                                    className="h-8 w-8 fill-blue transition-all duration-500 group-hover/link:translate-x-4"/>
                             </span>
                         </span>
                     ]
@@ -325,7 +327,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
             />
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos/>
             </LazyComponent>
 
             <LazyComponent>

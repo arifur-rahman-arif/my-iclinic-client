@@ -1,14 +1,17 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import { useReviewHook } from '@/hooks';
 import IconCheck from '@/icons/icon-check-dark.svg';
 import gsap from 'gsap';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { twMerge } from 'tailwind-merge';
 import { MastheadInterface } from './Masthead';
 import styles from './styles/Heading.module.scss';
 
-interface BannerInterface extends Omit<MastheadInterface, 'imageSmall' | 'imageMedium' | 'imageLarge'> {}
+interface BannerInterface extends Omit<MastheadInterface, 'imageSmall' | 'imageMedium' | 'imageLarge'> {
+}
 
 /**
  * Banner component for the masthead
@@ -16,19 +19,19 @@ interface BannerInterface extends Omit<MastheadInterface, 'imageSmall' | 'imageM
  * @returns {*}  {JSX.Element}
  */
 const Banner = ({
-    h1Title,
-    h2Title,
-    priceText,
-    priceTextExtra,
-    bannerWidth,
-    excludePriceComponent,
-    list,
-    bannerExtraComponents,
-    googleReviews,
-    trustPilotReviews,
-    suitabilityButton,
-    bannerClassName
-}: BannerInterface): JSX.Element => {
+                    h1Title,
+                    h2Title,
+                    priceText,
+                    priceTextExtra,
+                    bannerWidth,
+                    excludePriceComponent,
+                    list,
+                    bannerExtraComponents,
+                    googleReviews,
+                    trustPilotReviews,
+                    suitabilityButton,
+                    bannerClassName
+                }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement | null>(null);
     const bannerRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,6 +44,8 @@ const Banner = ({
         });
     }, []);
 
+    const { data, isLoading } = useReviewHook();
+
     return (
         <div
             className={twMerge(
@@ -49,32 +54,40 @@ const Banner = ({
             )}
             ref={bannerRef}
         >
-            <BreadCrumb className="hidden md:col-span-full md:!flex" />
+            <BreadCrumb className="hidden md:col-span-full md:!flex"/>
 
             {/* Headings */}
             <div className="grid w-full grid-cols-1 gap-6 md:col-span-2 md:gap-12">
                 <div className={`${styles.styles}`}>{h1Title}</div>
                 {h2Title && h2Title}
 
-                <Image src="/images/icons/icon-pin-grey.svg" quality={2} width={331} height={2} alt="" className="" />
+                <Image src="/images/icons/icon-pin-grey.svg" quality={2} width={331} height={2} alt="" className=""/>
             </div>
 
             {/* Reviews */}
-            <div className="flex flex-wrap items-end justify-start gap-8 md:col-start-2 md:row-start-3 md:justify-end md:self-center">
+            <div
+                className="flex flex-wrap items-end justify-start gap-8 md:col-start-2 md:row-start-3 md:justify-end md:self-center">
                 {/* Review 1 */}
-                <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2">
+                <Link
+                    href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
+                    target="_blank"
+                    title="All google reviews"
+                    className="grid grid-cols-[auto_1fr] items-center justify-start gap-2">
                     <span className="grid place-items-center">
-                        <FcGoogle className="h-[2.4rem] w-[2.4rem]" />
+                        <FcGoogle className="h-[2.4rem] w-[2.4rem]"/>
                     </span>
-                    <span className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                    <span
+                        className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                         Google
                     </span>
-                    <span className="col-span-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                    <span
+                        className="col-span-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                         {googleReviews || '4.9 | 73 reviews'}
                     </span>
-                </div>
+                </Link>
                 {/* Review 2 */}
-                <div className="grid grid-cols-1 items-center justify-start gap-2">
+                <Link target="_blank" href="https://www.trustpilot.com/review/my-iclinic.co.uk"
+                      title="Trustpilot all reviews" className="grid grid-cols-1 items-center justify-start gap-2">
                     <span className="grid place-items-start">
                         <Image
                             src="/images/icons/icon-trustpilot-stars.svg"
@@ -84,13 +97,21 @@ const Banner = ({
                             quality={70}
                         />
                     </span>
-                    <span className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        Trust Pilot
+                    <span
+                        className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        Trustpilot
                     </span>
-                    <span className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                        {trustPilotReviews || '4.8 | 315 reviews'}
-                    </span>
-                </div>
+                    {isLoading ?
+                        <span
+                            className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                                Loading...
+                            </span> :
+                        <span
+                            className="font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                            {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}reviews
+                        </span>
+                    }
+                </Link>
             </div>
 
             {/* Price */}
@@ -113,7 +134,7 @@ const Banner = ({
                 <div className="grid grid-cols-2 gap-y-2 gap-x-12">
                     {list.map((item, index) => (
                         <div className="flex items-center justify-start gap-4" key={index}>
-                            <Image src={IconCheck} alt="" />
+                            <Image src={IconCheck} alt=""/>
                             <span className="font-mulishBold text-[2rem] leading-[2.8rem]">{item}</span>
                         </div>
                     ))}

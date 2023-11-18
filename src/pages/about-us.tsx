@@ -16,7 +16,8 @@ import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
 
-interface DataInterface extends AboutUsPageContent, PageDataInterface<AboutUsPageContent> {}
+interface DataInterface extends AboutUsPageContent, PageDataInterface<AboutUsPageContent> {
+}
 
 interface AboutUsProps {
     seo: any;
@@ -38,7 +39,7 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -47,11 +48,11 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
                 h1Title={<h1>{heading}</h1>}
                 h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={<ChatWithUs />}
+                bannerExtraComponents={<ChatWithUs/>}
             />
 
             <Section className="relative bg-[#006088F2]">
-                <Image src="/images/section-images/about-us-section-eye-bg.png" alt="" fill={true} />
+                <Image src="/images/section-images/about-us-section-eye-bg.png" alt="" fill={true}/>
 
                 <Container className="relative z-[1] grid place-items-center gap-12 py-16 md:py-24">
                     {data?.section_1?.length ? (
@@ -172,11 +173,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 }}
             />
 
-            <UspSection />
+            <UspSection/>
 
             <SideImageSection
                 dynamicTextColumn={
-                    <div className="grid h-full w-full content-start items-center py-24 pl-8 sm:max-w-[47.1rem] lg:py-32 xl:pl-0">
+                    <div
+                        className="grid h-full w-full content-start items-center py-24 pl-8 sm:max-w-[47.1rem] lg:py-32 xl:pl-0">
                         <H2Variant1 className="normal-case text-white">
                             {data?.section_5?.heading || 'Our Lifelong medical practices & research'}
                         </H2Variant1>

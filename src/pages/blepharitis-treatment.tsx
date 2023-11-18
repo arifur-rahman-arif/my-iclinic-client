@@ -21,19 +21,20 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader/>
 });
 
-interface DataInterface extends BlepharitisContentInterface, PageDataInterface<BlepharitisContentInterface> {}
+interface DataInterface extends BlepharitisContentInterface, PageDataInterface<BlepharitisContentInterface> {
+}
 
 interface BlepharitisPageProps {
     data: DataInterface;
@@ -65,7 +66,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb />
+            <BreadCrumb/>
 
             <Masthead
                 imageMedium={data?.masthead_image?.image_medium.url || MastheadImageMedium}
@@ -77,7 +78,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
 
             {/* SEction_1 */}
             <FullWidthImageSection
@@ -85,7 +86,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 boldHeading={
                     <>
                         {data?.section_1?.heading_1 || 'London’s best treatment for'}
-                        <br /> {data?.section_1?.heading_2 || 'Blepharitis symptoms'}
+                        <br/> {data?.section_1?.heading_2 || 'Blepharitis symptoms'}
                     </>
                 }
                 altText=""
@@ -218,11 +219,11 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
             </LazyComponent> */}
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListBlepharitis} />
+                <NormalSlideSection sliderList={normalSlideListBlepharitis}/>
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos />
+                <CompanyLogos/>
             </LazyComponent>
 
             <LazyComponent>
@@ -273,11 +274,11 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
                         list: Array.isArray(data?.acf?.section_4?.list)
                             ? data?.acf.section_4?.list.map((item) => {
-                                  return {
-                                      ...item,
-                                      description: convertArrayOfObjectsToStrings(item.descriptions)
-                                  };
-                              })
+                                return {
+                                    ...item,
+                                    description: convertArrayOfObjectsToStrings(item.descriptions)
+                                };
+                            })
                             : []
                     },
                     section_5: {

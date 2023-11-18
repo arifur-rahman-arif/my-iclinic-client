@@ -1,4 +1,4 @@
-import { getPageData } from './commonUtils';
+import { getPageData, getReviews } from './commonUtils';
 import { getCategories, getPost, getPosts, getPostsPerPageValue } from './page-functions/blogs/server-functions';
 import { getTreatments } from './page-functions/financing-your-treatment';
 import { getLatestPosts } from './page-functions/myopia';
@@ -13,5 +13,6 @@ export {
     getPageData,
     getLatestPosts,
     getSpecialistsPost,
-    getSpecialistPost
+    getSpecialistPost,
+    getReviews
 };
