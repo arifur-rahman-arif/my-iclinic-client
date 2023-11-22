@@ -248,5 +248,13 @@ export const consultantCardList: ConsultantCardInterface[] = [
         title: 'Orthoptist/Optometrist',
         url: '/our-specialists/fatima-mangera',
         imageClass: 'object-[1px_center]'
+    },
+    {
+        image: '/images/avaters/bhavi-pandya.jpg',
+        name: 'Bhavi Pandya',
+        degree: 'MCOPTOM BSC (HONS) OPTOMETRY',
+        title: 'Optometrist',
+        url: '/our-specialists/bhavi-pandya',
+        imageClass: 'object-[1px_center]'
     }
 ];

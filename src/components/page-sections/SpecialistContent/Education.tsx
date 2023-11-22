@@ -13,7 +13,7 @@ interface EducationProps {
  * @constructor
  */
 const Education = ({ education }: EducationProps): JSX.Element => {
-    return <div className={`${styles.styles} md:px-12`}>{HTMLReactParser(education || '')}</div>;
+    return <div className={`${styles.styles} grid gap-4 md:px-12`}>{HTMLReactParser(education || '')}</div>;
 };
 
 export default Education;
