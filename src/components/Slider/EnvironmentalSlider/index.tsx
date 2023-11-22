@@ -111,7 +111,7 @@ const Slide1 = (): JSX.Element => {
                 <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 lg:mt-8">
                     <span className="row-span-2 h-full w-[0.8rem] bg-[#003E79]"></span>
                     <span className="font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-heading">
-                        LASEK, PRK & PTK
+                        SMILE, LASIK, Presbyond
                     </span>
                     <span className="col-start-2 max-w-[24.3rem] font-mulishBold uppercase text-[#893277] md:max-w-max">
                         Your key to a sustainable, plastic-free life!

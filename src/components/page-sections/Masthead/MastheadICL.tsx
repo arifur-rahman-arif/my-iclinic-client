@@ -76,26 +76,26 @@ const defaultCardList = [
  * @returns {JSX.Element} - The MastheadICL component JSX representation.
  */
 const MastheadICL = ({
-                         title,
-                         largeImage,
-                         smallImage,
-                         priceText,
-                         financeText,
-                         reviewsText,
-                         cardList
-                     }: MastheadICLProps): JSX.Element => {
+    title,
+    largeImage,
+    smallImage,
+    priceText,
+    financeText,
+    reviewsText,
+    cardList
+}: MastheadICLProps): JSX.Element => {
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
-            title: card.title || defaultCardList[index].title,
-            description: card.description || defaultCardList[index].description,
-            className: card.className || defaultCardList[index].className
-        }))
+              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+              title: card.title || defaultCardList[index].title,
+              description: card.description || defaultCardList[index].description,
+              className: card.className || defaultCardList[index].className
+          }))
         : defaultCardList;
 
     return (
         <div className="relative grid overflow-hidden">
-            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block"/>
+            <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block" />
 
             <div className="relative grid xl:-ml-24 xl:justify-self-center">
                 <Image
@@ -127,19 +127,17 @@ const MastheadICL = ({
                         ></h1>
 
                         <div className="-mt-6 grid gap-2 md:mt-0">
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
                         </div>
 
                         <Reviews {...reviewsText} />
 
-                        <MastheadCtaButtons/>
+                        <MastheadCtaButtons />
                     </div>
                 </div>
 
@@ -147,7 +145,7 @@ const MastheadICL = ({
                     className={`grid grid-cols-2 md:grid-cols-3 xl:max-w-[116rem] xl:justify-self-center ${styles.styles}`}
                 >
                     <div className="bg-[#005DAF] md:hidden">
-                        <Image {...smallImage} className="h-full w-full object-cover"/>
+                        <Image {...smallImage} className="h-full w-full object-cover" />
                     </div>
                     <>
                         {mergedCardList.map((card, index) => (
@@ -200,34 +198,33 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div
-            className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
+        <div className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
             <Link
-                href="https://www.trustpilot.com/review/my-iclinic.co.uk" title="Trustpilot all reviews"
+                href="https://www.trustpilot.com/review/my-iclinic.co.uk"
+                title="Trustpilot all reviews"
                 target="_blank"
-                className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2">
+                className="grid grid-cols-1 place-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:py-4 md:shadow-shadow1 xl:gap-2"
+            >
                 <span className="grid place-items-start">
-                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
+                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70} />
                 </span>
 
-                {isLoading ?
-                    <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24}/> :
+                {isLoading ? (
+                    <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24} />
+                ) : (
                     <>
-                         <span
-                             className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                        <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
                             Trustpilot
-                         </span>
-                        <span
-                            className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        </span>
+                        <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                             {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
-                            <span
-                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                            <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                                 reviews
                             </span>
                         </span>
                     </>
-                }
+                )}
             </Link>
 
             {/* Review 2 */}
@@ -235,19 +232,17 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
                 href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
                 target="_blank"
                 title="All google reviews"
-                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 ">
+                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-center md:gap-0 md:py-4 md:shadow-shadow1 "
+            >
                 <span className="grid place-items-center">
-                    <FcGoogle className="h-[2rem] w-[2rem]"/>
+                    <FcGoogle className="h-[2rem] w-[2rem]" />
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span
-                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {google}{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
@@ -274,7 +269,7 @@ export const MastheadCtaButtons = ({ className, button1Class, button2Class }: Ma
     return (
         <div className={twMerge('flex flex-wrap items-center justify-start gap-4 xl:mt-12', className)}>
             <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}>
-                <Button2 type="button" text="FREE Consultaion"/>
+                <Button2 type="button" text="FREE Consultation" />
             </BookConsultation>
 
             <Button2
@@ -282,7 +277,10 @@ export const MastheadCtaButtons = ({ className, button1Class, button2Class }: Ma
                 text="FREE suitability check"
                 link="/suitability-check"
                 title="FREE suitability check"
-                className={twMerge('sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white', button2Class)}
+                className={twMerge(
+                    'sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white',
+                    button2Class
+                )}
             />
         </div>
     );
