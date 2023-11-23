@@ -405,7 +405,20 @@
 	}
 	
 	th {
+	  font-family: var(--mulish-bold);
 	  background-color: #f2f2f2;
+	}
+	
+	@include media-breakpoint-down(md) {
+	  .table-wrapper {
+		overflow-x: auto;
+		max-width: 100%;
+	  }
+	  
+	  .table-wrapper::-webkit-scrollbar {
+		width: 5px;
+		height: 10px;
+	  }
 	}
   }
   

@@ -61,7 +61,7 @@ const Header = ({ image, title, author, readTime, views, categories, publishedDa
 
                     <div className="mt-12 flex flex-col items-center justify-between gap-12 md:flex-row">
                         {/* Blog meta data */}
-                        <div className="flex items-center justify-start gap-6 text-[#697072]">
+                        <div className="flex flex-wrap items-center justify-start gap-6 text-[#697072]">
                             {/* <div className="flex items-center justify-start gap-4"> */}
                             {/*     <Image */}
                             {/*         src={author?.logo || '/images/logos/iclinic-rounded.png'} */}
