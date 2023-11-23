@@ -25,34 +25,33 @@ const BlogRelatedCard = ({
     categories,
     views,
     readTime,
-    slug
+    slug,
+    publishedDate
 }: BlogRelatedCardInterface): JSX.Element => {
     return (
         <Link
             href={`/articles/${slug}` || '#'}
-            className="group/card grid min-h-[20rem] grid-cols-[auto_1fr] items-start gap-10 overflow-hidden rounded-primary border-b-4 pr-4 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:pr-8"
+            className="group/card grid min-h-[20rem] items-start gap-10 overflow-hidden rounded-primary border-b-4 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:grid-cols-2 md:grid-cols-[15rem_1fr] md:gap-6  lg:gap-10"
         >
-            <div className="h-full min-w-[14.3rem] max-w-[14.3rem] cursor-pointer overflow-hidden">
+            <div className="h-full w-full min-w-[14.3rem] cursor-pointer overflow-hidden">
                 <Image
                     src={image.src || '/images/section-images/placeholder-image.png'}
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""
-                    className="h-full object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
+                    className="h-full w-full object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
                 />
             </div>
-            <div className="grid content-start gap-6 py-6">
+            <div className="grid content-start gap-6 px-8 pr-6 pb-10 sm:pl-0 sm:pt-8">
                 <BlogAuthor author={author} excludeLink={true} />
 
-                <span className="overflow-hidden overflow-ellipsis whitespace-nowrap font-mulishBold text-[2rem] leading-[2.4rem]">
-                    {title}
-                </span>
+                <span className="font-mulishBold text-[2rem] leading-[2.4rem] line-clamp-1">{title}</span>
 
                 {categories?.length && (
                     <BlogCategories categories={categories} className="!mt-0" categoriesLength={1} />
                 )}
 
-                <BlogMeta views={views} readTime={readTime} className="!mt-0" />
+                <BlogMeta readTime={readTime} views={views} publishedDate={publishedDate} className="!mt-0" />
             </div>
         </Link>
     );

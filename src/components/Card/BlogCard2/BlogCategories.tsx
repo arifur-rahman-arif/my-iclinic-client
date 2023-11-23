@@ -28,21 +28,21 @@ const BlogCategories = ({
             {/* <Image src="/images/icons/icon-pin-yellow-small.svg" width={36} height={2} alt="" className="mt-3" /> */}
             <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">Category:</span>
 
-            <div className="flex gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="flex gap-2">
                 {categories.map((category, index) => (
-                    <div key={index} className="overflow-hidden text-ellipsis whitespace-nowrap">
+                    <div key={index} className="">
                         {/* If a blog has more than one category than show them with more text */}
                         {categoriesLength && categoriesLength !== categories.length ? (
                             <>
                                 {index < categoriesLength && (
                                     <div className="mt-[0.1rem] grid content-start justify-start gap-2 line-clamp-1">
                                         <span
-                                            className="flex overflow-hidden text-ellipsis whitespace-nowrap font-mulishMedium text-[1.3rem] capitalize leading-8 text-[#697072]"
+                                            className="flex font-mulishMedium text-[1.3rem] capitalize leading-8 text-[#697072] line-clamp-1"
                                             key={index}
                                         >
                                             {category.name}
                                         </span>
-                                        <span className="overflow-hidden text-ellipsis whitespace-nowrap font-mulishBold text-[1.2rem] leading-4 sm:leading-[1.2rem]">
+                                        <span className="font-mulishBold text-[1.2rem] leading-4 sm:leading-[1.2rem]">
                                             ...{categories.length - categoriesLength} more
                                         </span>
                                     </div>
@@ -53,7 +53,7 @@ const BlogCategories = ({
                                 className="flex max-w-full font-mulishBold text-[1.4rem] capitalize leading-8"
                                 key={index}
                             >
-                                <span className="block overflow-hidden text-ellipsis whitespace-nowrap font-mulishMedium text-[1.4rem] capitalize leading-8 text-[#697072]">
+                                <span className="font-mulishMedium text-[1.4rem] capitalize leading-8 text-[#697072] line-clamp-1">
                                     {category.name}
                                 </span>
                                 {index !== categories?.length - 1 && ','}
