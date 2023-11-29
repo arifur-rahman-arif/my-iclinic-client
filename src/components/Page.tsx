@@ -53,6 +53,7 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                 {!yoastJson?.description && <meta name="description" content={description} />}
 
                 <meta name="google-site-verification" content="SAbAmq8u2_y-9zCpgFoI4X7bPFEeDxtda1gDc12Hr-w" />
+                <meta name="p:domain_verify" content="da57493c63d00becdd459241e65ec009" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 {seo && HTMLReactParser(seo)}
