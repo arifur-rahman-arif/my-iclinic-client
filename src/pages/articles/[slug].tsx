@@ -73,7 +73,7 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
  * @param {any} ctx
  * @returns {Promise<{props: {}}>}
  */
-export async function getServerSideProps(ctx: any): Promise<{ props: {} }> {
+export async function getServerSideProps(ctx: any): Promise<any> {
     try {
         const slug = ctx.query.slug;
         const post: PostInterface = await getPost(slug || '');
@@ -95,6 +95,12 @@ export async function getServerSideProps(ctx: any): Promise<{ props: {} }> {
         };
     } catch (error: any) {
         console.error(error);
-        return { props: {} };
+        return {
+            props: {},
+            redirect: {
+                permanent: false,
+                destination: '/404'
+            }
+        };
     }
 }

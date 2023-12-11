@@ -82,6 +82,10 @@ export const getPost = async (slug: string): Promise<PostInterface> => {
 
     const { data } = await postResponse.json();
 
+    if (data.status === 'error') {
+        throw new Error('Unable to fetch WordPress posts. Error text: ' + postResponse.statusText);
+    }
+
     let httpsData = data.data;
 
     // Replace all possible http to https
