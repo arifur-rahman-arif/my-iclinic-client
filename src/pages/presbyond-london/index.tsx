@@ -4,13 +4,14 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
-import { MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
+import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
+import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import SuitabilityLink from '@/page-sections/Masthead/SuitabilityLink';
 import Image from 'next/image';
 import { normalSlideListPresbyond } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import HTMLReactParser from 'html-react-parser';
-import { getPageData } from '@/lib';
+import { getPageData, getTreatments } from '@/lib';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import MastheadImageLarge from '@/masthead/masthead-presbyond-large.png';
 import MastheadImageSmall from '@/masthead/masthead-presbyond-small.png';
@@ -37,40 +38,43 @@ import { Button } from 'src/components/Buttons';
 import React from 'react';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const LottieSection = dynamic(() => import('@/page-sections/LottieSection/LottieSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
+});
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends PresbeyondlondonContentInterface, PageDataInterface<PresbeyondlondonContentInterface> {
-}
+interface DataInterface extends PresbeyondlondonContentInterface, PageDataInterface<PresbeyondlondonContentInterface> {}
 
 interface PresbyondProps {
+    filteredTreatments: TreatmentInterface[];
     seo: any;
     yoastJson: any;
     data: DataInterface;
@@ -82,7 +86,7 @@ interface PresbyondProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX.Element {
+export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: PresbyondProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Presbyond Laser Treatment London';
@@ -99,80 +103,80 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
-                    <Image
-                        src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
-                        width={390}
-                        height={390}
-                        quality={70}
-                        className="rounded-primary md:hidden"
-                        alt=""
-                    />
-                ),
-                desktopImage: (
-                    <Image
-                        src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
-                        width={695}
-                        height={580}
-                        quality={70}
-                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                        alt=""
-                    />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        )
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                  ),
+                  desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
         : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            })
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
             : null;
 
     // laserSlider
     const laserSliderdata: any =
         Array.isArray(data?.laserSlider) && data.laserSlider.length > 0
             ? data.laserSlider.map(
-                (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
-                    return {
-                        ...service,
-                        image: {
-                            url: service?.image || '/images/section-images/laser-surgery-card.png',
-                            width: 329,
-                            height: 220
-                        },
-                        desktopImage: {
-                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                            width: 447,
-                            height: 349
-                        },
-                        boxWidth: '51.4rem',
-                        title: service?.title,
-                        descriptions: stringArrayToElementArray(service?.descriptions)
-                    };
-                }
-            )
+                  (service: { desktopimage: any; image: any; title: any; descriptions: string[] | undefined }) => {
+                      return {
+                          ...service,
+                          image: {
+                              url: service?.image || '/images/section-images/laser-surgery-card.png',
+                              width: 329,
+                              height: 220
+                          },
+                          desktopImage: {
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              width: 447,
+                              height: 349
+                          },
+                          boxWidth: '51.4rem',
+                          title: service?.title,
+                          descriptions: stringArrayToElementArray(service?.descriptions)
+                      };
+                  }
+              )
             : null;
     /// /reviewimageSlider
     const reviewimageSliderdata: any =
         Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0
             ? data.reviewimageSlider.map((service) => {
-                return {
-                    ...service,
-                    imageURL: service?.imageURL
-                };
-            })
+                  return {
+                      ...service,
+                      imageURL: service?.imageURL
+                  };
+              })
             : null;
 
     return (
@@ -182,7 +186,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb/>
+            <BreadCrumb />
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -200,15 +204,23 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 //         <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
                 //     </div>
                 // }
+
                 suitabilityButton={
-                    <MastheadCtaButtons
-                        button1Class="hover:!border-[#003E79] !border-2"
-                        button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
-                    />
+                    <div className="grid gap-6">
+                        <FinanceCalculatorButton title1ClassName="text-brand" />
+                        <MastheadCtaButtons
+                            button1Class="hover:!border-[#003E79] !border-2"
+                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                        />
+                    </div>
                 }
             />
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection/>}</LazyComponent>
+            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} />
+            </LazyComponent>
 
             {/* <UspSection list={presbyondUspList} /> */}
 
@@ -263,11 +275,11 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
             /> */}
 
             <LazyComponent triggerPosition={500}>
-                <LottieSection/>
+                <LottieSection />
             </LazyComponent>
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListPresbyond}/>
+                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListPresbyond} />
             </LazyComponent>
             {/* SECTION 2 */}
             <FullWidthImageSection
@@ -356,7 +368,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : normalSlideListPresbyond}/>
+                <NormalSlideSection sliderList={reviewSliderdata ? reviewSliderdata : normalSlideListPresbyond} />
             </LazyComponent>
 
             {/* SECTION 4 */}
@@ -365,7 +377,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                 h3LightHeading={
                     <>
                         {data?.section_4?.heading?.light_heading || 'Clearer vision with an all inclusive,'}
-                        <br/>
+                        <br />
                     </>
                 }
                 h3BoldHeading={data?.section_4?.heading?.dark_heading || 'Transparent cost'}
@@ -416,7 +428,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                                 (data?.section_4?.lists?.length && data?.section_4?.lists) || [
                                     <>
                                         One dedicated presbyond specialist
-                                        <br/>
+                                        <br />
                                         for your treatment
                                     </>,
                                     'Most affordable price in London'
@@ -428,8 +440,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                             type="anchor"
                             link="/presbyond-london/price"
                             icon={
-                                <FaPoundSign
-                                    className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2"/>
+                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2" />
                             }
                             text={data?.section_4?.button_text || 'Pricing & Financing'}
                             iconPosition="left"
@@ -566,7 +577,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
                         h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
                         h3LightHeading={HTMLReactParser(
                             data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
-                            'Saving the planet <br />'
+                                'Saving the planet <br />'
                         )}
                         h3BoldHeading={HTMLReactParser(
                             data?.sustainability_section?.gift_of_a_tree?.heading.bold_heading || 'One eye at a time!'
@@ -696,7 +707,7 @@ export default function Presbyond({ seo, yoastJson, data }: PresbyondProps): JSX
             </Section> */}
 
             <LazyComponent>
-                <CompanyLogos/>
+                <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
@@ -728,9 +739,24 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'presbyond-london' });
 
+        const treatments = await getTreatments();
+        let filteredTreatments = treatments.filter((treatment) => treatment.name === 'Presbyond');
+
+        /**
+         * Updates the `filteredTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} filteredTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        filteredTreatments = filteredTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         return {
             /* eslint-disable */
             props: {
+                filteredTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
@@ -763,38 +789,38 @@ export async function getStaticProps() {
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                            return {
-                                ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
                         : [],
                     laserSlider: Array.isArray(data?.acf?.laserSlider)
                         ? data?.acf.laserSlider.map((ListData) => {
-                            return {
-                                ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
                         : [],
                     reviewimageSlider: Array.isArray(data?.acf?.reviewimageSlider)
                         ? data?.acf.reviewimageSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : [],
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam
                     },
-                    
+
                     sustainability_section: {
                         plastic_free_life: {
                             ...data?.acf?.sustainability_section?.plastic_free_life,

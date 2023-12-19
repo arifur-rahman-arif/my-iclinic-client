@@ -1,4 +1,5 @@
 import DryEyesContentInterface from 'src/types/pages/dryEyes';
+import { OurSpecialistPageContent } from 'src/types/pages/ourSpecialist';
 import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import TranslationPageProps from 'src/types/pages/translation';
 import VitreoretinalSurgeryContent from './pages/vitreoretinal-surgery';
@@ -45,7 +46,6 @@ import MacularContentInterface from './pages/macular';
 import PardiatricContentInterface from './pages/paediatric-eye';
 import PriceGlaucomaContentInterface from './pages/price-glaucoma';
 import FlashesContentInterface from './pages/flashes-floaters';
-
 
 export type {
     RetinaTreatmentsContents,
@@ -96,5 +96,6 @@ export type {
     PardiatricContentInterface,
     PriceGlaucomaContentInterface,
     FlashesContentInterface,
-    VitreoretinalSurgeryContent
+    VitreoretinalSurgeryContent,
+    OurSpecialistPageContent
 };

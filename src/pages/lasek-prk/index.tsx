@@ -5,11 +5,12 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
+import { getPageData, getTreatments } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-lasek-smile-large.png';
 import MastheadImageMedium from '@/masthead/masthead-lasek-smile-medium.png';
 import { lasekFaqList } from '@/page-sections/Faq/faqList';
 import { lasekSliders } from '@/page-sections/FeaturedPatient';
+import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import {
     ClimateChange,
     Cta2,
@@ -23,7 +24,7 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import { leftRightListLasek } from '@/page-sections/LeftRight/leftRightList';
-import { MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
+import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import { lasekStackList } from '@/page-sections/StackedSection';
 import FullWidthImageLarge from '@/section-images/lasek-doctor-large.png';
 import FullWidthImage from '@/section-images/lasek-doctor.png';
@@ -36,40 +37,44 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 // Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
 const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
 const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends LasekprkContentInterface, PageDataInterface<LasekprkContentInterface> {
-}
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends LasekprkContentInterface, PageDataInterface<LasekprkContentInterface> {}
 
 interface LasekPageProps {
+    filteredTreatments: TreatmentInterface[];
     seo: any;
     yoastJson: any;
     data: DataInterface;
@@ -81,7 +86,7 @@ interface LasekPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX.Element {
+export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: LasekPageProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'LASEK, PRK & PTK laser eye surgery London';
@@ -98,64 +103,64 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
-                    <Image
-                        src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
-                        width={390}
-                        height={390}
-                        quality={70}
-                        className="rounded-primary md:hidden"
-                        alt=""
-                    />
-                ),
-                desktopImage: (
-                    <Image
-                        src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
-                        width={695}
-                        height={580}
-                        quality={70}
-                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                        alt=""
-                    />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        )
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                  ),
+                  desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
         : null;
 
     // MyclinicSlider
     const clinicSliderdata: any =
         Array.isArray(data?.clinicSlider) && data.clinicSlider.length > 0
             ? data.clinicSlider.map(
-                (service: { desktopimage: any; title: any; descriptions: string[] | undefined }) => {
-                    return {
-                        ...service,
-                        desktopImage: {
-                            url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
-                            width: 447,
-                            height: 349
-                        },
-                        title: service?.title,
-                        descriptions: stringArrayToElementArray(service?.descriptions)
-                    };
-                }
-            )
+                  (service: { desktopimage: any; title: any; descriptions: string[] | undefined }) => {
+                      return {
+                          ...service,
+                          desktopImage: {
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              width: 447,
+                              height: 349
+                          },
+                          title: service?.title,
+                          descriptions: stringArrayToElementArray(service?.descriptions)
+                      };
+                  }
+              )
             : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            })
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
             : null;
     return (
         <Page
@@ -164,7 +169,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
             seo={seo}
             yoastJson={yoastJson}
         >
-            <BreadCrumb/>
+            <BreadCrumb />
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageMedium}
@@ -185,14 +190,22 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 //     </div>
                 // }
                 suitabilityButton={
-                    <MastheadCtaButtons
-                        button1Class="hover:!border-[#003E79] !border-2"
-                        button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
-                    />
+                    <div className="grid gap-6">
+                        <FinanceCalculatorButton title1ClassName="text-brand" />
+                        <MastheadCtaButtons
+                            button1Class="hover:!border-[#003E79] !border-2"
+                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                        />
+                    </div>
                 }
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} />
+            </LazyComponent>
+
             {/* SECTION 1 */}
             <FullWidthImageSection
                 boldHeading={
@@ -228,7 +241,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 h2Heading={data?.section_2?.sub_heading || 'Vision correction treatment'}
                 h3LightHeading={
                     <>
-                        {data?.section_2?.heading?.light_heading || 'LASEK, PRK & PTK Laser'} <br/>
+                        {data?.section_2?.heading?.light_heading || 'LASEK, PRK & PTK Laser'} <br />
                     </>
                 }
                 h3BoldHeading={data?.section_2?.heading?.dark_heading || 'Eye Surgery at My-iClinic'}
@@ -256,7 +269,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
 
             {/* LEFT RIGHT SECTION */}
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListLasek}/>
+                <LeftRightSection childrenList={leftRightsectiondata ? leftRightsectiondata : leftRightListLasek} />
             </LazyComponent>
 
             <LazyComponent>
@@ -304,7 +317,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                     h3LightHeading={
                         <>
                             {data?.section_4?.heading?.light_heading || ' Why consider My-iClinic'}
-                            <br/>
+                            <br />
                         </>
                     }
                     h3BoldHeading={data?.section_4?.heading?.dark_heading || 'to correct your vision?'}
@@ -340,7 +353,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                 altText={data?.section_5?.alttext || 'Woman smiling without needing glasses for short-sightedness'}
                 textColumnExtras={
                     <>
-                        <Cta2 button1Text={data?.section_5?.bookbuttontext || 'Book A suitability check'}/>
+                        <Cta2 button1Text={data?.section_5?.bookbuttontext || 'Book A suitability check'} />
                     </>
                 }
             />
@@ -378,7 +391,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata}/>
+                <NormalSlideSection sliderList={reviewSliderdata} />
             </LazyComponent>
 
             <LazyComponent>
@@ -412,7 +425,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
                         h3LightHeading={
                             <>
                                 Saving the planet
-                                <br/>
+                                <br />
                             </>
                         }
                         h3BoldHeading={
@@ -476,7 +489,7 @@ export default function LasekPage({ seo, yoastJson, data }: LasekPageProps): JSX
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos/>
+                <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
@@ -509,9 +522,24 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'lasek-prk' });
 
+        const treatments = await getTreatments();
+        let filteredTreatments = treatments.filter((treatment) => treatment.name === 'LASEK');
+
+        /**
+         * Updates the `filteredTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} filteredTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        filteredTreatments = filteredTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         return {
             /* eslint-disable */
             props: {
+                filteredTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
@@ -540,11 +568,11 @@ export async function getStaticProps() {
                     }, // 2
                     clinicSlider: Array.isArray(data?.acf?.clinicSlider)
                         ? data?.acf.clinicSlider.map((sectionData: { descriptions: any[] | undefined }) => {
-                            return {
-                                ...sectionData,
-                                descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...sectionData,
+                                  descriptions: convertArrayOfObjectsToStrings(sectionData?.descriptions)
+                              };
+                          })
                         : [],
                     section_5: {
                         ...data?.acf?.section_5,
@@ -560,18 +588,18 @@ export async function getStaticProps() {
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                            return {
-                                ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : [],
                     sustainability_section: {
                         plastic_free_life: {

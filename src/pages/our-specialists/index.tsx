@@ -4,16 +4,17 @@ import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
 import Page from '@/components/Page';
 import { Masthead, SideImageSection } from '@/components/page-sections';
 import { getPageData, getSpecialistsPost } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-home-large.png';
-import MastheadImageSmall from '@/masthead/masthead-home-small.png';
 import MastheadImageMedium from '@/masthead/masthead-home.png';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
-import { WpPageResponseInterface } from '@/types';
+import { OurSpecialistPageContent, PageDataInterface, WpPageResponseInterface } from '@/types';
+
+interface DataInterface extends OurSpecialistPageContent, PageDataInterface<OurSpecialistPageContent> {}
 
 interface OurSpecialistsProps {
     seo: any;
     yoastJson: any;
     specialists: ConsultantCardInterface[];
+    data: DataInterface;
 }
 
 /**
@@ -22,9 +23,9 @@ interface OurSpecialistsProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpecialistsProps): JSX.Element {
-    const heading = 'Our Consultants';
-    const subheading = "North London's Eye Hospital";
+export default function OurSpecialists({ seo, yoastJson, specialists, data }: OurSpecialistsProps): JSX.Element {
+    const heading = data?.masthead?.heading || 'Our Consultants';
+    const subheading = data?.masthead?.subheading || "North London's Eye Hospital";
 
     return (
         <Page
@@ -36,9 +37,9 @@ export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpeci
             <BreadCrumb />
 
             <Masthead
-                imageSmall={MastheadImageSmall}
-                imageMedium={MastheadImageMedium}
-                imageLarge={MastheadImageLarge}
+                // imageSmall={MastheadImageSmall}
+                imageMedium={data.masthead?.image?.src || MastheadImageMedium}
+                // imageLarge={MastheadImageLarge}
                 altText=""
                 imagePosition="2xl:object-[0rem_-3rem] !object-contain"
                 h1Title={<h1>{heading}</h1>}
@@ -47,13 +48,8 @@ export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpeci
             />
 
             <SideImageSection
-                h3LightHeading={
-                    <>
-                        Qualified and experienced
-                        <br />
-                    </>
-                }
-                h3BoldHeading="Consultants"
+                h3LightHeading={data.section1?.heading || 'Qualified and experienced consultants'}
+                // h3BoldHeading=""
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
                     <div className="grid grid-cols-1 justify-items-center gap-x-12 gap-y-12 sm:grid-cols-[repeat(auto-fit,_minmax(37.5rem,_1fr))] md:gap-y-24">
@@ -74,7 +70,7 @@ export default function OurSpecialists({ seo, yoastJson, specialists }: OurSpeci
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'our-specialists' });
+        const data: WpPageResponseInterface<OurSpecialistPageContent> = await getPageData({ slug: 'our-specialists' });
         const specialists: ConsultantCardInterface[] = await getSpecialistsPost();
 
         return {
@@ -82,7 +78,20 @@ export async function getStaticProps() {
             props: {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
-                specialists
+                specialists,
+                data: {
+                    ...data?.acf,
+                    masthead: {
+                        ...data?.acf.masthead,
+                        image: {
+                            ...(data?.acf?.masthead?.image && {
+                                src: data.acf.masthead?.image.url,
+                                width: data.acf.masthead?.image.width,
+                                height: data.acf.masthead?.image.height
+                            })
+                        }
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

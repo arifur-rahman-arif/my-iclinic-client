@@ -16,11 +16,12 @@ import { cataractFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListCataract } from '@/components/page-sections/LeftRight/leftRightList';
 import { normalSlideListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
+import { getPageData, getTreatments } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract.png';
-import { MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
+import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
+import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import Cta6 from '@/page-sections/SectionParts/Cta6';
 import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
 import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
@@ -28,36 +29,40 @@ import { CataractContentInterface, PageDataInterface, WpPageResponseInterface } 
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import Image from 'next/image';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const SideVideoSection = dynamic(() => import('@/components/page-sections/SideImageSection/SideVideoSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {
-}
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {}
 
 interface CataractProps {
+    iclTreatments: TreatmentInterface[];
     data: DataInterface;
     seo: any;
     yoastJson: any;
@@ -71,7 +76,7 @@ interface CataractProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.Element {
+export default function Cataract({ data, seo, yoastJson, iclTreatments }: CataractProps): JSX.Element {
     const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
     const deviceSize = useDeviceSize();
     const heading = data?.masthead_heading || 'Private Cataract Surgery London';
@@ -88,65 +93,65 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
-                    <Image
-                        src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
-                        width={390}
-                        height={390}
-                        quality={70}
-                        className="rounded-primary md:hidden"
-                        alt=""
-                    />
-                ),
-                desktopImage: (
-                    <Image
-                        src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
-                        width={695}
-                        height={580}
-                        quality={70}
-                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                        alt=""
-                    />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        )
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                  ),
+                  desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
         : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            })
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
             : null;
     const InfoCardsdata =
         Array.isArray(data?.InfoCards) && data.InfoCards.length > 0
             ? data.InfoCards.map(
-                (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
-                    return {
-                        image: {
-                            url: service.image || '/images/section-images/card-improved-vision.png'
-                        },
-                        title: service.title || 'Improved Vision',
-                        description: service.content?.length ? service.content : undefined,
-                        list: service.bulletpoints?.length ? service.bulletpoints : undefined
-                    };
-                }
-            )
+                  (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
+                      return {
+                          image: {
+                              url: service.image || '/images/section-images/card-improved-vision.png'
+                          },
+                          title: service.title || 'Improved Vision',
+                          description: service.content?.length ? service.content : undefined,
+                          list: service.bulletpoints?.length ? service.bulletpoints : undefined
+                      };
+                  }
+              )
             : null;
 
     return (
         <Page title="Cataract" description="We’re here to make cataract surgery easy" seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb/>
+            <BreadCrumb />
 
             <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
@@ -160,14 +165,21 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 trustPilotReviews={data?.trustpilot_reviews}
                 bannerClassName="lg:gap-12"
                 suitabilityButton={
-                    <MastheadCtaButtons
-                        button1Class="hover:!border-[#003E79] !border-2"
-                        button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
-                    />
+                    <div className="grid gap-6">
+                        <FinanceCalculatorButton title1ClassName="text-brand" />
+                        <MastheadCtaButtons
+                            button1Class="hover:!border-[#003E79] !border-2"
+                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                        />
+                    </div>
                 }
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={iclTreatments} />
+            </LazyComponent>
 
             <FullWidthImageSection
                 h3Title={
@@ -177,7 +189,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                         ) : (
                             <>
                                 A simple process to
-                                <br/> living cataract-free
+                                <br /> living cataract-free
                             </>
                         )}
                     </>
@@ -189,7 +201,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
             />
 
             <LazyComponent>
-                <LeftRightSection childrenList={leftRightsectiondata || leftRightListCataract}/>
+                <LeftRightSection childrenList={leftRightsectiondata || leftRightListCataract} />
             </LazyComponent>
 
             <LazyComponent>
@@ -210,7 +222,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata || normalSlideListCataract}/>
+                <NormalSlideSection sliderList={reviewSliderdata || normalSlideListCataract} />
             </LazyComponent>
 
             <CtaSection
@@ -223,7 +235,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 h3LightHeading={
                     <>
                         {data?.section_4?.heading?.light_heading || 'Cataract'}
-                        <br/>
+                        <br />
                     </>
                 }
                 h3BoldHeading={data?.section_4?.heading?.dark_heading || 'Surgery prices'}
@@ -253,7 +265,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                                     stringArrayToElementArray(data?.section_4?.lists)) || [
                                     <>
                                         One dedicated Cataract specialist
-                                        <br/>
+                                        <br />
                                         for your treatment
                                     </>,
                                     'Most affordable price in London'
@@ -275,8 +287,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                             text={data?.section_4?.button_text || 'Find out more'}
                             iconPosition="right"
                             icon={
-                                <FaAngleRight
-                                    className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2"/>
+                                <FaAngleRight className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
                             }
                             className="group/button mt-6 justify-self-center md:justify-self-start"
                         />
@@ -308,7 +319,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 positionReversed={true}
             />
 
-            <HalfRoundedCard cardList={InfoCardsdata}/>
+            <HalfRoundedCard cardList={InfoCardsdata} />
 
             {/* cardListdata */}
             <SideImageSection
@@ -344,7 +355,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
                 title={data?.section_6?.title || 'Book Your Private Cataract Surgery Today'}
                 image={data?.section_6?.image}
                 imageLarge={data?.section_6?.imagelarge}
-                textColumnExtras={<Cta6/>}
+                textColumnExtras={<Cta6 />}
             />
 
             {/* <LazyComponent>
@@ -356,7 +367,7 @@ export default function Cataract({ data, seo, yoastJson }: CataractProps): JSX.E
             </LazyComponent> */}
 
             <LazyComponent>
-                <CompanyLogos/>
+                <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
@@ -389,9 +400,24 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cataract' });
 
+        const treatments = await getTreatments();
+        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'Cataract');
+
+        /**
+         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        iclTreatments = iclTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         return {
             /* eslint-disable */
             props: {
+                iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
@@ -423,27 +449,27 @@ export async function getStaticProps() {
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                            return {
-                                ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : [],
                     InfoCards: Array.isArray(data?.acf?.InfoCards)
                         ? data?.acf.InfoCards.map((ListData) => {
-                            return {
-                                ...ListData,
-                                content: convertArrayOfObjectsToStrings(ListData?.content),
-                                bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  content: convertArrayOfObjectsToStrings(ListData?.content),
+                                  bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
+                              };
+                          })
                         : [],
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam

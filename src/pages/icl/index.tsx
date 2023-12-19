@@ -5,7 +5,8 @@ import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
 import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { getPageData } from '@/lib';
+import { getPageData, getTreatments } from '@/lib';
+import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import ContactComponent from '@/page-sections/IclComponents/ContactComponent';
 import ContactLensComponent from '@/page-sections/IclComponents/ContactLensComponent';
 import EyeCareComponent from '@/page-sections/IclComponents/EyeCareComponent';
@@ -44,9 +45,14 @@ const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/Envir
     loading: () => <ComponentLoader />
 });
 
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+
 interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {}
 
 interface IclProps {
+    iclTreatments: TreatmentInterface[];
     seo: any;
     yoastJson: any;
     data: DataInterface;
@@ -58,7 +64,7 @@ interface IclProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
+export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): JSX.Element {
     const heading = data?.masthead_heading || 'ICL Surgery in London';
     const subheading = data?.masthead_subheading || 'Implantable Contact Lenses';
 
@@ -106,6 +112,10 @@ export default function Icl({ seo, yoastJson, data }: IclProps): JSX.Element {
 
             <LazyComponent>
                 <CallbackSection />
+            </LazyComponent>
+
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={iclTreatments} />
             </LazyComponent>
 
             <VisionCorrectionPromo
@@ -332,6 +342,20 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<IclContentInterface> = await getPageData({ slug: 'icl' });
 
+        const treatments = await getTreatments();
+        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'ICL Surgery');
+
+        /**
+         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        iclTreatments = iclTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         /**
          * Sort the image data into specified format
          * @param {any} img
@@ -340,6 +364,7 @@ export async function getStaticProps() {
         return {
             /* eslint-disable */
             props: {
+                iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {

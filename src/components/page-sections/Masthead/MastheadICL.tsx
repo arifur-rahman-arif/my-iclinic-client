@@ -4,6 +4,7 @@ import { BookConsultation } from '@/page-sections/index';
 import { ImageType3 } from '@/types';
 import smallBg from '@/section-images/icl-small-bg.png';
 import largeBg from '@/section-images/icl-masthead-bg.png';
+import { getElementTopPosition } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
@@ -126,13 +127,15 @@ const MastheadICL = ({
                             dangerouslySetInnerHTML={{ __html: title }}
                         ></h1>
 
-                        <div className="-mt-6 grid gap-2 md:mt-0">
+                        <div className="-mt-6 grid items-center gap-x-8 gap-y-12 md:mt-0 md:grid-cols-[auto_1fr]">
                             <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
                             <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
+
+                            <FinanceCalculatorButton />
                         </div>
 
                         <Reviews {...reviewsText} />
@@ -267,7 +270,7 @@ interface MastheadCtaButtonsProps {
  */
 export const MastheadCtaButtons = ({ className, button1Class, button2Class }: MastheadCtaButtonsProps): JSX.Element => {
     return (
-        <div className={twMerge('flex flex-wrap items-center justify-start gap-4 xl:mt-12', className)}>
+        <div className={twMerge('flex flex-wrap items-center justify-start gap-4', className)}>
             <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}>
                 <Button2 type="button" text="FREE Consultation" />
             </BookConsultation>
@@ -283,5 +286,49 @@ export const MastheadCtaButtons = ({ className, button1Class, button2Class }: Ma
                 )}
             />
         </div>
+    );
+};
+
+interface FinanceCalculatorButtonProps {
+    title1ClassName?: string;
+    title2ClassName?: string;
+}
+
+/**
+ * Finance calculator button
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export const FinanceCalculatorButton = ({
+    title2ClassName,
+    title1ClassName
+}: FinanceCalculatorButtonProps): JSX.Element => {
+    return (
+        <button
+            title="Finance Calculator"
+            className="group/button col-span-full grid grid-cols-[auto_1fr] justify-items-start gap-4 justify-self-start"
+            onClick={() => {
+                window.scrollTo(
+                    0,
+                    getElementTopPosition(document.querySelector('#finance-calculator') as HTMLElement) - 200
+                );
+            }}
+        >
+            <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} />
+            <div className="grid justify-items-start">
+                <span
+                    className={twMerge(
+                        'font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
+                        title1ClassName
+                    )}
+                >
+                    Quick & Easy Calculator!
+                </span>
+                <span className={twMerge('font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]', title2ClassName)}>
+                    Take control of your payment plan
+                </span>
+            </div>
+        </button>
     );
 };
