@@ -601,20 +601,20 @@ const nextConfig = {
                 destination: '/relex-smile-london',
                 permanent: true
             },
-            {source: '/our-prices', destination: '/pricing-and-financing/our-prices', permanent: true},
-            {source: '/blog-post-template', destination: '/', permanent: true},
-            {source: '/eye-treatments', destination: '/', permanent: true},
-            {source: '/__trashed-2', destination: '/', permanent: true},
-            {source: '/the-top-wallets-of-2019', destination: '/', permanent: true},
-            {source: '/amd-awareness-month-bp/feed', destination: '/', permanent: true},
-            {source: '/portfolio-items', destination: '/', permanent: true},
-            {source: '/amd-awareness-month', destination: '/', permanent: true},
-            {source: '/amd-awareness-month-bp', destination: '/', permanent: true},
-            {source: '/embed', destination: '/', permanent: true},
-            {source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true},
-            {source: '/glasses-are-not-a-solution/feed', destination: '/', permanent: true},
-            {source: '/author/sashamossman', destination: '/', permanent: true},
-            {source: '/iselfie', destination: '/', permanent: true},
+            { source: '/our-prices', destination: '/pricing-and-financing/our-prices', permanent: true },
+            { source: '/blog-post-template', destination: '/', permanent: true },
+            { source: '/eye-treatments', destination: '/', permanent: true },
+            { source: '/__trashed-2', destination: '/', permanent: true },
+            { source: '/the-top-wallets-of-2019', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp/feed', destination: '/', permanent: true },
+            { source: '/portfolio-items', destination: '/', permanent: true },
+            { source: '/amd-awareness-month', destination: '/', permanent: true },
+            { source: '/amd-awareness-month-bp', destination: '/', permanent: true },
+            { source: '/embed', destination: '/', permanent: true },
+            { source: '/wp-admin/admin-ajax.php', destination: '/', permanent: true },
+            { source: '/glasses-are-not-a-solution/feed', destination: '/', permanent: true },
+            { source: '/author/sashamossman', destination: '/', permanent: true },
+            { source: '/iselfie', destination: '/', permanent: true },
             {
                 source: '/glasses-are-not-a-solution',
                 destination: '/',
@@ -897,13 +897,13 @@ const nextConfig = {
             },
             {
                 source: '/eye-conditions/dry-eyes',
-                has: [{type: 'query', key: 'fb-edit', value: '1'}],
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/dry-eyes-treatment-london',
                 permanent: true
             },
             {
                 source: '/dry-eyes',
-                has: [{type: 'query', key: 'fb-edit', value: '1'}],
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/dry-eyes-treatment-london',
                 permanent: true
             },
@@ -1084,7 +1084,7 @@ const nextConfig = {
             },
             {
                 source: '/book-an-appointment',
-                has: [{type: 'query', key: 'fb-edit', value: '1'}],
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
                 destination: '/contact-us',
                 permanent: true
             },
@@ -1261,6 +1261,227 @@ const nextConfig = {
             {
                 source: '/eye-conditions/diabetic-eye-disease',
                 destination: '/articles/the-battle-against-diabetes-bp',
+                permanent: true
+            },
+            {
+                source: '/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses-bp',
+                destination: '/articles/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses-bp',
+                permanent: true
+            },
+            {
+                source: '/cataract-surgery-london-eye-clinic-equipment.html',
+                destination: '/cataract',
+                permanent: true
+            },
+            {
+                source: '/articles/allergies-how-to-treat-them-bp',
+                destination: '/articles/allergies-of-the-eyes-and-how-to-treat-them',
+                permanent: true
+            },
+            {
+                source: '/laser-treatment/vision-correction/m-107',
+                destination: '/icl#vision_correction',
+                permanent: true
+            },
+            {
+                source: '/news/post/glasses-are-not-a-solution',
+                has: [{ type: 'query', key: 'id', value: 'af0c156b-f15e-4177-aa0a-82797c6ae47a' }],
+                destination: '/articles/why-do-so-many-people-over-40-need-those-annoying-little-reading-glasses-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/100-optical-how-was-it-what-is-our-impression-about-it',
+                destination: '/articles/100-optical-how-was-it-what-is-our-impression-about-it-bp',
+                permanent: true
+            },
+            {
+                source: '/articles/take-a-minute-to-relax-stress-can-be-bad-for-your-eyes-bp',
+                destination: '/articles/how-stress-can-be-bad-for-your-eyes',
+                permanent: true
+            },
+            {
+                source: '/a-guide-to-understanding-myopia-bp',
+                destination: '/articles/myopia-vs-hyperopia',
+                permanent: true
+            },
+            {
+                source: '/articles/laser-assessment-procedure-what-is-going-to-happen-when-i-am-going-to-have-my-eyes-tasted-for-laser-bp',
+                destination: '/articles/laser-eye-surgery-assessment-procedure',
+                permanent: true
+            },
+            {
+                source: '/articles/allergies-how-to-treat-them-bp',
+                destination: '/articles/allergies-of-the-eyes-and-how-to-treat-them',
+                permanent: true
+            },
+            {
+                source: '/articles/in-the-zone-bp',
+                destination: '/articles/your-vision-navigating-the-grey-zone',
+                permanent: true
+            },
+            {
+                source: '/articles/what-is-laser-surgery-can-it-help-me-get-rid-of-my-glasses-bp',
+                destination: '/articles/what-is-refractive-surgery',
+                permanent: true
+            },
+            {
+                source: '/what-is-laser-surgery-can-it-help-me-get-rid-of-my-glasses-bp',
+                destination: '/articles/what-is-refractive-surgery',
+                permanent: true
+            },
+            {
+                source: '/news/post/another-successful-cet-event-at-my-iclinic',
+                destination: '/articles/another-successful-cet-event-at-my-iclinic-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/computer-vision-syndrome-the-dangers-of-modern-living',
+                destination: '/articles/computer-vision-syndrome-the-dangers-of-modern-living-bp',
+                permanent: true
+            },
+            {
+                source: '/specialist/bola-bolger',
+                destination: '/our-specialists/bola-bolger',
+                permanent: true
+            },
+            {
+                source: '/specialist/maria-dimitry',
+                destination: '/our-specialists/maria-dimitry',
+                permanent: true
+            },
+            {
+                source: '/faq',
+                destination: '/articles/fast-faqs-to-understand-myopia',
+                permanent: true
+            },
+            {
+                source: '/cookies-policy',
+                destination: '/cookie-policy',
+                permanent: true
+            },
+            {
+                source: '/specialist/fatima-mangera',
+                destination: '/our-specialists/fatima-mangera',
+                permanent: true
+            },
+            {
+                source: '/specialist/tina-khanam',
+                destination: '/our-specialists/tina-khanam',
+                permanent: true
+            },
+            {
+                source: '/eye-conditions/macular-degeneration-treatment',
+                destination: '/macular-degeneration',
+                permanent: true
+            },
+            {
+                source: '/news/post/how-do-virtual-reality-goggles-work',
+                destination: '/articles/the-future-of-virtual-reality-headsets-for-eye-health',
+                permanent: true
+            },
+            {
+                source: '/news/post/smile-vs-lasik-what-is-the-difference-between-them',
+                destination: '/articles/the-complete-guide-to-lasek-eye-surgery',
+                permanent: true
+            },
+            {
+                source: '/glaucoma-treatment-price',
+                destination: '/glaucoma-treatment/price',
+                permanent: true
+            },
+            {
+                source: '/premium-lenses',
+                destination: '/icl',
+                permanent: true
+            },
+            {
+                source: '/news/post/camera-obscura',
+                destination: '/articles/camera-obscura-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/seeing-in-the-dark-sicilian-courgette-recipe',
+                destination: '/articles/seeing-in-the-dark-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/i-tried-to-do-laser-eye-surgery-by-myself-it-was-unexpected',
+                destination: '/articles/i-tried-to-do-laser-eye-surgery-by-myself-it-was-unexpected-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/what-is-the-spectacle-free-zone',
+                destination: '/articles/what-is-the-spectacle-free-zone-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/can-my-vision-get-worse-again-after-laser-eye-surgery-what-is-regression',
+                destination: '/articles/can-my-vision-get-worse-again-after-laser-eye-surgery-what-is-regression-bp',
+                permanent: true
+            },
+            {
+                source: '/news/post/vision-development-in-babies',
+                destination: '/articles/vision-development-in-babies-bp',
+                permanent: true
+            },
+            {
+                source: '/yag-capsulotomy-for-pco-price',
+                destination: '/cataract/yag-capsulotomy-for-pco/price',
+                permanent: true
+            },
+            {
+                source: '/cataract-price',
+                destination: '/cataract/price',
+                permanent: true
+            },
+            {
+                source: '/financing-your-treatment',
+                destination: '/pricing-and-financing/financing-your-treatment',
+                permanent: true
+            },
+            {
+                source: '/specialist',
+                destination: '/our-specialists',
+                permanent: true
+            },
+            {
+                source: '/eye-treatments/paediatric-eye-care',
+                destination: '/paediatric-eye-care',
+                permanent: true
+            },
+            {
+                source: '/relex-smile-london-price',
+                destination: '/relex-smile-london',
+                permanent: true
+            },
+            {
+                source: '/specialist/sheila-luk',
+                destination: '/our-specialists/sheila-luk',
+                permanent: true
+            },
+            {
+                source: '/yag-capsulotomy-for-pco',
+                destination: '/cataract/yag-capsulotomy-for-pco',
+                permanent: true
+            },
+            {
+                source: '/news/post/should-price-be-a-decision-maker',
+                destination: '/articles/should-price-be-a-decision-maker-bp',
+                permanent: true
+            },
+            {
+                source: '/specialist/john-bolger',
+                destination: '/our-specialists/john-bolger',
+                permanent: true
+            },
+            {
+                source: '/specialist/sancy-low',
+                destination: '/our-specialists/sancy-low',
+                permanent: true
+            },
+            {
+                source: '/icl-price',
+                destination: '/icl/price',
                 permanent: true
             }
         ];
