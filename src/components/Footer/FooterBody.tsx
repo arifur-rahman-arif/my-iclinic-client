@@ -56,8 +56,14 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
 
                 <FooterBottomLinks />
 
-                <span className="mt-6 text-center font-mulishLight text-[1.2rem] leading-[1.6rem] text-white">
-                    Copyrights © My-Clinic {new Date().getFullYear()} | All Rights Reserved
+                <p className="mt-6 max-w-[62rem] text-center text-[1.4rem] leading-8 text-white">
+                    My-iClinic Limited is authorised and regulated by the Financial Conduct Authority FRN 835591. We act
+                    as a credit broker not a lender and offer finance from one lender.
+                </p>
+
+                <span className="mt-4 text-center font-mulishLight text-[1.3rem] leading-[1.6rem] text-white">
+                    Copyrights © My-Clinic {new Date().getFullYear()} | All Rights Reserved | Company Reg Number:
+                    07151426
                 </span>
             </div>
         </Container>
