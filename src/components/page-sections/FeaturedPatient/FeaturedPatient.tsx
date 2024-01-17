@@ -103,9 +103,15 @@ const FeaturedPatient = ({
                         </div>
 
                         <div className="flex flex-col gap-6">
-                            {bandImageDescription.map((desc, index) => (
-                                <p key={index} dangerouslySetInnerHTML={{ __html: desc?.toString() || '' }}></p>
-                            ))}
+                            {bandImageDescription.map((desc, index) => {
+                                if (typeof desc === 'string') {
+                                    return (
+                                        <p key={index} dangerouslySetInnerHTML={{ __html: desc.toString() || '' }}></p>
+                                    );
+                                } else {
+                                    return <p key={index}>{desc}</p>;
+                                }
+                            })}
                         </div>
 
                         <div className="grid content-start gap-12">

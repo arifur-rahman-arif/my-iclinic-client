@@ -7,6 +7,7 @@ import BookConsultation from '@/page-sections/SectionParts/BookConsultation/Book
 import { stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 import VitreoretinalSurgeryContent from 'src/types/pages/vitreoretinal-surgery';
 
 const VideoPlayer = dynamic(() => import('@/page-sections/SectionParts/VideoPlayer/VideoPlayer'), {
@@ -53,11 +54,11 @@ const TextColumn = ({ section1 }: GettingToKnowProps): JSX.Element => {
             </div>
 
             <div className="ml-[2.3rem] flex flex-wrap items-center justify-center gap-8 sm:justify-start sm:gap-12">
-                <BookConsultation
+                {/* <BookConsultation
                     modalElement={
                         <>
                             <iframe
-                                src="https://connect.pabau.com/bookings.php?compid=11842"
+                                src=""
                                 width={600}
                                 height={700}
                                 className="w-full md:min-h-[70rem]"
@@ -65,10 +66,18 @@ const TextColumn = ({ section1 }: GettingToKnowProps): JSX.Element => {
                         </>
                     }
                     maxWidth="70rem"
-                    buttonClassName={`rounded-[0.5rem] border border-solid border-white py-5 px-10 font-mulishBold text-white bg-[#003E79] transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]`}
+                    buttonClassName={}
                 >
-                    <button>Book a consultation</button>
-                </BookConsultation>
+                </BookConsultation> */}
+
+                <Link
+                    className="rounded-[0.5rem] border border-solid border-white bg-[#003E79] py-5 px-10 font-mulishBold text-white transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]"
+                    href="https://connect.pabau.com/bookings.php?compid=11842"
+                    title="Book a consultation"
+                    target="_blank"
+                >
+                    Book a consultation
+                </Link>
 
                 <BookConsultation
                     modalElement={

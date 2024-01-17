@@ -58,12 +58,6 @@ const ConsultationForm = ({
                 />
                 {/* Render the content of the modal */}
                 {modalElement || <RequestCallback className="!shadow-none" />}
-                {/* < iframe */}
-                {/*     src="https://connect.pabau.com/bookings.php?compid=11842" */}
-                {/*     width={600} */}
-                {/*     height={600} */}
-                {/*     className="min-h-[60rem] w-full pt-16" */}
-                {/* ></iframe> */}
             </div>
         </Dialog>
     );

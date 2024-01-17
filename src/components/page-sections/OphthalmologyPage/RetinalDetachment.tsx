@@ -2,7 +2,6 @@ import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
-import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
@@ -114,22 +113,29 @@ const RetinalDetachment = ({
                     </div>
 
                     {specialistCtaButton && (
-                        <BookConsultation
-                            buttonClassName="justify-self-start text-center ml-[4.5rem]"
-                            modalElement={
-                                <>
-                                    <iframe
-                                        src="https://connect.pabau.com/bookings.php?compid=11842"
-                                        width={600}
-                                        height={700}
-                                        className="w-full md:min-h-[70rem]"
-                                    ></iframe>
-                                </>
-                            }
-                            maxWidth="70rem"
-                        >
-                            <Button2 type="button" text="Speak to a specialist" />
-                        </BookConsultation>
+                        // <BookConsultation
+                        //     buttonClassName=""
+                        //     modalElement={
+                        //         <>
+                        //             <iframe
+                        //                 src=""
+                        //                 width={600}
+                        //                 height={700}
+                        //                 className="w-full md:min-h-[70rem]"
+                        //             ></iframe>
+                        //         </>
+                        //     }
+                        //     maxWidth="70rem"
+                        // >
+                        // </BookConsultation>
+                        <Button2
+                            target="_blank"
+                            className="ml-[4.5rem] justify-self-start text-center"
+                            type="anchor"
+                            link="https://connect.pabau.com/bookings.php?compid=11842"
+                            text="Speak to a specialist"
+                            title="Speak to a specialist"
+                        />
                     )}
                 </div>
             </Container>

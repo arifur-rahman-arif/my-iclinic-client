@@ -123,12 +123,12 @@ const BottomMenu = (): JSX.Element => {
                                 </span>
                             </button>
                         </BookConsultation>
-                        <BookConsultation
+                        {/* <BookConsultation
                             buttonClassName="flex items-center justify-start gap-3"
                             modalElement={
                                 <>
                                     <iframe
-                                        src="https://connect.pabau.com/bookings.php?compid=11842"
+                                        src=""
                                         width={600}
                                         height={700}
                                         className="w-full md:min-h-[70rem]"
@@ -137,18 +137,25 @@ const BottomMenu = (): JSX.Element => {
                             }
                             maxWidth="70rem"
                         >
-                            <button>
-                                <Image
-                                    src="/images/icons/icon-booking-outline.svg"
-                                    alt="Laser screening"
-                                    width={24}
-                                    height={24}
-                                />
-                                <span className="relative cursor-pointer text-left font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1]">
-                                    Book a free laser screening
-                                </span>
-                            </button>
-                        </BookConsultation>
+
+                        </BookConsultation> */}
+
+                        <Link
+                            className="flex items-center justify-start gap-3"
+                            href="https://connect.pabau.com/bookings.php?compid=11842"
+                            target="_blank"
+                            title="Book a free laser screening"
+                        >
+                            <Image
+                                src="/images/icons/icon-booking-outline.svg"
+                                alt="Laser screening"
+                                width={24}
+                                height={24}
+                            />
+                            <span className="relative cursor-pointer text-left font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1]">
+                                Book a free laser screening
+                            </span>
+                        </Link>
 
                         <div className="flex items-center justify-start gap-3">
                             <Image

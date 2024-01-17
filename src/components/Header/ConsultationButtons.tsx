@@ -1,5 +1,6 @@
 import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';
+import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 interface ConsultationButtonsProps {
@@ -26,12 +27,12 @@ const ConsultationButtons = ({
                 className
             )}
         >
-            <BookConsultation
+            {/* <BookConsultation
                 buttonClassName="flex items-center justify-center gap-4"
                 modalElement={
                     <>
                         <iframe
-                            src="https://connect.pabau.com/bookings.php?compid=11842"
+                            src=""
                             width={600}
                             height={700}
                             className="w-full md:min-h-[70rem]"
@@ -40,18 +41,24 @@ const ConsultationButtons = ({
                 }
                 maxWidth="70rem"
             >
-                <button>
-                    <Image src="/images/icons/icon-eye-scan.svg" alt="" width={40} height={40} />
-                    <span
-                        className={twMerge(
-                            'font-mulishBold text-[1.8rem] leading-[2.8rem] text-white',
-                            freeScreeningTextClassName
-                        )}
-                    >
-                        Free screening
-                    </span>
-                </button>
-            </BookConsultation>
+            </BookConsultation> */}
+
+            <Link
+                href="https://connect.pabau.com/bookings.php?compid=11842"
+                target="_blank"
+                title="Book free consultation"
+                className="flex items-center justify-center gap-4"
+            >
+                <Image src="/images/icons/icon-eye-scan.svg" alt="" width={40} height={40} />
+                <span
+                    className={twMerge(
+                        'font-mulishBold text-[1.8rem] leading-[2.8rem] text-white',
+                        freeScreeningTextClassName
+                    )}
+                >
+                    Free screening
+                </span>
+            </Link>
 
             <BookConsultation buttonClassName="flex items-center justify-center gap-4">
                 <button>

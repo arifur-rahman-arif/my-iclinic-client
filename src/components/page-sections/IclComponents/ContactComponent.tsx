@@ -4,7 +4,7 @@ import styles from '@/components/GoodbyeModal/Style.module.scss';
 import { Section } from '@/components/Section';
 import { SectionHeading } from '@/components/SectionTextColumn';
 import { useOnclickOutside } from '@/hooks';
-import { BookConsultation } from '@/page-sections/index';
+// import { BookConsultation } from '@/page-sections/index';
 import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import { ImageType3 } from '@/types';
 import dynamic from 'next/dynamic';
@@ -86,12 +86,13 @@ const ContactComponent = ({ sectionId, heading, backgroundImage }: ContactCompon
                                 </Link>
                             </div>
 
+                            {/*
                             <BookConsultation
                                 buttonClassName="bg-[#003E79] border-[#003E79] text-white hover:bg-transparent hover:border-white hover:text-white"
                                 modalElement={
                                     <>
                                         <iframe
-                                            src="https://connect.pabau.com/bookings.php?compid=11842"
+                                            src=""
                                             width={600}
                                             height={700}
                                             className="w-full md:min-h-[70rem]"
@@ -99,9 +100,15 @@ const ContactComponent = ({ sectionId, heading, backgroundImage }: ContactCompon
                                     </>
                                 }
                                 maxWidth="70rem"
-                            >
-                                <Button2 type="button" text="Book a consultation" />
-                            </BookConsultation>
+                            ></BookConsultation> */}
+
+                            <Button2
+                                className="border-[#003E79] bg-[#003E79] text-white hover:border-white hover:bg-transparent hover:text-white"
+                                type="anchor"
+                                link="https://connect.pabau.com/bookings.php?compid=11842"
+                                target="_blank"
+                                text="Book a consultation"
+                            />
                         </div>
                     </div>
                 </div>

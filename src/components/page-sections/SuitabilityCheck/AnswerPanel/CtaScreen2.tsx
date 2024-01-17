@@ -1,4 +1,4 @@
-import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+// import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Context } from '@/page-sections/SuitabilityCheck/Context';
 import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
@@ -70,11 +70,11 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                 {includeSuitabilityButtons ? (
                     <div className={`flex flex-wrap items-center justify-center gap-6`}>
                         {/* Modal */}
-                        <BookConsultation
+                        {/* <BookConsultation
                             modalElement={
                                 <>
                                     <iframe
-                                        src="https://connect.pabau.com/bookings.php?compid=11842"
+                                        src=""
                                         width={600}
                                         height={700}
                                         className="w-full md:min-h-[70rem]"
@@ -82,55 +82,62 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                                 </>
                             }
                             maxWidth="70rem"
-                            buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent hover:!border-white grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary"
+                            buttonClassName=""
                         >
-                            <button className="" aria-label="Book a free screening test">
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-white"
-                                    />
-                                    <path
-                                        d="M13.334 1.66699V5.00033"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-white"
-                                    />
-                                    <path
-                                        d="M6.66602 1.66699V5.00033"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-white"
-                                    />
-                                    <path
-                                        d="M2.5 8.33301H17.5"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/consultation:stroke-white"
-                                    />
-                                </svg>
+                        </BookConsultation> */}
 
-                                <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500">
-                                    Book a suitability check
-                                </span>
-                            </button>
-                        </BookConsultation>
+                        <Link
+                            target="_blank"
+                            title="Book a suitability check"
+                            href="https://connect.pabau.com/bookings.php?compid=11842"
+                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:!border-white hover:bg-transparent"
+                            aria-label="Book a free screening test"
+                        >
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-white"
+                                />
+                                <path
+                                    d="M13.334 1.66699V5.00033"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-white"
+                                />
+                                <path
+                                    d="M6.66602 1.66699V5.00033"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-white"
+                                />
+                                <path
+                                    d="M2.5 8.33301H17.5"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="transition-all duration-500 group-hover/consultation:stroke-white"
+                                />
+                            </svg>
+
+                            <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500">
+                                Book a suitability check
+                            </span>
+                        </Link>
 
                         {/* Phone number */}
                         <Link

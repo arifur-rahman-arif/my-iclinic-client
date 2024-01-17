@@ -2,7 +2,7 @@ import { Button2 } from '@/components/Buttons';
 import styles from '@/components/Slider/styles/Swiper.module.scss';
 import { useOnScreen } from '@/hooks';
 import IconArrow from '@/icons/icon-dotted-arrow.svg';
-import { BookConsultation, BulletList } from '@/page-sections/index';
+import { BulletList } from '@/page-sections/index';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
@@ -122,22 +122,26 @@ const Slide1 = (): JSX.Element => {
                     Saving more than just expenses, time and compromise, but saving the planet!
                 </strong>
 
-                <BookConsultation
-                    buttonClassName="w-full justify-self-start text-center sm:w-auto"
+                {/* <BookConsultation
+                    buttonClassName=""
                     modalElement={
                         <>
-                            <iframe
-                                src="https://connect.pabau.com/bookings.php?compid=11842"
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
+                            <iframe src="" width={600} height={700} className="w-full md:min-h-[70rem]"></iframe>
                         </>
                     }
                     maxWidth="70rem"
                 >
-                    <Button2 type="button" text="Speak to a specialist" />
-                </BookConsultation>
+
+                </BookConsultation> */}
+
+                <Button2
+                    className="w-full justify-self-start text-center sm:w-auto"
+                    type="anchor"
+                    title="Speak to a specialist"
+                    link="https://connect.pabau.com/bookings.php?compid=11842"
+                    text="Speak to a specialist"
+                    target="_blank"
+                />
             </div>
         </div>
     );

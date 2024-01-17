@@ -10,7 +10,7 @@ import styles from './styles/FooterBottomLInks.module.scss';
 const FooterBottomLinks = (): JSX.Element => {
     return (
         <div>
-            <ul className={`${styles.list} mt-6 flex flex-wrap items-center justify-center gap-12`}>
+            <ul className={`${styles.list} mt-6 flex flex-wrap items-center justify-center gap-8 sm:gap-12`}>
                 <li>
                     <LinkText href="/privacy-policies" className="text-white" indicatorColor="bg-white">
                         Privacy Policy

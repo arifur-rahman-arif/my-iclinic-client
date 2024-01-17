@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
-import { BookConsultation } from '@/page-sections/index';
+// import { BookConsultation } from '@/page-sections/index';
 import { stripInitialTags } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -123,27 +123,27 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
             </h5>
 
             <div className="mt-8 grid place-items-center gap-8">
-                <BookConsultation
-                    buttonClassName="rounded-[1rem] group/button flex items-center justify-center gap-4 py-5 px-12 transition-all duration-500 hover:bg-transparent bg-[#94CAFF] hover:border-[#94CAFF] border-2 border-solid border-[#94CAFF]"
+                {/* <BookConsultation
+                    buttonClassName=""
                     modalElement={
                         <>
-                            <iframe
-                                src="https://connect.pabau.com/bookings.php?compid=11842"
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
+                            <iframe src="" width={600} height={700} className="w-full md:min-h-[70rem]"></iframe>
                         </>
                     }
                     maxWidth="70rem"
+                ></BookConsultation> */}
+
+                <Link
+                    className="group/button flex items-center justify-center gap-4 rounded-[1rem] border-2 border-solid border-[#94CAFF] bg-[#94CAFF] py-5 px-12 transition-all duration-500 hover:border-[#94CAFF] hover:bg-transparent"
+                    href="https://connect.pabau.com/bookings.php?compid=11842"
+                    title="Book a consultation"
+                    target="_blank"
                 >
-                    <button>
-                        {/* <Image src="/images/icons/icon-communication.svg" alt="" width={24} height={24} /> */}
-                        <span className="font-mulishBold text-brand transition-all duration-500 group-hover/button:text-white">
-                            Book a consultation
-                        </span>
-                    </button>
-                </BookConsultation>
+                    {/* <Image src="/images/icons/icon-communication.svg" alt="" width={24} height={24} /> */}
+                    <span className="font-mulishBold text-brand transition-all duration-500 group-hover/button:text-white">
+                        Book a consultation
+                    </span>
+                </Link>
 
                 <Link
                     href="tel:0208 445 8877"

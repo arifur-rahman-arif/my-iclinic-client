@@ -19,6 +19,8 @@ interface ButtonInterface {
     onClick?: () => void;
     title?: string;
     download?: any;
+
+    [key: string]: any;
 }
 
 /**

@@ -37,7 +37,7 @@ const Cta = ({
             </div>
             <div className="flex items-center justify-start gap-4">
                 <Image
-                    src="/images/icons/icon-chat.svg"
+                    src="/images/icons/icon-chat-dark.svg"
                     alt=""
                     quality={70}
                     width={20}

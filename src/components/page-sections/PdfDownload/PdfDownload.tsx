@@ -56,7 +56,7 @@ const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDo
                             {title}
                         </h3>
 
-                        {description && <p className="text-center">{description}</p>}
+                        {description && <p className="text-center text-white [&_*]:text-white">{description}</p>}
 
                         {list?.length && (
                             <ul className="mt-12 flex w-full flex-col items-start justify-start gap-[1.5rem] pb-12 md:pl-[7.5rem]">

@@ -1,6 +1,5 @@
 import { Button2 } from '@/components/Buttons';
 import { Section } from '@/components/Section';
-import { BookConsultation } from '@/page-sections/index';
 import { ImageType3 } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -44,12 +43,12 @@ const EyeSurgeryConsultation = ({
                     <p dangerouslySetInnerHTML={{ __html: description }} className="max-w-[45.9rem] text-white"></p>
 
                     <div className="mt-8 flex flex-wrap items-center justify-center gap-12 sm:justify-start md:mt-12">
-                        <BookConsultation
-                            buttonClassName="bg-[#94CAFF] border-[#94CAFF] text-[#003E79] hover:bg-transparent hover:text-[#94CAFF]"
+                        {/* <BookConsultation
+                            buttonClassName=""
                             modalElement={
                                 <>
                                     <iframe
-                                        src="https://connect.pabau.com/bookings.php?compid=11842"
+                                        src=""
                                         width={600}
                                         height={700}
                                         className="w-full md:min-h-[70rem]"
@@ -58,8 +57,14 @@ const EyeSurgeryConsultation = ({
                             }
                             maxWidth="70rem"
                         >
-                            <Button2 type="button" text="Book a consultation" />
-                        </BookConsultation>
+                        </BookConsultation> */}
+                        <Button2
+                            type="anchor"
+                            className="border-[#94CAFF] bg-[#94CAFF] text-[#003E79] hover:bg-transparent hover:text-[#94CAFF]"
+                            link="https://connect.pabau.com/bookings.php?compid=11842"
+                            target="_blank"
+                            text="Book a consultation"
+                        />
 
                         <Link
                             href="tel:0208 445 8877"

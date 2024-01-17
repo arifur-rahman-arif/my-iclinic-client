@@ -1,4 +1,4 @@
-import { BookConsultation } from '@/page-sections/index';
+// import { BookConsultation } from '@/page-sections/index';
 import Link from 'next/link';
 import { Dispatch, SetStateAction } from 'react';
 import { HiOutlineArrowSmRight } from 'react-icons/hi';
@@ -53,14 +53,14 @@ const MenuCta = ({ setOpenMobileMenu, className, centerText }: MenuCtaProps): JS
                     setOpenMobileMenu && setOpenMobileMenu(false);
                 }}
             >
-                <BookConsultation
+                {/* <BookConsultation
                     buttonClassName={`flex w-full items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
                         centerText ? 'justify-center' : 'justify-start'
                     }`}
                     modalElement={
                         <>
                             <iframe
-                                src="https://connect.pabau.com/bookings.php?compid=11842"
+                                src=""
                                 width={600}
                                 height={700}
                                 className="w-full md:min-h-[70rem]"
@@ -69,13 +69,20 @@ const MenuCta = ({ setOpenMobileMenu, className, centerText }: MenuCtaProps): JS
                     }
                     maxWidth="70rem"
                 >
-                    <button>
-                        Free screening
-                        <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
-                            <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
-                        </span>
-                    </button>
-                </BookConsultation>
+                </BookConsultation> */}
+                <Link
+                    target="_blank"
+                    href="https://connect.pabau.com/bookings.php?compid=11842"
+                    title="Free screening"
+                    className={`flex w-full items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
+                        centerText ? 'justify-center' : 'justify-start'
+                    }`}
+                >
+                    Free screening
+                    <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
+                        <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
+                    </span>
+                </Link>
             </div>
         </div>
     );
