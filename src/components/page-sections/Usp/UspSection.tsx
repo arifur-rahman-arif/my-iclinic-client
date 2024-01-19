@@ -29,7 +29,7 @@ const uspList: UspProps[] = [
                 cataract operations
             </>
         ),
-        description: 'We promises...',
+        description: 'Our promises...',
         list: [
             'The best vision possible with little or no dependence on glasses.',
             'The best implant for your eyes.',
