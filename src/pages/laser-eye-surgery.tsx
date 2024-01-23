@@ -4,8 +4,11 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
+import TripleWinSection from '@/components/page-sections/HomePage/TripleWinSection';
+import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
 import LaserBenefits from '@/components/page-sections/LaserSurgeryComponents/LaserBenefits';
 import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/LaserSolutions';
+import SurgeryDetails from '@/components/page-sections/LaserSurgeryComponents/SurgeryDetails';
 import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
 import MastheadLaserEyeSurgery from '@/components/page-sections/Masthead/MastheadLaserEyeSurgery';
 import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
@@ -92,6 +95,99 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
             <TreatmentPrices section2={data.section2} />
 
             <LaserSolutions section3={data.section3} />
+
+            <SurgeryDetails
+                link={data?.section4?.link || '/relex-smile-london'}
+                sectionId={'relex-smile-london'}
+                heading={data?.section4?.heading}
+                descriptions={data?.section4?.descriptions}
+                image={{
+                    src: '/images/section-images/relex-smile.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'Relex Smile',
+                    ...(data?.section4?.image as any)
+                }}
+                imageClassName="md:order-2"
+            />
+
+            <SurgeryDetails
+                link={data?.section5?.link || '/presbyond-london'}
+                sectionId={'presbyond'}
+                heading={data?.section5?.heading}
+                descriptions={data?.section5?.descriptions}
+                image={{
+                    src: '/images/section-images/presbyond.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'Presbyond',
+                    ...(data?.section5?.image as any)
+                }}
+            />
+
+            <SurgeryDetails
+                link={data?.section6?.link || '/lasik-london'}
+                sectionId={'lasik-london'}
+                heading={data?.section6?.heading}
+                descriptions={data?.section6?.descriptions}
+                image={{
+                    src: '/images/section-images/lasik-london.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'lasik-london',
+                    ...(data?.section6?.image as any)
+                }}
+                imageClassName="md:order-2"
+            />
+
+            <SurgeryDetails
+                link={data?.section7?.link || '/lasek-prk'}
+                sectionId={'lasek-prk'}
+                heading={data?.section7?.heading}
+                descriptions={data?.section7?.descriptions}
+                image={{
+                    src: '/images/section-images/lasek-prk.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'lasek-prk',
+                    ...(data?.section7?.image as any)
+                }}
+            />
+
+            <SurgeryDetails
+                link={data?.section8?.link || '/lasek-prk'}
+                sectionId={'prk'}
+                heading={data?.section8?.heading}
+                descriptions={data?.section8?.descriptions}
+                image={{
+                    src: '/images/section-images/prk.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'prk',
+                    ...(data?.section8?.image as any)
+                }}
+                imageClassName="md:order-2"
+            />
+
+            <SurgeryDetails
+                link={data?.section9?.link || '/lasek-prk'}
+                sectionId={'ptk'}
+                heading={data?.section9?.heading}
+                descriptions={data?.section9?.descriptions}
+                image={{
+                    src: '/images/section-images/ptk.png',
+                    width: 690,
+                    height: 570,
+                    alt: 'ptk',
+                    ...(data?.section9?.image as any)
+                }}
+            />
+
+            <ComparisonTable heading='Let`s compare our service with other clinics' />
+
+            <ComparisonTable heading='How much you save with us' />
+
+            <TripleWinSection />
 
             <LazyComponent>
                 <CallbackSection />
@@ -372,16 +468,61 @@ export async function getStaticProps() {
                         image: {
                             ...(data?.acf?.section3?.image && formatImage(data.acf.section3.image))
                         }
+                    },
+                    section4: {
+                        ...data?.acf?.section4,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section4?.image && formatImage(data.acf.section4.image))
+                        }
+                    },
+                    section5: {
+                        ...data?.acf?.section5,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section5?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section5?.image && formatImage(data.acf.section5.image))
+                        }
+                    },
+                    section6: {
+                        ...data?.acf?.section6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section6?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section6?.image && formatImage(data.acf.section6.image))
+                        }
+                    },
+                    section7: {
+                        ...data?.acf?.section7,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section7?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section7?.image && formatImage(data.acf.section7.image))
+                        }
+                    },
+                    section8: {
+                        ...data?.acf?.section8,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section8?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section8?.image && formatImage(data.acf.section8.image))
+                        }
+                    },
+                    section9: {
+                        ...data?.acf?.section9,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section9?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section9?.image && formatImage(data.acf.section9.image))
+                        }
                     }
-                    // section4: {
-                    //     ...data?.acf?.section4,
-                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section4?.descriptions).map((item) =>
-                    //         stripInitialTags(item)
-                    //     ),
-                    //     image: {
-                    //         ...(data?.acf?.section4?.image && formatImage(data.acf.section4.image))
-                    //     }
-                    // },
                     // section7: {
                     //     ...data?.acf?.section7,
                     //     list: convertArrayOfObjectsToStrings(data?.acf?.section7?.list).map((item) =>

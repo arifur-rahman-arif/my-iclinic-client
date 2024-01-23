@@ -5,6 +5,9 @@ import Tooltip from '@/components/Tooltip/Tooltip';
 import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { LaserEyeSurgeryContentInterface } from '@/types';
 import Link from 'next/link';
+import styles from '../IclComponents/styles/EyeCare.module.scss';
+import { useOnScreen } from '@/hooks';
+import { useRef } from 'react';
 
 interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section2'> {}
 
@@ -16,9 +19,14 @@ interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section2'> {}
  * @returns {JSX.Element} The rendered component.
  */
 const TreatmentPrices = ({ section2 }: Props) => {
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const { onEnter } = useOnScreen({ ref: containerRef });
+
     return (
         <Section id="treatment-prices">
-            <Container className="flex flex-wrap items-center justify-center gap-8">
+            <Container ref={containerRef} className={`flex flex-wrap items-center justify-center gap-8 ${
+                        onEnter && styles.styles
+                    }`}>
                 {section2?.length && section2.map((card, key) => <Card key={key} {...card} />)}
             </Container>
         </Section>
@@ -39,7 +47,7 @@ interface CardProps {
  */
 const Card = ({ title, description, price }: CardProps) => {
     return (
-        <div className="grid max-w-[29.5rem] content-start gap-12 rounded-radius2 border border-solid border-[#EAECF0] p-10 shadow-md transition-all duration-500 hover:shadow-shadow1">
+        <div className="grid translate-y-12 opacity-0 max-w-[29.5rem] content-start gap-12 rounded-radius2 border border-solid border-[#EAECF0] p-10 shadow-md transition-all duration-500 hover:shadow-shadow1">
             <h5 className="font-latoBold text-[2.4rem] uppercase leading-[3.2rem] text-heading">{title}</h5>
             <p dangerouslySetInnerHTML={{ __html: description }} className="-mt-10 font-mulishBold text-[#293C4E]"></p>
             <div className="flex items-center justify-between gap-12 rounded-radius2 bg-[#E1F1FF] p-6">

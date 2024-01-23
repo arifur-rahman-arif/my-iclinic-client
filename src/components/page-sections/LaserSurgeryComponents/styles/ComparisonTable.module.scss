@@ -1,0 +1,45 @@
+.styles {
+	width: 100%;
+	:global {
+		th {
+			padding: 1.5rem 0;
+			background: #E1F1FF;
+			color: var(--color-heading);
+			font-family: var(--lato-bold);
+			font-size: 2.4rem;
+			line-height: 3.2rem;
+		}
+
+		th:first-child {
+			padding-left: 1.5rem;
+			border-radius: 1rem 0 0 1rem;
+		}
+
+		th:last-child {
+			padding-right: 1.5rem;
+			border-radius: 0 1rem 1rem 0;
+		}
+
+		th {
+			text-align: left;
+		}
+
+		tbody {
+			td {
+				text-align: left;
+				padding-top: 3rem
+			}
+			tr {
+				td:first-child {
+			      text-align: left;	
+			      padding-left: 1.5rem;
+				}
+
+				td:first-child {
+					padding-right: 1.5rem;
+				}
+			}
+		}
+		
+	}
+}
