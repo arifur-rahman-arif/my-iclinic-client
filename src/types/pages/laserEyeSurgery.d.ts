@@ -9,20 +9,24 @@ export default interface LaserEyeSurgeryContentInterface {
 		priceText: string;	
         image: ImageType3,
     };
+    // Laser Benefits
     section1: {
-        heading: string;
-        subHeading: string;
-        descriptions: string[];
-        image1: ImageType3;
-        image2: ImageType3;
+        card1: {
+            title: string;
+            description: string;
+        },
+        card2: {
+            title: string;
+            description: string;
+        }
     },
-    // ICL consultation
-    section2: {
-        heading: string;
-        descriptions: string[];
-        image: ImageType3;
-    },
-    // ICL treatment
+    // Treatment Prices
+    section2: Array<{
+        title: string;
+        description: string;
+        price: string
+    }>
+    // Laser solutions
     section3: {
         heading: string;
         descriptions: string[];

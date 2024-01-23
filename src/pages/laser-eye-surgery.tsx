@@ -4,6 +4,9 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
+import LaserBenefits from '@/components/page-sections/LaserSurgeryComponents/LaserBenefits';
+import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/LaserSolutions';
+import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
 import MastheadLaserEyeSurgery from '@/components/page-sections/Masthead/MastheadLaserEyeSurgery';
 import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { getPageData, getTreatments } from '@/lib';
@@ -68,26 +71,32 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
     const heading = data?.masthead_heading || 'Laser Eye Surgery';
     const subheading = data?.masthead_subheading || 'Reducing or eliminating the need for glasses or contact lenses';
 
-    const reviewSliderData: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      description: service?.description,
-                      name: service?.name,
-                      title: service?.title
-                  };
-              })
-            : null;
+    // const reviewSliderData: any =
+    //     Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
+    //         ? data.reviewSlider.map((service) => {
+    //               return {
+    //                   ...service,
+    //                   description: service?.description,
+    //                   name: service?.name,
+    //                   title: service?.title
+    //               };
+    //           })
+    //         : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <MastheadLaserEyeSurgery />
+            <MastheadLaserEyeSurgery masthead={data.masthead} />
+
+            <LaserBenefits section1={data.section1} />
+
+            <TreatmentPrices section2={data.section2} />
+
+            <LaserSolutions section3={data.section3} />
 
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>
-
+            {/* 
             <VisionCorrectionPromo
                 heading={data?.section1?.heading || 'No more glasses & contact lenses hassle'}
                 subHeading={
@@ -273,8 +282,6 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 <EnvironmentalImpact />
             </LazyComponent>
 
-            {/* <CtaSection /> */}
-
             <LazyComponent>
                 <CompanyLogos />
             </LazyComponent>
@@ -298,7 +305,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                     titleBold="Frequently asked questions"
                     description="Have a question? We are here to help."
                 />
-            </LazyComponent>
+            </LazyComponent> */}
         </Page>
     );
 }
@@ -348,23 +355,13 @@ export async function getStaticProps() {
                     },
                     section1: {
                         ...data?.acf?.section1,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section1?.descriptions).map((item) =>
-                            stripInitialTags(item)
-                        ),
-                        image1: {
-                            ...(data?.acf?.section1?.image1 && formatImage(data.acf.section1.image1))
+                        card1: {
+                            ...data.acf.section1?.card1,
+                            description: stripInitialTags(data.acf.section1?.card1?.description || '')
                         },
-                        image2: {
-                            ...(data?.acf?.section1?.image2 && formatImage(data.acf.section1.image2))
-                        }
-                    },
-                    section2: {
-                        ...data?.acf?.section2,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section2?.descriptions).map((item) =>
-                            stripInitialTags(item)
-                        ),
-                        image: {
-                            ...(data?.acf?.section2?.image && formatImage(data.acf.section2.image))
+                        card2: {
+                            ...data.acf.section1?.card2,
+                            description: stripInitialTags(data.acf.section1?.card2?.description || '')
                         }
                     },
                     section3: {
@@ -375,60 +372,60 @@ export async function getStaticProps() {
                         image: {
                             ...(data?.acf?.section3?.image && formatImage(data.acf.section3.image))
                         }
-                    },
-                    section4: {
-                        ...data?.acf?.section4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section4?.descriptions).map((item) =>
-                            stripInitialTags(item)
-                        ),
-                        image: {
-                            ...(data?.acf?.section4?.image && formatImage(data.acf.section4.image))
-                        }
-                    },
-                    section7: {
-                        ...data?.acf?.section7,
-                        list: convertArrayOfObjectsToStrings(data?.acf?.section7?.list).map((item) =>
-                            stripInitialTags(item)
-                        ),
-                        image: {
-                            ...(data?.acf?.section7?.image && formatImage(data.acf.section7.image))
-                        }
-                    },
-                    section8: {
-                        ...data?.acf?.section8,
-                        image: {
-                            ...(data?.acf?.section8?.image && formatImage(data.acf.section8.image))
-                        }
-                    },
-                    section9: {
-                        ...data?.acf?.section9,
-                        beneficialItems: data?.acf?.section9?.beneficialItems.map((item) => ({
-                            ...item,
-                            image: {
-                                ...(item?.image && formatImage(item.image))
-                            },
-                            icon: {
-                                ...(item?.icon && formatImage(item.icon))
-                            },
-                            descriptions: convertArrayOfObjectsToStrings(item?.descriptions).map((item) =>
-                                stripInitialTags(item)
-                            )
-                        }))
-                    },
-                    section10: {
-                        ...data?.acf?.section10,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section10?.descriptions).map((item) =>
-                            stripInitialTags(item)
-                        )
-                    },
-                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
-                        ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
-                        : []
-                }
+                    }
+                    // section4: {
+                    //     ...data?.acf?.section4,
+                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section4?.descriptions).map((item) =>
+                    //         stripInitialTags(item)
+                    //     ),
+                    //     image: {
+                    //         ...(data?.acf?.section4?.image && formatImage(data.acf.section4.image))
+                    //     }
+                    // },
+                    // section7: {
+                    //     ...data?.acf?.section7,
+                    //     list: convertArrayOfObjectsToStrings(data?.acf?.section7?.list).map((item) =>
+                    //         stripInitialTags(item)
+                    //     ),
+                    //     image: {
+                    //         ...(data?.acf?.section7?.image && formatImage(data.acf.section7.image))
+                    //     }
+                    // },
+                    // section8: {
+                    //     ...data?.acf?.section8,
+                    //     image: {
+                    //         ...(data?.acf?.section8?.image && formatImage(data.acf.section8.image))
+                    //     }
+                    // },
+                    // section9: {
+                    //     ...data?.acf?.section9,
+                    //     beneficialItems: data?.acf?.section9?.beneficialItems.map((item) => ({
+                    //         ...item,
+                    //         image: {
+                    //             ...(item?.image && formatImage(item.image))
+                    //         },
+                    //         icon: {
+                    //             ...(item?.icon && formatImage(item.icon))
+                    //         },
+                    //         descriptions: convertArrayOfObjectsToStrings(item?.descriptions).map((item) =>
+                    //             stripInitialTags(item)
+                    //         )
+                    //     }))
+                    // },
+                    // section10: {
+                    //     ...data?.acf?.section10,
+                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section10?.descriptions).map((item) =>
+                    //         stripInitialTags(item)
+                    //     )
+                    // },
+                    // reviewSlider: Array.isArray(data?.acf?.reviewSlider)
+                    //     ? data?.acf.reviewSlider.map((ListData) => {
+                    //           return {
+                    //               ...ListData
+                    //           };
+                    //       })
+                    //     : []
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
