@@ -10,8 +10,7 @@ import { FcGoogle } from 'react-icons/fc';
 import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import styles from './Style.module.scss';
 
-interface MastheadOphthalmologyClinicProps extends Pick<RetinaTreatmentsContents, 'masthead'> {
-}
+interface MastheadOphthalmologyClinicProps extends Pick<RetinaTreatmentsContents, 'masthead'> {}
 
 /**
  * `MastheadOphthalmologyClinic` is a React functional component that represents the masthead
@@ -29,31 +28,32 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
                 linkClassName="text-white"
             />
 
-            <div
-                className="grid gap-10 px-8 pt-12 pb-24 xl:pb-40 md:bg-transparent xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
-                <Reviews/>
+            <div className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+                <Reviews />
 
                 <h1 className="max-w-[56rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                     {masthead?.heading || 'The London Retina treatments'}
                 </h1>
-                <p className="max-w-[44rem] -mt-4 font-mulishBold uppercase text-[#D1E8FE]">
+                <p className="-mt-4 max-w-[44rem] font-mulishBold uppercase text-[#D1E8FE]">
                     {masthead?.subheading ||
                         'We deliver personalised and effective solutions for all aspects of eye health.'}
                 </p>
 
-
-                <div
-                    className="grid justify-items-center gap-10 mt-48 md:mt-12 md:justify-items-start">
+                <div className="mt-48 grid justify-items-center gap-10 md:mt-12 md:justify-items-start">
                     <div className="flex items-center justify-start gap-4 md:mt-12">
-                        <Image src="/images/section-images/0-percent-finance.png" alt="" width={95} height={90}/>
+                        <Image src="/images/section-images/0-percent-finance.png" alt="" width={95} height={90} />
                         <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-[#00BFFF]">
-                        Finance available
-                    </span>
+                            Finance available
+                        </span>
                     </div>
 
-                    <div className="grid gap-4 justify-items-center lg:grid-cols-[auto_auto]">
-                        <Button2 type="button" text="Speak to a specialist" onClick={openFreshdeskChat}
-                                 className="sitemap-link text-center hover:!border-white"/>
+                    <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
+                        <Button2
+                            type="button"
+                            text="Speak to a specialist"
+                            onClick={openFreshdeskChat}
+                            className="sitemap-link text-center hover:!border-white"
+                        />
 
                         <Button2
                             type="anchor"
@@ -63,20 +63,18 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
                             className="sitemap-link border-white bg-transparent text-center text-white hover:border-white"
                         />
                     </div>
-
                 </div>
             </div>
 
             <Image
                 src={mastheadImage}
                 alt="The London Retina treatments"
-                className="absolute inset-0 hidden md:block h-full w-full min-h-[33.7rem] object-cover -z-[1] md:row-start-1 md:h-full md:w-full"
+                className="absolute inset-0 -z-[1] hidden h-full min-h-[33.7rem] w-full object-cover md:row-start-1 md:block md:h-full md:w-full"
                 priority
                 {...masthead?.image}
             />
 
-            <Image src={smallBg} alt={''} className="md:hidden absolute inset-0 h-full w-full -z-[1]"/>
-
+            <Image src={smallBg} alt={''} className="absolute inset-0 -z-[1] h-full w-full md:hidden" />
 
             {/* <Conditions /> */}
         </div>
@@ -89,37 +87,35 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
  *
  * @returns {JSX.Element} The JSX element representing the reviews section.
  */
-const Reviews = (): JSX.Element => {
+export const Reviews = (): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div
-            className="relative z-[2] mt-6 flex flex-wrap items-stretch justify-start gap-4 self-start justify-self-start md:mt-24 md:grid md:grid-cols-2 md:items-end md:rounded-[0.5rem] md:bg-white md:px-8 md:py-2 xl:mt-24">
+        <div className="relative z-[2] mt-6 flex flex-wrap items-stretch justify-start gap-4 self-start justify-self-start md:mt-24 md:grid md:grid-cols-2 md:items-end md:rounded-[0.5rem] md:bg-white md:px-8 md:py-2 xl:mt-24">
             {/* Review 1 */}
             <Link
-                href="https://www.trustpilot.com/review/my-iclinic.co.uk" title="Trustpilot all reviews"
+                href="https://www.trustpilot.com/review/my-iclinic.co.uk"
+                title="Trustpilot all reviews"
                 target="_blank"
-                className="grid grid-cols-1 place-items-center justify-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:col-start-2 md:row-start-1 md:w-full md:max-w-[19.8rem] md:place-items-start md:py-4 xl:gap-2">
+                className="grid grid-cols-1 place-items-center justify-items-center gap-4 rounded-[0.5rem] bg-white p-4 md:col-start-2 md:row-start-1 md:w-full md:max-w-[19.8rem] md:place-items-start md:py-4 xl:gap-2"
+            >
                 <span className="grid place-items-start">
-                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70}/>
+                    <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70} />
                 </span>
-                {isLoading ?
-                    <span
-                        className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                          Loading...
-                        </span> :
+                {isLoading ? (
+                    <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        Loading...
+                    </span>
+                ) : (
                     <>
-                       <span
-                           className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                           {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
-                           <span
-                               className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                        <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                            {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
+                            <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                                 reviews
                             </span>
                         </span>
                     </>
-                }
-
+                )}
             </Link>
 
             {/* Review 2 */}
@@ -127,19 +123,17 @@ const Reviews = (): JSX.Element => {
                 href="https://www.google.com/search?q=my-iclinic+reviews&rlz=1C1UEAD_enBD1046BD1046&oq=my-iclinic+reviews&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIGCAEQIxgnMggIAhAAGBYYHjIICAMQABgWGB4yDQgEEAAYhgMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg1NjQ0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x487619c2c545175b:0x38f89f9a0ceedc3f,1"
                 target="_blank"
                 title="All google reviews"
-                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-start md:gap-0 md:py-4 ">
+                className="grid grid-cols-[auto_1fr] items-center justify-start gap-2 rounded-[0.5rem] bg-white p-4 md:w-full md:max-w-[19.8rem] md:grid-cols-[auto_auto] md:justify-start md:gap-0 md:py-4 "
+            >
                 <span className="grid place-items-center">
-                    <FcGoogle className="h-[2.4rem] w-[2.4rem]"/>
+                    <FcGoogle className="h-[2.4rem] w-[2.4rem]" />
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span
-                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     4.9 | 73{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
