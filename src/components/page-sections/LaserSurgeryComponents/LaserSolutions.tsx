@@ -10,7 +10,7 @@ interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section3'> {}
  *
  * @returns {JSX.Element} The rendered LaserSolutions component.
  */
-const LaserSolutions = ({section3}: Props): JSX.Element => {
+const LaserSolutions = ({ section3 }: Props): JSX.Element => {
     return (
         <Section className="px-8">
             <Container className="grid items-center gap-12 pb-12 overflow-hidden relative rounded-radius2 bg-[#003E79] !px-0 lg:min-h-[47rem]">
@@ -19,7 +19,7 @@ const LaserSolutions = ({section3}: Props): JSX.Element => {
                     <h2 className="w-full max-w-[55rem] normal-case text-white font-latoExtraBold">{section3.heading || 'Laser solutions'}</h2>
 
                     <div className="col-start-1 col-span-2 grid gap-6 max-w-[70rem]">
-						{section3?.descriptions?.length && section3.descriptions.map((item, key) => <p key={key} className="text-white" dangerouslySetInnerHTML={{__html: item}}></p>)}
+						{section3?.descriptions?.length && section3.descriptions.map((item, key) => <p key={key} className="text-white" dangerouslySetInnerHTML={{ __html: item }}></p>)}
                     </div>
                 </div>
 

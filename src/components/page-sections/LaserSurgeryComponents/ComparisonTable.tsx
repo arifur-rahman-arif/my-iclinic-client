@@ -13,7 +13,7 @@ interface Props {
  *
  * @returns {*}  {JSX.Element}
  */
-const ComparisonTable = ({heading}: Props): JSX.Element => {
+const ComparisonTable = ({ heading }: Props): JSX.Element => {
   return (
 	<Section id='comparison-table'>
 		<Container className='grid gap-12 content-start'>
@@ -42,7 +42,7 @@ const ComparisonTable = ({heading}: Props): JSX.Element => {
 			</div>
 		</Container>
 	</Section>
-  )
-}
+  );
+};
 
 export default ComparisonTable;

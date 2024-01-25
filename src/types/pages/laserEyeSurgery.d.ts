@@ -62,4 +62,13 @@ export default interface LaserEyeSurgeryContentInterface {
             column4: string
         }>
     }
+
+    // Benefits Of Laser Eye Surgery
+    section11: {
+        heading: string;
+        list: Array<{
+            title: string;
+            description: string;
+        }>
+    }
 }
