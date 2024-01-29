@@ -73,7 +73,7 @@ const ConsultationButtons = ({
             <Tooltip
                 showTooltip={showTooltip}
                 type="clickable"
-                className="min-w-[22rem]"
+                className="min-w-[23rem]"
                 arrowClassName="border-b-white"
                 text={
                     <>
