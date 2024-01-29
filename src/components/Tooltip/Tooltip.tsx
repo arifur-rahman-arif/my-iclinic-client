@@ -7,6 +7,7 @@ interface TooltipProps {
     className?: string;
     arrowClassName?: string;
     showTooltip?: boolean;
+    type?: 'hover' | 'clickable';
 }
 
 /**
@@ -18,7 +19,7 @@ interface TooltipProps {
  * @param {React.ReactNode} props.children - The wrapped elements that trigger the tooltip on hover.
  * @returns {React.ReactNode} The Tooltip component.
  */
-const Tooltip = ({ text, className, children, arrowClassName, showTooltip }: TooltipProps) => {
+const Tooltip = ({ text, className, children, arrowClassName, showTooltip, type = 'hover' }: TooltipProps) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -35,12 +36,16 @@ const Tooltip = ({ text, className, children, arrowClassName, showTooltip }: Too
         <div
             className={`relative ${styles.styles}`}
             onMouseEnter={() => {
-                tooltipRef.current?.classList.remove('hide');
-                tooltipRef.current?.classList.add('show');
+                if (type === 'hover') {
+                    tooltipRef.current?.classList.remove('hide');
+                    tooltipRef.current?.classList.add('show');
+                }
             }}
             onMouseLeave={() => {
-                tooltipRef.current?.classList.remove('show');
-                tooltipRef.current?.classList.add('hide');
+                if (type === 'hover') {
+                    tooltipRef.current?.classList.remove('show');
+                    tooltipRef.current?.classList.add('hide');
+                }
             }}
         >
             <div>{children}</div>

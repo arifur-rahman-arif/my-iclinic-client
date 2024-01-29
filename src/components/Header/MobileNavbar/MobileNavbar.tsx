@@ -120,29 +120,26 @@ interface ConsultationButtonsProps {
 const ConsultationButtons = ({ setOpenMobileMenu }: ConsultationButtonsProps): JSX.Element => {
     return (
         <div className="flex items-center justify-center gap-6" onClick={() => setOpenMobileMenu(false)}>
-            <div>
-                <BookConsultation
-                    buttonClassName="flex items-center justify-center gap-4 bg-[#09F] text-white font-mulishBold py-4 px-10 rounded-[0.5rem]"
-                    modalElement={
-                        <>
-                            <iframe
-                                src="https://calendly.com/myiclinic/free_visioncorrection_consultation"
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
+            <div onClick={() => setOpenMobileMenu(false)}>
+                <Link
+                    href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=130874"
+                    target="_blank"
+                    title="Free screening"
+                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] py-4 px-4 font-mulishBold text-white xs:px-10"
                 >
-                    <button>Free screening</button>
-                </BookConsultation>
+                    Free screening
+                </Link>
             </div>
 
             <div onClick={() => setOpenMobileMenu(false)}>
-                <BookConsultation buttonClassName="flex items-center justify-center gap-4 bg-[#09F] text-white font-mulishBold py-4 px-10 rounded-[0.5rem]">
-                    <button>Free consultation</button>
-                </BookConsultation>
+                <Link
+                    target="_blank"
+                    title="Talk to an advisor"
+                    href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=125172"
+                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] py-4 px-4 font-mulishBold text-white xs:px-10"
+                >
+                    Talk to an advisor
+                </Link>
             </div>
         </div>
     );

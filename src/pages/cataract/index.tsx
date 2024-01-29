@@ -4,6 +4,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
+    BookConsultation,
     CtaSection,
     CtaSection2,
     FinanceExtra,
@@ -21,7 +22,6 @@ import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
 import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
 import MastheadImageMedium from '@/masthead/masthead-cataract.png';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
-import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import Cta6 from '@/page-sections/SectionParts/Cta6';
 import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
 import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
@@ -59,7 +59,8 @@ const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-compo
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {}
+interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {
+}
 
 interface CataractProps {
     iclTreatments: TreatmentInterface[];
@@ -93,60 +94,60 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                  ...item,
-                  mobileImage: (
-                      <Image
-                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
-                          width={390}
-                          height={390}
-                          quality={70}
-                          className="rounded-primary md:hidden"
-                          alt=""
-                      />
-                  ),
-                  desktopImage: (
-                      <Image
-                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
-                          width={695}
-                          height={580}
-                          quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                          alt=""
-                      />
-                  ),
-                  title: item?.title,
-                  descriptions: stringArrayToElementArray(item?.descriptions)
-              })
-          )
+            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                ...item,
+                mobileImage: (
+                    <Image
+                        src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                        width={390}
+                        height={390}
+                        quality={70}
+                        className="rounded-primary md:hidden"
+                        alt=""
+                    />
+                ),
+                desktopImage: (
+                    <Image
+                        src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                        width={695}
+                        height={580}
+                        quality={70}
+                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                        alt=""
+                    />
+                ),
+                title: item?.title,
+                descriptions: stringArrayToElementArray(item?.descriptions)
+            })
+        )
         : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
+                return {
+                    ...service,
+                    title: service?.title,
+                    name: service?.name,
+                    description: service?.description
+                };
+            })
             : null;
     const InfoCardsdata =
         Array.isArray(data?.InfoCards) && data.InfoCards.length > 0
             ? data.InfoCards.map(
-                  (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
-                      return {
-                          image: {
-                              url: service.image || '/images/section-images/card-improved-vision.png'
-                          },
-                          title: service.title || 'Improved Vision',
-                          description: service.content?.length ? service.content : undefined,
-                          list: service.bulletpoints?.length ? service.bulletpoints : undefined
-                      };
-                  }
-              )
+                (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
+                    return {
+                        image: {
+                            url: service.image || '/images/section-images/card-improved-vision.png'
+                        },
+                        title: service.title || 'Improved Vision',
+                        description: service.content?.length ? service.content : undefined,
+                        list: service.bulletpoints?.length ? service.bulletpoints : undefined
+                    };
+                }
+            )
             : null;
 
     return (
@@ -165,12 +166,23 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                 trustPilotReviews={data?.trustpilot_reviews}
                 bannerClassName="lg:gap-12"
                 suitabilityButton={
-                    <div className="grid gap-6">
-                        <FinanceCalculatorButton title1ClassName="text-brand" />
-                        <MastheadCtaButtons
-                            button1Class="hover:!border-[#003E79] !border-2"
-                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
-                        />
+                    <div className="mt-4 grid gap-6">
+                        {/* <FinanceCalculatorButton title1ClassName="text-brand" /> */}
+
+                        <div className="flex flex-wrap items-center justify-start gap-4">
+                            <BookConsultation
+                                buttonClassName="sitemap-link text-center hover:!border-[#003E79] !border-2">
+                                <Button2 type="button" text="Make an enquiry" />
+                            </BookConsultation>
+
+                            {/* <Button2
+                                type="anchor"
+                                text="FREE suitability check"
+                                link="/suitability-check"
+                                title="FREE suitability check"
+                                className="sitemap-link justify-self-start border-white border-[#003E79] bg-transparent text-center text-white text-[#003E79] hover:border-white hover:!border-[#003E79] hover:!bg-[#003E79] hover:text-white"
+                            /> */}
+                        </div>
                     </div>
                 }
             />
@@ -287,7 +299,8 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                             text={data?.section_4?.button_text || 'Find out more'}
                             iconPosition="right"
                             icon={
-                                <FaAngleRight className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
+                                <FaAngleRight
+                                    className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
                             }
                             className="group/button mt-6 justify-self-center md:justify-self-start"
                         />
@@ -449,27 +462,27 @@ export async function getStaticProps() {
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                              return {
-                                  ...ListData,
-                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                              };
-                          })
+                            return {
+                                ...ListData,
+                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                            };
+                        })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
+                            return {
+                                ...ListData
+                            };
+                        })
                         : [],
                     InfoCards: Array.isArray(data?.acf?.InfoCards)
                         ? data?.acf.InfoCards.map((ListData) => {
-                              return {
-                                  ...ListData,
-                                  content: convertArrayOfObjectsToStrings(ListData?.content),
-                                  bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
-                              };
-                          })
+                            return {
+                                ...ListData,
+                                content: convertArrayOfObjectsToStrings(ListData?.content),
+                                bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
+                            };
+                        })
                         : [],
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam

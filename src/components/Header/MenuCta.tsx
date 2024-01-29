@@ -1,4 +1,5 @@
 // import { BookConsultation } from '@/page-sections/index';
+import { BookConsultation } from '@/components/page-sections';
 import Link from 'next/link';
 import { Dispatch, SetStateAction } from 'react';
 import { HiOutlineArrowSmRight } from 'react-icons/hi';
@@ -70,7 +71,32 @@ const MenuCta = ({ setOpenMobileMenu, className, centerText }: MenuCtaProps): JS
                     maxWidth="70rem"
                 >
                 </BookConsultation> */}
-                <Link
+                {/*
+                <BookConsultation buttonClassName={`flex w-full items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
+                        centerText ? 'justify-center' : 'justify-start'
+                    }`}>
+                    <button>
+                        <Image src="/images/icons/icon-consultation.svg" alt="" width={40} height={40} />
+                        <span className="font-mulishBold text-white">Consultation</span>
+                    </button>
+                </BookConsultation> */}
+
+                <BookConsultation
+                    // target="_blank"
+                    // href="https://connect.pabau.com/bookings.php?compid=11842"
+                    // title="Free screening"
+                    buttonClassName={`flex w-full items-center gap-6 font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-white ${
+                        centerText ? 'justify-center' : 'justify-start'
+                    }`}
+                >
+                    <button>
+                        Consultation
+                        <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
+                            <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
+                        </span>
+                    </button>
+                </BookConsultation>
+                {/* <Link
                     target="_blank"
                     href="https://connect.pabau.com/bookings.php?compid=11842"
                     title="Free screening"
@@ -82,7 +108,7 @@ const MenuCta = ({ setOpenMobileMenu, className, centerText }: MenuCtaProps): JS
                     <span className="grid h-[3.2rem] w-[3.2rem] place-items-center rounded-full bg-white">
                         <HiOutlineArrowSmRight className="h-10 w-10 stroke-[#0099FF]" />
                     </span>
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
