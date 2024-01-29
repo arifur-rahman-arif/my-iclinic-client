@@ -134,11 +134,11 @@ const ConsultationButtons = ({ setOpenMobileMenu }: ConsultationButtonsProps): J
             <div onClick={() => setOpenMobileMenu(false)}>
                 <Link
                     target="_blank"
-                    title="Talk to an advisor"
+                    title="Private consultation"
                     href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=125172"
                     className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] py-4 px-4 font-mulishBold text-white xs:px-10"
                 >
-                    Talk to an advisor
+                    Private consultation
                 </Link>
             </div>
         </div>

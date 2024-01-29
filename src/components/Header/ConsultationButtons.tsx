@@ -95,14 +95,14 @@ const ConsultationButtons = ({
                             <Link
                                 className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-60"
                                 target="_blank"
-                                title="Talk to an advisor"
+                                title="Private consultation"
                                 href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=125172"
                             >
                                  <span
                                      className="h-6 w-6 block border-secondary border-solid border-[0.3rem] rounded-full"></span>
                                 {/* <Image src="/images/icons/icon-consultation.svg" alt="" width={40} height={40} /> */}
                                 <span className={twMerge('font-mulishBold', consultationTextClassName)}>
-                                    Talk to an advisor
+                                    Private consultation
                                 </span>
                             </Link>
                         </div>
