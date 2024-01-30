@@ -9,7 +9,8 @@ import styles from '../IclComponents/styles/EyeCare.module.scss';
 import { useOnScreen } from '@/hooks';
 import { useRef } from 'react';
 
-interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section2'> {}
+interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section2'> {
+}
 
 /**
  * Component to display treatment prices.
@@ -25,8 +26,8 @@ const TreatmentPrices = ({ section2 }: Props) => {
     return (
         <Section id="treatment-prices">
             <Container ref={containerRef} className={`flex flex-wrap items-center justify-center gap-8 ${
-                        onEnter && styles.styles
-                    }`}>
+                onEnter && styles.styles
+            }`}>
                 {section2?.length && section2.map((card, key) => <Card key={key} {...card} />)}
             </Container>
         </Section>
@@ -47,8 +48,9 @@ interface CardProps {
  */
 const Card = ({ title, description, price }: CardProps) => {
     return (
-        <div className="grid translate-y-12 opacity-0 max-w-[29.5rem] content-start gap-12 rounded-radius2 border border-solid border-[#EAECF0] p-10 shadow-md transition-all duration-500 hover:shadow-shadow1">
-            <h5 className="font-latoBold text-[2.4rem] uppercase leading-[3.2rem] text-heading">{title}</h5>
+        <div
+            className="grid translate-y-12 opacity-0 max-w-[29.5rem] content-start gap-12 rounded-radius2 border border-solid border-[#EAECF0] p-10 shadow-md transition-all duration-500 hover:shadow-shadow1">
+            <h5 className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] text-heading">{title}</h5>
             <p dangerouslySetInnerHTML={{ __html: description }} className="-mt-10 font-mulishBold text-[#293C4E]"></p>
             <div className="flex items-center justify-between gap-12 rounded-radius2 bg-[#E1F1FF] p-6">
                 <span className="font-latoBold text-[2rem] leading-[2.4rem]">From £{price}</span>
@@ -56,8 +58,8 @@ const Card = ({ title, description, price }: CardProps) => {
             </div>
             <div className="grid grid-cols-[auto_1fr] items-center gap-8">
                 <Tooltip text={
-                    <span className='whitespace-nowrap font-mulishBold'>Book a free consultation</span>
-                } className='p-4'>
+                    <span className="whitespace-nowrap font-mulishBold">Book a free consultation</span>
+                } className="p-4">
                     <Link
                         href="https://connect.pabau.com/bookings.php?compid=11842"
                         target="_blank"
