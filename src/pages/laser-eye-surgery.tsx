@@ -1,7 +1,7 @@
 import Page from '@/components/Page';
 import TripleWinSection from '@/components/page-sections/HomePage/TripleWinSection';
 import BenefitsOfLaserEyeSurgery from '@/components/page-sections/LaserSurgeryComponents/BenefitsOfLaserEyeSurgery';
-import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
+// import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
 import ConsultationSection from '@/components/page-sections/LaserSurgeryComponents/ConsultationSection';
 import LaserBenefits from '@/components/page-sections/LaserSurgeryComponents/LaserBenefits';
 import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/LaserSolutions';
@@ -14,7 +14,8 @@ import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers'
 import { stripInitialTags } from '@/utils/miscellaneous';
 import React from 'react';
 
-interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {}
+interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {
+}
 
 interface IclProps {
     seo: any;
@@ -31,18 +32,6 @@ interface IclProps {
 export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX.Element {
     const heading = data?.masthead_heading || 'Laser Eye Surgery';
     const subheading = data?.masthead_subheading || 'Reducing or eliminating the need for glasses or contact lenses';
-
-    // const reviewSliderData: any =
-    //     Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-    //         ? data.reviewSlider.map((service) => {
-    //               return {
-    //                   ...service,
-    //                   description: service?.description,
-    //                   name: service?.name,
-    //                   title: service?.title
-    //               };
-    //           })
-    //         : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
@@ -141,9 +130,10 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 }}
             />
 
-            <ComparisonTable heading="Let`s compare our service with other clinics" />
+            {/* <ComparisonTable table={data?.section10?.table} */}
+            {/*                  heading={data?.section10?.heading || 'Let`s compare our service with other clinics'} /> */}
 
-            <ComparisonTable heading="How much you save with us" />
+            {/* <ComparisonTable heading="How much you save with us" /> */}
 
             <TripleWinSection />
 

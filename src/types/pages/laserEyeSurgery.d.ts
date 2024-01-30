@@ -1,4 +1,3 @@
-import { BeneficialItemsProps } from '@/page-sections/IclComponents/VisionBenefits';
 import { ImageType3 } from '@/types';
 
 type SurgerySection = {
@@ -8,12 +7,17 @@ type SurgerySection = {
     link: string;
 }
 
+export interface ComparisonTable {
+    name: string;
+    tableRows: any;
+}
+
 export default interface LaserEyeSurgeryContentInterface {
     //	London’s best treatment
-	masthead: {
+    masthead: {
         heading: string;
         subheading: string;
-		priceText: string;	
+        priceText: string;
         image: ImageType3,
     };
     // Laser Benefits
@@ -51,21 +55,17 @@ export default interface LaserEyeSurgeryContentInterface {
     section8: SurgerySection,
     // PTK
     section9: SurgerySection,
-
+    
     // Comparison table
     section10: {
         heading: string;
-        table: Array<{
-            column1: string
-            column2: string
-            column3: string
-            column4: string
-        }>
+        table: ComparisonTable[];
     }
-
+    
     // Benefits Of Laser Eye Surgery
     section11: {
         heading: string;
+        
         list: Array<{
             title: string;
             description: string;
