@@ -62,6 +62,12 @@ export default interface LaserEyeSurgeryContentInterface {
         table: ComparisonTable[];
     }
     
+    // Comparison table
+    section12: {
+        heading: string;
+        table: ComparisonTable[];
+    }
+    
     // Benefits Of Laser Eye Surgery
     section11: {
         heading: string;

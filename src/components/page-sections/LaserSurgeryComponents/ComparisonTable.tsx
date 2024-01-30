@@ -1,6 +1,8 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
+import { stripInitialTags } from '@/utils/miscellaneous';
+import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import styles from './styles/ComparisonTable.module.scss';
 
@@ -26,7 +28,10 @@ const ComparisonTable = ({ heading, table }: Props): JSX.Element => {
                     <table className={`${styles.styles} min-w-[80rem]`}>
                         <thead className="">
                         <tr>
-                            {table[0].tableRows.map((item: any, key: any) => <th key={key}>{item.value}</th>)}
+                            {table[0].tableRows.map((item: any, key: any) =>
+                                <th key={key}
+                                    dangerouslySetInnerHTML={{ __html: stripInitialTags(item.value) }}></th>
+                            )}
                         </tr>
                         </thead>
                         <tbody>
@@ -36,7 +41,7 @@ const ComparisonTable = ({ heading, table }: Props): JSX.Element => {
                                 {row.tableRows.map((item: any, index: any) =>
                                     <td key={index}>{item.value === '1' ?
                                         <Image src="/images/icons/icon-tick-light.svg" alt="tick" width={24}
-                                               height={24} /> : item.value}</td>
+                                               height={24} /> : HTMLReactParser(stripInitialTags(item.value))}</td>
                                 )}
                             </tr>
                         ))}

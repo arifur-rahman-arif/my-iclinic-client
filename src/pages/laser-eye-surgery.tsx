@@ -1,7 +1,7 @@
 import Page from '@/components/Page';
 import TripleWinSection from '@/components/page-sections/HomePage/TripleWinSection';
 import BenefitsOfLaserEyeSurgery from '@/components/page-sections/LaserSurgeryComponents/BenefitsOfLaserEyeSurgery';
-// import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
+import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
 import ConsultationSection from '@/components/page-sections/LaserSurgeryComponents/ConsultationSection';
 import LaserBenefits from '@/components/page-sections/LaserSurgeryComponents/LaserBenefits';
 import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/LaserSolutions';
@@ -133,7 +133,8 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
             {/* <ComparisonTable table={data?.section10?.table} */}
             {/*                  heading={data?.section10?.heading || 'Let`s compare our service with other clinics'} /> */}
 
-            {/* <ComparisonTable heading="How much you save with us" /> */}
+            <ComparisonTable table={data?.section12?.table}
+                             heading={data?.section12?.heading || 'How much you save with us'} />
 
             <TripleWinSection />
 
