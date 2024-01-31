@@ -6,7 +6,8 @@ import { Reviews } from '@/components/page-sections/Masthead/MastheadOphthalmolo
 import { LaserEyeSurgeryContentInterface } from '@/types';
 import { BookConsultation } from '@/components/page-sections';
 
-interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {}
+interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {
+}
 
 /**
  * `MastheadLaserEyeSurgery` is a React functional component that represents the masthead
@@ -24,7 +25,8 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 linkClassName="text-white"
             />
 
-            <div className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div
+                className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 <Reviews />
 
                 <h1 className="max-w-[43rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
@@ -50,7 +52,7 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 <div className="mt-12 grid justify-items-center gap-10 md:justify-items-start">
                     <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
                         <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white">
-                            <Button2 type="button" text="FREE consolation" />
+                            <Button2 type="button" text="FREE consultation" />
                         </BookConsultation>
 
                         <Button2
