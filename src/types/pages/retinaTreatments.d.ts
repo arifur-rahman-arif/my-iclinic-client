@@ -1,17 +1,10 @@
-type Image = {
-    src: string;
-    url?: string;
-    width: number;
-    height: number;
-    alt: string;
-}
-
+import { ImageType3 } from '@/types';
 
 export default interface RetinaTreatmentsContents {
     masthead: {
         heading: string;
         subheading: string;
-        image: Image,
+        image: ImageType3,
     };
     // My-iClinic ophthalmologists are medical doctors
     section1: {
@@ -53,16 +46,16 @@ export default interface RetinaTreatmentsContents {
         heading: string;
         descriptions: string[];
         subheading: string;
-        image: Image
-        largeImage: Image;
+        image: ImageType3
+        largeImage: ImageType3;
     };
     // Macular Hole
     section6: {
         heading: string;
         descriptions: string[];
         subheading: string;
-        image: Image
-        largeImage: Image;
+        image: ImageType3
+        largeImage: ImageType3;
     };
     // Epiretinal Membrane
     section7: {
@@ -76,8 +69,8 @@ export default interface RetinaTreatmentsContents {
         heading: string;
         descriptions: string[];
         subheading: string;
-        image: Image
-        largeImage: Image;
+        image: ImageType3
+        largeImage: ImageType3;
     };
     // Your eyes deserve it.
     section9: {

@@ -33,7 +33,8 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         <Tooltip
                             text={
                                 <div className="px-6 py-3">
-                                    <span className="whitespace-nowrap font-mulishBold text-[1.8rem] leading-[2.4rem] text-heading">
+                                    <span
+                                        className="whitespace-nowrap font-mulishBold text-[1.8rem] leading-[2.4rem] text-heading">
                                         960 High Rd, London N12 9RY
                                     </span>
                                 </div>
@@ -62,7 +63,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         >
                             <Image src="/images/icons/icon-phone-white.svg" alt="Location" width={18} height={18} />
                             <span className="hidden font-mulishBold leading-[2.4rem] text-white md:block">
-                                +44 208 445 8877
+                                +44 0208 445 8877
                             </span>
                         </Link>
                     </li>
@@ -78,7 +79,8 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                     >
                         Articles
                         {router.pathname === '/contact-us' && (
-                            <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                            <span
+                                className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                         )}
                     </Link>
 
@@ -93,7 +95,8 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                     >
                         Contact us
                         {router.pathname === '/contact-us' && (
-                            <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                            <span
+                                className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                         )}
                     </Link>
 

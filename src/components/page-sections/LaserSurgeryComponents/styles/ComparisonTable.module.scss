@@ -1,0 +1,59 @@
+.styles {
+  width: 100%;
+  
+  :global {
+	th {
+	  background: #e1f1ff;
+	  color: var(--color-heading);
+	  font-family: var(--lato-bold);
+	  font-size: 2.4rem;
+	  line-height: 3.2rem;
+	  padding: 1.5rem;
+	  width: 25%;
+	}
+	
+	th:first-child {
+	  border-radius: 1rem 0 0 1rem;
+	}
+	
+	th:last-child {
+	  padding-right: 1.5rem;
+	  border-radius: 0 1rem 1rem 0;
+	}
+	
+	th {
+	  text-align: left;
+	}
+	
+	tbody {
+	  td {
+		text-align: left;
+		padding-top: 3rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		
+		a {
+		  font-family: var(--mulish-bold);
+		  transition: all .5s ease-in-out;
+		  color: var(--color-blue);
+		  
+		  &:hover {
+			text-decoration: underline;
+		  }
+		}
+	  }
+	  
+	  tr {
+		td:first-child {
+		  text-align: left;
+		  padding-left: 1.5rem;
+		}
+		
+		td:first-child {
+		  padding-right: 1.5rem;
+		}
+	  }
+	}
+	
+  }
+}

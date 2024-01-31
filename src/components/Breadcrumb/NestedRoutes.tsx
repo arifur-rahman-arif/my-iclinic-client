@@ -18,7 +18,7 @@ interface NestedRoutesProps {
  * @constructor
  */
 const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProps): JSX.Element => {
-    const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing', '/laser-eye-surgery'];
+    const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing'];
     const paths = generateBreadcrumbs(router);
 
     return (

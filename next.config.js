@@ -948,11 +948,6 @@ const nextConfig = {
                 permanent: true
             },
             {
-                source: '/laser-eye-surgery',
-                destination: '/lasik-london',
-                permanent: true
-            },
-            {
                 source: '/lp-laser-eye-surgery',
                 destination: '/lasek-prk',
                 permanent: true
