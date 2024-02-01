@@ -44,10 +44,16 @@ export const navMenuList: NavMenuType[] = [
     },
     {
         name: 'Laser eye surgery',
-        url: '/vision-correction',
-        slug: 'vision-correction',
+        url: '/laser-eye-surgery',
+        slug: 'laser-eye-surgery',
         subMenuOpen: false,
         submenu: [
+            {
+                name: 'All Laser Surgeries',
+                url: '/laser-eye-surgery',
+                slug: 'laser-eye-surgery',
+                metaDescription: 'Advanced procedures for precise vision correction.'
+            },
             {
                 name: 'ReLEx SMILE',
                 url: '/relex-smile-london',
@@ -139,7 +145,7 @@ export const navMenuList: NavMenuType[] = [
                         name: 'Keratoconus',
                         url: '/keratoconus',
                         slug: 'keratoconus',
-                        metaDescription: "Keratoconus treatment with London's leading cornea specialists"
+                        metaDescription: 'Keratoconus treatment with London\'s leading cornea specialists'
                     },
                     {
                         name: 'Blepharitis',
@@ -150,7 +156,7 @@ export const navMenuList: NavMenuType[] = [
                 ]
             },
             {
-                name: "Children's Eyes",
+                name: 'Children\'s Eyes',
                 url: '/childrens-eyes',
                 slug: 'childrens-eyes',
                 submenu: [
