@@ -66,13 +66,13 @@ const Card = ({ title, description, price }: CardProps) => {
                         className="block grid h-full place-items-center rounded-radius2 bg-[#E1F1FF] p-6"
                     >
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_14330_197)">
+                            <g clipPath="url(#clip0_14330_197)">
                                 <path
                                     d="M3.07171 3.42859C2.61704 3.42859 2.18102 3.60921 1.85952 3.93069C1.53803 4.25218 1.35742 4.68821 1.35742 5.14287V21.4286C1.35742 21.8832 1.53803 22.3193 1.85952 22.6408C2.18102 22.9622 2.61704 23.1429 3.07171 23.1429H21.9288C22.3835 23.1429 22.8196 22.9622 23.141 22.6408C23.4624 22.3193 23.6431 21.8832 23.6431 21.4286V5.14287C23.6431 4.68821 23.4624 4.25218 23.141 3.93069C22.8196 3.60921 22.3835 3.42859 21.9288 3.42859H18.5003"
                                     stroke="#003E79"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                 />
                                 <path
                                     d="M6.5 0.857178V6.00003"

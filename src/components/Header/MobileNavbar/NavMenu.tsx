@@ -55,7 +55,8 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                         ))}
                                     </div>
                                 )}
-                                {menu.slug === 'vision-correction' && (
+
+                                {menu.slug === 'laser-eye-surgery' && (
                                     <div className="mt-4 grid">
                                         {menu.submenu?.map((menu, i) => (
                                             <SubMenuLink
@@ -272,7 +273,8 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu, appCtx, index }: Pare
                     {menu.name}
 
                     {isMenuActive && (
-                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
+                        <span
+                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
                     )}
                 </Link>
             )}

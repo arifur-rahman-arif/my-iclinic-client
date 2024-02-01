@@ -1,6 +1,6 @@
 import { Button2 } from '@/components/Buttons';
 import { useReviewHook } from '@/hooks';
-import { BookConsultation } from '@/page-sections/index';
+// import { BookConsultation } from '@/page-sections/index';
 import { ImageType3 } from '@/types';
 import smallBg from '@/section-images/icl-small-bg.png';
 import largeBg from '@/section-images/icl-masthead-bg.png';
@@ -77,21 +77,21 @@ const defaultCardList = [
  * @returns {JSX.Element} - The MastheadICL component JSX representation.
  */
 const MastheadICL = ({
-    title,
-    largeImage,
-    smallImage,
-    priceText,
-    financeText,
-    reviewsText,
-    cardList
-}: MastheadICLProps): JSX.Element => {
+                         title,
+                         largeImage,
+                         smallImage,
+                         priceText,
+                         financeText,
+                         reviewsText,
+                         cardList
+                     }: MastheadICLProps): JSX.Element => {
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
-              title: card.title || defaultCardList[index].title,
-              description: card.description || defaultCardList[index].description,
-              className: card.className || defaultCardList[index].className
-          }))
+            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+            title: card.title || defaultCardList[index].title,
+            description: card.description || defaultCardList[index].description,
+            className: card.className || defaultCardList[index].className
+        }))
         : defaultCardList;
 
     return (
@@ -128,10 +128,12 @@ const MastheadICL = ({
                         ></h1>
 
                         <div className="-mt-6 grid items-center gap-x-8 gap-y-12 md:mt-0 md:grid-cols-[auto_1fr]">
-                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span
+                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
-                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span
+                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
 
@@ -197,11 +199,12 @@ interface ReviewsProps {
  * @param {ReviewsProps} props - The properties passed to the Reviews component.
  * @returns {JSX.Element} - The Reviews component JSX representation.
  */
-const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
+const Reviews = ({ google }: ReviewsProps): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
+        <div
+            className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
             <Link
                 href="https://www.trustpilot.com/review/my-iclinic.co.uk"
@@ -217,12 +220,15 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
                     <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24} />
                 ) : (
                     <>
-                        <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                        <span
+                            className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
                             Trustpilot
                         </span>
-                        <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        <span
+                            className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                             {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
-                            <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                            <span
+                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                                 reviews
                             </span>
                         </span>
@@ -240,12 +246,15 @@ const Reviews = ({ google, trustpilot }: ReviewsProps): JSX.Element => {
                 <span className="grid place-items-center">
                     <FcGoogle className="h-[2rem] w-[2rem]" />
                 </span>
-                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span
+                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span
+                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {google}{' '}
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span
+                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
@@ -271,18 +280,17 @@ interface MastheadCtaButtonsProps {
 export const MastheadCtaButtons = ({ className, button1Class, button2Class }: MastheadCtaButtonsProps): JSX.Element => {
     return (
         <div className={twMerge('flex flex-wrap items-center justify-start gap-4', className)}>
-            <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}>
-                <Button2 type="button" text="FREE Consultation" />
-            </BookConsultation>
-
+            {/* <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}> */}
+            {/*     <Button2 type="button" text="FREE Consultation" /> */}
+            {/* </BookConsultation> */}
             <Button2
                 type="anchor"
                 text="FREE suitability check"
                 link="/suitability-check"
                 title="FREE suitability check"
                 className={twMerge(
-                    'sitemap-link justify-self-start border-white bg-transparent text-center text-white hover:border-white',
-                    button2Class
+                    'sitemap-link text-center hover:!border-white',
+                    button1Class
                 )}
             />
         </div>
@@ -301,9 +309,9 @@ interface FinanceCalculatorButtonProps {
  * @constructor
  */
 export const FinanceCalculatorButton = ({
-    title2ClassName,
-    title1ClassName
-}: FinanceCalculatorButtonProps): JSX.Element => {
+                                            title2ClassName,
+                                            title1ClassName
+                                        }: FinanceCalculatorButtonProps): JSX.Element => {
     return (
         <button
             title="Finance Calculator"

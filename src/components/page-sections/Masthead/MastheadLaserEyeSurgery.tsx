@@ -4,7 +4,8 @@ import mastheadImage from '@/masthead/masthead-laser-eye-surgery.png';
 import Image from 'next/image';
 import { Reviews } from '@/components/page-sections/Masthead/MastheadOphthalmologyClinic';
 import { LaserEyeSurgeryContentInterface } from '@/types';
-import { BookConsultation } from '@/components/page-sections';
+
+// import { BookConsultation } from '@/components/page-sections';
 
 interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {
 }
@@ -51,16 +52,15 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
 
                 <div className="mt-12 grid justify-items-center gap-10 md:justify-items-start">
                     <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
-                        <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white">
-                            <Button2 type="button" text="FREE consultation" />
-                        </BookConsultation>
-
+                        {/* <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white"> */}
+                        {/*     <Button2 type="button" text="FREE consultation" /> */}
+                        {/* </BookConsultation> */}
                         <Button2
                             type="anchor"
                             text="Affordable options"
                             link="/pricing-and-financing/financing-your-treatment#calculator"
                             title="Affordable options"
-                            className="sitemap-link border-white bg-transparent text-center text-white hover:border-white"
+                            className="sitemap-link text-center hover:!border-white"
                         />
                     </div>
                 </div>

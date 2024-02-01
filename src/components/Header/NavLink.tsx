@@ -45,7 +45,9 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'vision-correction' && <SubMenu router={router} submenu={menu.submenu} />}
+                    {menu.slug === 'laser-eye-surgery' &&
+                        <SubMenu className="min-w-[45rem] group-hover/menu-item:max-h-[55rem] overflow-y-auto"
+                                 router={router} submenu={menu.submenu.slice(1)} />}
 
                     {menu.slug === 'eye-treatments' && (
                         <EyeTreatments
@@ -182,14 +184,32 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                         <SpecialistMenu isMenuActive={isMenuActive} />
                     ) : (
                         <>
-                            <span
-                                className={twMerge(
-                                    'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
-                                    isMenuActive && 'text-[#9B9FA1]'
-                                )}
-                            >
+                            {menu.slug === 'laser-eye-surgery' ?
+                                <>
+                                    <Link href={menu.url} title={`${menu.name || ''}`}
+                                          className={twMerge(
+                                              'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
+                                              isMenuActive && 'text-[#9B9FA1]'
+                                          )}
+                                    >
+                                        {menu.name}
+                                    </Link>
+
+                                    {isMenuActive && (
+                                        <span
+                                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                                    )}
+                                </>
+
+                                : <span
+                                    className={twMerge(
+                                        'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
+                                        isMenuActive && 'text-[#9B9FA1]'
+                                    )}
+                                >
                                 {menu.name}
-                            </span>
+                            </span>}
+
 
                             <FaAngleDown
                                 className={twMerge(
@@ -211,7 +231,8 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     {menu.name}
 
                     {isMenuActive && (
-                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                        <span
+                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                     )}
                 </Link>
             )}

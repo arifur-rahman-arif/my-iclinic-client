@@ -10,7 +10,8 @@ import { FcGoogle } from 'react-icons/fc';
 import RetinaTreatmentsContents from 'src/types/pages/retinaTreatments';
 import styles from './Style.module.scss';
 
-interface MastheadOphthalmologyClinicProps extends Pick<RetinaTreatmentsContents, 'masthead'> {}
+interface MastheadOphthalmologyClinicProps extends Pick<RetinaTreatmentsContents, 'masthead'> {
+}
 
 /**
  * `MastheadOphthalmologyClinic` is a React functional component that represents the masthead
@@ -28,7 +29,8 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
                 linkClassName="text-white"
             />
 
-            <div className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div
+                className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 <Reviews />
 
                 <h1 className="max-w-[56rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
@@ -91,7 +93,8 @@ export const Reviews = (): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div className="relative z-[2] mt-6 flex flex-wrap items-stretch justify-start gap-4 self-start justify-self-start md:mt-24 md:grid md:grid-cols-2 md:items-end md:rounded-[0.5rem] md:bg-white md:px-8 md:py-2 xl:mt-24">
+        <div
+            className="relative z-[2] mt-6 flex flex-wrap items-stretch justify-start gap-4 self-start justify-self-start md:mt-24 md:grid md:grid-cols-2 md:items-end md:rounded-[0.5rem] md:bg-white md:px-8 md:py-2 xl:mt-24">
             {/* Review 1 */}
             <Link
                 href="https://www.trustpilot.com/review/my-iclinic.co.uk"
@@ -103,14 +106,17 @@ export const Reviews = (): JSX.Element => {
                     <Image src="/images/icons/icon-trustpilot-stars.svg" alt="" width={77} height={14} quality={70} />
                 </span>
                 {isLoading ? (
-                    <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                    <span
+                        className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                         Loading...
                     </span>
                 ) : (
                     <>
-                        <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        <span
+                            className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                             {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
-                            <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                            <span
+                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                                 reviews
                             </span>
                         </span>
@@ -128,12 +134,15 @@ export const Reviews = (): JSX.Element => {
                 <span className="grid place-items-center">
                     <FcGoogle className="h-[2.4rem] w-[2.4rem]" />
                 </span>
-                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span
+                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                    4.9 | 73{' '}
-                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span
+                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                    4.9 | 93{' '}
+                    <span
+                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>

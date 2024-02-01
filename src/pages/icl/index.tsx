@@ -49,7 +49,8 @@ const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-compo
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {}
+interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {
+}
 
 interface IclProps {
     iclTreatments: TreatmentInterface[];
@@ -71,13 +72,13 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
     const reviewSliderData: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      description: service?.description,
-                      name: service?.name,
-                      title: service?.title
-                  };
-              })
+                return {
+                    ...service,
+                    description: service?.description,
+                    name: service?.name,
+                    title: service?.title
+                };
+            })
             : null;
 
     return (
@@ -103,7 +104,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                 priceText={data?.masthead?.priceText || '£2750/Per eye'}
                 financeText={data?.masthead?.financeText || '24 months 0% finance'}
                 reviewsText={{
-                    google: '4.9 | 71',
+                    google: '4.9 | 93',
                     trustpilot: '4.8 | 315',
                     ...(data?.masthead?.reviewsText as any)
                 }}
@@ -490,10 +491,10 @@ export async function getStaticProps() {
                     },
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
+                            return {
+                                ...ListData
+                            };
+                        })
                         : []
                 }
             },
