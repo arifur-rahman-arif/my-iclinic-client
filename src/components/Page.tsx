@@ -50,9 +50,10 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                 />
 
                 {/* Meta Pixel Code */}
-                <script async
-                        dangerouslySetInnerHTML={{
-                            __html: `!function(f,b,e,v,n,t,s)
+                <script
+                    async
+                    dangerouslySetInnerHTML={{
+                        __html: `!function(f,b,e,v,n,t,s)
                     
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                         
@@ -71,13 +72,19 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                     fbq('init', '3435821386686735');
                     
                     fbq('track', 'PageView');`
-                        }}
+                    }}
                 />
-                <noscript><img alt="" height="1" width="1" style={{
-                    display: 'none'
-                }} src="https://www.facebook.com/tr?id=3435821386686735&ev=PageView&noscript=1"
-
-                /></noscript>
+                <noscript>
+                    <img
+                        alt=""
+                        height="1"
+                        width="1"
+                        style={{
+                            display: 'none'
+                        }}
+                        src="https://www.facebook.com/tr?id=3435821386686735&ev=PageView&noscript=1"
+                    />
+                </noscript>
                 {/* End Meta Pixel Code */}
 
                 {!yoastJson?.title && <title>{title}</title>}
@@ -88,6 +95,46 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 {seo && HTMLReactParser(seo)}
+
+                <script
+                    async
+                    dangerouslySetInnerHTML={{
+                        __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-970733853');`
+                    }}
+                />
+
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                             window.addEventListener('load', function() {
+                    var timer = setInterval(function() {
+                    if (document.querySelector('[title="Thank you"]')) {
+                    gtag('event', 'conversion', {
+                    'send_to': 'AW-970733853/KHfRCL_i5pEZEJ3y8M4D'
+                });
+                    clearInterval(timer);
+                }
+                    if (document.querySelector('#request-callback-thank-you').getAttributeNames().includes('data-gtm-vis-recent-on-screen11870254_61')) {
+                    gtag('event', 'conversion', {
+                    'send_to': 'AW-970733853/KHfRCL_i5pEZEJ3y8M4D'
+                });
+                    clearInterval(timer);
+                }
+                }, 1000);
+                });
+                    `
+                    }}
+                ></script>
+
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+  gtag('config', 'AW-970733853/6t8GCLr255EZEJ3y8M4D', {
+    'phone_conversion_number': '0208 445 8877'
+  });
+                    `
+                    }}
+                ></script>
             </Head>
 
             {/* Google Tag Manager (noscript) */}
@@ -103,9 +150,9 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                           `
                 }}
             />
-                {/* End Google Tag Manager (noscript) */}
+            {/* End Google Tag Manager (noscript) */}
 
-                {children}
+            {children}
         </>
     );
 };
