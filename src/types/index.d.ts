@@ -47,6 +47,7 @@ import PardiatricContentInterface from './pages/paediatric-eye';
 import PriceGlaucomaContentInterface from './pages/price-glaucoma';
 import FlashesContentInterface from './pages/flashes-floaters';
 import LaserEyeSurgeryContentInterface from './pages/laserEyeSurgery';
+import CharityPageContentInterface from './pages/charityPage';
 
 export type {
     RetinaTreatmentsContents,
@@ -99,5 +100,6 @@ export type {
     FlashesContentInterface,
     VitreoretinalSurgeryContent,
     OurSpecialistPageContent,
-    LaserEyeSurgeryContentInterface
+    LaserEyeSurgeryContentInterface,
+    CharityPageContentInterface
 };
