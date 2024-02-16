@@ -48,6 +48,12 @@ const Context = ({ children }: PropInterface): JSX.Element => {
                     url: '/translation-service',
                     slug: 'translation-service',
                     metaDescription: 'Understand your care journey with us'
+                },
+                {
+                    name: 'Charity',
+                    url: '/charity',
+                    slug: 'charity',
+                    metaDescription: 'Discover ways to make a meaningful impact through our charity initiatives.'
                 }
             ]
         },

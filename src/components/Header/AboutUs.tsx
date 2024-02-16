@@ -22,10 +22,23 @@ const AboutUs = (): JSX.Element => {
             metaDescription: 'We are passionate team of skilled ophthalmologists, optometrists,'
         },
         {
+            name: 'Complaint',
+            url: '/complaint',
+            slug: 'complaint',
+            metaDescription:
+                "Our complaints procedure outlines the steps you need to take. We're here to help you resolve any issues you may have."
+        },
+        {
             name: 'Translation Service',
             url: '/translation-service',
             slug: 'translation-service',
             metaDescription: 'Understand your care journey with us by our trusted translator partner'
+        },
+        {
+            name: 'Charity',
+            url: '/charity',
+            slug: 'charity',
+            metaDescription: 'Discover ways to make a meaningful impact through our charity initiatives.'
         }
     ];
 
@@ -54,7 +67,7 @@ const AboutUs = (): JSX.Element => {
 
             <FaAngleDown className="h-[1.6rem] w-[1.6rem] translate-y-[0.1rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]" />
 
-            <SubMenu router={router} submenu={aboutUsSubmenus} className="group-hover/menu-item:max-h-[45rem]" />
+            <SubMenu router={router} submenu={aboutUsSubmenus} className="group-hover/menu-item:max-h-[55rem]" />
         </span>
     );
 };
