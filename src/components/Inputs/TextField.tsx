@@ -2,9 +2,10 @@ import { IconButton } from '@mui/material';
 import gsap from 'gsap';
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { AiOutlineClear } from 'react-icons/ai';
+import { twMerge } from 'tailwind-merge';
 
 interface TextFieldInterface {
-    type: 'text' | 'textarea' | 'password' | 'number';
+    type: 'text' | 'textarea' | 'password' | 'number' | 'email';
     value: string | number;
     id?: string;
     placeholder: string;
@@ -39,22 +40,22 @@ interface TextFieldInterface {
  * @returns {*}  {JSX.Element}
  */
 const TextField = ({
-    type,
-    value,
-    id,
-    placeholder,
-    icon: Icon,
-    important,
-    errorText,
-    onChange,
-    onClearValue,
-    randomID,
-    rows,
-    animateInputField,
-    defaultClassName = 'h-full w-full rounded-primary border border-secondary p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
-    className,
-    placeHolderClassName
-}: TextFieldInterface): JSX.Element => {
+                       type,
+                       value,
+                       id,
+                       placeholder,
+                       icon: Icon,
+                       important,
+                       errorText,
+                       onChange,
+                       onClearValue,
+                       randomID,
+                       rows,
+                       animateInputField,
+                       defaultClassName = 'h-full w-full rounded-primary border border-secondary p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
+                       className,
+                       placeHolderClassName
+                   }: TextFieldInterface): JSX.Element => {
     const inputRef = useRef<any>(null);
     const placeholderRef = useRef<HTMLLabelElement>(null);
     const iconRef = useRef<HTMLSpanElement>(null);
@@ -81,25 +82,25 @@ const TextField = ({
     // Animate the error text
     useEffect(() => {
         errorText &&
-            errorTextRef.current &&
-            gsap.to(errorTextRef.current, {
-                transform: 'translateY(100%)',
-                duration: 0.3,
-                pointerEvents: 'auto',
-                autoAlpha: 1,
-                scale: 1,
-                ease: 'expo.inOut'
-            });
+        errorTextRef.current &&
+        gsap.to(errorTextRef.current, {
+            transform: 'translateY(100%)',
+            duration: 0.3,
+            pointerEvents: 'auto',
+            autoAlpha: 1,
+            scale: 1,
+            ease: 'expo.inOut'
+        });
 
         !errorText &&
-            errorTextRef.current &&
-            gsap.to(errorTextRef.current, {
-                transform: 'translateY(-50%)',
-                duration: 0.3,
-                autoAlpha: 0,
-                scale: 0.5,
-                ease: 'expo.inOut'
-            });
+        errorTextRef.current &&
+        gsap.to(errorTextRef.current, {
+            transform: 'translateY(-50%)',
+            duration: 0.3,
+            autoAlpha: 0,
+            scale: 0.5,
+            ease: 'expo.inOut'
+        });
     }, [errorText]);
 
     /**
@@ -120,22 +121,22 @@ const TextField = ({
     const animateInput = () => {
         // Animate the placeholder
         placeholderRef.current &&
-            gsap.to(placeholderRef.current, {
-                top: 0,
-                left: 0,
-                duration: 0.3,
-                scale: 0.8,
-                ease: 'expo.inOut'
-            });
+        gsap.to(placeholderRef.current, {
+            top: 0,
+            left: 0,
+            duration: 0.3,
+            scale: 0.8,
+            ease: 'expo.inOut'
+        });
 
         // Animate the input Icon by making the icon invisible
         iconRef.current &&
-            gsap.to(iconRef.current, {
-                opacity: 0,
-                duration: 0.3,
-                scale: 0.5,
-                ease: 'expo.inOut'
-            });
+        gsap.to(iconRef.current, {
+            opacity: 0,
+            duration: 0.3,
+            scale: 0.5,
+            ease: 'expo.inOut'
+        });
     };
 
     /**
@@ -143,32 +144,33 @@ const TextField = ({
      */
     const removeAnimation = () => {
         placeholderRef.current &&
-            gsap.to(placeholderRef.current, {
-                top: type === 'textarea' ? '3rem' : '50%',
-                left: '1.5rem',
-                duration: 0.3,
-                scale: 1,
-                ease: 'expo.inOut'
-            });
+        gsap.to(placeholderRef.current, {
+            top: type === 'textarea' ? '3rem' : '50%',
+            left: '1.5rem',
+            duration: 0.3,
+            scale: 1,
+            ease: 'expo.inOut'
+        });
 
         iconRef.current &&
-            gsap.to(iconRef.current, {
-                opacity: 1,
-                duration: 0.3,
-                scale: 1,
-                ease: 'expo.inOut'
-            });
+        gsap.to(iconRef.current, {
+            opacity: 1,
+            duration: 0.3,
+            scale: 1,
+            ease: 'expo.inOut'
+        });
     };
 
     return (
         <div className="relative h-full w-full">
-            {(type === 'text' || type === 'password') && (
+            {(type === 'text' || type === 'password' || type === 'email') && (
                 <input
                     value={value}
                     ref={inputRef}
                     type={type}
+                    name={type}
                     id={randomID ? randomString : id}
-                    className={`${defaultClassName} ${errorText ? 'border-red-500' : ''} ${className}`}
+                    className={`${twMerge(defaultClassName, `${errorText ? 'border-red-500' : ''} ${className}`)}`}
                     onFocus={(e) => {
                         animatePlaceHolder(true);
                     }}
@@ -186,7 +188,7 @@ const TextField = ({
                     ref={inputRef}
                     type={type}
                     id={randomID ? randomString : id}
-                    className={`${defaultClassName} ${className} ${errorText ? 'border-red-500' : ''}`}
+                    className={`${twMerge(defaultClassName, `${errorText ? 'border-red-500' : ''} ${className}`)}`}
                     onFocus={(e) => {
                         animatePlaceHolder(true);
                     }}
