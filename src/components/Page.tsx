@@ -114,7 +114,7 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
                 });
                     clearInterval(timer);
                 }
-                    if (document.querySelector('#request-callback-thank-you').getAttributeNames().includes('data-gtm-vis-recent-on-screen11870254_61')) {
+                    if (document.querySelector('#request-callback-thank-you')?.getAttributeNames()?.includes('data-gtm-vis-recent-on-screen11870254_61')) {
                     gtag('event', 'conversion', {
                     'send_to': 'AW-970733853/KHfRCL_i5pEZEJ3y8M4D'
                 });
