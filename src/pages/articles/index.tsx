@@ -86,7 +86,7 @@ export async function getStaticProps() {
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            revalidate: 300
         };
     } catch (error: any) {
         console.error(error);

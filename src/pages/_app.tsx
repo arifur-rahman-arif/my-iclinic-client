@@ -2,7 +2,7 @@ import store from '@/store';
 import '@/styles/globals.scss';
 import '@/styles/wordpress-variables.scss';
 
-import { Lato, Mulish } from '@next/font/google';
+import { Lato, Mulish } from 'next/font/google';
 
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
