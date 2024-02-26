@@ -1,5 +1,8 @@
+import { store } from '@/page-sections/BlogList/BlogSearch';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 
 export interface BlogCategoriesInterface {
     name: string;
@@ -8,21 +11,11 @@ export interface BlogCategoriesInterface {
 }
 
 interface FilterInterface {
-    filterList: BlogCategoriesInterface[];
-    setFilters: Dispatch<SetStateAction<BlogCategoriesInterface[]>>;
-    setCurrentPage: Dispatch<SetStateAction<number>>;
-    filterPost: ({ slug }: { slug: string }) => void;
-    setSearchValue: Dispatch<SetStateAction<string>>;
+    categories: BlogCategoriesInterface[];
 }
 
 // eslint-disable-next-line require-jsdoc
-const Filters = ({
-    filterList,
-    setFilters,
-    setCurrentPage,
-    filterPost,
-    setSearchValue
-}: FilterInterface): JSX.Element => {
+const Filters = ({ categories }: FilterInterface): JSX.Element => {
     const filterRef = useRef<HTMLDivElement | null>(null);
     // const [lastX, setLastX] = useState<number>(0);
     const [isLeftDisabled, setIsLeftDisabled] = useState<boolean>(true);
@@ -72,7 +65,7 @@ const Filters = ({
         handleMouseMove(deltaX);
     };
 
-    // Check if the buttons should be disabled on mount and when the filterList changes
+    // Check if the buttons should be disabled on mount and when the categories changes
     useEffect(() => {
         const { current } = filterRef;
 
@@ -80,32 +73,35 @@ const Filters = ({
 
         setIsLeftDisabled(true);
         setIsRightDisabled(current.scrollWidth <= current.clientWidth);
-    }, [filterList]);
+    }, [categories]);
 
-    /**
-     * Filter the posts based on the current filter slug
-     *
-     * @param {string} slug
-     * @param {number} index
-     */
-    const handleFilter = ({ slug, index }: { slug: string; index: number }): void => {
-        setSearchValue('');
-        // When a filter is clicked set the current page to 1 always
-        setCurrentPage(1);
+    // /**
+    //  * Filter the posts based on the current filter slug
+    //  *
+    //  * @param {string} slug
+    //  * @param {number} index
+    //  */
+    // const handleFilter = ({ slug, index }: { slug: string; index: number }): void => {
+    //     setSearchValue('');
+    //     // When a filter is clicked set the current page to 1 always
+    //     setCurrentPage(1);
+    //
+    //     // Set the clicked filter as active and rest of the filters are inactive
+    //     setFilters((currentFilters) => {
+    //         const tempFilters = currentFilters;
+    //
+    //         tempFilters.forEach((filters, filterIndex) => {
+    //             filters.active = index === filterIndex;
+    //         });
+    //
+    //         return tempFilters;
+    //     });
+    //
+    //     filterPost({ slug });
+    // };
 
-        // Set the clicked filter as active and rest of the filters are inactive
-        setFilters((currentFilters) => {
-            const tempFilters = currentFilters;
-
-            tempFilters.forEach((filters, filterIndex) => {
-                filters.active = index === filterIndex;
-            });
-
-            return tempFilters;
-        });
-
-        filterPost({ slug });
-    };
+    const router = useRouter();
+    const category = router.query?.slug || '';
 
     return (
         <div className="col-span-2 flex items-center justify-center gap-4 sm:gap-6">
@@ -139,16 +135,25 @@ const Filters = ({
                 // }}
             >
                 <div className="relative flex min-w-max items-center justify-center gap-8 justify-self-center py-2 md:gap-12 md:py-0">
-                    {filterList.map((filter, index) => (
-                        <button
+                    {categories.map((filter, index) => (
+                        <Link
+                            title={filter.name}
+                            href={filter.slug === 'all' ? '/articles' : `/articles/category/${filter.slug}`}
                             className={`cursor-pointer border-b-2 border-transparent font-mulishBold capitalize transition-all duration-500 hover:text-brand ${
-                                filter.active && '!border-brand'
+                                category === filter.slug && '!border-brand'
+                            } ${
+                                (router.asPath === '/articles' || router.asPath === '/articles/page/1') &&
+                                filter.slug === 'all' &&
+                                '!border-brand'
                             }`}
                             key={index}
-                            onClick={() => handleFilter({ slug: filter.slug, index })}
+                            onClick={() => {
+                                store.searchValue = '';
+                                store.articles = [];
+                            }}
                         >
                             {filter.name}
-                        </button>
+                        </Link>
                     ))}
                 </div>
             </div>

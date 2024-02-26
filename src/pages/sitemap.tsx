@@ -3,8 +3,8 @@ import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
-import { getPosts } from '@/lib';
 import SitemapSection from '@/page-sections/SiteMapSection/SitemapSection';
+import { getData } from '@/utils/apiHelpers';
 
 interface SitemapPropsI {
     articles: GeneralBlogInterface[];
@@ -93,7 +93,17 @@ export default Sitemap;
  */
 export async function getStaticProps() {
     try {
-        const articles: Array<GeneralBlogInterface> = await getPosts();
+        const apiResponse: Response = await getData({
+            url: `${process.env.CUSTOM_REST_URL}/get-posts?page=1&request-reference=sitemap`
+        });
+
+        if (apiResponse.status !== 200) {
+            throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
+        }
+
+        const { data } = await apiResponse.json();
+
+        const articles: Array<GeneralBlogInterface> = data.data;
 
         return {
             /* eslint-disable */

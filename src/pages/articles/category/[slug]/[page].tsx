@@ -1,14 +1,3 @@
-/**
- * Stop component until wordpress setup is done
- *
- * @returns {JSX.Element}
- */
-// const noComponent = () => {
-//     return <></>;
-// };
-//
-// export default noComponent;
-
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
@@ -26,6 +15,7 @@ interface BlogPageProps {
     };
     categories: BlogCategoriesInterface[];
     postsPerPageValue: number;
+    currentPage: number;
     seo: any;
     yoastJson: any;
 }
@@ -38,7 +28,14 @@ interface BlogPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Blogs({ posts, categories, postsPerPageValue, seo, yoastJson }: BlogPageProps): JSX.Element {
+export default function Category({
+    posts,
+    categories,
+    postsPerPageValue,
+    currentPage,
+    seo,
+    yoastJson
+}: BlogPageProps): JSX.Element {
     return (
         <Page title="Articles" description="List of all blogs" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb className="md:!flex" />
@@ -49,7 +46,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                     totalPostsCount={posts?.totalPosts}
                     categoryList={categories}
                     postsPerPageValue={postsPerPageValue}
-                    currentPage={1}
+                    currentPage={currentPage}
                 />
             ) : (
                 <Section>
@@ -74,14 +71,19 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
     );
 }
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Fetch the data from WordPress database
  *
- * @returns {Promise<{props: {posts: any}}>}
+ * @params ctx {any}
+ * @returns any
  */
-export async function getStaticProps() {
+export async function getServerSideProps(ctx: any) {
     try {
-        const posts: Array<GeneralBlogInterface> = await getPosts();
+        const page = ctx.query.page;
+        const category = ctx.query.slug;
+
+        const posts: Array<GeneralBlogInterface> = await getPosts(page, category);
         const categories: BlogCategoriesInterface[] = await getCategories();
         const postsPerPageValue: number = await getPostsPerPageValue();
 
@@ -92,13 +94,19 @@ export async function getStaticProps() {
                 posts,
                 categories,
                 postsPerPageValue,
+                currentPage: page,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
         };
     } catch (error: any) {
         console.error(error);
-        return { props: {} };
+        return {
+            props: {},
+            redirect: {
+                permanent: false,
+                destination: '/404'
+            }
+        };
     }
 }

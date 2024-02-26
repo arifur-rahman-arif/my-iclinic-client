@@ -1,7 +1,7 @@
-import { Button } from 'src/components/Buttons';
 import { TextField } from '@/components/Inputs';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { RxReset } from 'react-icons/rx';
+import { Button } from 'src/components/Buttons';
 import { EditorFieldType } from './Editor';
 
 interface EditFieldInterface {
@@ -25,12 +25,6 @@ interface EditFieldInterface {
  * @constructor
  */
 const EditField = ({ index, name, value, defaultValue, setFormValues, formReset }: EditFieldInterface): JSX.Element => {
-    const [animateInput, setAnimateInput] = useState<number>(Date.now());
-
-    useEffect(() => {
-        setAnimateInput(formReset);
-    }, [formReset]);
-
     /**
      * Update the form value buy it's index
      *
@@ -70,7 +64,6 @@ const EditField = ({ index, name, value, defaultValue, setFormValues, formReset 
                 onChange={(e) => updateFormValue(e.target.value)}
                 onClearValue={clearValue}
                 rows={2}
-                animateInputField={animateInput}
             />
             <Button
                 type="button"
@@ -78,7 +71,6 @@ const EditField = ({ index, name, value, defaultValue, setFormValues, formReset 
                 text={<RxReset className="h-8 w-8" />}
                 onClick={() => {
                     updateFormValue(defaultValue);
-                    setAnimateInput(Date.now());
                 }}
                 title="Reset the field"
             />

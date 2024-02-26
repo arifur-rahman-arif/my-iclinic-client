@@ -16,7 +16,7 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
                 body: { ...req.body, status: 'Completed' }
             });
 
-            const dateObject = new Date(req.body.dateOriginal);
+            const dateObject = new Date();
 
             const formattedDate = `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(
                 2,
@@ -47,7 +47,7 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             });
 
             if (!freshdeskApiResponse.ok) {
-                console.log(freshdeskApiResponse);
+                console.error(freshdeskApiResponse);
                 const freshdeskResponse = await freshdeskApiResponse.json();
                 throw new Error(`API error: ${freshdeskResponse.status} ${freshdeskResponse.statusText}`);
             }

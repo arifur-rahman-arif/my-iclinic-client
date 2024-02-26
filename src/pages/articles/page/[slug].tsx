@@ -1,14 +1,3 @@
-/**
- * Stop component until wordpress setup is done
- *
- * @returns {JSX.Element}
- */
-// const noComponent = () => {
-//     return <></>;
-// };
-//
-// export default noComponent;
-
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
@@ -18,6 +7,7 @@ import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/li
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { BlogList } from '@/page-sections/index';
 import { WpPageResponseInterface } from '@/types';
+import { getData } from '@/utils/apiHelpers';
 
 interface BlogPageProps {
     posts: {
@@ -26,6 +16,7 @@ interface BlogPageProps {
     };
     categories: BlogCategoriesInterface[];
     postsPerPageValue: number;
+    currentPage: number;
     seo: any;
     yoastJson: any;
 }
@@ -38,7 +29,14 @@ interface BlogPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Blogs({ posts, categories, postsPerPageValue, seo, yoastJson }: BlogPageProps): JSX.Element {
+export default function Articles({
+    posts,
+    categories,
+    postsPerPageValue,
+    currentPage,
+    seo,
+    yoastJson
+}: BlogPageProps): JSX.Element {
     return (
         <Page title="Articles" description="List of all blogs" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb className="md:!flex" />
@@ -49,7 +47,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                     totalPostsCount={posts?.totalPosts}
                     categoryList={categories}
                     postsPerPageValue={postsPerPageValue}
-                    currentPage={1}
+                    currentPage={currentPage}
                 />
             ) : (
                 <Section>
@@ -75,13 +73,51 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
 }
 
 /**
+ * Fetch all the post slug and defines static page paths
+ *
+ */
+export async function getStaticPaths() {
+    const apiResponse = await getData({
+        url: `${process.env.WP_REST_URL}/posts?per_page=1&_fields=id`
+    });
+
+    if (apiResponse.status !== 200) {
+        throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
+    }
+
+    const postsPerPageValue = await getPostsPerPageValue();
+
+    const { headers } = apiResponse;
+
+    const headerObject = Object.fromEntries(headers.entries());
+
+    const totalPosts = headerObject['x-wp-total'];
+    const totalPage = Math.ceil(Number(totalPosts) / postsPerPageValue);
+
+    const paths = [];
+    for (let i = 1; i <= totalPage; i++) {
+        paths.push({ params: { slug: i.toString() } });
+    }
+
+    return {
+        paths,
+        fallback: false
+    };
+}
+
+// eslint-disable-next-line valid-jsdoc
+/**
  * Fetch the data from WordPress database
  *
- * @returns {Promise<{props: {posts: any}}>}
+ * @params ctx {any}
+ * @returns any
  */
-export async function getStaticProps() {
+export async function getStaticProps(ctx: any) {
     try {
-        const posts: Array<GeneralBlogInterface> = await getPosts();
+        const { params } = ctx; // Destructure params from context
+        const { slug } = params; // Extract the slug from params
+
+        const posts: Array<GeneralBlogInterface> = await getPosts(slug);
         const categories: BlogCategoriesInterface[] = await getCategories();
         const postsPerPageValue: number = await getPostsPerPageValue();
 
@@ -92,6 +128,7 @@ export async function getStaticProps() {
                 posts,
                 categories,
                 postsPerPageValue,
+                currentPage: slug,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

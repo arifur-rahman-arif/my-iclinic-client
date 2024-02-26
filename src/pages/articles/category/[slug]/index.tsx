@@ -1,14 +1,3 @@
-/**
- * Stop component until wordpress setup is done
- *
- * @returns {JSX.Element}
- */
-// const noComponent = () => {
-//     return <></>;
-// };
-//
-// export default noComponent;
-
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
 import { Container } from '@/components/Container';
@@ -26,6 +15,7 @@ interface BlogPageProps {
     };
     categories: BlogCategoriesInterface[];
     postsPerPageValue: number;
+    currentPage: number;
     seo: any;
     yoastJson: any;
 }
@@ -38,7 +28,14 @@ interface BlogPageProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function Blogs({ posts, categories, postsPerPageValue, seo, yoastJson }: BlogPageProps): JSX.Element {
+export default function Category({
+    posts,
+    categories,
+    postsPerPageValue,
+    currentPage,
+    seo,
+    yoastJson
+}: BlogPageProps): JSX.Element {
     return (
         <Page title="Articles" description="List of all blogs" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb className="md:!flex" />
@@ -49,7 +46,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
                     totalPostsCount={posts?.totalPosts}
                     categoryList={categories}
                     postsPerPageValue={postsPerPageValue}
-                    currentPage={1}
+                    currentPage={currentPage}
                 />
             ) : (
                 <Section>
@@ -75,13 +72,33 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
 }
 
 /**
+ * Fetch all the post slug and defines static page paths
+ *
+ */
+export async function getStaticPaths() {
+    const categories: BlogCategoriesInterface[] = await getCategories();
+
+    const paths = categories.map((category) => ({ params: { slug: category.slug } }));
+
+    return {
+        paths,
+        fallback: false
+    };
+}
+
+// eslint-disable-next-line valid-jsdoc
+/**
  * Fetch the data from WordPress database
  *
- * @returns {Promise<{props: {posts: any}}>}
+ * @params ctx {any}
+ * @returns any
  */
-export async function getStaticProps() {
+export async function getStaticProps(ctx: any) {
     try {
-        const posts: Array<GeneralBlogInterface> = await getPosts();
+        const { params } = ctx; // Destructure params from context
+        const category = params.slug; // Extract the slug from params
+
+        const posts: Array<GeneralBlogInterface> = await getPosts(1, category);
         const categories: BlogCategoriesInterface[] = await getCategories();
         const postsPerPageValue: number = await getPostsPerPageValue();
 
@@ -92,6 +109,7 @@ export async function getStaticProps() {
                 posts,
                 categories,
                 postsPerPageValue,
+                currentPage: 1,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

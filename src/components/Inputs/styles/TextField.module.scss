@@ -1,0 +1,20 @@
+.styles {
+  :global {
+	/* Apply style when input is focused */
+	input:focus ~ .input-icon,
+	  /* Apply style when input has a value */
+	input:not(:placeholder-shown) ~ .input-icon {
+	  opacity: 0;
+	  scale: 0.5;
+	}
+	
+	/* Apply style when input is focused */
+	input:focus ~ .input-placeholder,
+	  /* Apply style when input has a value */
+	input:not(:placeholder-shown) ~ .input-placeholder {
+	  top: 0;
+	  left: 0;
+	  scale: 0.8;
+	}
+  }
+}
