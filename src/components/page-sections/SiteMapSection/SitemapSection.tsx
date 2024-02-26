@@ -34,7 +34,7 @@ const SitemapSection = ({ articles, pages }: SitemapSectionProps): JSX.Element =
         }
     ]);
 
-    const convertedArticles = articles.map((article) => ({
+    const convertedArticles = articles?.map((article) => ({
         name: article.title,
         url: `/articles/${article.slug}`
     }));
@@ -130,7 +130,7 @@ interface SiteMapLinkProps {
 const SiteMapLink = ({ list }: SiteMapLinkProps) => {
     return (
         <div className="grid content-start justify-items-start gap-8">
-            {list.length
+            {list?.length
                 ? list.map((item, index) => (
                       <Link
                           href={item.url || '#'}

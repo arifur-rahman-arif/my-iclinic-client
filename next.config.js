@@ -36,6 +36,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'staging2.myiclinicn.sg-host.com'
+            },
+            {
+                protocol: 'https',
+                hostname: 'localhost'
             }
         ]
     },
@@ -113,6 +117,11 @@ const nextConfig = {
     // },
     async redirects() {
         return [
+            {
+                source: '/articles/page/1',
+                destination: '/articles',
+                permanent: true
+            },
             {
                 source: '/home',
                 destination: '/',

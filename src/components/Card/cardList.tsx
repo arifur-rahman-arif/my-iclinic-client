@@ -234,13 +234,13 @@ export const consultantCardList: ConsultantCardInterface[] = [
         title: 'Consultant and Surgeon',
         url: '/our-specialists/sheila-luk'
     },
-    {
-        image: '/images/avaters/qiang-kwong.jpeg',
-        name: 'Qiang Kwong',
-        degree: 'MA (Cantab) BM BCh (Oxon) FEBO FRCOphth CERTLRS',
-        title: 'Consultant and Surgeon',
-        url: '/our-specialists/qiang-kwong'
-    },
+    // {
+    //     image: '/images/avaters/qiang-kwong.jpeg',
+    //     name: 'Qiang Kwong',
+    //     degree: 'MA (Cantab) BM BCh (Oxon) FEBO FRCOphth CERTLRS',
+    //     title: 'Consultant and Surgeon',
+    //     url: '/our-specialists/qiang-kwong'
+    // },
     {
         image: '/images/avaters/fatima-mangera.jpg',
         name: 'Fatima Mangera',

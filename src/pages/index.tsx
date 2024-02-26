@@ -21,25 +21,24 @@ import { Key } from 'react';
 import TripleWinSection from 'src/components/page-sections/HomePage/TripleWinSection';
 
 const SpeakToSpecialist = dynamic(() => import('@/page-sections/HomePage/SpeakToSpecialist'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
 const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 //
 // const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
 //     loading: () => <ComponentLoader />
 // });
 const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/JourneySlider'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 // const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection2'), {
 //     loading: () => <ComponentLoader />
 // });
 
-interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {
-}
+interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {}
 
 interface HomeProps {
     data?: DataInterface;
@@ -60,45 +59,26 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
     // JOURNEY SLIDER
     const journeySliderData: any = data?.journeySlider
         ? data?.journeySlider.map((service) => {
-            return {
-                ...service,
-                title: service?.title,
-                description: stringArrayToElementArray(service?.list),
-                image: service?.image
-            };
-        })
+              return {
+                  ...service,
+                  title: service?.title,
+                  description: stringArrayToElementArray(service?.list),
+                  image: service?.image
+              };
+          })
         : null;
-
-    // MISSION SLIDER
-    // const missionimageSlider: any = data?.imageSlider ?
-    //     data?.imageSlider.map((service) => {
-    //         return {
-    //             //   ...service,
-    //             image: {
-    //                 url: service?.image,
-    //                 width: 390,
-    //                 height: 390
-    //             },
-    //             largeImage: {
-    //                 url: service?.largeImage,
-    //                 width: 660,
-    //                 height: 485
-    //             }
-    //         };
-    //     }) :
-    //     null;
 
     const cardListData: any = data?.private_eye_card
         ? data?.private_eye_card.map((service) => {
-            return {
-                ...service,
-                title: HTMLReactParser(service?.title),
-                pillText: service?.pillText,
-                cardList: stringArrayToElementArray(service?.cardList),
-                image: service?.image,
-                cardLink: service?.cardLink
-            };
-        })
+              return {
+                  ...service,
+                  title: HTMLReactParser(service?.title),
+                  pillText: service?.pillText,
+                  cardList: stringArrayToElementArray(service?.cardList),
+                  image: service?.image,
+                  cardLink: service?.cardLink
+              };
+          })
         : null;
 
     return (
@@ -109,19 +89,19 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             yoastJson={yoastJson}
         >
             <Masthead3
-                title="London private eye clinic"
-                subTitle="Premium eye care for all the family"
-                image="/images/masthead/masthead-home-large.png"
+                title={data?.masthead_heading || 'London private eye clinic'}
+                subTitle={data?.masthead_subheading || 'Premium eye care for all the family'}
+                image={data?.masthead_image.image_medium.url || '/images/masthead/masthead-home-large.png'}
             />
 
-            <SurgerySection/>
+            <SurgerySection />
 
             {/*  Private Eye */}
             <SideImageSection
                 h3LightHeading={
                     <>
                         {data?.section_1?.heading?.light_heading || 'Private Eye'}
-                        <br/>
+                        <br />
                     </>
                 }
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Care Services'}
@@ -137,11 +117,11 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 }
             />
 
-            <UspSection/>
+            <UspSection />
 
-            <VisionCorrection/>
+            <VisionCorrection />
 
-            <TripleWinSection/>
+            <TripleWinSection />
 
             {/* /!* SAVING SLIDER SECTION -- *!/ */}
             {/* <LazyComponent> */}
@@ -149,25 +129,25 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
             {/* </LazyComponent> */}
 
             <LazyComponent>
-                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome}/>
+                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
             </LazyComponent>
 
             {/* <LazyComponent> */}
             {/*     <CallbackSection /> */}
             {/* </LazyComponent>  */}
             <LazyComponent>
-                <SpeakToSpecialist/>
+                <SpeakToSpecialist />
             </LazyComponent>
 
-            <OurMission/>
+            <OurMission />
 
             <LazyComponent>
-                <EnvironmentalImpact/>
+                <EnvironmentalImpact />
             </LazyComponent>
 
-            <FundingTreatment/>
+            <FundingTreatment />
 
-            <BlurPrevention/>
+            <BlurPrevention />
         </Page>
     );
 }
@@ -201,11 +181,11 @@ export async function getStaticProps() {
                     // }, // EYES CARD
                     private_eye_card: Array.isArray(data?.acf?.private_eye_card)
                         ? data?.acf.private_eye_card.map((sectionData) => {
-                            return {
-                                ...sectionData,
-                                cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
-                            };
-                        })
+                              return {
+                                  ...sectionData,
+                                  cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
+                              };
+                          })
                         : [],
                     // savingsliderSection: Array.isArray(data?.acf?.savingsliderSection)
                     //     ? data?.acf.savingsliderSection.map((sliderData) => {
@@ -217,11 +197,11 @@ export async function getStaticProps() {
                     //     : [],
                     journeySlider: Array.isArray(data?.acf?.journeySlider)
                         ? data?.acf.journeySlider.map((sliderData) => {
-                            return {
-                                ...sliderData,
-                                list: convertArrayOfObjectsToStrings(sliderData?.list)
-                            };
-                        })
+                              return {
+                                  ...sliderData,
+                                  list: convertArrayOfObjectsToStrings(sliderData?.list)
+                              };
+                          })
                         : []
                     // section_3: {
                     //     ...data?.acf?.section_3,

@@ -48,6 +48,7 @@ export const postData = async ({ url, body, headers }: PostDataInterface): Promi
             }
         });
     } catch (err) {
+        console.error(err);
         throw err;
     }
 };
@@ -84,7 +85,6 @@ export const stringArrayToElementArray = (arrayOfObjects: Array<string> | undefi
     const validStrings = arrayOfObjects.filter((obj) => typeof obj === 'string');
     return validStrings.map((obj) => HTMLReactParser(obj)) as JSX.Element[];
 };
-
 
 // eslint-disable-next-line valid-jsdoc
 /**

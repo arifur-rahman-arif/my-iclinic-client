@@ -15,7 +15,7 @@ interface StepIndicatorInterface {
 const StepIndicator = ({ steppers, activateSelectedStepper }: StepIndicatorInterface): JSX.Element => {
     return (
         <div className="w-full overflow-scroll lg:overflow-hidden" id="stepper-indicator">
-            <div className="stepper-indicator relative z-[1] grid w-full min-w-[28rem] grid-cols-3 gap-4 sm:min-w-[35.5rem]">
+            <div className="stepper-indicator relative z-[1] grid w-full min-w-[28rem] grid-cols-2 gap-4 sm:min-w-[35.5rem]">
                 {steppers.map((stepper, index) => (
                     <div
                         className={`relative grid place-items-center gap-4 ${

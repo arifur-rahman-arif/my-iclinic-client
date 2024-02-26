@@ -1,11 +1,10 @@
-import { getTheDayName, getTheMonthName } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
-interface DoneInterface {
-    date: Date;
-    stepperIndex?: number;
-    formSubmitted: boolean;
-}
+// interface DoneInterface {
+//     date: Date;
+//     stepperIndex?: number;
+//     formSubmitted: boolean;
+// }
 
 /**
  * Thank you step for request-callback submission
@@ -13,7 +12,7 @@ interface DoneInterface {
  * @param {DoneInterface} { date, formSubmitted }
  * @returns {*}  {JSX.Element}
  */
-const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
+const Done = (): JSX.Element => {
     return (
         <div className="grid grid-cols-1 place-items-center content-start gap-8" id="request-callback-confirmation">
             <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
@@ -32,11 +31,11 @@ const Done = ({ date, formSubmitted }: DoneInterface): JSX.Element => {
 
             <div className="mt-12 grid grid-cols-1 place-items-center content-start gap-4">
                 <Image src="/images/section-images/phone-call.png" alt="" width={52} height={52} />
-                <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you on</span>
-                <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">
-                    {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '}
-                    {date.getFullYear()}
-                </span>
+                <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you soon</span>
+                {/* <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading"> */}
+                {/*     {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '} */}
+                {/*     {date.getFullYear()} */}
+                {/* </span> */}
             </div>
         </div>
     );

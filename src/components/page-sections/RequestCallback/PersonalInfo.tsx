@@ -1,7 +1,7 @@
 import { Button2 } from '@/components/Buttons';
 import { TextField } from '@/components/Inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
-import { useAbandonedCallbackMutation } from '@/services/abandoned-cb';
+import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
 import {
     formatNumberToInternational,
     formatPhoneNumber,
@@ -32,6 +32,8 @@ interface PersonalInfoInterface {
     // End of extra props coming from the stepper
     checkInputsForNextStepActivation: (arg: number, arg2: { name: string; phone: string; email: string }) => void;
     clonedElement?: boolean;
+
+    setFormSubmitted: Dispatch<SetStateAction<boolean>>;
 }
 
 /**
@@ -74,10 +76,11 @@ const PersonalInfo = ({
     stepperIndex,
     activateNextStepper,
     checkInputsForNextStepActivation,
-    clonedElement
+    clonedElement,
+    setFormSubmitted
 }: PersonalInfoInterface): JSX.Element => {
-    const dispatch = useDispatch();
-    const [submitForm, response] = useAbandonedCallbackMutation();
+    // const dispatch = useDispatch();
+    // const [submitForm, response] = useAbandonedCallbackMutation();
 
     const [typingTimer, setTypingTimer] = useState<any>();
 
@@ -142,7 +145,188 @@ const PersonalInfo = ({
     /**
      * Submit the request callback form
      */
-    const handleSubmit = async () => {
+    // const handleSubmit = async () => {
+    //     if (!name) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: 'Please provide your name',
+    //                 timeout: 4000
+    //             })
+    //         );
+    //         return;
+    //     }
+    //
+    //     if (!phone) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: 'Please provide your phone',
+    //                 timeout: 4000
+    //             })
+    //         );
+    //         return;
+    //     }
+    //
+    //     const numberValid = await validatePhoneNumber(phone);
+    //
+    //     if (!numberValid) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: 'Please provide a valid phone number',
+    //                 timeout: 4000
+    //             })
+    //         );
+    //         return;
+    //     }
+    //
+    //     if (!email) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: 'Please provide your email',
+    //                 timeout: 4000
+    //             })
+    //         );
+    //         return;
+    //     }
+    //
+    //     if (!validateEmail(email)) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: 'Please provide a valid email address',
+    //                 timeout: 4000
+    //             })
+    //         );
+    //         return;
+    //     }
+    //
+    //     const internationalPhoneNumber = await formatNumberToInternational(phone);
+    //
+    //     const payload = {
+    //         name,
+    //         phone: internationalPhoneNumber,
+    //         email
+    //     };
+    //
+    //     submitForm(payload);
+    // };
+    //
+    // useEffect(() => {
+    //     try {
+    //         // If it's a fetch error
+    //         if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
+    //             dispatch(
+    //                 handleAlert({
+    //                     showAlert: true,
+    //                     alertType: 'error',
+    //                     alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
+    //                 })
+    //             );
+    //
+    //             return;
+    //         }
+    //
+    //         if (response.isError) {
+    //             dispatch(
+    //                 handleAlert({
+    //                     showAlert: true,
+    //                     alertType: 'error',
+    //                     alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
+    //                 })
+    //             );
+    //             return;
+    //         }
+    //
+    //         if (response.isSuccess) {
+    //             const postId = (response?.data as any)?.data?.data;
+    //             Number.isInteger(postId) && localStorage.setItem(`callback-id`, postId);
+    //         }
+    //     } catch (err: any) {
+    //         dispatch(
+    //             handleAlert({
+    //                 showAlert: true,
+    //                 alertType: 'error',
+    //                 alertMessage: err.message || 'Something went wrong. Please try again'
+    //             })
+    //         );
+    //     }
+    // }, [response, dispatch]);
+
+    const dispatch = useDispatch();
+    const [submitForm, response] = useRequestCallbackSubmitMutation();
+
+    useEffect(() => {
+        try {
+            // If it's a fetch error
+            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
+                dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertType: 'error',
+                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
+                    })
+                );
+
+                return;
+            }
+
+            if (response.isError) {
+                dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertType: 'error',
+                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
+                    })
+                );
+                return;
+            }
+
+            if (response.isSuccess) {
+                checkInputsForNextStepActivation(stepperIndex || 0, {
+                    name,
+                    phone,
+                    email
+                });
+
+                if (typeof activateNextStepper == 'function') activateNextStepper();
+
+                resetForm();
+
+                setFormSubmitted(true);
+            }
+        } catch (err: any) {
+            dispatch(
+                handleAlert({
+                    showAlert: true,
+                    alertType: 'error',
+                    alertMessage: err.message || 'Something went wrong. Please try again'
+                })
+            );
+        }
+    }, [response, dispatch]);
+
+    /**
+     * Reset the form to its initial state
+     */
+    const resetForm = () => {
+        setName('');
+        setEmail('');
+        setPhone('');
+    };
+
+    /**
+     * Submit the request callback form
+     * @returns {*}  {*}
+     */
+    const formSubmit = async (): Promise<any> => {
         if (!name) {
             dispatch(
                 handleAlert({
@@ -206,7 +390,6 @@ const PersonalInfo = ({
         }
 
         const internationalPhoneNumber = await formatNumberToInternational(phone);
-
         const payload = {
             name,
             phone: internationalPhoneNumber,
@@ -215,47 +398,6 @@ const PersonalInfo = ({
 
         submitForm(payload);
     };
-
-    useEffect(() => {
-        try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-                return;
-            }
-
-            if (response.isSuccess) {
-                const postId = (response?.data as any)?.data?.data;
-                Number.isInteger(postId) && localStorage.setItem(`callback-id`, postId);
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message || 'Something went wrong. Please try again'
-                })
-            );
-        }
-    }, [response, dispatch]);
 
     return (
         <div className="grid h-full w-full grid-rows-[1fr_auto] gap-8">
@@ -329,14 +471,14 @@ const PersonalInfo = ({
                 }
                 className="next-button group/next-button gap-2 justify-self-end"
                 mockDisabled={!(name && phone && email)}
+                loading={response.isLoading}
                 onClick={() => {
                     if (typeof activateNextStepper == 'function') {
                         showInputErrors().then((res) => {
                             if (res) {
-                                activateNextStepper();
-
+                                formSubmit();
                                 // If id is not already set to local storage then save the data
-                                if (!localStorage.getItem('callback-id')) handleSubmit();
+                                // if (!localStorage.getItem('callback-id')) handleSubmit();
                             }
                         });
                     }

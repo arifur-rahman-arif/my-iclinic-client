@@ -7,11 +7,15 @@ import { getData } from '@/utils/apiHelpers';
 import PostInterface from 'src/types/api/single-post';
 
 /**
- * Get all the posts from WordPress database
+ * Get the post based on current page number
+ *
+ * @param {number} page
+ * @param {string} category
+ * @returns {Promise<GeneralBlogInterface[]>}
  */
-export const getPosts = async (): Promise<GeneralBlogInterface[]> => {
+export const getPosts = async (page: number = 1, category: string = 'all'): Promise<GeneralBlogInterface[]> => {
     const apiResponse: Response = await getData({
-        url: `${process.env.CUSTOM_REST_URL}/get-posts`
+        url: `${process.env.CUSTOM_REST_URL}/get-posts?page=${page}&category=${category}`
     });
 
     if (apiResponse.status !== 200) {

@@ -18,7 +18,13 @@ interface NestedRoutesProps {
  * @constructor
  */
 const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProps): JSX.Element => {
-    const excludeUrls = ['/eye-treatments', '/vision-correction', '/pricing-and-financing'];
+    const excludeUrls = [
+        '/eye-treatments',
+        '/vision-correction',
+        '/pricing-and-financing',
+        '/articles/page',
+        '/articles/category'
+    ];
     const paths = generateBreadcrumbs(router);
 
     return (
@@ -62,7 +68,7 @@ const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProp
                                         linkClassName
                                     )}
                                 >
-                                    {path.name}
+                                    {path.url.includes('/articles/page') ? `Page ${path.name}` : path.name}
                                 </span>
                             </Link>
                         </div>

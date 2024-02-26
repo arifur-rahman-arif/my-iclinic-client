@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { AiOutlineClear } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
+import styles from './styles/TextField.module.scss';
 
 interface TextFieldInterface {
     type: 'text' | 'textarea' | 'password' | 'number' | 'email';
@@ -16,7 +17,6 @@ interface TextFieldInterface {
     onClearValue: () => void;
     randomID?: boolean;
     rows?: number;
-    animateInputField?: number;
     defaultClassName?: string;
     className?: string;
     placeHolderClassName?: string;
@@ -40,167 +40,70 @@ interface TextFieldInterface {
  * @returns {*}  {JSX.Element}
  */
 const TextField = ({
-                       type,
-                       value,
-                       id,
-                       placeholder,
-                       icon: Icon,
-                       important,
-                       errorText,
-                       onChange,
-                       onClearValue,
-                       randomID,
-                       rows,
-                       animateInputField,
-                       defaultClassName = 'h-full w-full rounded-primary border border-secondary p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
-                       className,
-                       placeHolderClassName
-                   }: TextFieldInterface): JSX.Element => {
-    const inputRef = useRef<any>(null);
-    const placeholderRef = useRef<HTMLLabelElement>(null);
-    const iconRef = useRef<HTMLSpanElement>(null);
+    type,
+    value,
+    id,
+    placeholder,
+    icon: Icon,
+    important,
+    errorText,
+    onChange,
+    onClearValue,
+    randomID,
+    rows,
+    defaultClassName = 'h-full w-full rounded-primary border border-secondary p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
+    className,
+    placeHolderClassName
+}: TextFieldInterface): JSX.Element => {
     const errorTextRef = useRef<HTMLSpanElement>(null);
     const randomString = Math.random().toString(36).slice(2, 7);
-
-    useEffect(() => {
-        if (!value) return;
-
-        animateInput();
-    }, []);
-
-    useEffect(() => {
-        animateInput();
-    }, [animateInputField]);
-
-    useEffect(() => {
-        if (value) return;
-
-        inputRef.current.blur();
-        removeAnimation();
-    }, [value]);
 
     // Animate the error text
     useEffect(() => {
         errorText &&
-        errorTextRef.current &&
-        gsap.to(errorTextRef.current, {
-            transform: 'translateY(100%)',
-            duration: 0.3,
-            pointerEvents: 'auto',
-            autoAlpha: 1,
-            scale: 1,
-            ease: 'expo.inOut'
-        });
+            errorTextRef.current &&
+            gsap.to(errorTextRef.current, {
+                transform: 'translateY(100%)',
+                duration: 0.3,
+                pointerEvents: 'auto',
+                autoAlpha: 1,
+                scale: 1,
+                ease: 'expo.inOut'
+            });
 
         !errorText &&
-        errorTextRef.current &&
-        gsap.to(errorTextRef.current, {
-            transform: 'translateY(-50%)',
-            duration: 0.3,
-            autoAlpha: 0,
-            scale: 0.5,
-            ease: 'expo.inOut'
-        });
+            errorTextRef.current &&
+            gsap.to(errorTextRef.current, {
+                transform: 'translateY(-50%)',
+                duration: 0.3,
+                autoAlpha: 0,
+                scale: 0.5,
+                ease: 'expo.inOut'
+            });
     }, [errorText]);
 
-    /**
-     * Animate the place holder when input field is focused
-     *
-     * @param {boolean} focusActive
-     */
-    const animatePlaceHolder = (focusActive: boolean) => {
-        // Animate the placeholder
-        focusActive && animateInput();
-
-        !value && !focusActive && removeAnimation();
-    };
-
-    /**
-     * Add the animation to the input
-     */
-    const animateInput = () => {
-        // Animate the placeholder
-        placeholderRef.current &&
-        gsap.to(placeholderRef.current, {
-            top: 0,
-            left: 0,
-            duration: 0.3,
-            scale: 0.8,
-            ease: 'expo.inOut'
-        });
-
-        // Animate the input Icon by making the icon invisible
-        iconRef.current &&
-        gsap.to(iconRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            scale: 0.5,
-            ease: 'expo.inOut'
-        });
-    };
-
-    /**
-     * Remove the animation from the input element
-     */
-    const removeAnimation = () => {
-        placeholderRef.current &&
-        gsap.to(placeholderRef.current, {
-            top: type === 'textarea' ? '3rem' : '50%',
-            left: '1.5rem',
-            duration: 0.3,
-            scale: 1,
-            ease: 'expo.inOut'
-        });
-
-        iconRef.current &&
-        gsap.to(iconRef.current, {
-            opacity: 1,
-            duration: 0.3,
-            scale: 1,
-            ease: 'expo.inOut'
-        });
-    };
-
     return (
-        <div className="relative h-full w-full">
+        <div className={`relative h-full w-full ${styles.styles}`}>
             {(type === 'text' || type === 'password' || type === 'email') && (
                 <input
                     value={value}
-                    ref={inputRef}
                     type={type}
                     name={type}
                     id={randomID ? randomString : id}
                     className={`${twMerge(defaultClassName, `${errorText ? 'border-red-500' : ''} ${className}`)}`}
-                    onFocus={(e) => {
-                        animatePlaceHolder(true);
-                    }}
-                    onBlur={(e) => {
-                        animatePlaceHolder(false);
-                    }}
                     onChange={onChange}
                     autoComplete="new-password"
+                    placeholder=""
                 />
             )}
 
             {type === 'number' && (
                 <input
                     value={value}
-                    ref={inputRef}
                     type={type}
                     id={randomID ? randomString : id}
                     className={`${twMerge(defaultClassName, `${errorText ? 'border-red-500' : ''} ${className}`)}`}
-                    onFocus={(e) => {
-                        animatePlaceHolder(true);
-                    }}
-                    onBlur={(e) => {
-                        animatePlaceHolder(false);
-                    }}
                     onChange={onChange}
-                    // OnKeyDown={(event) => {
-                    //     if (!/((Digit)[0-9]|(Numpad)[0-9])/.test(event.code)) {
-                    //         event.preventDefault();
-                    //     }
-                    // }}
                     autoComplete="new-password"
                 />
             )}
@@ -208,26 +111,18 @@ const TextField = ({
             {type === 'textarea' && (
                 <textarea
                     value={value}
-                    ref={inputRef}
                     id={randomID ? randomString : id}
                     className={`h-full w-full resize-none rounded-primary border border-secondary bg-white p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand ${
                         errorText ? 'border-red-500' : ''
                     }`}
-                    onFocus={(e) => {
-                        animatePlaceHolder(true);
-                    }}
-                    onBlur={(e) => {
-                        animatePlaceHolder(false);
-                    }}
                     onChange={onChange}
                     rows={rows}
                     autoComplete="off"
                 />
             )}
             <label
-                ref={placeholderRef}
                 htmlFor={randomID ? randomString : id}
-                className={`pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white py-4 px-6 font-latoMedium text-[1.6rem] leading-[1.6rem] text-secondary ${
+                className={`input-placeholder pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white py-4 px-6 font-latoMedium text-[1.6rem] leading-[1.6rem] text-secondary transition-all duration-500 ${
                     type === 'textarea' ? 'top-12 -translate-y-2/4' : 'top-2/4 -translate-y-2/4'
                 } ${placeHolderClassName}`}
             >
@@ -244,7 +139,7 @@ const TextField = ({
             </span>
 
             {Icon ? (
-                <span ref={iconRef} className="pointer-events-none absolute top-2/4 right-6 -translate-y-2/4">
+                <span className="input-icon pointer-events-none absolute top-2/4 right-6 -translate-y-2/4 divide-red-50 transition-all duration-500">
                     {Icon}
                 </span>
             ) : (
@@ -260,7 +155,6 @@ const TextField = ({
                     <IconButton
                         onClick={() => {
                             onClearValue();
-                            removeAnimation();
                         }}
                     >
                         <AiOutlineClear />

@@ -1,13 +1,12 @@
-import Done from './Done';
-import PersonalInfo from './PersonalInfo';
 import { Stepper } from '@/components/Stepper';
 import { StepperInterface } from '@/components/Stepper/Stepper';
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
+import Done from './Done';
+import PersonalInfo from './PersonalInfo';
 
-const DateAndTime = dynamic(() => import('./DateAndTime'), {
-    ssr: false
-});
+// const DateAndTime = dynamic(() => import('./DateAndTime'), {
+//     ssr: false
+// });
 
 interface RequestCallbackProps {
     className?: string;
@@ -32,10 +31,11 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
     const today = new Date();
     // Set the date one day ahead of the current date
     today.setDate(today.getDate() + 1);
-    const [date, setDate] = useState<Date>(today);
-    const [optionalMessage, setOptionalMessage] = useState<string>('');
+    // const [date, setDate] = useState<Date>(today);
+    // const [optionalMessage, setOptionalMessage] = useState<string>('');
 
-    const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+    // eslint-disable-next-line no-unused-vars
+    const [_, setFormSubmitted] = useState<boolean>(false);
 
     /**
      * Prepare the next step to be activated
@@ -79,17 +79,17 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
 
     const [stepperList, setStepperList] = useState<StepperInterface[]>([
         {
-            title: 'Info',
+            title: 'Information',
             isActive: true,
             indicatorActive: true,
             activateNextStep: false
         },
-        {
-            title: 'Date',
-            isActive: false,
-            indicatorActive: false,
-            activateNextStep: false
-        },
+        // {
+        //     title: 'Date',
+        //     isActive: false,
+        //     indicatorActive: false,
+        //     activateNextStep: false
+        // },
         {
             title: 'Done',
             isActive: false,
@@ -118,22 +118,23 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
                     emailError={emailError}
                     setEmailError={setEmailError}
                     checkInputsForNextStepActivation={checkInputsForNextStepActivation}
-                />
-                <DateAndTime
-                    optionalMessage={optionalMessage}
-                    setOptionalMessage={setOptionalMessage}
-                    date={date}
-                    setDate={setDate}
-                    name={name}
-                    setName={setName}
-                    phone={phone}
-                    setPhone={setPhone}
-                    email={email}
-                    setEmail={setEmail}
-                    checkInputsForNextStepActivation={checkInputsForNextStepActivation}
                     setFormSubmitted={setFormSubmitted}
                 />
-                <Done date={date} formSubmitted={formSubmitted} />
+                {/* <DateAndTime */}
+                {/*     optionalMessage={optionalMessage} */}
+                {/*     setOptionalMessage={setOptionalMessage} */}
+                {/*     date={date} */}
+                {/*     setDate={setDate} */}
+                {/*     name={name} */}
+                {/*     setName={setName} */}
+                {/*     phone={phone} */}
+                {/*     setPhone={setPhone} */}
+                {/*     email={email} */}
+                {/*     setEmail={setEmail} */}
+                {/*     checkInputsForNextStepActivation={checkInputsForNextStepActivation} */}
+                {/*     setFormSubmitted={setFormSubmitted} */}
+                {/* /> */}
+                <Done />
             </Stepper>
         </form>
     );

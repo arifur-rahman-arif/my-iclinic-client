@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { Dispatch, SetStateAction } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface PaginationInterface {
     totalPage: number;
     currentPage: number;
-    setCurrentPage: Dispatch<SetStateAction<number>>;
     defaultClassName?: string;
     className?: string;
 }
@@ -16,29 +16,38 @@ interface PaginationInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const Pagination = ({
-    totalPage,
-    currentPage,
-    setCurrentPage,
-    defaultClassName,
-    className
-}: PaginationInterface): JSX.Element => {
+const Pagination = ({ totalPage, currentPage, defaultClassName, className }: PaginationInterface): JSX.Element => {
     /**
      * Go to the previous page of post
      */
-    const handlePreviousPage = () => {
-        if (currentPage === 1) return;
-        setCurrentPage((currentPage -= 1));
-        // Typeof setPostInView === 'function' && setPostInView();
-    };
+    // const handlePreviousPage = () => {
+    //     if (currentPage === 1) return;
+    //     setCurrentPage((currentPage -= 1));
+    //     // Typeof setPostInView === 'function' && setPostInView();
+    // };
+
+    // /**
+    //  * Go to the next page of post
+    //  */
+    // const handleNextPage = () => {
+    //     if (currentPage === totalPage) return;
+    //     setCurrentPage((currentPage += 1));
+    //     // Typeof setPostInView === 'function' && setPostInView();
+    // };
+
+    const router = useRouter();
 
     /**
-     * Go to the next page of post
+     * Get the page path url
+     * @returns {string}
      */
-    const handleNextPage = () => {
-        if (currentPage === totalPage) return;
-        setCurrentPage((currentPage += 1));
-        // Typeof setPostInView === 'function' && setPostInView();
+    const getRouterUrl = (): string => {
+        const path = router.asPath;
+
+        if (path === '/articles') {
+            return path.replace(/\/\d+$/, '') + '/page';
+        }
+        return path.replace(/\/\d+$/, '');
     };
 
     return (
@@ -51,9 +60,10 @@ const Pagination = ({
             {currentPage === 1 ? (
                 <div className="h-1 w-[5.2rem] bg-secondary"></div>
             ) : (
-                <button
+                <Link
+                    title={`Page ${currentPage - 1}`}
+                    href={currentPage === 1 ? '/articles/' : `${getRouterUrl()}/${currentPage - 1}`}
                     className="rounded-full p-4 transition-all duration-500 hover:scale-125 hover:bg-brandLight"
-                    onClick={handlePreviousPage}
                 >
                     <Image
                         src="/images/icons/icon-angle-right.svg"
@@ -62,7 +72,7 @@ const Pagination = ({
                         alt=""
                         className="h-[1.8rem] w-[1.8rem] rotate-180"
                     />
-                </button>
+                </Link>
             )}
 
             <div className="flex items-center justify-center gap-2">
@@ -74,9 +84,10 @@ const Pagination = ({
             {currentPage === totalPage ? (
                 <div className="h-1 w-[5.2rem] bg-secondary"></div>
             ) : (
-                <button
+                <Link
+                    title={`Page ${currentPage + 1}`}
+                    href={`${getRouterUrl()}/${currentPage + 1}`}
                     className="rounded-full p-4 transition-all duration-500 hover:scale-125 hover:bg-brandLight"
-                    onClick={handleNextPage}
                 >
                     <Image
                         src="/images/icons/icon-angle-right.svg"
@@ -85,7 +96,7 @@ const Pagination = ({
                         alt=""
                         className="h-[1.8rem] w-[1.8rem]"
                     />
-                </button>
+                </Link>
             )}
         </div>
     );
