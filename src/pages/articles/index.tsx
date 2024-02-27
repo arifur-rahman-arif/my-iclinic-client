@@ -79,7 +79,7 @@ export default function Blogs({ posts, categories, postsPerPageValue, seo, yoast
  *
  * @returns {Promise<{props: {posts: any}}>}
  */
-export async function getStaticProps() {
+export async function getServerSideProps() {
     try {
         const posts: Array<GeneralBlogInterface> = await getPosts();
         const categories: BlogCategoriesInterface[] = await getCategories();
@@ -94,8 +94,8 @@ export async function getStaticProps() {
                 postsPerPageValue,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
+            // revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };
     } catch (error: any) {
         console.error(error);

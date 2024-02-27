@@ -7,7 +7,8 @@ import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/li
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { BlogList } from '@/page-sections/index';
 import { WpPageResponseInterface } from '@/types';
-import { getData } from '@/utils/apiHelpers';
+
+// import { getData } from '@/utils/apiHelpers';
 
 interface BlogPageProps {
     posts: {
@@ -76,34 +77,34 @@ export default function Articles({
  * Fetch all the post slug and defines static page paths
  *
  */
-export async function getStaticPaths() {
-    const apiResponse = await getData({
-        url: `${process.env.WP_REST_URL}/posts?per_page=1&_fields=id`
-    });
-
-    if (apiResponse.status !== 200) {
-        throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
-    }
-
-    const postsPerPageValue = await getPostsPerPageValue();
-
-    const { headers } = apiResponse;
-
-    const headerObject = Object.fromEntries(headers.entries());
-
-    const totalPosts = headerObject['x-wp-total'];
-    const totalPage = Math.ceil(Number(totalPosts) / postsPerPageValue);
-
-    const paths = [];
-    for (let i = 1; i <= totalPage; i++) {
-        paths.push({ params: { slug: i.toString() } });
-    }
-
-    return {
-        paths,
-        fallback: false
-    };
-}
+// export async function getStaticPaths() {
+//     const apiResponse = await getData({
+//         url: `${process.env.WP_REST_URL}/posts?per_page=1&_fields=id`
+//     });
+//
+//     if (apiResponse.status !== 200) {
+//         throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
+//     }
+//
+//     const postsPerPageValue = await getPostsPerPageValue();
+//
+//     const { headers } = apiResponse;
+//
+//     const headerObject = Object.fromEntries(headers.entries());
+//
+//     const totalPosts = headerObject['x-wp-total'];
+//     const totalPage = Math.ceil(Number(totalPosts) / postsPerPageValue);
+//
+//     const paths = [];
+//     for (let i = 1; i <= totalPage; i++) {
+//         paths.push({ params: { slug: i.toString() } });
+//     }
+//
+//     return {
+//         paths,
+//         fallback: false
+//     };
+// }
 
 // eslint-disable-next-line valid-jsdoc
 /**
@@ -112,10 +113,14 @@ export async function getStaticPaths() {
  * @params ctx {any}
  * @returns any
  */
-export async function getStaticProps(ctx: any) {
+export async function getServerSideProps(ctx: any) {
     try {
-        const { params } = ctx; // Destructure params from context
-        const { slug } = params; // Extract the slug from params
+        // For static generation
+        // const { params } = ctx; // Destructure params from context
+        // const { slug } = params; // Extract the slug from params
+
+        // For server-side generation
+        const { slug } = ctx.query; // Extract the slug from params
 
         const posts: Array<GeneralBlogInterface> = await getPosts(slug);
         const categories: BlogCategoriesInterface[] = await getCategories();
@@ -131,8 +136,8 @@ export async function getStaticProps(ctx: any) {
                 currentPage: slug,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
+            // revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };
     } catch (error: any) {
         console.error(error);
