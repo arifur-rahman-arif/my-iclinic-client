@@ -75,16 +75,16 @@ export default function Category({
  * Fetch all the post slug and defines static page paths
  *
  */
-export async function getStaticPaths() {
-    const categories: BlogCategoriesInterface[] = await getCategories();
-
-    const paths = categories.map((category) => ({ params: { slug: category.slug } }));
-
-    return {
-        paths,
-        fallback: false
-    };
-}
+// export async function getStaticPaths() {
+//     const categories: BlogCategoriesInterface[] = await getCategories();
+//
+//     const paths = categories.map((category) => ({ params: { slug: category.slug } }));
+//
+//     return {
+//         paths,
+//         fallback: false
+//     };
+// }
 
 // eslint-disable-next-line valid-jsdoc
 /**
@@ -93,10 +93,14 @@ export async function getStaticPaths() {
  * @params ctx {any}
  * @returns any
  */
-export async function getStaticProps(ctx: any) {
+export async function getServerSideProps(ctx: any) {
     try {
-        const { params } = ctx; // Destructure params from context
-        const category = params.slug; // Extract the slug from params
+        // For static generated pages of category
+        // const { params } = ctx; // Destructure params from context
+        // const category = params.slug; // Extract the slug from params
+
+        // For server side generated pages of category
+        const category = ctx.query.slug; // Extract the slug from params
 
         const posts: Array<GeneralBlogInterface> = await getPosts(1, category);
         const categories: BlogCategoriesInterface[] = await getCategories();
@@ -112,8 +116,8 @@ export async function getStaticProps(ctx: any) {
                 currentPage: 1,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
-            },
-            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
+            }
+            // revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
         };
     } catch (error: any) {
         console.error(error);
