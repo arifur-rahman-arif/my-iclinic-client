@@ -14,8 +14,7 @@ import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers'
 import { stripInitialTags } from '@/utils/miscellaneous';
 import React from 'react';
 
-interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {
-}
+interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {}
 
 interface IclProps {
     seo: any;
@@ -38,8 +37,6 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
             <MastheadLaserEyeSurgery masthead={data.masthead} />
 
             <LaserBenefits section1={data.section1} />
-
-            <TreatmentPrices section2={data.section2} />
 
             <LaserSolutions section3={data.section3} />
 
@@ -130,11 +127,15 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 }}
             />
 
+            <TreatmentPrices section2={data.section2} />
+
             {/* <ComparisonTable table={data?.section10?.table} */}
             {/*                  heading={data?.section10?.heading || 'Let`s compare our service with other clinics'} /> */}
 
-            <ComparisonTable table={data?.section12?.table}
-                             heading={data?.section12?.heading || 'How much you save with us'} />
+            <ComparisonTable
+                table={data?.section12?.table}
+                heading={data?.section12?.heading || 'How much you save with us'}
+            />
 
             <TripleWinSection />
 

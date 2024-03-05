@@ -11,6 +11,7 @@ import {
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { twMerge } from 'tailwind-merge';
 
 interface PersonalInfoInterface {
     name: string;
@@ -34,6 +35,8 @@ interface PersonalInfoInterface {
     clonedElement?: boolean;
 
     setFormSubmitted: Dispatch<SetStateAction<boolean>>;
+    buttonClassName?: string;
+    buttonText?: string;
 }
 
 /**
@@ -77,7 +80,9 @@ const PersonalInfo = ({
     activateNextStepper,
     checkInputsForNextStepActivation,
     clonedElement,
-    setFormSubmitted
+    setFormSubmitted,
+    buttonClassName,
+    buttonText
 }: PersonalInfoInterface): JSX.Element => {
     // const dispatch = useDispatch();
     // const [submitForm, response] = useAbandonedCallbackMutation();
@@ -464,12 +469,12 @@ const PersonalInfo = ({
 
             <Button2
                 type="button"
-                text="Next"
+                text={buttonText || 'Next'}
                 iconPosition="right"
                 icon={
                     <FaAngleRight className="relative top-[0.1rem] h-7 w-7 fill-white transition-all duration-500 group-hover/next-button:fill-brand" />
                 }
-                className="next-button group/next-button gap-2 justify-self-end"
+                className={twMerge('next-button group/next-button gap-2 justify-self-end', buttonClassName)}
                 mockDisabled={!(name && phone && email)}
                 loading={response.isLoading}
                 onClick={() => {

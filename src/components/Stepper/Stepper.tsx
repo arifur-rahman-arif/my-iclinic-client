@@ -1,13 +1,14 @@
 import { getElementTopPosition } from '@/utils/miscellaneous';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
-import StepIndicator from './StepIndicator';
+// import StepIndicator from './StepIndicator';
 import StepperBody from './StepperBody';
 
 interface StepperPropInterface {
     stepperList: StepperInterface[];
     defaultClassName?: string;
     className?: string;
+    formHeading?: ReactNode;
     children: JSX.Element[];
 }
 
@@ -31,8 +32,9 @@ export interface StepperInterface {
  */
 const Stepper = ({
     stepperList,
-    defaultClassName = 'relative mx-auto grid grid-cols-1 grid-rows-[auto_1fr] gap-12 rounded-primary shadow-shadow1 p-8 sm:p-12',
+    defaultClassName = 'relative mx-auto grid grid-cols-1 gap-12 rounded-primary shadow-shadow1 p-8 sm:p-12',
     className,
+    formHeading,
     children
 }: StepperPropInterface): JSX.Element => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -68,26 +70,26 @@ const Stepper = ({
      *
      * @param {number} pointerIndex
      */
-    const activateSelectedStepper = (pointerIndex: number) => {
-        if (!steppers[pointerIndex].indicatorActive) return;
-
-        setActiveIndex(pointerIndex);
-
-        setSteppers((currentState) => {
-            const tempState = [...currentState];
-
-            if (!currentState[pointerIndex].indicatorActive) return currentState;
-
-            // Disable all other stepper except the selected one
-            tempState.forEach((stepperState, index) => {
-                stepperState.isActive = pointerIndex === index;
-            });
-
-            return [...tempState];
-        });
-
-        scrollStepperIntoView();
-    };
+    // const activateSelectedStepper = (pointerIndex: number) => {
+    //     if (!steppers[pointerIndex].indicatorActive) return;
+    //
+    //     setActiveIndex(pointerIndex);
+    //
+    //     setSteppers((currentState) => {
+    //         const tempState = [...currentState];
+    //
+    //         if (!currentState[pointerIndex].indicatorActive) return currentState;
+    //
+    //         // Disable all other stepper except the selected one
+    //         tempState.forEach((stepperState, index) => {
+    //             stepperState.isActive = pointerIndex === index;
+    //         });
+    //
+    //         return [...tempState];
+    //     });
+    //
+    //     scrollStepperIntoView();
+    // };
 
     /**
      * Change the stepper position to be visible for the user when user changes the stepper state
@@ -98,8 +100,9 @@ const Stepper = ({
     };
 
     return (
-        <div className={`${defaultClassName} ${className}`}>
-            <StepIndicator steppers={steppers} activateSelectedStepper={activateSelectedStepper} />
+        <div className={`${defaultClassName} ${className} `}>
+            {formHeading ? formHeading : null}
+            {/* <StepIndicator steppers={steppers} activateSelectedStepper={activateSelectedStepper} /> */}
             <StepperBody steppers={steppers} activateNextStepper={activateNextStepper} children={children} />
         </div>
     );

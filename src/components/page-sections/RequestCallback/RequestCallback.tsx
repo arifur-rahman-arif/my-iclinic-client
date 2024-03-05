@@ -1,6 +1,6 @@
 import { Stepper } from '@/components/Stepper';
 import { StepperInterface } from '@/components/Stepper/Stepper';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Done from './Done';
 import PersonalInfo from './PersonalInfo';
 
@@ -10,6 +10,9 @@ import PersonalInfo from './PersonalInfo';
 
 interface RequestCallbackProps {
     className?: string;
+    buttonClassName?: string;
+    buttonText?: string;
+    formHeading?: ReactNode;
 }
 
 /**
@@ -19,7 +22,12 @@ interface RequestCallbackProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
+const RequestCallback = ({
+    className,
+    buttonClassName,
+    buttonText,
+    formHeading
+}: RequestCallbackProps): JSX.Element => {
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -101,8 +109,9 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <Stepper
+                formHeading={formHeading}
                 stepperList={stepperList}
-                className={`${className || 'min-h-[50rem] !w-full max-w-[45rem] bg-white'}`}
+                className={`${className || '!w-full max-w-[45rem] bg-white'}`}
             >
                 <PersonalInfo
                     name={name}
@@ -119,6 +128,8 @@ const RequestCallback = ({ className }: RequestCallbackProps): JSX.Element => {
                     setEmailError={setEmailError}
                     checkInputsForNextStepActivation={checkInputsForNextStepActivation}
                     setFormSubmitted={setFormSubmitted}
+                    buttonClassName={buttonClassName}
+                    buttonText={buttonText}
                 />
                 {/* <DateAndTime */}
                 {/*     optionalMessage={optionalMessage} */}
