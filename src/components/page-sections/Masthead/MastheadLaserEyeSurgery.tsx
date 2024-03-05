@@ -1,14 +1,15 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
+import { Container } from '@/components/Container';
 import mastheadImage from '@/masthead/masthead-laser-eye-surgery.png';
+import RequestCallback from '@/page-sections/RequestCallback/RequestCallback';
 import Image from 'next/image';
 import { Reviews } from '@/components/page-sections/Masthead/MastheadOphthalmologyClinic';
 import { LaserEyeSurgeryContentInterface } from '@/types';
 
 // import { BookConsultation } from '@/components/page-sections';
 
-interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {
-}
+interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {}
 
 /**
  * `MastheadLaserEyeSurgery` is a React functional component that represents the masthead
@@ -26,50 +27,67 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 linkClassName="text-white"
             />
 
-            <div
-                className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
-                <Reviews />
+            <Container className="grid gap-12 pt-12 pb-24 md:grid-cols-2 md:pt-24 xl:pb-40">
+                <div className="grid gap-10 md:justify-self-start md:bg-transparent">
+                    <Reviews className="!mt-0" />
 
-                <h1 className="max-w-[43rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
-                    {masthead?.heading || 'Laser Eye Surgery'}
-                </h1>
+                    <h1 className="max-w-[43rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
+                        {masthead?.heading || 'Laser Eye Surgery'}
+                    </h1>
 
-                <p className="-mt-4 max-w-[58.8rem] font-mulishBold text-[2.4rem] uppercase leading-[3.2rem] text-[#00BFFF]">
-                    {masthead?.subheading || 'reducing or eliminating the need for glasses or contact lenses'}
-                </p>
+                    <p className="-mt-4 max-w-[58.8rem] font-mulishBold text-[2.4rem] uppercase leading-[3.2rem] text-[#00BFFF]">
+                        {masthead?.subheading || 'reducing or eliminating the need for glasses or contact lenses'}
+                    </p>
 
-                <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
-                    From as low as{' '}
-                    <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">
-                        {masthead.priceText || '£50/pcm'}
+                    <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
+                        From as low as{' '}
+                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">
+                            {masthead.priceText || '£50/pcm'}
+                        </span>
+                        <br />
+                        <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">
+                            <b className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">0%</b> Finance
+                            available
+                        </span>
                     </span>
-                    <br />
-                    <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">
-                        <b className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">0%</b> Finance
-                        available
-                    </span>
-                </span>
 
-                <div className="mt-12 grid justify-items-center gap-10 md:justify-items-start">
-                    <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
-                        {/* <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white"> */}
-                        {/*     <Button2 type="button" text="FREE consultation" /> */}
-                        {/* </BookConsultation> */}
-                        <Button2
-                            type="anchor"
-                            text="Affordable options"
-                            link="/pricing-and-financing/financing-your-treatment#calculator"
-                            title="Affordable options"
-                            className="sitemap-link text-center hover:!border-white"
-                        />
+                    <div className="mt-12 grid justify-items-center gap-10 md:justify-items-start">
+                        <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
+                            {/* <BookConsultation buttonClassName="sitemap-link text-center hover:!border-white"> */}
+                            {/*     <Button2 type="button" text="FREE consultation" /> */}
+                            {/* </BookConsultation> */}
+                            <Button2
+                                type="anchor"
+                                text="Affordable options"
+                                link="/pricing-and-financing/financing-your-treatment#calculator"
+                                title="Affordable options"
+                                className="sitemap-link text-center hover:!border-white"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <RequestCallback
+                    className="!w-full max-w-[50rem] bg-white"
+                    buttonClassName="justify-self-center"
+                    buttonText="Request a call back"
+                    formHeading={
+                        <div className="grid gap-1">
+                            <span className="text-center font-latoBold text-[3rem] uppercase leading-[3.6rem] text-[#FFA500]">
+                                Free
+                            </span>
+                            <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-heading">
+                                Consultation
+                            </span>
+                        </div>
+                    }
+                />
+            </Container>
 
             <Image
                 src={mastheadImage}
                 alt="The London Retina treatments"
-                {...masthead?.image as any}
+                {...(masthead?.image as any)}
                 className="absolute inset-0 -z-[1] h-full min-h-[33.7rem] w-full object-cover md:row-start-1 md:h-full md:w-full"
                 priority
             />
