@@ -59,8 +59,7 @@ const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-compo
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {
-}
+interface DataInterface extends CataractContentInterface, PageDataInterface<CataractContentInterface> {}
 
 interface CataractProps {
     iclTreatments: TreatmentInterface[];
@@ -94,60 +93,60 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
-            (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
-                ...item,
-                mobileImage: (
-                    <Image
-                        src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
-                        width={390}
-                        height={390}
-                        quality={70}
-                        className="rounded-primary md:hidden"
-                        alt=""
-                    />
-                ),
-                desktopImage: (
-                    <Image
-                        src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
-                        width={695}
-                        height={580}
-                        quality={70}
-                        className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
-                        alt=""
-                    />
-                ),
-                title: item?.title,
-                descriptions: stringArrayToElementArray(item?.descriptions)
-            })
-        )
+              (item: { mobileImage: any; desktopImage: any; title: any; descriptions: string[] | undefined }) => ({
+                  ...item,
+                  mobileImage: (
+                      <Image
+                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                          width={390}
+                          height={390}
+                          quality={70}
+                          className="rounded-primary md:hidden"
+                          alt=""
+                      />
+                  ),
+                  desktopImage: (
+                      <Image
+                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                          width={695}
+                          height={580}
+                          quality={70}
+                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          alt=""
+                      />
+                  ),
+                  title: item?.title,
+                  descriptions: stringArrayToElementArray(item?.descriptions)
+              })
+          )
         : null;
 
     // reviewSliderdata
     const reviewSliderdata: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    title: service?.title,
-                    name: service?.name,
-                    description: service?.description
-                };
-            })
+                  return {
+                      ...service,
+                      title: service?.title,
+                      name: service?.name,
+                      description: service?.description
+                  };
+              })
             : null;
     const InfoCardsdata =
         Array.isArray(data?.InfoCards) && data.InfoCards.length > 0
             ? data.InfoCards.map(
-                (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
-                    return {
-                        image: {
-                            url: service.image || '/images/section-images/card-improved-vision.png'
-                        },
-                        title: service.title || 'Improved Vision',
-                        description: service.content?.length ? service.content : undefined,
-                        list: service.bulletpoints?.length ? service.bulletpoints : undefined
-                    };
-                }
-            )
+                  (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
+                      return {
+                          image: {
+                              url: service.image || '/images/section-images/card-improved-vision.png'
+                          },
+                          title: service.title || 'Improved Vision',
+                          description: service.content?.length ? service.content : undefined,
+                          list: service.bulletpoints?.length ? service.bulletpoints : undefined
+                      };
+                  }
+              )
             : null;
 
     return (
@@ -170,8 +169,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                         {/* <FinanceCalculatorButton title1ClassName="text-brand" /> */}
 
                         <div className="flex flex-wrap items-center justify-start gap-4">
-                            <BookConsultation
-                                buttonClassName="sitemap-link text-center hover:!border-[#003E79] !border-2">
+                            <BookConsultation buttonClassName="sitemap-link text-center hover:!border-[#003E79] !border-2">
                                 <Button2 type="button" text="Make an enquiry" />
                             </BookConsultation>
 
@@ -190,7 +188,17 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
             <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
             <LazyComponent>
-                <FinanceCalculatorSection iclTreatments={iclTreatments} />
+                <FinanceCalculatorSection
+                    iclTreatments={iclTreatments}
+                    headingText={
+                        <>
+                            <span className="font-latoBold text-[3rem] normal-case leading-[3.6rem] text-[#FF7F00] md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
+                                0% interest-Free
+                            </span>{' '}
+                            finance option for 10 months
+                        </>
+                    }
+                />
             </LazyComponent>
 
             <FullWidthImageSection
@@ -299,8 +307,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                             text={data?.section_4?.button_text || 'Find out more'}
                             iconPosition="right"
                             icon={
-                                <FaAngleRight
-                                    className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
+                                <FaAngleRight className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
                             }
                             className="group/button mt-6 justify-self-center md:justify-self-start"
                         />
@@ -462,27 +469,27 @@ export async function getStaticProps() {
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
-                            return {
-                                ...ListData,
-                                descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
+                              };
+                          })
                         : [],
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : [],
                     InfoCards: Array.isArray(data?.acf?.InfoCards)
                         ? data?.acf.InfoCards.map((ListData) => {
-                            return {
-                                ...ListData,
-                                content: convertArrayOfObjectsToStrings(ListData?.content),
-                                bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
-                            };
-                        })
+                              return {
+                                  ...ListData,
+                                  content: convertArrayOfObjectsToStrings(ListData?.content),
+                                  bulletpoints: convertArrayOfObjectsToStrings(ListData?.bulletpoints)
+                              };
+                          })
                         : [],
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam
