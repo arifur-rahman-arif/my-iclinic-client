@@ -7,6 +7,7 @@ import { getCategories, getPageData, getPosts, getPostsPerPageValue } from '@/li
 import { BlogCategoriesInterface } from '@/page-sections/BlogList/Filters';
 import { BlogList } from '@/page-sections/index';
 import { WpPageResponseInterface } from '@/types';
+import process from 'process';
 
 interface BlogPageProps {
     posts: {
@@ -87,7 +88,9 @@ export async function getServerSideProps(ctx: any) {
         const categories: BlogCategoriesInterface[] = await getCategories();
         const postsPerPageValue: number = await getPostsPerPageValue();
 
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'articles' });
+        const data: WpPageResponseInterface<any> = await getPageData({
+            url: `${process.env.WP_REST_URL}/categories?slug=${category}&_fields=yoast_head,yoast_head_json`
+        });
 
         return {
             props: {
