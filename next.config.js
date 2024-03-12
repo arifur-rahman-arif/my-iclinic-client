@@ -1487,6 +1487,11 @@ const nextConfig = {
                 source: '/icl-price',
                 destination: '/icl/price',
                 permanent: true
+            },
+            {
+                source: '/articles/the-best-laser-eye-surgery-in-london/best-laser-eye-surgery-london-uk',
+                destination: '/articles/the-best-laser-eye-surgery-in-london',
+                permanent: true
             }
         ];
     }

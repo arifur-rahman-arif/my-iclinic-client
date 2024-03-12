@@ -565,6 +565,8 @@ export async function getStaticProps() {
             active: index === 0
         }));
 
+        console.log('Relex smile page', filteredTreatments);
+
         return {
             /* eslint-disable */
             props: {

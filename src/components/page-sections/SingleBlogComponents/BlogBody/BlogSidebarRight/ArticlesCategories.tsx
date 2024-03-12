@@ -21,7 +21,7 @@ const ArticlesCategories = ({ categories }: ArticlesCategoriesInterface): JSX.El
                 <>
                     {categories.map((category, index) => (
                         <Link
-                            href={`/articles?category=${category.slug}`}
+                            href={`/articles/category/${category.slug}`}
                             className="group/category flex items-center justify-start gap-3"
                             key={index}
                         >

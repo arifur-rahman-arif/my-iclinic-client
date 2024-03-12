@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container';
+import { LinkText } from '@/components/Link';
 import { Section } from '@/components/Section';
 import Image from 'next/image';
 
@@ -8,7 +9,8 @@ const list: ItemProps[] = [
         image: '/images/section-images/laser-eye-surgery-2-small.png',
         largeImage: '/images/section-images/laser-eye-surgery-2.png',
         description:
-            "Transform your world through precision laser eye surgery at My-iClinic, London's trusted destination for advanced eye care. With a commitment to your vision enhancement, our experienced surgeons and modern techniques offer a personalised path to improved clarity and visual freedom."
+            "Transform your world through precision laser eye surgery at My-iClinic, London's trusted destination for advanced eye care. With a commitment to your vision enhancement, our experienced surgeons and modern techniques offer a personalised path to improved clarity and visual freedom.",
+        link: '/laser-eye-surgery'
     },
     {
         title: 'Corrective eye surgery',
@@ -44,6 +46,7 @@ interface ItemProps {
     description: string;
     image: string;
     largeImage: string;
+    link?: string;
 }
 
 /**
@@ -57,7 +60,7 @@ interface ItemProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const Item = ({ title, description, image, largeImage }: ItemProps): JSX.Element => {
+const Item = ({ title, description, image, largeImage, link }: ItemProps): JSX.Element => {
     return (
         <div className="grid w-full content-start justify-items-start gap-6 md:gap-12 lg:grid-cols-2  xl:grid-cols-[auto_1fr]">
             <Image
@@ -80,7 +83,19 @@ const Item = ({ title, description, image, largeImage }: ItemProps): JSX.Element
                 <h2 className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
                     {title}
                 </h2>
-                <p className="">{description}</p>
+                <p className="">
+                    {description}{' '}
+                    {link && (
+                        <LinkText
+                            href={link}
+                            indicatorColor="bg-blue"
+                            target="_blank"
+                            className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
+                        >
+                            Read More
+                        </LinkText>
+                    )}
+                </p>
             </div>
         </div>
     );
