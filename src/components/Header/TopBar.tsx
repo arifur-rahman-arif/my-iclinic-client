@@ -33,8 +33,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         <Tooltip
                             text={
                                 <div className="px-6 py-3">
-                                    <span
-                                        className="whitespace-nowrap font-mulishBold text-[1.8rem] leading-[2.4rem] text-heading">
+                                    <span className="whitespace-nowrap font-mulishBold text-[1.8rem] leading-[2.4rem] text-heading">
                                         960 High Rd, London N12 9RY
                                     </span>
                                 </div>
@@ -78,10 +77,10 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         }`}
                     >
                         Articles
-                        {router.pathname === '/contact-us' && (
-                            <span
-                                className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
-                        )}
+                        {/* {router.pathname === '/contact-us' && ( */}
+                        {/*     <span */}
+                        {/*         className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span> */}
+                        {/* )} */}
                     </Link>
 
                     <AboutUs />
@@ -94,10 +93,10 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         }`}
                     >
                         Contact us
-                        {router.pathname === '/contact-us' && (
-                            <span
-                                className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
-                        )}
+                        {/* {router.pathname === '/contact-us' && ( */}
+                        {/*     <span */}
+                        {/*         className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span> */}
+                        {/* )} */}
                     </Link>
 
                     <button type="button" onClick={() => setOpenSearch(true)} className="px-6">

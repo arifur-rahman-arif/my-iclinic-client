@@ -4,8 +4,6 @@ import { getData } from '@/utils/apiHelpers';
 import { wordpressPageFields } from '@/utils/miscellaneous';
 import axios from 'axios';
 
-import * as process from 'process';
-
 interface GetPageDataProps {
     slug?: string;
     fields?: string;
@@ -51,11 +49,53 @@ const yoastHeadReplacement = (headText: string) => {
     // Replace the canonical link tag
     const regex = /<link\s+rel=\"canonical\"\s+href=\"([^\"]*)\".*?>/g;
     const replacement = '';
-    const canonicalReplacedText = headText.replace(regex, replacement);
+    let canonicalReplacedText = headText.replace(regex, replacement);
 
     // Replace the og url meta
     const ogUrlRegex = /<meta\s+property=\"og:url\"\s+content=\"([^\"]*)\".*?>/g;
-    return canonicalReplacedText.replace(ogUrlRegex, replacement);
+    canonicalReplacedText = canonicalReplacedText?.replace(ogUrlRegex, replacement);
+
+    /**
+     * Custom replace function to exclude /wp-content/uploads URLs
+     * @param {string} text
+     * @param {string} searchValue
+     * @param {string} replaceValue
+     * @returns {string}
+     */
+    const customReplace = (text: string, searchValue: string, replaceValue: string) => {
+        let result = '';
+        let startIndex = 0;
+        const searchLength = searchValue.length;
+
+        // Iterate through the text to find and replace occurrences
+        while (startIndex < text.length) {
+            const matchIndex = text.indexOf(searchValue, startIndex);
+
+            // If no more matches found, append remaining text and exit loop
+            if (matchIndex === -1) {
+                result += text.slice(startIndex);
+                break;
+            }
+
+            // Check if the match is not followed by /wp-content/uploads
+            const nextCharIndex = matchIndex + searchLength;
+            if (text[nextCharIndex] !== '/' || !text.slice(nextCharIndex + 1).startsWith('wp-content/uploads')) {
+                // Append text from startIndex to matchIndex and the replacement value
+                result += text.slice(startIndex, matchIndex) + replaceValue;
+            } else {
+                // If followed by /wp-content/uploads, append the match as is
+                result += text.slice(startIndex, nextCharIndex);
+            }
+
+            // Update startIndex to the end of the match
+            startIndex = nextCharIndex;
+        }
+
+        return result;
+    };
+
+    // Replace WordPress URL with actual site URL, excluding /wp-content/uploads
+    return customReplace(canonicalReplacedText, process.env.WP_URL as any, process.env.SITE_URL as any);
 };
 
 /**
@@ -242,7 +282,6 @@ const replaceSchemaUrl = (schema: any) => {
 //         open: index === 0
 //     };
 // };
-
 
 /**
  * Get trustpilot reviews
