@@ -61,7 +61,7 @@ const Context = ({ children }: ContextProps): JSX.Element => {
             active: true
         },
         {
-            name: 'Request a call back',
+            name: 'Request a callback',
             active: false
         },
         {
