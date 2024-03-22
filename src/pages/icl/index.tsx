@@ -49,8 +49,7 @@ const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-compo
     loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {
-}
+interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {}
 
 interface IclProps {
     iclTreatments: TreatmentInterface[];
@@ -72,13 +71,13 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
     const reviewSliderData: any =
         Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
             ? data.reviewSlider.map((service) => {
-                return {
-                    ...service,
-                    description: service?.description,
-                    name: service?.name,
-                    title: service?.title
-                };
-            })
+                  return {
+                      ...service,
+                      description: service?.description,
+                      name: service?.name,
+                      title: service?.title
+                  };
+              })
             : null;
 
     return (
@@ -116,7 +115,17 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
             </LazyComponent>
 
             <LazyComponent>
-                <FinanceCalculatorSection iclTreatments={iclTreatments} />
+                <FinanceCalculatorSection
+                    iclTreatments={iclTreatments}
+                    headingText={
+                        <>
+                            <span className="font-latoBold text-[3rem] normal-case leading-[3.6rem] text-[#FF7F00] md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
+                                0% interest-Free
+                            </span>{' '}
+                            finance option for 10 months
+                        </>
+                    }
+                />
             </LazyComponent>
 
             <VisionCorrectionPromo
@@ -491,10 +500,10 @@ export async function getStaticProps() {
                     },
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {
-                            return {
-                                ...ListData
-                            };
-                        })
+                              return {
+                                  ...ListData
+                              };
+                          })
                         : []
                 }
             },

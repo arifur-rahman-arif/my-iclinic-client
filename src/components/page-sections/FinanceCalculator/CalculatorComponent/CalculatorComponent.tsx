@@ -48,10 +48,15 @@ const CalculatorComponent = ({ index }: CalculatorComponentProps) => {
                 <span className="font-latoBold text-[2rem] leading-[3.2rem] text-heading">Terms & Conditions:</span>
                 <p className="mt-6 text-[1.6rem] leading-[2.4rem]">
                     Please consider: approval for{' '}
-                    <span className="font-mulishBold text-[1.6rem] uppercase">0% ARP</span> representative finance is{' '}
+                    <span className="font-mulishBold text-[1.6rem] uppercase">0% APR</span> representative finance is{' '}
                     <span className="font-mulishBold text-[1.6rem] text-heading">Subject to status.</span>
                 </p>
-                <p className="text-[1.6rem] leading-[2.4rem]">
+                {ctx.treatmentList[index].group_name == 'Cataract' && (
+                    <p className="mt-4">
+                        <span className="font-mulishBold text-[1.6rem] uppercase">9.9% APR</span> for over 12 months
+                    </p>
+                )}
+                <p className="mt-4 text-[1.6rem] leading-[2.4rem]">
                     All finance plans must be approved at least{' '}
                     <span className="font-mulishBold text-[1.6rem] text-heading">14 days prior to the treatment.</span>
                 </p>
