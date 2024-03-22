@@ -111,7 +111,7 @@ const RequestCallback = ({
             <Stepper
                 formHeading={formHeading}
                 stepperList={stepperList}
-                className={`${className || '!w-full max-w-[45rem] bg-white'}`}
+                className={`${className || '!w-full max-w-[45rem] bg-white md:min-w-[40rem]'}`}
             >
                 <PersonalInfo
                     name={name}
