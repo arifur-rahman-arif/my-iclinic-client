@@ -27,14 +27,14 @@ const TreatmentTypes = (): JSX.Element => {
 
     return (
         <div
-            className={`mt-12 flex flex-col items-center justify-start gap-8 rounded-primary sm:flex-row sm:gap-0 md:justify-center md:overflow-hidden md:shadow-shadow1 ${styles.styles}`}
+            className={`mt-12 flex flex-col items-center justify-start gap-8 rounded-[0.5rem] sm:flex-row sm:gap-0 md:justify-center md:overflow-hidden md:shadow-shadow1 ${styles.styles}`}
         >
-            {ctx.treatmentList.map((treatment, index) => (
+            {ctx.treatmentList?.map((treatment, index) => (
                 <button
                     key={index}
-                    className={`relative grid place-items-center whitespace-nowrap px-8 py-12 font-mulishExtraBold text-[1.6rem] leading-[1.8rem] shadow-shadow1 transition-all duration-500 md:shadow-none ${
-                        treatment.active ? 'bg-brand text-white' : 'text-heading'
-                    }`}
+                    className={`relative grid place-items-center whitespace-nowrap px-8 font-mulishExtraBold text-[1.6rem] leading-[1.8rem] shadow-shadow1 transition-all duration-500 md:shadow-none ${
+                        treatment.active ? 'bg-[#0099FF] text-white' : 'text-heading'
+                    } ${ctx.treatmentList.length <= 1 ? 'py-6 cursor-auto' : 'py-10 cursor-pointer'}`}
                     onClick={() => activateTreatmentCalculator({ activeIndex: index })}
                 >
                     {treatment.name}

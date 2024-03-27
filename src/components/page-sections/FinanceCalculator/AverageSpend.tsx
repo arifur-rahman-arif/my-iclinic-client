@@ -47,20 +47,20 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
 
     return (
         <div className="grid lg:grid-cols-2">
-            <div className="relative grid content-start gap-12 bg-[#04354E] px-8 py-20 md:gap-44 lg:py-36 lg:pr-32 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
-                <Image
-                    src="/images/section-images/average-spend-bg.png"
-                    alt=""
-                    width={717}
-                    height={599}
-                    className="absolute inset-0 h-full w-full"
-                />
+            <div className="relative grid content-start gap-12 bg-[#0099FF] px-8 py-20 md:gap-44 lg:py-36 lg:pr-32 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+                {/* <Image */}
+                {/*     src="/images/section-images/average-spend-bg.png" */}
+                {/*     alt="" */}
+                {/*     width={717} */}
+                {/*     height={599} */}
+                {/*     className="absolute inset-0 h-full w-full" */}
+                {/* /> */}
                 <H3Variant1 className="relative z-[2] max-w-[44.2rem] font-latoLight text-white">
                     How much will you spend for glasses and contact lenses over 30 years?
                 </H3Variant1>
 
                 <div className="relative z-[2] grid gap-8 md:grid-cols-[auto_1fr] md:items-center md:gap-16">
-                    <span className="leading-16 ml-10 font-latoBold text-[3.6rem] text-white md:ml-0 md:text-[4.8rem] md:leading-[4.8rem]">
+                    <span className="leading-16 ml-10 font-latoExtraBold text-[3.6rem] text-white md:ml-0 md:text-[4.8rem] md:leading-[4.8rem]">
                         {totalCost || '£24,000+'}
                     </span>
                     <Image
@@ -80,14 +80,14 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
                 </div>
             </div>
 
-            <div className="xl: grid gap-20 bg-heading2 px-8 py-20 lg:py-36 lg:pl-32 xl:pr-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div className="xl: grid gap-20 bg-[#FFD400] px-8 py-20 lg:py-36 lg:pl-32 xl:pr-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 {/* <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white md:text-[3rem] md:leading-[3.6rem]"> */}
                 {/*     /!* {subheadng || 'How much will you spend for glasses and contact lenses over 30 years?'} *!/ */}
                 {/*     /!* {subheadng || 'How much will you spend for glasses and contact lenses over 30 years?'} *!/ */}
                 {/*     /!* How much will you spend for glasses and contact lenses over 30 years? *!/ */}
                 {/* </span> */}
 
-                <H3Variant1 className="relative z-[2] max-w-[41.1rem] font-latoLight text-white">
+                <H3Variant1 className="relative z-[2] max-w-[41.1rem] font-latoLight text-heading">
                     Average spend on glasses & contact lenses per year
                 </H3Variant1>
 
@@ -99,7 +99,7 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
                                     <div className="flex items-center justify-start gap-10">
                                         <Image {...item.image} alt="" className="" />
 
-                                        <span className="font-latoBold text-[3rem] leading-[3.6rem] text-white">
+                                        <span className="font-latoBold text-[3rem] leading-[3.6rem] text-heading">
                                             {item.price}
                                         </span>
 
@@ -118,7 +118,7 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
 
                                     {/* <span className="col-span-full h-[0.1rem] bg-[#0186B0]"></span> */}
 
-                                    <span className="font-latoBold text-[3rem] leading-[3.6rem] text-white">
+                                    <span className="font-latoBold text-[3rem] leading-[3.6rem] text-heading">
                                         {item.price}
                                     </span>
 

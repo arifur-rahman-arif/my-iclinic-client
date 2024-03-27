@@ -45,7 +45,7 @@ export const EyeCount = ({ index }: EyeCountProps) => {
                         ctx.setEyeCount(index, 1);
                     }}
                     className={`rounded-primary px-8 py-8 ${
-                        ctx.treatmentList[index].eyeCount === 1 ? 'bg-brand' : 'bg-white shadow-shadow1'
+                        ctx.treatmentList[index].eyeCount === 1 ? 'bg-[#0099FF]' : 'bg-white shadow-shadow1'
                     }`}
                     labelClassName={`${ctx.treatmentList[index].eyeCount === 1 ? 'text-white' : 'text-heading'}`}
                 />
@@ -60,7 +60,7 @@ export const EyeCount = ({ index }: EyeCountProps) => {
                         ctx.setEyeCount(index, 2);
                     }}
                     className={`rounded-primary px-8 py-8 ${
-                        ctx.treatmentList[index].eyeCount === 2 ? 'bg-brand' : 'bg-white shadow-shadow1'
+                        ctx.treatmentList[index].eyeCount === 2 ? 'bg-[#0099FF]' : 'bg-white shadow-shadow1'
                     }`}
                     labelClassName={`${ctx.treatmentList[index].eyeCount === 2 ? 'text-white' : 'text-heading'}`}
                 />

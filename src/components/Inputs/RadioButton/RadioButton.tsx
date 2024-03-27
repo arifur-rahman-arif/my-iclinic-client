@@ -12,6 +12,7 @@ interface RadioButtonProps {
     className?: string;
     labelClassName?: string;
     rounded?: boolean;
+    checkboxClassName?: string;
 }
 
 // @ts-ignore
@@ -43,7 +44,8 @@ export const RadioButton = ({
     defaultClassName = 'flex items-center justify-center gap-4',
     className,
     labelClassName,
-    rounded = true
+    rounded = true,
+    checkboxClassName
 }: RadioButtonProps) => {
     return (
         <div className={styles.styles}>
@@ -57,7 +59,7 @@ export const RadioButton = ({
                     checked={checked}
                     onChange={onChange}
                 />
-                <span className={`checkbox ${rounded ? 'checkbox--rounded' : 'checkbox--flat'}`}>
+                <span className={`checkbox ${rounded ? 'checkbox--rounded' : 'checkbox--flat'} ${checkboxClassName}`}>
                     <svg width="16" height="16" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.3334 1L5.00002 8.33333L1.66669 5"

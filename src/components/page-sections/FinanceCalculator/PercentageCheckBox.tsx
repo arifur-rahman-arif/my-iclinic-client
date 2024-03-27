@@ -67,6 +67,7 @@ const PercentageCheckBox = ({ index }: PercentageCheckBoxProps) => {
                             onChange={(e) => {
                                 ctx.setUpfrontPercentage(index, Number(e.target.value));
                             }}
+                            checkboxClassName="checkbox--blue"
                         />
                     )
                 )}
