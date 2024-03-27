@@ -18,7 +18,7 @@ export const MonthlyPayment = ({ index }: MonthlyPaymentProps) => {
     const treatmentCost = ctx.treatmentList[index].cost * ctx.treatmentList[index].eyeCount;
 
     return (
-        <div className="grid w-full gap-16 rounded-primary bg-brand py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start">
+        <div className="grid w-full gap-16 rounded-[0.5rem] bg-[#003E79] py-8 px-8 shadow-shadow1 md:py-16 md:px-12 lg:self-start">
             <div className="grid content-start gap-y-16 gap-x-14 justify-self-center">
                 <p className="max-w-[36.4rem] text-center font-latoBold text-[2rem] leading-[2.4rem] text-white md:text-[3rem] md:leading-[3.6rem]">
                     Your monthly payment
@@ -32,7 +32,7 @@ export const MonthlyPayment = ({ index }: MonthlyPaymentProps) => {
                     </span>
                 </div>
             </div>
-            <hr className="mx-auto w-full max-w-md border border-[#003C55]" />
+            <hr className="mx-auto w-full max-w-md border border-white" />
             <div className="grid justify-center justify-items-center gap-8 pb-12 md:grid-cols-[auto_auto]">
                 <div className="flex w-72 flex-col items-center rounded-primary border border-white px-10 py-7 text-center">
                     <p className="font-mulishBold text-[2rem] capitalize leading-[2.8rem] text-white">Surgery cost</p>

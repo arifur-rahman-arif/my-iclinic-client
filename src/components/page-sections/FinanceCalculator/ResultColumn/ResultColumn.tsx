@@ -18,14 +18,25 @@ interface ResultColumnProps {
  */
 const ResultColumn = ({ index }: ResultColumnProps) => {
     const ctx = useContext(AppCtx);
+    const treatmentType = ctx.treatmentList[index].group_name;
+
+    let marks: any = false;
+
+    if (treatmentType == 'Cataract' || treatmentType == 'ICL Surgery') {
+        marks = [{ value: 6 }, { value: 9 }, { value: 10 }];
+    }
+
+    if (treatmentType == 'Laser eye surgery') {
+        marks = [{ value: 6 }, { value: 9 }, { value: 10 }, { value: 11 }, { value: 12 }];
+    }
 
     return (
         <div className="grid content-start gap-6">
             <MonthlyPayment index={index} />
 
             {/*  Number of instalment */}
-            <div className="grid content-start gap-12 rounded-primary bg-brand p-12 md:gap-24 xl:gap-32 xl:p-24">
-                <p className="max-w-[36.4rem] text-center font-latoBold text-[2rem] leading-[2.4rem] text-white md:text-[3rem] md:leading-[3.6rem]">
+            <div className="grid content-start gap-12 rounded-[0.5rem] bg-[#003E79] p-12 md:gap-24 xl:gap-32 xl:p-24">
+                <p className="mx-auto max-w-[36.4rem] text-center font-latoBold text-[2rem] leading-[2.4rem] text-white md:text-[3rem] md:leading-[3.6rem]">
                     Select your monthly payment period
                 </p>
 
@@ -34,11 +45,12 @@ const ResultColumn = ({ index }: ResultColumnProps) => {
                     minValue={ctx.treatmentList[index].minInstallment}
                     maxValue={ctx.treatmentList[index].maxInstallment}
                     value={ctx.treatmentList[index].defaultInstallment}
-                    defaultValue={10}
+                    defaultValue={ctx.treatmentList[index].defaultInstallment}
                     onValueChange={(e) => ctx.setInstallment(index, e.target.value)}
                     valueLabelFormat={`${ctx.treatmentList[index].defaultInstallment} month`}
                     appendValueText=" month"
                     id="installment-month"
+                    marks={marks}
                 />
             </div>
 

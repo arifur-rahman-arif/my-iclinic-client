@@ -133,8 +133,8 @@ body {
 		font-size: 1.8rem;
 		font-weight: bolder;
 		line-height: 2.8rem;
-		text-transform: none !important;
-		color: #35444b !important;
+		text-transform: none;
+		color: #35444b;
 		
 		@include media-breakpoint-up(md) {
 		  font-size: 2rem;
