@@ -1,7 +1,7 @@
-import { consultantCardList } from '@/components/Card';
+// import { consultantCardList } from '@/components/Card';
 import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
 import MenuCta from '@/components/Header/MenuCta';
-import { SubMenuLink } from '@/components/Header/SubMenus/EyeTreatments/EyeTreatments';
+// import { SubMenuLink } from '@/components/Header/SubMenus/EyeTreatments/EyeTreatments';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, SetStateAction, useState } from 'react';
@@ -9,6 +9,8 @@ import { FaAngleRight } from 'react-icons/fa';
 import { NextRouter } from 'next/router';
 import { twMerge } from 'tailwind-merge';
 import styles from '../EyeTreatments/Style.module.scss';
+import useSWR from 'swr';
+import ComponentLoader from '@/components/ComponentLoader';
 
 interface SubmenuType {
     active?: boolean;
@@ -103,9 +105,44 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
         });
     };
 
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const getData = async (url: string): Promise<any> => {
+        try {
+            const res = await fetch(url);
+            const jsonData = await res.json();
+
+            // Fetching image URLs for each post
+            const postsWithImages = await Promise.all(
+                jsonData.map(async (post: any) => {
+                    const imageUrlRes = await fetch(`${process.env.NEXT_PUBLIC_REST_URL}/media/${post.featured_media}`);
+                    const imageUrlJson = await imageUrlRes.json();
+
+                    return { ...post, imageUrl: imageUrlJson.guid.rendered }; // Adding imageUrl to the post object
+                })
+            );
+
+            return postsWithImages;
+        } catch (err) {
+            throw err;
+        }
+    };
+
+    // SWR mutation hook to handle form data submission
+    const { data, error, isLoading } = useSWR(
+        `${process.env.NEXT_PUBLIC_REST_URL}/specialist?_fields=slug,title,featured_media,acf&order=asc`,
+        getData
+    );
+
     return (
-        <div
-            className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
+        <div className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (
@@ -156,7 +193,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-0 -translate-y-full"
                                     >
-                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79"/>
+                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79" />
                                     </svg>
 
                                     <svg
@@ -167,57 +204,61 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                         fill="none"
                                         className="absolute right-0 top-full"
                                     >
-                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79"/>
+                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79" />
                                     </svg>
                                 </>
                             )}
                         </div>
                     ))}
 
-                    <SoloLink soloLinks={extraLinks} router={router}/>
+                    <SoloLink soloLinks={extraLinks} router={router} />
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
-                    {innerSubmenus.map((treatment, i) => {
-                        if (i === 0) {
-                            return (
-                                <div
-                                    key={i}
-                                    className={`grid grid-cols-2 content-start justify-center gap-x-24 gap-y-16 p-24 ${
-                                        treatment.active ? 'active' : 'hidden'
-                                    }`}
-                                >
-                                    {consultantCardList.map((consultant, key) => (
-                                        <ConsultantItem
-                                            key={key}
-                                            {...consultant}
-                                            className="mega-menu-link"
-                                            isActive={`/our-specialists/${router.query?.slug}` === consultant.url}
-                                        />
-                                    ))}
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div
-                                    key={i}
-                                    className={`grid content-start justify-center gap-10 px-16 py-32 ${
-                                        treatment.active ? 'active' : 'hidden'
-                                    }`}
-                                >
-                                    {treatment?.menus?.map((menuItem, key) => (
-                                        <SubMenuLink
-                                            {...menuItem}
-                                            isActive={router.pathname === menuItem.url}
-                                            key={key}
-                                        />
-                                    ))}
-                                </div>
-                            );
-                        }
-                    })}
+                    {isLoading || error ? (
+                        <ComponentLoader />
+                    ) : (
+                        <>
+                            {innerSubmenus.map((treatment, i) => {
+                                return (
+                                    <div
+                                        key={i}
+                                        className={`grid grid-cols-2 content-start justify-center gap-x-24 gap-y-16 p-24 ${
+                                            treatment.active ? 'active' : 'hidden'
+                                        }`}
+                                    >
+                                        {/* {consultantCardList.map((consultant, key) => (
+                                            <ConsultantItem
+                                                key={key}
+                                                {...consultant}
+                                                className="mega-menu-link"
+                                                isActive={`/our-specialists/${router.query?.slug}` === consultant.url}
+                                            />
+                                        ))} */}
+                                        {data?.length
+                                            ? data.map((consultant: any, key: number) => (
+                                                  <ConsultantItem
+                                                      key={key}
+                                                      image={consultant.imageUrl || ''}
+                                                      name={consultant.title.rendered || ''}
+                                                      degree={consultant.acf?.specialist_data?.degree || ''}
+                                                      title={consultant.acf?.specialist_data?.title || ''}
+                                                      url={`/our-specialists/${consultant.slug}`}
+                                                      className="mega-menu-link"
+                                                      isActive={
+                                                          `/our-specialists/${router.query?.slug}` ===
+                                                          `/our-specialists/${consultant.slug}`
+                                                      }
+                                                  />
+                                              ))
+                                            : null}
+                                    </div>
+                                );
+                            })}
+                        </>
+                    )}
 
-                    <MenuCta className="grid-cols-2" centerText/>
+                    <MenuCta className="grid-cols-2" centerText />
                 </div>
             </div>
         </div>
@@ -251,19 +292,19 @@ interface ConsultantItemProps extends ConsultantCardInterface {
  * @returns {JSX.Element} A React JSX element representing the consultant's profile card.
  */
 export const ConsultantItem = ({
-                                   image,
-                                   name,
-                                   degree,
-                                   title,
-                                   url,
-                                   setOpenMobileMenu,
-                                   isActive,
-                                   className,
-                                   imgWidth,
-                                   imgHeight,
-                                   imgClassName,
-                                   imageClass
-                               }: ConsultantItemProps): JSX.Element => {
+    image,
+    name,
+    degree,
+    title,
+    url,
+    setOpenMobileMenu,
+    isActive,
+    className,
+    imgWidth,
+    imgHeight,
+    imgClassName,
+    imageClass
+}: ConsultantItemProps): JSX.Element => {
     return (
         <Link
             href={url}
