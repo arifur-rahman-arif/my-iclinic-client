@@ -12,7 +12,7 @@ export interface SpecialistPostsInterface extends ConsultantCardInterface {
  */
 export const getSpecialistsPost = async (): Promise<SpecialistPostsInterface[]> => {
     const postsApiResponse: Response = await getData({
-        url: `${process.env.WP_REST_URL}/specialist?_fields=title,slug,featured_media,acf&per_page=50&orderby=date&order=asc`
+        url: `${process.env.WP_REST_URL}/specialist?_fields=title,slug,featured_media,acf&per_page=50`
     });
 
     if (postsApiResponse.status !== 200) {

@@ -1,8 +1,16 @@
 import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
+import { ImageType3 } from 'src/types/image';
 
 export default interface YagCataractContentInterface {
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
+        priceText: string;
+	}
 	//	London’s best treatment
 	section_1: {
         sub_heading: string;
@@ -68,4 +76,12 @@ export default interface YagCataractContentInterface {
 		sub_heading: string; // Subheading
 		title: string;
 	},
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    },
 }

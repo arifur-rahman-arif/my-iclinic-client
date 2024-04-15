@@ -128,7 +128,7 @@ export interface ReviewsProps {
  *
  * @returns {JSX.Element} The rendered Reviews component.
  */
-const Reviews = (): JSX.Element => {
+export const Reviews = (): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (

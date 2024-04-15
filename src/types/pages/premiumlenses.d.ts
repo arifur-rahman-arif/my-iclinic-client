@@ -1,5 +1,12 @@
 
 export default interface PremiumlensesContentInterface {
+    masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
+        priceText: string;
+	}
 
 	//	SECTION 1
 	section_1: {
@@ -20,13 +27,13 @@ export default interface PremiumlensesContentInterface {
 		title: string; // 
 		descriptions: string[];
 	},
+    animationSection: {
+        heading: string; //
+    }
 // 	// VIDEO SECTION
 	section_3: {// Subheading
 		subheading: string; // 
-        heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+        heading: string;
 		contents: string[];
         point_text_1: string;
         point_text_2: string;
@@ -71,11 +78,14 @@ export default interface PremiumlensesContentInterface {
         descriptions: string[];
     }
     // 	// VIDEO SECTION
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    },
 	call_section:{
 		sub_heading: string;
 		heading: string;

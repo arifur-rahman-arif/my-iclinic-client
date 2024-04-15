@@ -10,16 +10,13 @@ interface BulletPointInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const BulletPoint = ({
-    defaultClassName = 'h-[1.2rem] w-[1.2rem] translate-y-[0.6rem]',
-    className
-}: BulletPointInterface): JSX.Element => {
+const BulletPoint = ({ defaultClassName = 'translate-y-[0.6rem]', className }: BulletPointInterface): JSX.Element => {
     return (
         <Image
-            src="/images/icons/icon-angle-right.svg"
+            src="/images/icons/icon-dotted-arrow.svg"
             alt=""
-            width={20}
-            height={20}
+            width={18}
+            height={18}
             className={`${defaultClassName} ${className}`}
         />
     );

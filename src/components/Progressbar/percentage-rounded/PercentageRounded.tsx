@@ -38,7 +38,9 @@ const PercentageRounded = ({ percentage = 0 }: PercentageRoundedInterface): JSX.
             <div className="relative flex">
                 <CircularProgress variant="determinate" value={percentageValue} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-mulishExtraBold text-[1.6rem] leading-[1.6rem]">{percentageValue}%</span>
+                    <span className="font-mulishExtraBold text-[1.6rem] leading-[1.6rem] text-heading opacity-90">
+                        {percentageValue}%
+                    </span>
                 </div>
             </div>
         </div>

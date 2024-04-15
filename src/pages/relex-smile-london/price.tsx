@@ -3,29 +3,26 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-relex-smile-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-relex-smile-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-relex-smile-pricing.png';
 import { CtaSection } from '@/page-sections/CtaSection';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import {
+    BookConsultation,
     BulletPoint,
     FullWidthImageSection,
     FullWidthImageSection2,
-    Masthead,
-    PriceSection,
     SideImageSection
 } from '@/page-sections/index';
 import HTMLReactParser from 'html-react-parser';
 
 import React from 'react';
-import { relexSmilePriceList } from '@/page-sections/PriceCard/priceList';
 import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
 import { RelexSmilePriceContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
+import CostDetails from '@/components/page-sections/RelexSmilePriceSections/CostDetails';
+import { openFreshdeskChat } from '@/utils/miscellaneous';
+import Image from 'next/image';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -48,29 +45,16 @@ interface PricePageProps {
  * @returns {JSX.Element}
  */
 export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Element {
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'ReLEX SMILE laser eye surgery cost London';
-    const subheading = data?.masthead_subheading || 'Save an average of £1,000';
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    const priceSection: any = data?.relex_smile_price
-        ? data?.relex_smile_price.map((service) => {
-              return {
-                  ...service,
-                  price: service?.price,
-                  priceText: service?.priceText,
-                  priceDescription: service?.priceDescription
-              };
-          })
-        : null;
+    // const priceSection: any = data?.relex_smile_price
+    //     ? data?.relex_smile_price.map((service) => {
+    //           return {
+    //               ...service,
+    //               price: service?.price,
+    //               priceText: service?.priceText,
+    //               priceDescription: service?.priceDescription
+    //           };
+    //       })
+    //     : null;
 
     return (
         <Page
@@ -81,20 +65,12 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText="Woman reading the cost of Presbyond Treatment in London."
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                priceText={data?.masthead_price}
-            />
+            <CataractHero {...data?.masthead} />
+
+            <CostDetails items={data?.costDetails} />
 
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Relex smile consultation'}
+                // h2Heading={data?.section_1?.sub_heading || 'Relex smile consultation'}
                 h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
@@ -110,7 +86,6 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                     height: 549
                 }}
                 altText=""
-                positionReversed
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
@@ -151,20 +126,16 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                 }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
-
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <SideImageSection
-                h2Heading={data?.section_2?.title || 'Relex smile finance'}
-                h3LightHeading={data?.section_2?.heading?.light_heading || 'Want to pay for your'}
-                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'treatment each month?'}
+                h3LightHeading={data?.section_2?.heading || 'Want to pay for your treatment each month?'}
                 midExtras={
-                    <h4 className="normal-case">
+                    <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#893277]">
                         {data?.section_2?.sub_heading || 'Finance available for ReLEx SMILE'}
-                    </h4>
+                    </span>
                 }
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
                 descriptions={
@@ -184,36 +155,123 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                     width: 574,
                     height: 560
                 }}
+                largeImageClassName="xl:w-full xl:h-full object-cover rounded-[1rem]"
+                positionReversed
                 textColumnExtras={
-                    <div className="md:max-w-[43rem]">
-                        <span className="font-latoBold text-[2.4rem] uppercase leading-[3.2rem]">
-                            {(data?.section_2?.lists?.length && data?.section_2?.lists) || [
-                                'You are eligible for our 12 months interest-free finance'
-                            ]}
-                        </span>
-                        <div className="mt-12 grid grid-cols-[auto_1fr] gap-6">
+                    <div className="md:max-w-[47.4rem]">
+                        <div className="grid">
+                            <span className="h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
+                            <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading">
+                                {(data?.section_2?.lists?.length && data?.section_2?.lists) || [
+                                    'You are eligible for our 12 months interest-free finance'
+                                ]}
+                            </span>
+                        </div>
+                        <div className="mt-12 grid grid-cols-[auto_1fr] gap-x-4 gap-y-6">
                             {/* <Image src={IconCalculator} alt="" className="self-center" /> */}
                             <BulletPoint />
-                            <span className="font-latoBold text-[2rem] leading-[2.4rem]">
+                            <span className="font-mulishBold text-heading">
                                 {data?.section_2?.bullet_points_heading ||
                                     'Calculate your monthly spend for your laser treatment'}
                             </span>
-                            <div className="col-start-2">
+                            <div className="col-span-full">
                                 {HTMLReactParser(data?.section_2?.bullet_1) ||
                                     'If you’re eligible for our interest-free finance, you can calculate your monthly spend so you’re always in the know with regard to payments for your laser eye treatment.'}
                             </div>
-                            <div className="col-start-2">
+                            <div className="col-span-full">
                                 {HTMLReactParser(data?.section_2?.bullet_2) ||
                                     HTMLReactParser(
                                         'If you have any queries regarding pricing, you can get in touch with our specialists for a consultation today on  <a href="tel:0208 445 8877">  <span className="whitespace-nowrap font-mulishBold text-blue">0208 445 8877.</span> </a>'
                                     )}
                             </div>
                         </div>
+
+                        {/* Cta section part */}
+                        <div className="mt-12 grid gap-y-4  gap-x-4 xs:grid-cols-[auto_1fr] sm:gap-x-8">
+                            <div className="flex items-center justify-start gap-4">
+                                <Image
+                                    src="/images/icons/icon-telephone-outline.svg"
+                                    alt=""
+                                    quality={70}
+                                    width={20}
+                                    height={20}
+                                    className="h-8 w-8"
+                                />
+                                <a href="tel:0208 445 8877">
+                                    <span className="font-mub relative block cursor-pointer font-mulishBold text-heading">
+                                        (+44) 0208 445 8877
+                                    </span>
+                                </a>
+                            </div>
+                            <div className="flex items-center justify-start gap-4">
+                                <Image src="/images/icons/icon-chat-dark.svg" alt="" width={24} height={24} />
+                                <button
+                                    className="font-mub relative block -translate-y-1 cursor-pointer font-mulishBold text-heading"
+                                    onClick={openFreshdeskChat}
+                                >
+                                    Chat with us
+                                </button>
+                            </div>
+                            <div className="col-span-full mt-2 grid place-items-start">
+                                <BookConsultation
+                                    buttonClassName={`group/consultation transition-all border-2 border-[#003E79] duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-[#003E79] rounded-[0.5rem]`}
+                                >
+                                    <button className="" aria-label="Book a consultation">
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 20 20"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
+                                            />
+                                            <path
+                                                d="M13.334 1.66699V5.00033"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
+                                            />
+                                            <path
+                                                d="M6.66602 1.66699V5.00033"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
+                                            />
+                                            <path
+                                                d="M2.5 8.33301H17.5"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
+                                            />
+                                        </svg>
+
+                                        <span
+                                            className={`font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-[#003E79]`}
+                                        >
+                                            Book a consultation
+                                        </span>
+                                    </button>
+                                </BookConsultation>
+                            </div>
+                        </div>
                     </div>
                 }
             />
 
-            <PriceSection priceList={priceSection || relexSmilePriceList} />
+            {/* <PriceSection priceList={priceSection || relexSmilePriceList} /> */}
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'ReLEx SMILE surgery couldn’t be more cost-effective!'}
@@ -221,11 +279,6 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                     data?.section_3?.description ||
                     'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
                 }
-            />
-
-            <CtaSection
-                subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
-                title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team'}
             />
 
             <FullWidthImageSection
@@ -244,7 +297,13 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="lg:!mt-0 bg-brandLight relative"
+                sectionClass="relative"
+            />
+
+            <CtaSection
+                subtitle={data?.call_section?.heading || 'OUR OPTIONS AVAILABLE'}
+                title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team'}
+                sectionClassName="!mt-0"
             />
         </Page>
     );
@@ -268,6 +327,15 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1

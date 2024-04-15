@@ -9,20 +9,26 @@ import { useRef } from 'react';
 // import Image from 'next/image';
 const LottieComponent = dynamic(() => import('./LottieComponent'));
 
+interface Props {
+    heading?: string;
+}
+
 /**
  * Full width lottie component
  *
  * @returns {*}  {JSX.Element}
  */
-const LottieSection = (): JSX.Element => {
+const LottieSection = ({ heading }: Props): JSX.Element => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const { onEnter } = useOnScreen({ ref: sectionRef, triggerPosition: '90%' });
 
     return (
-        <Section className="bg-brandLight md:min-h-[38.2rem]">
+        <Section className="bg-[#003E79] md:min-h-[38.2rem]">
             <ContainerFluid className="grid grid-cols-1 gap-12 py-12 md:py-24" ref={sectionRef}>
-                <h2 className="w-full justify-self-center text-center normal-case md:max-w-[50.9rem]">
-                    <strong className="normal-case">Achieve clear vision at all distances</strong>
+                <h2 className="w-full justify-self-center text-center normal-case md:max-w-[57.9rem]">
+                    <strong className="normal-case text-white">
+                        {heading || 'Achieve clear vision at all distances'}
+                    </strong>
                 </h2>
                 <LottieComponent startAnimation={onEnter} />
                 <>

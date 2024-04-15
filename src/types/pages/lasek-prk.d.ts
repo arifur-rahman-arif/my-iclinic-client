@@ -1,7 +1,15 @@
-import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from 'src/types/image';
 import { Sustainibility } from './component/sustainibility';
 
 export default interface LasekprkContentInterface extends Sustainibility {
+	masthead: {
+		title: string;
+		subTitle: string;
+		image: ImageType3;
+		priceText: string;
+		financeText: string;
+	}
+	calculatorHeading: string;
 	//	London’s best treatment
 	section_1: {
         heading: string;
@@ -11,12 +19,7 @@ export default interface LasekprkContentInterface extends Sustainibility {
 	},
 	// SYMPTOMS RELIEVE
 	section_2: {
-        
-        sub_heading: string;
-        heading: { // Heading
-        light_heading: string; // Light Heading
-        dark_heading: string; // Bold Heading
-    },
+        heading: string;
 		descriptions: string[];
 		image: string;
 		large_image: string;
@@ -53,6 +56,12 @@ export default interface LasekprkContentInterface extends Sustainibility {
 		title: string;
 		descriptions: string[];
 	}
+	ctaSection: {
+		title?: string;
+		subTitle?: string;
+		descriptions?: string[];
+		image?: any;
+	}
 //	//	Book
 	section_5: {
         sub_heading: string;
@@ -87,14 +96,17 @@ export default interface LasekprkContentInterface extends Sustainibility {
 		title: string;
 		descriptions: string[];
 	},
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
 	choosebest:{
 		lightheading?: string;
 		boldheading?: string;
 		description?: string;
+	}
+	patientReviews: {
+		heading: string;
+		reviews: {
+			name: string;
+			review: string;
+			link: string;
+		}[];
 	}
 }

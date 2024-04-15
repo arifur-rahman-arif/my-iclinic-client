@@ -32,7 +32,7 @@ const SectionTextColumn = ({
     className
 }: SectionTextColumnProps): JSX.Element => {
     return (
-        <div className={twMerge('grid grid-cols-[auto_1fr] content-start gap-y-12 gap-x-6', className)}>
+        <div className={twMerge('grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12', className)}>
             {heading ? <SectionHeading {...{ heading, headingClassName, barClassName }} /> : null}
 
             {descriptions && descriptions?.length > 0 && (
@@ -70,7 +70,14 @@ export const SectionHeading = ({ heading, barClassName, headingClassName }: Sect
     return (
         <>
             <span className={twMerge('h-full w-[0.8rem] bg-[#005DAF]', barClassName)}></span>
-            <h2 className={twMerge('w-full max-w-[45.3rem] normal-case', headingClassName)}>{heading}</h2>
+            <h2
+                className={twMerge(
+                    'w-full max-w-[55rem] whitespace-pre-line !text-balance normal-case',
+                    headingClassName
+                )}
+            >
+                {heading}
+            </h2>
         </>
     );
 };

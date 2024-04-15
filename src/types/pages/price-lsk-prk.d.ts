@@ -1,13 +1,23 @@
-import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from 'src/types/image';
 
 export default interface PricelskprkContentInterface {
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
+        priceText: string;
+	}
+
+	costDetails: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
 	//	SECTION 1
 	section_1: {
 		sub_heading: string; 
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		},
+		heading: string,
         lists:string[];
 		image: string;
 		large_image: string;
@@ -15,10 +25,7 @@ export default interface PricelskprkContentInterface {
 	
 	section_2: {
 		title: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		} // Bold Heading
+		heading: string // Bold Heading
 		subheading: string;
 		descriptions: string[];
 		lists: string[];

@@ -17,7 +17,7 @@ import CornealImage from '@/section-images/cross-linking-surgery.png';
 import FullWidthImageLarge from '@/section-images/keratoconus-large.png';
 import FullWidthImage from '@/section-images/keratoconus.png';
 import { keratoconusContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
@@ -191,7 +191,7 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
             <FullWidthImageSection
                 boldHeading={
                     <div className="md:max-w-[54.4rem]">
-                        <strong className="normal-case">
+                        <strong className="normal-case text-white">
                             {data?.minimally_invasive?.heading ||
                                 'What is minimally invasive corneal cross-linking surgery?'}
                         </strong>
@@ -230,7 +230,7 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
             />
 
             <CtaSection2
-                title={<div className="normal-case">{data?.section_6?.title || `Cornea transplant at My-iClinic`}</div>}
+                title={data?.section_6?.title || `Cornea transplant at My-iClinic`}
                 descriptions={
                     (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
                         'A cornea transplant (often known as Keratoplasty or a corneal graft) is a surgery we offer to protect the eyes from severe cases of progressive Keratoconus.',
@@ -241,11 +241,6 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
                 }
                 image={{
                     url: data?.section_6?.image || '/images/section-images/cta-keratoconus.png',
-                    width: 640,
-                    height: 514
-                }}
-                imageLarge={{
-                    url: data?.section_6?.imagelarge || '/images/section-images/cta-keratoconus-large.png',
                     width: 640,
                     height: 514
                 }}
@@ -317,7 +312,10 @@ export async function getStaticProps() {
                         : [],
                     section_6: {
                         ...data?.acf?.section_6,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions),
+                        image: {
+                            ...(data?.acf?.section_6?.image && formatImage(data.acf?.section_6?.image))
+                        }
                     },
                     reviewSlider: Array.isArray(data?.acf?.reviewSlider)
                         ? data?.acf.reviewSlider.map((ListData) => {

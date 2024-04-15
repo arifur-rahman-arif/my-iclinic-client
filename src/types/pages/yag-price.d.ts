@@ -1,6 +1,19 @@
 import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from 'src/types/image';
 
 export default interface YagPriceContentInterface {
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
+        priceText: string;
+	},
+	costDetails: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
 	//	SECTION 1
 	section_1: {
 		sub_heading: string; 
@@ -11,6 +24,7 @@ export default interface YagPriceContentInterface {
 		lists: string[];
 		image: string;
 		large_image: string;
+		descriptions: string[];
 	},
 	
 	section_2: {

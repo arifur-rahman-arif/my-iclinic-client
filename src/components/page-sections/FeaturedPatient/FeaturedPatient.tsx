@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import StarComponent from 'src/components/page-sections/SectionParts/StarComponent/StarComponent';
 import { SwiperSlide } from 'swiper/react';
 import BandImage, { BandImageInterface } from './BandImage';
+import { twMerge } from 'tailwind-merge';
 
 interface FeaturedPatientInterface {
     bandImageTitle: string;
@@ -17,6 +18,7 @@ interface FeaturedPatientInterface {
     reviewDescription?: string[];
     reviewTitle: ReactNode;
     sliders: BandImageInterface[];
+    subTitleClass?: string;
 }
 
 /**
@@ -43,7 +45,8 @@ const FeaturedPatient = ({
     bandImageDescription,
     reviewDescription,
     reviewTitle,
-    sliders
+    sliders,
+    subTitleClass
 }: FeaturedPatientInterface): JSX.Element => {
     // Const slideElement = useRef<HTMLHeadingElement | null>(null);
     // const slideElementLarge = useRef<HTMLHeadingElement | null>(null);
@@ -63,7 +66,7 @@ const FeaturedPatient = ({
                 <div className="mx-auto grid max-w-[93rem] grid-cols-1 content-start md:grid-cols-2 md:gap-24">
                     {/* For small devices */}
                     <div className="mb-24 grid gap-4 md:hidden">
-                        <SpanVariant1>
+                        <SpanVariant1 className={twMerge('!text-[#0099FF]', subTitleClass)}>
                             {h2Title}
                             {/* <span className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-white"></span> */}
                         </SpanVariant1>
@@ -88,7 +91,7 @@ const FeaturedPatient = ({
                     {/* Block 2 */}
                     <div className="mt-24 grid content-start gap-6 md:-mt-[3.4rem] md:gap-12">
                         <div className="relative hidden gap-4 md:grid">
-                            <SpanVariant1 className="mt-12">
+                            <SpanVariant1 className={twMerge('mt-12 !text-[#0099FF]', subTitleClass)}>
                                 {h2Title}
                                 {/* <span className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-white"></span> */}
                             </SpanVariant1>
@@ -125,7 +128,9 @@ const FeaturedPatient = ({
 
                             <div className="">
                                 <StarComponent />
-                                <h5 className="mt-4 text-left normal-case text-heading2">{reviewTitle}</h5>
+                                <span className="mt-4 text-left font-mulishBold text-[2rem] normal-case leading-[2.8rem] text-[#893277]">
+                                    {reviewTitle}
+                                </span>
                             </div>
                         </div>
                     </div>

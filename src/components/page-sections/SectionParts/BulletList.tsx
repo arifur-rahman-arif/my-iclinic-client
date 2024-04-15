@@ -21,7 +21,7 @@ interface BulletListInterface {
 const BulletList = ({
     list,
     bold = false,
-    defaultClassName = 'ml-8 grid gap-6 sm:ml-12',
+    defaultClassName = 'grid gap-6',
     className,
     listItemClassName,
     listClassName,

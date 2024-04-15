@@ -6,7 +6,7 @@ import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconArrow from '@/icons/icon-angle-right.svg';
+import IconArrow from '@/icons/icon-dotted-arrow-white.svg';
 import { getPageData } from '@/lib';
 import MastheadImageMedium from '@/masthead/masthead-flashes-floaters-medium.png';
 import { flashesFaqList } from '@/page-sections/Faq/faqList';
@@ -118,8 +118,9 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                             ]
                         }
                         listClassName="!gap-6"
+                        listItemClassName="text-white [&_*]:text-white"
                         bulletPoint={
-                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                            <Image src={IconArrow} alt="" className="h-[2rem] w-[2rem] translate-y-[0.5rem]" />
                         }
                     />,
                     (data?.section_1?.descriptions?.length &&
@@ -256,8 +257,9 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                             ]
                         }
                         listClassName="!gap-6"
+                        listItemClassName="text-white"
                         bulletPoint={
-                            <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
+                            <Image src={IconArrow} alt="" className="h-[2rem] w-[2rem] translate-y-[0.5rem]" />
                         }
                     />
                 }
@@ -269,16 +271,7 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
             />
 
             <CtaSection2
-                image={{
-                    url: data?.bookingsec?.image || '/images/section-images/glasses-free-presbyond-large.png',
-                    width: 640,
-                    height: 514
-                }}
-                imageLarge={{
-                    url: data?.bookingsec?.imageLarge || '/images/section-images/glasses-free-presbyond-large.png',
-                    width: 640,
-                    height: 514
-                }}
+                image={data?.bookingsec?.image}
                 title={data?.bookingsec?.title || 'Friendly vision correction treatment for dry eyes'}
                 descriptions={
                     (data?.bookingsec?.descriptions?.length &&
@@ -292,8 +285,6 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                         </>
                     ]
                 }
-                button1Text="Book A FREE suitability"
-                excludeSloganText
             />
 
             <LazyComponent>

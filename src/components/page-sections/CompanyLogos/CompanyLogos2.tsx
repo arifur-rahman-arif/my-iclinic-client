@@ -19,9 +19,8 @@ const CompanyLogos2 = (): JSX.Element => {
         <Section>
             <Container className="grid place-items-center gap-16">
                 <H3Variant1 className="!font-latoLight">
-                    Funding your{' '}
                     <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[3.6rem] md:leading-[4rem]">
-                        treatment
+                        Funding your treatment
                     </strong>
                 </H3Variant1>
                 <div className="mx-auto flex flex-wrap items-center justify-center gap-6">

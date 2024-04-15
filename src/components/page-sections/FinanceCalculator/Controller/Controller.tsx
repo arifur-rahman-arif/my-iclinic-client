@@ -139,6 +139,16 @@ const Controller = ({
                         lineHeight: '2.4rem',
                         fontFamily: 'var(--lato-bold)',
                         color: '#fff'
+                    },
+                    '& .MuiSlider-mark': {
+                        height: '8px',
+                        width: '8px',
+                        borderRadius: '100%',
+                        backgroundColor: '#0099FF',
+                        marginLeft: '-5px'
+                    },
+                    '& .MuiSlider-markActive': {
+                        backgroundColor: '#fff'
                     }
                 }}
             />

@@ -71,8 +71,8 @@ const Banner = ({
             />
 
             {/* Headings */}
-            <div className="grid w-full grid-cols-1 gap-6 md:col-span-2 md:gap-12">
-                <div className={`${styles.styles}`}>{h1Title}</div>
+            <div className={`grid w-full max-w-[70rem] grid-cols-1 gap-6 md:col-span-2 md:gap-12 ${styles.styles}`}>
+                {h1Title}
                 {h2Title && h2Title}
 
                 {!excludePinImage && (

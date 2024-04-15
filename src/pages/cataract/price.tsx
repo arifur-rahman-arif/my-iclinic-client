@@ -4,29 +4,30 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
-    BulletPoint,
+    // BulletPoint,
     CompanyLogos2,
-    FullWidthImageSection,
-    FullWidthImageSection2,
-    Masthead,
-    PriceSection,
+    // FullWidthImageSection,
+    // PriceSection,
     SideImageSection
 } from '@/components/page-sections';
+import CostDetails from '@/components/page-sections/CataractPriceSections/CostDetails';
+import VisionCorrection from '@/components/page-sections/CataractPriceSections/VisionCorrection';
 import { CtaSection } from '@/components/page-sections/CtaSection';
-import { cataractPriceList } from '@/components/page-sections/PriceCard/priceList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-cataract-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-cataract-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-cataract-pricing.png';
-import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
+import { TreatmentInterface } from '@/components/page-sections/FinanceCalculator/Context';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
+// import { cataractPriceList } from '@/components/page-sections/PriceCard/priceList';
+import { getPageData, getTreatments } from '@/lib';
+// import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
 import { PriceCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
+// import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+// const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+//     loading: () => <ComponentLoader />
+// });
+
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -36,6 +37,7 @@ interface CataractPriceProps {
     data: DataInterface;
     seo: any;
     yoastJson: any;
+    iclTreatments: TreatmentInterface[];
 }
 
 /**
@@ -44,31 +46,17 @@ interface CataractPriceProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function CataractPrice({ seo, yoastJson, data }: CataractPriceProps): JSX.Element {
-    const heading = data?.masthead_heading || 'Cataract surgery cost in London';
-    const subheading = data?.masthead_subheading || 'Save you an average of £1,000 for your cataract treatment';
-
-    const deviceSize = useDeviceSize();
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    const priceSection: any = data?.lsk_price
-        ? data?.lsk_price.map((service) => {
-              return {
-                  ...service,
-                  price: service?.price,
-                  priceText: service?.priceText,
-                  priceDescription: service?.priceDescription
-              };
-          })
-        : null;
+export default function CataractPrice({ seo, yoastJson, data, iclTreatments }: CataractPriceProps): JSX.Element {
+    // const priceSection: any = data?.lsk_price
+    //     ? data?.lsk_price.map((service) => {
+    //           return {
+    //               ...service,
+    //               price: service?.price,
+    //               priceText: service?.priceText,
+    //               priceDescription: service?.priceDescription
+    //           };
+    //       })
+    //     : null;
 
     return (
         <Page
@@ -79,7 +67,16 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
         >
             <BreadCrumb />
 
-            <Masthead
+            <CataractHero
+                title={data?.masthead?.title}
+                subTitle={data?.masthead?.subtitle}
+                largeImage={data?.masthead?.large_image}
+                smallImage={data?.masthead?.small_image}
+                priceText={data?.masthead?.price_text}
+                smallImageClass="-mt-[20rem]"
+            />
+
+            {/* <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
                 imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
                 imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
@@ -88,9 +85,50 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
                 priceText={data?.masthead_price}
                 googleReviews={data?.google_reviews}
                 trustPilotReviews={data?.trustpilot_reviews}
-            />
+            /> */}
+
+            <CostDetails items={data?.cost_details} />
 
             <SideImageSection
+                h3LightHeading={data?.section_3?.title || 'Cataract laser surgery couldn’t be more cost-effective!'}
+                sectionImage={{
+                    url: data?.section_3?.image || '/images/section-images/private-consultation-cataract.png',
+                    width: 390,
+                    height: 390
+                }}
+                descriptions={[
+                    data?.section_3?.description ||
+                        `Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.`
+                ]}
+                sectionImageDesktop={{
+                    url:
+                        data?.section_3?.large_image ||
+                        '/images/section-images/private-consultation-cataract-large.png',
+                    width: 611,
+                    height: 584
+                }}
+                altText=""
+            />
+
+            <CompanyLogos2 />
+
+            <VisionCorrection heading={data?.section_4?.title} image={data?.section_4?.image} />
+
+            <LazyComponent>
+                <FinanceCalculatorSection
+                    iclTreatments={iclTreatments}
+                    headingText={
+                        <>
+                            <span className="font-latoBold text-[3rem] normal-case leading-[3.6rem] text-[#FF7F00] md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
+                                0% interest-Free
+                            </span>{' '}
+                            finance option for 10 months
+                        </>
+                    }
+                />
+            </LazyComponent>
+
+            {/* <SideImageSection
                 h2Heading={data?.section_1?.sub_heading || 'Cataract consultation'}
                 h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
@@ -139,15 +177,15 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
                         </li>
                     </ul>
                 }
-            />
+            /> */}
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+            {/* <div className="w-full md:h-[0.1rem] lg:mt-24"></div> */}
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            {/* <LazyComponent>
+                <CallbackSection />
+            </LazyComponent> */}
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
-
-            <SideImageSection
+            {/* <SideImageSection
                 sectionClass="relative before:content-[''] before:absolute before:right-0 before:top-0 before:sm:w-2/4 before:h-full before:md:bg-[#FFEFE5] before:-z-[1]"
                 h2Heading={data?.section_2?.title || 'Cataract insurance'}
                 h3LightHeading={data?.section_2?.heading?.light_heading || 'Want to pay with'}
@@ -193,43 +231,9 @@ export default function CataractPrice({ seo, yoastJson, data }: CataractPricePro
                 }
             />
 
-            <PriceSection priceList={priceSection || cataractPriceList} />
-
-            <FullWidthImageSection2
-                title={data?.section_3?.title || 'Cataract laser surgery couldn’t be more cost-effective!'}
-                description={
-                    data?.section_3?.description ||
-                    `Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.`
-                }
-            />
-
-            <CompanyLogos2 />
+            <PriceSection priceList={priceSection || cataractPriceList} /> */}
 
             <CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
-
-            <FullWidthImageSection
-                h3Title={
-                    <>
-                        {data?.section_4?.title ? (
-                            HTMLReactParser(data?.section_4?.title)
-                        ) : (
-                            <>
-                                <strong className="normal-case">Permanently correct your vision</strong> with our
-                                private Cataract treatment.
-                            </>
-                        )}
-                    </>
-                }
-                boldHeading={true}
-                altText=""
-                image={data?.section_4?.image || InclusiveCostImage}
-                desktopImage={data?.section_4?.large_image || InclusiveCostImage}
-                containerClass="pb-16 md:!py-0"
-                overlayAnimation={true}
-                textColumnOverlay={true}
-                sectionClass="bg-brandLight relative !mt-0"
-                largeImageClassName="!rounded-none"
-            />
         </Page>
     );
 }
@@ -243,13 +247,39 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cataract-price' });
 
+
+        const treatments = await getTreatments();
+        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'Cataract');
+
+        /**
+         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        iclTreatments = iclTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
+
         return {
             /* eslint-disable */
             props: {
+                iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        large_image: {
+                            ...(data?.acf?.masthead?.large_image && formatImage(data.acf?.masthead?.large_image))
+                        },
+                        small_image: {
+                            ...(data?.acf?.masthead?.small_image && formatImage(data.acf?.masthead?.small_image))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1
@@ -264,7 +294,10 @@ export async function getStaticProps() {
                         ...data?.acf?.section_3
                     },
                     section_4: {
-                        ...data?.acf?.section_4
+                        ...data?.acf?.section_4,
+                        image: {
+                            ...(data?.acf?.section_4?.image && formatImage(data.acf?.section_4?.image))
+                        }
                     },
                     smile_price: Array.isArray(data?.acf?.smile_price)
                         ? data?.acf.smile_price.map((priceData) => {

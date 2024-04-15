@@ -1,7 +1,15 @@
-import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from 'src/types/image';
 import { Sustainibility } from './component/sustainibility';
 
 export default interface LasiklondonContentInterface extends Sustainibility {
+	masthead: {
+		title: string;
+		subTitle: string;
+		image: ImageType3;
+		priceText: string;
+		financeText: string;
+	}
+	calculatorHeading: string;
 	//	SECTION 1
 	section_1: {
 		heading: string; 
@@ -12,8 +20,6 @@ export default interface LasiklondonContentInterface extends Sustainibility {
 	
 	section_2: {
 		title: string; // Subheading
-		bold_heading_1: string; // Light Heading
-		bold_heading_2: string; // Bold Heading
 		image: string;
 		large_image: string;
 	},
@@ -38,13 +44,19 @@ export default interface LasiklondonContentInterface extends Sustainibility {
 		reviewTitle: string;
 	},
 
+	patientReviews: {
+		heading: string;
+		reviews: {
+			name: string;
+			review: string;
+			link: string;
+		}[];
+	}
+
 // //Transparent Price
 	section_5: {
         sub_heading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string;
 		descriptions: string[]; 
         image: string;
 		large_image: string;

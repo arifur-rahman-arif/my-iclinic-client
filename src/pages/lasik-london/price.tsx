@@ -1,30 +1,27 @@
-/* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import MastheadImageLarge from '@/masthead/masthead-lasik-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-lasik-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-lasik-pricing.png';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { CtaSection } from '@/page-sections/CtaSection';
+import Image from 'next/image';
 import {
+    BookConsultation,
     BulletPoint,
     FinanceList,
     FullWidthImageSection,
     FullWidthImageSection2,
-    Masthead,
-    PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-import { lasikPriceList } from '@/page-sections/PriceCard/priceList';
 import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.png';
 import { PricelasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import CostDetails from '@/components/page-sections/RelexSmilePriceSections/CostDetails';
+import Button2 from '@/components/Buttons/Button2';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -45,58 +42,21 @@ interface LasikPricingProps {
  * @returns {JSX.Element}
  */
 export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps): JSX.Element {
-    const heading = data?.masthead_heading || 'LASIK laser eye surgery cost London';
-    const subheading = data?.masthead_subheading || 'Save you an average of £1,000';
-
-    const deviceSize = useDeviceSize();
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    const priceSection: any = data?.lsk_price
-        ? data?.lsk_price.map((service) => {
-              return {
-                  ...service,
-                  price: service?.price,
-                  priceText: service?.priceText,
-                  priceDescription: service?.priceDescription
-              };
-          })
-        : null;
-
     return (
-        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
+        <Page title="" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                altText="Woman reading the cost of Presbyond Treatment in London."
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || '£2,400 PER EYE'}
-                priceTextExtra={
-                    <span className="font-mulishBold text-[1.8rem] normal-case leading-[2.4rem] text-heading2">
-                        With 12 months
-                        <br />
-                        <span className="font-mulishBold uppercase text-heading2">Interest Free Finance</span>{' '}
-                        available!
-                    </span>
-                }
-                bannerWidth="md:max-w-[65.5rem]"
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
+            <CataractHero
+                {...data?.masthead}
+                smallImageClass="row-start-1 mt-0"
+                contentContainerClassName="pb-12 md:pb-0"
+                headingClassName="md:max-w-[57rem]"
             />
 
+            <CostDetails items={data?.costDetails} />
+
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'LASIK consultation'}
-                h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
+                h3LightHeading={data?.section_1?.heading || 'What’s included in my private consultation and treatment?'}
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/private-consultation-lasik.png',
                     width: 390,
@@ -108,11 +68,9 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                     height: 549
                 }}
                 altText=""
-                positionReversed
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyeTesting} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {HTMLReactParser(data?.section_1?.bullet_1) ||
@@ -122,7 +80,6 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconPersonInFrame} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {HTMLReactParser(data?.section_1?.bullet_2) ||
@@ -132,7 +89,6 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {HTMLReactParser(data?.section_1?.bullet_3) ||
@@ -142,7 +98,6 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyePlus} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {HTMLReactParser(data?.section_1?.bullet_4) ||
@@ -155,18 +110,16 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                 }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
             {/* SECTION 2 */}
             <SideImageSection
-                h2Heading={data?.section_2?.title || 'LASIK finance'}
-                h3LightHeading={data?.section_2?.heading?.light_heading || 'Thinking about splitting'}
-                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'your treatment cost?'}
+                h3LightHeading={data?.section_2?.heading || 'Thinking about splitting your treatment cost?'}
+                positionReversed
                 midExtras={
-                    <h4 className="normal-case">
+                    <h4 className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#893277]">
                         {data?.section_2?.subheading || 'Finance available for LASIK laser eye surgery'}
                     </h4>
                 }
@@ -187,18 +140,67 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                     height: 560
                 }}
                 textColumnExtras={
-                    <FinanceList
-                        list={
-                            (data?.section_2?.lists?.length && data?.section_2?.lists) || [
-                                'You are eligible for our 12 months interest-free finance',
-                                'Calculate your monthly spend for your ICL treatment'
-                            ]
-                        }
-                    />
+                    <div className="grid justify-items-start">
+                        <span className="h-[1.4rem] w-[6.7rem] rounded-primary bg-[#FF7F00]"></span>
+                        <div className="grid gap-4">
+                            {data?.section_2?.lists?.length
+                                ? data?.section_2?.lists.map((item, key) => (
+                                      <strong className="text-heading" key={key}>
+                                          {item}
+                                      </strong>
+                                  ))
+                                : null}
+                        </div>
+
+                        <FinanceList list={['Calculate your monthly spend for your ICL treatment']} className="mt-6" />
+
+                        <p>
+                            If you’re eligible for our interest-free finance, you can calculate your monthly spend so
+                            you’re always in the know with regard to payments for your laser eye treatment.
+                        </p>
+
+                        <p>
+                            If you have any queries regarding pricing, you can get in touch with our specialists for a
+                            consultation today.
+                        </p>
+
+                        {/* Cta section part */}
+                        <div className="mt-12 grid content-start gap-x-4 gap-y-4 xs:grid-cols-[auto_1fr] sm:gap-x-8">
+                            <div className="flex items-center justify-start gap-4">
+                                <Image
+                                    src="/images/icons/icon-telephone-outline.svg"
+                                    alt=""
+                                    quality={70}
+                                    width={20}
+                                    height={20}
+                                    className="h-8 w-8"
+                                />
+                                <a href="tel:0208 445 8877">
+                                    <span className="font-mub relative block cursor-pointer font-mulishBold text-heading">
+                                        (+44) 0208 445 8877
+                                    </span>
+                                </a>
+                            </div>
+                            <div className="flex items-center justify-start gap-4">
+                                <Image src="/images/icons/icon-chat-dark.svg" alt="" width={24} height={24} />
+                                <button
+                                    className="font-mub relative block -translate-y-1 cursor-pointer font-mulishBold text-heading"
+                                    onClick={openFreshdeskChat}
+                                >
+                                    Chat with us
+                                </button>
+                            </div>
+                            <div className="col-span-full grid place-items-start">
+                                <BookConsultation>
+                                    <Button2 text="Book a consultation" className="" type="button" />
+                                </BookConsultation>
+                            </div>
+                        </div>
+                    </div>
                 }
             />
 
-            <PriceSection priceList={priceSection || lasikPriceList} />
+            {/* <PriceSection priceList={priceSection || lasikPriceList} /> */}
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'LASIK laser eye surgery couldn’t be more cost-effective!'}
@@ -209,8 +211,6 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                 image={data?.section_3?.image || '/images/section-images/lasik-finance-large.png'}
                 largeImage={data?.section_3?.large_image || '/images/section-images/lasik-finance-large.png'}
             />
-
-            <CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
 
             {/* SECTION 4 */}
             <FullWidthImageSection
@@ -226,10 +226,16 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                 altText=""
                 image={data?.section_4?.image || InclusiveCostImage}
                 desktopImage={data?.section_4?.large_image || InclusiveCostImage}
-                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0"
+                largeImageClassName="!object-contain !rounded-none"
+                containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="lg:!mt-0 bg-brandLight"
+                sectionClass="relative"
+            />
+            <CtaSection
+                title={data?.speaktoteam?.title}
+                subtitle={data?.speaktoteam?.subtitle}
+                sectionClassName="!mt-0"
             />
         </Page>
     );
@@ -251,6 +257,16 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead?.subTitle),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1

@@ -32,10 +32,10 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         desktopImage: (
             <Image
                 src="/images/section-images/relex-smile-consultation-large.png"
-                width={685}
-                height={557}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="Woman having eye check with ophthalmologist to correct her vision"
             />
         ),
@@ -77,10 +77,10 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         desktopImage: (
             <Image
                 src="/images/section-images/relex-smile-treatment-large.png"
-                width={683}
-                height={568}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="ReLEx SMILE laser eye surgery"
             />
         ),
@@ -118,10 +118,10 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         desktopImage: (
             <Image
                 src="/images/section-images/relex-smile-aftercare-large.png"
-                width={675}
-                height={558}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="Woman free from glasses rock climbing"
             />
         ),
@@ -156,10 +156,10 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasik-consultation-large.png"
-                width={687}
-                height={574}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -187,10 +187,10 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasik-treatment-large.png"
-                width={689}
-                height={558}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -218,10 +218,10 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasik-aftercare-large.png"
-                width={691}
-                height={558}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -252,10 +252,10 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/cataract-consultation-large.png"
-                width={696}
-                height={550}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -296,10 +296,10 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/cataract-surgery-large.png"
-                width={689}
-                height={558}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -326,10 +326,10 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/cataract-aftercare-large.png"
-                width={680}
-                height={550}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -361,10 +361,10 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/presbyond-consultation-desktop.png"
-                width={685}
-                height={587}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="Woman gets her eyes checked with an ophthalmologist for presbyond laser eye"
             />
         ),
@@ -389,10 +389,10 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/presbyond-surgery-desktop.png"
-                width={677}
-                height={558}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="Presbyond treatment to correct blurry, long-sighted vision."
             />
         ),
@@ -420,10 +420,10 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/presbyond-aftercare-desktop.png"
-                width={685}
-                height={587}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt="Woman recovering after Presbyond laser eye surgery, holding a coffee cup and
                 reading her ipad without reading glasses.
                 "
@@ -508,10 +508,10 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasek-consultation-large.png"
-                width={695}
-                height={580}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -541,10 +541,10 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasek-treatment-large.png"
-                width={711}
-                height={522}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -570,10 +570,10 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/lasek-aftercare-large.png"
-                width={695}
-                height={580}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -602,10 +602,10 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/glaucoma-consultation-large.png"
-                width={682}
-                height={686}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -637,10 +637,10 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/glaucoma-laser-large.png"
-                width={678}
-                height={533}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -681,10 +681,10 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/glaucoma-eye-drops-large.png"
-                width={678}
-                height={533}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -735,10 +735,10 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/presserflo.png"
-                width={647}
-                height={389}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -781,10 +781,10 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         desktopImage: (
             <Image
                 src="/images/section-images/canaloplasty.jpg"
-                width={647}
-                height={389}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -814,10 +814,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/eyelid-malposition.jpg"
-                width={695}
-                height={580}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -920,10 +920,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/ectropion-treatment.jpg"
-                width={711}
-                height={522}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1001,10 +1001,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/eyelid-cyst-removal.png"
-                width={544}
-                height={392}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1103,10 +1103,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/eyelid-chalazion-removal-large.png"
-                width={711}
-                height={522}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1186,10 +1186,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/eye-stye-removal-large.png"
-                width={544}
-                height={392}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1289,10 +1289,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/ptosis-surgery-large.png"
-                width={711}
-                height={522}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1370,10 +1370,10 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/pterygium-surgery-large.png"
-                width={711}
-                height={522}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1476,10 +1476,10 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         desktopImage: (
             <Image
                 src="/images/section-images/cosmetic-eyelid-surgery-large.png"
-                width={695}
-                height={580}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1581,10 +1581,10 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         desktopImage: (
             <Image
                 src="/images/section-images/blepharoplasty-large.png"
-                width={544}
-                height={392}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1666,10 +1666,10 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         desktopImage: (
             <Image
                 src="/images/section-images/blepharospasm-botox-large.png"
-                width={544}
-                height={392}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1773,10 +1773,10 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/yag-consultation-large.png"
-                width={677}
-                height={484}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1803,10 +1803,10 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/yag-treatment-large.png"
-                width={677}
-                height={484}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1831,10 +1831,10 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         desktopImage: (
             <Image
                 src="/images/section-images/yag-aftercare-large.png"
-                width={677}
-                height={484}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1860,10 +1860,10 @@ export const leftRightListPaediatric: Array<LeftRightSectionChildrenInterface> =
         desktopImage: (
             <Image
                 src="/images/section-images/paediatric-consultation-large.png"
-                width={677}
-                height={484}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),
@@ -1890,10 +1890,10 @@ export const leftRightListPaediatricAftercare: Array<LeftRightSectionChildrenInt
         desktopImage: (
             <Image
                 src="/images/section-images/paediatric-aftercare-large.png"
-                width={677}
-                height={484}
+                width={704}
+                height={613}
                 quality={70}
-                className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                className="hidden w-full max-w-[70.4rem] md:block"
                 alt=""
             />
         ),

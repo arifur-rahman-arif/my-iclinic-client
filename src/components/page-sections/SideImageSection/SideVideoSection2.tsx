@@ -63,14 +63,14 @@ const SideVideoSection2 = ({
 
     return (
         <Section className="relative overflow-hidden py-16 md:py-32" ref={sectionRef}>
-            <div ref={animationRef} className={`absolute top-0 left-0 -z-[1] h-full w-0 bg-[#0C4969]`}></div>
+            <div ref={animationRef} className={`absolute top-0 left-0 -z-[1] h-full w-0 bg-[#003E79]`}></div>
             <Container
                 className={`${
                     containerDefaultClassName || 'grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-24'
                 } ${containerClassName}`}
             >
                 <H2Variant1 className={`normal-case md:col-span-2 md:max-w-[79rem] ${textColor}`}>{title}</H2Variant1>
-                <div className="grid gap-12 md:max-w-[48.7rem]">
+                <div className="grid gap-12 md:max-w-[52rem]">
                     {descriptions.map((desc, index) => (
                         <p key={index} className={`${textColor}`}>
                             {HTMLReactParser(desc as string)}
@@ -99,7 +99,7 @@ const SideVideoSection2 = ({
                             target="_blank"
                             href="https://connect.pabau.com/bookings.php?compid=11842"
                             title="Book a free screening test"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-white bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-white"
+                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-white bg-[#003E79] px-8 py-6 transition-all duration-500 hover:bg-white"
                             aria-label="Book a free screening test"
                         >
                             <svg
@@ -176,7 +176,7 @@ const SideVideoSection2 = ({
                         </Link>
                     </div>
                     <span
-                        className={`max-w-[32.7rem] text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-heading2 md:text-left ${sloganTextColor}`}
+                        className={`text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-[#E1F1FF] md:text-left ${sloganTextColor}`}
                     >
                         A better quality of life is just around the corner!
                     </span>

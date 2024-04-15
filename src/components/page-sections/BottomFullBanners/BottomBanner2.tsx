@@ -1,18 +1,22 @@
+import { Button2 } from '@/components/Buttons';
 import { Container, ContainerFluid } from '@/components/Container';
 import { Section } from '@/components/Section';
 // eslint-disable-next-line no-unused-vars
 import GirlHoldingGlass from '@/section-images/girl-holding-glass.png';
+import { ImageType3 } from '@/types';
 import { pinAnimation } from '@/utils/gsapFunctions';
 import Image from 'next/image';
 import { useRef } from 'react';
 
 interface BottomBanner2Interface {
     subtitle?: string;
+    titleAttribute?: string;
     title?: string;
-    image?: string;
+    image?: ImageType3;
     subheading?: string;
     description?: string;
     bestpriceline?: string;
+    link?: string;
 }
 
 /**
@@ -25,11 +29,13 @@ interface BottomBanner2Interface {
  */
 const BottomBanner2 = ({
     title = '£2,400 Per Eye',
+    titleAttribute,
     subtitle = 'With 24 Months Interest-Free Finance Available!',
-    // image = '@/section-images/girl-holding-glass.png',
     subheading = 'Saving an average of £1,000 For Your treatment',
     description = 'When you come to My-iClinic.',
-    bestpriceline = 'The best laser eye surgery price in London'
+    bestpriceline = 'The best laser eye surgery price in London',
+    image,
+    link
 }: BottomBanner2Interface): JSX.Element => {
     const pinRef = useRef<any>(null);
     const pinAnimationTrigger = useRef<HTMLDivElement>(null);
@@ -46,39 +52,27 @@ const BottomBanner2 = ({
                 <Container className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-[auto_1fr_auto] md:gap-24 md:py-0">
                     {/* Grid item 1 */}
                     <div className="row-start-1 grid place-items-end justify-self-center md:row-auto">
-                        <Image src={GirlHoldingGlass} quality={70} alt="Woman holding her glass" />
+                        <Image src={GirlHoldingGlass} alt="Woman holding her glass" {...(image as any)} />
                     </div>
                     {/* Grid item 2 */}
                     <div className="grid md:py-24">
-                        <span className="font-latoBold text-[2.4rem] leading-[3.6rem] md:text-[4rem] md:leading-[4rem]">
-                            {title}
+                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-heading">
+                            {title} <span className="text-heading">{titleAttribute || '/ Per eye'}</span>
                         </span>
-                        <p className="mt-6 font-mulishMedium text-[2rem] lowercase leading-[3.2rem] first-letter:uppercase md:max-w-[34.5rem]">
+                        <p className="font-latoBold text-[2.4rem] lowercase leading-[3.2rem] text-[#893277] first-letter:uppercase">
                             {subtitle}
                         </p>
-                        <div className="relative mt-8 h-2 w-full md:mt-12" ref={pinAnimationTrigger}>
-                            <Image
-                                src="/images/icons/icon-pin-yellow.svg"
-                                quality={10}
-                                width={150}
-                                height={2}
-                                alt=""
-                                className="w-0"
-                                ref={pinRef}
-                            />
-                        </div>
-                        <p className="mt-6 font-mulishBold text-[2.4rem] lowercase leading-[2.8rem] first-letter:uppercase md:max-w-[34.8rem]">
-                            {subheading}
-                        </p>
-                        <p className="mt-6 font-mulishMedium text-[2rem] leading-[3rem]">{description}</p>
-                        <p className="mt-8 font-mulishBold uppercase leading-[3rem] text-heading2 md:mt-12">
-                            {bestpriceline}
-                        </p>
-                    </div>
 
-                    {/* {largeSizes.includes(deviceSize) && (
-                        <Image src={ImagePiggy} quality={70} alt="Piggy" className="place-self-end" />
-                    )} */}
+                        <div className="mt-12 grid md:mt-24">
+                            <span className="h-[1.4rem] w-[6.7rem] rounded-primary bg-[#FF7F00]"></span>
+                            <p className="font-mulishBold text-[2rem] lowercase leading-[2.8rem] text-heading first-letter:uppercase ">
+                                {subheading}
+                            </p>
+                        </div>
+                        <p className="">{description}</p>
+                        <p className="mt-10 font-mulishBold uppercase  text-heading">{bestpriceline}</p>
+                        <Button2 type="anchor" link={link} text="Check our price" className="mt-4 justify-self-start" />
+                    </div>
                 </Container>
             </ContainerFluid>
         </Section>

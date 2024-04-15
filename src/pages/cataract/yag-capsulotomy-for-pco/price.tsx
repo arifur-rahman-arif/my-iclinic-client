@@ -3,21 +3,14 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import {
-    BulletList,
-    FullWidthImageSection2,
-    Masthead,
-    PriceSection,
-    SideImageSection
-} from '@/components/page-sections';
+import { BulletList, FullWidthImageSection2, SideImageSection } from '@/components/page-sections';
+import CostDetails from '@/components/page-sections/CataractPriceSections/CostDetails';
 import { CtaSection } from '@/components/page-sections/CtaSection';
-import { yagPriceList } from '@/components/page-sections/PriceCard/priceList';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-yag-pricing-large.png';
-import MastheadImageMedium from '@/masthead/masthead-yag-pricing-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-yag-pricing-small.png';
 import { YagPriceContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
@@ -26,7 +19,7 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
 
 interface DataInterface extends YagPriceContentInterface, PageDataInterface<YagPriceContentInterface> {}
 
-interface IclPricingProps {
+interface Props {
     seo: any;
     yoastJson: any;
     data: DataInterface;
@@ -38,37 +31,24 @@ interface IclPricingProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): JSX.Element {
+export default function IclPricing({ seo, yoastJson, data }: Props): JSX.Element {
     const heading = data?.masthead_heading || 'YAG laser Capsulotomy surgery cost London';
     const subheading = data?.masthead_subheading || 'data?.masthead_heading ||Save an average of £1,000';
 
-    const priceSection: any = data?.lsk_price
-        ? data?.lsk_price.map((service) => {
-              return {
-                  ...service,
-                  price: service?.price,
-                  priceText: service?.priceText,
-                  priceDescription: service?.priceDescription
-              };
-          })
-        : null;
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                priceText={data?.masthead_price || '£395 per eye'}
+            <CataractHero
+                {...data?.masthead}
+                headingClassName="!max-w-[64.2rem]"
+                smallImageClass="row-start-1 mt-0"
+                contentContainerClassName="pb-12 lg:pb-0"
             />
 
+            <CostDetails items={data?.costDetails} itemClass="sm:px-16 md:px-16 grid-cols-1 sm:grid-cols-[auto_1fr]" />
+
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Your consultation'}
                 h3LightHeading={
                     <>
                         {data?.section_1?.heading?.light_heading || 'What’s included in my'}
@@ -76,6 +56,7 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                     </>
                 }
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
+                descriptions={data?.section_1?.descriptions?.length ? data?.section_1.descriptions : []}
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/private-consultation-yag.png',
                     width: 390,
@@ -83,8 +64,8 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 }}
                 sectionImageDesktop={{
                     url: data?.section_1?.large_image || '/images/section-images/private-consultation-yag-large.png',
-                    width: 577,
-                    height: 534
+                    width: 672,
+                    height: 599
                 }}
                 altText=""
                 positionReversed
@@ -101,16 +82,15 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
 
+            {/*
             <PriceSection
                 priceList={priceSection || yagPriceList}
                 itemClassName="!rounded-tl-primary !rounded-tr-primary md:!rounded-bl-primary md:!rounded-tl-none "
-            />
+            /> */}
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'The cost of YAG Laser capsulotomy couldn’t be easier!'}
@@ -120,6 +100,7 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 }
                 largeImage={data?.section_3?.large_image || '/images/section-images/yag-capsulotomy-large.png'}
                 image={data?.section_3?.image || '/images/section-images/yag-capsulotomy.png'}
+                excludeCta
             />
 
             <CtaSection title={data?.speaktoteam?.title} subtitle={data?.speaktoteam?.subtitle} />
@@ -143,10 +124,23 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead?.subTitle),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
-                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_1?.lists)
+                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_1?.lists),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     }, // 2
                     // SECTION 2
                     section_2: {
@@ -155,7 +149,8 @@ export async function getStaticProps() {
                         lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.lists)
                     }, // 2
                     section_3: {
-                        ...data?.acf?.section_3
+                        ...data?.acf?.section_3,
+                        description: stripInitialTags(data?.acf?.section_3?.description)
                     },
                     section_4: {
                         ...data?.acf?.section_4

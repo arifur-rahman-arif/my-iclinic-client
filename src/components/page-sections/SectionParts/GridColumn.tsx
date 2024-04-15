@@ -64,7 +64,7 @@ const GridColumn = ({ cardList }: GridColumnProps): JSX.Element => {
     const card4Ref = useRef<HTMLDivElement | null>(null);
     const cardRefs = [card1Ref, card2Ref, card3Ref, card4Ref];
 
-    const colorList = ['bg-brandLight', 'bg-lightOrange', 'bg-lightViolet', 'bg-lightYellow'];
+    const colorList = ['bg-[#FFD400]', 'bg-[#004977]', 'bg-[#004977]', 'bg-[#FFD400]'];
 
     const card1Position = useOnScreen({ ref: card1Ref, triggerPosition: '80%' });
     const card2Position = useOnScreen({ ref: card2Ref, triggerPosition: '80%' });
@@ -95,10 +95,16 @@ const GridColumn = ({ cardList }: GridColumnProps): JSX.Element => {
                     className={`flex min-h-[31.1rem] translate-x-1/4 flex-col items-start justify-start gap-8 rounded-primary ${colorList[index]} px-8 py-12 opacity-0`}
                 >
                     <Image src={card.image} width={128} height={128} alt="" className="h-32 w-32" />
-                    <span className="font-latoBold text-[2rem] leading-[2.4rem]">
+                    <span
+                        className={`font-latoBold text-[2rem] leading-[2.4rem] ${
+                            (index == 1 || index == 2) && 'text-white'
+                        }`}
+                    >
                         {typeof card.title === 'string' ? HTMLReactParser(card.title) : card.title}
                     </span>
-                    <p className="text-[1.6rem] leading-[2.8rem]">{card.description}</p>
+                    <p className={`text-[1.6rem] leading-[2.8rem] ${(index == 1 || index == 2) && 'text-white'}`}>
+                        {card.description}
+                    </p>
                 </div>
             ))}
         </div>

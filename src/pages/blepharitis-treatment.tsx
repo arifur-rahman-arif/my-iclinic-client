@@ -12,29 +12,32 @@ import MastheadImageLarge from '@/masthead/masthead-blepharitis-large.png';
 import MastheadImageMedium from '@/masthead/masthead-blepharitis-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-blepharitis-small.png';
 import { blepharitisFaqList } from '@/page-sections/Faq/faqList';
-import { CtaSection2, FullWidthImageSection, Masthead, SideImageSection, StackColumn2 } from '@/page-sections/index';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { blepharitisList } from '@/page-sections/SectionParts/stack-column/list';
 import FullWidthImage from '@/section-images/blepharitis.png';
 import { BlepharitisContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import FullWidthImageSection from '@/components/page-sections/SideImageSection/FullWidthImageSection';
+import { SideImageSection } from '@/components/page-sections/SideImageSection';
+import StackColumn2 from '@/components/page-sections/SectionParts/stack-column/StackColumn2';
+import { Masthead } from '@/components/page-sections/Masthead';
+import { CtaSection2 } from '@/components/page-sections';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader/>
+    loading: () => <ComponentLoader />
 });
 
-interface DataInterface extends BlepharitisContentInterface, PageDataInterface<BlepharitisContentInterface> {
-}
+interface DataInterface extends BlepharitisContentInterface, PageDataInterface<BlepharitisContentInterface> {}
 
 interface BlepharitisPageProps {
     data: DataInterface;
@@ -66,7 +69,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb/>
+            <BreadCrumb />
 
             <Masthead
                 imageMedium={data?.masthead_image?.image_medium.url || MastheadImageMedium}
@@ -78,7 +81,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 trustPilotReviews={data?.trustpilot_reviews}
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection/> : <ComponentLoader/>}</LazyComponent>
+            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
 
             {/* SEction_1 */}
             <FullWidthImageSection
@@ -86,7 +89,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 boldHeading={
                     <>
                         {data?.section_1?.heading_1 || 'London’s best treatment for'}
-                        <br/> {data?.section_1?.heading_2 || 'Blepharitis symptoms'}
+                        <br /> {data?.section_1?.heading_2 || 'Blepharitis symptoms'}
                     </>
                 }
                 altText=""
@@ -170,37 +173,7 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
             {/* Book with our Blepharitis specialist Section 5  */}
             <CtaSection2
                 title={data?.section_5?.title || 'Book with our Blepharitis specialist'}
-                descriptions={[
-                    <>
-                        {(data?.section_5?.descriptions?.length && data?.section_5?.descriptions) ||
-                            ' If you’ve been struggling with severe, repeated bouts of blepharitis, then we can help.Our expert ophthalmologists will advise on the blepharitis causes and treatment that are mostaligned with your unique case.'}
-                    </>,
-                    <>
-                        To alleviate your irritation, either give us a{' '}
-                        <LinkText
-                            href="tel:0208 445 8877"
-                            className="font-mulishBold font-extrabold text-blue"
-                            indicatorColor="bg-blue"
-                        >
-                            call
-                        </LinkText>{' '}
-                        or{' '}
-                        <BookConsultation buttonClassName="font-mulishBold text-blue cursor-pointer">
-                            <span className="">Request a callback</span>
-                        </BookConsultation>{' '}
-                        with our lovely team today.
-                    </>
-                ]}
-                image={{
-                    url: data?.section_5?.image || '/images/section-images/cta-blepharitis-large.png',
-                    width: 640,
-                    height: 514
-                }}
-                imageLarge={{
-                    url: data?.section_5?.large_image || '/images/section-images/cta-blepharitis-large.png',
-                    width: 640,
-                    height: 514
-                }}
+                image={data?.section_5?.image}
             />
 
             {/* <LazyComponent>
@@ -219,11 +192,11 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
             </LazyComponent> */}
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListBlepharitis}/>
+                <NormalSlideSection sliderList={normalSlideListBlepharitis} />
             </LazyComponent>
 
             <LazyComponent>
-                <CompanyLogos/>
+                <CompanyLogos />
             </LazyComponent>
 
             <LazyComponent>
@@ -274,11 +247,11 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
                         list: Array.isArray(data?.acf?.section_4?.list)
                             ? data?.acf.section_4?.list.map((item) => {
-                                return {
-                                    ...item,
-                                    description: convertArrayOfObjectsToStrings(item.descriptions)
-                                };
-                            })
+                                  return {
+                                      ...item,
+                                      description: convertArrayOfObjectsToStrings(item.descriptions)
+                                  };
+                              })
                             : []
                     },
                     section_5: {

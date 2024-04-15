@@ -54,7 +54,7 @@ interface StackColumnProps {
  */
 const StackColumn = ({ stackList }: StackColumnProps): JSX.Element => {
     return (
-        <div className="grid gap-12 self-start">
+        <div className="grid gap-12 self-start md:mt-[24rem] lg:mt-[18rem]">
             {/* Grid item 5 */}
             {((stackList?.length && stackList) || defaultStackList).map((stack, index) => (
                 <div key={index} className="grid grid-cols-[auto_1fr] items-start gap-y-6 gap-x-6">

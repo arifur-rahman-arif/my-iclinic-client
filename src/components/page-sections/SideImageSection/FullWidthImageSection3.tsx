@@ -47,12 +47,12 @@ const FullWidthImageSection3 = ({
     return (
         <Section className="relative py-12 md:py-[5.5rem]">
             <div
-                className="absolute right-0 -z-[1] hidden h-2/4 w-0 rounded-tl-primary rounded-bl-primary bg-brandLight md:top-0 md:block md:h-full"
+                className="absolute right-0 -z-[1] hidden h-2/4 w-0 rounded-tl-primary rounded-bl-primary bg-[#E1F1FF] md:top-0 md:block md:h-full"
                 ref={animationRef}
             ></div>
             <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32">
                 <div className="grid gap-6 md:max-w-[55rem]">
-                    <H2Variant1 className="w-full normal-case">{title1}</H2Variant1>
+                    <H2Variant1 className="w-full normal-case !text-[#893277]">{title1}</H2Variant1>
                     <h3 className="font-latoBold text-[2rem] normal-case leading-[2.4rem] text-secondary md:max-w-[46.7rem] md:text-[2.4rem]">
                         {title2}
                     </h3>

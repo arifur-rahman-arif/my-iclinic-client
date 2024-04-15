@@ -132,9 +132,6 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
             </LazyComponent>
 
-            {/* <LazyComponent> */}
-            {/*     <CallbackSection /> */}
-            {/* </LazyComponent>  */}
             <LazyComponent>
                 <SpeakToSpecialist />
             </LazyComponent>
