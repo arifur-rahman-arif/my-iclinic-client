@@ -1,8 +1,18 @@
 import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
+import { ImageType3 } from 'src/types/image';
 
 export default interface PresbeyondlondonContentInterface extends Sustainibility {
+
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+        priceText: string;
+    },
+	calculatorHeading?: string;
 	//	London’s best treatment
 	section_1: {
         sub_heading: string;
@@ -33,13 +43,18 @@ export default interface PresbeyondlondonContentInterface extends Sustainibility
 		reviewtitle: string;
 	},
 
+	patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    },
+
 //WE CAN ALWAYS HELP
 	section_4: {
-        sub_heading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			dark_heading: string; // Bold Heading
-		}
+		heading: string;
 		description: string[];
 		price_title: string;
 		price_subheading: string;
@@ -57,6 +72,14 @@ export default interface PresbeyondlondonContentInterface extends Sustainibility
 		}
 		descriptions: string[];
 	},
+	ctaSection2: {
+		subTitle: string;
+		title: string;
+	}
+	ctaSection: {
+		title: string;
+		image: ImageType3
+	}
 	section_6: {
 		descriptions: string[];
 		title: string;

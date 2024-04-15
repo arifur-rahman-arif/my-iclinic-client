@@ -1,36 +1,30 @@
-// Import BannerImage from '@/section-images/relex-banner-bg.png';
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
+import RelexHero from '@/components/page-sections/Masthead/RelexHero';
 import { normalSlideListRelexSmile } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData, getTreatments } from '@/lib';
-import MastheadImageMedium from '@/masthead/masthead-relex-smile.png';
 import { relexSmileFaqList } from '@/page-sections/Faq/faqList';
 import { relexSliders } from '@/page-sections/FeaturedPatient';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import {
-    ClimateChange,
     CtaSection,
+    CtaSection2,
     FullWidthImageSection,
     FullWidthImageSection3,
     GridColumn,
-    Masthead,
-    PlasticFree,
     SideImageSection,
     StackColumn
 } from '@/page-sections/index';
 import { leftRightListRelexSmileLondon } from '@/page-sections/LeftRight/leftRightList';
 import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
-import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { stripInitialTags } from '@/utils/miscellaneous';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -47,10 +41,6 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
-// Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
@@ -61,6 +51,12 @@ const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/Bo
     loading: () => <ComponentLoader />
 });
 const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
+    loading: () => <ComponentLoader />
+});
+const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
 
@@ -85,19 +81,6 @@ export default function RelexSmileLondon({
     data,
     filteredTreatments
 }: RelexSmileLondonProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'ReLEx SMILE Laser Eye Surgery London';
-    const subheading = data?.masthead_subheading || 'London’s latest laser vision correction procedure';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     const serviceList: any = data?.section_2.length
         ? data?.section_2.map((service) => {
               return {
@@ -108,17 +91,17 @@ export default function RelexSmileLondon({
                           width={390}
                           height={390}
                           quality={70}
-                          className="md:hidden"
+                          className="w-full md:hidden"
                           alt={service.mobileImage?.alt || ''}
                       />
                   ),
                   desktopImage: (
                       <Image
                           src={service.desktopImage?.url || ''}
-                          width={685}
-                          height={557}
+                          width={704}
+                          height={613}
                           quality={70}
-                          className="hidden md:block md:scale-90 2xl:scale-100"
+                          className="hidden w-full max-w-[70.4rem] md:block"
                           alt={service.desktopImage?.alt || ''}
                       />
                   ),
@@ -126,6 +109,17 @@ export default function RelexSmileLondon({
               };
           })
         : null;
+
+    const reviewSlides: any =
+        Array.isArray(normalSlideListRelexSmile) && normalSlideListRelexSmile.length > 0
+            ? normalSlideListRelexSmile.map((service) => {
+                  return {
+                      ...service,
+                      name: service?.name,
+                      review: service?.description
+                  };
+              })
+            : null;
 
     return (
         <Page
@@ -136,32 +130,30 @@ export default function RelexSmileLondon({
         >
             <BreadCrumb />
 
-            <Masthead
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                altText={
-                    data?.masthead_image?.image_large?.alt || 'Man travelling without glasses for vision correction'
-                }
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                bannerClassName="lg:gap-12"
+            <RelexHero
+                {...data?.masthead}
                 suitabilityButton={
                     <div className="grid gap-6">
-                        <FinanceCalculatorButton title1ClassName="text-brand" />
-                        <MastheadCtaButtons
-                            button1Class="hover:!border-[#003E79] !border-2"
-                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                        <FinanceCalculatorButton
+                            title1ClassName="!text-white"
+                            icon={{
+                                src: '/images/icons/icon-percentage-fire-blue.png',
+                                width: 40,
+                                height: 40,
+                                alt: ''
+                            }}
                         />
+                        <MastheadCtaButtons button1Class="text-white mt-4 border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white" />
                     </div>
                 }
             />
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <LazyComponent>
-                <FinanceCalculatorSection iclTreatments={filteredTreatments} />
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} headingText={data?.calculatorHeading} />
             </LazyComponent>
 
             <FullWidthImageSection
@@ -177,7 +169,7 @@ export default function RelexSmileLondon({
                         )}
                     </>
                 }
-                containerClass="md:!grid-cols-1 lg:!grid-cols-[1fr_auto] md:!py-0 lg:!py-24"
+                containerClass="md:!grid-cols-1 lg:!grid-cols-[auto_1fr] md:!py-0 lg:!py-24"
                 altText="Man with luggage at airport"
                 includeScrollDownButton
                 videoUrl={
@@ -211,7 +203,7 @@ export default function RelexSmileLondon({
             </LazyComponent>
 
             <LazyComponent>
-                <BottomBanner2 />
+                <BottomBanner2 {...data.bannerSection} link="/relex-smile-london/price" />
             </LazyComponent>
 
             <CtaSection
@@ -221,7 +213,8 @@ export default function RelexSmileLondon({
             />
 
             <SideImageSection
-                h2Heading={data?.section_4?.subheading || 'Why RELEX SMILE'}
+                sectionClass="!overflow-hidden"
+                // h2Heading={data?.section_4?.subheading || 'Why RELEX SMILE'}
                 h3LightHeading={
                     <>
                         {data?.section_4.heading?.light_heading || 'The benefits of ReLEx'} <br />
@@ -242,7 +235,7 @@ export default function RelexSmileLondon({
             />
 
             <SideImageSection
-                h2Heading={data?.section_5?.subheading || "improve your life's quality"}
+                // h2Heading={data?.section_5?.subheading || "improve your life's quality"}
                 h3LightHeading={
                     <>
                         {data?.section_5.heading?.light_heading || 'Step closer to a life of'}
@@ -271,9 +264,8 @@ export default function RelexSmileLondon({
                 positionReversed={true}
                 altText={data?.section_5?.large_image?.alt}
                 textColumnExtras={
-                    <p className="font-mulishBold text-[2rem] leading-[2.4rem]">
-                        A better quality of life is just <br />
-                        around the corner.
+                    <p className="max-w-[45.2rem] font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#893277]">
+                        A better quality of life is just around the corner.
                     </p>
                 }
             />
@@ -293,8 +285,6 @@ export default function RelexSmileLondon({
                 image={data?.section_8?.image?.url}
                 altText={data?.section_8?.image?.alt}
             />
-
-            <div className="md:mt-24"></div>
 
             <LazyComponent>
                 <FeaturedPatient
@@ -316,37 +306,37 @@ export default function RelexSmileLondon({
                     bandImageURL={data?.section_9?.front_image || '/images/section-images/mr-lukicov.png'}
                     reviewTitle="Thank you My-iClinic"
                     sliders={data?.section_9?.additional_images || relexSliders}
-                    bandColor="bg-[#FF5C00]"
+                    bandColor="bg-[#0099FF]"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListRelexSmile} />
+                <PatientReviews
+                    sliders={data?.patientReviews?.reviews || reviewSlides}
+                    heading={data?.patientReviews?.heading}
+                />
             </LazyComponent>
 
             <FullWidthImageSection
-                h3Title="Whatever the view,"
-                boldHeading={
-                    <>
-                        Remember it with <br /> Clear vision
-                    </>
-                }
+                h3Title={data?.clearVision?.heading || 'Whatever the view, <br/> Remember it with Clear vision'}
                 altText=""
                 albumAnimation
-                containerClass="grid grid-cols-1 items-center justify-center py-12 sm:py-16 lg:py-0 gap-12 lg:grid-cols-[auto_1fr] xl:grid-cols-2  lg:gap-24"
+                containerClass="grid grid-cols-1 items-center md:!grid-cols-1 lg:py-20 justify-center py-12 sm:py-16 lg:py-0 gap-12 xl:!grid-cols-[auto_1fr]  lg:gap-24"
                 includeCta
+                albumImages={{
+                    image1: data?.clearVision?.image1,
+                    image2: data?.clearVision?.image2,
+                    image3: data?.clearVision?.image3,
+                    image4: data?.clearVision?.image4
+                }}
             />
 
             <SideImageSection
-                h2Heading={data?.section_6?.subheading || 'Why laser Relex smile'}
                 h3LightHeading={
                     <>
-                        {data?.section_6?.heading?.light_heading || 'Why consider our ReLEx SMILE Laser eye surgery'}
-                        <br />
+                        {data?.section_6?.heading ||
+                            'Why consider our ReLEX SMILE Laser eye surgery when you already have glasses or contact lenses?'}
                     </>
-                }
-                h3BoldHeading={
-                    data?.section_6?.heading?.bold_heading || 'When you already have glasses or contact lenses?'
                 }
                 sectionImage={{
                     url: data?.section_6?.image?.url || '/images/section-images/laser-relex-smile.png',
@@ -364,15 +354,9 @@ export default function RelexSmileLondon({
                 containerClassName="!items-start"
             />
 
-            <SideImageSection
-                h2Heading={data?.section_7?.subheading || 'Right treatment for you'}
-                h3LightHeading={
-                    <>
-                        {data?.section_7?.heading?.light_heading || 'Do you think ReLEx SMILE could'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_7?.heading?.bold_heading || 'Be the right treatment for you?'}
+            <CtaSection2
+                title={`${data?.section_7?.heading?.light_heading} ${data?.section_7?.heading?.bold_heading}`}
+                image={data?.section_7?.image}
                 descriptions={
                     (data?.section_7.descriptions.length &&
                         stringArrayToElementArray(data?.section_7.descriptions)) || [
@@ -382,136 +366,10 @@ export default function RelexSmileLondon({
                         </>
                     ]
                 }
-                sectionImage={{
-                    url: data?.section_7?.image?.url || '/images/section-images/right-treatment.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: data?.section_7?.large_image?.url || '/images/section-images/right-treatment-large.png',
-                    width: 657,
-                    height: 554
-                }}
-                altText={
-                    data?.section_7?.large_image?.alt || 'Woman smiling without needing glasses for short-sightedness'
-                }
-                textColumnExtras={<Cta6 />}
             />
 
-            {/* <LazyComponent>
-                <BottomBanner bannerImage={BannerImage} bannerBg="/images/section-images/relex-banner-bg-large.webp" />
-            </LazyComponent> */}
-
-            {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
-
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                        h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading.light_heading ||
-                                'ReLEx SMILE is the key<br /> to living'
-                        )}
-                        h3BoldHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading.bold_heading ||
-                                'a sustainable, <br /> plastic free life!'
-                        )}
-                        descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section.plastic_free_life.descriptions
-                                )) || [
-                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style, free of plastic waste from your glasses and contact lenses!`
-                            ]
-                        }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                    />
-
-                    <SideImageSection
-                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
-                        h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
-                                'Saving the planet <br />'
-                        )}
-                        h3BoldHeading={HTMLReactParser(
-                            data?.sustainability_section?.gift_of_a_tree?.heading.bold_heading || 'One eye at a time!'
-                        )}
-                        descriptions={
-                            (data?.sustainability_section?.gift_of_a_tree?.descriptions.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section.gift_of_a_tree.descriptions
-                                )) || [
-                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
-                     difference to the environment. For every 10 years of contact lens wearing the amount of plastic
-                      that ends up in the ocean is roughly the same as your own body weight.`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Our gift to you…
-                                </span>,
-                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Here at My-iClinic we give all of our laser patients a real forest tree!
-                                </span>,
-                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
-                     value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
-                      contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
-                      to replace it.`,
-                                `This is our big thank you for choosing a natural, green living eye-style.`
-                            ]
-                        }
-                        sectionImage={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        sectionImageDesktop={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                        altText={
-                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
-                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
-                        }
-                    />
-                    {/*
-                    <DrawLine
-                        image={{
-                            url: '/images/section-images/draw-line-2-mobile.svg',
-                            width: 63,
-                            height: 62
-                        }}
-                        desktopImage={{
-                            url: '/images/section-images/draw-line-4-desktop.svg',
-                            width: 232,
-                            height: 234
-                        }}
-                    /> */}
-                    <ClimateChange
-                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
-                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
-                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image?.url}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
-                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
-                    />
-                </SustainableSlider>
+                <EnvironmentalImpact />
             </LazyComponent>
 
             <LazyComponent>
@@ -521,7 +379,7 @@ export default function RelexSmileLondon({
             <LazyComponent>
                 <PdfDownload
                     downloadFile={data?.email_contents?.download_file}
-                    title="Get the guide to ReLEx laser surgery"
+                    title="Get the guide to <br/> ReLEx laser surgery"
                     description="Robotic laser vision correction"
                     pageSlug="relex-smile-london"
                 />
@@ -565,8 +423,6 @@ export async function getStaticProps() {
             active: index === 0
         }));
 
-        console.log('Relex smile page', filteredTreatments);
-
         return {
             /* eslint-disable */
             props: {
@@ -575,6 +431,13 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        image: {
+                            ...(data?.acf?.masthead?.image && formatImage(data.acf?.masthead?.image))
+                        }
+                    },
+                    calculatorHeading: stripInitialTags(data?.acf?.calculatorHeading || ''),
                     section_2: Array.isArray(data?.acf?.section_2)
                         ? data?.acf.section_2.map((sectionData) => {
                               return {
@@ -586,6 +449,12 @@ export async function getStaticProps() {
                     section_3: {
                         ...data?.acf.section_3,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_3?.descriptions)
+                    },
+                    bannerSection: {
+                        ...data?.acf?.bannerSection,
+                        image: {
+                            ...(data?.acf?.bannerSection?.image && formatImage(data.acf?.bannerSection?.image))
+                        }
                     },
                     section_4: {
                         ...data?.acf.section_4,
@@ -608,15 +477,38 @@ export async function getStaticProps() {
                     },
                     section_7: {
                         ...data?.acf?.section_7,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions),
+                        image: {
+                            ...(data?.acf?.section_7?.image && formatImage(data.acf?.section_7?.image))
+                        }
                     },
                     section_8: {
                         ...data?.acf?.section_8,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_8?.descriptions)
                     },
+                    clearVision: {
+                        ...data?.acf?.clearVision,
+                        heading: stripInitialTags(data?.acf?.clearVision?.heading || ''),
+                        image1: {
+                            ...(data?.acf?.clearVision?.image1 && formatImage(data.acf?.clearVision?.image1))
+                        },
+                        image2: {
+                            ...(data?.acf?.clearVision?.image2 && formatImage(data.acf?.clearVision?.image2))
+                        },
+                        image3: {
+                            ...(data?.acf?.clearVision?.image3 && formatImage(data.acf?.clearVision?.image3))
+                        },
+                        image4: {
+                            ...(data?.acf?.clearVision?.image4 && formatImage(data.acf?.clearVision?.image4))
+                        }
+                    },
                     section_9: {
                         ...data?.acf?.section_9,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_9?.descriptions)
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     },
                     sustainability_section: {
                         plastic_free_life: {

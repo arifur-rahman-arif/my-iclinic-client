@@ -23,10 +23,9 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import BulletList from '@/page-sections/SectionParts/BulletList';
-import Cta6 from '@/page-sections/SectionParts/Cta6';
 import { StackedSection2 } from '@/page-sections/StackedSection';
 import { MyopiaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -352,13 +351,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             />
 
             <CtaSection2
-                h3LightHeading={
-                    <>
-                        {data?.section_10?.heading?.light_heading || 'Book a consultation to see how '}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_10?.heading?.bold_heading || 'we can help your child'}
+                title={data?.section_10?.heading?.light_heading + ' ' + data?.section_10?.heading?.bold_heading}
                 descriptions={
                     (data?.section_10?.descriptions.length &&
                         stringArrayToElementArray(data?.section_10.descriptions)) || [
@@ -370,13 +363,6 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     width: 431,
                     height: 360
                 }}
-                imageLarge={{
-                    url: data?.section_10?.large_image?.url || '/images/section-images/myopia-cta-large.png',
-                    width: 636,
-                    height: 554
-                }}
-                altText={data?.section_9?.large_image?.alt}
-                textColumnExtras={<Cta6 />}
             />
 
             <StackedSection2
@@ -594,83 +580,8 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             />
 
             <CtaSection2
-                sectionClass="bg-brandLight py-12 md:py-16"
                 title={data?.section_14?.heading || 'If you are an adult suffering from short sightedness'}
-                image={{
-                    url: data?.section_14?.image?.url || '/images/section-images/myopia-cta-2-large.png',
-                    width: 431,
-                    height: 360
-                }}
-                imageLarge={{
-                    url: data?.section_14?.large_image?.url || '/images/section-images/myopia-cta-2-large.png',
-                    width: 692,
-                    height: 413
-                }}
-                altText={data?.section_14?.large_image?.alt}
-                textColumnExtras={
-                    <div className="mt-12 grid gap-6 md:mt-16">
-                        <span className="font-mulishBold text-[2rem] uppercase leading-[2.8rem] md:text-[2.8rem] md:leading-[3.2rem]">
-                            we can offer you a
-                        </span>
-                        <span className="max-w-[40.8rem] font-mulishBold text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[2.8rem]">
-                            <a href="/suitability-check">FREE suitability check</a> for our vision correction
-                            treatments.
-                        </span>
-                        <Link
-                            href="/suitability-check"
-                            className="group/consultation !grid cursor-pointer grid-flow-col place-items-center gap-5 justify-self-start rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:bg-transparent"
-                            aria-label="Book your FREE suitability check"
-                        >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M13.334 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M6.66602 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M2.5 8.33301H17.5"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                            </svg>
-
-                            <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                                Book your FREE suitability check
-                            </span>
-                        </Link>
-                        <span className="mt-10 max-w-[38.6rem] font-mulishMedium text-[1.8rem] leading-[2.8rem] md:text-[2rem] md:leading-[3.2rem]">
-                            Enjoy life at all distances again, free from visual aids.
-                        </span>
-                    </div>
-                }
+                image={data?.section_14?.image}
             />
 
             <SideImageSection
@@ -809,7 +720,10 @@ export async function getStaticProps() {
                     },
                     section_10: {
                         ...data?.acf.section_10,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_10?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_10?.descriptions),
+                        image: {
+                            ...(data?.acf?.section_10?.image && formatImage(data.acf?.section_10?.image))
+                        }
                     },
                     section_11: {
                         ...data?.acf.section_11,

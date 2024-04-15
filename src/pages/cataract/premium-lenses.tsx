@@ -1,48 +1,27 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button2 } from '@/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import { H4Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
+import YagHero from '@/components/page-sections/Masthead/YagHero';
 import { PercentageRounded } from '@/components/Progressbar';
-import { premiumListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-// import { LeftRightSectionChildrenInterface } from './LeftRightSection';
-import MastheadImageLarge from '@/masthead/masthead-premium-lenses-large.png';
-import MastheadImageSmall from '@/masthead/masthead-premium-lenses-small.png';
-import MastheadImageMedium from '@/masthead/masthead-premium-lenses.png';
 import { premiumLensesFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListPremiumLens } from '@/page-sections/ImageGallery';
-// import LeftRightHeading1 from '@/components/page-sections/LeftRight/LeftRightHeading1';
-// import * as animationData1 from '@/lottie/EYE_VARIATION1.json';
-// import * as animationData2 from '@/lottie/EYE_VARIATION2.json';
-// import * as animationData3 from '@/lottie/EYE_VARIATION3.json';
-// import * as animationData4 from '@/lottie/EYE_VARIATION4.json';
-// import * as animationData5 from '@/lottie/EYE_VARIATION5.json';
-import {
-    BulletPoint,
-    CtaSection2,
-    ImageGallery,
-    Masthead,
-    SideImageSection,
-    SideVideoSection2
-} from '@/page-sections/index';
+import { BulletPoint, CtaSection2, ImageGallery, SideImageSection, SideVideoSection2 } from '@/page-sections/index';
 import { leftRightListPremiumLenses } from '@/page-sections/LeftRight/leftRightList';
-import Cta5 from '@/page-sections/SectionParts/Cta5';
 import PremiumLense1 from '@/section-images/premium-lense-1.png';
 import PremiumLense2 from '@/section-images/premium-lense-2.png';
 import PremiumLense3 from '@/section-images/premium-lense-3.png';
 import PremiumLense4 from '@/section-images/premium-lense-4.png';
 import { PremiumlensesContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-// eslint-disable-next-line no-unused-vars
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
+import { stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
-// import LottieComponent from '@/components/page-sections/LottieSection/LottieComponent';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -56,9 +35,6 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
@@ -66,6 +42,9 @@ const LottieSection = dynamic(() => import('@/page-sections/LottieSection/Lottie
     loading: () => <ComponentLoader />
 });
 const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/CompareSlider'), {
+    loading: () => <ComponentLoader />
+});
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -85,101 +64,6 @@ interface PremiumLensesProps {
  * @returns {JSX.Element}
  */
 export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Independence from glasses after Cataract surgery London';
-    const subheading = data?.masthead_subheading || 'Be independent from wearing glasses after your cataract surgery';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    // reviewSliderdata
-    const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
-            : null;
-
-    // const leftrightsection: Array<LeftRightSectionChildrenInterface> = [
-    //     {
-    //         lottieComponent: <LottieComponent animationData={animationData1} />,
-    //         alternativeHeading: (
-    //                     <LeftRightHeading1 title={ data?.edoflenses?.title ||
-    //                         'EDoF Lenses'} subTitle={ data?.edoflenses?.subtitle ||
-    //                              'Independence from glasses'} percentage={ data?.edoflenses?.percentage || 80} />
-    //         ),
-    //         descriptions: data?.edoflenses?.descriptions?.length &&
-    //                 data?.edoflenses?.descriptions || [
-    //                     `Our Extended Depth of Focus lenses are used for our presbyopic patients needing a broader range of vision from their intermediate to distance vision.`,
-    //                     `The lenses have a continuous change in periphery range by focusing the light in an extended longitudinal plane, instead of discrete points in a patient’s sight.`,
-    //                     `Edof is the best lens implant option to achieve a brighter, and larger periphery of vision. Edof lenses have minimal glare, or halo side effects that can be associated with multifocal lenses.`
-    //         ]
-    //     },
-    //     {
-    //         lottieComponent: <LottieComponent animationData={animationData2} />,
-    //         alternativeHeading: (
-    //                     <LeftRightHeading1 title={data?.toriclenses?.title||
-    //                         'Toric Lenses'} subTitle={data?.toriclenses?.subtitle||'Independence from glasses'}
-    //                          percentage={data?.toriclenses?.percentage || 85} />
-    //         ),
-    //         descriptions: data?.toriclenses?.descriptions?.length &&
-    //                 data?.toriclenses?.descriptions ||[
-    //                     `Our Torric lenses are for patients who may require some correction of astigmatism in their cornea.`,
-    //                     `We aim to correct any astigmatism for our patients with Torric as part of our standard care after Cataract Surgery.`
-    //         ]
-    //     },
-    //     {
-    //         lottieComponent: <LottieComponent animationData={animationData3} />,
-    //         alternativeHeading: (
-    //                     <LeftRightHeading1 title={data?.monofocallenses?.title||
-    //                         'Monofocal Lenses'} subTitle={data?.monofocallenses?.title||
-    //                         'Independence from glasses'} percentage={data?.monofocallenses?.percentage || 80} />
-    //         ),
-    //         descriptions: data?.monofocallenses?.descriptions?.length &&
-    //                 data?.monofocallenses?.descriptions || [
-    //                     `Our Monofocal lenses are for patients that would like their distance sight to be clear. This means tasks such as: reading signs and sightseeing will be clear.`,
-    //                     `However, these lenses will require our patients to use glasses for intermediate and near tasks.`
-    //         ]
-    //     },
-    //     {
-    //         lottieComponent: <LottieComponent animationData={animationData4} />,
-    //         alternativeHeading: (
-    //                     <LeftRightHeading1 title={data?.multifocallenses?.title||
-    //                         'Multifocal Lenses'} subTitle={data?.multifocallenses?.title||
-    //                         'Independence from glasses'} percentage={data?.multifocallenses?.percentage || 70} />
-    //         ),
-    //         descriptions: data?.multifocallenses?.descriptions?.length &&
-    //                 data?.multifocallenses?.descriptions || [
-    //                     `Our Multifocal lenses are for patients needing near, intermediate and distance sight. These lenses are to maximise the range of vision to reduce the possibility of glasses wearing.`,
-    //                     `However, glasses may still be needed for intensive near tasks, for example: reading very small print, or in poor light situations.`
-    //         ]
-    //     },
-    //     {
-    //         lottieComponent: <LottieComponent animationData={animationData5} />,
-    //         alternativeHeading: (
-    //                     <LeftRightHeading1 title={data?.monovision?.title||
-    //                         'Monovision'} subTitle={data?.monovision?.subtitle||
-    //                             'Independence from glasses'} percentage={data?.monovision?.percentage ||60} />
-    //         ),
-    //         descriptions: data?.monovision?.descriptions?.length &&
-    //                 data?.monovision?.descriptions || [
-    //                     `Monovision is when we correct the dominant eye for distance vision, and the other eye is corrected for near vision. When both eyes are viewing together, the distances pair.`,
-    //                     `However, monovision is an older technique which can create more complications when trying to correct the distances. Our patients prefer newer lenses that work for a better optimal visual outcome.`
-    //         ]
-    //     }
-    // ];
-
     return (
         <Page
             title="Premium Lenses"
@@ -189,37 +73,29 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || 'from £350 extra per eye'}
-                bannerWidth="md:max-w-[68rem]"
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                // ExcludePriceComponent
-                // list={['EDOF', 'Monofocal', 'Multifocals', 'Presbyond']}
-            />
-
-            {/* <FinanceCalculator /> */}
-
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Be Glasses free'}
-                h3LightHeading={
+            <YagHero
+                {...data?.masthead}
+                className="xl:grid-cols-[auto_40rem_1fr]"
+                titleClass="md:max-w-[68.6rem]"
+                ctaButton={
                     <>
-                        {data?.section_1?.heading?.light_heading
-                            ? HTMLReactParser(data?.section_1?.heading?.light_heading)
-                            : ` Presbyond laser
-                        <br />
-                        Treatment
-                        <br />`}
+                        <Button2
+                            type="anchor"
+                            link="/pricing-and-financing/financing-your-treatment"
+                            text="Explore treatment options"
+                            className="sitemap-link justify-self-start !border-2 border-[#007EF5] bg-[#007EF5] text-center hover:!border-[#007EF5] hover:!text-[#007EF5]"
+                        />
                     </>
                 }
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'After cataract surgery'}
+            />
+
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
+
+            <SideImageSection
+                // h2Heading={data?.section_1?.sub_heading || 'Be Glasses free'}
+                h3LightHeading={data?.section_1?.heading?.light_heading}
                 descriptions={
                     (data?.section_1?.descriptions?.length && data?.section_1?.descriptions) || [
                         `We provide Presbyond laser eye treatment after cataract surgery`,
@@ -244,8 +120,8 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 }}
                 sectionImageDesktop={{
                     url: data?.section_1?.large_image || '/images/section-images/laser-treatment-presbyond-large.png',
-                    width: 659,
-                    height: 687
+                    width: 675,
+                    height: 617
                 }}
                 positionReversed={true}
                 midExtras={
@@ -253,7 +129,7 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                         <div className="flex items-center justify-start gap-6">
                             <PercentageRounded percentage={data?.section_1?.percentage || 98} />
 
-                            <span className="max-w-[13rem] font-mulishExtraBold text-[1.6rem] uppercase leading-[1.6rem] text-heading2">
+                            <span className="max-w-[13rem] font-mulishBold text-[1.6rem] uppercase leading-[1.6rem] text-heading">
                                 {data?.section_1?.percentTitle || 'independence from glasses'}
                             </span>
                         </div>
@@ -265,7 +141,7 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
             />
 
             <LazyComponent triggerPosition={500}>
-                <LottieSection />
+                <LottieSection heading={data?.animationSection?.heading} />
             </LazyComponent>
 
             <SideVideoSection2
@@ -281,9 +157,8 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 }
                 containerClassName="md:!pl-[15rem]"
                 textColor="!text-white"
-                sloganTextColor="!text-[#CDCFD0]"
                 bgColor="bg-[#00527c]"
-                button1ClassName="!bg-white !border-white hover:!bg-[#00527c] hover:!border-white hover:text-white"
+                button1ClassName="!bg-white !border-white hover:!bg-[#003E79] hover:!border-white hover:text-white"
                 button2ClassName="!border-white !bg-transparent text-white"
                 button2Icon={
                     <Image
@@ -299,9 +174,7 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
             />
 
             <SideImageSection
-                h2Heading={data?.section_3?.subheading || 'improve your VISION'}
-                h3LightHeading={data?.section_3?.heading?.light_heading || 'Premium lenses we provide for'}
-                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'Your cataract surgery'}
+                h3LightHeading={data?.section_3?.heading || 'Premium lenses we provide for your cataract surgery'}
                 customColumn={
                     <LazyComponent>
                         <CompareSlider
@@ -392,12 +265,11 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata || premiumListCataract} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <CtaSection2
                 title={data?.speaktoteam?.title || 'Do you think Premium lenses could be the right treatment for you?'}
-                textColumnExtras={<Cta5 />}
             />
 
             <ImageGallery galleryList={galleryListPremiumLens} />
@@ -442,6 +314,16 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead?.subTitle),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
@@ -479,13 +361,10 @@ export async function getStaticProps() {
                     speaktoteam: {
                         ...data?.acf?.speaktoteam
                     },
-                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
-                        ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
-                        : []
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

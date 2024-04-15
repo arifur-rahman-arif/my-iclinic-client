@@ -3,16 +3,24 @@ import ClearVision1 from '@/section-images/clear-vision-image-1.png';
 import ClearVision2 from '@/section-images/clear-vision-image-2.png';
 import ClearVision3 from '@/section-images/clear-vision-image-3.png';
 import ClearVision4 from '@/section-images/clear-vision-image-4.png';
+import { ImageType3 } from '@/types';
 import gsap from 'gsap';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+
+interface Props {
+    image1?: ImageType3;
+    image2?: ImageType3;
+    image3?: ImageType3;
+    image4?: ImageType3;
+}
 
 /**
  * Album component
  *
  * @returns {*}  {JSX.Element}
  */
-const AlbumColumn = (): JSX.Element => {
+const AlbumColumn = ({ image1, image2, image3, image4 }: Props): JSX.Element => {
     const imageRef1 = useRef<HTMLImageElement>(null);
     const imageRef2 = useRef<HTMLImageElement>(null);
     const imageRef3 = useRef<HTMLImageElement>(null);
@@ -101,24 +109,28 @@ const AlbumColumn = (): JSX.Element => {
                 alt="Female athlete watching the view without needing glasses for short sightedness"
                 className="absolute top-2/4 left-2/4 z-[4] max-h-[10rem] max-w-[12rem] -translate-y-2/4 -translate-x-2/4 rounded-primary sm:max-h-[15rem] sm:max-w-[18rem] xl:max-h-[21.7rem] xl:max-w-[26.6rem]"
                 ref={imageRef1}
+                {...(image1 as any)}
             />
             <Image
                 src={ClearVision2}
                 alt="Couple kayaking through sea caves after vision correction treatment"
                 className="absolute top-2/4 left-2/4 z-[3] max-h-[10rem] max-w-[12rem] -translate-y-2/4 -translate-x-2/4 rounded-primary sm:max-h-[15rem] sm:max-w-[18rem] xl:max-h-[21.7rem] xl:max-w-[26.6rem]"
                 ref={imageRef2}
+                {...(image2 as any)}
             />
             <Image
                 src={ClearVision3}
                 alt="Skier in the snow"
                 className="absolute top-2/4 left-2/4 z-[1] max-h-[10rem] max-w-[12rem] -translate-y-2/4 -translate-x-2/4 rounded-primary sm:max-h-[15rem] sm:max-w-[18rem] xl:max-h-[21.7rem] xl:max-w-[26.6rem]"
                 ref={imageRef3}
+                {...(image3 as any)}
             />
             <Image
                 src={ClearVision4}
                 alt="Woman in Italy on holiday watching the view after vision correction"
                 className="absolute top-2/4 left-2/4 z-[3] max-h-[10rem] max-w-[12rem] -translate-y-2/4 -translate-x-2/4 rounded-primary sm:max-h-[15rem] sm:max-w-[18rem] xl:max-h-[21.7rem] xl:max-w-[26.6rem]"
                 ref={imageRef4}
+                {...(image4 as any)}
             />
         </div>
     );

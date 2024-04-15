@@ -52,7 +52,9 @@ const PatientSlider = ({ sliderList }: PatientSliderProps): JSX.Element => {
                     delay: 4000,
                     disableOnInteraction: false
                 }}
-                className={`${styles.style} ${styles.patientSlider} px-8`}
+                className={`${styles.style} ${styles.patientSlider} px-8 ${
+                    sliderList?.length < 4 && '[&_.swiper-wrapper]:justify-center'
+                }`}
                 ref={swiperRef}
             >
                 {sliderList.map((slider, index) => (

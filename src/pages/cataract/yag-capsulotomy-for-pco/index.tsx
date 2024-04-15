@@ -5,23 +5,20 @@ import { Container } from '@/components/Container';
 import { H2Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { CtaSection, FullWidthImageSection, Masthead } from '@/components/page-sections';
+import { CtaSection, FullWidthImageSection } from '@/components/page-sections';
 import { yagFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListYag } from '@/components/page-sections/LeftRight/leftRightList';
+import YagHero from '@/components/page-sections/Masthead/YagHero';
 import { Section } from '@/components/Section';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-yag-large.png';
-import MastheadImageMedium from '@/masthead/masthead-yag-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-yag-small.png';
 import SimpleProcessImageLarge from '@/section-images/yag-laser-treatment-large.png';
 import SimpleProcessImage from '@/section-images/yag-laser-treatment.png';
 import { YagCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -36,6 +33,9 @@ const CallbackSection = dynamic(() => import('@/components/page-sections/Request
     loading: () => <ComponentLoader />
 });
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
+    loading: () => <ComponentLoader />
+});
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -55,19 +55,6 @@ interface YagCapsulotomyForPcoProps {
  * @returns {JSX.Element}
  */
 export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsulotomyForPcoProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'YAG Capsulotomy Laser Treatment London';
-    const subheading = data?.masthead_subheading || 'Reducing PCO symptoms after Cataract Surgery.';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
@@ -86,10 +73,10 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                   desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
-                          width={695}
-                          height={580}
+                          width={675}
+                          height={617}
                           quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          className="hidden w-full max-w-[61.7rem] rounded-primary md:block"
                           alt=""
                       />
                   ),
@@ -108,19 +95,11 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText=""
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || '£395 per eye'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-            />
+            <YagHero {...data?.masthead} />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />{' '}
+            </LazyComponent>
 
             <FullWidthImageSection
                 h3Title={
@@ -138,6 +117,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                 }
                 altText=""
                 image={data?.section_3?.image || SimpleProcessImage}
+                smallImageClassName="!rounded-none"
                 desktopImage={data?.section_3?.imageLarge || SimpleProcessImageLarge}
                 includeScrollDownButton
             />
@@ -161,7 +141,7 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             {/* </LazyComponent> */}
 
             <Section>
-                <Container className="grid place-items-center gap-12 md:gap-24">
+                <Container className="grid place-items-center gap-12">
                     <H2Variant1 className="max-w-[56.5rem] text-center !normal-case">
                         {data?.section_6?.title || 'Find out more about YAG laser treatment price'}
                     </H2Variant1>
@@ -192,6 +172,10 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
             </LazyComponent>
 
             <LazyComponent>
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
+            </LazyComponent>
+
+            <LazyComponent>
                 <Faq
                     faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || yagFaqList}
                     titleLight="YAG laser treatment "
@@ -219,6 +203,16 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead?.sub_title),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     section_1: {
                         ...data?.acf?.section_1,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
@@ -249,7 +243,11 @@ export async function getStaticProps() {
                                   descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
                               };
                           })
-                        : []
+                        : [],
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

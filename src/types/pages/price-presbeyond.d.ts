@@ -1,13 +1,22 @@
-import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from 'src/types/image';
 
 export default interface PricepresbeyondlondonContentInterface {
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
+        priceText: string;
+    },
+
+	costDetails: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
 	//	SECTION 1
 	section_1: {
-		sub_heading: string; 
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading:string;
 		bullet_1: string;
 		bullet_2: string;
 		bullet_3: string;
@@ -18,10 +27,7 @@ export default interface PricepresbeyondlondonContentInterface {
 	
 	section_2: {
 		title: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		} // Bold Heading
+		heading:string;
 		subheading: string;
 		descriptions: string[];
 		lists: string[];
@@ -51,6 +57,7 @@ export default interface PricepresbeyondlondonContentInterface {
 		sub_heading: string;
 		heading: string;
 	},
+	calculatorHeading: string
 
 // //Transparent Price
 }

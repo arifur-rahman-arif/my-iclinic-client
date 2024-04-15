@@ -1,8 +1,18 @@
 import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
+import { ImageType3 } from '@/types';
 
 export default interface CataractContentInterface {
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+        priceText: string;
+        // financeText: string;
+        // suitabilityText: string;
+    },
 	//	London’s best treatment
 	section_1: {
         sub_heading: string;
@@ -66,6 +76,7 @@ export default interface CataractContentInterface {
 		title: string;
 		descriptions: string[];
 	},
+	reviewheading: string;
 	reviewSlider:{
 		title: string;
 		name: string;
@@ -75,6 +86,13 @@ export default interface CataractContentInterface {
 		sub_heading: string; // Subheading
 		title: string;
 	},
+
+	treatment_fund: {
+		heading?: string;
+		description?: string;
+		list: string[];
+		card_list?: Array<any>;
+	}
 	InfoCards:{
         map: any;
 		image: string;

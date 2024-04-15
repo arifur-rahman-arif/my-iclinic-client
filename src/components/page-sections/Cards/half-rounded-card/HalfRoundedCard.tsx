@@ -12,8 +12,6 @@ const defaultCardList: CardInterface[] = [
             'After cataract surgery, your natural vision is restored.',
             'Our patients have described their vision to be improved and a new'
         ],
-        borderColor: 'border-[#FFBE99]',
-        cardBg: 'bg-[#FFEFE5]',
         list: [
             "All the colours around me are bright again; I can't believe the detail",
             "The real plus is that I don't have to wear contact lenses and can see better",
@@ -30,8 +28,6 @@ const defaultCardList: CardInterface[] = [
             'As our vision deteriorates, and colours begin to fade, it affects our perception and experiences in everyday tasks.',
             'A life without cataracts is not only a life of improved vision, but an opportunity to have an improved quality of life!'
         ],
-        borderColor: 'border-[#99ECFF]',
-        cardBg: 'bg-[#E6FAFF80]',
         list: [
             'No more compromise in your daily tasks',
             'Full independence in your routine',
@@ -46,8 +42,6 @@ const defaultCardList: CardInterface[] = [
         description: [
             'With our specialist team, your cataract procedure is an average of 60 minutes and our friendly nurses will guide you before and after the surgery for your ease and comfort.'
         ],
-        borderColor: 'border-[#99ECFF]',
-        cardBg: 'bg-[#EAFAFB]',
         list: [
             'An average of 60 minutes for surgery',
             'Our friendly nurse team always beside you',
@@ -63,8 +57,6 @@ const defaultCardList: CardInterface[] = [
             'Our patients describe their recovery as a very simple and easy process.',
             'What to expect in your aftercare'
         ],
-        borderColor: 'border-[#FFE399]',
-        cardBg: 'bg-[#FFF8E5]',
         list: [
             'A detailed chat about your aftercare routine with our nurses',
             '2 weeks recovery time at home',
@@ -86,31 +78,13 @@ interface HalfRoundedCardProps {
 const HalfRoundedCard = ({ cardList }: HalfRoundedCardProps): JSX.Element => {
     return (
         <Section>
-            <Container className="flex flex-wrap justify-center gap-12">
+            <Container className="flex flex-wrap justify-center gap-8">
                 {((cardList.length && cardList) || defaultCardList).map((list, index) => {
-                    let cardColor = 'bg-[#FFEFE5]';
-                    let borderColor = 'border-[#FFBE99]';
-
-                    if (index === 0) {
-                        borderColor = 'border-[#FFBE99]';
-                        cardColor = 'bg-[#FFEFE5]';
-                    } else if (index === 1) {
-                        borderColor = 'border-[#99ECFF]';
-                        cardColor = 'bg-[#E6FAFF80]';
-                    } else if (index === 2) {
-                        borderColor = 'border-[#99ECFF]';
-                        cardColor = 'bg-[#EAFAFB]';
-                    } else {
-                        borderColor = 'border-[#99ECFF]';
-                        cardColor = 'bg-[#FFF8E5]';
-                    }
                     return (
                         <Card
                             title={list.title}
                             key={index}
                             description={list.description}
-                            cardBg={cardColor}
-                            borderColor={borderColor}
                             list={list.list}
                             image={list.image}
                             index={index}

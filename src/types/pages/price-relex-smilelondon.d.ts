@@ -1,5 +1,19 @@
 export default interface RelexSmilePriceContentInterface {
 	//	SECTION 1
+	masthead: {
+		title: string;
+        subTitle: string;
+        largeImage: ImageApiType;
+        smallImage: ImageApiType;
+        priceText: string;
+    },
+
+	costDetails: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
+
 	section_1: {
 		sub_heading: string;
 		heading: { // Heading
@@ -16,10 +30,7 @@ export default interface RelexSmilePriceContentInterface {
 	
 	section_2: {
 		title: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		} // Bold Heading
+		heading: string // Bold Heading
 		sub_heading: string;
 		descriptions: string[];
 		lists: string[];

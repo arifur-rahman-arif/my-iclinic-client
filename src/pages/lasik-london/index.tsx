@@ -3,25 +3,12 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
-import { liskListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import RelexHero from '@/components/page-sections/Masthead/RelexHero';
 import { getPageData, getTreatments } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasik-large.png';
-import MastheadImageSmall from '@/masthead/masthead-lasik-small.png';
-import MastheadImageMedium from '@/masthead/masthead-lasik.png';
 import { lasikFaqList } from '@/page-sections/Faq/faqList';
 import { lasikSliders } from '@/page-sections/FeaturedPatient';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
-import {
-    ClimateChange,
-    CtaSection2,
-    FinanceExtra,
-    FullWidthImageSection,
-    Masthead,
-    PlasticFree,
-    SideImageSection
-} from '@/page-sections/index';
+import { CtaSection2, FinanceExtra, FullWidthImageSection, SideImageSection } from '@/page-sections/index';
 import { leftRightListLasik } from '@/page-sections/LeftRight/leftRightList';
 import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
@@ -30,14 +17,12 @@ import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
 import LasikImageLarge from '@/section-images/lasik-banner-large.png';
 import LasikImage from '@/section-images/lasik-banner.png';
 import { LasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { FaPoundSign } from 'react-icons/fa';
-import { Button } from 'src/components/Buttons';
+import { Button2 } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -54,9 +39,6 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
 const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
@@ -67,6 +49,12 @@ const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/
     loading: () => <ComponentLoader />
 });
 const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
+    loading: () => <ComponentLoader />
+});
+const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
 
@@ -88,21 +76,6 @@ interface LasikProps {
  * @returns {JSX.Element}
  */
 export default function Lasik({ seo, yoastJson, data, filteredTreatments }: LasikProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'LASIK Laser Eye Surgery London';
-    const subheading =
-        data?.masthead_subheading ||
-        'The traditional laser eye surgery method to remove glasses & contact lenses from everyday life!';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
@@ -122,9 +95,9 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                       <Image
                           src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
                           width={695}
-                          height={580}
+                          height={599}
                           quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          className="hidden rounded-primary md:block"
                           alt=""
                       />
                   ),
@@ -158,19 +131,6 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
               )
             : null;
 
-    // reviewSliderdata
-    const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
-            : null;
-
     /// /reviewimageSlider
     const reviewimageSliderdata: any =
         Array.isArray(data?.reviewimageSlider) && data.reviewimageSlider.length > 0
@@ -191,37 +151,35 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText=""
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || '£2,400 per eye'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                bannerClassName="lg:gap-12"
-                // suitabilityButton={
-                //     <div className="grid gap-6 md:gap-12">
-                //         <SuitabilityLink text="Are You Suitable For Laser Eye Surgery" textClassName="max-w-[26rem]" />
-                //     </div>
-                // }
+            <RelexHero
+                {...data?.masthead}
                 suitabilityButton={
                     <div className="grid gap-6">
-                        <FinanceCalculatorButton title1ClassName="text-brand" />
+                        <FinanceCalculatorButton
+                            title1ClassName="!text-white"
+                            icon={{
+                                src: '/images/icons/icon-percentage-fire-blue.png',
+                                width: 40,
+                                height: 40,
+                                alt: ''
+                            }}
+                        />
                         <MastheadCtaButtons
-                            button1Class="hover:!border-[#003E79] !border-2"
-                            button2Class="text-[#003E79] border-[#003E79] hover:!bg-[#003E79] hover:!border-[#003E79] hover:text-white"
+                            showButton1={false}
+                            showButton2
+                            button2Text="Make an enquiry "
+                            button2Class="text-white mt-4 border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
                         />
                     </div>
                 }
             />
 
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <LazyComponent>
-                <FinanceCalculatorSection iclTreatments={filteredTreatments} />
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} headingText={data?.calculatorHeading} />
             </LazyComponent>
 
             {/* SECTION 1 */}
@@ -242,24 +200,20 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
             <LazyComponent>
                 <LeftRightSection childrenList={leftRightsectiondata || leftRightListLasik} />
             </LazyComponent>
+
             {/* section 2 */}
             <FullWidthImageSection
-                h3Title={data?.section_2?.title || 'Whatever the view,'}
-                boldHeading={
-                    <>
-                        {data?.section_2?.bold_heading_1 || 'Remember it with'}
-                        <br />
-                        {data?.section_2?.bold_heading_2 || 'Clear vision'}
-                    </>
-                }
+                h3Title={data?.section_2?.title || 'Whatever the view, Remember it with clear vision'}
+                titleClass="text-heading text-balance normal-case"
                 altText=""
                 image={data?.section_2?.image || ClearVisionImage}
                 desktopImage={data?.section_2?.large_image || ClearVisionImage}
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 md:!py-0"
                 overlayAnimation={true}
                 textColumnOverlay
-                sectionClass="bg-brandLight relative"
+                sectionClass="bg-[#E1F1FF] relative"
             />
+
             {/* SECTION 3 */}
             <LazyComponent>
                 <SideVideoSection
@@ -287,7 +241,6 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                     }
                     bandImageTitle={data?.section_4?.brandImageTitle || 'Helen'}
                     bandImageURL={data?.section_4?.bandImageURL || '/images/section-images/helen.png'}
-                    reviewDescription={data?.section_4?.branddescriptions || [`Absolutely phenomenal.`]}
                     reviewTitle={
                         <>
                             {HTMLReactParser(data?.section_4?.reviewTitle) ||
@@ -295,18 +248,17 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                         </>
                     }
                     sliders={reviewimageSliderdata || lasikSliders}
-                    bandColor="bg-[#FF5C00]"
+                    bandColor="bg-[#0099FF]"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata || liskListCataract} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
+
             {/* SECTION 5 */}
             <SideImageSection
-                h2Heading={data?.section_5?.sub_heading || 'Transparent Price'}
-                h3LightHeading={data?.section_5?.heading?.light_heading || 'LASIK Laser eye surgery'}
-                h3BoldHeading={data?.section_5?.heading?.bold_heading || 'cost'}
+                h3LightHeading={data?.section_5?.heading || 'LASIK Laser eye surgery cost'}
                 descriptions={
                     (data?.section_5?.descriptions?.length && data?.section_5?.descriptions) || [
                         `We do our best to understand your needs and aims so we can offer you the best vision correction options with a fair, transparent price!`
@@ -320,9 +272,10 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                 sectionImageDesktop={{
                     url: data?.section_5?.large_image || '/images/section-images/lasik-transparent-price-large.png',
                     width: 650,
-                    height: 558
+                    height: 607
                 }}
                 altText=""
+                containerClassName="xl:!grid-cols-[1fr_auto]"
                 textColumnExtras={
                     <>
                         <FinanceExtra
@@ -344,14 +297,10 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                                 ]
                             }
                         />
-                        <Button
+                        <Button2
                             type="anchor"
                             link="/lasik-london/price"
-                            icon={
-                                <FaPoundSign className="h-[1.7rem] w-[1.7rem] fill-white transition-all duration-500 group-hover/finance:fill-heading2" />
-                            }
                             text={data?.section_5?.button_text || 'Pricing & Financing'}
-                            iconPosition="left"
                             className="group/finance mt-6 !gap-2 justify-self-center md:justify-self-start"
                         />
                     </>
@@ -359,9 +308,7 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
             />
 
             <SideImageSection
-                h2Heading={data?.section_6?.sub_heading || 'better vision'}
-                h3LightHeading={data?.section_6?.heading.light_heading || 'Achieve better vision'}
-                h3BoldHeading={data?.section_6?.heading?.bold_heading || 'with LASIK today'}
+                h3LightHeading={data?.section_6?.heading.light_heading || 'Achieve better vision with LASIK today'}
                 descriptions={
                     (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
                         <>
@@ -396,14 +343,14 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                 }}
                 sectionImageDesktop={{
                     url: data?.section_6?.large_image || '/images/section-images/better-vision-lasik-large.png',
-                    width: 682,
-                    height: 686
+                    width: 669,
+                    height: 599
                 }}
                 positionReversed={true}
                 textColumnExtras={
-                    <div className="flex flex-col items-center justify-start gap-12 sm:flex-row">
+                    <div className="flex flex-col items-center justify-start gap-4 sm:flex-row">
                         <div className="place-items-end xl:grid">
-                            <BookConsultation buttonClassName="group/consultation transition-all border-2 border-heading2 duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-heading2 grid-flow-col rounded-primary">
+                            <BookConsultation buttonClassName="group/consultation transition-all border-2 border-[#003E79] duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-[#003E79] grid-flow-col rounded-[0.5rem]">
                                 <button className="" aria-label="Request a callback">
                                     <svg
                                         width="20"
@@ -418,7 +365,7 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
                                         />
                                         <path
                                             d="M13.334 1.66699V5.00033"
@@ -426,7 +373,7 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
                                         />
                                         <path
                                             d="M6.66602 1.66699V5.00033"
@@ -434,7 +381,7 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
                                         />
                                         <path
                                             d="M2.5 8.33301H17.5"
@@ -442,11 +389,11 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-heading2"
+                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
                                         />
                                     </svg>
 
-                                    <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
+                                    <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-[#003E79]">
                                         Request a callback
                                     </span>
                                 </button>
@@ -454,16 +401,8 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                         </div>
 
                         <div className="flex items-center justify-start gap-4">
-                            <Image
-                                src="/images/icons/icon-chat.svg"
-                                alt=""
-                                quality={70}
-                                width={20}
-                                height={20}
-                                className="h-8 w-8"
-                            />
                             <button
-                                className="relative block cursor-pointer font-mulishBold text-[1.6rem] leading-[2.4rem]"
+                                className="relative block cursor-pointer rounded-[0.5rem]  border-2 border-solid border-[#003E79] px-10 py-6 font-mulishBold text-[1.6rem] leading-[2.4rem] text-[#404A4D] sm:px-20"
                                 onClick={openFreshdeskChat}
                             >
                                 Chat with us
@@ -490,162 +429,9 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                 title={data?.section_8?.heading || 'Do you think LASIK could be the right treatment for you?'}
             />
 
-            {/* <LazyComponent>
-                <BottomBanner
-                    bannerImage={LasikCtaBannerImage}
-                    bannerBg="/images/section-images/lasik-banner-bg.png"
-                    bannerTitle="Do you think LASIK could be the right treatment for you?"
-                />
-            </LazyComponent> */}
-
-            {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
             {/* section 9  */}
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                        h3LightHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
-                            'LASIK is the biggest step in living'
-                        }
-                        h3BoldHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
-                            'a sustainable, plastic free life!'
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                data?.sustainability_section?.plastic_free_life?.descriptions) || [
-                                `The most sustainable, green living lifestyle is when you have a plastic free eye-style. When you have Implantable Contact Lenses you are saying goodbye to the continuous plastic waste produced by glasses and contact lenses!`
-                            ]
-                        }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                    />
-
-                    {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-2.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
-
-                    {/* <Section className="!mt-4">
-                <Container>
-                    <Image
-                        src="/images/section-images/mountain-image-2.png"
-                        alt=""
-                        width={638}
-                        height={137}
-                        quality={70}
-                        className="mx-auto md:h-auto md:w-auto"
-                    />
-                </Container>
-            </Section>
-
-            <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-3-desktop.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
-                    <SideImageSection
-                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
-                        h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.gift_of_a_tree?.heading.light_heading ||
-                                'Saving the planet <br />'
-                        )}
-                        h3BoldHeading={
-                            (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
-                                HTMLReactParser(
-                                    data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
-                                )) ||
-                            HTMLReactParser('One eye at a time!')
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
-                                data?.sustainability_section?.gift_of_a_tree?.descriptions) || [
-                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
-                         difference to the environment. For every 10 years of contact lens wearing the amount of plastic
-                          that ends up in the ocean is roughly the same as your own body weight.`,
-                                ` <span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Our gift to you…
-                                </span>`,
-                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                ` <span class="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Here at My-iClinic we give all of our laser patients a real forest tree!
-                                </span>`,
-                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
-                         value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
-                          contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
-                          to replace it.`,
-                                `This is our big thank you for choosing a natural, green living eye-style.`
-                            ]
-                        }
-                        sectionImage={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        sectionImageDesktop={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                        altText={
-                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
-                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
-                        }
-                    />
-
-                    {/* <DrawLine
-                image={{
-                    url: '/images/section-images/draw-line-2-mobile.svg',
-                    width: 63,
-                    height: 62
-                }}
-                desktopImage={{
-                    url: '/images/section-images/draw-line-4-desktop.svg',
-                    width: 232,
-                    height: 234
-                }}
-            /> */}
-                    <ClimateChange
-                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
-                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
-                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image?.url}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
-                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
-                    />
-                </SustainableSlider>
+                <EnvironmentalImpact />
             </LazyComponent>
 
             <LazyComponent>
@@ -710,13 +496,21 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        image: {
+                            ...(data?.acf?.masthead?.image && formatImage(data.acf?.masthead?.image))
+                        }
+                    },
+                    calculatorHeading: stripInitialTags(data?.acf?.calculatorHeading),
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
                     }, // 2
                     section_2: {
-                        ...data?.acf?.section_2
+                        ...data?.acf?.section_2,
+                        title: stripInitialTags(data?.acf?.section_2?.title || '')
                     }, // VIDEO
                     section_3: {
                         ...data?.acf?.section_3,
@@ -727,6 +521,11 @@ export async function getStaticProps() {
                         branddescriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.branddescriptions),
                         reviewDescription: convertArrayOfObjectsToStrings(data?.acf?.section_4?.reviewDescription)
                     }, // 2
+
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    },
                     section_5: {
                         ...data?.acf?.section_5,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions),

@@ -116,7 +116,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
      */
     const getData = async (url: string): Promise<any> => {
         try {
-            const res = await fetch(url);
+            const res = await fetch(url, { mode: 'no-cors' });
             const jsonData = await res.json();
 
             // Fetching image URLs for each post
@@ -137,18 +137,18 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
 
     // SWR mutation hook to handle form data submission
     const { data, error, isLoading } = useSWR(
-        `${process.env.NEXT_PUBLIC_REST_URL}/specialist?_fields=slug,title,featured_media,acf&order=asc`,
+        `${process.env.NEXT_PUBLIC_REST_URL}/specialist?_fields=slug,title,featured_media,acf`,
         getData
     );
 
     return (
-        <div className="absolute top-full left-0 z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
+        <div className="absolute left-0 top-full z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (
                         <div
                             key={key}
-                            className={`submenu-link group/submenu-link relative cursor-pointer py-12 px-10`}
+                            className={`submenu-link group/submenu-link relative cursor-pointer px-10 py-12`}
                             onClick={() => {
                                 handleClick(key);
                             }}
@@ -176,7 +176,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                 <span
                                     className={`absolute left-0 w-full  ${
                                         menu.active
-                                            ? 'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]'
+                                            ? 'top-0 h-full translate-x-12 rounded-bl-[6rem] rounded-tl-[6rem] bg-[#003E79]'
                                             : 'top-full h-[0.2rem] bg-[#005DAF]'
                                     }`}
                                 ></span>
@@ -347,7 +347,7 @@ export const ConsultantItem = ({
                     <span className="-mt-3 font-mulishBold text-[1.4rem] uppercase leading-8 text-[#00BFFF]">
                         {title}
                     </span>
-                    <span className="text-white line-clamp-1 xl:line-clamp-2">{degree}</span>
+                    <span className="line-clamp-1 text-white xl:line-clamp-2">{degree}</span>
                 </div>
             </div>
         </Link>

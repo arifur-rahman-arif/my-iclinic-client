@@ -1,45 +1,46 @@
 :root {
-  // Utility variables
-  --shadow1: 0.4rem 0.4rem 2.4rem rgba(142, 142, 142, 0.25);
-  
-  // Color variables
-  --shadow2: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.1), 0px 0.2rem 0.4rem rgba(0, 0, 0, 0.06);
-  --shadow3: 4px 4px 4px rgba(0, 0, 0, 0.05);
-  --transition: 300ms cubic-bezier(0.77, 0.2, 0.05, 1);
-  --plyr-badge-border-radius: var(--border-radius);
-  --color-blue: #0085ff;
-  --color-brand: #063147;
-  --color-brand-light: #e5faff;
-  --plyr-captions-text-color: var(--color-white);
-  --plyr-color-main: var(--color-brand);
-  --color-dark-blue: #010033;
-  --root-font-size: 62.5%;
-  --color-heading: #051821;
-  --color-heading2: #0c4969;
-  --color-light-orange: #ffefe5;
-  
-  // Typography variables
-  // --mulish-light: 'Mulish-Light', arial, helvetica, sans-serif;
-  // --mulish-medium: 'Mulish-Medium', arial, helvetica, sans-serif;
-  // --mulish-bold: 'Mulish-Bold', arial, helvetica, sans-serif;
-  
-  // --lato-light: 'Lato-Light', arial, helvetica, sans-serif;
-  // --lato-medium: 'Lato-Medium', arial, helvetica, sans-serif;
-  // --lato-bold: 'Lato-Bold', arial, helvetica, sans-serif;
-  
-  // Miscellaneous variables
-  --color-light-violet: #cce7ff;
-  --color-light-yellow: #fff8e5;
-  --color-mid-dark-blue: #010033e5;
-  --color-orange: #ff7c33;
-  --border-radius: 1.5rem;
-  --border-radius2: 1rem;
-  --color-secondary: #293c4e;
-  --color-teal: #30cad3;
-  
-  // Change the video player styles
-  --plyr-video-background: var(--color-white);
-  --color-white: #ffffff;
-  --container-width: 124rem; // 1240px
-  --color-yellow: #0c4969;
+    // Utility variables
+    --shadow1: 0.4rem 0.4rem 2.4rem rgba(142, 142, 142, 0.25);
+
+    // Color variables
+    --shadow2: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.1), 0px 0.2rem 0.4rem rgba(0, 0, 0, 0.06);
+    --shadow3: 4px 4px 4px rgba(0, 0, 0, 0.05);
+    --transition: 300ms cubic-bezier(0.77, 0.2, 0.05, 1);
+    --plyr-badge-border-radius: var(--border-radius);
+    --color-blue: #0085ff;
+    --color-brand: #063147;
+    --color-brand-light: #e5faff;
+    --plyr-captions-text-color: var(--color-white);
+    --plyr-color-main: var(--color-brand);
+    --color-dark-blue: #010033;
+    --root-font-size: 62.5%;
+    --color-heading: #051821;
+    --color-heading2: #0c4969;
+    --color-light-orange: #ffefe5;
+
+    // Typography variables
+    // --mulish-light: 'Mulish-Light', arial, helvetica, sans-serif;
+    // --mulish-medium: 'Mulish-Medium', arial, helvetica, sans-serif;
+    // --mulish-bold: 'Mulish-Bold', arial, helvetica, sans-serif;
+
+    // --lato-light: 'Lato-Light', arial, helvetica, sans-serif;
+    // --lato-medium: 'Lato-Medium', arial, helvetica, sans-serif;
+    // --lato-bold: 'Lato-Bold', arial, helvetica, sans-serif;
+
+    // Miscellaneous variables
+    --color-light-violet: #cce7ff;
+    --color-light-yellow: #fff8e5;
+    --color-mid-dark-blue: #010033e5;
+    --color-orange: #ff7c33;
+    --border-radius: 1.5rem;
+    --border-radius2: 1rem;
+    --color-secondary: #293c4e;
+    --color-teal: #30cad3;
+
+    // Change the video player styles
+    --plyr-video-background: var(--color-white);
+    --color-white: #ffffff;
+    --container-width: 124rem; // 1240px
+    --body-width: 256rem;
+    --color-yellow: #0c4969;
 }

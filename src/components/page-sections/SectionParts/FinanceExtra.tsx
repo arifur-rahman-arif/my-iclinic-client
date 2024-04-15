@@ -16,10 +16,10 @@ interface FinanceExtraInterface {
  */
 const FinanceExtra = ({ priceText, priceDescription, paragraphs, list }: FinanceExtraInterface): JSX.Element => {
     return (
-        <div className="grid gap-6">
+        <div className="grid gap-12">
             <div className="grid gap-1">
                 {priceText && (
-                    <span className="font-latoBold text-[2.8rem] normal-case leading-[3.2rem] text-heading2">
+                    <span className="font-mulishBold text-[1.8rem] normal-case leading-[2.8rem] text-[#893277]">
                         {priceText}
                     </span>
                 )}
@@ -30,13 +30,8 @@ const FinanceExtra = ({ priceText, priceDescription, paragraphs, list }: Finance
                 )}
             </div>
             <>{HTMLReactParser(paragraphs)}</>
-            {/* {paragraphs?.map((paragraph, index) => (
-                <p className="mt-6" key={index}>
-                    {paragraph}
-                </p>
-            ))} */}
 
-            <ul className="ml-12 mt-12 grid gap-6">
+            <ul className="grid gap-6">
                 {list.map((item, index) => (
                     <li className="flex items-start justify-start gap-4" key={index}>
                         <BulletPoint />

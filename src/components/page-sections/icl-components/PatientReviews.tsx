@@ -77,22 +77,27 @@ The surgeon was thorough, in the initial meeting, in explaining the problems and
     }
 ];
 
+interface Props {
+    heading?: string;
+    sliders?: Array<SlideProps>;
+}
+
 /**
  * Patient reviews component
  * @returns {JSX.Element}
  * @constructor
  */
-const PatientReviews = (): JSX.Element => {
+const PatientReviews = ({ heading, sliders }: Props): JSX.Element => {
     return (
         <Section id="newfound-clarity">
             <Container className="relative grid content-start gap-12 md:gap-24">
                 <h2 className="font-latoBold text-[3rem] normal-case leading-[3.6rem] md:justify-self-center md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
-                    See what our satisfied clients say!
+                    {heading || 'Hear from our satisfied patients'}
                 </h2>
 
                 <div className="relative overflow-x-hidden">
                     <LazyComponent>
-                        <PatientSlider sliderList={sliderList} />
+                        <PatientSlider sliderList={sliders || sliderList} />
                     </LazyComponent>
                 </div>
             </Container>

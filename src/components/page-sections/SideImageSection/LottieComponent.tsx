@@ -12,7 +12,7 @@ const LottieComponent = (): JSX.Element => {
     const anchorRef = useRef<HTMLSpanElement | null>(null);
     return (
         <span
-            className="mt-12 cursor-pointer place-self-center md:mt-40"
+            className="mt-12 cursor-pointer place-self-center md:mt-24"
             onClick={(e) => {
                 window.scrollTo(0, getElementTopPosition(anchorRef.current as HTMLElement) + 100);
             }}

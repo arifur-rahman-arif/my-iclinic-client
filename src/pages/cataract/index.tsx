@@ -4,34 +4,27 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
-    BookConsultation,
     CtaSection,
     CtaSection2,
     FinanceExtra,
     FullWidthImageSection,
     HalfRoundedCard,
-    Masthead,
     SideImageSection
 } from '@/components/page-sections';
 import { cataractFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListCataract } from '@/components/page-sections/LeftRight/leftRightList';
-import { normalSlideListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData, getTreatments } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-cataract-large.png';
-import MastheadImageSmall from '@/masthead/masthead-cataract-small.png';
-import MastheadImageMedium from '@/masthead/masthead-cataract.png';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
-import Cta6 from '@/page-sections/SectionParts/Cta6';
 import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
 import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
 import { CataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import React, { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import Image from 'next/image';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
+import FundingTreatment from '@/components/page-sections/HomePage/FundingTreatment';
 
 const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -45,9 +38,6 @@ const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
@@ -56,6 +46,10 @@ const SideVideoSection = dynamic(() => import('@/components/page-sections/SideIm
 });
 
 const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -77,19 +71,6 @@ interface CataractProps {
  * @returns {JSX.Element}
  */
 export default function Cataract({ data, seo, yoastJson, iclTreatments }: CataractProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Private Cataract Surgery London';
-    const subheading = data?.masthead_subheading || 'We’re here to make cataract surgery easy';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
@@ -127,12 +108,12 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
             ? data.reviewSlider.map((service) => {
                   return {
                       ...service,
-                      title: service?.title,
                       name: service?.name,
-                      description: service?.description
+                      review: service?.description
                   };
               })
             : null;
+
     const InfoCardsdata =
         Array.isArray(data?.InfoCards) && data.InfoCards.length > 0
             ? data.InfoCards.map(
@@ -153,7 +134,9 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
         <Page title="Cataract" description="We’re here to make cataract surgery easy" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
+            <CataractHero {...data?.masthead} />
+
+            {/* <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
                 imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
                 imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
@@ -166,26 +149,28 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                 bannerClassName="lg:gap-12"
                 suitabilityButton={
                     <div className="mt-4 grid gap-6">
-                        {/* <FinanceCalculatorButton title1ClassName="text-brand" /> */}
+                        <FinanceCalculatorButton title1ClassName="text-brand" />
 
                         <div className="flex flex-wrap items-center justify-start gap-4">
                             <BookConsultation buttonClassName="sitemap-link text-center hover:!border-[#003E79] !border-2">
                                 <Button2 type="button" text="Make an enquiry" />
                             </BookConsultation>
 
-                            {/* <Button2
+                            <Button2
                                 type="anchor"
                                 text="FREE suitability check"
                                 link="/suitability-check"
                                 title="FREE suitability check"
                                 className="sitemap-link justify-self-start border-white border-[#003E79] bg-transparent text-center text-white text-[#003E79] hover:border-white hover:!border-[#003E79] hover:!bg-[#003E79] hover:text-white"
-                            /> */}
+                            />
                         </div>
                     </div>
                 }
-            />
+            /> */}
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <LazyComponent>
                 <FinanceCalculatorSection
@@ -242,7 +227,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata || normalSlideListCataract} />
+                <PatientReviews sliders={reviewSliderdata} heading={data?.reviewheading} />
             </LazyComponent>
 
             <CtaSection
@@ -250,8 +235,38 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                 subtitle={data?.sectionspeakteam?.sub_heading || 'FIND OUT YOUR OPTIONS'}
             />
 
+            <FundingTreatment
+                heading={data?.treatment_fund?.heading}
+                description={data?.treatment_fund?.description}
+                list={data?.treatment_fund?.list}
+                cardList={data?.treatment_fund?.card_list}
+                centerHeading
+            />
+
             <SideImageSection
-                h2Heading={data?.section_4?.sub_heading || 'Transparent Price'}
+                h3LightHeading={data?.section_1?.heading?.light_heading || 'Living life again'}
+                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'with cataract-free vision!'}
+                descriptions={
+                    (data?.section_1?.descriptions?.length &&
+                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
+                        `Most patients are not aware of how bad their vision has become until after the cataract surgery and treatment.`,
+                        `Once they see the difference in brightness, colour, imagery and detail; they are delighted to experience their lifestyle activities again with the clear vision they should have always had.`
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_1?.image || '/images/section-images/vision-correction-cataract.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-cataract-large.png',
+                    width: 640,
+                    height: 610
+                }}
+                positionReversed={true}
+            />
+
+            <SideImageSection
                 h3LightHeading={
                     <>
                         {data?.section_4?.heading?.light_heading || 'Cataract'}
@@ -293,7 +308,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                             }
                             paragraphs={''}
                         />
-                        <span className="mt-12 font-latoBold text-[2.8rem] leading-[3.2rem]">
+                        <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading">
                             {data?.section_4?.price_subheading || 'Looking for insurance options?'}
                         </span>
                         <>
@@ -309,41 +324,16 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                             icon={
                                 <FaAngleRight className="h-6 w-6 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-heading2" />
                             }
-                            className="group/button mt-6 justify-self-center md:justify-self-start"
+                            className="group/button justify-self-center normal-case md:justify-self-start"
                         />
                     </>
                 }
-            />
-
-            <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Vision correction treatment'}
-                h3LightHeading={data?.section_1?.heading?.light_heading || 'Living life again'}
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'with cataract-free vision!'}
-                descriptions={
-                    (data?.section_1?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
-                        `Most patients are not aware of how bad their vision has become until after the cataract surgery and treatment.`,
-                        `Once they see the difference in brightness, colour, imagery and detail; they are delighted to experience their lifestyle activities again with the clear vision they should have always had.`
-                    ]
-                }
-                sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/vision-correction-cataract.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-cataract-large.png',
-                    width: 640,
-                    height: 610
-                }}
-                positionReversed={true}
             />
 
             <HalfRoundedCard cardList={InfoCardsdata} />
 
             {/* cardListdata */}
             <SideImageSection
-                h2Heading={data?.bettervision?.sub_heading || 'better vision'}
                 h3LightHeading={data?.bettervision?.heading?.light_heading || 'Enjoy clear'}
                 h3BoldHeading={data?.bettervision?.heading?.bold_heading || 'vision without glasses'}
                 descriptions={
@@ -374,8 +364,6 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
             <CtaSection2
                 title={data?.section_6?.title || 'Book Your Private Cataract Surgery Today'}
                 image={data?.section_6?.image}
-                imageLarge={data?.section_6?.imagelarge}
-                textColumnExtras={<Cta6 />}
             />
 
             {/* <LazyComponent>
@@ -442,6 +430,15 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
@@ -465,7 +462,14 @@ export async function getStaticProps() {
                     },
                     section_6: {
                         ...data?.acf?.section_6,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions),
+                        image: {
+                            ...(data?.acf?.section_6?.image && formatImage(data.acf?.section_6?.image))
+                        }
+                    },
+                    treatment_fund: {
+                        ...data?.acf?.treatment_fund,
+                        list: convertArrayOfObjectsToStrings(data?.acf?.treatment_fund?.list)
                     },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {

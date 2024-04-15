@@ -46,10 +46,10 @@ const TextColumn = ({
                     <h2 className="w-full normal-case">{normalLightHeading}</h2>
                 </div>
             ) : (
-                <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-6">
+                <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4">
                     {h2Heading ? <SpanVariant1 className="col-start-2">{h2Heading}</SpanVariant1> : <></>}
                     <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>
-                    <h2 className="w-full max-w-[55rem] normal-case">
+                    <h2 className="w-full max-w-[60rem] whitespace-pre-line text-balance normal-case">
                         {h3LightHeading || ''} <strong className="normal-case">{h3BoldHeading || ''}</strong>
                     </h2>
                 </div>
@@ -66,7 +66,7 @@ const TextColumn = ({
                 <div className={`grid gap-12 ${!normalLightHeading && 'ml-10'}`}>
                     {midExtras}
 
-                    {descriptions?.length && (
+                    {descriptions?.length ? (
                         <div
                             className={twMerge(
                                 'description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem]',
@@ -91,7 +91,7 @@ const TextColumn = ({
                                 </Fragment>
                             ))}
                         </div>
-                    )}
+                    ) : null}
 
                     {textColumnExtras}
                 </div>

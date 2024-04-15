@@ -114,6 +114,18 @@ const ResultColumn = ({ index, setShowAlert, setAlertMessages }: ResultColumnPro
         setTimeOutId(timeoutId);
     };
 
+    const treatmentType = ctx.treatmentList[index].group_name;
+
+    let marks: any = false;
+
+    if (treatmentType == 'Cataract' || treatmentType == 'ICL Surgery') {
+        marks = [{ value: 6 }, { value: 9 }, { value: 10 }];
+    }
+
+    if (treatmentType == 'Laser eye surgery') {
+        marks = [{ value: 6 }, { value: 9 }, { value: 10 }, { value: 11 }, { value: 12 }];
+    }
+
     return (
         <div className="grid content-start gap-24 px-8 py-12 lg:grid-cols-[1fr_auto]">
             <div className="grid content-start gap-12 md:gap-32 xl:content-between xl:gap-40">
@@ -129,6 +141,7 @@ const ResultColumn = ({ index, setShowAlert, setAlertMessages }: ResultColumnPro
                     defaultValue={10}
                     onValueChange={handleValueChange}
                     valueLabelFormat={`${ctx.treatmentList[index].defaultInstallment} month`}
+                    marks={marks}
                 />
             </div>
 

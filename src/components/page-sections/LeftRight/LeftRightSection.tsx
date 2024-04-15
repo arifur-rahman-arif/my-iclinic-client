@@ -74,7 +74,7 @@ const LeftRightSection = ({
                     if (index % 2 === sectionPosition) {
                         return (
                             <Container
-                                className={`${containerDefaultClassName} ${containerClassName}`}
+                                className={`${containerDefaultClassName} ${containerClassName} lg:grid-cols-[auto_1fr]`}
                                 key={index}
                                 id={childrenElement?.sectionId}
                             >
@@ -93,7 +93,7 @@ const LeftRightSection = ({
                     } else {
                         return (
                             <Container
-                                className={`${containerDefaultClassName} ${containerClassName}`}
+                                className={`${containerDefaultClassName} ${containerClassName} lg:grid-cols-[1fr_auto]`}
                                 key={index}
                                 id={childrenElement?.sectionId}
                             >

@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 import DownloadForm from './DownloadForm';
+import HTMLReactParser from 'html-react-parser';
 
 const DownloadOnTheWay = dynamic(() => import('./DownloadOnTheWay'));
 
@@ -53,7 +54,7 @@ const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDo
                         </div>
 
                         <h3 className="mt-8 text-center font-mulishBold text-[2.8rem] leading-[3.2rem] text-white">
-                            {title}
+                            {typeof title === 'string' ? HTMLReactParser(title) : title}
                         </h3>
 
                         {description && <p className="text-center text-white [&_*]:text-white">{description}</p>}

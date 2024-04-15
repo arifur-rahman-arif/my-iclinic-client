@@ -77,7 +77,7 @@ const SideImageSection = ({
     customColumn,
     textColumnImage,
     textColumnTopElements,
-    defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32',
+    defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] md:gap-32',
     containerClassName,
     paragraphAnimation = false,
     textColumnDefaultClassName,
@@ -141,9 +141,7 @@ const SideImageSection = ({
                                 width={sectionImageDesktop.width}
                                 height={sectionImageDesktop.height}
                                 quality={100}
-                                className={`${
-                                    largeImageClassName || 'hidden rounded-primary md:block md:scale-90 2xl:scale-100'
-                                }`}
+                                className={`${largeImageClassName || 'hidden rounded-primary md:block'}`}
                                 alt={altText || ''}
                             />
                         )}

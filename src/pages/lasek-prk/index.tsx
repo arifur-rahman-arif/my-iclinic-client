@@ -1,26 +1,21 @@
-/* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
+import { Button2 } from '@/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import SustainableSlider from '@/components/Slider/SustainableSlider/SustainableSlider';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import RelexHero from '@/components/page-sections/Masthead/RelexHero';
 import { getPageData, getTreatments } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-lasek-smile-large.png';
-import MastheadImageMedium from '@/masthead/masthead-lasek-smile-medium.png';
 import { lasekFaqList } from '@/page-sections/Faq/faqList';
 import { lasekSliders } from '@/page-sections/FeaturedPatient';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import {
-    ClimateChange,
-    Cta2,
+    BookConsultation,
     CtaSection,
+    CtaSection2,
     FullWidthImageSection,
     FullWidthImageSection3,
-    Masthead,
     NormalSection2,
     NormalSection3,
-    PlasticFree,
     SideImageSection
 } from '@/page-sections/index';
 import { leftRightListLasek } from '@/page-sections/LeftRight/leftRightList';
@@ -29,12 +24,12 @@ import { lasekStackList } from '@/page-sections/StackedSection';
 import FullWidthImageLarge from '@/section-images/lasek-doctor-large.png';
 import FullWidthImage from '@/section-images/lasek-doctor.png';
 import { LasekprkContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -51,10 +46,7 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
-// Const BottomBanner = dynamic(() => import('@/page-sections/bottom-full-banners/BottomBanner'));
+
 const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />
 });
@@ -68,6 +60,13 @@ const StackedSection = dynamic(() => import('@/page-sections/StackedSection/Stac
 });
 
 const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
+    loading: () => <ComponentLoader />
+});
+
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
+    loading: () => <ComponentLoader />
+});
+const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
 
@@ -87,19 +86,6 @@ interface LasekPageProps {
  * @returns {JSX.Element}
  */
 export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: LasekPageProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'LASEK, PRK & PTK laser eye surgery London';
-    const subheading = data?.masthead_subheading;
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     // LEFT RIGHT SECTION
     const leftRightsectiondata = data?.leftRightsection
         ? data.leftRightsection.map(
@@ -118,10 +104,10 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                   desktopImage: (
                       <Image
                           src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
-                          width={695}
-                          height={580}
+                          width={675}
+                          height={617}
                           quality={70}
-                          className="hidden rounded-primary md:block md:scale-90 2xl:scale-100"
+                          className="hidden rounded-primary md:block"
                           alt=""
                       />
                   ),
@@ -150,18 +136,6 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
               )
             : null;
 
-    // reviewSliderdata
-    const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
-            : null;
     return (
         <Page
             title="Laser Eye Surgery Specialists in London"
@@ -171,7 +145,32 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
         >
             <BreadCrumb />
 
-            <Masthead
+            <RelexHero
+                {...data?.masthead}
+                imageClass="lg:absolute z-[1]"
+                textContainerClass="relative z-[2]"
+                suitabilityButton={
+                    <div className="grid gap-6">
+                        <FinanceCalculatorButton
+                            title1ClassName="!text-white"
+                            icon={{
+                                src: '/images/icons/icon-percentage-fire-blue.png',
+                                width: 40,
+                                height: 40,
+                                alt: ''
+                            }}
+                        />
+                        <MastheadCtaButtons
+                            className="mt-4 flex-row-reverse justify-end"
+                            showButton2
+                            button2Class="text-white border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
+                            button1Class="text-white bg-transparent border border-[#fff] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
+                        />
+                    </div>
+                }
+            />
+
+            {/* <Masthead
                 imageSmall={data?.masthead_image?.image?.url || MastheadImageMedium}
                 imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
                 imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
@@ -198,12 +197,14 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                         />
                     </div>
                 }
-            />
-
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            /> */}
 
             <LazyComponent>
-                <FinanceCalculatorSection iclTreatments={filteredTreatments} />
+                <CallbackSection />
+            </LazyComponent>
+
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} headingText={data?.calculatorHeading} />
             </LazyComponent>
 
             {/* SECTION 1 */}
@@ -238,13 +239,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
             />
             {/* SECTION 2 */}
             <SideImageSection
-                h2Heading={data?.section_2?.sub_heading || 'Vision correction treatment'}
-                h3LightHeading={
-                    <>
-                        {data?.section_2?.heading?.light_heading || 'LASEK, PRK & PTK Laser'} <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_2?.heading?.dark_heading || 'Eye Surgery at My-iClinic'}
+                h3LightHeading={data?.section_2?.heading || 'LASEK, PRK & PTK Laser Eye Surgery at My-iClinic'}
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `LASEK (Laser Assisted Epithelial Keratomileusis) and PRK (Photorefractive keratectomy) are almost identical vision correction procedures.`,
@@ -265,6 +260,13 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     height: 539
                 }}
                 altText=""
+                textColumnExtras={
+                    <>
+                        <BookConsultation>
+                            <Button2 type="button" text="Book a free consultation" />
+                        </BookConsultation>
+                    </>
+                }
             />
 
             {/* LEFT RIGHT SECTION */}
@@ -278,12 +280,14 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                         data?.price_finance?.interest_free_finance || 'With 24 Months Interest-Free Finance Available!'
                     }
                     title={data?.price_finance?.title}
+                    titleAttribute="/ Per month"
                     subheading={data?.price_finance?.subheading}
                     description={data?.price_finance?.description}
                     bestpriceline={data?.price_finance?.bestpriceline}
+                    link="/lasek-prk/price"
                 />
             </LazyComponent>
-            {/* SECTOIN 3 */}
+
             <CtaSection
                 title={data?.section_3?.title || 'Speak To Our Friendly Team'}
                 subtitle={data?.section_3?.sub_heading || 'talk to a specialist'}
@@ -296,6 +300,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     </>
                 }
             />
+
             {/* PTK SECTION */}
             <NormalSection3
                 title={
@@ -316,7 +321,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     stackList={clinicSliderdata ? clinicSliderdata : lasekStackList}
                     h3LightHeading={
                         <>
-                            {data?.section_4?.heading?.light_heading || ' Why consider My-iClinic'}
+                            {data?.section_4?.heading?.light_heading || 'Why consider My-iClinic'}
                             <br />
                         </>
                     }
@@ -328,42 +333,13 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     }
                 />
             </LazyComponent>
-            {/* SECTION 5 */}
-            <SideImageSection
-                h2Heading={data?.section_5?.sub_heading || 'suitability check'}
-                h3LightHeading={data?.section_5?.heading?.light_heading || 'Book a FREE laser suitability check to see'}
-                h3BoldHeading={
-                    data?.section_5?.heading?.bold_heading || 'if you can be free of glasses and contact lenses'
-                }
-                descriptions={
-                    (data?.section_5?.descriptions?.length && data?.section_5?.descriptions) || [
-                        `The best way to find out if laser eye treatment is right for you is to have an in-person assessment. You’ll get a clear answer from our experts on your suitability and vision correction options.`
-                    ]
-                }
-                sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/right-treatment.png',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/right-treatment-large.png',
-                    width: 657,
-                    height: 554
-                }}
-                altText={data?.section_5?.alttext || 'Woman smiling without needing glasses for short-sightedness'}
-                textColumnExtras={
-                    <>
-                        <Cta2 button1Text={data?.section_5?.bookbuttontext || 'Book A suitability check'} />
-                    </>
-                }
-            />
+
+            <CtaSection2 {...data?.ctaSection} />
+
             {/* SECTION 6 */}
             <FullWidthImageSection3
-                title1={data?.section_6?.subheading || '97% of people'}
-                title2={
-                    data?.section_6?.heading ||
-                    'From our clinic are extremely happy with their with their vision after laser vision correction!'
-                }
+                title1={data?.section_6?.heading || ''}
+                title2={data?.section_6?.subheading || '97% of people'}
                 descriptions={
                     (data?.section_6?.descriptions?.length && data?.section_6?.descriptions) || [
                         `Most patients say they wish they’d done it sooner! One of the most mentioned reasons for having laser eye surgery is improved confidence and lifestyle.`
@@ -371,6 +347,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                 }
                 image={data?.section_6?.image}
             />
+
             {/* SECTION 7 */}
             <LazyComponent>
                 <FeaturedPatient
@@ -386,106 +363,17 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     bandImageURL={data?.section_7?.image || '/images/section-images/ms-priti-patel.jpg'}
                     reviewTitle={data?.section_7?.review_title || 'Thank you My-iClinic'}
                     sliders={lasekSliders}
-                    bandColor="bg-[#FF5C00]"
+                    bandColor="bg-[#FF7F00]"
+                    subTitleClass="!text-[#FF7F00]"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                        h3LightHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
-                            'LASEK, PRK & PTK laser eye surgery is'
-                        }
-                        h3BoldHeading={
-                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
-                            'the key to living a sustainable, plastic free life!'
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section?.plastic_free_life?.descriptions
-                                )) || [
-                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
-                        free of plastic waste from your glasses and contact lenses!`
-                            ]
-                        }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                    />
-
-                    <SideImageSection
-                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
-                        h3LightHeading={
-                            <>
-                                Saving the planet
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading={
-                            (data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading?.length &&
-                                HTMLReactParser(
-                                    data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading
-                                )) ||
-                            HTMLReactParser('One eye at a time!')
-                        }
-                        descriptions={
-                            (data?.sustainability_section?.gift_of_a_tree?.descriptions?.length &&
-                                stringArrayToElementArray(
-                                    data?.sustainability_section?.gift_of_a_tree?.descriptions
-                                )) || [
-                                `When undergoing laser eye surgery, you may not realize it but you are already making a positive
-                         difference to the environment. For every 10 years of contact lens wearing the amount of plastic
-                          that ends up in the ocean is roughly the same as your own body weight.`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Our gift to you…
-                                </span>,
-                                `We want to take our impact on the environment a step further and this is where the gift of a tree comes in!`,
-                                <span className="font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    Here at My-iClinic we give all of our laser patients a real forest tree!
-                                </span>,
-                                `Over your tree’s long life, you can visit it, introduce it to your family and track its growth and
-                         value! Over the lifetime of the tree, it will more than offset the carbon you've used with your
-                          contacts/glasses. When the tree is harvested, its value will be yours and new trees are planted
-                          to replace it.`,
-                                `This is our big thank you for choosing a natural, green living eye-style.`
-                            ]
-                        }
-                        sectionImage={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        sectionImageDesktop={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                        altText={
-                            data?.sustainability_section?.gift_of_a_tree?.large_image?.alt ||
-                            'Beautiful forest. Climate change awareness from plastic glasses and contact lenses.'
-                        }
-                    />
-
-                    <ClimateChange
-                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
-                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
-                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image?.url}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
-                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
-                    />
-                </SustainableSlider>
+                <EnvironmentalImpact />
             </LazyComponent>
 
             <LazyComponent>
@@ -544,6 +432,13 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        image: {
+                            ...(data?.acf?.masthead?.image && formatImage(data.acf?.masthead?.image))
+                        }
+                    },
+                    calculatorHeading: stripInitialTags(data?.acf?.calculatorHeading || ''),
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
@@ -574,10 +469,17 @@ export async function getStaticProps() {
                               };
                           })
                         : [],
-                    section_5: {
-                        ...data?.acf?.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+
+                    ctaSection: {
+                        ...data?.acf?.ctaSection,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.ctaSection?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.ctaSection?.image && formatImage(data.acf?.ctaSection?.image))
+                        }
                     },
+
                     section_6: {
                         ...data?.acf?.section_6,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
@@ -594,32 +496,9 @@ export async function getStaticProps() {
                               };
                           })
                         : [],
-                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
-                        ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
-                        : [],
-                    sustainability_section: {
-                        plastic_free_life: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
-                            )
-                        },
-                        gift_of_a_tree: {
-                            ...data?.acf?.sustainability_section?.gift_of_a_tree,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
-                            )
-                        },
-                        clearer_vision: {
-                            ...data?.acf?.sustainability_section?.clearer_vision,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.clearer_vision.descriptions
-                            )
-                        }
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     }
                 }
             },

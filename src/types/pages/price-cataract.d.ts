@@ -1,6 +1,20 @@
 import ImageApiType from 'src/types/api/image';
 
 export default interface PriceCataractContentInterface {
+	masthead: {
+		title: string;
+        subtitle: string;
+        large_image: ImageType3,
+        small_image: ImageType3;
+        price_text: string;
+    },
+
+	cost_details: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
+
 	//	SECTION 1
 	section_1: {
 		sub_heading: string; 
@@ -37,10 +51,8 @@ export default interface PriceCataractContentInterface {
 	},
     // 	// VIDEO SECTION
 	section_4: {
-		 // Subheading
 		title: string; // 
-		large_image: string;
-		image: string;
+		image: ImageType3;
 	},
 	lsk_price:Array<{
 		priceText: string;

@@ -202,8 +202,6 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                         'Implantable Contact Lenses are a friendly vision correction treatment which helps dry eye syndrome. To regain clear, natural eyesight without needing your glasses and contact lenses we can offer you a <a href="/suitability-check">FREE suitability check</a> for our implantable contact lenses.'
                     ]
                 }
-                button1Text="Book A FREE suitability"
-                excludeSloganText
             />
 
             <LazyComponent>

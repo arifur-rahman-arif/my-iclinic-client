@@ -1,8 +1,17 @@
 import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
+import { ImageType3 } from 'src/types/image';
 
 export default interface RelexSmilePageContentProps extends Sustainibility {
+    masthead: {
+        title: string;
+        subTitle: string;
+        image: ImageType3;
+        priceText: string;
+        financeText: string;
+    }
+    calculatorHeading: string;
     // Say hello to clear vision
     section_1: {
         heading: string;
@@ -26,6 +35,15 @@ export default interface RelexSmilePageContentProps extends Sustainibility {
             src: string;
             poster: string;
         }
+    };
+
+    bannerSection: {
+        subtitle?: string;
+        title?: string;
+        image?: ImageType3;
+        subheading?: string;
+        description?: string;
+        bestpriceline?: string;
     };
     // Why RELEX SMILE
     section_4: {
@@ -64,10 +82,7 @@ export default interface RelexSmilePageContentProps extends Sustainibility {
     // Why laser Relex smile
     section_6: {
         subheading: string;
-        heading: { // Heading
-            light_heading: string; // Light heading
-            bold_heading: string; // Bold heading
-        };
+        heading:string
         image: ImageApiType;
         large_image: ImageApiType;
         list: Array<{
@@ -83,7 +98,22 @@ export default interface RelexSmilePageContentProps extends Sustainibility {
             bold_heading: string; // Bold heading
         };
         descriptions: string[];
-        image: ImageApiType;
-        large_image: ImageApiType;
+        image: ImageType3;
     };
+
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    },
+    clearVision: {
+        heading: string;
+        image1: ImageType3;
+        image2: ImageType3;
+        image3: ImageType3;
+        image4: ImageType3;
+    }
 }

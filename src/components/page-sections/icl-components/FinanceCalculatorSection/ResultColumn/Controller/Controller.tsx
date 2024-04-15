@@ -8,6 +8,11 @@ interface ControllerInterface {
     value: number;
     valueLabelFormat?: string;
     onValueChange: (e: any) => void;
+    marks?:
+        | Array<{
+              value: number;
+          }>
+        | false;
 }
 
 /**
@@ -32,7 +37,8 @@ const Controller = ({
     defaultValue,
     value,
     onValueChange,
-    valueLabelFormat
+    valueLabelFormat,
+    marks
 }: ControllerInterface): JSX.Element => {
     return (
         <div className="grid w-full max-w-[40rem] grid-cols-[auto_1fr_auto] items-end gap-4 justify-self-center xs:gap-12">
@@ -51,6 +57,8 @@ const Controller = ({
                 min={minValue}
                 onChange={onValueChange}
                 className="-translate-y-1 !p-0 lg:-translate-y-2"
+                marks={marks}
+                step={null}
                 sx={{
                     height: 8,
                     '& .MuiSlider-track': {
@@ -86,6 +94,15 @@ const Controller = ({
                         lineHeight: '2.4rem',
                         fontFamily: 'var(--lato-bold)',
                         color: '#fff'
+                    },
+                    '& .MuiSlider-mark': {
+                        height: '8px',
+                        width: '8px',
+                        borderRadius: '100%',
+                        marginLeft: '-5px'
+                    },
+                    '& .MuiSlider-markActive': {
+                        backgroundColor: '#fff'
                     }
                 }}
             />

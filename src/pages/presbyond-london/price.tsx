@@ -4,10 +4,7 @@ import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-presbyond-pricing-large.png';
-import MastheadImageSmall from '@/masthead/masthead-presbyond-pricing-small.png';
-import MastheadImageMedium from '@/masthead/masthead-presbyond-pricing.png';
+import { getPageData, getTreatments } from '@/lib';
 import {
     BulletPoint,
     CtaSection,
@@ -18,7 +15,7 @@ import {
     PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
 import { PricepresbeyondlondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
@@ -27,8 +24,17 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 import React from 'react';
+import CataractHero from '@/components/page-sections/Masthead/CataractHero';
+import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
+import CostDetails from '@/components/page-sections/RelexSmilePriceSections/CostDetails';
+import { Button2 } from '@/components/Buttons';
+import { TreatmentInterface } from '@/components/page-sections/FinanceCalculator/Context';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
+    loading: () => <ComponentLoader />
+});
+
+const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
     loading: () => <ComponentLoader />
 });
 
@@ -40,6 +46,7 @@ interface PresbyondPricingProps {
     data: DataInterface;
     seo: any;
     yoastJson: any;
+    filteredTreatments: TreatmentInterface[];
 }
 
 /**
@@ -48,21 +55,12 @@ interface PresbyondPricingProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPricingProps): JSX.Element {
-    const heading = data?.masthead_heading || 'Presbyond laser eye surgery cost in London';
-    const subheading = data?.masthead_subheading || 'Save an average of £1,000';
-
-    const deviceSize = useDeviceSize();
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
+export default function PresbyondPricing({
+    seo,
+    yoastJson,
+    data,
+    filteredTreatments
+}: PresbyondPricingProps): JSX.Element {
     const priceSection: any = data?.smile_price
         ? data?.smile_price.map((service) => {
               return {
@@ -75,25 +73,19 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
         : null;
 
     return (
-        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
+        <Page title="Presbyond laser eye surgery cost in London" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText="Woman reading the cost of Presbyond Treatment in London."
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                priceText={data?.masthead_price}
+            <CataractHero
+                {...data?.masthead}
+                smallImageClass="row-start-1 mt-0"
+                contentContainerClassName="pb-12 md:pb-0"
             />
 
+            <CostDetails items={data?.costDetails} />
+
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Presbyond consultation'}
-                h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
+                h3LightHeading={data?.section_1?.heading || 'What’s included in my private consultation and treatment?'}
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/private-consultation.png',
                     width: 390,
@@ -105,11 +97,9 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                     height: 549
                 }}
                 altText={'Woman with presbyond blended vision, without needing reading glasses.'}
-                positionReversed
                 textColumnExtras={
                     <ul className="grid w-full gap-6 md:max-w-[52rem]">
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyeTesting} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {(data?.section_1?.bullet_1?.length && HTMLReactParser(data?.section_1?.bullet_1)) ||
@@ -117,7 +107,6 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconPersonInFrame} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {(data?.section_1?.bullet_2?.length && HTMLReactParser(data?.section_1?.bullet_2)) ||
@@ -125,7 +114,6 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyeballFocusing} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {(data?.section_1?.bullet_3?.length && HTMLReactParser(data?.section_1?.bullet_3)) ||
@@ -133,7 +121,6 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                             </p>
                         </li>
                         <li className="flex items-start justify-start gap-6">
-                            {/* <Image src={IconEyePlus} alt="" className="h-16 w-16" /> */}
                             <BulletPoint />
                             <p className="">
                                 {(data?.section_1?.bullet_4?.length && HTMLReactParser(data?.section_1?.bullet_4)) ||
@@ -144,17 +131,14 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                 }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
-
-            <LazyComponent>{loadCallbackSection && <CallbackSection />}</LazyComponent>
-
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <SideImageSection
-                h2Heading={data?.section_2?.subheading || 'Presbyond finance'}
-                h3LightHeading={data?.section_2?.heading?.light_heading || 'Want to pay for your'}
-                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'treatment each month?'}
+                h3LightHeading={data?.section_2?.heading || 'Want to pay for your treatment each month?'}
                 altText="Man in his work-shop without presbyopia or long-sighted vision."
+                positionReversed
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `We understand having Presbyond to correct your vision is a great investment in your
@@ -172,21 +156,58 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                     height: 560
                 }}
                 textColumnExtras={
-                    <FinanceList
-                        list={
-                            (data?.section_2?.lists?.length && data?.section_2?.lists) || [
-                                'You are eligible for our 12 months interest-free finance',
-                                'Calculate your monthly spend for your laser treatment'
-                            ]
-                        }
-                    />
+                    <div className="grid justify-items-start">
+                        <span className="h-[1.4rem] w-[6.7rem] rounded-primary bg-[#FF7F00]"></span>
+                        <div className="grid gap-4">
+                            {data?.section_2?.lists?.length
+                                ? data?.section_2?.lists.map((item, key) => (
+                                      <strong className="text-heading" key={key}>
+                                          {item}
+                                      </strong>
+                                  ))
+                                : null}
+                        </div>
+
+                        <Button2
+                            text="Calculate your cost"
+                            className="mt-12"
+                            type="button"
+                            onClick={() => {
+                                window.scrollTo(
+                                    0,
+                                    getElementTopPosition(
+                                        document.querySelector('#finance-calculator') as HTMLElement
+                                    ) - 200
+                                );
+                            }}
+                        />
+                    </div>
                 }
                 midExtras={
-                    <h4 className="normal-case">{data?.section_2?.subheading || 'Finance available for Presbyond'}</h4>
+                    <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#893277]">
+                        {data?.section_2?.subheading || 'Finance available for Presbyond'}
+                    </span>
                 }
             />
 
-            <PriceSection priceList={priceSection || presbyondPriceList} />
+            <FullWidthImageSection
+                sectionClass="relative bg-transparent"
+                titleClass="text-heading [&_*]:text-heading"
+                h3Title={
+                    <>
+                        {(data?.section_4?.title?.length && HTMLReactParser(data?.section_4?.title)) ||
+                            '<strong className="normal-case">Permanently correct your short-sighted vision</strong> with our all-inclusive cost.'}
+                    </>
+                }
+                altText="Woman with presbyond blended vision, without needing reading glasses."
+                image={data?.section_4?.image || ShortSightedImageLarge}
+                desktopImage={data?.section_4?.large_image || ShortSightedImageLarge}
+                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 md:!py-0 !pb-0 mx-0 !w-full"
+                smallImageClassName="w-full !rounded-none"
+                largeImageClassName="rounded-radius2"
+            />
+
+            {/* <PriceSection priceList={priceSection || presbyondPriceList} /> */}
 
             <FullWidthImageSection2
                 title={data?.section_3?.title || 'PRESBYOND surgery couldn’t be more cost-effective!'}
@@ -194,6 +215,8 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                     data?.section_3?.description ||
                     'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
                 }
+                excludeCta
+                textColumnClass="order-2"
             />
 
             <CtaSection
@@ -201,22 +224,9 @@ export default function PresbyondPricing({ seo, yoastJson, data }: PresbyondPric
                 title={data?.call_section?.sub_heading || 'Speak To Our Friendly Team'}
             />
 
-            <FullWidthImageSection
-                sectionClass="lg:!mt-0 bg-brandLight relative"
-                h3Title={
-                    <>
-                        {(data?.section_4?.title?.length && HTMLReactParser(data?.section_4?.title)) ||
-                            '<strong className="normal-case">Permanently correct your short-sighted vision</strong> with our all-inclusive cost.'}
-                    </>
-                }
-                boldHeading={true}
-                altText="Woman with presbyond blended vision, without needing reading glasses."
-                image={data?.section_4?.image || ShortSightedImageLarge}
-                desktopImage={data?.section_4?.large_image || ShortSightedImageLarge}
-                containerClass="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32 pb-24 md:!py-0 mx-0 !w-full"
-                smallImageClassName="!w-auto"
-                largeImageClassName="!rounded-none"
-            />
+            <LazyComponent>
+                <FinanceCalculatorSection iclTreatments={filteredTreatments} headingText={data?.calculatorHeading} />
+            </LazyComponent>
         </Page>
     );
 }
@@ -230,13 +240,38 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'presbyond-london-price' });
 
+        const treatments = await getTreatments();
+        let filteredTreatments = treatments.filter((treatment) => treatment.name === 'Presbyond');
+
+        /**
+         * Updates the `filteredTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+         *
+         * @param {Array<Object>} filteredTreatments - The array of cataract treatment objects to be updated.
+         * @returns {Array<Object>} - The updated array of cataract treatment objects.
+         */
+        filteredTreatments = filteredTreatments.map((treatment, index) => ({
+            ...treatment,
+            active: index === 0
+        }));
+
         return {
             /* eslint-disable */
             props: {
+                filteredTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead?.subTitle),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1
@@ -244,6 +279,7 @@ export async function getStaticProps() {
                     // SECTION 2
                     section_2: {
                         ...data?.acf?.section_2,
+                        heading: stripInitialTags(data?.acf?.section_2?.heading),
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
                         lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.lists)
                     }, // 2
@@ -253,16 +289,17 @@ export async function getStaticProps() {
                     section_4: {
                         ...data?.acf?.section_4
                     },
-                    smile_price: Array.isArray(data?.acf?.smile_price)
-                        ? data?.acf.smile_price.map((priceData) => {
-                              return {
-                                  ...priceData
-                              };
-                          })
-                        : [],
+                    // smile_price: Array.isArray(data?.acf?.smile_price)
+                    //     ? data?.acf.smile_price.map((priceData) => {
+                    //           return {
+                    //               ...priceData
+                    //           };
+                    //       })
+                    //     : [],
                     call_section: {
                         ...data?.acf?.call_section
-                    }
+                    },
+                    calculatorHeading: stripInitialTags(data?.acf?.calculatorHeading)
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

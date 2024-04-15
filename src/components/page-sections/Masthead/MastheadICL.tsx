@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { twMerge } from 'tailwind-merge';
 import styles from './styles/Icl.module.scss';
+import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 
 interface MastheadICLProps {
     title: string;
@@ -77,21 +78,21 @@ const defaultCardList = [
  * @returns {JSX.Element} - The MastheadICL component JSX representation.
  */
 const MastheadICL = ({
-                         title,
-                         largeImage,
-                         smallImage,
-                         priceText,
-                         financeText,
-                         reviewsText,
-                         cardList
-                     }: MastheadICLProps): JSX.Element => {
+    title,
+    largeImage,
+    smallImage,
+    priceText,
+    financeText,
+    reviewsText,
+    cardList
+}: MastheadICLProps): JSX.Element => {
     const mergedCardList = cardList
         ? cardList.map((card, index) => ({
-            icon: card.icon.src ? card.icon : defaultCardList[index].icon,
-            title: card.title || defaultCardList[index].title,
-            description: card.description || defaultCardList[index].description,
-            className: card.className || defaultCardList[index].className
-        }))
+              icon: card.icon.src ? card.icon : defaultCardList[index].icon,
+              title: card.title || defaultCardList[index].title,
+              description: card.description || defaultCardList[index].description,
+              className: card.className || defaultCardList[index].className
+          }))
         : defaultCardList;
 
     return (
@@ -102,7 +103,7 @@ const MastheadICL = ({
                 <Image
                     src={largeImage}
                     alt=""
-                    className="absolute left-0 bottom-0 -z-[1] hidden -translate-x-1/2 xl:block"
+                    className="absolute bottom-0 left-0 -z-[1] hidden -translate-x-1/2 xl:block"
                     priority={true}
                 />
 
@@ -128,12 +129,10 @@ const MastheadICL = ({
                         ></h1>
 
                         <div className="-mt-6 grid items-center gap-x-8 gap-y-12 md:mt-0 md:grid-cols-[auto_1fr]">
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                                 {priceText}
                             </span>
-                            <span
-                                className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
+                            <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#00BFFF] md:text-[2.4rem] md:leading-[3.2rem]">
                                 {financeText}
                             </span>
 
@@ -157,7 +156,7 @@ const MastheadICL = ({
                             <div
                                 key={index}
                                 className={twMerge(
-                                    'card grid content-start justify-items-center gap-2 bg-[#94CAFF] py-12 px-4 md:p-12 xl:translate-y-full',
+                                    'card grid content-start justify-items-center gap-2 bg-[#94CAFF] px-4 py-12 md:p-12 xl:translate-y-full',
                                     card.className
                                 )}
                             >
@@ -203,8 +202,7 @@ const Reviews = ({ google }: ReviewsProps): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div
-            className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
+        <div className="flex flex-wrap justify-start gap-4 justify-self-start md:-mt-6 md:justify-items-stretch lg:grid lg:grid-cols-[20rem_20rem]">
             {/* Review 1 */}
             <Link
                 href="https://www.trustpilot.com/review/my-iclinic.co.uk"
@@ -220,15 +218,12 @@ const Reviews = ({ google }: ReviewsProps): JSX.Element => {
                     <Image src="/images/icons/icon-loader.svg" alt="Loading..." width={24} height={24} />
                 ) : (
                     <>
-                        <span
-                            className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
+                        <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading xl:block">
                             Trustpilot
                         </span>
-                        <span
-                            className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                        <span className="flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                             {data?.trustpilot?.average || '4.9'} | {data?.trustpilot?.total || '340'}{' '}
-                            <span
-                                className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                            <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                                 reviews
                             </span>
                         </span>
@@ -246,15 +241,12 @@ const Reviews = ({ google }: ReviewsProps): JSX.Element => {
                 <span className="grid place-items-center">
                     <FcGoogle className="h-[2rem] w-[2rem]" />
                 </span>
-                <span
-                    className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                     Google
                 </span>
-                <span
-                    className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
+                <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
                     {google}{' '}
-                    <span
-                        className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
+                    <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
                 </span>
@@ -269,6 +261,9 @@ interface MastheadCtaButtonsProps {
     className?: string;
     button1Class?: string;
     button2Class?: string;
+    showButton2?: boolean;
+    showButton1?: boolean;
+    button2Text?: string;
 }
 
 /**
@@ -277,22 +272,32 @@ interface MastheadCtaButtonsProps {
  * @returns {JSX.Element}
  * @constructor
  */
-export const MastheadCtaButtons = ({ className, button1Class, button2Class }: MastheadCtaButtonsProps): JSX.Element => {
+export const MastheadCtaButtons = ({
+    className,
+    button1Class,
+    button2Class,
+    showButton1 = true,
+    showButton2 = false,
+    button2Text
+}: MastheadCtaButtonsProps): JSX.Element => {
     return (
         <div className={twMerge('flex flex-wrap items-center justify-start gap-4', className)}>
-            {/* <BookConsultation buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button1Class)}> */}
-            {/*     <Button2 type="button" text="FREE Consultation" /> */}
-            {/* </BookConsultation> */}
-            <Button2
-                type="anchor"
-                text="FREE suitability check"
-                link="/suitability-check"
-                title="FREE suitability check"
-                className={twMerge(
-                    'sitemap-link text-center hover:!border-white',
-                    button1Class
-                )}
-            />
+            {showButton1 && (
+                <Button2
+                    type="anchor"
+                    text="FREE suitability check"
+                    link="/suitability-check"
+                    title="FREE suitability check"
+                    className={twMerge('sitemap-link text-center hover:!border-white', button1Class)}
+                />
+            )}
+            {showButton2 && (
+                <BookConsultation
+                    buttonClassName={twMerge('sitemap-link text-center hover:!border-white', button2Class)}
+                >
+                    <Button2 type="button" text={button2Text || 'FREE Consultation'} />
+                </BookConsultation>
+            )}
         </div>
     );
 };
@@ -300,6 +305,7 @@ export const MastheadCtaButtons = ({ className, button1Class, button2Class }: Ma
 interface FinanceCalculatorButtonProps {
     title1ClassName?: string;
     title2ClassName?: string;
+    icon?: ImageType3;
 }
 
 /**
@@ -309,9 +315,10 @@ interface FinanceCalculatorButtonProps {
  * @constructor
  */
 export const FinanceCalculatorButton = ({
-                                            title2ClassName,
-                                            title1ClassName
-                                        }: FinanceCalculatorButtonProps): JSX.Element => {
+    title2ClassName,
+    title1ClassName,
+    icon
+}: FinanceCalculatorButtonProps): JSX.Element => {
     return (
         <button
             title="Finance Calculator"
@@ -323,17 +330,22 @@ export const FinanceCalculatorButton = ({
                 );
             }}
         >
-            <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} />
+            <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} {...(icon as any)} />
             <div className="grid justify-items-start">
                 <span
                     className={twMerge(
-                        'font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
+                        'text-left font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
                         title1ClassName
                     )}
                 >
                     Quick & Easy Calculator!
                 </span>
-                <span className={twMerge('font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]', title2ClassName)}>
+                <span
+                    className={twMerge(
+                        'text-left font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]',
+                        title2ClassName
+                    )}
+                >
                     Take control of your payment plan
                 </span>
             </div>

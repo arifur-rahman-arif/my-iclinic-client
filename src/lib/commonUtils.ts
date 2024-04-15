@@ -38,6 +38,29 @@ export const getPageData = async ({ slug, fields, url }: GetPageDataProps = {}):
 };
 
 /**
+ * Check if the page is published or not
+ * @returns {Promise<boolean>}
+ */
+export const isPagePublished = async ({ slug }: { slug: string }): Promise<boolean> => {
+    const pageResponse: Response = await getData({
+        url: `${process.env.WP_REST_URL}/pages?slug=${slug}&_fields=status`
+    });
+
+    if (!pageResponse.ok) {
+        throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
+    }
+
+    const [data]: [WpPageResponseInterface<any>] = await pageResponse.json();
+
+    // Assuming the status field indicates the status of the page, like 'publish', 'draft', etc.
+    // Modify this according to your actual data structure.
+    const status = data?.status;
+
+    // Assuming 'publish' indicates the page is published. Modify this according to your actual data.
+    return status == 'publish';
+};
+
+/**
  * Replace the canonical link tag from the yoast head
  *
  * @param {string} headText

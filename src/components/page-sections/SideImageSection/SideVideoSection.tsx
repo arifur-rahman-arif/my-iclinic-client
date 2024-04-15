@@ -1,9 +1,9 @@
 import { Container } from '@/components/Container';
-import { H2Variant1, H3Variant2 } from '@/components/Headings';
+import { H3Variant3 } from '@/components/Headings';
 import { VideoPlayer } from '@/components/page-sections';
 import { Section } from '@/components/Section';
+import SectionTextColumn from '@/components/SectionTextColumn';
 import { pinAnimation } from '@/utils/gsapFunctions';
-import Image from 'next/image';
 import { ReactNode, useRef } from 'react';
 
 type ImageType = {
@@ -79,12 +79,14 @@ const SideVideoSection = ({
             <Container className="grid grid-cols-1 items-center gap-14 md:gap-32 lg:grid-cols-[1fr_auto]">
                 {/* Text column */}
                 <div className="grid">
-                    <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-12">
+                    {/* <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-12">
                         {beforeAttribute && <span className="block h-full w-[0.5rem] bg-yellow"></span>}
                         <H2Variant1 className="w-full normal-case">{h2Heading || ''}</H2Variant1>
-                    </div>
+                    </div> */}
 
-                    {darkPin && !noPin && (
+                    <SectionTextColumn heading={h2Heading} />
+
+                    {/* {darkPin && !noPin && (
                         <div className="relative mt-6 h-2 w-full" ref={pinAnimationTrigger}>
                             <Image
                                 src="/images/icons/icon-pin-dark-150.svg"
@@ -96,9 +98,9 @@ const SideVideoSection = ({
                                 ref={pinRef}
                             />
                         </div>
-                    )}
+                    )} */}
 
-                    {!darkPin && !noPin && (
+                    {/* {!darkPin && !noPin && (
                         <div className="mt-6 h-2 w-full" ref={pinAnimationTrigger}>
                             <Image
                                 src="/images/icons/icon-pin-yellow.svg"
@@ -110,9 +112,9 @@ const SideVideoSection = ({
                                 ref={pinRef}
                             />
                         </div>
-                    )}
+                    )} */}
 
-                    {h3Heading && <H3Variant2 className="mt-12 md:mt-24">{h3Heading}</H3Variant2>}
+                    {h3Heading && <H3Variant3 className="mt-12">{h3Heading}</H3Variant3>}
 
                     <div className={`mt-6 grid gap-12`}>
                         {descriptions && (
