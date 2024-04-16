@@ -58,7 +58,7 @@ export async function middleware(request: NextRequest) {
         {
             name: 'Eye Diagnostics Technology',
             url: '/our-specialists/our-eye-diagnostics-technology',
-            slug: 'eye-diagnostics-technology'
+            slug: 'our-eye-diagnostics-technology'
         },
         { name: 'Paediatric Eye Care', url: '/paediatric-eye-care', slug: 'paediatric-eye-care' },
         { name: 'Presbyond London', url: '/presbyond-london', slug: 'presbyond-london' },
