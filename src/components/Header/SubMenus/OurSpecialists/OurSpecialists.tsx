@@ -116,7 +116,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
      */
     const getData = async (url: string): Promise<any> => {
         try {
-            const res = await fetch(url, { mode: 'no-cors' });
+            const res = await fetch(url);
             const jsonData = await res.json();
 
             // Fetching image URLs for each post
@@ -142,7 +142,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
     );
 
     return (
-        <div className="absolute left-0 top-full z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(100%_-_19.405rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
+        <div className="absolute left-0 top-full z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(60%_-_0.5rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (

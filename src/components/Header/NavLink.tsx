@@ -1,15 +1,15 @@
-import { consultantCardList } from '@/components/Card';
-import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
+// import { consultantCardList } from '@/components/Card';
+// import { ConsultantCardInterface } from '@/components/Card/ConsultantCard';
 import SubMenu from '@/components/Header/SubMenus/SubMenu';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
 import { NavMenuType } from './navMenuList';
 import EyeTreatments from './SubMenus/EyeTreatments/EyeTreatments';
-import OurSpecialists from './SubMenus/OurSpecialists/OurSpecialists';
+// import OurSpecialists from './SubMenus/OurSpecialists/OurSpecialists';
 
 export interface NavLinkInterface {
     menu: NavMenuType;
@@ -45,9 +45,13 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'laser-eye-surgery' &&
-                        <SubMenu className="min-w-[45rem] group-hover/menu-item:max-h-[55rem] overflow-y-auto"
-                                 router={router} submenu={menu.submenu.slice(1)} />}
+                    {menu.slug === 'laser-eye-surgery' && (
+                        <SubMenu
+                            className="min-w-[45rem] overflow-y-auto group-hover/menu-item:max-h-[55rem]"
+                            router={router}
+                            submenu={menu.submenu.slice(1)}
+                        />
+                    )}
 
                     {menu.slug === 'eye-treatments' && (
                         <EyeTreatments
@@ -64,7 +68,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                     {menu.slug === 'pricing-and-financing' && (
                         <EyeTreatments
                             router={router}
-                            className="-translate-x-[calc(100%_-_20.1rem)]"
+                            className="-translate-x-[calc(100%_-_16.5rem)]"
                             submenus={[
                                 {
                                     active: true,
@@ -156,7 +160,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'our-specialists' && <OurSpecialists router={router} />}
+                    {/* {menu.slug === 'our-specialists' && <OurSpecialists router={router} />} */}
                 </>
             )}
         </li>
@@ -180,45 +184,40 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
         <span className="relative flex items-center justify-center gap-2">
             {menu.submenu ? (
                 <>
-                    {menu.slug === 'our-specialists' ? (
-                        <SpecialistMenu isMenuActive={isMenuActive} />
-                    ) : (
+                    {menu.slug === 'laser-eye-surgery' ? (
                         <>
-                            {menu.slug === 'laser-eye-surgery' ?
-                                <>
-                                    <Link href={menu.url} title={`${menu.name || ''}`}
-                                          className={twMerge(
-                                              'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
-                                              isMenuActive && 'text-[#9B9FA1]'
-                                          )}
-                                    >
-                                        {menu.name}
-                                    </Link>
-
-                                    {isMenuActive && (
-                                        <span
-                                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
-                                    )}
-                                </>
-
-                                : <span
-                                    className={twMerge(
-                                        'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
-                                        isMenuActive && 'text-[#9B9FA1]'
-                                    )}
-                                >
-                                {menu.name}
-                            </span>}
-
-
-                            <FaAngleDown
+                            <Link
+                                href={menu.url}
+                                title={`${menu.name || ''}`}
                                 className={twMerge(
-                                    'h-[1.4rem] w-[1.4rem] translate-y-[0.1rem] -rotate-90 fill-heading transition-all duration-1000 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-white',
-                                    isMenuActive && 'fill-[#9B9FA1]'
+                                    'font-mulishBold text-[1.6rem] leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
+                                    isMenuActive && 'text-[#9B9FA1]'
                                 )}
-                            />
+                            >
+                                {menu.name}
+                            </Link>
+
+                            {isMenuActive && (
+                                <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                            )}
                         </>
+                    ) : (
+                        <span
+                            className={twMerge(
+                                'font-mulishBold text-[1.6rem] leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
+                                isMenuActive && 'text-[#9B9FA1]'
+                            )}
+                        >
+                            {menu.name}
+                        </span>
                     )}
+
+                    <FaAngleDown
+                        className={twMerge(
+                            'h-[1.4rem] w-[1.4rem] translate-y-[0.1rem] -rotate-90 fill-heading transition-all duration-1000 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-white',
+                            isMenuActive && 'fill-[#9B9FA1]'
+                        )}
+                    />
                 </>
             ) : (
                 <Link
@@ -231,8 +230,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span>
                     )}
                 </Link>
             )}
@@ -240,9 +238,9 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
     );
 };
 
-interface SpecialistMenuProps {
-    isMenuActive: boolean;
-}
+// interface SpecialistMenuProps {
+//     isMenuActive: boolean;
+// }
 
 /**
  * SpecialistMenu component displays a rotating menu item showcasing different specialists.
@@ -252,66 +250,66 @@ interface SpecialistMenuProps {
  *
  * @returns {JSX.Element} The SpecialistMenu component.
  */
-const SpecialistMenu = ({ isMenuActive }: SpecialistMenuProps): JSX.Element => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [activeSpecialist, setActiveSpecialist] = useState<ConsultantCardInterface>(consultantCardList[0]);
-    const [menu, setMenu] = useState<NavMenuType>({
-        name: 'Our Specialists',
-        url: '/our-specialists',
-        slug: 'our-specialists',
-        subMenuOpen: false
-    });
+// const SpecialistMenu = ({ isMenuActive }: SpecialistMenuProps): JSX.Element => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const [activeSpecialist, setActiveSpecialist] = useState<ConsultantCardInterface>(consultantCardList[0]);
+//     const [menu, setMenu] = useState<NavMenuType>({
+//         name: 'Our Specialists',
+//         url: '/our-specialists',
+//         slug: 'our-specialists',
+//         subMenuOpen: false
+//     });
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // Increment the activeIndex and loop back to 0 if it exceeds the length
-            setActiveIndex((prevIndex) => (prevIndex < consultantCardList.length - 1 ? prevIndex + 1 : 0));
-        }, 4000);
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             // Increment the activeIndex and loop back to 0 if it exceeds the length
+//             setActiveIndex((prevIndex) => (prevIndex < consultantCardList.length - 1 ? prevIndex + 1 : 0));
+//         }, 4000);
 
-        // Clear the interval when the component unmounts
-        return () => clearInterval(interval);
-    }, [consultantCardList]);
+//         // Clear the interval when the component unmounts
+//         return () => clearInterval(interval);
+//     }, [consultantCardList]);
 
-    useEffect(() => {
-        // Update the activeSpecialist whenever activeIndex changes
-        const currentSpecialist = consultantCardList[activeIndex];
+//     useEffect(() => {
+//         // Update the activeSpecialist whenever activeIndex changes
+//         const currentSpecialist = consultantCardList[activeIndex];
 
-        setActiveSpecialist(currentSpecialist);
-        setMenu((prevState) => {
-            return {
-                ...prevState,
-                url: currentSpecialist.url
-            };
-        });
-    }, [activeIndex, consultantCardList]);
+//         setActiveSpecialist(currentSpecialist);
+//         setMenu((prevState) => {
+//             return {
+//                 ...prevState,
+//                 url: currentSpecialist.url
+//             };
+//         });
+//     }, [activeIndex, consultantCardList]);
 
-    return (
-        <Link href={menu.url} className="hidden cursor-pointer items-center justify-center gap-3 xl:flex">
-            <Image
-                src={activeSpecialist.image}
-                alt={activeSpecialist.name}
-                width={50}
-                height={50}
-                unoptimized
-                className="h-20 w-20 overflow-hidden rounded-full object-cover"
-            />
-            <span className="relative flex items-center justify-center gap-2">
-                <span
-                    className={twMerge(
-                        'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
-                        isMenuActive && 'text-[#9B9FA1]'
-                    )}
-                >
-                    Specialists
-                </span>
+//     return (
+//         <Link href={menu.url} className="hidden cursor-pointer items-center justify-center gap-3 xl:flex">
+//             <Image
+//                 src={activeSpecialist.image}
+//                 alt={activeSpecialist.name}
+//                 width={50}
+//                 height={50}
+//                 unoptimized
+//                 className="h-20 w-20 overflow-hidden rounded-full object-cover"
+//             />
+//             <span className="relative flex items-center justify-center gap-2">
+//                 <span
+//                     className={twMerge(
+//                         'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
+//                         isMenuActive && 'text-[#9B9FA1]'
+//                     )}
+//                 >
+//                     Specialists
+//                 </span>
 
-                <FaAngleDown
-                    className={twMerge(
-                        'h-[1.4rem] w-[1.4rem] translate-y-[0.1rem] -rotate-90 fill-heading transition-all duration-1000 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-white',
-                        isMenuActive && 'fill-[#9B9FA1]'
-                    )}
-                />
-            </span>
-        </Link>
-    );
-};
+//                 <FaAngleDown
+//                     className={twMerge(
+//                         'h-[1.4rem] w-[1.4rem] translate-y-[0.1rem] -rotate-90 fill-heading transition-all duration-1000 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-white',
+//                         isMenuActive && 'fill-[#9B9FA1]'
+//                     )}
+//                 />
+//             </span>
+//         </Link>
+//     );
+// };

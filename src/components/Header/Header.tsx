@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import NavMenu from './NavMenu';
+import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Button2 } from '@/components/Buttons';
 
 const MobileNavbar = dynamic(() => import('./MobileNavbar/MobileNavbar'));
 const Search = dynamic(() => import('./Search'), {
@@ -55,11 +57,11 @@ const Header = (): JSX.Element => {
             )}
             <header
                 ref={headerRef}
-                className="sticky top-0 left-0 z-[99] w-full bg-white shadow-md transition-all duration-500 xl:shadow-none"
+                className="sticky left-0 top-0 z-[99] w-full bg-white shadow-md transition-all duration-500 xl:shadow-none"
             >
                 <TopBar setOpenSearch={setOpenSearch} />
 
-                <Container className={`mt-4 grid grid-cols-[auto_1fr] items-center gap-x-8 pl-2 xs:pl-8`}>
+                <Container className={`mt-4 grid grid-cols-[auto_1fr_auto] items-center gap-x-4 pl-2 xs:pl-8`}>
                     <Link href="/" className="self-start py-4">
                         <Image
                             src="/images/logos/logo-iclinic-desktop.png"
@@ -73,6 +75,23 @@ const Header = (): JSX.Element => {
                     </Link>
 
                     <NavMenu />
+
+                    <div className="hidden items-center justify-center gap-3 xl:flex">
+                        <BookConsultation buttonClassName="text-white uppercase text-[1.4rem]">
+                            <Button2 type="button" text="FREE Consultation" />
+                        </BookConsultation>
+                        <Link
+                            target="_blank"
+                            href="https://api.whatsapp.com/send/?phone=447850395332&text&type=phone_number&app_absent=0"
+                        >
+                            <Image
+                                src="/images/icons/icon-whatsapp-green.svg"
+                                width={60}
+                                height={60}
+                                alt="Chat in whatsapp"
+                            />
+                        </Link>
+                    </div>
 
                     {/* Search icon */}
                     <div className="flex items-center justify-center gap-12 justify-self-end xl:hidden">
