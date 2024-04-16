@@ -7,6 +7,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { BiLeftArrowCircle } from 'react-icons/bi';
 import Context from 'src/components/Header/Context';
 import NavMenu from './NavMenu';
+import { Button2 } from '@/components/Buttons';
 
 interface MobileNavbarProps {
     openMobileMenu: boolean;
@@ -32,7 +33,7 @@ const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu, setOpenSearch }: Mobi
         <>
             <Context>
                 <div
-                    className={`fixed top-0 left-0 z-[101] grid max-h-screen w-full -translate-y-full grid-rows-[auto_1fr] gap-16 overflow-y-auto overflow-x-hidden bg-[#003E79] pt-6 shadow-shadow2 transition-all duration-500 xl:hidden ${
+                    className={`fixed left-0 top-0 z-[101] grid max-h-screen w-full -translate-y-full grid-rows-[auto_1fr] gap-16 overflow-y-auto overflow-x-hidden bg-[#003E79] pt-6 shadow-shadow2 transition-all duration-500 xl:hidden ${
                         openMobileMenu && '!translate-y-0'
                     }`}
                 >
@@ -94,7 +95,24 @@ const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu, setOpenSearch }: Mobi
                         </div>
                     </div>
 
-                    <ConsultationButtons setOpenMobileMenu={setOpenMobileMenu} />
+                    {/* <ConsultationButtons setOpenMobileMenu={setOpenMobileMenu} /> */}
+
+                    <div className="flex items-center justify-center gap-3">
+                        <BookConsultation buttonClassName="text-white uppercase flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] font-mulishBold text-white hover:!text-[#09F]">
+                            <Button2 type="button" text="FREE Consultation" />
+                        </BookConsultation>
+                        <Link
+                            href="https://api.whatsapp.com/send/?phone=447850395332&text&type=phone_number&app_absent=0"
+                            target="_blank"
+                        >
+                            <Image
+                                src="/images/icons/icon-whatsapp-green.svg"
+                                width={60}
+                                height={60}
+                                alt="Chat in whatsapp"
+                            />
+                        </Link>
+                    </div>
 
                     <NavMenu setOpenMobileMenu={setOpenMobileMenu} />
 
@@ -105,7 +123,7 @@ const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu, setOpenSearch }: Mobi
             {/* The overlay */}
             <div
                 onClick={() => setOpenMobileMenu(!openMobileMenu)}
-                className={`fixed top-0 left-0 z-[99] h-screen w-full bg-black transition-all duration-500 xl:hidden ${
+                className={`fixed left-0 top-0 z-[99] h-screen w-full bg-black transition-all duration-500 xl:hidden ${
                     openMobileMenu ? 'pointer-events-auto opacity-50' : 'pointer-events-none opacity-0'
                 } `}
             ></div>
@@ -125,7 +143,7 @@ const ConsultationButtons = ({ setOpenMobileMenu }: ConsultationButtonsProps): J
                     href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=130874"
                     target="_blank"
                     title="Free screening"
-                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] py-4 px-4 font-mulishBold text-white xs:px-10"
+                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] px-4 py-4 font-mulishBold text-white xs:px-10"
                 >
                     Free screening
                 </Link>
@@ -136,7 +154,7 @@ const ConsultationButtons = ({ setOpenMobileMenu }: ConsultationButtonsProps): J
                     target="_blank"
                     title="Private consultation"
                     href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=125172"
-                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] py-4 px-4 font-mulishBold text-white xs:px-10"
+                    className="flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] px-4 py-4 font-mulishBold text-white xs:px-10"
                 >
                     Private consultation
                 </Link>

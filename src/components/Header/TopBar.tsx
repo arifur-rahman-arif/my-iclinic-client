@@ -5,7 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Dispatch, SetStateAction, useState } from 'react';
-import ConsultationButtons from './ConsultationButtons';
+// import ConsultationButtons from './ConsultationButtons';
+// import { consultantCardList } from '@/components/Card';
+import { twMerge } from 'tailwind-merge';
+import { FaAngleDown } from 'react-icons/fa';
+import { OurSpecialists } from '@/components/Header/SubMenus/OurSpecialists';
 
 interface TopBarProps {
     setOpenSearch: Dispatch<SetStateAction<boolean>>;
@@ -23,12 +27,14 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
     const [showTooltip, setShowTooltip] = useState(false);
     const router = useRouter();
 
+    const isMenuActive = router.pathname === '/our-specialists';
+
     return (
         <div className="relative hidden bg-[#003E79] xl:block">
-            <span className="absolute right-0 top-0 z-[1] h-full w-full max-w-[33%] bg-[#005DAF]"></span>
+            {/* <span className="absolute right-0 top-0 z-[1] h-full w-full max-w-[33%] bg-[#005DAF]"></span> */}
 
-            <Container className="grid gap-12 xl:grid-cols-[auto_1fr_auto]">
-                <ul className="flex items-center justify-center gap-8 pt-[1.9rem] pb-[2.3rem]">
+            <Container className="grid gap-12 xl:grid-cols-[auto_1fr]">
+                <ul className="flex items-center justify-center gap-8 pb-[2.3rem] pt-[1.9rem]">
                     <li>
                         <Tooltip
                             text={
@@ -68,7 +74,13 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                     </li>
                 </ul>
 
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center justify-self-end">
+                    <div className="group/menu-item relative grid h-full place-items-center">
+                        <SpecialistMenu isMenuActive={isMenuActive} />
+
+                        <OurSpecialists router={router} />
+                    </div>
+
                     <Link
                         href="/articles"
                         title="Contact us"
@@ -77,10 +89,6 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         }`}
                     >
                         Articles
-                        {/* {router.pathname === '/contact-us' && ( */}
-                        {/*     <span */}
-                        {/*         className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span> */}
-                        {/* )} */}
                     </Link>
 
                     <AboutUs />
@@ -93,10 +101,6 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         }`}
                     >
                         Contact us
-                        {/* {router.pathname === '/contact-us' && ( */}
-                        {/*     <span */}
-                        {/*         className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#9B9FA1]"></span> */}
-                        {/* )} */}
                     </Link>
 
                     <button type="button" onClick={() => setOpenSearch(true)} className="px-6">
@@ -121,9 +125,45 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                     </button>
                 </div>
 
-                <ConsultationButtons />
+                {/* <ConsultationButtons /> */}
             </Container>
         </div>
+    );
+};
+
+interface SpecialistMenuProps {
+    isMenuActive: boolean;
+}
+
+/**
+ * SpecialistMenu component displays a rotating menu item showcasing different specialists.
+ *
+ * @param {Object} props - The component's properties.
+ * @param {boolean} props.isMenuActive - Indicates whether the menu item is active or not.
+ *
+ * @returns {JSX.Element} The SpecialistMenu component.
+ */
+const SpecialistMenu = ({ isMenuActive }: SpecialistMenuProps): JSX.Element => {
+    return (
+        <Link href="/our-specialists" className="hidden cursor-pointer items-center justify-center gap-3 px-6 xl:flex">
+            <span className="relative flex items-center justify-center gap-2">
+                <span
+                    className={twMerge(
+                        'font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1]',
+                        isMenuActive ? 'text-[#9B9FA1]' : 'text-white'
+                    )}
+                >
+                    Specialists
+                </span>
+
+                <FaAngleDown
+                    className={twMerge(
+                        'h-[1.4rem] w-[1.4rem] translate-y-[0.1rem] -rotate-90 fill-heading transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]',
+                        isMenuActive ? 'fill-[#9B9FA1]' : 'fill-white'
+                    )}
+                />
+            </span>
+        </Link>
     );
 };
 

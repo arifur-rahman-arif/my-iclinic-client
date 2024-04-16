@@ -21,7 +21,7 @@ const NavMenu = (): JSX.Element => {
 
     return (
         <ul className="hidden h-full items-center justify-end xl:flex">
-            {navMenuList.map((menu: NavMenuType, index) => {
+            {navMenuList.slice(0, -1).map((menu: NavMenuType, index) => {
                 return <NavLink key={index} menu={menu} router={router} />;
             })}
         </ul>

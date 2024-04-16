@@ -1,10 +1,12 @@
-import { consultantCardList } from '@/components/Card';
+// import { consultantCardList } from '@/components/Card';
 import SubMenuLink from '@/components/Header/SubMenus/SubMenuLink';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { ConsultantItem } from './OurSpecialists';
+import useSWR from 'swr';
+import ComponentLoader from '@/components/ComponentLoader';
 
 interface SubmenuType {
     active?: boolean;
@@ -79,10 +81,46 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
         }
     ];
 
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const getData = async (url: string): Promise<any> => {
+        try {
+            const res = await fetch(url);
+            const jsonData = await res.json();
+
+            // Fetching image URLs for each post
+            const postsWithImages = await Promise.all(
+                jsonData.map(async (post: any) => {
+                    const imageUrlRes = await fetch(`${process.env.NEXT_PUBLIC_REST_URL}/media/${post.featured_media}`);
+                    const imageUrlJson = await imageUrlRes.json();
+
+                    return { ...post, imageUrl: imageUrlJson.guid.rendered }; // Adding imageUrl to the post object
+                })
+            );
+
+            return postsWithImages;
+        } catch (err) {
+            throw err;
+        }
+    };
+
+    // SWR mutation hook to handle form data submission
+    const { data, error, isLoading } = useSWR(
+        `${process.env.NEXT_PUBLIC_REST_URL}/specialist?_fields=slug,title,featured_media,acf`,
+        getData
+    );
+
     return (
         <div className="grid">
             {submenus.map((menu, key) => (
-                <div key={key} className="relative cursor-pointer py-6 px-6">
+                <div key={key} className="relative cursor-pointer px-6 py-6">
                     <div
                         className="relative z-[2] flex items-center justify-start gap-4  transition-all duration-500"
                         onClick={() => {
@@ -107,33 +145,47 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
                             menu.active && 'max-h-[120rem]'
                         }`}
                     >
-                        {key === 0 ? (
-                            <div className="mt-12 grid gap-8">
-                                {consultantCardList.map((consultant, key) => (
-                                    <ConsultantItem
-                                        key={key}
-                                        {...consultant}
-                                        setOpenMobileMenu={setOpenMobileMenu}
-                                        isActive={`/our-specialists/${router.query?.slug}` === consultant.url}
-                                        className="translate-y-0 opacity-100"
-                                        imgWidth={70}
-                                        imgHeight={70}
-                                        imgClassName="h-28 w-28"
-                                    />
-                                ))}
-                            </div>
+                        {isLoading || error ? (
+                            <ComponentLoader />
                         ) : (
-                            <div className="mt-6 grid">
-                                {menu.menus?.map((menu, i) => (
-                                    <SubMenuLink
-                                        {...menu}
-                                        isActive={router.pathname === menu.url}
-                                        key={i}
-                                        className="pr-0 first:pt-10 last:pb-10"
-                                        setOpenMobileMenu={setOpenMobileMenu}
-                                    />
-                                ))}
-                            </div>
+                            <>
+                                {key === 0 ? (
+                                    <div className="mt-12 grid gap-8">
+                                        {data?.length
+                                            ? data.map((consultant: any, key: number) => (
+                                                  <ConsultantItem
+                                                      key={key}
+                                                      image={consultant.imageUrl || ''}
+                                                      name={consultant.title.rendered || ''}
+                                                      degree={consultant.acf?.specialist_data?.degree || ''}
+                                                      title={consultant.acf?.specialist_data?.title || ''}
+                                                      url={`/our-specialists/${consultant.slug}`}
+                                                      setOpenMobileMenu={setOpenMobileMenu}
+                                                      isActive={
+                                                          `/our-specialists/${router.query?.slug}` === consultant.url
+                                                      }
+                                                      className="translate-y-0 opacity-100"
+                                                      imgWidth={70}
+                                                      imgHeight={70}
+                                                      imgClassName="h-28 w-28"
+                                                  />
+                                              ))
+                                            : null}
+                                    </div>
+                                ) : (
+                                    <div className="mt-6 grid">
+                                        {menu.menus?.map((menu, i) => (
+                                            <SubMenuLink
+                                                {...menu}
+                                                isActive={router.pathname === menu.url}
+                                                key={i}
+                                                className="pr-0 first:pt-10 last:pb-10"
+                                                setOpenMobileMenu={setOpenMobileMenu}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
                 </div>
@@ -143,7 +195,7 @@ const OurSpecialistsMobile = ({ router, setOpenMobileMenu }: OurSpecialistsProps
                 <Link
                     href={item.url}
                     key={key}
-                    className="relative cursor-pointer py-6 px-6"
+                    className="relative cursor-pointer px-6 py-6"
                     onClick={() => {
                         setOpenMobileMenu && setOpenMobileMenu(false);
                     }}

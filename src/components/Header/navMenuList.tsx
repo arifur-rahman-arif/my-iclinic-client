@@ -81,7 +81,7 @@ export const navMenuList: NavMenuType[] = [
         ]
     },
     {
-        name: 'Eye Treatments',
+        name: 'Eye treatments',
         url: '/eye-treatments',
         slug: 'eye-treatments',
         subMenuOpen: false,
@@ -145,7 +145,7 @@ export const navMenuList: NavMenuType[] = [
                         name: 'Keratoconus',
                         url: '/keratoconus',
                         slug: 'keratoconus',
-                        metaDescription: 'Keratoconus treatment with London\'s leading cornea specialists'
+                        metaDescription: "Keratoconus treatment with London's leading cornea specialists"
                     },
                     {
                         name: 'Blepharitis',
@@ -156,7 +156,7 @@ export const navMenuList: NavMenuType[] = [
                 ]
             },
             {
-                name: 'Children\'s Eyes',
+                name: "Children's Eyes",
                 url: '/childrens-eyes',
                 slug: 'childrens-eyes',
                 submenu: [
@@ -221,7 +221,7 @@ export const navMenuList: NavMenuType[] = [
         ]
     },
     {
-        name: 'Pricing & Financing',
+        name: 'Cost & finance',
         url: '/pricing-and-financing',
         slug: 'pricing-and-financing',
         subMenuOpen: false,

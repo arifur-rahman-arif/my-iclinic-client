@@ -228,21 +228,21 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
 
             <FullWidthImageSection
                 h3Title={
-                    HTMLReactParser(data?.section_4.title) || (
+                    data?.section_4.title || (
                         <>
                             <strong className="normal-case">Permanently correct your vision</strong> with our
                             all-inclusive cost.
                         </>
                     )
                 }
-                boldHeading={true}
+                titleClass="text-heading"
                 altText=""
                 image={data?.section_4?.image || InclusiveCostImage}
                 desktopImage={data?.section_4?.large_image || InclusiveCostImage}
                 containerClass="grid grid-cols-1 items-center px-0 gap-12 md:grid-cols-2 md:gap-32 pb-24 md:pb-0 !pt-0"
                 overlayAnimation
                 textColumnOverlay
-                sectionClass="lg:!mt-0 bg-brandLight relative"
+                sectionClass="!mt-0 bg-brandLight relative"
             />
         </Page>
     );
