@@ -78,7 +78,7 @@ const Header = (): JSX.Element => {
 
                     <div className="hidden items-center justify-center gap-3 xl:flex">
                         <BookConsultation buttonClassName="text-white uppercase text-[1.4rem]">
-                            <Button2 type="button" text="FREE Consultation" />
+                            <Button2 type="button" text="Book a Consultation" />
                         </BookConsultation>
                         <Link
                             target="_blank"
