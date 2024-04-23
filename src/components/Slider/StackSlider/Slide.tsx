@@ -30,9 +30,9 @@ export interface StackSlideInterface {
 const Slide = ({ desktopImage, title, descriptions, altText, boxIcon }: StackSlideInterface): JSX.Element => {
     return (
         <div
-            className={`relative mx-auto ${
+            className={`relative mx-auto border border-solid border-[#EAECF0] md:py-12 ${
                 desktopImage && 'mt-36'
-            } flex flex-col rounded-primary px-12 sm:shadow-shadow1 md:mt-0 md:grid md:grid-cols-[auto_1fr] md:gap-16 lg:gap-0 lg:py-12 xl:py-16`}
+            } flex flex-col rounded-radius2 px-12 sm:shadow-sm md:mt-0 md:grid md:grid-cols-[auto_1fr] md:gap-16 lg:gap-0 lg:py-12 xl:px-32  xl:py-24`}
         >
             {desktopImage && (
                 <div className="mx-auto h-full max-h-[24rem] -translate-y-[30%] overflow-hidden rounded-primary shadow-shadow1 md:h-[30rem] md:max-h-min md:w-[37rem] md:-translate-x-0 md:translate-y-0 md:self-center lg:-translate-x-[20%] xl:-translate-x-[30%]">
@@ -50,20 +50,11 @@ const Slide = ({ desktopImage, title, descriptions, altText, boxIcon }: StackSli
             <div className="mt-auto flex flex-col items-start justify-start gap-12 self-center md:mt-0 md:pr-12 xl:pr-32">
                 {boxIcon ? <Image src={boxIcon} alt="" /> : <></>}
 
-                <h3 className="font-latoBold text-[2rem] normal-case leading-[2.4rem] md:md:text-[3rem] md:leading-[3.6rem]">
-                    {title}
-                </h3>
+                <h3 className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>
 
-                <div className="h-2 w-full">
-                    <Image
-                        src="/images/icons/icon-pin-horizontal.svg"
-                        alt=""
-                        width={66}
-                        height={1}
-                        className="w-[6.6rem]"
-                    />
-                </div>
-                <div className="grid gap-6">
+                <span className="-mt-2 h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
+
+                <div className="grid max-w-[47rem] gap-6">
                     {descriptions.map((desc, index) => (
                         <p className={`translate-y-4 opacity-0`} key={index}>
                             {desc}

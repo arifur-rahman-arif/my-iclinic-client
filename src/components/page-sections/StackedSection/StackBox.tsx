@@ -1,6 +1,5 @@
 import { FadeIn } from '@/components/Animations';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import { pinAnimation } from '@/utils/gsapFunctions';
 import HTMLReactParser from 'html-react-parser';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useRef } from 'react';
@@ -40,22 +39,20 @@ const StackBox = ({
 }: StackBoxInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
-    const isEven = index % 2 === 0;
-
-    const pinRef = useRef<any>(null);
-    const pinAnimationTrigger = useRef<HTMLDivElement | null>(null);
+    // const pinRef = useRef<any>(null);
+    // const pinAnimationTrigger = useRef<HTMLDivElement | null>(null);
     const imageRef = useRef<HTMLImageElement | null>(null);
     const imageMobileRef = useRef<HTMLImageElement | null>(null);
 
-    pinAnimation({
-        pinRef: pinRef,
-        width: '6.6rem',
-        trigger: pinAnimationTrigger
-    });
+    // pinAnimation({
+    //     pinRef: pinRef,
+    //     width: '6.6rem',
+    //     trigger: pinAnimationTrigger
+    // });
 
     return (
         <div
-            className={`relative grid w-full gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:gap-0 md:p-0 md:shadow-none lg:max-w-[97.5rem]`}
+            className={`relative grid w-full items-center gap-8 justify-self-center rounded-primary p-12 shadow-shadow2 md:grid-cols-2 md:gap-0 md:p-0 md:shadow-none`}
         >
             {smallSizes.includes(deviceSize) && image && (
                 <Image
@@ -77,20 +74,13 @@ const StackBox = ({
                     alt={altText || ''}
                     quality={70}
                     ref={imageRef}
-                    className={`image-card hidden rounded-primary md:block md:scale-90 2xl:scale-100 ${
-                        isEven ? 'justify-self-end' : 'justify-self-start'
-                    }`}
+                    className={`image-card col-start-2 row-start-1 hidden w-full justify-self-end rounded-primary md:block`}
                 />
             )}
 
             <div
-                style={{
-                    maxWidth: boxWidth || '51.4rem'
-                }}
-                className={`grid gap-6 md:absolute md:top-2/4 md:-translate-y-2/4 md:gap-12 md:rounded-primary md:bg-white md:p-12 ${
-                    isEven ? 'left-0' : 'right-0'
-                }`}
-                ref={pinAnimationTrigger}
+                className={`left-0 grid w-full gap-6 md:top-2/4 md:max-w-[60rem] md:gap-12 md:rounded-radius2 md:bg-white md:p-12 lg:absolute lg:-translate-y-2/4 xl:max-w-[78rem]`}
+                // ref={pinAnimationTrigger}
             >
                 {/* {boxIcon ? <Image src={boxIcon.url} width={boxIcon.width} height={boxIcon.height} alt="" /> : <></>} */}
                 {boxIcon ? <Image src={boxIcon} alt="" /> : <></>}
@@ -104,7 +94,9 @@ const StackBox = ({
                     {title}
                 </h3>
 
-                <div className="h-2 w-full">
+                <span className="h-[1.4rem] w-[6.7rem] rounded-primary bg-[#FF7F00]"></span>
+
+                {/* <div className="h-2 w-full">
                     <Image
                         ref={pinRef}
                         src="/images/icons/icon-pin-horizontal.svg"
@@ -113,8 +105,8 @@ const StackBox = ({
                         height={1}
                         className="w-0"
                     />
-                </div>
-                <div className="grid gap-6">
+                </div> */}
+                <div className="grid max-w-[45rem] gap-6">
                     {descriptions.map((desc, index) => (
                         <FadeIn key={index}>
                             <div>{typeof desc === 'string' ? HTMLReactParser(desc) : desc}</div>

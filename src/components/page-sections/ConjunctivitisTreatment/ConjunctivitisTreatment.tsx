@@ -1,8 +1,8 @@
 import { Container } from '@/components/Container';
-import { H3Variant2 } from '@/components/Headings';
 import { Section } from '@/components/Section';
 import { ImageType } from '@/types';
 import Image from 'next/image';
+import SectionTextColumn from '@/components/SectionTextColumn';
 
 interface InfoBoxInterface {
     image: ImageType;
@@ -19,10 +19,10 @@ interface InfoBoxInterface {
  */
 const InfoBox = ({ image, title, descriptions, index }: InfoBoxInterface): JSX.Element => {
     return (
-        <div className="grid w-full grid-cols-1 items-center gap-12 md:grid-cols-[auto_1fr] md:gap-24 lg:gap-44">
-            <Image alt={title} {...image} className={`${index % 2 === 1 && 'md:col-start-2 md:row-start-1'}`} />
-            <div className="grid content-start gap-6 md:max-w-[50rem] md:gap-12">
-                <H3Variant2>{title}</H3Variant2>
+        <div className="grid w-full grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 xl:grid-cols-[auto_1fr] xl:gap-32">
+            <Image alt={title} {...image} className="max-h-[29.6rem] rounded-radius2 object-cover" />
+            <div className="grid max-w-[46.7rem] content-start gap-6">
+                <h3 className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>
                 {descriptions.map((item, index) => (
                     <p key={index}>{item}</p>
                 ))}
@@ -35,10 +35,10 @@ const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     {
         image: {
             src: '/images/section-images/bacterial-conjunctivitis.png',
-            width: 376,
-            height: 271
+            width: 603,
+            height: 296
         },
-        title: 'Bacterial conjunctivitis',
+        title: 'Bacterial Conjunctivitis',
         descriptions: [
             'Our ophthalmologist will prescribe a short course of antibiotic drops and monitor your eyes until your conjunctivitis is successfully eliminated.'
         ]
@@ -46,8 +46,8 @@ const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     {
         image: {
             src: '/images/section-images/viral-conjunctivitis.png',
-            width: 376,
-            height: 271
+            width: 603,
+            height: 296
         },
         title: 'Viral Conjunctivitis',
         descriptions: [
@@ -58,8 +58,8 @@ const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     {
         image: {
             src: '/images/section-images/allergic-conjunctivitis.png',
-            width: 376,
-            height: 271
+            width: 603,
+            height: 296
         },
         title: 'Allergic Conjunctivitis',
         descriptions: [
@@ -84,32 +84,23 @@ interface ConjunctivitisTreatmentInterface {
  * @constructor
  */
 const ConjunctivitisTreatment = ({ list, heading, descriptions }: ConjunctivitisTreatmentInterface): JSX.Element => {
+    const mergedCardList = list
+        ? list.map((card, index) => ({
+              title: card?.title ? card.title : conjunctivitisTreatmentList[index].title,
+              descriptions: card.descriptions?.length
+                  ? card.descriptions
+                  : conjunctivitisTreatmentList[index].descriptions,
+              image: card?.image?.src ? card.image : conjunctivitisTreatmentList[index].image
+          }))
+        : conjunctivitisTreatmentList;
+
     return (
-        <Section className="bg-brandLight py-12 md:py-24">
-            <Container className="grid justify-items-center gap-12 md:gap-24">
-                <div className="grid w-full grid-cols-1 gap-12 md:max-w-[50rem]">
-                    <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-8">
-                        <span className="h-full w-[0.5rem] bg-yellow"></span>
-                        <h2 className="w-full normal-case md:max-w-[55rem]">
-                            {heading || (
-                                <>
-                                    Conjunctivitis <strong className="normal-case">Treatment</strong>
-                                </>
-                            )}
-                        </h2>
-                    </div>
+        <Section id="conjunctivitis-treatment">
+            <Container className="grid gap-12 md:gap-24">
+                <SectionTextColumn heading={heading} descriptions={descriptions} />
 
-                    <div className="ml-10">
-                        {descriptions?.map((item, index) => (
-                            <p key={index}>{item}</p>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="h-[1px] w-full max-w-[27rem] bg-[#9B9FA1] md:max-w-[53rem]"></div>
-
-                <div className="grid max-w-[106rem] gap-12 md:gap-24">
-                    {((list?.length && list) || conjunctivitisTreatmentList).map((item, index) => (
+                <div className="grid max-w-[106rem] gap-6 md:ml-9">
+                    {mergedCardList.map((item, index) => (
                         <InfoBox key={index} {...item} index={index} />
                     ))}
                 </div>

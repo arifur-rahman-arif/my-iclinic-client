@@ -1,19 +1,14 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import { Container } from '@/components/Container';
-import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
-import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-complaint-large.png';
-import MastheadImageSmall from '@/masthead/masthead-complaint-medium.png';
-import MastheadImageMedium from '@/masthead/masthead-complaint.png';
-import { Masthead } from '@/page-sections/Masthead';
 import { ComplaintPageProps, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { openFreshdeskChat } from '@/utils/miscellaneous';
-import HTMLReactParser from 'html-react-parser';
-import Image from 'next/image';
-import styles from './complaint.module.scss';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
+import CataractHero from '@/page-sections/Masthead/CataractHero';
+import React from 'react';
+import { CompanyLogos, SideImageSection } from '@/components/page-sections';
 
 interface DataInterface extends ComplaintPageProps, PageDataInterface<ComplaintPageProps> {}
 
@@ -32,113 +27,82 @@ interface CookiePolicyProps {
  * @constructor
  */
 const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
-    const heading = data?.masthead_heading || 'How to raise a complaint';
-    const subheading = data?.masthead_subheading || 'The Independent Sector Complaints Adjudication Service (ISCAS)';
-
     return (
-        <Page title={heading} seo={seo} yoastJson={yoastJson}>
+        <Page title="How to raise a complaint" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText={data?.masthead_image?.image_large?.alt}
-                imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={
-                    <Button2
-                        type="anchor"
-                        text="Chat with us"
-                        iconPosition="left"
-                        link={data?.pdf_download || ''}
-                        download
-                        className="group/chat-button justify-self-start normal-case"
-                        icon={
-                            <svg
-                                width="22"
-                                height="22"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
-                                    stroke="#fff"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/chat-button:stroke-heading2"
-                                />
-                            </svg>
-                        }
-                        onClick={openFreshdeskChat}
-                    />
+            <CataractHero
+                {...data?.masthead}
+                headingClassName="md:max-w-[58rem]"
+                smallImageClass="row-start-1 mt-0 max-h-[30rem]"
+                contentContainerClassName="pb-12"
+                subTitleClass="max-w-[50rem]"
+                suitabilityButton={
+                    <div className="mt-6 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center border-transparent bg-transparent text-white hover:text-[#007EF5]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </div>
                 }
             />
 
-            <Section className={styles.styles}>
-                <Container className="grid">
-                    <div className="grid !max-w-[112.1rem] gap-12 md:gap-24 xl:gap-32">
-                        <h2 className="w-full max-w-[67.7rem] font-latoBold md:!text-[3rem] md:leading-[3.6rem]">
-                            The Independent Sector Complaints Adjudication Service (ISCAS)
-                        </h2>
-
-                        <div className="grid">
-                            {data?.content ? (
-                                HTMLReactParser(data.content)
-                            ) : (
-                                <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_1fr] md:gap-24 lg:gap-[12rem]">
-                                    <div className="grid max-w-[70rem] gap-6">
-                                        <p>
-                                            To address a formal complaint with our clinic please notify the complaints
-                                            department by emailing{' '}
-                                            <LinkStyle url="mailto:veranika@my-iclinic.co.uk.">
-                                                veranika@my-iclinic.co.uk.
-                                            </LinkStyle>
-                                        </p>
-                                        <p>
-                                            You will receive written acknowledgment within five working days and a
-                                            formal response within twenty-eight working days.
-                                        </p>
-                                        <p>
-                                            Complaints can be made by a patient, a former patient, or someone acting on
-                                            a patient's behalf within 12 months of the date of the event that is being
-                                            complained about.
-                                        </p>
-                                        <p>
-                                            My-iClinic will offer to meet with the complainant in order to discuss the
-                                            manner in which the complaint is to be handled and how the issue/s might be
-                                            resolved.
-                                        </p>
-                                        <p>
-                                            Please click the button below to download our official complaints procedure
-                                            process. This complaints guide will help you understand the proceedings that
-                                            will occur afterwards to ensure we resolve your complaint effectively and
-                                            efficiently.
-                                        </p>
-                                        <strong>Click here to download the ISCAS Guide (Button)</strong>
-                                    </div>
-                                    <Image
-                                        src="/images/logos/iscas-logo.png"
-                                        alt=""
-                                        width={500}
-                                        height={134}
-                                        className="md:-mt-40"
-                                    />
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-start gap-12">
+            <SideImageSection
+                containerClassName="xl:!grid-cols-[1fr_auto]"
+                h3LightHeading={data?.contentSection?.heading || 'Treatments we offer for corneal conditions'}
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
+                descriptions={
+                    (data?.contentSection?.descriptions?.length && data?.contentSection?.descriptions) || [
+                        'KeraNatural corneal ring implantation is an advanced alternative treatment to keraring surgery. Keraring surgery is an implantation of intra-corneal ring segments (ICRS) which improve the corneas shape.',
+                        'KeraNatural allograft corneal rings improves unaided and aided visual acuity in most patient cases without the complications associated with plastic intrastromal corneal rings such as: corneal melting, ring extrusion and intrusion, and sight-threatening complications like microbial keratitis.'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.contentSection?.image?.url || '',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.contentSection?.image?.url || '',
+                    width: 586,
+                    height: 693
+                }}
+                altText={data?.contentSection?.image?.alt}
+                largeImageClassName="w-auto h-auto object-cover rounded-radius2 border border-solid border-[#EAECF0]"
+                smallImageClassName="object-cover rounded-radius2 border border-solid border-[#EAECF0]"
+                textColumnExtras={
+                    <div className="-mt-6 flex flex-wrap items-center justify-start gap-6">
                         <Button2
                             type="anchor"
-                            text="Download"
+                            text="ISCAS Guide"
                             iconPosition="left"
                             loadingIconPosition="right"
-                            className="group/download-button mt-24 justify-self-start normal-case"
+                            className="group/download-button justify-self-start normal-case"
                             // @ts-ignore
                             download={true}
                             link={data?.pdf_download || ''}
@@ -187,10 +151,10 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
 
                         <Button2
                             type="anchor"
-                            text="Download Complaints Procedure"
+                            text="Complaint procedure"
                             iconPosition="left"
                             loadingIconPosition="right"
-                            className="group/download-button mt-24 justify-self-start !bg-transparent normal-case !text-[#003E79] hover:!bg-[#003E79] hover:!text-white"
+                            className="group/download-button justify-self-start !bg-transparent normal-case !text-[#003E79] hover:!bg-[#003E79] hover:!text-white"
                             // @ts-ignore
                             download={true}
                             link={'/pdf/Complaints-Procedure.docx'}
@@ -237,8 +201,10 @@ const PrivacyPolices = ({ seo, yoastJson, data }: CookiePolicyProps) => {
                             }
                         />
                     </div>
-                </Container>
-            </Section>
+                }
+            />
+
+            <CompanyLogos />
         </Page>
     );
 };
@@ -258,7 +224,25 @@ export async function getStaticProps() {
         return {
             /* eslint-disable */
             props: {
-                data: { content: data?.content?.rendered || null, ...data?.acf } as DataInterface,
+                data: {
+                    content: data?.content?.rendered || null,
+                    ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
+                    contentSection: {
+                        ...data?.acf?.contentSection,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.contentSection?.descriptions).map(
+                            (item) => stripInitialTags(item)
+                        )
+                    } // CORNEA CONSULTATION
+                },
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || ''
             },

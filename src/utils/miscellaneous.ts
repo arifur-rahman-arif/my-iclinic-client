@@ -331,7 +331,25 @@ export const prependSign = (number: number | null): string | number | null => {
 export const stripInitialTags = (html: string): string => {
     return striptags(
         html,
-        new Set(['div', 'b', 'strong', 'em', 'u', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'span'])
+        new Set([
+            'div',
+            'b',
+            'strong',
+            'em',
+            'u',
+            'ul',
+            'ol',
+            'li',
+            'a',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            'br',
+            'span'
+        ])
     );
 };
 

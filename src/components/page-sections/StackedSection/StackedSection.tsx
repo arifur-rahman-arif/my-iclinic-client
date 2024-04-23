@@ -13,6 +13,7 @@ interface StackedSectionInterface {
     noImages?: boolean;
     defaultContainerClassName?: string;
     containerClassName?: string;
+    h2Class?: string;
 }
 
 /**
@@ -28,12 +29,18 @@ const StackedSection = ({
     descriptions,
     noImages,
     defaultContainerClassName = 'grid gap-12 md:gap-20 2xl:gap-24',
-    containerClassName
+    containerClassName,
+    h2Class
 }: StackedSectionInterface): JSX.Element => {
     return (
         <Section>
             <Container className={`${defaultContainerClassName} ${containerClassName}`}>
-                <TextColumn h3BoldHeading={h3BoldHeading} descriptions={descriptions} h3LightHeading={h3LightHeading} />
+                <TextColumn
+                    h3BoldHeading={h3BoldHeading}
+                    descriptions={descriptions}
+                    h3LightHeading={h3LightHeading}
+                    h2Class={h2Class}
+                />
                 <StackSlider sliderList={stackList} noImages={noImages} />
             </Container>
         </Section>

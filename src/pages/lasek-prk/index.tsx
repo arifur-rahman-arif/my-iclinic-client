@@ -263,7 +263,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                 textColumnExtras={
                     <>
                         <BookConsultation>
-                            <Button2 type="button" text="Book a free consultation" />
+                            <Button2 type="button" text="Book a consultation" />
                         </BookConsultation>
                     </>
                 }

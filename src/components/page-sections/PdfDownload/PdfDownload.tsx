@@ -41,7 +41,7 @@ const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDo
                 {/*     </span> */}
                 {/* </div> */}
                 <div className="relative mx-auto grid max-w-[100.2rem] grid-cols-1 rounded-primary bg-white shadow-[0px_1px_3px_0px_rgba(0,21,41,0.06),0px_1px_2px_0px_rgba(0,21,41,0.04)] md:grid-cols-[auto_1fr]">
-                    <div className="flex w-full flex-col items-center justify-center gap-12 rounded-tl-primary rounded-bl-primary bg-[#003E79] py-12 px-8 md:max-w-[43.9rem] md:px-20">
+                    <div className="flex w-full flex-col items-center justify-center gap-12 rounded-bl-primary rounded-tl-primary bg-[#003E79] px-8 py-12 md:max-w-[43.9rem] md:px-20">
                         <div>
                             <Image
                                 src="/images/section-images/eye-testing-letters.svg"
@@ -57,7 +57,9 @@ const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDo
                             {typeof title === 'string' ? HTMLReactParser(title) : title}
                         </h3>
 
-                        {description && <p className="text-center text-white [&_*]:text-white">{description}</p>}
+                        {description && (
+                            <p className="text-center text-[#94CAFF] [&_*]:text-[#94CAFF]">{description}</p>
+                        )}
 
                         {list?.length && (
                             <ul className="mt-12 flex w-full flex-col items-start justify-start gap-[1.5rem] pb-12 md:pl-[7.5rem]">

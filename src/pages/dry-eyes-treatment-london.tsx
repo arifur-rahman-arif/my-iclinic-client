@@ -1,28 +1,19 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import H2Variant1 from '@/components/Headings/H2Variant1';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
-import IconAngle from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
-import MastheadImageMedium from '@/masthead/masthead-dry-eyes-medium.png';
 import { dryEyeFaqList } from '@/page-sections/Faq/faqList';
-import {
-    BulletList,
-    CtaSection2,
-    FullWidthImageSection,
-    Masthead,
-    SideImageSection,
-    StackColumn2
-} from '@/page-sections/index';
+import { CtaSection2, FullWidthImageSection, SideImageSection, StackColumn2 } from '@/page-sections/index';
 import { lazyEyesList } from '@/page-sections/SectionParts/stack-column/list';
 import { DryEyesContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import YagHero from '@/page-sections/Masthead/YagHero';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Button2 } from '@/components/Buttons';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -34,7 +25,7 @@ const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/Ca
     loading: () => <ComponentLoader />
 });
 
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -53,71 +44,101 @@ interface DryEyesProps {
  * @returns {JSX.Element}
  */
 export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyesProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Dry Eyes';
-    const subheading = data?.masthead_subheading || 'Monitor your dry eye symptoms with our private ophthalmologist';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
-    const section1Descriptions = data?.section_1?.descriptions?.length
-        ? data?.section_1?.descriptions
-        : [
-              'Our specialists understand that dry syndrome can cause everyday discomfort. If you are concerned about dry eyes, we can provide you with an all-inclusive private consultation to investigate and offer a treatment solution.',
-              'Once we’ve identified the underlying cause of your dry eyes, our ophthalmologist will find you the best suitable treatment.'
-          ];
-
     return (
-        <Page
-            title="Dry Eye Treatment Specialists In London"
-            description="Our clinic provides an all-inclusive private consultation for investigating and treating symptoms of dry eyes. Get in touch with us to learn more!."
-            seo={seo}
-            yoastJson={yoastJson}
-        >
+        <Page title="Dry Eye Treatment Specialists In London" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={<>{data?.masthead_price}</>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
+            <YagHero
+                {...data?.masthead}
+                subTitleClass="max-w-[49rem] mb-12"
+                titleClass="md:max-w-[60rem]"
+                bannerClass="xl:pr-40"
+                ctaButton={
+                    <div className="flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-white hover:text-[#0099FF]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </div>
+                }
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             <FullWidthImageSection
-                h3Title={data?.section_1?.subheading || 'Dry eye syndrome symptoms and vision testing'}
-                description={[
-                    <H2Variant1 className="normal-case xl:whitespace-nowrap">
-                        {data?.section_1?.heading || 'Private consultation for dry eyes'}
-                    </H2Variant1>,
-                    ...section1Descriptions
-                ]}
+                h3Title={data?.section_1?.heading || 'Private consultation for dry eyes'}
+                description={data?.section_1?.descriptions}
                 image={data?.section_1?.image || '/images/section-images/dry-eye-private-consultation-large.jpg'}
                 desktopImage={
                     data?.section_1?.large_image || '/images/section-images/dry-eye-private-consultation-large.jpg'
                 }
+                descriptionWrapperClass="[&_div:first-child_span]:!font-mulishBold [&_div:first-child_span]:!text-[#00BFFF] [&_div]:!opacity-80"
                 containerClass="pb-16 md:!py-0"
                 largeImageClassName="!rounded-none"
+                textColumnExtraBottomElements={
+                    <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-white hover:text-[#0099FF]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </div>
+                }
             />
 
             <SideImageSection
-                h2Heading={data?.section_2?.subheading || 'Dry eye consultation'}
-                h3LightHeading={
-                    <>
-                        {data?.section_2?.heading?.light_heading || 'What is included in my'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'private consultation?'}
+                h3LightHeading={data?.section_2?.heading || 'What is included in my private consultation?'}
                 descriptions={
                     (data?.section_2?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_2?.descriptions)) || [
@@ -128,6 +149,7 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                         'This includes:'
                     ]
                 }
+                descriptionWrapperClass="[&_div:nth-child(2)]:mt-6"
                 sectionImage={{
                     url: data?.section_2?.image || '/images/section-images/dry-eye-consultation-large.jpg',
                     width: 390,
@@ -138,38 +160,21 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                     width: 631,
                     height: 582
                 }}
+                largeImageClassName="h-full w-full object-cover rounded-radius2"
                 positionReversed={true}
-                altText=""
                 textColumnExtras={
-                    <div className="ml-12 grid gap-6">
-                        <BulletList
-                            className="!ml-0"
-                            list={
-                                (data?.section_2?.list?.length && stringArrayToElementArray(data?.section_2?.list)) || [
-                                    'A comprehensive consultation with your dedicated ophthalmologist (inclusive of all eye assessment and eye scans).',
-                                    'A medical diagnosis of your eye condition with treatment planning.',
-                                    'A referral for surgical treatment and/or a signed prescription (if required).',
-                                    'A dedicated eye care team to support you throughout your eye care journey.'
-                                ]
-                            }
-                            bulletPoint={
-                                <Image src={IconAngle} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
-                            }
-                        />
-                    </div>
+                    <Button2
+                        type="button"
+                        text="Speak to a specialist"
+                        className="-mt-6 justify-self-start"
+                        onClick={openFreshdeskChat}
+                    />
                 }
             />
 
             {/*  Section 3  */}
             <SideImageSection
-                h2Heading={data?.section_3?.subheading || 'eye syndrome'}
-                h3LightHeading={
-                    <>
-                        {data?.section_3?.heading?.light_heading || 'Managing your'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'dry eye syndrome'}
+                h3LightHeading={data?.section_3?.heading || 'Managing your dry eye syndrome'}
                 descriptions={
                     (data?.section_3?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_3?.descriptions)) || [
@@ -189,7 +194,12 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                     width: 658,
                     height: 459
                 }}
-                customColumn={<StackColumn2 list={(data?.section_3?.list as any) || lazyEyesList} />}
+                customColumn={
+                    <StackColumn2
+                        className="rounded-radius2 border border-solid border-[#EAECF0] p-8 sm:p-12 md:p-24"
+                        list={(data?.section_3?.list as any) || lazyEyesList}
+                    />
+                }
             />
 
             {/* Section_4   Friendly vision correction  */}
@@ -205,7 +215,7 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
             />
 
             <LazyComponent>
-                <NormalSlideSection />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -242,16 +252,29 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
-                    //                    	Dry eye syndrome symptoms
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        title: stripInitialTags(data?.acf?.masthead?.title || ''),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
+                    // Dry eye syndrome symptoms
                     section_1: {
                         ...data?.acf?.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     // Dry eye consultation
                     section_2: {
                         ...data?.acf?.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
-                        list: convertArrayOfObjectsToStrings(data?.acf?.section_2?.list)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     //  Managing your EYE SYNDROME TEST
                     section_3: {
@@ -270,6 +293,10 @@ export async function getStaticProps() {
                     section_4: {
                         ...data?.acf?.section_4,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions)
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     }
                 }
             },

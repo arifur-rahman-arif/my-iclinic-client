@@ -11,16 +11,19 @@ import BookConsultation from '@/components/page-sections/SectionParts/BookConsul
 import { stripInitialTags } from '@/utils/miscellaneous';
 import { twMerge } from 'tailwind-merge';
 import { ReactNode } from 'react';
+import { BreadCrumb } from '@/components/Breadcrumb';
 
 interface Props {
     title: string;
     subTitle: string;
     largeImage: ImageType3;
     smallImage: ImageType3;
-    priceText: string;
+    priceText?: string;
+    priceSection?: string;
     financeText?: string;
     smallImageClass?: string;
     headingClassName?: string;
+    subTitleClass?: string;
     contentContainerClassName?: string;
     suitabilityButton?: ReactNode;
 }
@@ -37,64 +40,90 @@ const CataractHero = ({
     largeImage,
     smallImage,
     priceText,
+    priceSection,
     financeText,
     smallImageClass,
     headingClassName,
+    subTitleClass,
     contentContainerClassName,
     suitabilityButton
 }: Props): JSX.Element => {
     return (
-        <div className="relative grid w-full content-start overflow-hidden bg-[#0052A0] md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:max-h-[73.5rem] xl:grid-cols-[auto_1fr] xl:gap-32">
+        <div className="relative grid h-full w-full content-start overflow-hidden bg-[#0052A0] md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:max-h-[73.5rem] xl:grid-cols-[auto_1fr] xl:gap-32">
             <Image
                 src={localLargeImage}
                 priority={true}
                 alt=""
                 {...(largeImage as any)}
-                className="col-start-2 row-span-2 row-start-2 hidden h-full w-full md:row-span-3 md:row-start-1 md:block md:object-cover xl:row-span-2 xl:row-start-1 xl:object-fill xl:object-center"
+                className="order-2 hidden h-full justify-self-end object-cover md:block xl:object-fill"
             />
 
-            <div
-                className={twMerge(
-                    'grid content-start gap-6 px-8 pt-12 md:pt-24 lg:pl-12 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] xl:pt-40',
-                    contentContainerClassName
-                )}
-            >
-                <CataractReviewWidget />
+            <div className="grid gap-12 px-8 pt-6 md:grid-rows-[auto_1fr] xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+                <BreadCrumb
+                    linkClassName="text-white"
+                    activeLinkClass="text-[#94CAFF]"
+                    className="mb-12 !hidden !px-0 md:!flex"
+                    pathClassName="stroke-white"
+                />
 
-                <h1
+                <div
                     className={twMerge(
-                        'text-balance text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]',
-                        headingClassName
+                        'grid content-center gap-6 pb-12 pt-12 md:pb-24 md:pt-0',
+                        contentContainerClassName
                     )}
                 >
-                    {title}
-                </h1>
-                <div className="flex max-w-[56rem] items-center justify-start gap-4">
+                    <CataractReviewWidget />
+
+                    <h1
+                        className={twMerge(
+                            'text-balance text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]',
+                            headingClassName
+                        )}
+                    >
+                        {title}
+                    </h1>
+
                     <h2
-                        className="font-mulishBold !text-[1.6rem] uppercase !leading-[2.4rem] text-[#D1E8FE] [&_*]:text-[1.6rem] [&_*]:leading-[2.4rem]"
+                        className={twMerge(
+                            'max-w-[56rem] font-mulishBold !text-[1.6rem] uppercase !leading-[2.4rem] text-[#D1E8FE] [&_*]:text-[1.6rem] [&_*]:leading-[2.4rem]',
+                            subTitleClass
+                        )}
                         dangerouslySetInnerHTML={{ __html: stripInitialTags(subTitle) }}
                     ></h2>
+
+                    {priceSection ? (
+                        <span className="mt-6 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white">
+                            {priceSection}
+                        </span>
+                    ) : (
+                        <>
+                            {priceText && (
+                                <span className="mt-6 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white">
+                                    {priceText}/
+                                    <strong className="font-latoBold text-[1.7rem] uppercase text-white">
+                                        Per eye
+                                    </strong>
+                                </span>
+                            )}
+                        </>
+                    )}
+
+                    {financeText ? (
+                        <strong className="-mt-6 max-w-[50rem] text-balance uppercase leading-[2.8rem] text-[#00BFFF]">
+                            {financeText}
+                        </strong>
+                    ) : null}
+
+                    {suitabilityButton ? (
+                        suitabilityButton
+                    ) : (
+                        <>
+                            <BookConsultation buttonClassName="sitemap-link border-[#007EF5] bg-[#007EF5] hover:!text-[#007EF5] text-center hover:!border-[#007EF5] !border-2">
+                                <Button2 type="button" text="Make an enquiry" />
+                            </BookConsultation>
+                        </>
+                    )}
                 </div>
-
-                <span className="mt-12 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white md:mt-24 xl:mt-32">
-                    {priceText}/<strong className="font-latoBold text-[1.7rem] uppercase text-white">Per eye</strong>
-                </span>
-
-                {financeText ? (
-                    <strong className="-mt-6 max-w-[50rem] text-balance uppercase leading-[2.8rem] text-[#00BFFF]">
-                        {financeText}
-                    </strong>
-                ) : null}
-
-                {suitabilityButton ? (
-                    suitabilityButton
-                ) : (
-                    <>
-                        <BookConsultation buttonClassName="sitemap-link border-[#007EF5] bg-[#007EF5] hover:!text-[#007EF5] text-center hover:!border-[#007EF5] !border-2">
-                            <Button2 type="button" text="Make an enquiry" />
-                        </BookConsultation>
-                    </>
-                )}
             </div>
 
             <Image

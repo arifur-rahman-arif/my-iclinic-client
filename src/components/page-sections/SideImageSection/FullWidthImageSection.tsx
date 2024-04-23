@@ -28,6 +28,8 @@ interface FullWidthImageSectionInterface {
     albumAnimation?: boolean;
     textColumnOverlay?: boolean;
     description?: string[] | ReactNode[];
+    descriptionWrapperClass?: string;
+    descriptionClass?: string;
     includeScrollDownButton?: boolean;
     includeCta?: boolean;
     videoUrl?: string;
@@ -73,15 +75,17 @@ const FullWidthImageSection = ({
     albumAnimation,
     textColumnOverlay,
     description,
+    descriptionWrapperClass,
+    descriptionClass,
     includeScrollDownButton,
     includeCta,
     videoUrl,
     videoPoster,
     textColumnExtraBottomElements,
     reverseColumn = false,
-    smallImageDefaultClassName = 'w-full rounded-t-primary rounded-tl-primary object-contain md:hidden',
+    smallImageDefaultClassName = 'w-full rounded-t-radius2 rounded-tl-radius2 object-contain md:hidden',
     smallImageClassName,
-    largeImageDefaultClassName = 'hidden rounded-primary md:block',
+    largeImageDefaultClassName = 'hidden rounded-radius2 md:block',
     largeImageClassName,
     dynamicMediaColumn,
     albumImages,
@@ -136,11 +140,14 @@ const FullWidthImageSection = ({
                     )}
 
                     {description && (
-                        <div className="mt-12 grid gap-12 md:max-w-[50rem]">
+                        <div className={twMerge('mt-12 grid gap-6 md:max-w-[50rem]', descriptionWrapperClass)}>
                             {description.map((desc, index) => (
                                 <div
                                     key={index}
-                                    className="text-white [&_*]:!text-white [&_a]:!font-mulishBold [&_a]:underline [&_a]:underline-offset-4 [&_strong]:!font-mulishBold"
+                                    className={twMerge(
+                                        'text-white [&_*]:!text-white [&_a]:!font-mulishBold [&_a]:underline [&_a]:underline-offset-4 [&_strong]:!font-mulishBold',
+                                        descriptionClass
+                                    )}
                                 >
                                     {typeof desc === 'string' ? HTMLReactParser(stripInitialTags(desc)) : desc}
                                 </div>

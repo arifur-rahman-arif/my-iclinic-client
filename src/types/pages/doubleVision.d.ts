@@ -1,11 +1,20 @@
+import { ImageType3 } from '@/types';
+
 export default interface DoubleVisionPageContentInterface {
+	masthead: {
+		title: string;
+		subTitle: string;
+		largeImage: ImageType3
+		smallImage: ImageType3
+	}
+	section5: {
+		heading: string;
+		descriptions: string[];
+		image: string;
+	}
 	// Symptoms and vision
 	section_1: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light heading
-			bold_heading: string; // Bold heading
-		}
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
@@ -14,20 +23,24 @@ export default interface DoubleVisionPageContentInterface {
 	},
 	// Consultation & treatment
 	section_2: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
 	},
 	// What is included in my private consultation?
 	section_3: {
-		heading?: string;
-		description?: string;
-		bannerText?: string;
-		list?: string[];
+		heading: string
+		descriptions: string[];
+		image: string;
 	},
+
+	patientReviews: {
+		heading: string;
+		reviews: Array<{
+			name: string;
+			review: string;
+			link: string;
+		}>
+	}
 }

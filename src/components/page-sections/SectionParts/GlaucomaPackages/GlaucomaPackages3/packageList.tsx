@@ -1,7 +1,7 @@
-import { GlaucomaPackageInterface } from './GlaucomaPackages3';
 import { LinkStyle } from '@/components/Link';
+import { GlaucomaPackageInterface } from '@/page-sections/TranslationPackages/TranslationPackages';
 
-export const defaultList: GlaucomaPackageInterface[] = [
+export const defaultList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -52,7 +52,7 @@ export const defaultList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const pricePageList1: GlaucomaPackageInterface[] = [
+export const pricePageList1: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -173,7 +173,7 @@ export const pricePageList1: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const cataractPriceList: GlaucomaPackageInterface[] = [
+export const cataractPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -204,7 +204,7 @@ export const cataractPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
+export const visionCorrectionPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -244,7 +244,7 @@ export const visionCorrectionPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const glaucomaPriceList: GlaucomaPackageInterface[] = [
+export const glaucomaPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -283,7 +283,7 @@ export const glaucomaPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const maculerDegenerationPriceList: GlaucomaPackageInterface[] = [
+export const maculerDegenerationPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -310,7 +310,7 @@ export const maculerDegenerationPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const keratoconusTreatmentPriceList: GlaucomaPackageInterface[] = [
+export const keratoconusTreatmentPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -341,7 +341,7 @@ export const keratoconusTreatmentPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
+export const eyelidSurgeryPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -408,7 +408,7 @@ export const eyelidSurgeryPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const diagnosisPriceList: GlaucomaPackageInterface[] = [
+export const diagnosisPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: (
             <>
@@ -439,7 +439,7 @@ export const diagnosisPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const botoxSurgeryPriceList: GlaucomaPackageInterface[] = [
+export const botoxSurgeryPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: <>Botox</>,
         packageList: [
@@ -459,7 +459,7 @@ export const botoxSurgeryPriceList: GlaucomaPackageInterface[] = [
     }
 ];
 
-export const vitrectomySurgeryPriceList: GlaucomaPackageInterface[] = [
+export const vitrectomySurgeryPriceList: Omit<GlaucomaPackageInterface, 'index'>[] = [
     {
         title: <>Vitrectomy</>,
         packageList: [

@@ -87,6 +87,7 @@ const FinanceHeroSection = ({
                 breadcrumbClassName="md:!hidden xl:!flex"
                 breadcrumbLinkClassName="text-white"
                 breadcrumbIconClassName="stroke-white"
+                activeLinkClass="text-[#94CAFF]"
                 excludeReviews
                 excludePinImage
             />

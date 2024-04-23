@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface SectionTextColumnProps {
@@ -7,6 +8,7 @@ interface SectionTextColumnProps {
     headingClassName?: string;
     descriptionContainerClassName?: string;
     descriptionClassName?: string;
+    textColumnFooter?: ReactNode;
     className?: string;
 }
 
@@ -29,6 +31,7 @@ const SectionTextColumn = ({
     headingClassName,
     descriptionContainerClassName,
     descriptionClassName,
+    textColumnFooter,
     className
 }: SectionTextColumnProps): JSX.Element => {
     return (
@@ -38,7 +41,7 @@ const SectionTextColumn = ({
             {descriptions && descriptions?.length > 0 && (
                 <div
                     className={twMerge(
-                        'description-box col-start-2 grid max-w-[47.5rem] gap-6',
+                        'description-box col-start-2 grid w-full max-w-[47.5rem] gap-6',
                         descriptionContainerClassName
                     )}
                 >
@@ -47,6 +50,8 @@ const SectionTextColumn = ({
                     ))}
                 </div>
             )}
+
+            {textColumnFooter && <div className="col-start-2">{textColumnFooter}</div>}
         </div>
     );
 };

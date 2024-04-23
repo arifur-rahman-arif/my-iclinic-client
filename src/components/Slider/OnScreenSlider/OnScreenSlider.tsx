@@ -53,7 +53,7 @@ const OnScreenSlider = ({ sliderList }: OnScreenSliderInterface): JSX.Element =>
 
     return (
         <Swiper
-            spaceBetween={30}
+            spaceBetween={15}
             navigation={true}
             loop={loop}
             loopAdditionalSlides={loop ? 6 : 0}
@@ -79,7 +79,7 @@ const OnScreenSlider = ({ sliderList }: OnScreenSliderInterface): JSX.Element =>
             ref={swiperRef}
         >
             {sliderList.map((slider, index) => (
-                <SwiperSlide className="w-full max-w-[26.9rem]" key={index}>
+                <SwiperSlide className="!h-auto w-full max-w-[26.9rem]" key={index}>
                     <BlogCard {...slider} />
                 </SwiperSlide>
             ))}

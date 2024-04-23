@@ -61,7 +61,7 @@ const Header = (): JSX.Element => {
             >
                 <TopBar setOpenSearch={setOpenSearch} />
 
-                <Container className={`mt-4 grid grid-cols-[auto_1fr_auto] items-center gap-x-4 pl-2 xs:pl-8`}>
+                <Container className={`mt-1 grid grid-cols-[auto_1fr_auto] items-center gap-x-4 pl-2 xs:pl-8`}>
                     <Link href="/" className="self-start py-4">
                         <Image
                             src="/images/logos/logo-iclinic-desktop.png"

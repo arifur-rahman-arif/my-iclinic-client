@@ -10,6 +10,7 @@ interface BulletListInterface {
     listItemClassName?: string;
     listClassName?: string;
     bulletPoint?: ReactNode;
+    bulletClass?: string;
 }
 
 /**
@@ -25,19 +26,26 @@ const BulletList = ({
     className,
     listItemClassName,
     listClassName,
-    bulletPoint
+    bulletPoint,
+    bulletClass
 }: BulletListInterface): JSX.Element => {
     return (
         <ul className={twMerge(defaultClassName, className)}>
             {list.map((item, index) => (
                 <li className={`grid grid-cols-[auto_1fr] gap-4 ${listClassName}`} key={index}>
-                    {bulletPoint ? bulletPoint : <BulletPoint />}
+                    {bulletPoint ? bulletPoint : <BulletPoint className={bulletClass} />}
                     {bold ? (
                         <div className={listItemClassName}>
                             <strong className={listItemClassName}>{item}</strong>
                         </div>
                     ) : (
-                        <div className={listItemClassName}>{item}</div>
+                        <>
+                            {typeof item === 'string' ? (
+                                <div className={listItemClassName} dangerouslySetInnerHTML={{ __html: item }}></div>
+                            ) : (
+                                <div className={listItemClassName}>{item}</div>
+                            )}
+                        </>
                     )}
                 </li>
             ))}

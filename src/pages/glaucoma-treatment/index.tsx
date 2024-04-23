@@ -1,69 +1,60 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
-import { H3Variant3, SpanVariant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import * as GlaucomaTrabeculectomyLottie from '@/lottie/glaucoma-trabeculectomy.lottie.json';
-import MastheadImageLarge from '@/masthead/masthead-glaucoma-large.png';
-import MastheadImageMedium from '@/masthead/masthead-glaucoma-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-glaucoma-small.png';
 import { glaucomaFaqList } from '@/page-sections/Faq/faqList';
 import { glaucomaSliders } from '@/page-sections/FeaturedPatient';
 import {
-    ClimateChange,
+    BookConsultation,
     CtaSection,
-    FullWidthImageSection,
+    CtaSection2,
     GlaucomaChargeSection,
-    GlaucomaPackages,
-    GlaucomaSection,
-    Masthead,
-    PlasticFree,
     SideImageSection
 } from '@/page-sections/index';
 import { LeftRightSection } from '@/page-sections/LeftRight';
-import { leftRightListGlaucoma, leftRightListGlaucomma } from '@/page-sections/LeftRight/leftRightList';
-import LottieComponent from '@/page-sections/LeftRight/lottie/LottieComponent';
-import VideoColumn from '@/page-sections/LeftRight/VideoColumn';
-import { StarComponent } from '@/page-sections/SectionParts/StarComponent';
-import TextColumn from '@/page-sections/SectionParts/TextColumn';
+import { leftRightListGlaucoma } from '@/page-sections/LeftRight/leftRightList';
 import { glaucomaStackList } from '@/page-sections/StackedSection';
-import ImprovedVisionLarge from '@/section-images/improved-vision-large.png';
 import { GlaucomaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import YagHero from '@/page-sections/Masthead/YagHero';
+import { Button2 } from '@/components/Buttons';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import GlaucomaService from '@/page-sections/GlaucomaSection/GlaucomaService';
+import SectionTextColumn from '@/components/SectionTextColumn';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
-    loading: () => <ComponentLoader />
-});
+
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
-    loading: () => <ComponentLoader />
-});
+
 const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
     loading: () => <ComponentLoader />
 });
 const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/CompareSlider'), {
+    loading: () => <ComponentLoader />
+});
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
+    loading: () => <ComponentLoader />
+});
+
+const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
+    loading: () => <ComponentLoader />
+});
+const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 
@@ -76,28 +67,13 @@ interface GlaucomaPageProps {
 }
 
 /**
- * Home page component for the App
- *
- * * Url: /glaucoma
- *
- * @export
- * @returns {JSX.Element}
+ * Glaucomma page
+ * @param {any} seo
+ * @param {any} yoastJson
+ * @param {DataInterface} data
+ * @constructor
  */
 export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-
-    const heading = data?.masthead_heading || 'Glaucoma Treatment London';
-    const subheading = data?.masthead_subheading || 'Affordable management and treatment for your Glaucoma!';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     const serviceList: any = Array.isArray(data?.section_3)
         ? data?.section_3.map((service) => {
               return {
@@ -118,65 +94,13 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                           width={685}
                           height={557}
                           quality={70}
-                          className="hidden md:block md:scale-90 2xl:scale-100"
+                          className="hidden md:block"
                           alt={service.desktopImage?.alt || ''}
                       />
                   ),
                   descriptions: stringArrayToElementArray(service.descriptions),
                   excludeNumbers: true
               };
-          })
-        : null;
-
-    const glaucomaServices: any = Array.isArray(data?.section_6)
-        ? data?.section_6.map((service) => {
-              const returnObject = {
-                  ...service,
-                  alternativeHeading: service?.alternativeHeading ? (
-                      <H3Variant3>{service.alternativeHeading}</H3Variant3>
-                  ) : (
-                      <></>
-                  ),
-                  descriptions: stringArrayToElementArray(service.descriptions)
-              };
-
-              if (service.mobileImage.url || service.desktopImage?.url) {
-                  return {
-                      ...returnObject,
-                      mobileImage: (
-                          <Image
-                              src={service.mobileImage.url}
-                              width={390}
-                              height={390}
-                              quality={70}
-                              className="md:hidden"
-                              alt={service.mobileImage?.alt || ''}
-                          />
-                      ),
-                      desktopImage: (
-                          <Image
-                              src={service.desktopImage.url}
-                              width={685}
-                              height={557}
-                              quality={70}
-                              className="hidden md:block md:scale-90 2xl:scale-100"
-                              alt={service.desktopImage?.alt || ''}
-                          />
-                      )
-                  };
-              } else if (service.lottieComponent) {
-                  return {
-                      ...returnObject,
-                      lottieComponent: <LottieComponent animationData={GlaucomaTrabeculectomyLottie} loop={false} />
-                  };
-              } else {
-                  return {
-                      ...returnObject,
-                      dynamicMediaColumn: (
-                          <VideoColumn poster={service?.video?.poster} source={service?.video?.source} />
-                      )
-                  };
-              }
           })
         : null;
 
@@ -189,33 +113,56 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText={data?.masthead_image?.image_large?.alt}
-                imagePosition="2xl:object-[0rem_-3rem] !object-contain"
-                smallImageClassName={'object-[center_-3rem]'}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || 'From £400'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-            />
+            <YagHero
+                {...data?.masthead}
+                subTitleClass="max-w-[49rem]"
+                titleClass="md:max-w-[60rem]"
+                className="xl:grid-cols-[auto_30rem_1fr]"
+                bannerClass="xl:pr-40"
+                ctaButton={
+                    <div className="flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            {/* <UspSection list={homeUspList} /> */}
-
-            <SideImageSection
-                h2Heading={
-                    <div className="grid gap-4">
-                        <StarComponent />
-                        <SpanVariant1>{data?.section_1?.subheading || '5-star Glaucoma clinic'}</SpanVariant1>
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-white hover:text-[#0099FF]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
                     </div>
                 }
-                h3LightHeading={data?.section_1?.heading?.light_heading || 'Manage and Treat your glaucoma'}
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'with our 5-star Glaucoma clinic in London?'}
+            />
+
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
+
+            <SideImageSection
+                h3LightHeading={
+                    data?.section_1?.heading ||
+                    'Manage and Treat your glaucoma with our 5-star Glaucoma clinic in London?'
+                }
                 descriptions={
                     (data?.section_1?.descriptions?.length &&
                         stringArrayToElementArray(data?.section_1?.descriptions)) || [
@@ -235,28 +182,54 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     height: 642
                 }}
                 altText={data?.section_1?.large_image?.alt}
+                positionReversed
+                textColumnExtras={
+                    <div className="flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link   text-center  !border-2">
+                            <Button2 type="button" text="Request a call back" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-[#003E79] md:px-20"
+                        />
+                    </div>
+                }
             />
 
-            <GlaucomaSection
-                content={data?.section_2?.content}
-                image={data?.section_2?.image?.url}
-                altText={data?.section_2?.image?.alt}
+            <SideImageSection
+                h3LightHeading={data?.section_2?.heading || 'Glaucoma Conditions'}
+                descriptions={data?.section_2?.descriptions}
+                descriptionWrapperClass="[&_div_strong]:mt-6 [&_div_strong]:block [&_div_strong]:text-heading"
+                sectionImage={{
+                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma.png',
+                    width: 370,
+                    height: 352
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma-large.png',
+                    width: 664,
+                    height: 642
+                }}
+                largeImageClassName="border border-solid border-[#EAECF0] rounded-radius2"
+                textColumnExtras={
+                    <BookConsultation buttonClassName="!border-2 -mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
             />
 
             <LazyComponent>
                 <LeftRightSection childrenList={(serviceList?.length && serviceList) || leftRightListGlaucoma} />
             </LazyComponent>
 
-            <FullWidthImageSection
-                boldHeading={data?.section_4?.heading || 'Treatment, aftercare and monitoring Glaucoma'}
-                description={
-                    (data?.section_4?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_4?.descriptions)) || [
-                        'In a subsequent visit to our clinic, our glaucoma specialist will continue to provide a dedicated care service for your Glaucoma management.',
-                        'When you come for your first visit with us, our specialists can determine what package will be best suited for your Glaucoma management.'
-                    ]
-                }
-                dynamicMediaColumn={
+            <SideImageSection
+                h3LightHeading={data?.section_4?.heading || 'Treatment, aftercare and monitoring Glaucoma'}
+                containerClassName="xl:!grid-cols-[1fr_auto]"
+                descriptions={data?.section_4?.descriptions}
+                customColumn={
                     <LazyComponent>
                         <CompareSlider
                             image1={{
@@ -278,69 +251,74 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         />
                     </LazyComponent>
                 }
-                containerClass="pt-12 !pb-0 md:!py-20 md:!grid-cols-[1fr_auto]"
+                textColumnExtras={
+                    <div className="flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link   text-center  !border-2">
+                            <Button2 type="button" text="Request a call back" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-[#003E79] md:px-20"
+                        />
+                    </div>
+                }
             />
 
-            {/* <SideImageSection */}
-            {/*    h2Heading="Glaucoma Treatments" */}
-            {/*    h3LightHeading={ */}
-            {/*        <> */}
-            {/*            Treatment options we provide */}
-            {/*            <br /> */}
-            {/*        </> */}
-            {/*    } */}
-            {/*    h3BoldHeading="For your Glaucoma Management" */}
-            {/*    altText="" */}
-            {/*    descriptions={[ */}
-            {/*        'All eyes are unique! We provide the most wide-ranging successful procedures for all Glaucoma types in our London Clinic.' */}
-            {/*    ]} */}
-            {/*    sectionImage={{ */}
-            {/*        url: '/images/section-images/glaucoma-treatments.png', */}
-            {/*        width: 370, */}
-            {/*        height: 352 */}
-            {/*    }} */}
-            {/*    sectionImageDesktop={{ */}
-            {/*        url: '/images/section-images/glaucoma-treatments-large.png', */}
-            {/*        width: 608, */}
-            {/*        height: 409 */}
-            {/*    }} */}
-            {/* /> */}
-
-            <Section>
-                <Container className="grid grid-cols-1 md:grid-cols-2">
-                    <TextColumn
-                        h2Heading={data?.section_5?.subheading || 'Glaucoma Treatments'}
-                        h3LightHeading={
-                            <>
-                                {data?.section_5?.heading?.light_heading || 'Treatment options we provide'}
-                                <br />
-                            </>
-                        }
-                        h3BoldHeading={data?.section_5?.heading?.bold_heading || 'For your Glaucoma Management'}
-                        descriptions={
-                            (data?.section_5?.descriptions?.length &&
-                                stringArrayToElementArray(data?.section_5?.descriptions)) || [
-                                'All eyes are unique! We provide the most wide-ranging successful procedures for all Glaucoma types in our London Clinic.'
-                            ]
-                        }
-                    />
-                </Container>
-            </Section>
-
-            <LazyComponent>
-                <LeftRightSection
-                    childrenList={(glaucomaServices?.length && glaucomaServices) || leftRightListGlaucomma}
-                    positionReversed
-                    containerClassName="md:!gap-20 md:!grid-cols-[auto_auto]"
-                    sectionClassName="md:!mt-24"
-                />
-            </LazyComponent>
-
-            <CtaSection
-                title={data?.cta_section?.heading}
-                description={data?.cta_section?.description}
-                subtitle={data?.cta_section?.subheading}
+            <SideImageSection
+                containerClassName="xl:!grid-cols-[1fr_auto]"
+                h3LightHeading={data?.section_5?.heading || 'Treatment options we provide For your Glaucoma Management'}
+                descriptions={data?.section_5?.descriptions}
+                descriptionWrapperClass="[&_div:nth-child(2)]:my-6"
+                sectionImage={{
+                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma.png',
+                    width: 370,
+                    height: 352
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma-large.png',
+                    width: 664,
+                    height: 642
+                }}
+                positionReversed
+                largeImageClassName="h-full object-cover rounded-radius2"
             />
+
+            <GlaucomaService
+                {...data?.section6}
+                descriptionWrapperClass="[&_p:last-child]:mt-6"
+                reversed
+                sectionFooter={
+                    <BookConsultation buttonClassName="text-center !border-2 -mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
+            />
+
+            <GlaucomaService {...data?.section12} descriptionWrapperClass="[&_p:last-child]:mt-6" />
+
+            <GlaucomaService
+                {...data?.section13}
+                reversed
+                sectionFooter={<Button2 type="button" text="Consult a specialist" onClick={openFreshdeskChat} />}
+            />
+
+            <GlaucomaService
+                {...data?.section14}
+                descriptionWrapperClass="[&_p:last-child]:mt-6"
+                imageClass="border border-solid border-[#EAECF0] rounded-radius2"
+                sectionFooter={
+                    <BookConsultation buttonClassName="text-center !border-2 -mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
+            />
+
+            <GlaucomaService {...data?.section15} reversed />
+
+            <CtaSection {...data?.ctaSection} />
 
             <GlaucomaChargeSection {...data?.section_7} />
 
@@ -361,48 +339,48 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     bandImageURL={data?.section_11?.front_image || '/images/section-images/tamara.jpg'}
                     reviewTitle="Thank you My-iClinic"
                     sliders={data?.section_11?.additional_images || glaucomaSliders}
-                    bandColor="bg-[#8D33FF]"
+                    bandColor="bg-[#004977]"
+                    subTitleClass="!text-[#004977]"
                 />
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
-            <SideImageSection
-                dynamicTextColumn={<GlaucomaPackages packageList={data?.section_8?.package_list} />}
-                containerClassName="md:!grid-cols-[auto_1fr]"
-                positionReversed
-                sectionImage={{
-                    url: data?.section_8?.image?.url || '/images/section-images/glaucoma-packages-large.png',
-                    width: 370,
-                    height: 352
-                }}
-                sectionImageDesktop={{
-                    url: data?.section_8?.large_image?.url || '/images/section-images/glaucoma-packages-large.png',
-                    width: 655,
-                    height: 494
-                }}
-                altText={data?.section_8?.large_image?.alt}
-            />
+            <Section>
+                <Container className="grid content-start gap-16 md:gap-24">
+                    <SectionTextColumn heading={data?.section17?.heading} />
 
-            <FullWidthImageSection
-                h3Title={data?.section_9?.heading || 'Step into the light with'}
-                boldHeading={
-                    <strong className="normal-case">{data?.section_9?.bold_heading || 'improved vision!'}</strong>
-                }
-                altText={data?.section_9?.image?.alt}
-                image={data?.section_9?.image?.url || ImprovedVisionLarge}
-                desktopImage={data?.section_9?.image?.url || ImprovedVisionLarge}
-                containerClass="pb-16 md:!py-0 !mx-0 md:!mx-auto"
-                overlayAnimation
-                textColumnOverlay
-                sectionClass="bg-brandLight relative"
-                largeImageClassName="!rounded-none"
-            />
+                    <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+                        {[data?.section17?.card1, data?.section17?.card2].map((card, key) => (
+                            <div
+                                className="grid content-start gap-6 rounded-radius2 border border-solid border-[#EAECF0] p-8 transition-all duration-500 hover:shadow-shadow1 sm:p-16"
+                                key={key}
+                            >
+                                <h3 className="font-latoBold text-[2.4rem] leading-[3.2rem] text-heading">
+                                    {card?.title}
+                                </h3>
+                                <span className="-mt-2 h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
+                                <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-[#893277]">
+                                    {card?.price}
+                                </span>
+                                {card?.descriptions?.length
+                                    ? card.descriptions.map((item, i) => (
+                                          <p key={i} dangerouslySetInnerHTML={{ __html: item }}></p>
+                                      ))
+                                    : null}
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </Section>
+
+            <CtaSection2 {...data?.ctaSection2} />
 
             <LazyComponent>
                 <StackedSection
+                    h2Class="max-w-[84rem]"
                     stackList={
                         (data?.section_10?.slider_list?.length && data?.section_10?.slider_list) || glaucomaStackList
                     }
@@ -418,102 +396,29 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
             </LazyComponent>
 
             <LazyComponent>
-                <SustainableSlider>
-                    <PlasticFree
-                        h2Heading={data?.sustainability_section?.plastic_free_life?.subheading || 'plastic free life'}
-                        h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading?.light_heading ||
-                                'Vision correction is the key to living'
-                        )}
-                        h3BoldHeading={HTMLReactParser(
-                            data?.sustainability_section?.plastic_free_life?.heading?.bold_heading ||
-                                'a sustainable, plastic free life!'
-                        )}
-                        descriptions={
-                            (data?.sustainability_section?.plastic_free_life?.descriptions?.length &&
-                                data?.sustainability_section.plastic_free_life.descriptions) || [
-                                `The most sustainable, green lifestyle to have is when you have a plastic free eye-style,
-                    free of plastic waste from your glasses and contact lenses!`
-                            ]
-                        }
-                        image={data?.sustainability_section?.plastic_free_life?.image?.url}
-                        largeImage={data?.sustainability_section?.plastic_free_life?.large_image?.url}
-                        altText={data?.sustainability_section?.plastic_free_life?.large_image?.alt}
-                    />
+                <EnvironmentalImpact />
+            </LazyComponent>
 
-                    <SideImageSection
-                        h2Heading={data?.sustainability_section?.gift_of_a_tree?.subheading || 'gift of a tree'}
-                        h3LightHeading={HTMLReactParser(
-                            data?.sustainability_section?.gift_of_a_tree?.heading?.light_heading ||
-                                'Saving the planet <br />'
-                        )}
-                        h3BoldHeading={HTMLReactParser(
-                            data?.sustainability_section?.gift_of_a_tree?.heading?.bold_heading || 'One eye at a time!'
-                        )}
-                        descriptions={
-                            (data?.sustainability_section?.gift_of_a_tree?.descriptions.length &&
-                                data?.sustainability_section.gift_of_a_tree.descriptions) || [
-                                `Here at My-iClinic we give all of our laser patients a very special gift to go with your brand-new eyes,
-                    a tree! When undergoing laser eye surgery, you may not realize but you are already making a positive difference to the environment.`,
-                                `For every 10 years of contact lens wear the amount of plastic that ends up in the ocean is roughly the same as your own body weight.`
-                            ]
-                        }
-                        sectionImage={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.image?.url ||
-                                '/images/section-images/gift-of-a-tree.png',
-                            width: 390,
-                            height: 390
-                        }}
-                        altText={data?.sustainability_section?.gift_of_a_tree?.image?.alt}
-                        sectionImageDesktop={{
-                            url:
-                                data?.sustainability_section?.gift_of_a_tree?.large_image?.url ||
-                                '/images/section-images/gift-of-a-tree-desktop.png',
-                            width: 554,
-                            height: 496
-                        }}
-                        textColumnExtras={
-                            <div className="grid gap-6">
-                                <span className="max-w-[44.5rem]  font-latoBold text-[2rem] normal-case leading-[2.4rem]">
-                                    We want to take our impact on the environment a step further and this is where the
-                                    gift of a tree comes in!
-                                </span>
-                            </div>
-                        }
-                    />
+            <LazyComponent>
+                <CompanyLogos />
+            </LazyComponent>
 
-                    <ClimateChange
-                        h2Heading={data?.sustainability_section?.clearer_vision?.subheading}
-                        h3LightHeading={data?.sustainability_section?.clearer_vision?.heading?.light_heading}
-                        h3BoldHeading={data?.sustainability_section?.clearer_vision?.heading?.bold_heading}
-                        image={data?.sustainability_section?.clearer_vision?.image?.url}
-                        largeImage={data?.sustainability_section?.clearer_vision?.large_image?.url}
-                        descriptions={data?.sustainability_section?.clearer_vision?.descriptions}
-                    />
-                </SustainableSlider>
+            <LazyComponent>
+                <PdfDownload
+                    downloadFile={data?.email_contents?.download_file}
+                    title="Get the guide to Glaucoma treatment"
+                    description="Robotic laser vision correction"
+                    pageSlug="glaucoma-treatment"
+                />
+            </LazyComponent>
 
-                <LazyComponent>
-                    <CompanyLogos />
-                </LazyComponent>
-
-                <LazyComponent>
-                    <PdfDownload
-                        downloadFile={data?.email_contents?.download_file}
-                        title="Get the guide to Glaucoma treatment"
-                        description="Robotic laser vision correction"
-                        pageSlug="glaucoma-treatment"
-                    />
-                </LazyComponent>
-
-                <LazyComponent>
-                    <Faq
-                        faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || glaucomaFaqList}
-                        titleLight="Glaucoma"
-                        titleBold="Frequently asked questions"
-                        description="Have a question? We are here to help."
-                    />
-                </LazyComponent>
+            <LazyComponent>
+                <Faq
+                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || glaucomaFaqList}
+                    titleLight="Glaucoma"
+                    titleBold="Frequently asked questions"
+                    description="Have a question? We are here to help."
+                />
             </LazyComponent>
         </Page>
     );
@@ -537,9 +442,28 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        title: stripInitialTags(data?.acf?.masthead?.title || ''),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     section_1: {
                         ...data?.acf.section_1,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
+                    },
+                    section_2: {
+                        ...data?.acf.section_2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section_2?.image && formatImage(data.acf?.section_2?.image))
+                        }
                     },
                     section_3: Array.isArray(data?.acf?.section_3)
                         ? data?.acf.section_3.slice(0, 1).map((sectionData) => {
@@ -551,20 +475,61 @@ export async function getStaticProps() {
                         : [],
                     section_4: {
                         ...data?.acf.section_4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_5: {
                         ...data?.acf.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_5?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
-                    section_6: Array.isArray(data?.acf?.section_6)
-                        ? data?.acf.section_6.slice(0, 6).map((sectionData) => {
-                              return {
-                                  ...sectionData,
-                                  descriptions: convertArrayOfObjectsToStrings(sectionData.descriptions)
-                              };
-                          })
-                        : [],
+                    section6: {
+                        ...data?.acf.section6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section6?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section6?.image && formatImage(data.acf?.section6?.image))
+                        }
+                    },
+                    section12: {
+                        ...data?.acf.section12,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section12?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section12?.image && formatImage(data.acf?.section12?.image))
+                        }
+                    },
+                    section13: {
+                        ...data?.acf.section13,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section13?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section13?.image && formatImage(data.acf?.section13?.image))
+                        }
+                    },
+                    section14: {
+                        ...data?.acf.section14,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section14?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section14?.image && formatImage(data.acf?.section14?.image))
+                        }
+                    },
+                    section15: {
+                        ...data?.acf.section15,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section15?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section15?.image && formatImage(data.acf?.section15?.image))
+                        }
+                    },
                     section_7: {
                         ...data?.acf.section_7,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions)
@@ -595,24 +560,29 @@ export async function getStaticProps() {
                         ...data?.acf?.section_11,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_11?.descriptions)
                     },
-                    sustainability_section: {
-                        plastic_free_life: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.plastic_free_life.descriptions
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    },
+                    section17: {
+                        ...data?.acf.section17,
+                        card1: {
+                            ...data?.acf?.section17?.card1,
+                            descriptions: convertArrayOfObjectsToStrings(data?.acf.section17?.card1?.descriptions).map(
+                                (item) => stripInitialTags(item)
                             )
                         },
-                        gift_of_a_tree: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
+                        card2: {
+                            ...data?.acf?.section17?.card2,
+                            descriptions: convertArrayOfObjectsToStrings(data?.acf.section17?.card2?.descriptions).map(
+                                (item) => stripInitialTags(item)
                             )
-                        },
-                        clearer_vision: {
-                            ...data?.acf?.sustainability_section?.plastic_free_life,
-                            descriptions: convertArrayOfObjectsToStrings(
-                                data?.acf?.sustainability_section?.clearer_vision.descriptions
-                            )
+                        }
+                    },
+                    ctaSection2: {
+                        ...data?.acf?.ctaSection2,
+                        image: {
+                            ...(data?.acf?.ctaSection2?.image && formatImage(data.acf?.ctaSection2?.image))
                         }
                     }
                 } as DataInterface

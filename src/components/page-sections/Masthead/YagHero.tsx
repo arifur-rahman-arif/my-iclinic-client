@@ -9,12 +9,15 @@ import { twMerge } from 'tailwind-merge';
 
 export interface Props {
     title: string;
-    subTitle: string;
+    subTitle?: string;
     largeImage: ImageType3;
     smallImage: ImageType3;
-    priceText: string;
+    priceText?: string;
+    priceSection?: string;
     titleClass?: string;
+    subTitleClass?: string;
     className?: string;
+    bannerClass?: string;
     ctaButton?: JSX.Element;
 }
 
@@ -23,7 +26,19 @@ export interface Props {
  *
  * @returns {*}  {JSX.Element}
  */
-const YagHero = ({ title, subTitle, largeImage, smallImage, priceText, titleClass, className, ctaButton }: Props) => {
+const YagHero = ({
+    title,
+    subTitle,
+    largeImage,
+    smallImage,
+    priceText,
+    priceSection,
+    titleClass,
+    subTitleClass,
+    className,
+    bannerClass,
+    ctaButton
+}: Props): JSX.Element => {
     return (
         <div
             className={twMerge(
@@ -40,39 +55,64 @@ const YagHero = ({ title, subTitle, largeImage, smallImage, priceText, titleClas
 
             <Image alt="" className="w-full md:hidden" priority {...(smallImage as any)} />
 
-            <div className="z-[2] grid content-start gap-6 bg-[#003E79] py-12 px-8 lg:content-center lg:pt-0 lg:pl-12 xl:col-span-2 xl:col-start-1 xl:row-start-1 xl:content-start xl:rounded-tr-[0.5rem] xl:rounded-br-[0.5rem] xl:pr-20 xl:pb-20 xl:pt-6 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div
+                className={twMerge(
+                    'z-[2] grid h-full content-start gap-6 bg-[#003E79] px-8 py-12 lg:grid-rows-[auto_1fr] lg:pl-12 lg:pt-0 xl:col-span-2 xl:col-start-1 xl:row-start-1 xl:max-h-[calc(100%_-_16rem)] xl:rounded-br-[0.5rem] xl:rounded-tr-[0.5rem] xl:pb-24 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] xl:pr-24 xl:pt-6',
+                    bannerClass
+                )}
+            >
                 <BreadCrumb
                     linkClassName="text-white"
-                    className="mb-12 !hidden !px-0 lg:!flex xl:mt-12"
+                    activeLinkClass="text-[#94CAFF]"
+                    className="mb-12 !hidden !px-0 lg:!flex"
                     pathClassName="stroke-white"
                 />
 
-                <CataractReviewWidget />
+                <div className="grid content-center gap-6">
+                    <CataractReviewWidget />
 
-                <h1
-                    className={twMerge(
-                        'text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]',
-                        titleClass
+                    <h1
+                        className={twMerge(
+                            'whitespace-pre-line text-balance text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]',
+                            titleClass
+                        )}
+                        dangerouslySetInnerHTML={{ __html: title }}
+                    ></h1>
+                    {subTitle && (
+                        <h2
+                            className={twMerge(
+                                'font-mulishBold !text-[1.6rem] uppercase !leading-[2.4rem] text-[#D1E8FE] [&_*]:text-[1.6rem] [&_*]:leading-[2.4rem]',
+                                subTitleClass
+                            )}
+                            dangerouslySetInnerHTML={{ __html: stripInitialTags(subTitle) }}
+                        ></h2>
                     )}
-                >
-                    {title}
-                </h1>
-                <h2
-                    className="font-mulishBold !text-[1.6rem] uppercase !leading-[2.4rem] text-[#D1E8FE] [&_*]:text-[1.6rem] [&_*]:leading-[2.4rem]"
-                    dangerouslySetInnerHTML={{ __html: stripInitialTags(subTitle) }}
-                ></h2>
 
-                <span className="mt-6 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white">
-                    {priceText}/<strong className="font-latoBold text-[1.7rem] uppercase text-white">Per eye</strong>
-                </span>
+                    {priceSection ? (
+                        <span className="mt-6 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white">
+                            {priceSection}
+                        </span>
+                    ) : (
+                        <>
+                            {priceText && (
+                                <span className="mt-6 font-latoBold text-[2rem] uppercase leading-[3.2rem] text-white">
+                                    {priceText}/
+                                    <strong className="font-latoBold text-[1.7rem] uppercase text-white">
+                                        Per eye
+                                    </strong>
+                                </span>
+                            )}
+                        </>
+                    )}
 
-                {ctaButton ? (
-                    ctaButton
-                ) : (
-                    <BookConsultation buttonClassName="sitemap-link border-[#007EF5] bg-[#007EF5] hover:!text-[#007EF5] text-center hover:!border-[#007EF5] !border-2">
-                        <Button2 type="button" text="Make an enquiry" />
-                    </BookConsultation>
-                )}
+                    {ctaButton ? (
+                        ctaButton
+                    ) : (
+                        <BookConsultation buttonClassName="sitemap-link border-[#007EF5] bg-[#007EF5] hover:!text-[#007EF5] text-center hover:!border-[#007EF5] !border-2">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+                    )}
+                </div>
             </div>
         </div>
     );

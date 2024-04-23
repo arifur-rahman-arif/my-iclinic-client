@@ -1,32 +1,29 @@
+import { ImageType3 } from '@/types';
 
 
 export default interface FlashesContentInterface {
+    masthead: {
+        title: string;
+        subTitle: string;
+        largeImage: ImageType3
+        smallImage: ImageType3
+        priceSection: string;
+    }
 	//	London’s best treatment
 	section_1: {
-		subheading: string;
-		// Heading
-        lightheading: string; // Light Heading
-        boldheading: string; // Bold Heading
-		first_line_text: string;
-		lists: string[];
+        heading: string; // Bold Heading
         descriptions: string[];
 		image: string;
 		image_large: string;
 	},
     section_2: {
-		subheading: string;
-		// Heading
-        lightheading: string; // Light Heading
-        boldheading: string; // 
+        heading: string; // Bold Heading
         descriptions: string[];
 		image: string;
 		image_large: string;
 	},
     section_3: {
-        subheading: string;
-		// Heading
-        lightheading: string; // Light Heading
-        boldheading: string; // Bold Heading
+        heading: string; // Bold Heading
 		lists: string[];
         descriptions: string[];
 		image: string;
@@ -46,16 +43,14 @@ export default interface FlashesContentInterface {
     bookingsec: {
         title:string;
         descriptions:string[];
-        image:string;
-        imageLarge:string;
+        image:ImageType3;
     },
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
-
-
-
-
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    }
 }

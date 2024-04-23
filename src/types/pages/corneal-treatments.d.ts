@@ -1,10 +1,4 @@
-type Image = {
-    src: string;
-    url?: string;
-    width: number;
-    height: number;
-    alt: string;
-}
+import { ImageType3 } from 'src/types/image';
 
 type CorneaOfferings = {
     heading: string;
@@ -14,6 +8,13 @@ type CorneaOfferings = {
 }
 
 export default interface CornealtreatmentContentInterface {
+    masthead: {
+        title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+        priceSection: string;
+    },
     //	Corneal Treatments
     section_1: {
         heading: string; //
@@ -23,11 +24,7 @@ export default interface CornealtreatmentContentInterface {
     },
     // CORNEA CONSULTATION
     section_2: {
-        subheading: string; // Subheading
-        heading: { // Heading
-            light_heading: string; // Light Heading
-            bold_heading: string; // Bold Heading
-        },
+        heading: string
         lists: string[];
         descriptions: string[];
         image: string;
@@ -38,6 +35,7 @@ export default interface CornealtreatmentContentInterface {
         subtitle: string;
         title: string;
         description: string;
+        image: ImageType3;
     }
     // Treatments we offer
     section4: {
@@ -54,4 +52,13 @@ export default interface CornealtreatmentContentInterface {
     section7: CorneaOfferings
     // DMEK
     section8: CorneaOfferings
+
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    }
 }

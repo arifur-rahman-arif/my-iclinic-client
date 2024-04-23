@@ -10,6 +10,7 @@ import Logo2 from '@/logos/healthcare-practice.png';
 import { stripInitialTags } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 const defaultCards: Omit<CardProps, 'index'>[] = [
     {
@@ -34,6 +35,8 @@ interface Props {
     list?: string[];
     cardList?: Omit<CardProps, 'index' | 'bg'>[];
     centerHeading?: boolean;
+    middleCta?: ReactNode;
+    excludeLinkButton?: boolean;
 }
 
 /**
@@ -41,7 +44,15 @@ interface Props {
  *
  * @returns {JSX.Element} The rendered FundingTreatment component.
  */
-const FundingTreatment = ({ heading, description, list, cardList, centerHeading }: Props): JSX.Element => {
+const FundingTreatment = ({
+    heading,
+    description,
+    list,
+    cardList,
+    centerHeading,
+    middleCta,
+    excludeLinkButton
+}: Props): JSX.Element => {
     const modifiedCardList = [];
 
     if (cardList && cardList.length > 0) {
@@ -63,7 +74,7 @@ const FundingTreatment = ({ heading, description, list, cardList, centerHeading 
     return (
         <Section>
             <Container className="grid gap-16 md:grid-cols-2 md:gap-12 xl:gap-16">
-                <div className="grid grid-cols-[auto_1fr] content-start gap-y-12 gap-x-6">
+                <div className="grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12">
                     <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>
                     <h2 className="w-full max-w-[22.2rem] normal-case">{heading || 'Funding your treatment'}</h2>
 
@@ -85,11 +96,13 @@ const FundingTreatment = ({ heading, description, list, cardList, centerHeading 
                     ) : null}
 
                     {!list ? (
-                        <p className="col-start-2">
+                        <p className="col-start-2 max-w-[50rem]">
                             {description ||
                                 'We collaborate with all leading health insurance providers to ensure our patients receive the best care possible. Rest assured, your vision is in safe hands with us.'}
                         </p>
                     ) : null}
+
+                    {middleCta && middleCta}
 
                     <div className="col-start-2 -mt-4 grid grid-cols-2 flex-wrap items-center justify-center gap-6 justify-self-start lg:grid-cols-3">
                         <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
@@ -115,7 +128,13 @@ const FundingTreatment = ({ heading, description, list, cardList, centerHeading 
 
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 md:justify-self-end lg:gap-6 xl:grid-cols-2">
                     {(cardList?.length ? modifiedCardList : defaultCards).map((card, key) => (
-                        <Card key={key} {...card} index={key} centerHeading={centerHeading} />
+                        <Card
+                            key={key}
+                            {...card}
+                            index={key}
+                            centerHeading={centerHeading}
+                            excludeLinkButton={excludeLinkButton}
+                        />
                     ))}
                 </div>
             </Container>
@@ -131,6 +150,7 @@ interface CardProps {
     buttonClass?: string;
     index: number;
     centerHeading?: boolean;
+    excludeLinkButton?: boolean;
 }
 
 /**
@@ -144,7 +164,7 @@ interface CardProps {
  * @param {number} index - The index used to determine styling variations for different cards.
  * @returns {JSX.Element} The rendered Card component.
  */
-const Card = ({ title, description, bg, link, buttonClass, index, centerHeading }: CardProps) => {
+const Card = ({ title, description, bg, link, buttonClass, index, centerHeading, excludeLinkButton }: CardProps) => {
     return (
         <div
             className={`grid content-center justify-items-start gap-6 rounded-radius2 p-12 xl:px-16 ${bg} max-w-[35rem] md:max-w-max`}
@@ -156,12 +176,14 @@ const Card = ({ title, description, bg, link, buttonClass, index, centerHeading 
                 dangerouslySetInnerHTML={{ __html: stripInitialTags(title) }}
             ></h3>
             <p className={`${index === 1 && 'text-white'}`}>{description}</p>
-            <Link
-                href={link || '#'}
-                className={`rounded-[0.5rem] border-2 border-solid border-white bg-white py-2 px-5 font-mulishBold text-heading transition-all duration-500 hover:bg-transparent ${buttonClass}`}
-            >
-                Find out more
-            </Link>
+            {!excludeLinkButton && (
+                <Link
+                    href={link || '#'}
+                    className={`rounded-[0.5rem] border-2 border-solid border-white bg-white px-5 py-2 font-mulishBold text-heading transition-all duration-500 hover:bg-transparent ${buttonClass}`}
+                >
+                    Find out more
+                </Link>
+            )}
         </div>
     );
 };
