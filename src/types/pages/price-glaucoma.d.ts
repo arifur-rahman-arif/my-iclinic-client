@@ -1,4 +1,5 @@
 import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from '@/types';
 
 export type PriceObject = {
     title: string;
@@ -10,51 +11,54 @@ export type PriceObject = {
 }
 
 export default interface PriceGlaucomaContentInterface {
+	masthead: {
+		title: string;
+		subTitle: string;
+		largeImage: ImageType3;
+		smallImage: ImageType3;
+		priceSection: string;
+	},
+	costDetails: Array<{
+		title: string;
+		price: string;
+		description: string;
+	}>
 	//	SECTION 1
 	section_1: {
-		sub_heading: string; 
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		sub_heading: string;
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
 	},
-	
+
 	section_2: Array<{
-		title: string; 
+		title: string;
 		description: string;
 		price: string;
 	}>,
 // 	// VIDEO SECTION
 	section_3: {// Subheading
-		title: string; // 
+		title: string; //
 		description: string;
 		large_image: string;
 		image: string;
 	},
     // 	// VIDEO SECTION
 	section_4: {
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
-		lists: string[];
-		descriptions2: string;
 	},
 	privateTreatment:Array<PriceObject>,
 	call_section:{
 		sub_heading: string;
 		heading: string;
 	},
-	speaktoteam:{
-		subtitle: string;
-		title:  string;
-	},
-
-// //Transparent Price
+	ctaSection: {
+		title: string;
+		subTitle: string
+		image: ImageType3
+	}
 }

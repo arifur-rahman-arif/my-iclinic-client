@@ -1,6 +1,13 @@
 import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from '@/types';
 
 export default interface DryEyesContentInterface {
+	masthead: {
+		title: string;
+		subTitle: string;
+		largeImage: ImageType3
+		smallImage: ImageType3
+	}
 	//	Dry eye syndrome symptoms
 	section_1: {
 		subheading: string; // Subheading
@@ -12,10 +19,7 @@ export default interface DryEyesContentInterface {
 //	Dry eye consultation
 	section_2: {
 		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string; //
 		descriptions: string[];
 		image: string;
 		large_image: string;
@@ -24,10 +28,7 @@ export default interface DryEyesContentInterface {
 	//
 	section_3: {
 		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
@@ -45,15 +46,12 @@ export default interface DryEyesContentInterface {
 		heading: string;
 		descriptions: string[];
 	},
-//	//	Children Astigmatism
-//	section_5: {
-//		subheading: string; // Subheading
-//		heading: { // Heading
-//			light_heading: string; // Light Heading
-//			bold_heading: string; // Bold Heading
-//		}
-//		descriptions: string[];
-//		image: ImageApiType;
-//		large_image: ImageApiType;
-//	},
+	patientReviews: {
+		heading: string;
+		reviews: Array<{
+			name: string;
+			review: string;
+			link: string;
+		}>
+	}
 }

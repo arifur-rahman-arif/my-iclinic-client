@@ -4,6 +4,7 @@ import { Section } from '@/components/Section';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type ImageType = {
     url: string;
@@ -38,6 +39,7 @@ export interface SideImageSectionInterface {
     largeImageClassName?: string;
     smallImageClassName?: string;
     sectionId?: string;
+    h2Class?: string;
 }
 
 /**
@@ -77,7 +79,7 @@ const SideImageSection = ({
     customColumn,
     textColumnImage,
     textColumnTopElements,
-    defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] md:gap-32',
+    defaultContainerClassName = 'grid grid-cols-1 items-center gap-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] md:gap-20 xl:gap-32',
     containerClassName,
     paragraphAnimation = false,
     textColumnDefaultClassName,
@@ -85,13 +87,19 @@ const SideImageSection = ({
     dynamicTextColumn,
     largeImageClassName,
     smallImageClassName,
-    sectionId
+    sectionId,
+    h2Class
 }: SideImageSectionInterface): JSX.Element => {
     const deviceSize = useDeviceSize();
 
     return (
         <Section className={`${sectionClass || ''}`} id={sectionId || ''}>
-            <Container className={`${defaultContainerClassName} ${containerClassName || ''}`}>
+            <Container
+                className={twMerge(
+                    defaultContainerClassName,
+                    `${containerClassName} ${positionReversed ? 'xl:grid-cols-[auto_1fr]' : 'xl:grid-cols-[1fr_auto]'}`
+                )}
+            >
                 {/* Text column */}
                 {dynamicTextColumn ? (
                     dynamicTextColumn
@@ -112,6 +120,7 @@ const SideImageSection = ({
                         paragraphAnimation={paragraphAnimation}
                         textColumnDefaultClassName={textColumnDefaultClassName}
                         textColumnClassName={textColumnClassName}
+                        h2Class={h2Class}
                     />
                 )}
 
@@ -130,7 +139,7 @@ const SideImageSection = ({
                                 width={sectionImage.width}
                                 height={sectionImage.height}
                                 quality={100}
-                                className={`md:hidden ${smallImageClassName} rounded-primary`}
+                                className={`md:hidden ${smallImageClassName} rounded-radius2`}
                                 alt={altText || ''}
                             />
                         )}
@@ -141,7 +150,10 @@ const SideImageSection = ({
                                 width={sectionImageDesktop.width}
                                 height={sectionImageDesktop.height}
                                 quality={100}
-                                className={`${largeImageClassName || 'hidden rounded-primary md:block'}`}
+                                className={twMerge(
+                                    'hidden h-full w-full rounded-radius2 object-cover md:block',
+                                    largeImageClassName
+                                )}
                                 alt={altText || ''}
                             />
                         )}

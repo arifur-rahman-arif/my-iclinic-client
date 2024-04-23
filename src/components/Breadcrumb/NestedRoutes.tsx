@@ -2,12 +2,12 @@ import { generateBreadcrumbs } from '@/utils/miscellaneous';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
 import { Fragment } from 'react';
-import { twMerge } from 'tailwind-merge';
 
 interface NestedRoutesProps {
     router: NextRouter;
     pathClassName?: string;
     linkClassName?: string;
+    activeLinkClass?: string;
 }
 
 /**
@@ -17,7 +17,7 @@ interface NestedRoutesProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProps): JSX.Element => {
+const NestedRoutes = ({ router, pathClassName, linkClassName, activeLinkClass }: NestedRoutesProps): JSX.Element => {
     const excludeUrls = [
         '/eye-treatments',
         '/vision-correction',
@@ -34,7 +34,7 @@ const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProp
                     {!excludeUrls.includes(path.url) && (
                         <div className="flex min-w-max items-center justify-start gap-2" key={index}>
                             <svg
-                                className="translate-y-[0.1rem] -translate-x-1"
+                                className="-translate-x-1 translate-y-[0.1rem]"
                                 width="20"
                                 height="20"
                                 viewBox="0 0 24 24"
@@ -61,12 +61,11 @@ const NestedRoutes = ({ router, pathClassName, linkClassName }: NestedRoutesProp
 
                             <Link href={!excludeUrls.includes(path.url) ? path.url : '/'} className="no-underline">
                                 <span
-                                    className={twMerge(
-                                        `whitespace-nowrap font-mulishBold text-[1.2rem] capitalize leading-[1.6rem] md:text-[1.5rem] ${
-                                            index == paths.length - 1 ? 'text-heading2' : 'text-[#697072]'
-                                        }`,
-                                        linkClassName
-                                    )}
+                                    className={`whitespace-nowrap font-mulishBold text-[1.2rem] uppercase leading-[1.6rem] md:text-[1.5rem] ${
+                                        index == paths.length - 1
+                                            ? activeLinkClass || 'text-heading2'
+                                            : linkClassName || 'text-[#697072]'
+                                    }`}
                                 >
                                     {path.url.includes('/articles/page') ? `Page ${path.name}` : path.name}
                                 </span>

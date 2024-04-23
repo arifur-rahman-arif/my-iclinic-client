@@ -1,13 +1,15 @@
 import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from '@/types';
 
 export default interface LazyEyesPageContentInterface {
+	masthead: {
+		title: string;
+		largeImage: ImageType3
+		smallImage: ImageType3
+	}
 	// Correct your vision Lazy eyes (amblyopia)
 	section_1: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light heading
-			bold_heading: string; // Bold heading
-		}
+		heading: string
 		descriptions: string[];
 		image: ImageApiType;
 		large_image: ImageApiType;
@@ -15,11 +17,7 @@ export default interface LazyEyesPageContentInterface {
 	},
 	// Amblyopia Diagnosis
 	section_2: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: ImageApiType;
 		large_image: ImageApiType;
@@ -28,11 +26,7 @@ export default interface LazyEyesPageContentInterface {
 	},
 	// Amblyopia Consultation
 	section_3: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: ImageApiType;
 		large_image: ImageApiType;
@@ -43,13 +37,13 @@ export default interface LazyEyesPageContentInterface {
 		heading: string
 		description: string
 	},
+	ctaSection: {
+		subtitle?: string;
+		title?: string;
+	}
 	//	Lazy Eye Treatment
 	section_5: {
-		subheading: string; // Subheading
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: ImageApiType;
 		large_image: ImageApiType;
@@ -62,4 +56,12 @@ export default interface LazyEyesPageContentInterface {
 		image: ImageApiType;
 		large_image: ImageApiType;
 	},
+	patientReviews: {
+		heading: string;
+		reviews: Array<{
+			name: string;
+			review: string;
+			link: string;
+		}>
+	}
 }

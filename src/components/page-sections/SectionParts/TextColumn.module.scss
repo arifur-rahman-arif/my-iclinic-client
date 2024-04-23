@@ -1,0 +1,19 @@
+.styles {
+    :global {
+        .description-box {
+            ul {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                margin-left: 3rem;
+                display: grid;
+                gap: 1.6rem;
+                list-style-image: url('/images/icons/icon-dotted-arrow.svg');
+
+                li {
+                    padding-left: 0.4rem; /* Add padding for bullet points */
+                    position: relative; /* Position for the bullet point */
+                }
+            }
+        }
+    }
+}

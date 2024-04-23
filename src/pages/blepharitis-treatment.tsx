@@ -2,27 +2,21 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
-import { LinkText } from '@/components/Link';
 import Page from '@/components/Page';
-import { normalSlideListBlepharitis } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import MastheadImageLarge from '@/masthead/masthead-blepharitis-large.png';
-import MastheadImageMedium from '@/masthead/masthead-blepharitis-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-blepharitis-small.png';
+import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { blepharitisFaqList } from '@/page-sections/Faq/faqList';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { blepharitisList } from '@/page-sections/SectionParts/stack-column/list';
-import FullWidthImage from '@/section-images/blepharitis.png';
 import { BlepharitisContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 import FullWidthImageSection from '@/components/page-sections/SideImageSection/FullWidthImageSection';
 import { SideImageSection } from '@/components/page-sections/SideImageSection';
 import StackColumn2 from '@/components/page-sections/SectionParts/stack-column/StackColumn2';
-import { Masthead } from '@/components/page-sections/Masthead';
 import { CtaSection2 } from '@/components/page-sections';
+import YagHero from '@/components/page-sections/Masthead/YagHero';
+import { Button2 } from '@/components/Buttons';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -33,7 +27,8 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
+
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -54,44 +49,67 @@ interface BlepharitisPageProps {
  * @returns {JSX.Element}
  */
 export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPageProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Blepharitis treatment in London';
-    const subheading = data?.masthead_subheading || 'London’s best treatment for Blepharitis symptoms';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     return (
-        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
+        <Page title="Blepharitis treatment in London" seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
 
-            <Masthead
-                imageMedium={data?.masthead_image?.image_medium.url || MastheadImageMedium}
-                imagePosition="2xl:object-[-40rem_center]"
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || 'From £350'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
+            <YagHero
+                {...data?.masthead}
+                subTitleClass="max-w-[49rem]"
+                titleClass="md:max-w-[60rem]"
+                className="xl:grid-cols-[auto_54rem_1fr]"
+                bannerClass="xl:pr-40"
+                ctaButton={
+                    <div className="flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-white hover:text-[#0099FF]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </div>
+                }
             />
 
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
 
             {/* SEction_1 */}
             <FullWidthImageSection
                 containerClass="pb-16 md:py-24"
-                boldHeading={
+                h3Title={
                     <>
                         {data?.section_1?.heading_1 || 'London’s best treatment for'}
                         <br /> {data?.section_1?.heading_2 || 'Blepharitis symptoms'}
                     </>
                 }
+                sectionClass="px-8 md:px-0 bg-brandLight"
+                titleClass="text-heading max-w-[57rem]"
+                descriptionClass="[&_*]:!text-[#404A4D] text-[#404A4D]"
                 altText=""
                 description={
                     (data?.section_1?.descriptions?.length &&
@@ -102,12 +120,26 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 }
                 image={data?.section_1?.image || '/images/section-images/blepharitis.png'}
                 desktopImage={data?.section_1?.large_image || '/images/section-images/blepharitis.png'}
+                textColumnExtraBottomElements={
+                    <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="hover:bg-brandLight">
+                            <Button2 type="button" text="Request a call back" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-[#003E79] hover:bg-brandLight md:px-20"
+                        />
+                    </div>
+                }
             />
+
             {/* SECTION 2 */}
             <SideImageSection
-                h2Heading={data?.section_2?.sub_heading || 'symptoms Relieve'}
-                h3LightHeading={data?.section_2.heading?.light_heading || 'Relieve your symptoms with'}
-                h3BoldHeading={data?.section_2.heading?.bold_heading || 'Treatment for Blepharitis'}
+                h3LightHeading={data?.section_2.heading || 'Relieve your symptoms with Treatment for Blepharitis'}
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
                 descriptions={
                     (data?.section_2?.descriptions?.length && data?.section_2?.descriptions) || [
                         `Blepharitis is a chronic condition involving the inflammation of your eyelids, leading them to become red and swollen.`,
@@ -126,13 +158,16 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                     height: 558
                 }}
                 positionReversed={true}
-                altText=""
+                textColumnExtras={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
             />
+
             {/* TREATMENTS FOR BLEPHARITIS */}
             <SideImageSection
-                h2Heading={data?.section_3?.sub_heading || 'treatments for blepharitis'}
-                h3LightHeading={data?.section_3?.heading?.light_heading || 'Managing your Blepharitis'}
-                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'with treatment'}
+                h3LightHeading={data?.section_3?.heading?.light_heading || 'Managing your Blepharitis with treatment'}
                 descriptions={
                     (data?.section_3?.descriptions?.length && data?.section_3?.descriptions) || [
                         `Although blepharitis is a chronic condition that needs constant management, we have the most successful treatments to help remission (lessen) your symptoms and relieve you of the stress and worry you might be experiencing with Blepharitis throughout your daily life.`,
@@ -149,15 +184,21 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                     width: 675,
                     height: 558
                 }}
-                altText=""
+                containerClassName="xl:!grid-cols-[1fr_auto]"
+                textColumnExtras={
+                    <Button2
+                        type="button"
+                        text="Consult a specialist"
+                        onClick={openFreshdeskChat}
+                        className="justify-self-start"
+                    />
+                }
             />
             {/* Section 4   WE CAN ALWAYS HELP */}
             <SideImageSection
-                h2Heading={data?.section_4?.sub_heading || 'we can always help'}
                 h3LightHeading={
-                    data?.section_4?.heading?.light_heading || 'Don’t suffer with your Blepharitis symptoms'
+                    data?.section_4?.heading || 'Don’t suffer with your Blepharitis symptoms we can always help!'
                 }
-                h3BoldHeading={data?.section_4?.heading?.bold_heading || 'we can always help!'}
                 descriptions={
                     (data?.section_4?.descriptions?.length && data?.section_4?.descriptions) || [
                         `Whether you have mild or growing symptoms of blepharitis our specialist can treat your symptoms.`,
@@ -166,33 +207,16 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                 }
                 customColumn={
                     <StackColumn2
+                        className="rounded-radius2 border border-solid border-[#EAECF0] p-8 sm:p-12 md:p-24"
                         list={(data?.section_4?.list.length && (data?.section_4?.list as any)) || blepharitisList}
                     />
                 }
             />
             {/* Book with our Blepharitis specialist Section 5  */}
-            <CtaSection2
-                title={data?.section_5?.title || 'Book with our Blepharitis specialist'}
-                image={data?.section_5?.image}
-            />
-
-            {/* <LazyComponent>
-                <FeaturedPatient
-                    h2Title="Life style improvement"
-                    h3Title="Life after Blepharitis treatment & management"
-                    bandImageDescription={[
-                        `When you choose My iClinic, one of our dedicated specialists will offer you expert advice on managing blepharitis so that you can live life free of irritation and discomfort.`,
-                        'We will be committed to working with you to find the best treatment for blepharitis to solve your unique situation.'
-                    ]}
-                    bandImageTitle="Patient Name"
-                    bandImageURL="/images/section-images/placeholder-image.png"
-                    reviewTitle="5 star Blepharitis clinic in London"
-                    sliders={blepharitisSliders}
-                />
-            </LazyComponent> */}
+            <CtaSection2 {...data?.section_5} />
 
             <LazyComponent>
-                <NormalSlideSection sliderList={normalSlideListBlepharitis} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -229,6 +253,16 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        title: stripInitialTags(data?.acf?.masthead?.title || ''),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     // Dry eye syndrome symptoms
                     section_1: {
                         ...data?.acf?.section_1,
@@ -236,27 +270,42 @@ export async function getStaticProps() {
                     }, // SYMPTOMS RELIEVE
                     section_2: {
                         ...data?.acf?.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     }, // TREATMENTS FOR BLEPHARITIS
                     section_3: {
                         ...data?.acf?.section_3,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_4: {
                         ...data?.acf?.section_4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
                         list: Array.isArray(data?.acf?.section_4?.list)
                             ? data?.acf.section_4?.list.map((item) => {
                                   return {
                                       ...item,
-                                      description: convertArrayOfObjectsToStrings(item.descriptions)
+                                      description: convertArrayOfObjectsToStrings(item.descriptions).map((item) =>
+                                          stripInitialTags(item)
+                                      )
                                   };
                               })
                             : []
                     },
                     section_5: {
                         ...data?.acf?.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions),
+                        image: {
+                            ...(data?.acf?.section_5?.image && formatImage(data.acf?.section_5?.image))
+                        }
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     }
                 }
             },

@@ -72,7 +72,7 @@ const StackSlider = ({ sliderList, noImages }: StackSliderInterface): JSX.Elemen
             className={`${styles.style} ${styles.fadeIn} ${
                 noImages ? styles.stackSliderNoImage : styles.stackSlider
             } -mt-12 flex w-full md:mt-0  md:!overflow-visible  ${
-                noImages ? 'md:max-w-[70rem]' : 'md:max-w-[80rem] xl:max-w-[110rem]'
+                noImages ? 'md:max-w-[75rem] xl:max-w-[120rem]' : 'md:max-w-[80rem] xl:max-w-[110rem]'
             }`}
             ref={swiperRef}
             onScroll={(swiper) => {

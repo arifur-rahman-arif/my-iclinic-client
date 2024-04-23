@@ -7,7 +7,6 @@ import { ReactNode } from 'react';
 
 interface StackedSection2Interface {
     h3LightHeading: ReactNode;
-    h3BoldHeading: ReactNode;
     descriptions?: ReactNode[];
     defaultContainerClassName?: string;
     containerClassName?: string;
@@ -28,7 +27,6 @@ interface StackedSection2Interface {
  */
 const StackedSection2 = ({
     h3LightHeading,
-    h3BoldHeading,
     descriptions,
     defaultContainerClassName,
     containerClassName,
@@ -37,7 +35,7 @@ const StackedSection2 = ({
     return (
         <Section>
             <Container className={`${defaultContainerClassName} ${containerClassName}`}>
-                <TextColumn h3BoldHeading={h3BoldHeading} descriptions={descriptions} h3LightHeading={h3LightHeading} />
+                <TextColumn descriptions={descriptions} h3LightHeading={h3LightHeading} />
 
                 <div className="mt-12 grid gap-12 md:mt-24 md:gap-24">
                     {((stackList?.length && stackList) || myopiaStackList).map((item, index) => (

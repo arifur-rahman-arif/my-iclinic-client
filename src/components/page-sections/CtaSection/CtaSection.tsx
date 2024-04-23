@@ -20,33 +20,14 @@ interface CtaSectionInterface {
  *
  * @returns {*}  {JSX.Element}
  */
-const CtaSection = ({
-    subtitle,
-    title,
-    buttonClassName,
-    description,
-    sectionClassName
-}: CtaSectionInterface): JSX.Element => {
-    // const bgOverlayElement = useRef<HTMLDivElement | null>(null);
-    // const deviceSize = useDeviceSize();
-    // const containerElement = useRef<HTMLDivElement | null>(null);
-    // const { onEnter } = useOnScreen({ ref: containerElement, triggerPosition: '80%' });
-    // useEffect(() => {
-    //     bgOverlayElement.current &&
-    //         onEnter &&
-    //         gsap.to(bgOverlayElement.current, {
-    //             width: '100%',
-    //             duration: 4
-    //         });
-    // }, [deviceSize, onEnter]);
-
+const CtaSection = ({ subtitle, title, buttonClassName, sectionClassName }: CtaSectionInterface): JSX.Element => {
     return (
         <Section className={twMerge('relative bg-[#003E79] py-12 md:py-24', sectionClassName)}>
             <Container className="grid place-items-center content-center gap-4">
                 {/* Grid item 1 */}
                 <Image src={iconHeadphone} alt="" />
                 <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">{subtitle}</span>
-                <h2 className="font-latoExtraBold normal-case text-white md:text-[4.8rem] md:leading-[4.8rem]">
+                <h2 className="text-center font-latoExtraBold lowercase text-white first-letter:uppercase md:text-[4.8rem] md:leading-[4.8rem]">
                     {title}
                 </h2>
 
@@ -84,46 +65,46 @@ const CtaSection = ({
                         )}
                     >
                         <button className="" aria-label="Book a consultation">
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]"
-                                />
-                                <path
-                                    d="M13.334 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]"
-                                />
-                                <path
-                                    d="M6.66602 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]"
-                                />
-                                <path
-                                    d="M2.5 8.33301H17.5"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]"
-                                />
-                            </svg>
+                            {/* <svg */}
+                            {/*     width="20" */}
+                            {/*     height="20" */}
+                            {/*     viewBox="0 0 20 20" */}
+                            {/*     fill="none" */}
+                            {/*     xmlns="http://www.w3.org/2000/svg" */}
+                            {/* > */}
+                            {/*     <path */}
+                            {/*         d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z" */}
+                            {/*         stroke="white" */}
+                            {/*         strokeWidth="2" */}
+                            {/*         strokeLinecap="round" */}
+                            {/*         strokeLinejoin="round" */}
+                            {/*         className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]" */}
+                            {/*     /> */}
+                            {/*     <path */}
+                            {/*         d="M13.334 1.66699V5.00033" */}
+                            {/*         stroke="white" */}
+                            {/*         strokeWidth="2" */}
+                            {/*         strokeLinecap="round" */}
+                            {/*         strokeLinejoin="round" */}
+                            {/*         className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]" */}
+                            {/*     /> */}
+                            {/*     <path */}
+                            {/*         d="M6.66602 1.66699V5.00033" */}
+                            {/*         stroke="white" */}
+                            {/*         strokeWidth="2" */}
+                            {/*         strokeLinecap="round" */}
+                            {/*         strokeLinejoin="round" */}
+                            {/*         className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]" */}
+                            {/*     /> */}
+                            {/*     <path */}
+                            {/*         d="M2.5 8.33301H17.5" */}
+                            {/*         stroke="white" */}
+                            {/*         strokeWidth="2" */}
+                            {/*         strokeLinecap="round" */}
+                            {/*         strokeLinejoin="round" */}
+                            {/*         className="transition-all duration-500 group-hover/consultation:stroke-[#0099FF]" */}
+                            {/*     /> */}
+                            {/* </svg> */}
 
                             <span
                                 className={`font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-[#0099FF]`}

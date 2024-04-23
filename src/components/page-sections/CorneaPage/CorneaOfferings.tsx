@@ -1,24 +1,24 @@
-import { FadeIn } from '@/components/Animations';
 import { Container } from '@/components/Container';
-import { H3Variant3 } from '@/components/Headings';
 import { Section } from '@/components/Section';
+import SectionTextColumn from '@/components/SectionTextColumn';
 import { ImageType } from '@/types';
 import Image from 'next/image';
+import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface CorneaOfferingsProps {
     heading: string;
-    descriptiveLabel?: string;
     image: ImageType;
     descriptions: string[];
-    ctaButton: JSX.Element;
+    descriptionContainerClassName?: string;
     reversed?: boolean;
+    textColumnFooter?: ReactNode;
 }
 
 /**
  * Cornea offering components
  *
  * @param {string} heading
- * @param {string | undefined} descriptiveLabel
  * @param {ImageType} image
  * @param {string[]} descriptions
  * @param {JSX.Element} ctaButton
@@ -28,35 +28,34 @@ interface CorneaOfferingsProps {
  */
 const CorneaOfferings = ({
     heading,
-    descriptiveLabel,
     image,
     descriptions,
-    ctaButton,
+    descriptionContainerClassName,
+    textColumnFooter,
     reversed
 }: CorneaOfferingsProps): JSX.Element => {
     return (
         <Section>
-            <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32">
-                <Image {...image} alt={heading} className={`${reversed && 'order-2'} rounded-radius2`} />
+            <Container
+                className={`grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 xl:gap-28 ${
+                    reversed ? 'xl:grid-cols-[auto_1fr]' : ' xl:grid-cols-[1fr_auto]'
+                }`}
+            >
+                <Image
+                    {...image}
+                    alt={heading}
+                    className={`${reversed && 'order-2'} h-full w-full rounded-radius2 object-cover `}
+                    quality={100}
+                    unoptimized
+                />
 
-                <div className="grid gap-6">
-                    <H3Variant3>
-                        {heading}{' '}
-                        {descriptiveLabel && (
-                            <span className="-translate-y-[-0.3rem] text-[1.8rem] leading-[2.8rem]">
-                                ({descriptiveLabel})
-                            </span>
-                        )}
-                    </H3Variant3>
-
-                    {descriptions?.map((description, index) => (
-                        <FadeIn key={index}>
-                            <p dangerouslySetInnerHTML={{ __html: description }}></p>
-                        </FadeIn>
-                    ))}
-
-                    <div className="mt-6">{ctaButton}</div>
-                </div>
+                <SectionTextColumn
+                    className="max-w-[50rem]"
+                    heading={heading}
+                    descriptions={descriptions}
+                    descriptionContainerClassName={twMerge('[&_strong]:text-heading', descriptionContainerClassName)}
+                    textColumnFooter={textColumnFooter}
+                />
             </Container>
         </Section>
     );

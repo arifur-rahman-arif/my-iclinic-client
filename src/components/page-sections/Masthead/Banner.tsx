@@ -15,6 +15,7 @@ interface BannerInterface extends Omit<MastheadInterface, 'imageSmall' | 'imageM
     breadcrumbClassName?: string;
     breadcrumbLinkClassName?: string;
     breadcrumbIconClassName?: string;
+    activeLinkClass?: string;
     excludePinImage?: boolean;
 }
 
@@ -40,6 +41,7 @@ const Banner = ({
     breadcrumbClassName,
     breadcrumbLinkClassName,
     breadcrumbIconClassName,
+    activeLinkClass,
     excludePinImage
 }: BannerInterface): JSX.Element => {
     const priceRef = useRef<HTMLSpanElement | null>(null);
@@ -67,6 +69,7 @@ const Banner = ({
             <BreadCrumb
                 linkClassName={breadcrumbLinkClassName}
                 className={twMerge('hidden md:col-span-full md:!flex', breadcrumbClassName)}
+                activeLinkClass={activeLinkClass}
                 pathClassName={breadcrumbIconClassName}
             />
 
@@ -146,7 +149,7 @@ const Banner = ({
                         className={`block h-full w-2 bg-heading2 ${priceTextExtra ? 'row-span-2' : 'row-span-1'}`}
                     ></span>
                     <span
-                        className="w-0 font-latoBold text-[1.8rem] uppercase leading-[2.4rem] text-heading2 line-clamp-2 xs:whitespace-nowrap md:text-[2.4rem] md:leading-[2.4rem]"
+                        className="line-clamp-2 w-0 font-latoBold text-[1.8rem] uppercase leading-[2.4rem] text-heading2 xs:whitespace-nowrap md:text-[2.4rem] md:leading-[2.4rem]"
                         ref={priceRef}
                     >
                         {priceText || '£2,400 per eye'}
@@ -156,7 +159,7 @@ const Banner = ({
             )}
             {/* Banner list */}
             {list && (
-                <div className="grid grid-cols-2 gap-y-2 gap-x-12">
+                <div className="grid grid-cols-2 gap-x-12 gap-y-2">
                     {list.map((item, index) => (
                         <div className="flex items-center justify-start gap-4" key={index}>
                             <Image src={IconCheck} alt="" />

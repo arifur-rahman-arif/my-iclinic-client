@@ -1,23 +1,18 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
-import H3Variant3 from '@/components/Headings/H3Variant3';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import IconAngleBlue from '@/icons/icon-angle-right-blue.svg';
-import IconAngle from '@/icons/icon-angle-right.svg';
+import YagHero from '@/components/page-sections/Masthead/YagHero';
 import { getLatestPosts, getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-myopia-large.png';
-import MastheadImageMedium from '@/masthead/masthead-myopia-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-myopia-small.png';
 import { myopiaFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListMyopia } from '@/page-sections/ImageGallery';
 import {
+    BookConsultation,
     CoverFlowSliderSection,
+    CtaSection,
     CtaSection2,
-    FullWidthImageSection,
     ImageGallery,
-    Masthead,
     MyopiaControl,
     OnScreenSliderSection,
     SideImageSection
@@ -26,11 +21,10 @@ import BulletList from '@/page-sections/SectionParts/BulletList';
 import { StackedSection2 } from '@/page-sections/StackedSection';
 import { MyopiaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from 'src/components/Buttons';
+import { Button2 } from 'src/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -41,10 +35,10 @@ const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyL
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
+
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
-const ClientButton = dynamic(() => import('src/components/Buttons/Button'), { ssr: false });
 
 interface DataInterface extends MyopiaPageContentProps, PageDataInterface<MyopiaPageContentProps> {}
 
@@ -64,11 +58,6 @@ interface PaediatricEyeCareProps {
  * @returns {JSX.Element}
  */
 export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEyeCareProps): JSX.Element {
-    const heading = data?.masthead_heading || 'Myopia Mitigation Clinic for Children London';
-    const subheading =
-        data?.masthead_subheading ||
-        'Manage your child’s short sightedness with our Myopia treatment & management clinic';
-
     return (
         <Page
             title="Myopia Treatment In London"
@@ -78,22 +67,15 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                altText={data?.masthead_image?.image_large?.alt}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || <></>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-                bannerWidth="max-w-[73rem]"
+            <YagHero
+                {...data?.masthead}
+                className="xl:grid-cols-[auto_58rem_1fr]"
+                subTitleClass="max-w-[49rem]"
+                titleClass="md:max-w-[69rem]"
             />
 
             <SideImageSection
-                h3LightHeading={data?.section_1?.heading?.light_heading || 'What is'}
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Myopia?'}
+                h3LightHeading={data?.section_1?.heading || 'What is myopia'}
                 descriptions={
                     (data?.section_1?.descriptions.length &&
                         stringArrayToElementArray(data?.section_1?.descriptions)) || [
@@ -116,8 +98,8 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             />
 
             <SideImageSection
-                h3LightHeading={data?.section_2?.heading?.light_heading || 'Myopia'}
-                h3BoldHeading={data?.section_2?.heading?.bold_heading || 'Lifestyle?'}
+                h3LightHeading={data?.section_2?.heading || 'Myopia lifestyle'}
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
                 descriptions={
                     (data?.section_2?.descriptions.length &&
                         stringArrayToElementArray(data?.section_2.descriptions)) || [
@@ -139,12 +121,16 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 }}
                 altText={data?.section_2?.large_image?.alt}
                 positionReversed
+                textColumnExtras={
+                    <BookConsultation buttonClassName="justify-self-start -mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
             />
 
             <SideImageSection
                 sectionId="research"
-                h3LightHeading={data?.section_3?.heading?.light_heading || 'Myopia'}
-                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'Research?'}
+                h3LightHeading={data?.section_3?.heading || 'Myopia research'}
                 descriptions={
                     (data?.section_3?.descriptions.length &&
                         stringArrayToElementArray(data?.section_3.descriptions)) || [
@@ -164,6 +150,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     width: 630,
                     height: 370
                 }}
+                largeImageClassName="border border-solid rounded-radius2 border-[#EAECF0] h-full w-full"
                 altText={data?.section_3?.large_image?.alt}
             />
 
@@ -171,8 +158,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
 
             <SideImageSection
                 containerClassName="md:!grid-cols-[auto_1fr]"
-                h3LightHeading={data?.section_4?.heading?.light_heading || 'Myopia'}
-                h3BoldHeading={data?.section_4?.heading?.bold_heading || 'Treatments?'}
+                h3LightHeading={data?.section_4?.heading || 'Myopia treatments?'}
                 descriptions={
                     (data?.section_4?.descriptions.length &&
                         stringArrayToElementArray(data?.section_4.descriptions)) || [
@@ -188,6 +174,28 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         </strong>
                     ]
                 }
+                textColumnExtras={
+                    <div className="grid max-w-[45.3rem] content-start gap-6">
+                        <span className="h-[1.4rem] w-[6.7rem] rounded-primary bg-[#FF7F00]"></span>
+                        {data?.section_4?.extraDescriptions?.length
+                            ? data?.section_4?.extraDescriptions.map((item, key) => (
+                                  <span className="text-balance font-mulishBold text-heading" key={key}>
+                                      {item}
+                                  </span>
+                              ))
+                            : null}
+
+                        <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-[#893277]">
+                            {data?.section_4?.priceText}
+                        </span>
+                        <Button2
+                            type="anchor"
+                            link="/myopia/price"
+                            text="Myopia control price"
+                            className="justify-self-start"
+                        />
+                    </div>
+                }
                 sectionImage={{
                     url: data?.section_4?.image?.url || '/images/section-images/myopia-treatments.png',
                     width: 390,
@@ -199,60 +207,57 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     height: 411
                 }}
                 altText={data?.section_4?.large_image?.alt}
+                largeImageClassName="h-full"
             />
 
-            <div className="bg-brandLight pb-12 md:pb-24">
-                <SideImageSection
-                    containerClassName="md:!grid-cols-[auto_1fr] pt-12 md:pt-24"
-                    normalLightHeading={<strong>{data?.section_5?.heading || "Mitigating your child's myopia"}</strong>}
-                    descriptions={
-                        (data?.section_5?.descriptions.length &&
-                            stringArrayToElementArray(data?.section_5.descriptions)) || [
-                            'Our Myopia mitigation and control clinic is a program of treatment that reduces the rate of growth of the eye and stops it getting too long.',
-                            "By 2050 the World Health Organization predicts that 50% of our world's population will be suffering from Myopia.",
-                            'We are here to create a positive impact and help reduce this predicted number by providing accessible Atropine treatment and expert medical advice for your child.'
-                        ]
-                    }
-                    sectionImage={{
-                        url: data?.section_5?.image?.url || '/images/section-images/mitigating-myopia.png',
-                        width: 390,
-                        height: 390
-                    }}
-                    sectionImageDesktop={{
-                        url: data?.section_5?.large_image?.url || '/images/section-images/mitigating-myopia-large.png',
-                        width: 628,
-                        height: 343
-                    }}
-                    altText={data?.section_5?.large_image?.alt}
-                    positionReversed
-                />
+            <SideImageSection
+                containerClassName="md:!grid-cols-[auto_1fr]"
+                h3LightHeading={data?.section_5?.heading || "Mitigating your child's myopia"}
+                descriptions={
+                    (data?.section_5?.descriptions.length &&
+                        stringArrayToElementArray(data?.section_5.descriptions)) || [
+                        'Our Myopia mitigation and control clinic is a program of treatment that reduces the rate of growth of the eye and stops it getting too long.',
+                        "By 2050 the World Health Organization predicts that 50% of our world's population will be suffering from Myopia.",
+                        'We are here to create a positive impact and help reduce this predicted number by providing accessible Atropine treatment and expert medical advice for your child.'
+                    ]
+                }
+                sectionImage={{
+                    url: data?.section_5?.image?.url || '/images/section-images/mitigating-myopia.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_5?.large_image?.url || '/images/section-images/mitigating-myopia-large.png',
+                    width: 628,
+                    height: 343
+                }}
+                altText={data?.section_5?.large_image?.alt}
+                positionReversed
+                textColumnExtras={
+                    <div className="grid max-w-[45.3rem] content-start gap-6">
+                        <span className="font-mulishBold text-[1.8rem] leading-[2.8rem] text-heading">
+                            {data?.section_5?.consultationText}
+                        </span>
+                        <BookConsultation>
+                            <Button2 type="button" text="Book a consultation" className="justify-self-start" />
+                        </BookConsultation>
+                    </div>
+                }
+            />
 
-                <ImageGallery
-                    sectionClassName="lg:!mt-36"
-                    galleryList={data?.section_6 || galleryListMyopia}
-                    dynamicHeading={
-                        <Container className="mb-12 grid !max-w-[106.2rem] gap-12 md:mb-24">
-                            <H3Variant3 className="!uppercase">Changing our indoor lifestyles</H3Variant3>
-                            <Image
-                                src="/images/icons/icon-pin-dark-horizontal-extra-large.svg"
-                                alt=""
-                                width={318}
-                                height={2}
-                            />
-                        </Container>
-                    }
-                />
-            </div>
+            <ImageGallery
+                sectionClassName="bg-[#003E79] py-12 md:py-24 xl:py-32"
+                galleryList={data?.section_6 || galleryListMyopia}
+                dynamicHeading={
+                    <Container className="mb-12 grid !max-w-[106.2rem] gap-12 md:mb-24">
+                        <h2 className="text-center normal-case text-white">Changing our indoor lifestyles</h2>
+                    </Container>
+                }
+            />
 
             <SideImageSection
                 containerClassName="md:!grid-cols-1 md:!gap-12"
-                h3LightHeading={
-                    <>
-                        {data?.section_7?.heading?.light_heading || 'Treatment options'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_7?.heading?.bold_heading || 'for Myopia Control'}
+                h3LightHeading={data?.section_7?.heading || 'Treatment options for Myopia Control'}
                 descriptions={
                     (data?.section_7?.descriptions.length &&
                         stringArrayToElementArray(data?.section_7.descriptions)) || [
@@ -261,24 +266,20 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                         </strong>
                     ]
                 }
-                // customColumn={<MyopiaControl cardList={data?.section_7?.card_list} />}
                 customColumn={<MyopiaControl cardList={data?.section_7?.card_list} />}
             />
 
             <SideImageSection
-                h2Heading={data?.section_8?.subheading || 'Other Treatments options'}
                 h3LightHeading={
-                    <>
-                        {data?.section_8.heading?.light_heading || 'Other treatments your'}
-                        <br />
-                    </>
+                    data?.section_8.heading?.light_heading || 'Other treatments your opticians can help with'
                 }
-                h3BoldHeading={data?.section_8.heading?.bold_heading || 'opticians can help with'}
+                containerClassName="xl:!grid-cols-[1fr_auto]"
                 descriptions={[
                     <>
                         <BulletList
-                            className="!ml-0"
-                            listClassName="!gap-8"
+                            className="!ml-0 content-start"
+                            listClassName="!gap-6 content-start"
+                            bulletClass="h-9 w-9 -mt-1"
                             list={
                                 (data?.section_8.list.length && stringArrayToElementArray(data.section_8.list)) || [
                                     <div className="grid gap-6">
@@ -300,7 +301,13 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                                 ]
                             }
                             bulletPoint={
-                                <Image src={IconAngle} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.7rem]" />
+                                <Image
+                                    src="/images/icons/icon-dotted-arrow-blue.svg"
+                                    alt=""
+                                    width={20}
+                                    height={20}
+                                    className="h-8 w-9 translate-y-1"
+                                />
                             }
                         />
                     </>
@@ -313,18 +320,28 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 sectionImageDesktop={{
                     url:
                         data?.section_8?.large_image?.url || '/images/section-images/myopia-other-treatments-large.png',
-                    width: 637,
-                    height: 401
+                    width: 719,
+                    height: 498
                 }}
+                largeImageClassName="w-full h-full object-cover rounded-radius2"
                 altText={data?.section_8?.large_image?.alt}
+                textColumnExtras={
+                    <Button2
+                        type="button"
+                        text="Speak to an expert"
+                        onClick={openFreshdeskChat}
+                        className="-mt-6 justify-self-start"
+                    />
+                }
             />
 
             <SideImageSection
                 positionReversed
-                normalLightHeading={
+                h3LightHeading={
                     data?.section_9?.heading ||
                     'Have you noticed that your child has an existing or emerging eye condition?'
                 }
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
                 descriptions={
                     (data?.section_9?.descriptions.length &&
                         stringArrayToElementArray(data?.section_9.descriptions)) || [
@@ -348,188 +365,80 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     height: 521
                 }}
                 altText={data?.section_9?.large_image?.alt}
+                textColumnExtras={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
             />
 
-            <CtaSection2
-                title={data?.section_10?.heading?.light_heading + ' ' + data?.section_10?.heading?.bold_heading}
-                descriptions={
-                    (data?.section_10?.descriptions.length &&
-                        stringArrayToElementArray(data?.section_10.descriptions)) || [
-                        'We offer a comprehensive consultation with a Myopia specialist who will examine your child’s eyes and  present the best treatment options.'
-                    ]
-                }
-                image={{
-                    url: data?.section_10?.image?.url || '/images/section-images/myopia-cta.png',
-                    width: 431,
-                    height: 360
-                }}
-            />
+            <CtaSection {...data?.ctaSection} />
 
             <StackedSection2
-                h3LightHeading={
-                    <>
-                        {data?.section_11?.heading?.light_heading || 'What do children'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_11?.heading?.bold_heading || 'with Myopia experience?'}
+                h3LightHeading={data?.section_11?.heading || 'What do children with Myopia experience?'}
                 stackList={data?.section_11?.stack_list as unknown as any}
-            />
-
-            <FullWidthImageSection
-                boldHeading={
-                    <div className="md:max-w-[54.4rem]">
-                        {HTMLReactParser(data?.section_12?.heading || 'Booking your child’s Myopia consultation')}{' '}
-                    </div>
-                }
-                description={
-                    (data?.section_12.descriptions?.length && [
-                        ...stringArrayToElementArray(data?.section_12.descriptions),
-                        <div className="mt-12 grid md:mt-12">
-                            <ClientButton
-                                type="anchor"
-                                link="/pdf/myopia.pdf"
-                                text="Download"
-                                // @ts-ignore
-                                download={true}
-                                // @ts-ignore
-                                iconPosition="left"
-                                icon={
-                                    <svg
-                                        width="25"
-                                        height="24"
-                                        viewBox="0 0 25 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <g clipPath="url(#clip0_2401_5839)">
-                                            <path
-                                                d="M8.10181 17L12.1018 21L16.1018 17"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                            <path
-                                                d="M12.1018 12V21"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                            <path
-                                                d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_2401_5839">
-                                                <rect
-                                                    width="24"
-                                                    height="24"
-                                                    fill="white"
-                                                    transform="translate(0.101807)"
-                                                />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                }
-                                className="group/download justify-self-center"
-                            />
-                        </div>
-                    ]) || [
-                        "If you think your child is ready for Myopia treatment, we can help. With our Atropine eye drops we can slow down the progression of your Myopia and manage your Atropine treatment to check the effectiveness and benefits for your child's future vision.",
-                        <span className="block max-w-[40.8rem] font-mulishLight text-[2rem] leading-[2.8rem]">
-                            Do you want a friendly information pack for your child to understand Myopia?
-                        </span>,
-                        <span className="mx-auto block max-w-[34.5rem] text-center font-mulishBold text-[2rem] leading-[2.8rem] md:mt-12">
-                            Download our Children friendly Myopia pack.
-                        </span>,
-                        <div className="mt-12 grid md:mt-12">
-                            <Button
-                                type="anchor"
-                                link="/pdf/myopia.pdf"
-                                text="Download"
-                                // @ts-ignore
-                                download={true}
-                                // @ts-ignore
-                                target="_blank"
-                                iconPosition="left"
-                                icon={
-                                    <svg
-                                        width="25"
-                                        height="24"
-                                        viewBox="0 0 25 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <g clipPath="url(#clip0_2401_5839)">
-                                            <path
-                                                d="M8.10181 17L12.1018 21L16.1018 17"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                            <path
-                                                d="M12.1018 12V21"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                            <path
-                                                d="M20.9817 18.0899C21.8511 17.4786 22.5031 16.6061 22.843 15.5991C23.1829 14.5921 23.1931 13.503 22.8721 12.4898C22.5511 11.4766 21.9156 10.592 21.0578 9.96449C20.2 9.33697 19.1646 8.9991 18.1017 8.99993H16.8417C16.541 7.82781 15.9782 6.73918 15.1959 5.81601C14.4135 4.89285 13.4319 4.15919 12.3249 3.67029C11.218 3.18138 10.0146 2.94996 8.80527 2.99345C7.59595 3.03694 6.41225 3.3542 5.34329 3.92136C4.27433 4.48851 3.34796 5.29078 2.63393 6.26776C1.91989 7.24474 1.43679 8.37098 1.221 9.56168C1.00521 10.7524 1.06235 11.9765 1.38812 13.142C1.71389 14.3074 2.2998 15.3837 3.10174 16.2899"
-                                                stroke="#fff"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="transition-all duration-500 group-hover/download:stroke-heading2"
-                                            />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_2401_5839">
-                                                <rect
-                                                    width="24"
-                                                    height="24"
-                                                    fill="white"
-                                                    transform="translate(0.101807)"
-                                                />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                }
-                                className="group/download justify-self-center"
-                            />
-                        </div>
-                    ]
-                }
-                image={data?.section_12?.image?.url || '/images/section-images/myopia-consultation.png'}
-                desktopImage={
-                    data?.section_12?.large_image?.url || '/images/section-images/myopia-consultation-large.png'
-                }
-                altText={data?.section_12?.large_image?.alt}
-                containerClass="pb-16 md:!py-0"
-                largeImageClassName="!rounded-none"
             />
 
             <SideImageSection
                 positionReversed
-                h3LightHeading={
-                    <>
-                        {data?.section_13?.heading?.light_heading || 'Are you above the age of 21'}
-                        <br />
-                    </>
+                h3LightHeading={data?.section_12?.heading || 'Booking your child’s Myopia consultation'}
+                descriptions={data?.section_12?.descriptions}
+                sectionImage={{
+                    url: data?.section_12?.image?.url || '/images/section-images/myopia-consultation.png',
+                    width: 390,
+                    height: 390
+                }}
+                sectionImageDesktop={{
+                    url: data?.section_12?.large_image?.url || '/images/section-images/myopia-consultation-large.png',
+                    width: 688,
+                    height: 521
+                }}
+                altText={data?.section_12?.large_image?.alt}
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
+                textColumnExtras={
+                    <div className="-mt-6 flex flex-wrap items-center justify-start gap-6">
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-start"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#003E79]"
+                                    />
+                                </svg>
+                            }
+                            iconPosition="left"
+                        />
+
+                        <Button2
+                            type="anchor"
+                            link="/pdf/myopia.pdf"
+                            text="Download the pack"
+                            // @ts-ignore
+                            download={true}
+                            // @ts-ignore
+                            target="_blank"
+                            className="group/download justify-self-center bg-transparent text-[#003E79]"
+                        />
+                    </div>
                 }
-                h3BoldHeading={data?.section_13?.heading?.bold_heading || 'and experiencing Myopia?'}
+            />
+
+            <SideImageSection
+                h3LightHeading={data?.section_13?.heading || 'Are you above the age of 21 and experiencing Myopia?'}
                 descriptions={
                     (data?.section_13.descriptions?.length && data?.section_13.descriptions) || [
                         'Fortunately, there are many amazing ways we can correct short sightedness in adults.',
@@ -550,30 +459,17 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 altText={data?.section_13?.large_image?.alt}
                 textColumnExtras={
                     <BulletList
-                        className="md:!ml-16"
-                        listClassName="!gap-8"
-                        listItemClassName="text-blue text-[2rem] leading-[2.8rem]"
-                        bold
-                        list={
-                            (data?.section_13.list.length && stringArrayToElementArray(data.section_13.list)) || [
-                                <Link href="/lasek-prk" className="">
-                                    <strong className="text-[2rem] leading-[2.8rem] text-blue">
-                                        Laser eye surgery
-                                    </strong>
-                                    <p className="text-blue">(ReLEX SMILE, LASIK, LASEK & PRK)</p>
-                                </Link>,
-                                <Link href="/cataract/premium-lenses" className="">
-                                    <strong className="text-[2rem] leading-[2.8rem] text-blue">
-                                        Refractive lens exchange
-                                    </strong>
-                                </Link>,
-                                <Link href="/icl" className="font-mulishBold text-[2rem] leading-[2.8rem] text-blue">
-                                    Implantable Contact Lenses
-                                </Link>
-                            ]
-                        }
+                        listClassName="!gap-4"
+                        listItemClassName="[&_a]:text-blue [&_a]:font-mulishBold text-[1.6rem] leading-[2.4rem] whitespace-pre-line"
+                        list={data.section_13.list}
                         bulletPoint={
-                            <Image src={IconAngleBlue} alt="" className="h-[1.5rem] w-[1.3rem] translate-y-[0.8rem]" />
+                            <Image
+                                src="/images/icons/icon-bullet-point-blue.svg"
+                                width={20}
+                                height={16}
+                                alt=""
+                                className="h-8 w-9 translate-y-1"
+                            />
                         }
                     />
                 }
@@ -582,26 +478,16 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             <CtaSection2
                 title={data?.section_14?.heading || 'If you are an adult suffering from short sightedness'}
                 image={data?.section_14?.image}
+                subTitle={data?.section_14?.subtitle}
             />
 
             <SideImageSection
-                normalLightHeading={
-                    <div className="flex items-center justify-start gap-12">
-                        <strong>{data?.section_15?.heading || 'Plano 2025'}</strong>
-                        <Image
-                            src={data?.section_15?.heading_image || '/images/section-images/plano-2025-animation.gif'}
-                            alt="Plano 2025"
-                            width={78}
-                            height={76}
-                            quality={100}
-                        />
-                    </div>
-                }
+                h3LightHeading={data?.section_15?.heading || 'Plano 2025'}
                 midExtras={
-                    <H3Variant3 className="max-w-[47.8rem]">
+                    <p className="max-w-[47.8rem] text-balance font-mulishBold uppercase text-[#893277]">
                         {data?.section_15?.subheading ||
                             'By 2050, 4.9 billion people will be myopic, most of whom have not yet been born.'}
-                    </H3Variant3>
+                    </p>
                 }
                 descriptions={
                     (data?.section_15.descriptions?.length &&
@@ -625,7 +511,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     height: 526
                 }}
                 altText={data?.section_15?.large_image?.alt}
-                imageYPosition="bottom"
+                largeImageClassName="h-full object-cover rounded-primary"
             />
 
             <CoverFlowSliderSection sliderList={data?.section_16} />
@@ -649,7 +535,7 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -673,18 +559,30 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<MyopiaPageContentProps> = await getPageData({ slug: 'myopia' });
         const blogPosts = await getLatestPosts();
+
         return {
             /* eslint-disable */
             props: {
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     section_1: {
                         ...data?.acf.section_1,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_1?.descriptions)
                     },
                     section_2: {
                         ...data?.acf.section_2,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_2?.descriptions)?.map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_3: {
                         ...data?.acf.section_3,
@@ -692,7 +590,8 @@ export async function getStaticProps() {
                     },
                     section_4: {
                         ...data?.acf.section_4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.descriptions),
+                        extraDescriptions: convertArrayOfObjectsToStrings(data?.acf.section_4?.extraDescriptions)
                     },
                     section_5: {
                         ...data?.acf.section_5,
@@ -701,11 +600,14 @@ export async function getStaticProps() {
                     section_7: {
                         ...data?.acf.section_7,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_7?.descriptions),
-                        card_list: Array.isArray(data?.acf?.section_7?.card_list)
-                            ? data?.acf?.section_7?.card_list?.map((list) => {
+                        card_list: data?.acf?.section_7?.card_list?.length
+                            ? data.acf.section_7.card_list.map((list) => {
                                   return {
                                       ...list,
-                                      descriptions: convertArrayOfObjectsToStrings(list?.descriptions)
+                                      title: stripInitialTags(list.title),
+                                      descriptions: convertArrayOfObjectsToStrings(list.descriptions).map((item) =>
+                                          stripInitialTags(item)
+                                      )
                                   };
                               })
                             : []
@@ -716,14 +618,9 @@ export async function getStaticProps() {
                     },
                     section_9: {
                         ...data?.acf.section_9,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_9?.descriptions)
-                    },
-                    section_10: {
-                        ...data?.acf.section_10,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_10?.descriptions),
-                        image: {
-                            ...(data?.acf?.section_10?.image && formatImage(data.acf?.section_10?.image))
-                        }
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_9?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_11: {
                         ...data?.acf.section_11,
@@ -748,18 +645,32 @@ export async function getStaticProps() {
                     },
                     section_12: {
                         ...data?.acf.section_12,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_12?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section_12?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_13: {
                         ...data?.acf.section_13,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_13?.descriptions),
-                        list: convertArrayOfObjectsToStrings(data?.acf.section_13?.list)
+                        list: convertArrayOfObjectsToStrings(data?.acf.section_13?.list).map((item) =>
+                            stripInitialTags(item)
+                        )
+                    },
+                    section_14: {
+                        ...data?.acf.section_14,
+                        image: {
+                            ...(data?.acf?.section_14?.image && formatImage(data.acf?.section_14?.image))
+                        }
                     },
                     section_15: {
                         ...data?.acf.section_15,
                         descriptions: convertArrayOfObjectsToStrings(data?.acf.section_15?.descriptions)
                     },
-                    section_16: convertArrayOfObjectsToStrings(data?.acf.section_16)
+                    section_16: convertArrayOfObjectsToStrings(data?.acf.section_16),
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    }
                 } as DataInterface,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',

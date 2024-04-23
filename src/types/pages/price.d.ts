@@ -1,4 +1,5 @@
 import ImageApiType from 'src/types/api/image';
+import { ImageType3 } from '@/types';
 
 export type PriceObject = {
 	title: string;
@@ -10,31 +11,69 @@ export type PriceObject = {
 }
 
 export default interface PricePageContentProps {
-	// Our consultation prices
-	section_1: Array<PriceObject>,
-	// Our consultation prices
-	section_2: Array<PriceObject>,
-	// Vision Correction treatments
-	section_3: Array<PriceObject>,
+	masthead: {
+		title: string;
+		subTitle: string;
+		largeImage: ImageType3;
+		smallImage: ImageType3;
+		priceSection: string;
+	},
+	section1: {
+		heading: string;
+		packages: {
+			title: string;
+            description: string;
+            price: string;
+		}[];
+	}
+	section2: {
+		heading: string;
+		packages: {
+			heading: string;
+			packageColor: string
+			items: {
+				title: string;
+				description: string;
+				price: string;
+				priceAttribute?: string;
+			}[]
+		}[];
+	}
 	// Funding Your
 	// Treatment
 	section_4: {
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-		descriptions: string[];
-		image: ImageApiType;
-		large_image: ImageApiType;
+		heading: string;
+		description: string;
 	},
 	// Glaucoma surgery
-	section_5: Array<PriceObject>;
-	// Macular Degeneration Treatment
-	section_6: Array<PriceObject>;
-	// Keratoconus Treatment
-	section_7: Array<PriceObject>;
-	// Eyelid Surgery
-	section_8: Array<PriceObject>;
+	section5: {
+		heading: string;
+		packages: {
+			heading: string;
+			packageColor: string
+			items: {
+				title: string;
+				description: string;
+				price: string;
+				priceAttribute?: string;
+			}[]
+		}[];
+	}
+	// General, emergency and paediatric consultations do not include any tests
+	section6: {
+		heading: string;
+		description: string;
+		packages: {
+			heading: string;
+			packageColor: string
+			items: {
+				title: string;
+				description: string;
+				price: string;
+				priceAttribute?: string;
+			}[]
+		}[];
+	}
 	// Diagnostics Fees
 	section_9: {
 		heading: { // Heading
@@ -44,9 +83,4 @@ export default interface PricePageContentProps {
 		descriptions: string[];
 		package: Array<PriceObject>;
 	};
-	
-	//    Botox
-	section_10: Array<PriceObject>;
-	//    Vitrectomy
-	section_11: Array<PriceObject>;
 }

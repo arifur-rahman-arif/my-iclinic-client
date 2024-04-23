@@ -1,10 +1,12 @@
+import { ImageType3 } from '@/types';
+
 export default interface RelexSmilePriceContentInterface {
 	//	SECTION 1
 	masthead: {
 		title: string;
         subTitle: string;
-        largeImage: ImageApiType;
-        smallImage: ImageApiType;
+        largeImage: ImageType3;
+        smallImage: ImageType3;
         priceText: string;
     },
 
@@ -27,7 +29,7 @@ export default interface RelexSmilePriceContentInterface {
 		image: string;
 		large_image: string;
 	},
-	
+
 	section_2: {
 		title: string; // Subheading
 		heading: string // Bold Heading
@@ -53,7 +55,7 @@ export default interface RelexSmilePriceContentInterface {
 		title: string; //
 		large_image: string;
 		image: string;
-	},// PRICE 
+	},// PRICE
 	relex_smile_price:Array<{
 		priceText: string;
 		priceDescription: string;

@@ -1,6 +1,14 @@
+import { ImageType3 } from 'src/types/image';
+
 export default interface keratoconusContentInterface {
 	//	London’s best treatment
-
+    masthead: {
+        title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+        priceSection: string;
+    },
     section_3: {
         heading: string;
         descriptions: string[];
@@ -8,21 +16,13 @@ export default interface keratoconusContentInterface {
         imagelarge:string;
     },
     section_4: {
-        sub_heading: string;
-        heading: { // Heading
-			light_heading: string; // Light Heading
-			dark_heading: string; // Bold Heading
-		}
+        heading: string
         descriptions: string[];
         image:string;
         imagelarge:string;
     },
     section_5: {
-        sub_heading: string;
-        heading: { // Heading
-			light_heading: string; // Light Heading
-			dark_heading: string; // Bold Heading
-		}
+        heading: string
         descriptions: string[];
         image:string;
         imagelarge:string;
@@ -30,15 +30,11 @@ export default interface keratoconusContentInterface {
     minimally_invasive: {
         heading:string;
         image:string;
-        imagelarge:string;
+        imageLarge:string;
         descriptions: string[];
     },
     crosslinking: {
-        sub_heading: string;
-        heading: { // Heading
-			light_heading: string; // Light Heading
-			dark_heading: string; // Bold Heading
-		}
+        heading: string
     },
     crossList:Array<{
         title: string;
@@ -47,12 +43,14 @@ export default interface keratoconusContentInterface {
     section_6: {
         title: string;
         descriptions: string[];
-        image:string;
-        imagelarge:string;
+        image:ImageType3;
     },
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
+    patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    }
 }

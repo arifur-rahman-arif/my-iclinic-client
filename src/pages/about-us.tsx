@@ -1,23 +1,26 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
+import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
+import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { Masthead, SideImageSection } from '@/components/page-sections';
+import { BookConsultation, CompanyLogos, SideImageSection } from '@/components/page-sections';
+import YagHero from '@/components/page-sections/Masthead/YagHero';
 import { Section } from '@/components/Section';
+import SectionTextColumn from '@/components/SectionTextColumn';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-about-us-large.png';
-import MastheadImageSmall from '@/masthead/masthead-about-us-medium.png';
-import MastheadImageMedium from '@/masthead/masthead-about-us.png';
-import ChatWithUs from '@/page-sections/SectionParts/ChatWithUs';
 import UspSection from '@/page-sections/Usp/UspSection';
 import { AboutUsPageContent, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
-import Image from 'next/image';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import dynamic from 'next/dynamic';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
 
-interface DataInterface extends AboutUsPageContent, PageDataInterface<AboutUsPageContent> {
-}
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
+    loading: () => <ComponentLoader />
+});
+
+interface DataInterface extends AboutUsPageContent, PageDataInterface<AboutUsPageContent> {}
 
 interface AboutUsProps {
     seo: any;
@@ -34,25 +37,20 @@ interface AboutUsProps {
  * @returns {JSX.Element}
  */
 export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Element {
-    const heading = data?.masthead_heading || 'About My-iClinic';
-    const subheading = data?.masthead_subheading || 'North London’s Eye Hospital';
-
     return (
-        <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <BreadCrumb/>
+        <Page title="About My-iClinic" seo={seo} yoastJson={yoastJson}>
+            <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                imagePosition="2xl:object-[0rem_-3rem] 2xl:!object-contain"
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                bannerExtraComponents={<ChatWithUs/>}
+            <YagHero
+                {...data?.masthead}
+                subTitleClass="max-w-[49rem] mb-12 md:mb-16"
+                className="xl:grid-cols-[auto_35rem_1fr]"
+                bannerClass="xl:pr-40"
             />
 
+            {/*
             <Section className="relative bg-[#006088F2]">
-                <Image src="/images/section-images/about-us-section-eye-bg.png" alt="" fill={true}/>
+                <Image src="/images/section-images/about-us-section-eye-bg.png" alt="" fill={true} />
 
                 <Container className="relative z-[1] grid place-items-center gap-12 py-16 md:py-24">
                     {data?.section_1?.length ? (
@@ -82,20 +80,21 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                         </>
                     )}
                 </Container>
-            </Section>
+            </Section> */}
 
             <Section>
                 <Container className="grid place-items-center gap-12">
-                    <p className="max-w-[84.8rem] text-center font-latoBold text-[2.4rem] leading-[3.2rem] md:text-[3rem] md:leading-[3.6rem]">
+                    <p className="max-w-[84.8rem] text-balance text-center font-latoBold text-[2.4rem] leading-[3.2rem] md:text-[3rem] md:leading-[3.6rem]">
                         {data?.section_2?.heading ||
                             'My-iClinic sources innovative diagnostic equipment, being at the forefront of ophthalmology and eye care treatments.'}
                     </p>
                     {data?.section_2?.description ? (
-                        <p className="max-w-[69.8rem] text-center text-[1.6rem]">
-                            {HTMLReactParser(data.section_2.description)}
-                        </p>
+                        <p
+                            className="max-w-[69.8rem] text-balance text-center text-[1.6rem]"
+                            dangerouslySetInnerHTML={{ __html: data.section_2.description }}
+                        ></p>
                     ) : (
-                        <p className="max-w-[69.8rem] text-center text-[1.6rem]">
+                        <p className="max-w-[69.8rem] text-balance text-center text-[1.6rem]">
                             For the past ten years My-iClinic has been providing excellent private eye care treatments
                             to patients from all over the world. My-iClinic partners with a variety of expert
                             manufacturers to deliver bespoke vision correction treatment for ages 21+ and performs
@@ -106,16 +105,8 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
             </Section>
 
             <SideImageSection
-                h2Heading={data?.section_3?.subheading || 'How we started'}
-                h3LightHeading={data?.section_3?.heading?.light_heading || 'Our'}
-                h3BoldHeading={data?.section_3?.heading?.bold_heading || 'story'}
-                descriptions={
-                    (data?.section_3?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_3.descriptions)) || [
-                        'Our clinic directors, Mr. John Bolger and Ms. Bola Odufuwa-Bolger, started their care practices over thirty years ago by treating patients in Harley Street, Royal Free Hospital, Moorfields Eye Hospital and more.',
-                        'As qualified ophthalmic surgeons, they opened their own independent eye care practice, My-iClinic, to make modern vision correction treatments and eye surgeries accessible and affordable for the new generations of vision.'
-                    ]
-                }
+                h3LightHeading={data?.section_3?.heading || 'Our story'}
+                descriptions={data?.section_3.descriptions}
                 sectionImage={{
                     url: data?.section_3?.image?.url || '/images/section-images/how-we-started.png',
                     width: 390,
@@ -126,18 +117,19 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     width: 668,
                     height: 477
                 }}
+                textColumnExtras={
+                    <Button2
+                        className="justify-self-start"
+                        type="button"
+                        text="Speak to a specialist"
+                        onClick={openFreshdeskChat}
+                    />
+                }
             />
 
             <SideImageSection
-                h2Heading={data?.section_4?.subheading || 'How we do'}
-                h3LightHeading={data?.section_4?.heading?.light_heading || 'Our'}
-                h3BoldHeading={data?.section_4?.heading?.bold_heading || 'approach'}
-                descriptions={
-                    (data?.section_4?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_4.descriptions)) || [
-                        'Our approach is very comprehensive with meticulous attention to the best proven surgical interventions. This is so you can be sure that you are receiving the best current treatment in a caring and patient focused setting.'
-                    ]
-                }
+                h3LightHeading={data?.section_4?.heading || 'Our approach'}
+                descriptions={data?.section_4.descriptions}
                 sectionImage={{
                     url: data?.section_4?.image?.url || '/images/section-images/our-approach.png',
                     width: 390,
@@ -149,18 +141,16 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     height: 477
                 }}
                 positionReversed
+                textColumnExtras={
+                    <BookConsultation>
+                        <Button2 type="button" text="Book a consultation" />
+                    </BookConsultation>
+                }
             />
 
             <SideImageSection
-                h2Heading={data?.section_6?.subheading || 'no hidden cost'}
-                h3LightHeading={data?.section_6?.heading?.light_heading || 'Our'}
-                h3BoldHeading={data?.section_6?.heading?.bold_heading || 'Affordability'}
-                descriptions={
-                    (data?.section_6?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_6.descriptions)) || [
-                        'We offer everything at a fixed price so that you know in advance what the procedure will cost and what is included. Even if the post-operative care takes longer than planned, there are no extra charges.'
-                    ]
-                }
+                h3LightHeading={data?.section_6?.heading1 || 'Our Affordability'}
+                descriptions={data?.section_6?.descriptions1}
                 sectionImage={{
                     url: data?.section_6?.image?.url || '/images/section-images/no-hidden-cost.png',
                     width: 390,
@@ -171,15 +161,26 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     width: 668,
                     height: 477
                 }}
+                textColumnExtras={
+                    <SectionTextColumn
+                        className="-ml-10 md:mt-12"
+                        heading={data?.section_6?.heading2}
+                        descriptions={data?.section_6?.descriptions2}
+                    />
+                }
             />
 
-            <UspSection/>
+            <UspSection />
+
+            <LazyComponent>
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
+            </LazyComponent>
 
             <SideImageSection
+                containerClassName="!px-0 xl:!grid-cols-[1fr_auto] items-center"
                 dynamicTextColumn={
-                    <div
-                        className="grid h-full w-full content-start items-center py-24 pl-8 sm:max-w-[47.1rem] lg:py-32 xl:pl-0">
-                        <H2Variant1 className="normal-case text-white">
+                    <div className="grid h-full w-full content-center items-center py-24 pl-8 sm:max-w-[50rem] lg:py-32 xl:pl-0">
+                        <H2Variant1 className="text-balance normal-case text-white">
                             {data?.section_5?.heading || 'Our Lifelong medical practices & research'}
                         </H2Variant1>
 
@@ -187,9 +188,11 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                             {data?.section_5?.descriptions?.length ? (
                                 <>
                                     {data?.section_5.descriptions.map((item, index) => (
-                                        <p className="text-[#E6E7E8]" key={index}>
-                                            {item}
-                                        </p>
+                                        <p
+                                            className="text-[#E6E7E8]"
+                                            key={index}
+                                            dangerouslySetInnerHTML={{ __html: item }}
+                                        ></p>
                                     ))}
                                 </>
                             ) : (
@@ -210,55 +213,57 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                             )}
                         </div>
 
-                        <span className="mt-12 font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
-                            What to find out more about us?
-                        </span>
-                        <span className="mt-6 font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
-                            Get in touch
-                        </span>
-
-                        <Button2
-                            type="anchor"
-                            link="tel:0208 445 8877"
-                            text="0208 445 8877"
-                            iconPosition="left"
-                            className="group/phone mt-12 justify-self-start border-white normal-case"
-                            icon={
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M15.0499 5C16.0267 5.19057 16.9243 5.66826 17.628 6.37194C18.3317 7.07561 18.8094 7.97326 18.9999 8.95M15.0499 1C17.0792 1.22544 18.9715 2.13417 20.4162 3.57701C21.8608 5.01984 22.7719 6.91101 22.9999 8.94M21.9999 16.92V19.92C22.0011 20.1985 21.944 20.4742 21.8324 20.7293C21.7209 20.9845 21.5572 21.2136 21.352 21.4019C21.1468 21.5901 20.9045 21.7335 20.6407 21.8227C20.3769 21.9119 20.0973 21.9451 19.8199 21.92C16.7428 21.5856 13.7869 20.5341 11.1899 18.85C8.77376 17.3147 6.72527 15.2662 5.18993 12.85C3.49991 10.2412 2.44818 7.27099 2.11993 4.18C2.09494 3.90347 2.12781 3.62476 2.21643 3.36162C2.30506 3.09849 2.4475 2.85669 2.6347 2.65162C2.82189 2.44655 3.04974 2.28271 3.30372 2.17052C3.55771 2.05833 3.83227 2.00026 4.10993 2H7.10993C7.59524 1.99522 8.06572 2.16708 8.43369 2.48353C8.80166 2.79999 9.04201 3.23945 9.10993 3.72C9.23656 4.68007 9.47138 5.62273 9.80993 6.53C9.94448 6.88792 9.9736 7.27691 9.89384 7.65088C9.81408 8.02485 9.6288 8.36811 9.35993 8.64L8.08993 9.91C9.51349 12.4135 11.5864 14.4864 14.0899 15.91L15.3599 14.64C15.6318 14.3711 15.9751 14.1858 16.3491 14.1061C16.723 14.0263 17.112 14.0555 17.4699 14.19C18.3772 14.5286 19.3199 14.7634 20.2799 14.89C20.7657 14.9585 21.2093 15.2032 21.5265 15.5775C21.8436 15.9518 22.0121 16.4296 21.9999 16.92Z"
-                                        stroke="#fff"
-                                        strokeWidth="3"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-all duration-500 group-hover/phone:stroke-heading2"
-                                    />
-                                </svg>
-                            }
-                        />
+                        <div className="mt-12 flex flex-wrap items-center justify-start gap-6 md:mt-24">
+                            <BookConsultation buttonClassName="transition-all border-2 border-[#0099FF] duration-500 hover:bg-transparent  cursor-pointer px-8 py-6 gap-5 bg-[#0099FF] rounded-[0.5rem] hover:text-[#0099FF]">
+                                <Button2 type="button" text="Request a call  back" />
+                            </BookConsultation>
+                            <Button2
+                                type="button"
+                                text="Chat with us"
+                                onClick={openFreshdeskChat}
+                                className="group/button"
+                                icon={
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                            stroke="#fff"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="transition-all duration-500 group-hover/button:stroke-[#003E79]"
+                                        />
+                                    </svg>
+                                }
+                                iconPosition="left"
+                            />
+                        </div>
                     </div>
                 }
-                sectionClass="bg-heading2 pb-12 md:pb-0 overflow-hidden"
-                containerClassName="!px-0"
+                sectionClass="bg-[#003E79] pb-12 md:pb-0 overflow-hidden"
                 sectionImage={{
-                    url: data?.section_5?.image?.url || '/images/section-images/medical-practices.jpg',
+                    url: data?.section_5?.image?.src || '/images/section-images/medical-practices.jpg',
                     width: 447,
                     height: 693
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image?.url || '/images/section-images/medical-practices-large.jpg',
-                    width: 613,
-                    height: 693
+                    url: data?.section_5?.large_image?.src || '/images/section-images/medical-practices-large.jpg',
+                    width: 570,
+                    height: 631
                 }}
                 largeImageClassName="!rounded-none h-full"
                 smallImageClassName="!rounded-none"
+                altText={data?.section_5?.large_image?.alt}
             />
+
+            <LazyComponent>
+                <CompanyLogos />
+            </LazyComponent>
         </Page>
     );
 }
@@ -281,24 +286,54 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || null,
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
                     section_1: Array.isArray(data?.acf.section_1)
                         ? convertArrayOfObjectsToStrings(data?.acf.section_1)
                         : [],
                     section_3: {
                         ...data?.acf.section_3,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_4: {
                         ...data?.acf.section_4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     },
                     section_5: {
                         ...data?.acf.section_5,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_5?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section_5?.image && formatImage(data.acf?.section_5?.image))
+                        },
+                        large_image: {
+                            ...(data?.acf?.section_5?.large_image && formatImage(data.acf?.section_5?.large_image))
+                        }
                     },
                     section_6: {
                         ...data?.acf.section_6,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions)
+                        descriptions1: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions1).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        descriptions2: convertArrayOfObjectsToStrings(data?.acf?.section_6?.descriptions2).map((item) =>
+                            stripInitialTags(item)
+                        )
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     }
                 } as DataInterface
             },

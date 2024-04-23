@@ -3,17 +3,24 @@ import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import IconArrow from '@/icons/icon-angle-right.svg';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-glaucoma-pricing-large.png';
-import MastheadImageMedium from '@/masthead/masthead-glaucoma-pricing-medium.png';
-import { BulletList, GlaucomaPackages2, Masthead, SideImageSection } from '@/page-sections/index';
+import { BookConsultation, CtaSection, SideImageSection } from '@/page-sections/index';
 import { GlaucomaPackages3 } from '@/page-sections/SectionParts/GlaucomaPackages';
-import { PriceGlaucomaContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
-import HTMLReactParser from 'html-react-parser';
+import { PageDataInterface, PriceGlaucomaContentInterface, WpPageResponseInterface } from '@/types';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import CataractHero from '@/page-sections/Masthead/CataractHero';
+import React from 'react';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import CostDetails from '@/page-sections/CataractPriceSections/CostDetails';
+import { Button2 } from '@/components/Buttons';
+import Logo1 from '@/logos/bupa.png';
+import Logo2 from '@/logos/healthcare-practice.png';
+import Logo3 from '@/logos/aviva.png';
+import Logo4 from '@/logos/freedom.png';
+import Logo5 from '@/logos/cigma.png';
+import Logo6 from '@/logos/general-medical.png';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -38,53 +45,23 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
     const heading = data?.masthead_heading || 'Glaucoma treatment and management cost London';
     const subheading = data?.masthead_subheading || 'The cost of Glaucoma management';
 
-    const Glaucoma2Section: any = data?.section_2
-        ? data?.section_2.map((item) => {
-              return {
-                  ...item,
-                  title: item?.title,
-                  price: item?.price,
-                  description: HTMLReactParser(item?.description)
-              };
-          })
-        : null;
-
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <BreadCrumb />
-            <Masthead
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || '£400 per eye'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
+
+            <CataractHero
+                {...data?.masthead}
+                headingClassName="md:max-w-[80rem]"
+                smallImageClass="row-start-1 mt-0"
+                contentContainerClassName="pb-12 lg:pb-0"
             />
+
+            <CostDetails items={data?.costDetails} itemClass="sm:px-16 md:px-16 grid-cols-1 sm:grid-cols-[auto_1fr]" />
+
             <SideImageSection
-                h2Heading={data?.section_1?.sub_heading || 'Your consultation'}
-                h3LightHeading={
-                    <>
-                        {data?.section_1?.heading?.light_heading || 'The cost of'}
-                        <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_1?.heading?.bold_heading || 'Glaucoma management'}
-                descriptions={
-                    (data?.section_1?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_1?.descriptions)) || [
-                        <strong className="block font-mulishBold text-[2rem] leading-[2.8rem] sm:max-w-[37.1rem]">
-                            The price of your private glaucoma consultation
-                        </strong>,
-                        <div className="grid gap-6">
-                            <strong className="text-[2.4rem] leading-[3.2rem]">£400</strong>
-                            <p>
-                                A comprehensive, private consultation with our dedicated Glaucoma specialist (inclusive
-                                of all eye assessments and eye scans).
-                            </p>
-                        </div>
-                    ]
-                }
+                h3LightHeading={data?.section_1?.heading || 'The cost of Glaucoma management'}
+                descriptions={data?.section_1?.descriptions}
+                descriptionWrapperClass="[&_div:first-child]:mb-6"
                 sectionImage={{
                     url: data?.section_1?.image || '/images/section-images/private-consultation-glaucoma-large.png',
                     width: 390,
@@ -98,31 +75,52 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                     height: 518
                 }}
                 positionReversed
+                textColumnExtras={
+                    <div className="gax-x-6 grid grid-cols-[auto_1fr] justify-items-start gap-y-6 sm:gap-x-12">
+                        <div className="flex items-center justify-start gap-4">
+                            <Image
+                                src="/images/icons/icon-phone-dark.svg"
+                                alt=""
+                                quality={70}
+                                width={20}
+                                height={20}
+                                className="h-8 w-8"
+                            />
+                            <a href="tel:0208 445 8877">
+                                <span className="relative block cursor-pointer font-latoBold text-heading">
+                                    (+44) 0208 445 8877
+                                </span>
+                            </a>
+                        </div>
+                        <div className="flex items-center justify-start gap-2">
+                            <Image src="/images/icons/icon-chat-dark.svg" alt="" width={24} height={24} />
+                            <button
+                                className="relative block cursor-pointer font-latoBold text-heading"
+                                onClick={openFreshdeskChat}
+                            >
+                                Chat with us
+                            </button>
+                        </div>
+                        <div className="col-span-full grid place-items-start">
+                            <BookConsultation
+                                buttonClassName={`group/consultation transition-all border-2 border-[#003E79] duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center grid-flow-col gap-5 bg-[#003E79] rounded-[0.5rem]`}
+                            >
+                                <Button2 type="button" text="Book a consultation" />
+                            </BookConsultation>
+                        </div>
+                    </div>
+                }
             />
 
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>
-            <div className="w-full md:h-[0.1rem] lg:mt-24"></div>
-
-            <GlaucomaPackages2 datapackList={Glaucoma2Section} />
 
             <GlaucomaPackages3 packageList={data?.privateTreatment} />
 
             <SideImageSection
-                h3LightHeading={
-                    <>
-                        {data?.section_4?.heading?.light_heading || 'Thinking about paying with'} <br />
-                    </>
-                }
-                h3BoldHeading={data?.section_4?.heading?.bold_heading || 'health insurance?'}
-                descriptions={
-                    (data?.section_4?.descriptions?.length &&
-                        stringArrayToElementArray(data?.section_4?.descriptions)) || [
-                        `We are partnered with health insurance companies to make the cost of your treatment easier! We are partnered with:`
-                    ]
-                }
+                h3LightHeading={data?.section_4?.heading || 'Thinking about paying with health inwsurance?'}
+                descriptions={data?.section_4?.descriptions}
                 sectionImage={{
                     url: data?.section_4?.image || '/images/section-images/glaucoma-health-insurance-large.png',
                     width: 370,
@@ -133,53 +131,32 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                     width: 622,
                     height: 568
                 }}
+                largeImageClassName="h-full object-cover rounded-radius2"
                 textColumnExtras={
-                    <div className="grid gap-12">
-                        <BulletList
-                            list={
-                                (data?.section_4?.lists?.length && data?.section_4?.lists) || [
-                                    'Aviva',
-                                    'WPA',
-                                    'Freedom',
-                                    'General Medical',
-                                    'Cigna UK',
-                                    'Bupa & Bupa international '
-                                ]
-                            }
-                            bold
-                            bulletPoint={
-                                <Image src={IconArrow} alt="" className="h-[1.4rem] w-[1.2rem] translate-y-[0.5rem]" />
-                            }
-                        />
-                        <div className="flex flex-wrap items-center justify-start gap-6">
-                            <Image src="/images/logos/aviva.png" width={55} height={29} alt="Aviva" />
-                            <Image
-                                src="/images/logos/healthcare-practice.png"
-                                width={107}
-                                height={29}
-                                alt="Health Practice"
-                            />
-                            <Image src="/images/logos/freedom.png" width={86} height={36} alt="Freedom" />
-                            <Image
-                                src="/images/logos/general-medical.png"
-                                width={50}
-                                height={49}
-                                alt="General Medical"
-                            />
-                            <Image src="/images/logos/cigma.png" width={92} height={28} alt="Cigma" />
-                            <Image src="/images/logos/bupa.png" width={80} height={42} alt="Bupa" />
+                    <div className="grid grid-cols-2 flex-wrap items-center justify-center gap-6 justify-self-start lg:grid-cols-3">
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full object-contain" src={Logo1} alt="" />
                         </div>
-                        <div>
-                            <strong>
-                                {HTMLReactParser(data?.section_4?.descriptions2) ||
-                                    `It's always best to check with your healthcare insurance provider that they will cover
-                                your fees and produce a pre-authorisation code for you. We will require your
-                                pre-authorization code before your consultation and cataract surgery.`}
-                            </strong>
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full object-contain" src={Logo2} alt="" />
+                        </div>
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full object-contain" src={Logo3} alt="" />
+                        </div>
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)]  xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full object-contain" src={Logo4} alt="" />
+                        </div>
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] p-8 shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full object-contain" src={Logo5} alt="" />
+                        </div>
+                        <div className="grid h-[8rem] place-items-center rounded-primary border border-[#D9E2E6] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.04),_0px_1px_3px_rgba(0,_0,_0,_0.02)] xl:w-[18rem]">
+                            <Image className="max-h-full max-w-full scale-[0.8] object-contain" src={Logo6} alt="" />
                         </div>
                     </div>
                 }
             />
+
+            <CtaSection title={data?.ctaSection?.title} subtitle={data?.ctaSection?.subTitle} />
         </Page>
     );
 }
@@ -200,18 +177,30 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        subTitle: stripInitialTags(data?.acf?.masthead.subTitle || ''),
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
+                    costDetails: [...data?.acf?.costDetails].map((item) => {
+                        return {
+                            ...item,
+                            description: stripInitialTags(item.description)
+                        };
+                    }),
                     // SECTION 1
                     section_1: {
                         ...data?.acf?.section_1,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
-                    }, // 2
-                    // // SECTION 2
-                    // section_2: {
-                    //     ...data?.acf?.section_2,
-                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
-                    //     lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.lists)
-                    // }, // 2
-
+                        heading: stripInitialTags(data?.acf?.section_1?.heading || ''),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
+                    },
                     section_2: Array.isArray(data?.acf?.section_2)
                         ? data?.acf.section_2.map((priceData) => {
                               return {
@@ -224,11 +213,9 @@ export async function getStaticProps() {
                     },
                     section_4: {
                         ...data?.acf?.section_4,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions),
-                        lists: convertArrayOfObjectsToStrings(data?.acf?.section_4?.lists)
-                    },
-                    speaktoteam: {
-                        ...data?.acf?.speaktoteam
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        )
                     }
                 }
             },

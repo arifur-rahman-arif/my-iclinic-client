@@ -91,9 +91,13 @@ body {
 
     b,
     strong {
-        font-family: var(--mulish-bold);
         font-size: 1.7rem;
         font-weight: bold;
+
+        &,
+        * {
+            font-family: var(--mulish-bold);
+        }
 
         @include media-breakpoint-up(md) {
             &,

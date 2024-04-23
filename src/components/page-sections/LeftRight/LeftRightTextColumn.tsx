@@ -59,12 +59,8 @@ const LeftRightTextColumn = ({
                   // </div>
                   null}
 
-            <div className={`grid gap-6 ${descriptionClassName}`}>
-                {title && (
-                    <h3 className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[2.4rem] md:leading-[3.2rem]">
-                        {title}
-                    </h3>
-                )}
+            <div className={`grid gap-6 ${descriptionClassName} [&_strong]:text-heading`}>
+                {title && <h3 className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>}
 
                 {descriptions?.map((description, index) => (
                     <FadeIn key={index}>
