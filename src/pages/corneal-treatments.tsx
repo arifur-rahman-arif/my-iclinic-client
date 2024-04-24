@@ -210,7 +210,6 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     </BookConsultation>
                 }
             />
-
             <CorneaOfferings
                 reversed
                 heading={data?.section7?.heading || 'CAIRS'}

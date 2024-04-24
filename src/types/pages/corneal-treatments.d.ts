@@ -2,9 +2,8 @@ import { ImageType3 } from 'src/types/image';
 
 type CorneaOfferings = {
     heading: string;
-    descriptiveLabel?: string;
     descriptions: string[];
-    image: Image;
+    image: ImageType3;
 }
 
 export default interface CornealtreatmentContentInterface {

@@ -10,12 +10,18 @@ import MastheadImageMedium from '@/masthead/masthead-eyelid-medium.png';
 import MastheadImageSmall from '@/masthead/masthead-eyelid-small.png';
 import { eyelidFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListEyelid } from '@/page-sections/ImageGallery';
-import { CtaSection, ImageGallery, Masthead } from '@/page-sections/index';
+import { CtaSection, GlaucomaChargeSection, ImageGallery, Masthead } from '@/page-sections/index';
 import { LeftRightSection } from '@/page-sections/LeftRight';
 import { leftRightListCosmeticEyelid, leftRightListEyelid } from '@/page-sections/LeftRight/leftRightList';
 import { EyelidContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
+import CataractHero from '@/page-sections/Masthead/CataractHero';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Button2 } from '@/components/Buttons';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import CorneaOfferings from '@/page-sections/CorneaPage/CorneaOfferings';
+import VisionCorrection from '@/page-sections/HomePage/VisionCorrection';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
@@ -27,7 +33,7 @@ const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyL
 const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/page-sections/NormalSlide/NormalSlideSection'), {
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -48,26 +54,6 @@ interface EyeLidPageProps {
  * @returns {JSX.Element}
  */
 export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): JSX.Element {
-    // const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    // const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Eyelid surgery London';
-    const subheading =
-        data?.masthead_subheading ||
-        'Medical and cosmetic Eyelid surgery for Cysts, Chalazion, Styes, blepharoplasty, and more.';
-
-    //  reviewSliderdata
-    const reviewSliderdata: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      title: service?.title,
-                      name: service?.name,
-                      description: service?.description
-                  };
-              })
-            : null;
-
     return (
         <Page
             title="Specialist Eyelid Surgery in London"
@@ -77,47 +63,165 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
         >
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image?.image?.url || MastheadImageSmall}
-                imageMedium={data?.masthead_image?.image_medium?.url || MastheadImageMedium}
-                imageLarge={data?.masthead_image?.image_large?.url || MastheadImageLarge}
-                imagePosition="2xl:object-[0rem_-3rem] !object-contain"
-                smallImageClassName={'object-[center_-3rem]'}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={data?.masthead_price || 'From £200'}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
+            <CataractHero
+                {...data?.masthead}
+                headingClassName="md:max-w-[57rem]"
+                subTitleClass="max-w-[50rem]"
+                smallImageClass="row-start-1 mt-0"
+                suitabilityButton={
+                    <div className="mt-6 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="sitemap-link border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF]">
+                            <Button2 type="button" text="Make an enquiry" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center border-transparent bg-transparent text-white hover:text-[#007EF5]"
+                            iconPosition="left"
+                            icon={
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="transition-all duration-500 group-hover/button:stroke-[#007EF5]"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </div>
+                }
             />
 
             <LazyComponent>
                 <CallbackSection />
             </LazyComponent>
 
-            <Section>
-                <Container>
-                    <h2 className="mx-auto text-center md:max-w-[79.8rem]">
-                        {data?.section_1?.heading ||
-                            `Our UK’s top oculoplastic surgeons treat and correct your eyelid conditions with our easy and
-                        stress-free treatment options.`}
-                    </h2>
-                </Container>
-            </Section>
+            <GlaucomaChargeSection {...data?.section2} />
 
-            <LeftRightSection
-                childrenList={leftRightListEyelid}
-                positionReversed
-                sectionClassName="bg-brandLight py-12 md:py-24 !gap-24 md:!gap-40"
-                sectionId="eyelid-surgery-list"
+            <CorneaOfferings
+                reversed
+                heading={data?.section3?.heading}
+                descriptionContainerClassName="[&_p:nth-child(2)]:-mt-4 [&_p:last-child]:!-mt-6 [&_p:nth-child(7)]:mt-6  [&_p:nth-child(2)]:mb-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section3?.descriptions}
+                image={data?.section3?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
             />
 
-            <ImageGallery galleryList={galleryListEyelid} />
-
-            <LeftRightSection
-                childrenList={leftRightListCosmeticEyelid}
-                positionReversed
-                sectionClassName="bg-[#F1CFE580] py-12 md:py-24 !gap-24 md:!gap-40"
+            <CorneaOfferings
+                heading={data?.section4?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section4?.descriptions}
+                image={data?.section4?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
             />
+
+            <CorneaOfferings
+                reversed
+                heading={data?.section5?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(4)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section5?.descriptions}
+                image={data?.section5?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                heading={data?.section6?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section6?.descriptions}
+                image={data?.section6?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                reversed
+                heading={data?.section7?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section7?.descriptions}
+                image={data?.section7?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                heading={data?.section8?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section8?.descriptions}
+                image={data?.section8?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                reversed
+                heading={data?.section9?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section9?.descriptions}
+                image={data?.section8?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <VisionCorrection />
 
             <CtaSection title={data?.sectionspeakteam?.title} subtitle={data?.sectionspeakteam?.sub_heading} />
 
@@ -126,7 +230,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             </LazyComponent>
 
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderdata} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -157,11 +261,84 @@ export async function getStaticProps() {
                 yoastJson: data?.yoast_head_json || '',
                 data: {
                     ...data?.acf,
-                    // SECTION 1
-                    section_1: {
-                        ...data?.acf?.section_1
-                    }, // 2
-
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        largeImage: {
+                            ...(data?.acf?.masthead?.largeImage && formatImage(data.acf?.masthead?.largeImage))
+                        },
+                        smallImage: {
+                            ...(data?.acf?.masthead?.smallImage && formatImage(data.acf?.masthead?.smallImage))
+                        }
+                    },
+                    section2: {
+                        ...data?.acf.section2,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section2?.descriptions)
+                    },
+                    section3: {
+                        ...data?.acf?.section3,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section3?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section3?.image && formatImage(data?.acf?.section3?.image))
+                        }
+                    },
+                    section4: {
+                        ...data?.acf?.section4,
+                        heading: stripInitialTags(data?.acf?.section4?.heading || ''),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section4?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section4?.image && formatImage(data?.acf?.section4?.image))
+                        }
+                    },
+                    section5: {
+                        ...data?.acf?.section5,
+                        heading: stripInitialTags(data?.acf?.section5?.heading || ''),
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section5?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section5?.image && formatImage(data?.acf?.section5?.image))
+                        }
+                    },
+                    section6: {
+                        ...data?.acf?.section6,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section6?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section6?.image && formatImage(data?.acf?.section6?.image))
+                        }
+                    },
+                    section7: {
+                        ...data?.acf?.section7,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section7?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section7?.image && formatImage(data?.acf?.section7?.image))
+                        }
+                    },
+                    section8: {
+                        ...data?.acf?.section8,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section8?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section8?.image && formatImage(data?.acf?.section8?.image))
+                        }
+                    },
+                    section9: {
+                        ...data?.acf?.section9,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section9?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section9?.image && formatImage(data?.acf?.section9?.image))
+                        }
+                    },
                     leftRightsection: Array.isArray(data?.acf?.leftRightsection)
                         ? data?.acf.leftRightsection.map((ListData) => {
                               return {
@@ -180,15 +357,12 @@ export async function getStaticProps() {
                               };
                           })
                         : [],
-                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
-                        ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
-                        : [],
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
                     }
                 }
             },

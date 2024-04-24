@@ -1,9 +1,54 @@
+import { ImageType3 } from '@/types';
+import ImageApiType from '../api/image';
 
 export default interface EyelidContentInterface {
-	//	London’s best treatment
-	section_1: {
-		heading: string;
+	masthead: {
+		title: string;
+		subTitle: string;
+		largeImage: ImageType3,
+		smallImage: ImageType3;
+		priceSection: string;
 	},
+	section2: {
+		heading: string;
+		descriptions: string[];
+		image: ImageApiType
+	};
+	section3: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section4: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section5: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section6: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section7: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section8: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section9: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
 	leftRightsection:{
         [x: string]: any;
         section_title: string;
@@ -14,8 +59,8 @@ export default interface EyelidContentInterface {
         main_small_text: string;
 		descriptions: string[];
         bullet_list: string[];
-	}, 
-    leftRightsection2:{ 
+	},
+    leftRightsection2:{
         [x: string]: any;
         section_title: string;
         headline: string;
@@ -31,9 +76,12 @@ export default interface EyelidContentInterface {
 		sub_heading: string; // Subheading
 		title: string;
 	},
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
-	},
+	patientReviews: {
+		heading: string;
+		reviews: Array<{
+			name: string;
+			review: string;
+			link: string;
+		}>
+	}
 }

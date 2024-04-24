@@ -9,6 +9,7 @@ interface SectionTextColumnProps {
     descriptionContainerClassName?: string;
     descriptionClassName?: string;
     textColumnFooter?: ReactNode;
+    textColumnFooterClass?: string;
     className?: string;
 }
 
@@ -32,6 +33,7 @@ const SectionTextColumn = ({
     descriptionContainerClassName,
     descriptionClassName,
     textColumnFooter,
+    textColumnFooterClass,
     className
 }: SectionTextColumnProps): JSX.Element => {
     return (
@@ -51,7 +53,9 @@ const SectionTextColumn = ({
                 </div>
             )}
 
-            {textColumnFooter && <div className="col-start-2">{textColumnFooter}</div>}
+            {textColumnFooter && (
+                <div className={twMerge('col-start-2', textColumnFooterClass)}>{textColumnFooter}</div>
+            )}
         </div>
     );
 };
@@ -80,9 +84,8 @@ export const SectionHeading = ({ heading, barClassName, headingClassName }: Sect
                     'w-full max-w-[55rem] whitespace-pre-line !text-balance normal-case',
                     headingClassName
                 )}
-            >
-                {heading}
-            </h2>
+                dangerouslySetInnerHTML={{ __html: heading }}
+            ></h2>
         </>
     );
 };

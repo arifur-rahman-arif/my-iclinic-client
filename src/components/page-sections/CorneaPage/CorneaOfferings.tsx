@@ -5,14 +5,19 @@ import { ImageType } from '@/types';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import styles from '@/page-sections/SectionParts/TextColumn.module.scss';
 
 interface CorneaOfferingsProps {
+    sectionHeadingClass?: string;
     heading: string;
+    headingClassName?: string;
+    barClassName?: string;
     image: ImageType;
     descriptions: string[];
     descriptionContainerClassName?: string;
     reversed?: boolean;
     textColumnFooter?: ReactNode;
+    textColumnFooterClass?: string;
 }
 
 /**
@@ -27,11 +32,15 @@ interface CorneaOfferingsProps {
  * @constructor
  */
 const CorneaOfferings = ({
+    sectionHeadingClass,
     heading,
+    headingClassName,
+    barClassName,
     image,
     descriptions,
     descriptionContainerClassName,
     textColumnFooter,
+    textColumnFooterClass,
     reversed
 }: CorneaOfferingsProps): JSX.Element => {
     return (
@@ -39,22 +48,28 @@ const CorneaOfferings = ({
             <Container
                 className={`grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 xl:gap-28 ${
                     reversed ? 'xl:grid-cols-[auto_1fr]' : ' xl:grid-cols-[1fr_auto]'
-                }`}
+                } ${styles.styles}`}
             >
                 <Image
                     {...image}
                     alt={heading}
-                    className={`${reversed && 'order-2'} h-full w-full rounded-radius2 object-cover `}
+                    className={`${reversed && 'order-2 justify-self-end'} rounded-radius2`}
                     quality={100}
                     unoptimized
                 />
 
                 <SectionTextColumn
-                    className="max-w-[50rem]"
+                    className={twMerge('max-w-[50rem]', sectionHeadingClass)}
                     heading={heading}
                     descriptions={descriptions}
-                    descriptionContainerClassName={twMerge('[&_strong]:text-heading', descriptionContainerClassName)}
+                    headingClassName={headingClassName}
+                    barClassName={barClassName}
+                    descriptionContainerClassName={twMerge(
+                        '[&_strong]:text-heading [&_strong]:!text-[1.6rem] [&_strong_*]:!text-[1.6rem] [&_strong_*]:!leading-[2.4rem] [&_strong]:!leading-[2.4rem]',
+                        descriptionContainerClassName
+                    )}
                     textColumnFooter={textColumnFooter}
+                    textColumnFooterClass={textColumnFooterClass}
                 />
             </Container>
         </Section>
