@@ -97,7 +97,8 @@ export const formatImage = (img: any) => {
         return {
             src: img.url,
             width: img.width,
-            height: img.height
+            height: img.height,
+            alt: img?.alt || 'Image'
         };
     } else {
         // Handle the case where one or more properties are missing or falsy

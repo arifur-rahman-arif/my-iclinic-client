@@ -1,15 +1,18 @@
 import ImageApiType from 'src/types/api/image';
 import { FeaturedPatientProps } from 'src/types/pages/component/featuredPatient';
 import { Sustainibility } from './component/sustainibility';
+import { ImageType2, ImageType3 } from '@/types';
 
 export default interface PardiatricContentInterface {
+	masthead: {
+		title: string;
+		largeImage: ImageType3
+		smallImage: ImageType3
+		priceSection: string;
+	}
 	//	London’s best treatment
 	section_1: {
-        sub_heading: string;
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
 		image: string;
 		large_image: string;
@@ -17,13 +20,9 @@ export default interface PardiatricContentInterface {
 	// SYMPTOMS RELIEVE
 	section_2: {
 		sub_heading: string;
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
+		heading: string
 		descriptions: string[];
-		image: string;
-		large_image: string;
+		image: ImageType3;
 	},
 // 	// First Section
 	section_3: {
@@ -34,12 +33,13 @@ export default interface PardiatricContentInterface {
 		imageLarge: string;
 	},
 
-//WE CAN ALWAYS HELP  
-Imagesection2: {
-    image: string;
-    descriptions: string;
-    imageLarge: string;
-},
+	//WE CAN ALWAYS HELP
+	section9: {
+		heading: string;
+		image: string;
+		descriptions: string[];
+	},
+
 	section_4: {
         sub_heading: string; // Subheading
 		heading: { // Heading
@@ -68,47 +68,32 @@ Imagesection2: {
 		imagelarge: ImageType2;
 		image: ImageType2;
 	},
-	leftRightsection:{
-        [x: string]: any;
-		mobileImage: string;
-		desktopImage: string;
-		title: string;
+	section7:{
+		heading: string;
 		descriptions: string[];
+		image: ImageType3
 	},
-    leftRightsection2:{
-        [x: string]: any;
-		mobileImage: string;
-		desktopImage: string;
-		title: string;
+	section8:{
+		heading: string;
 		descriptions: string[];
-    },
-	reviewSlider:{
-		title: string;
-		name: string;
-		description: string;
+		image: ImageType3
 	},
+
 	sectionspeakteam: {
 		sub_heading: string; // Subheading
 		title: string;
 	},
-	InfoCards:{
-        map: any;
-		image: string;
+	ctaSection2: {
 		title: string;
-		content: string[] | undefined;
-		bulletpoints: string[] | undefined;
-	},
-	reviewimageSlider:{
-		imageURL: string;
-	},
-	bettervision:{
-		sub_heading: string;
-		heading: { // Heading
-			light_heading: string; // Light Heading
-			bold_heading: string; // Bold Heading
-		}
-		descriptions: string[];
-		image:string;
-		large_image:string;
+		subTitle: string;
+		image: ImageType3
+	};
+	patientReviews: {
+		heading: string;
+		reviews: Array<{
+			name: string;
+			review: string;
+			link: string;
+		}>
 	}
 }

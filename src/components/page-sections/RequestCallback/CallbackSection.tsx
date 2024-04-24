@@ -47,7 +47,7 @@ const CallbackSection = (): JSX.Element => {
                 {/* Extra overlay to cover the backgorund */}
                 {/* <div className="absolute top-0 left-0 z-[-1] hidden h-full w-2/4 bg-[#ECF4FB] md:block md:rounded-tr-primary md:rounded-br-primary"></div> */}
 
-                <Container className="grid grid-cols-1 items-center gap-12 rounded-primary border border-solid border-[#EAECF0] py-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] xl:gap-48 xl:px-16">
+                <Container className="grid grid-cols-1 items-center gap-12 rounded-radius2 border border-solid border-[#EAECF0] py-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] xl:gap-48 xl:px-16">
                     <div className="grid items-center gap-12">
                         <span className="md:leaading-[3.6rem] text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-heading md:text-[3rem]">
                             Speak to a specialist
