@@ -49,29 +49,29 @@ export default interface EyelidContentInterface {
 		descriptions: string[];
 		image: ImageType3;
 	}
-	leftRightsection:{
-        [x: string]: any;
-        section_title: string;
-        section_bold_title: string;
-		mobileImage: string;
-		desktopImage: string;
-		main_title: string;
-        main_small_text: string;
+	section10: {
+		heading: string;
+		subHeading: string;
+		image: ImageType3;
+		largeImage: ImageType3;
 		descriptions: string[];
-        bullet_list: string[];
-	},
-    leftRightsection2:{
-        [x: string]: any;
-        section_title: string;
-        headline: string;
-        section_bold_title: string;
-		mobileImage: string;
-		desktopImage: string;
-		main_title: string;
-        main_small_text: string;
+		footerHeading: string;
+	}
+	section11: {
+		heading: string;
 		descriptions: string[];
-        bullet_list: string[];
-	},
+		image: ImageType3;
+	}
+	section12: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
+	section13: {
+		heading: string;
+		descriptions: string[];
+		image: ImageType3;
+	}
 	sectionspeakteam: {
 		sub_heading: string; // Subheading
 		title: string;

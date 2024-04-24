@@ -1,18 +1,10 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
-import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-eyelid-large.png';
-import MastheadImageMedium from '@/masthead/masthead-eyelid-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-eyelid-small.png';
 import { eyelidFaqList } from '@/page-sections/Faq/faqList';
-import { galleryListEyelid } from '@/page-sections/ImageGallery';
-import { CtaSection, GlaucomaChargeSection, ImageGallery, Masthead } from '@/page-sections/index';
-import { LeftRightSection } from '@/page-sections/LeftRight';
-import { leftRightListCosmeticEyelid, leftRightListEyelid } from '@/page-sections/LeftRight/leftRightList';
+import { CtaSection, GlaucomaChargeSection } from '@/page-sections/index';
 import { EyelidContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import dynamic from 'next/dynamic';
@@ -213,7 +205,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 textColumnFooterClass="col-start-1"
                 descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
                 descriptions={data?.section9?.descriptions}
-                image={data?.section8?.image}
+                image={data?.section9?.image}
                 textColumnFooter={
                     <BookConsultation buttonClassName="-mt-6">
                         <Button2 type="button" text="Request a call back" />
@@ -221,16 +213,62 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 }
             />
 
-            <VisionCorrection />
+            <VisionCorrection {...data?.section10} />
+
+            <CorneaOfferings
+                reversed
+                heading={data?.section11?.heading}
+                descriptionContainerClassName="[&_p:nth-child(2)]:my-6 [&_p:last-child]:!-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section11?.descriptions}
+                image={data?.section11?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                heading={data?.section12?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section12?.descriptions}
+                image={data?.section12?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <CorneaOfferings
+                reversed
+                heading={data?.section13?.heading}
+                headingClassName="!text-[2.4rem] !leading-[3.2rem]"
+                sectionHeadingClass="grid-cols-1"
+                barClassName="hidden"
+                textColumnFooterClass="col-start-1"
+                descriptionContainerClassName="col-start-1 [&_p:first-child]:-mt-12 [&_p:last-child]:-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
+                descriptions={data?.section13?.descriptions}
+                image={data?.section13?.image}
+                textColumnFooter={
+                    <BookConsultation buttonClassName="-mt-6">
+                        <Button2 type="button" text="Request a call back" />
+                    </BookConsultation>
+                }
+            />
+
+            <LazyComponent>
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
+            </LazyComponent>
 
             <CtaSection title={data?.sectionspeakteam?.title} subtitle={data?.sectionspeakteam?.sub_heading} />
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -339,24 +377,45 @@ export async function getStaticProps() {
                             ...(data?.acf?.section9?.image && formatImage(data?.acf?.section9?.image))
                         }
                     },
-                    leftRightsection: Array.isArray(data?.acf?.leftRightsection)
-                        ? data?.acf.leftRightsection.map((ListData) => {
-                              return {
-                                  ...ListData,
-                                  bullet_list: convertArrayOfObjectsToStrings(ListData?.bullet_list),
-                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                              };
-                          })
-                        : [],
-                    leftRightsection2: Array.isArray(data?.acf?.leftRightsection2)
-                        ? data?.acf.leftRightsection2.map((ListData) => {
-                              return {
-                                  ...ListData,
-                                  bullet_list: convertArrayOfObjectsToStrings(ListData?.bullet_list),
-                                  descriptions: convertArrayOfObjectsToStrings(ListData?.descriptions)
-                              };
-                          })
-                        : [],
+                    section10: {
+                        ...data?.acf?.section10,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section10?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section10?.image && formatImage(data?.acf?.section10?.image))
+                        },
+                        largeImage: {
+                            ...(data?.acf?.section10?.largeImage && formatImage(data?.acf?.section10?.largeImage))
+                        }
+                    },
+                    section11: {
+                        ...data?.acf?.section11,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section11?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section11?.image && formatImage(data?.acf?.section11?.image))
+                        }
+                    },
+                    section12: {
+                        ...data?.acf?.section12,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section12?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section12?.image && formatImage(data?.acf?.section12?.image))
+                        }
+                    },
+                    section13: {
+                        ...data?.acf?.section13,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section13?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section13?.image && formatImage(data?.acf?.section13?.image))
+                        }
+                    },
                     sectionspeakteam: {
                         ...data?.acf?.sectionspeakteam
                     },

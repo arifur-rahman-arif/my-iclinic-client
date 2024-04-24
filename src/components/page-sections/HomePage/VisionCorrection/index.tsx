@@ -10,8 +10,8 @@ import { ImageType3 } from '@/types';
 interface Props {
     heading?: string;
     subHeading?: string;
-    image: ImageType3;
-    largeImage: ImageType3;
+    image?: ImageType3;
+    largeImage?: ImageType3;
     descriptions?: string[];
     footerHeading?: string;
 }
