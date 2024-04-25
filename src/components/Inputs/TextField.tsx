@@ -122,7 +122,7 @@ const TextField = ({
             )}
             <label
                 htmlFor={randomID ? randomString : id}
-                className={`input-placeholder pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 font-mulishExtraBold text-[1.6rem] uppercase leading-[1.6rem] text-heading transition-all duration-300 ${
+                className={`input-placeholder pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 font-mulishExtraBold text-[1.4rem] uppercase leading-[1.4rem] text-heading transition-all duration-300 ${
                     type === 'textarea' ? 'top-12 -translate-y-2/4' : 'top-2/4 -translate-y-2/4'
                 } ${placeHolderClassName}`}
             >

@@ -300,7 +300,7 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
         >
             <InputLabel
                 id="finding-options-label"
-                className="!ml-6 !font-mulishExtraBold !text-[1.6rem] !uppercase !text-heading"
+                className="!ml-6 !font-mulishExtraBold !text-[1.4rem] !uppercase !text-heading"
             >
                 How did you find us
                 <span className="ml-2 scale-110 text-red-600">*</span>

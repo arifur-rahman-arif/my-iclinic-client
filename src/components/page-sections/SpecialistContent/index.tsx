@@ -208,13 +208,14 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
     const activeTab = tabs.find((tab) => tab.active);
 
     return (
-        <div className="grid content-start gap-12 md:gap-24">
+        <div className="grid w-full content-start gap-12 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] md:gap-24">
             <div className="grid gap-4">
                 <div
-                    className="grid place-items-center overflow-x-auto pb-4 transition-all duration-500 sm:pb-0 md:place-items-start md:overflow-visible"
+                    className="grid place-items-center overflow-x-auto bg-brand pb-2 transition-all duration-500 sm:pb-0 md:place-items-start md:overflow-visible"
                     ref={filterRef}
+                    id="specialist-page"
                 >
-                    <div className="flex items-center justify-start gap-4">
+                    <div className="flex items-center justify-start gap-4 md:px-8">
                         {tabs?.map((tab, index) => (
                             <button
                                 key={index}
@@ -222,9 +223,9 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
                                 onClick={() => handleTabClick(index)}
                                 className={`${
                                     tab.active
-                                        ? 'border-[#003C55] bg-[#CCD8DD] text-[#003C55]'
-                                        : 'border-transparent text-[#9B9FA1] hover:text-[#003C55]'
-                                }  whitespace-nowrap rounded-[6rem] border-2 px-8 py-4 font-mulishBold transition-all duration-500 md:py-6 md:px-10 md:text-[2rem] md:leading-[2.8rem]`}
+                                        ? 'underline decoration-white decoration-4 underline-offset-[1rem] opacity-60'
+                                        : 'text-[#9B9FA1] hover:opacity-60'
+                                }  whitespace-nowrap px-8 py-4 font-mulishBold text-white transition-all duration-500 md:px-10 md:py-6`}
                             >
                                 {tab.label}
                             </button>
@@ -260,7 +261,7 @@ const SpecialistContent = ({ specialist, slug }: SpecialistContentProps) => {
             </div>
 
             {tabs ? (
-                <div className={styles.styles}>
+                <div className={`${styles.styles} px-8 pb-12`}>
                     {activeTab?.slug === 'specialties' ? <Specialties specialties={specialist.specialties} /> : null}
                     {activeTab?.slug === 'education' ? <Education education={specialist.education} /> : null}
                     {activeTab?.slug === 'awards' ? <Awards awards={specialist.awards} /> : null}

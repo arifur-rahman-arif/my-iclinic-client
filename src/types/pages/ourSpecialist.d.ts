@@ -1,3 +1,5 @@
+import { ImageType3 } from '@/types';
+
 type Image = {
     src: string;
     url?: string;
@@ -8,10 +10,11 @@ type Image = {
 
 export interface OurSpecialistPageContent {
     masthead: {
-        heading: string;
-        subheading: string;
-        image: Image,
-    };
+        title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+    },
     section1: {
         heading: string;
     };

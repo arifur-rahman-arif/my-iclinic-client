@@ -307,7 +307,7 @@ export const ConsultantItem = ({
 }: ConsultantItemProps): JSX.Element => {
     return (
         <Link
-            href={url}
+            href={url || '#'}
             title={name}
             className={twMerge('translate-y-8 opacity-0', className)}
             onClick={() => {

@@ -30,7 +30,7 @@ const Media = ({ content, list }: MediaProps): JSX.Element => {
                         {list.map((item, i) => (
                             <li className="grid grid-cols-[auto_1fr] items-start gap-3" key={i}>
                                 <Image
-                                    src="/images/icons/icon-arrow-right.svg"
+                                    src="/images/icons/icon-dotted-arrow.svg"
                                     alt="Arrow"
                                     width={10}
                                     height={10}

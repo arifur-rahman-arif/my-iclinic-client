@@ -355,6 +355,16 @@ body {
     height: 0px;
 }
 
+#specialist-page::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #FF7F00;
+}
+
+#specialist-page::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
 .blog-filters::-webkit-scrollbar,
 .breadcrumb-container::-webkit-scrollbar {
     height: 4px;
