@@ -40,7 +40,7 @@ const SectionTextColumn = ({
         <div className={twMerge('grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12', className)}>
             {heading ? <SectionHeading {...{ heading, headingClassName, barClassName }} /> : null}
 
-            {descriptions && descriptions?.length > 0 && (
+            {descriptions?.length ? (
                 <div
                     className={twMerge(
                         'description-box col-start-2 grid w-full max-w-[47.5rem] gap-6',
@@ -51,7 +51,7 @@ const SectionTextColumn = ({
                         <p className={descriptionClassName} key={key} dangerouslySetInnerHTML={{ __html: item }}></p>
                     ))}
                 </div>
-            )}
+            ) : null}
 
             {textColumnFooter && (
                 <div className={twMerge('col-start-2', textColumnFooterClass)}>{textColumnFooter}</div>

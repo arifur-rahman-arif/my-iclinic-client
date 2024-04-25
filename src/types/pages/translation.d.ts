@@ -1,23 +1,37 @@
 import ImageApiType from 'src/types/api/image';
 import { PriceObject } from 'src/types/pages/price';
+import { ImageType3 } from '@/types';
 
 interface TranslationPageProps {
+    masthead: {
+        title: string;
+        subTitle: string;
+        largeImage: ImageType3,
+        smallImage: ImageType3;
+    },
     // Understand your care journey with us
     section_1: {
         heading: string;
-        subheading: string;
-        list: string[];
+        descriptions: string[];
+        image: string;
     };
-    // If you would like to book with our translation service partner
-    section_2: {
+    section2: {
         heading: string;
-        image: ImageApiType
-    };
-    // Translation packages
-    section_3: {
-        heading: string;
-        services: Array<PriceObject>;
-    },
+        packages: {
+            heading: string;
+            packageColor: string
+            items: {
+                title: string;
+                description: string;
+                price: string;
+                priceAttribute?: string;
+            }[]
+        }[];
+    }
+   ctaSection: {
+       subtitle?: string;
+       title?: string;
+   }
 }
 
 export default TranslationPageProps;
