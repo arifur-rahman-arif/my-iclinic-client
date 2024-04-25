@@ -15,7 +15,7 @@ const ContactForm = (): JSX.Element => {
 
     return (
         <div
-            className={`mx-auto grid w-full max-w-[90rem] grid-cols-1 content-start gap-24 ${
+            className={`mx-auto grid w-full max-w-[90rem] grid-cols-1 content-start gap-12 md:gap-24 ${
                 !appCtx.formSubmitted && 'md:grid-cols-2'
             } md:items-start`}
         >

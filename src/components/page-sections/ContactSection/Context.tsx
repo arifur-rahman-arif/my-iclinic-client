@@ -59,15 +59,15 @@ const Context = ({ children }: ContextProps): JSX.Element => {
         {
             name: 'Contact information',
             active: true
-        },
-        {
-            name: 'Request a callback',
-            active: false
-        },
-        {
-            name: 'Out of hours information',
-            active: false
         }
+        // {
+        //     name: 'Request a callback',
+        //     active: false
+        // },
+        // {
+        //     name: 'Out of hours information',
+        //     active: false
+        // }
     ]);
 
     const [name, setName] = useState<string>('');

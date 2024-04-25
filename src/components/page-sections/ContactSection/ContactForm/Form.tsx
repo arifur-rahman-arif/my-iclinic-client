@@ -1,4 +1,3 @@
-import Button from '@/components/Buttons/Button';
 import { TextField } from '@/components/Inputs';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useBusinessInfoSubmitMutation } from '@/services/businessInfo';
@@ -11,9 +10,9 @@ import {
 } from '@/utils/miscellaneous';
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
-import { BiRightArrowAlt } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { ContactContext, ContactCtx } from '../Context';
+import { Button2 } from '@/components/Buttons';
 
 /**
  * Form component
@@ -167,7 +166,7 @@ const Form = (): JSX.Element => {
     }, [response, dispatch]);
 
     return (
-        <form className="grid grid-rows-[6rem,_6rem,_6rem,_6rem,_17rem,_auto] gap-14" onSubmit={formSubmit}>
+        <form className="grid grid-rows-[6rem,_6rem,_6rem,_6rem,_27rem,_auto] gap-14" onSubmit={formSubmit}>
             <TextField
                 value={appCtx.name}
                 type="text"
@@ -243,16 +242,12 @@ const Form = (): JSX.Element => {
                 }}
             />
 
-            <Button
+            <Button2
                 type="submit"
-                text="Send message"
-                className="group/button justify-self-end !border-heading2 !bg-brand !font-mulishBold !text-[1.6rem] !leading-[2.4rem] text-white hover:!bg-transparent hover:text-brand md:mt-12"
+                text="Send my message"
+                className="group/button justify-self-end font-mulishBold"
                 loading={response.isLoading}
                 loadingIconPosition="right"
-                icon={
-                    <BiRightArrowAlt className="h-9 w-9 translate-y-[0.1rem] fill-white transition-all duration-500 group-hover/button:fill-brand" />
-                }
-                iconPosition="right"
             />
         </form>
     );
@@ -287,11 +282,11 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
             sx={{
                 minWidth: 120,
                 '.MuiInputBase-root': {
-                    borderRadius: 'var(--border-radius)',
+                    borderRadius: 'var(--border-radius2)',
                     height: '100%'
                 },
                 '.MuiOutlinedInput-notchedOutline': {
-                    border: '1px solid var(--color-secondary) !important'
+                    border: '1px solid #C3C9D5 !important'
                 },
                 '.MuiOutlinedInput-notchedOutline legend span': {
                     paddingLeft: '0',
@@ -303,7 +298,10 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
                 }
             }}
         >
-            <InputLabel id="finding-options-label" className="!ml-6 !font-latoMedium !text-[1.6rem] !text-secondary">
+            <InputLabel
+                id="finding-options-label"
+                className="!ml-6 !font-mulishExtraBold !text-[1.6rem] !uppercase !text-heading"
+            >
                 How did you find us
                 <span className="ml-2 scale-110 text-red-600">*</span>
             </InputLabel>
@@ -322,7 +320,7 @@ const SelectBox = ({ optionsError, setOptionsError }: SelectBoxProps): JSX.Eleme
             </Select>
 
             <span
-                className={`pointer-events-none absolute left-4 bottom-0 text-[1.4rem] text-red-500 transition-all duration-500 ${
+                className={`pointer-events-none absolute bottom-0 left-4 text-[1.4rem] text-red-500 transition-all duration-500 ${
                     optionsError ? 'translate-y-10' : '-translate-y-[50%] scale-50 opacity-0'
                 }`}
             >

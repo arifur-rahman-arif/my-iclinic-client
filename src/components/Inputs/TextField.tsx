@@ -51,7 +51,7 @@ const TextField = ({
     onClearValue,
     randomID,
     rows,
-    defaultClassName = 'h-full w-full rounded-primary border border-secondary p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
+    defaultClassName = 'h-full w-full rounded-radius2 border border-[#C3C9D5] p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand',
     className,
     placeHolderClassName
 }: TextFieldInterface): JSX.Element => {
@@ -112,7 +112,7 @@ const TextField = ({
                 <textarea
                     value={value}
                     id={randomID ? randomString : id}
-                    className={`h-full w-full resize-none rounded-primary border border-secondary bg-white p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand ${
+                    className={`h-full w-full resize-none rounded-radius2 border border-[#C3C9D5] bg-white p-6 pr-20 outline-none transition-[border] duration-[400ms] focus:border-brand ${
                         errorText ? 'border-red-500' : ''
                     }`}
                     onChange={onChange}
@@ -122,7 +122,7 @@ const TextField = ({
             )}
             <label
                 htmlFor={randomID ? randomString : id}
-                className={`input-placeholder pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white py-4 px-6 font-latoMedium text-[1.6rem] leading-[1.6rem] text-secondary transition-all duration-500 ${
+                className={`input-placeholder pointer-events-none absolute left-6 flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 font-mulishExtraBold text-[1.6rem] uppercase leading-[1.6rem] text-heading transition-all duration-300 ${
                     type === 'textarea' ? 'top-12 -translate-y-2/4' : 'top-2/4 -translate-y-2/4'
                 } ${placeHolderClassName}`}
             >
@@ -133,13 +133,13 @@ const TextField = ({
             {/* Error text */}
             <span
                 ref={errorTextRef}
-                className="pointer-events-none absolute left-4 bottom-0 -translate-y-[50%] scale-50 text-[1.4rem] text-red-500 opacity-0"
+                className="pointer-events-none absolute bottom-0 left-4 -translate-y-[50%] scale-50 text-[1.4rem] text-red-500 opacity-0"
             >
                 {errorText || ''}
             </span>
 
             {Icon ? (
-                <span className="input-icon pointer-events-none absolute top-2/4 right-6 -translate-y-2/4 divide-red-50 transition-all duration-500">
+                <span className="input-icon pointer-events-none absolute right-6 top-2/4 -translate-y-2/4 divide-red-50 transition-all duration-500">
                     {Icon}
                 </span>
             ) : (
