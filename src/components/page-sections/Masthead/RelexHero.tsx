@@ -7,12 +7,13 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export interface Props {
+    className?: string;
     title: string;
     subTitle: string;
     image: ImageType3;
     imageClass?: string;
     priceText: string;
-    financeText: string;
+    financeText?: string;
     suitabilityButton?: ReactNode;
     textContainerClass?: string;
 }
@@ -23,6 +24,7 @@ export interface Props {
  * @returns {*}  {JSX.Element}
  */
 const RelexHero = ({
+    className,
     title,
     subTitle,
     image,
@@ -35,7 +37,7 @@ const RelexHero = ({
     return (
         <Section
             defaultClassName="w-full relative relative masthead grid gap-12"
-            className="bg-[#003E79] md:min-h-[50rem] xl:min-h-[62rem]"
+            className={twMerge('bg-[#003E79] md:min-h-[50rem] xl:min-h-[62rem]', className)}
         >
             <div className="grid gap-12 !px-0 lg:grid-cols-2 lg:gap-0">
                 <Image
@@ -55,7 +57,8 @@ const RelexHero = ({
                 >
                     <BreadCrumb
                         linkClassName="text-white"
-                        className="mb-12 !hidden !px-0 lg:!flex xl:mt-12"
+                        activeLinkClass="text-[#94CAFF]"
+                        className="mb-12 !hidden !px-0 md:!flex xl:mt-12"
                         pathClassName="stroke-white"
                     />
 
@@ -76,9 +79,11 @@ const RelexHero = ({
                         </span>
                     ) : null}
 
-                    <span className="-mt-6 font-latoBold text-[2.4rem] uppercase leading-[3.2rem] text-[#00BFFF]">
-                        {financeText}
-                    </span>
+                    {financeText ? (
+                        <span className="-mt-6 font-latoBold text-[2.4rem] uppercase leading-[3.2rem] text-[#00BFFF]">
+                            {financeText}
+                        </span>
+                    ) : null}
 
                     {suitabilityButton ? <div className="mt-6">{suitabilityButton}</div> : null}
                 </div>

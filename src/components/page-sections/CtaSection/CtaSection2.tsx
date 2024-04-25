@@ -7,12 +7,14 @@ import ctaImage from '@/section-images/cta-image.png';
 import HTMLReactParser from 'html-react-parser';
 import { ReactNode } from 'react';
 import { Container } from '@/components/Container';
+import { twMerge } from 'tailwind-merge';
 
 interface CtaSection2Interface {
     title?: string;
     subTitle?: string;
     descriptions?: ReactNode[];
     image?: any;
+    subTitleClass?: string;
 }
 
 /**
@@ -21,7 +23,7 @@ interface CtaSection2Interface {
  * @param {CtaSection2Interface} {title, descriptions}
  * @returns {*}  {JSX.Element}
  */
-const CtaSection2 = ({ title, subTitle, descriptions, image }: CtaSection2Interface): JSX.Element => {
+const CtaSection2 = ({ title, subTitle, descriptions, image, subTitleClass }: CtaSection2Interface): JSX.Element => {
     return (
         <Section className="bg-[#003E79]">
             <Container className="grid gap-12 md:grid-cols-2 md:gap-24 xl:grid-cols-[1fr_auto] xl:gap-32">
@@ -43,7 +45,12 @@ const CtaSection2 = ({ title, subTitle, descriptions, image }: CtaSection2Interf
                                   </div>
                               ))
                             : null}
-                        <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#94CAFF]">
+                        <span
+                            className={twMerge(
+                                'text-balance font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#94CAFF]',
+                                subTitleClass
+                            )}
+                        >
                             {subTitle || 'A better quality of life is just around the corner!'}
                         </span>
                     </div>
