@@ -83,7 +83,7 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                             type="anchor"
                             link="/pricing-and-financing/financing-your-treatment"
                             text="Explore treatment options"
-                            className="sitemap-link justify-self-start !border-2 border-[#007EF5] bg-[#007EF5] text-center hover:!border-[#007EF5] hover:!text-[#007EF5]"
+                            className="justify-self-start !border-2 border-[#0099FF] bg-[#0099FF] text-center hover:!border-[#0099FF] hover:!text-[#0099FF]"
                         />
                     </>
                 }

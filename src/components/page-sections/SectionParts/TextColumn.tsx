@@ -77,7 +77,7 @@ const TextColumn = ({
                     {descriptions?.length ? (
                         <div
                             className={twMerge(
-                                'description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem] [&_strong]:text-heading',
+                                'description-box flex w-full flex-col items-start justify-start gap-6 md:max-w-[46.7rem] [&_a]:font-mulishBold [&_a]:decoration-[#0099FF] [&_a]:underline-offset-8 [&_a_*]:font-mulishBold [&_strong]:text-[1.6rem] [&_strong]:leading-[2.4rem] [&_strong]:text-heading [&_strong_*]:text-[1.6rem] [&_strong_*]:leading-[2.4rem]',
                                 descriptionWrapperClass
                             )}
                         >

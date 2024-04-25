@@ -145,7 +145,7 @@ const FullWidthImageSection = ({
                                 <div
                                     key={index}
                                     className={twMerge(
-                                        'text-white [&_*]:!text-white [&_a]:!font-mulishBold [&_a]:underline [&_a]:underline-offset-4 [&_strong]:!font-mulishBold',
+                                        'text-white [&_*]:text-white [&_a]:!font-mulishBold [&_a]:decoration-[#0099FF] [&_a]:underline-offset-4 [&_a]:hover:underline [&_a_*]:!font-mulishBold [&_strong]:!font-mulishBold',
                                         descriptionClass
                                     )}
                                 >
