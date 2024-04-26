@@ -2,28 +2,25 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { AdvanceEyeCare, CtaSection2, Masthead, SideImageSection } from '@/components/page-sections';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
+import { AdvanceEyeCare, CtaSection2, FullWidthImageSection, SideImageSection } from '@/components/page-sections';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-eye-diagnostics-technology-large.jpg';
-// import MastheadImageMedium from '@/masthead/masthead-eye-diagnostics-technology-medium.png';
-// import MastheadImageSmall from '@/masthead/masthead-eye-diagnostics-technology-small.png';
-import TextColumn from '@/page-sections/SectionParts/TextColumn';
 import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 import NormalSection5 from 'src/components/page-sections/NormalSection/NormalSection5';
+import RelexHero from '@/page-sections/Masthead/RelexHero';
+import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Button2 } from '@/components/Buttons';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
 const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
 
@@ -48,108 +45,81 @@ export default function OurEyeDiagnosticsTechnology({
     seo,
     yoastJson
 }: OurEyeDiagnosticsTechnologyProps): JSX.Element {
-    const [loadCallbackSection, setLoadCallbackSection] = useState<boolean>(false);
-    const deviceSize = useDeviceSize();
-    const heading = data?.masthead_heading || 'Eye diagnostics & equipment center';
-    const subheading = 'My-iClinic diagnostics center for vision testing & optometry practice.';
-
-    useEffect(() => {
-        if (largeSizes.includes(deviceSize)) setLoadCallbackSection(true);
-
-        setTimeout(() => {
-            if (smallSizes.includes(deviceSize)) setLoadCallbackSection(true);
-        }, 2500);
-    }, [deviceSize]);
-
     return (
-        <Page title={heading} description={subheading} yoastJson={yoastJson} seo={seo}>
+        <Page title="Eye diagnostics & equipment center" yoastJson={yoastJson} seo={seo}>
             <BreadCrumb />
 
-            <Masthead
-                imageSmall={data?.masthead_image.image?.url || MastheadImageLarge}
-                imageMedium={data?.masthead_image.image_medium?.url || MastheadImageLarge}
-                imageLarge={data?.masthead_image.image_large?.url || MastheadImageLarge}
-                altText={data?.masthead_image.image_large?.alt}
-                h1Title={<h1>{heading}</h1>}
-                h2Title={<h2>{subheading}</h2>}
-                priceText={<></>}
-                googleReviews={data?.google_reviews}
-                trustPilotReviews={data?.trustpilot_reviews}
-            />
-
-            <LazyComponent>{loadCallbackSection ? <CallbackSection /> : <ComponentLoader />}</LazyComponent>
-
-            <SideImageSection
-                containerClassName="md:!gap-x-32 md:!gap-y-12"
-                dynamicTextColumn={
-                    <>
-                        <h2 className="col-span-2 w-full max-w-[79.3rem] normal-case">
-                            <strong className="normal-case">
-                                Achieving accurate and comprehensive screening assessments to provide the best treatment
-                                plan for our patients.
-                            </strong>
-                        </h2>
-                        <TextColumn
-                            textColumnClassName="-mt-12"
-                            normalLightHeading={<></>}
-                            descriptions={[
-                                'Every pair of eyes are unique and different. We understand that every patient needs careful and precise attention to detail in their eye health to find the best treatment plan for them.',
-                                'Our ophthalmic technology and equipment facilities are highly advanced in the private eye care industry, achieving accurate and comprehensive screening assessments.',
-                                "Our optometrists, orthoptics and ophthalmic consultants use our technology for a wide-range of eye conditions and treatments; laser eye surgery, glaucoma surgery, cataract surgery, diabetes in the eye, macular degeneration, children's pediatric eye care and more."
-                            ]}
+            <RelexHero
+                {...data?.masthead}
+                imageClass="lg:absolute z-[1]"
+                textContainerClass="relative z-[2]"
+                suitabilityButton={
+                    <div className="mt-6 grid gap-6 md:mt-12">
+                        <FinanceCalculatorButton
+                            link="/pricing-and-financing/financing-your-treatment#calculator"
+                            title1ClassName="!text-white"
+                            icon={{
+                                src: '/images/icons/icon-percentage-fire-blue.png',
+                                width: 40,
+                                height: 40,
+                                alt: ''
+                            }}
                         />
-                    </>
+                        <MastheadCtaButtons
+                            className="mt-4 flex-row-reverse justify-end"
+                            showButton2
+                            button2Class="text-white border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
+                            button1Class="text-white bg-transparent border border-[#fff] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
+                        />
+                    </div>
                 }
-                sectionImage={{
-                    url: '/images/section-images/comprehensive-screening.jpg',
-                    width: 390,
-                    height: 390
-                }}
-                sectionImageDesktop={{
-                    url: '/images/section-images/comprehensive-screening.jpg',
-                    width: 677,
-                    height: 484
-                }}
             />
 
-            <NormalSection5 heading="The best care practice starts without any limitations in our care clinic. We are partnered with many different industry manufacturers who deliver the latest technology in healthcare." />
+            <LazyComponent>
+                <CallbackSection />
+            </LazyComponent>
+
+            <FullWidthImageSection
+                h3Title={data?.section1?.heading}
+                description={data?.section1?.descriptions}
+                image={data?.section1?.image?.src || '/images/section-images/eye-assessments.png'}
+                desktopImage={data?.section1?.image?.src || '/images/section-images/eye-assessments-large.png'}
+                altText={data?.section1?.image?.alt}
+                sectionClass="px-8 md:px-0 bg-brandLight"
+                titleClass="text-heading max-w-[67rem]"
+                descriptionClass="text-[#404A4D]"
+                textColumnExtraBottomElements={
+                    <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="hover:bg-brandLight">
+                            <Button2 type="button" text="Request a call back" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-[#003E79] hover:bg-brandLight md:px-20"
+                        />
+                    </div>
+                }
+            />
+
+            <NormalSection5 heading={data?.section2?.heading} description={data?.section2?.description} />
 
             <SideImageSection
                 containerClassName="md:!grid-cols-1 md:!gap-12"
-                h3LightHeading={
-                    <>
-                        Advanced eye care
-                        <br />
-                    </>
-                }
-                h3BoldHeading="assessment & scanning"
-                customColumn={<AdvanceEyeCare />}
+                h3LightHeading={data?.section3?.heading || 'Advanced eye care assessment & scanning'}
+                customColumn={<AdvanceEyeCare cards={data?.section3?.cards} />}
             />
 
-            <CtaSection2 title="Interested in working with us?" />
+            <CtaSection2 {...data?.ctaSection} />
+
+            <LazyComponent>
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
+            </LazyComponent>
 
             <LazyComponent>
                 <CompanyLogos />
-            </LazyComponent>
-
-            <LazyComponent>
-                <PdfDownload
-                    title={
-                        <>
-                            Get the guide to
-                            <br />
-                            Eye diagnostics
-                            <br />
-                            treatment
-                        </>
-                    }
-                    pageSlug="our-eye-diagnostics-technology"
-                    downloadFile={data?.email_contents?.download_file}
-                />
-            </LazyComponent>
-
-            <LazyComponent>
-                <NormalSlideSection />
             </LazyComponent>
         </Page>
     );
@@ -162,13 +132,50 @@ export default function OurEyeDiagnosticsTechnology({
  */
 export async function getStaticProps() {
     try {
-        const data: WpPageResponseInterface<any> = await getPageData({ slug: 'our-eye-diagnostics-technology' });
+        const data: WpPageResponseInterface<EyeDiagnosticsPageContentInterface> = await getPageData({
+            slug: 'our-eye-diagnostics-technology'
+        });
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || '',
-                yoastJson: data?.yoast_head_json || ''
+                yoastJson: data?.yoast_head_json || '',
+                data: {
+                    ...data?.acf,
+                    masthead: {
+                        ...data?.acf?.masthead,
+                        image: {
+                            ...(data?.acf?.masthead?.image && formatImage(data.acf?.masthead?.image))
+                        }
+                    },
+                    section1: {
+                        ...data?.acf.section1,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf.section1?.descriptions)?.map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section1?.image && formatImage(data.acf?.section1?.image))
+                        }
+                    },
+                    section3: {
+                        ...data?.acf.section3,
+                        cards: data?.acf?.section3?.cards?.length
+                            ? data.acf.section3.cards.map((card) => {
+                                  return {
+                                      ...card,
+                                      image: {
+                                          ...(card?.image && formatImage(card.image))
+                                      }
+                                  };
+                              })
+                            : null
+                    },
+                    patientReviews: {
+                        ...data?.acf?.patientReviews,
+                        heading: stripInitialTags(data?.acf?.patientReviews?.heading || '')
+                    }
+                } as DataInterface
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */
@@ -178,72 +185,3 @@ export async function getStaticProps() {
         return { props: {} };
     }
 }
-
-/// **
-// * Fetch the data from WordPress database
-// *
-// * @returns {Promise<{props: {posts: any}}>}
-// */
-// export async function getStaticProps() {
-//    try {
-//        const pageResponse: Response = await getData({
-//            url: `${process.env.WP_REST_URL}/pages?slug=eye-treatments-other-eye-conditions-conjunctivitis`
-//        });
-//
-//        if (pageResponse.status !== 200) {
-//            throw new Error('No response from WordPress database. Error text: ' + pageResponse.statusText);
-//        }
-//
-//        const pageJsonResponse: Array<any> = await pageResponse.json();
-//
-//        if (!pageJsonResponse[0]?.id) throw new Error('Page ID is not found');
-//
-//        const pageID = pageJsonResponse[0].id;
-//
-//        if (!pageID) throw new Error('Page ID is not found');
-//
-//        const response = await getData({
-//            url: `${process.env.WP_REST_URL}/pages/${pageID}`
-//        });
-//
-//        const data: WpPageResponseInterface<EyeDiagnosticsPageContentInterface> = await response.json();
-//
-//        return {
-//            /* eslint-disable */
-//            props: {
-//                data: {
-//                    ...data?.acf,
-//                    full_width_image_section: {
-//                        ...data?.acf.full_width_image_section,
-//                        descriptions: convertArrayOfObjectsToStrings(data.acf.full_width_image_section?.descriptions)
-//                    },
-//                    section_1: {
-//                        ...data?.acf.section_1,
-//                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_1?.descriptions)
-//                    },
-//                    section_2: {
-//                        ...data?.acf.section_2,
-//                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_2?.descriptions),
-//                        list: convertArrayOfObjectsToStrings(data?.acf.section_2?.list)
-//                    },
-//                    section_3: {
-//                        ...data?.acf.section_3,
-//                        descriptions: convertArrayOfObjectsToStrings(data.acf.section_3?.descriptions),
-//                        card_list: (data?.acf.section_3?.card_list || [])?.map((item) => {
-//                            return {
-//                                ...item,
-//                                image: { src: item.image as unknown as string, width: 376, height: 271 },
-//                                descriptions: convertArrayOfObjectsToStrings(item.descriptions)
-//                            };
-//                        })
-//                    }
-//                } as DataInterface
-//            },
-//            revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
-//            /* eslint-enable */
-//        };
-//    } catch (error: any) {
-//        console.error(error);
-//        return { props: {} };
-//    }
-// }

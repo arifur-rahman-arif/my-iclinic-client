@@ -12,7 +12,7 @@ export interface Props {
     subTitle: string;
     image: ImageType3;
     imageClass?: string;
-    priceText: string;
+    priceText?: string;
     financeText?: string;
     suitabilityButton?: ReactNode;
     textContainerClass?: string;

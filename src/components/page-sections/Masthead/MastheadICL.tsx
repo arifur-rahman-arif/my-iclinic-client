@@ -306,6 +306,7 @@ interface FinanceCalculatorButtonProps {
     title1ClassName?: string;
     title2ClassName?: string;
     icon?: ImageType3;
+    link?: string;
 }
 
 /**
@@ -317,38 +318,69 @@ interface FinanceCalculatorButtonProps {
 export const FinanceCalculatorButton = ({
     title2ClassName,
     title1ClassName,
-    icon
+    icon,
+    link
 }: FinanceCalculatorButtonProps): JSX.Element => {
-    return (
-        <button
-            title="Finance Calculator"
-            className="group/button col-span-full grid grid-cols-[auto_1fr] justify-items-start gap-4 justify-self-start"
-            onClick={() => {
-                window.scrollTo(
-                    0,
-                    getElementTopPosition(document.querySelector('#finance-calculator') as HTMLElement) - 200
-                );
-            }}
-        >
-            <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} {...(icon as any)} />
-            <div className="grid justify-items-start">
-                <span
-                    className={twMerge(
-                        'text-left font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
-                        title1ClassName
-                    )}
-                >
-                    Quick & Easy Calculator!
-                </span>
-                <span
-                    className={twMerge(
-                        'text-left font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]',
-                        title2ClassName
-                    )}
-                >
-                    Take control of your payment plan
-                </span>
-            </div>
-        </button>
-    );
+    if (link) {
+        return (
+            <Link
+                href={link}
+                title="Finance Calculator"
+                className="group/button col-span-full grid grid-cols-[auto_1fr] justify-items-start gap-4 justify-self-start"
+            >
+                <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} {...(icon as any)} />
+                <div className="grid justify-items-start">
+                    <span
+                        className={twMerge(
+                            'text-left font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
+                            title1ClassName
+                        )}
+                    >
+                        Quick & Easy Calculator!
+                    </span>
+                    <span
+                        className={twMerge(
+                            'text-left font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]',
+                            title2ClassName
+                        )}
+                    >
+                        Take control of your payment plan
+                    </span>
+                </div>
+            </Link>
+        );
+    } else {
+        return (
+            <button
+                title="Finance Calculator"
+                className="group/button col-span-full grid grid-cols-[auto_1fr] justify-items-start gap-4 justify-self-start"
+                onClick={() => {
+                    window.scrollTo(
+                        0,
+                        getElementTopPosition(document.querySelector('#finance-calculator') as HTMLElement) - 200
+                    );
+                }}
+            >
+                <Image src="/images/icons/icon-percentage-fire.svg" alt="" width={41} height={40} {...(icon as any)} />
+                <div className="grid justify-items-start">
+                    <span
+                        className={twMerge(
+                            'text-left font-mulishBold text-[1.8rem] uppercase leading-[2rem] text-white transition-all duration-500 group-hover/button:text-[#FFA500]',
+                            title1ClassName
+                        )}
+                    >
+                        Quick & Easy Calculator!
+                    </span>
+                    <span
+                        className={twMerge(
+                            'text-left font-mulishBold text-[1.4rem] leading-8 text-[#FFA500]',
+                            title2ClassName
+                        )}
+                    >
+                        Take control of your payment plan
+                    </span>
+                </div>
+            </button>
+        );
+    }
 };
