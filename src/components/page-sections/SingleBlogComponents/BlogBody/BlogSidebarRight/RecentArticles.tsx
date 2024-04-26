@@ -26,8 +26,9 @@ interface RecentArticlesPropsInterface {
  */
 const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element => {
     return (
-        <div className="grid content-start gap-14 p-6 transition-all duration-500 md:rounded-primary md:py-16 md:px-12 md:shadow-md md:hover:shadow-shadow1">
-            <span className="mb-2 font-latoBold text-[2.4rem] leading-[3.2rem] text-heading">Recent Articles:</span>
+        <div className="grid content-start gap-12 border border-[#EAECF0] p-6 transition-all duration-500 md:rounded-radius2 md:px-12 md:py-16 md:hover:shadow-shadow1">
+            <span className="font-latoBold text-[1.8rem] leading-[2.8rem] text-heading">Recent articles:</span>
+            <span className="-mt-10 h-4 w-24 rounded-[1.6rem] bg-[#FF7F00]"></span>
 
             {articles.length ? (
                 <div className="flex flex-wrap gap-12">
@@ -35,19 +36,19 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                         <Link
                             key={index}
                             href={`/articles/${article.slug}`}
-                            className="grid w-full max-w-[40rem] grid-cols-[auto_1fr] gap-10 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:p-0 md:shadow-none md:hover:shadow-none"
+                            className="grid w-full max-w-[40rem] grid-cols-[10rem_1fr] gap-6 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:p-0 md:shadow-none md:hover:shadow-none"
                         >
-                            <div className="overflow-hidden rounded-tl-primary rounded-bl-primary md:h-[6.4rem] md:w-[6.4rem] md:rounded-primary">
+                            <div className="overflow-hidden rounded-bl-radius2 rounded-tl-radius2 md:h-[6.4rem] md:w-[6.4rem] md:rounded-radius2">
                                 <Image
                                     src={article.image.src || '/images/section-images/placeholder-image.png'}
                                     width={90}
                                     height={90}
                                     alt=""
-                                    className="h-full w-full object-cover md:rounded-primary"
+                                    className="h-full w-full object-cover md:rounded-radius2"
                                 />
                             </div>
                             <div className="grid content-center gap-4 py-4 pr-8 md:!p-0">
-                                <span className="transition-all duration-500 line-clamp-1 hover:text-blue">
+                                <span className="line-clamp-1 transition-all duration-500 hover:text-blue">
                                     {article.title}
                                 </span>
                                 <div className="flex items-center justify-start gap-2 font-mulishLight">

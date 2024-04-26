@@ -44,15 +44,10 @@ const BlogList = ({
             <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24" ref={containerRef}>
                 {/* Section title & search box */}
                 <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
-                    <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
-                        <span className="h-full w-[0.5rem] bg-yellow"></span>
-                        <h1 className="">
-                            <strong className="font-latoExtraBold text-[3.6rem] leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
-                                Latest
-                            </strong>{' '}
-                            <span className="font-latoLight text-[3.6rem] normal-case leading-[4rem] md:text-[4.8rem] md:leading-[4.8rem]">
-                                articles
-                            </span>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4">
+                        <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>
+                        <h1 className="w-full font-latoBold normal-case text-heading md:max-w-[55rem]">
+                            Latest articles
                         </h1>
                     </div>
 
@@ -81,7 +76,7 @@ const BlogList = ({
                 ) : (
                     <>
                         {/*  Blogs  */}
-                        <div className="col-span-2 grid grid-cols-1 justify-items-center gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fit,_minmax(40rem,_1fr))] md:gap-y-20">
+                        <div className="col-span-2 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-[repeat(auto-fit,_minmax(40rem,_1fr))]">
                             {snap?.articles?.length ? (
                                 snap?.articles.map((list, index) => <BlogCard2 key={index} {...list} />)
                             ) : (

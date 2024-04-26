@@ -147,7 +147,7 @@ const BlogSearch = (): JSX.Element => {
                 id="blog-search"
                 placeholder="Search..."
                 defaultClassName="w-full h-full block border-b border-brand focus:border-brand focus:outline-none"
-                placeHolderClassName="!text-[1.8rem] !left-0"
+                placeHolderClassName="!left-0"
                 icon={
                     <Image
                         src="/images/icons/icon-search-outline.svg"

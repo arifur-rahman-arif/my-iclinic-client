@@ -139,7 +139,7 @@ const Filters = ({ categories }: FilterInterface): JSX.Element => {
                         <Link
                             title={filter.name}
                             href={filter.slug === 'all' ? '/articles' : `/articles/category/${filter.slug}`}
-                            className={`cursor-pointer border-b-2 border-transparent font-mulishBold capitalize transition-all duration-500 hover:text-brand ${
+                            className={`cursor-pointer border-b-2 border-transparent font-mulishBold text-[1.8rem] capitalize leading-[2.8rem] text-heading transition-all duration-500 hover:text-brand ${
                                 category === filter.slug && '!border-brand'
                             } ${
                                 (router.asPath === '/articles' || router.asPath === '/articles/page/1') &&

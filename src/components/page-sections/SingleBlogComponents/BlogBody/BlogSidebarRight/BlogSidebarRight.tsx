@@ -19,7 +19,7 @@ interface BlogSidebarRightInterface {
  */
 const BlogSidebarRight = ({ recentArticles, categories }: BlogSidebarRightInterface): JSX.Element => {
     return (
-        <div className="grid content-start gap-12 md:col-start-2 xl:col-start-auto">
+        <div className="grid content-start gap-6 md:col-start-2 xl:col-start-auto">
             <RecentArticles articles={recentArticles} />
             <ArticlesCategories categories={categories} />
         </div>

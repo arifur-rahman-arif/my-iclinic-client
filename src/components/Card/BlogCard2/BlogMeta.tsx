@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { CgCalendarDates } from 'react-icons/cg';
 
 interface BlogMetaInterface {
     views: number;
@@ -48,7 +47,7 @@ const BlogMeta = ({
                 {/* /> */}
                 {/* <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">{readTime}</span> */}
 
-                <CgCalendarDates className="h-8 w-8 fill-brand" />
+                <Image src="/images/icons/icon-calender-outline.svg" width={16} height={16} alt="" />
                 <span className="font-mulishBold text-[1.4rem] leading-8 text-[#697072]">{publishedDate}</span>
             </div>
         </div>

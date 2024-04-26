@@ -21,11 +21,9 @@ const RelatedPosts = ({ posts }: RelatedPostsInterface): JSX.Element => {
 
     return (
         <div className="col-span-full mt-12 grid gap-12 md:mt-24 md:gap-24">
-            <div className="grid gap-12">
-                <h2>
-                    <strong className="normal-case">You may also like</strong>
-                </h2>
-                <Image src="/images/icons/icon-pin-yellow.svg" width={198} height={2} alt="" />
+            <div className="grid gap-6">
+                <strong className="text-[2rem] normal-case leading-[2.8rem] text-heading">You may also like</strong>
+                <span className="h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
             </div>
 
             <div className="grid grid-cols-1 justify-items-start gap-12 sm:grid-cols-[repeat(auto-fit,_minmax(36.6rem,_1fr))]">

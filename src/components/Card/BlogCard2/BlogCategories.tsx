@@ -35,9 +35,9 @@ const BlogCategories = ({
                         {categoriesLength && categoriesLength !== categories.length ? (
                             <>
                                 {index < categoriesLength && (
-                                    <div className="mt-[0.1rem] grid content-start justify-start gap-2 line-clamp-1">
+                                    <div className="mt-[0.1rem] line-clamp-1 grid content-start justify-start gap-2">
                                         <span
-                                            className="flex font-mulishMedium text-[1.3rem] capitalize leading-8 text-[#697072] line-clamp-1"
+                                            className="line-clamp-1 flex font-mulishMedium text-[1.3rem] capitalize leading-8 text-[#697072]"
                                             key={index}
                                         >
                                             {category.name}
@@ -53,7 +53,7 @@ const BlogCategories = ({
                                 className="flex max-w-full font-mulishBold text-[1.4rem] capitalize leading-8"
                                 key={index}
                             >
-                                <span className="font-mulishMedium text-[1.4rem] capitalize leading-8 text-[#697072] line-clamp-1">
+                                <span className="line-clamp-1 font-mulishMedium text-[1.4rem] capitalize leading-8 text-[#697072]">
                                     {category.name}
                                 </span>
                                 {index !== categories?.length - 1 && ','}
