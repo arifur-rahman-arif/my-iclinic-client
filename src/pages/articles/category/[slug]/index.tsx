@@ -53,11 +53,10 @@ export default function Category({
                 <Section>
                     <Container className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-32">
                         <div className="col-span-2 flex flex-wrap items-center justify-between gap-12">
-                            <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-10">
-                                <span className="h-full w-[0.5rem] bg-yellow"></span>
-                                <h1 className="w-full normal-case md:max-w-[55rem]">
-                                    <strong className="font-latoExtraBold">Latest</strong>{' '}
-                                    <span className="font-latoLight normal-case">articles</span>
+                            <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4">
+                                <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>
+                                <h1 className="w-full font-latoBold normal-case text-heading md:max-w-[55rem]">
+                                    Latest articles
                                 </h1>
                             </div>
                         </div>

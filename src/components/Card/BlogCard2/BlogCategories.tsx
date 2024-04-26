@@ -26,7 +26,7 @@ const BlogCategories = ({
     return (
         <div className={`${defaultClassName} ${className}`}>
             {/* <Image src="/images/icons/icon-pin-yellow-small.svg" width={36} height={2} alt="" className="mt-3" /> */}
-            <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">Category:</span>
+            {/* <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">Category:</span> */}
 
             <div className="flex gap-2">
                 {categories.map((category, index) => (
@@ -37,7 +37,7 @@ const BlogCategories = ({
                                 {index < categoriesLength && (
                                     <div className="mt-[0.1rem] line-clamp-1 grid content-start justify-start gap-2">
                                         <span
-                                            className="line-clamp-1 flex font-mulishMedium text-[1.3rem] capitalize leading-8 text-[#697072]"
+                                            className="px- line-clamp-1 flex bg-[#FF7F00] font-latoExtraBold text-[1.2rem] uppercase leading-8 text-white"
                                             key={index}
                                         >
                                             {category.name}
@@ -50,13 +50,12 @@ const BlogCategories = ({
                             </>
                         ) : (
                             <span
-                                className="flex max-w-full font-mulishBold text-[1.4rem] capitalize leading-8"
+                                className="flex max-w-full font-latoExtraBold text-[1.2rem] uppercase leading-[1.2rem]"
                                 key={index}
                             >
-                                <span className="line-clamp-1 font-mulishMedium text-[1.4rem] capitalize leading-8 text-[#697072]">
+                                <span className="line-clamp-1 rounded-[10rem] bg-[#FF7F00] px-[0.8rem] py-[0.4rem] font-latoExtraBold text-[1.2rem] uppercase leading-[1.2rem] text-white">
                                     {category.name}
                                 </span>
-                                {index !== categories?.length - 1 && ','}
                             </span>
                         )}
                     </div>

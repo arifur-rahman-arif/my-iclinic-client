@@ -54,17 +54,19 @@ const ConsultantCard = ({
                     />
                 </Link>
             ) : (
-                <Image
-                    src={image}
-                    alt={name}
-                    width={370}
-                    height={245}
-                    quality={100}
-                    className={twMerge(
-                        'block max-h-[24.5rem] w-full overflow-hidden rounded-tl-radius2 rounded-tr-radius2 transition-all duration-500 group-hover/card:scale-110',
-                        imageClass
-                    )}
-                />
+                <div className="block max-h-[24.5rem] overflow-hidden">
+                    <Image
+                        src={image}
+                        alt={name}
+                        width={370}
+                        height={245}
+                        quality={100}
+                        className={twMerge(
+                            'w-full overflow-hidden rounded-tl-radius2 rounded-tr-radius2 transition-all duration-500 group-hover/card:scale-110',
+                            imageClass
+                        )}
+                    />
+                </div>
             )}
 
             <div className="mt-6 grid px-10">

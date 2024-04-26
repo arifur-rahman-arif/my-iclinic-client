@@ -3,10 +3,12 @@ import { Container } from '@/components/Container';
 import { TextField } from '@/components/Inputs';
 import { Section } from '@/components/Section';
 import { handleAlert } from '@/features/alert/alertSlice';
-import Image from 'next/image';
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useSWRMutation from 'swr/mutation';
+import dynamic from 'next/dynamic';
+
+const LottieComponent = dynamic(() => import('@/page-sections/ContactSection/ContactForm/LottieComponent'));
 
 interface Props {
     heading: string;
@@ -218,19 +220,26 @@ const Form = ({ setFormSubmitted }: FormProps): JSX.Element => {
  * @returns {JSX.Element} - JSX element representing the thank you message.
  */
 const ThankYou = (): JSX.Element => {
-    return (
-        <div className="grid grid-cols-1 place-items-center content-start gap-8" id="charity-form-submitted">
-            <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
+    const [componentRendered, setComponentRendered] = useState<boolean>(false);
 
-            <div className="flex w-full flex-col items-center justify-start gap-2">
+    useEffect(() => {
+        setComponentRendered(true);
+    }, []);
+
+    return (
+        <div className="mt-12 grid grid-cols-1 place-items-center content-start gap-8" id="charity-form-submitted">
+            {componentRendered && <LottieComponent />}
+
+            <div className="-mt-16 flex w-full flex-col items-center justify-start gap-2">
                 <span
                     className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading"
                     id="request-callback-thank-you"
                 >
                     Thank You
                 </span>
-                <p className="font-mulishMedium text-[1.6rem] leading-[2.4rem] text-[#35444B]">
-                    We have received your information.
+                <p className="max-w-[45rem] text-center font-mulishMedium text-[1.6rem] leading-[2.4rem] text-[#35444B]">
+                    Thank you for joining our charity family! Your support means the world to us, and we're excited to
+                    keep you updated on how your contributions are making a difference.
                 </p>
             </div>
         </div>

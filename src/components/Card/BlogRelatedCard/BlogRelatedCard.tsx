@@ -31,7 +31,7 @@ const BlogRelatedCard = ({
     return (
         <Link
             href={`/articles/${slug}` || '#'}
-            className="group/card grid min-h-[20rem] items-start gap-10 overflow-hidden rounded-primary border-b-4 shadow-md transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:grid-cols-2 md:grid-cols-[15rem_1fr] md:gap-6  lg:gap-10"
+            className="group/card grid min-h-[20rem] items-start gap-10 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] transition-all duration-500 hover:border-brand hover:shadow-shadow1 sm:grid-cols-2 md:grid-cols-[15rem_1fr] md:gap-6  lg:gap-10"
         >
             <div className="h-full w-full min-w-[14.3rem] cursor-pointer overflow-hidden">
                 <Image
@@ -42,10 +42,10 @@ const BlogRelatedCard = ({
                     className="h-full w-full object-cover transition-all duration-[0.45s] group-hover/card:scale-105"
                 />
             </div>
-            <div className="grid content-start gap-6 px-8 pr-6 pb-10 sm:pl-0 sm:pt-8">
+            <div className="grid content-start gap-6 px-8 pb-10 pr-6 sm:pl-0 sm:pt-8">
                 <BlogAuthor author={author} excludeLink={true} />
 
-                <span className="font-mulishBold text-[2rem] leading-[2.4rem] line-clamp-1">{title}</span>
+                <span className="line-clamp-1 font-mulishBold text-[2rem] leading-[2.4rem]">{title}</span>
 
                 {categories?.length && (
                     <BlogCategories categories={categories} className="!mt-0" categoriesLength={1} />

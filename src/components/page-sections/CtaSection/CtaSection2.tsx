@@ -7,7 +7,6 @@ import ctaImage from '@/section-images/cta-image.png';
 import HTMLReactParser from 'html-react-parser';
 import { ReactNode } from 'react';
 import { Container } from '@/components/Container';
-import { twMerge } from 'tailwind-merge';
 
 interface CtaSection2Interface {
     title?: string;
@@ -45,12 +44,7 @@ const CtaSection2 = ({ title, subTitle, descriptions, image, subTitleClass }: Ct
                                   </div>
                               ))
                             : null}
-                        <span
-                            className={twMerge(
-                                'text-balance font-latoBold text-[2rem] uppercase leading-[2.8rem] text-[#94CAFF]',
-                                subTitleClass
-                            )}
-                        >
+                        <span className="text-balance font-latoMedium text-[2rem] uppercase uppercase leading-[2.8rem] text-[#94CAFF]">
                             {subTitle || 'A better quality of life is just around the corner!'}
                         </span>
                     </div>

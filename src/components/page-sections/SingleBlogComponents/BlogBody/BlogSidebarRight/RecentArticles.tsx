@@ -36,7 +36,7 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                         <Link
                             key={index}
                             href={`/articles/${article.slug}`}
-                            className="grid w-full max-w-[40rem] grid-cols-[10rem_1fr] gap-6 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:grid-cols-[auto_1fr] md:p-0 md:shadow-none md:hover:shadow-none"
+                            className="group/card grid w-full max-w-[40rem] grid-cols-[10rem_1fr] gap-6 rounded-primary shadow-md transition-all duration-500 hover:shadow-shadow1 md:grid-cols-[auto_1fr] md:p-0 md:shadow-none md:hover:shadow-none"
                         >
                             <div className="overflow-hidden rounded-bl-radius2 rounded-tl-radius2 md:h-[6.4rem] md:w-[6.4rem] md:rounded-radius2">
                                 <Image
@@ -44,16 +44,18 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                                     width={90}
                                     height={90}
                                     alt=""
-                                    className="h-full w-full object-cover md:rounded-radius2"
+                                    className="h-full w-full object-cover transition-all duration-500 group-hover/card:scale-110 md:rounded-radius2"
                                 />
                             </div>
                             <div className="grid content-center gap-4 py-4 pr-8 md:!p-0">
-                                <span className="line-clamp-1 transition-all duration-500 hover:text-blue">
+                                <span className="line-clamp-1 transition-all duration-500 group-hover/card:text-brand group-hover/card:opacity-50">
                                     {article.title}
                                 </span>
                                 <div className="flex items-center justify-start gap-2 font-mulishLight">
-                                    <span className="text-[1.4rem] italic leading-8">By</span>{' '}
-                                    <span className="block font-mulishBold text-[1.4rem] leading-8">
+                                    <span className="text-[1.4rem] italic leading-8 transition-all duration-500 group-hover/card:text-brand group-hover/card:opacity-50">
+                                        By
+                                    </span>{' '}
+                                    <span className="block font-mulishBold text-[1.4rem] leading-8 transition-all duration-500 group-hover/card:text-brand group-hover/card:opacity-50">
                                         {article.author.name}
                                     </span>
                                 </div>

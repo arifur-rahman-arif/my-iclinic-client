@@ -50,13 +50,12 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                             type="anchor"
                             link="#our-mission"
                             text="Support our mission"
-                            className="border-[#00BFFF] bg-[#00BFFF] text-center hover:!border-[#00BFFF] hover:text-[#00BFFF]"
+                            className="border-[#00BFFF] bg-[#00BFFF] text-center hover:!border-[#00BFFF] hover:text-[#00BFFF] focus:!border-[#00BFFF]"
                         />
                         <Button2
                             type="anchor"
                             text="Our impact"
-                            link="https://www.gofundme.com/f/37ivhdauco"
-                            target="_blank"
+                            link="#impact-beyond-borders"
                             title="Our impact"
                             className="!border !border-white !bg-transparent !px-24 text-center !text-white hover:!border-[#003E79] hover:!bg-[#003E79]"
                         />

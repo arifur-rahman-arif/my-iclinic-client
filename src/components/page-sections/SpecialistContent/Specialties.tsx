@@ -23,7 +23,7 @@ const Specialties = ({ specialties }: SpecialtiesProps): JSX.Element => {
             {specialties &&
                 specialties.map((specialty, index) => (
                     <div className="grid gap-6" key={index}>
-                        <span className="block font-mulishBold text-[2rem] leading-[2.8rem]">
+                        <span className="block font-mulishBold text-[2rem] leading-[2.8rem] text-heading">
                             {specialty.name || ''}
                         </span>
 
@@ -38,7 +38,7 @@ const Specialties = ({ specialties }: SpecialtiesProps): JSX.Element => {
                                             height={10}
                                             className="mt-2.5 h-5 w-5"
                                         />
-                                        <span className="text-[#384043]">{item || ''}</span>
+                                        <span>{item || ''}</span>
                                     </li>
                                 ))}
                             </ul>
