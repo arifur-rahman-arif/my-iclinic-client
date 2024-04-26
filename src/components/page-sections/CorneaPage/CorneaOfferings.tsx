@@ -18,6 +18,7 @@ interface CorneaOfferingsProps {
     reversed?: boolean;
     textColumnFooter?: ReactNode;
     textColumnFooterClass?: string;
+    id?: string;
 }
 
 /**
@@ -41,10 +42,11 @@ const CorneaOfferings = ({
     descriptionContainerClassName,
     textColumnFooter,
     textColumnFooterClass,
-    reversed
+    reversed,
+    id
 }: CorneaOfferingsProps): JSX.Element => {
     return (
-        <Section>
+        <Section id={id}>
             <Container
                 className={`grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24 xl:gap-28 ${
                     reversed ? 'xl:grid-cols-[auto_1fr]' : ' xl:grid-cols-[1fr_auto]'

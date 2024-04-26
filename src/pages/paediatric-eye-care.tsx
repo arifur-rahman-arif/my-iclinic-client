@@ -143,7 +143,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
 
             <Section>
                 <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_6rem_auto] md:gap-0 lg:grid-cols-[1fr_10rem_auto]">
-                    <div className="relative z-[2] grid content-start gap-12 rounded-radius2 bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-24">
+                    <div className="relative z-[2] grid content-start gap-12 rounded-radius2 bg-white md:col-span-2 md:col-start-1 md:row-start-1 md:py-12 md:pl-12 md:pr-24 lg:py-12">
                         <div className="grid gap-6">
                             <h3 className="max-w-[36.2rem] font-latoBold text-[2rem] leading-[2.8rem]">
                                 {data?.section9?.heading}
@@ -151,7 +151,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                             <span className="h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
                         </div>
 
-                        <div className="grid gap-6">
+                        <div className="grid max-w-[45rem] gap-6">
                             {data?.section9?.descriptions
                                 ? data.section9.descriptions.map((item, key) => (
                                       <p dangerouslySetInnerHTML={{ __html: item }} key={key}></p>
@@ -236,7 +236,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
 
             <Section>
                 <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-[auto_3rem_auto] md:gap-0 lg:grid-cols-[auto_10rem_1fr]">
-                    <div className="relative z-[2] grid content-start gap-12 rounded-radius2 bg-white md:col-span-2 md:col-start-2 md:row-start-1 md:py-12 md:pl-24 md:pr-12 lg:py-24">
+                    <div className="relative z-[2] grid content-start gap-12 rounded-radius2 bg-white md:col-span-2 md:col-start-2 md:row-start-1 md:py-12 md:pl-24 md:pr-12">
                         <div className="grid gap-6">
                             <h3 className="max-w-[36.2rem] font-latoBold text-[2rem] leading-[2.8rem]">
                                 {data?.section_2?.heading}
@@ -244,7 +244,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                             <span className="h-[1.4rem] w-[6.7rem] rounded-[1.6rem] bg-[#FF7F00]"></span>
                         </div>
 
-                        <div className="grid gap-6">
+                        <div className="grid max-w-[45rem] gap-6">
                             {data?.section_2?.descriptions
                                 ? data.section_2.descriptions.map((item, key) => (
                                       <p dangerouslySetInnerHTML={{ __html: item }} key={key}></p>
@@ -254,14 +254,14 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     </div>
                     <div className="row-start-1 h-full md:col-span-2 md:col-start-1 md:row-start-1">
                         <Image
-                            className="h-full w-full rounded-radius2 md:rounded-bl-none md:rounded-tl-none"
+                            className="h-full w-full rounded-radius2 md:rounded-bl-none md:rounded-tl-none "
                             {...data?.section_2?.image}
                         />
                     </div>
                 </Container>
             </Section>
 
-            <CtaSection2 {...data?.ctaSection2} />
+            <CtaSection2 {...data?.ctaSection2} subTitleClass="text-[#94CAFF] font-latoMedium" />
 
             <LazyComponent>
                 <CompanyLogos />
@@ -317,7 +317,7 @@ export async function getStaticProps() {
                             stripInitialTags(item)
                         ),
                         image: {
-                            ...(data?.acf?.section7?.image && formatImage(data.acf?.section7?.image))
+                            ...(data?.acf?.section_2?.image && formatImage(data.acf?.section_2?.image))
                         }
                     }, // 2\
                     section_3: {

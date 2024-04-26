@@ -214,6 +214,7 @@ export default function RelexSmileLondon({
 
             <SideImageSection
                 sectionClass="!overflow-hidden"
+                containerClassName="xl:!grid-cols-[auto_1fr]"
                 // h2Heading={data?.section_4?.subheading || 'Why RELEX SMILE'}
                 h3LightHeading={
                     <>
@@ -338,6 +339,7 @@ export default function RelexSmileLondon({
                             'Why consider our ReLEX SMILE Laser eye surgery when you already have glasses or contact lenses?'}
                     </>
                 }
+                containerClassName="xl:!grid-cols-[auto_1fr] !items-start"
                 sectionImage={{
                     url: data?.section_6?.image?.url || '/images/section-images/laser-relex-smile.png',
                     width: 370,
@@ -351,7 +353,6 @@ export default function RelexSmileLondon({
                 altText={data?.section_6?.large_image?.alt || 'Male athlete on bike after laser eye surgery'}
                 textColumnImage={true}
                 customColumn={<StackColumn stackList={data?.section_6?.list} />}
-                containerClassName="!items-start"
             />
 
             <CtaSection2

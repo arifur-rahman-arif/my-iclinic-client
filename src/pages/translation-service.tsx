@@ -54,7 +54,7 @@ const TranslationService = ({ seo, yoastJson, data }: TranslationServiceProps) =
                 packageItemDescriptionBoxClass="md:grid-cols-[1fr_11rem]"
             />
 
-            <CtaSection />
+            <CtaSection {...data?.ctaSection} />
         </Page>
     );
 };

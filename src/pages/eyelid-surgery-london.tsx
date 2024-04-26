@@ -102,6 +102,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             <GlaucomaChargeSection {...data?.section2} />
 
             <CorneaOfferings
+                id={data?.section3?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section3?.heading}
                 descriptionContainerClassName="[&_p:nth-child(2)]:-mt-4 [&_p:last-child]:!-mt-6 [&_p:nth-child(7)]:mt-6  [&_p:nth-child(2)]:mb-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
@@ -115,6 +116,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section4?.heading?.trim().split(' ').join('-')}
                 heading={data?.section4?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
                 sectionHeadingClass="grid-cols-1"
@@ -131,6 +133,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section5?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section5?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
@@ -148,6 +151,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section6?.heading?.trim().split(' ').join('-')}
                 heading={data?.section6?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
                 sectionHeadingClass="grid-cols-1"
@@ -164,6 +168,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section7?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section7?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
@@ -181,6 +186,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section8?.heading?.trim().split(' ').join('-')}
                 heading={data?.section8?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
                 sectionHeadingClass="grid-cols-1"
@@ -197,6 +203,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section9?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section9?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
@@ -216,6 +223,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             <VisionCorrection {...data?.section10} />
 
             <CorneaOfferings
+                id={data?.section11?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section11?.heading}
                 descriptionContainerClassName="[&_p:nth-child(2)]:my-6 [&_p:last-child]:!-mt-6 [&_p:nth-child(5)]:mt-6 [&_p:nth-child(1)_span]:font-mulishBold [&_p:nth-child(2)_span]:font-mulishBold"
@@ -229,6 +237,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section12?.heading?.trim().split(' ').join('-')}
                 heading={data?.section12?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"
                 sectionHeadingClass="grid-cols-1"
@@ -245,6 +254,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
             />
 
             <CorneaOfferings
+                id={data?.section13?.heading?.trim().split(' ').join('-')}
                 reversed
                 heading={data?.section13?.heading}
                 headingClassName="!text-[2.4rem] !leading-[3.2rem]"

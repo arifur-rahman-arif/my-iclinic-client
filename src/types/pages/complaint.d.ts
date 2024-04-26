@@ -13,6 +13,7 @@ interface ComplaintPageProps {
         image: ImageType3;
     }
     pdf_download: string;
+    complientText: string;
 }
 
 export default ComplaintPageProps;
