@@ -28,9 +28,10 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                 className="hidden md:mt-12 md:flex xl:mt-16"
                 pathClassName="!stroke-white"
                 linkClassName="text-white"
+                activeLinkClass="text-[#94CAFF]"
             />
 
-            <Container className="grid content-start gap-10 py-20 md:bg-transparent md:py-24">
+            <Container className="grid content-start gap-6 py-20 md:bg-transparent md:py-24">
                 <h1 className="max-w-[43rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                     {heading || 'Laser Eye Surgery'}
                 </h1>
@@ -39,9 +40,9 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                     {subheading || 'reducing or eliminating the need for glasses or contact lenses'}
                 </p>
 
-                <p dangerouslySetInnerHTML={{ __html: description }} className="max-w-[37.6rem] text-white"></p>
+                <p dangerouslySetInnerHTML={{ __html: description }} className="mt-6 max-w-[37.6rem] text-white"></p>
 
-                <div className="mt-12 grid justify-items-center gap-10 md:mt-20 md:justify-items-start">
+                <div className="mt-12 grid justify-items-center gap-10 md:mt-16 md:justify-items-start">
                     <div className="grid justify-items-center gap-4 lg:grid-cols-[auto_auto]">
                         {/* <BookConsultation buttonClassName=""> */}
                         {/* </BookConsultation> */}
@@ -49,7 +50,7 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                             type="anchor"
                             link="#our-mission"
                             text="Support our mission"
-                            className="text-center hover:!border-white"
+                            className="border-[#00BFFF] bg-[#00BFFF] text-center hover:!border-[#00BFFF] hover:text-[#00BFFF]"
                         />
                         <Button2
                             type="anchor"
@@ -57,7 +58,7 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                             link="https://www.gofundme.com/f/37ivhdauco"
                             target="_blank"
                             title="Our impact"
-                            className="!border !border-white !bg-transparent text-center !text-white hover:!border-[#003E79] hover:!bg-[#003E79]"
+                            className="!border !border-white !bg-transparent !px-24 text-center !text-white hover:!border-[#003E79] hover:!bg-[#003E79]"
                         />
                     </div>
                 </div>

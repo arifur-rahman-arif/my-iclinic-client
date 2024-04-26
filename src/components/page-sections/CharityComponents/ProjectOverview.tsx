@@ -72,15 +72,18 @@ interface CardProps {
  */
 const Card = ({ image, title, description }: CardProps): JSX.Element => {
     return (
-        <div
-            className="group/card grid w-full max-w-[40.3rem] content-start gap-6 rounded-radius2 shadow-md transition-shadow duration-500 hover:shadow-shadow1">
-            <Image alt={title} src={image.src} width={image.width} height={image.height}
-                   className="max-h-[21.2rem] rounded-tl-radius2 rounded-tr-radius2" />
+        <div className="group/card grid w-full max-w-[40.3rem] content-start gap-6 rounded-radius2 border border-[#EAECF0] transition-shadow duration-500 hover:shadow-shadow1">
+            <Image
+                alt={title}
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                className="max-h-[21.2rem] rounded-tl-radius2 rounded-tr-radius2"
+            />
             <div className="grid content-start gap-12 px-6 pb-12 md:pb-16">
                 <div className="grid gap-4">
                     <h3 className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>
-                    <span
-                        className="h-[0.1rem] w-28 bg-[#99A8B7] transition-all duration-500 group-hover/card:w-full"></span>
+                    <span className="h-[0.1rem] w-28 bg-[#99A8B7] transition-all duration-500 group-hover/card:w-full"></span>
                 </div>
 
                 <p dangerouslySetInnerHTML={{ __html: description }}></p>

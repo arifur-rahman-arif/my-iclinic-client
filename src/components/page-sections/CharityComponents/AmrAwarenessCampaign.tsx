@@ -29,8 +29,7 @@ interface Props {
 const AmrAwarenessCampaign = ({ heading, introduction, image, description, summary }: Props): JSX.Element => {
     return (
         <Section id="amr-awareness-campaign">
-            <Container
-                className="grid content-start gap-6 rounded-radius2 border border-solid border-[#EAECF0] py-12 shadow-md md:!p-24 xl:!px-40">
+            <Container className="grid content-start gap-6 rounded-radius2 border border-solid border-[#EAECF0] py-12 md:!p-24 xl:!px-40">
                 <SectionTextColumn heading={heading} headingClassName="max-w-[40.9rem]" />
                 <strong
                     className="pl-11 font-mulishBold [&>*]:font-mulishBold"
@@ -38,11 +37,15 @@ const AmrAwarenessCampaign = ({ heading, introduction, image, description, summa
                 ></strong>
                 <Image src={sectoinImage} alt={heading} {...(image as any)} />
 
-                <div className="grid content-start justify-items-start gap-12">
+                <div className="grid content-start justify-items-start gap-6">
                     <p dangerouslySetInnerHTML={{ __html: description }}></p>
-                    <strong className="font-mulishBold uppercase">{summary}</strong>
-                    <Button2 type="anchor" link="#join-fight-against-amr" text="Join our community"
-                             className="text-center" />
+                    <strong className="mt-6 font-latoBold uppercase text-heading">{summary}</strong>
+                    <Button2
+                        type="anchor"
+                        link="#join-fight-against-amr"
+                        text="Join our community"
+                        className="text-center"
+                    />
                 </div>
             </Container>
         </Section>
