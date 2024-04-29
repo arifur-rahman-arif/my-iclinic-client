@@ -1,6 +1,4 @@
 import { TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useBusinessInfoSubmitMutation } from '@/services/businessInfo';
 import {
     formatNumberToInternational,
     formatPhoneNumber,
@@ -9,10 +7,10 @@ import {
     validatePhoneNumber
 } from '@/utils/miscellaneous';
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { ContactContext, ContactCtx } from '../Context';
 import { Button2 } from '@/components/Buttons';
+import useSWRMutation from 'swr/mutation';
 
 /**
  * Form component
@@ -21,8 +19,29 @@ import { Button2 } from '@/components/Buttons';
  * @constructor
  */
 const Form = (): JSX.Element => {
-    const dispatch = useDispatch();
-    const [submitForm, response] = useBusinessInfoSubmitMutation();
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const sendData = async (url: string, { arg }: { arg: any }): Promise<any> => {
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(arg)
+            });
+            return await res.json();
+        } catch (err) {
+            throw err;
+        }
+    };
+
+    // SWR mutation hook to handle form data submission
+    const { trigger, isMutating } = useSWRMutation(`/api/business-form`, sendData);
 
     const appCtx: ContactContext | null = useContext(ContactCtx);
 
@@ -102,7 +121,24 @@ const Form = (): JSX.Element => {
             message: appCtx?.message
         };
 
-        submitForm(payload);
+        try {
+            // Trigger the mutation and get the result
+            const result = await trigger(payload);
+
+            // Handle the response from the server
+            if (!result?.success) {
+                alert(result?.data?.message || 'Form submission failed');
+            }
+
+            if (result?.success) {
+                scrollStepperIntoView();
+                appCtx.setFormSubmitted(true);
+                resetForm();
+            }
+        } catch (e) {
+            alert((e as any).message || 'Something went wrong');
+            console.error(e);
+        }
     };
 
     /**
@@ -122,48 +158,6 @@ const Form = (): JSX.Element => {
         const targetedElement = document.querySelector('.contact-form');
         window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 200);
     };
-
-    useEffect(() => {
-        try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-                return;
-            }
-
-            if (response.isSuccess) {
-                scrollStepperIntoView();
-                appCtx.setFormSubmitted(true);
-                resetForm();
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message || 'Something went wrong. Please try again'
-                })
-            );
-        }
-    }, [response, dispatch]);
 
     return (
         <form className="grid grid-rows-[6rem,_6rem,_6rem,_6rem,_27rem,_auto] gap-14" onSubmit={formSubmit}>
@@ -246,7 +240,7 @@ const Form = (): JSX.Element => {
                 type="submit"
                 text="Send my message"
                 className="group/button justify-self-end font-mulishBold"
-                loading={response.isLoading}
+                loading={isMutating}
                 loadingIconPosition="right"
             />
         </form>

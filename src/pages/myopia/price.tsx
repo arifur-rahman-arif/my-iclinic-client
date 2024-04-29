@@ -9,9 +9,9 @@ import CostDetails from '@/components/page-sections/CataractPriceSections/CostDe
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
 import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.png';
-import MastheadImageMedium from '@/masthead/masthead-myopia-pricing-medium.png';
-import MastheadImageSmall from '@/masthead/masthead-myopia-pricing-small.png';
+import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.webp';
+import MastheadImageMedium from '@/masthead/masthead-myopia-pricing-medium.webp';
+import MastheadImageSmall from '@/masthead/masthead-myopia-pricing-small.webp';
 import {
     BookConsultation,
     Cta3,

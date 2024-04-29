@@ -1,7 +1,7 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
-import mastheadImage from '@/masthead/masthead-laser-eye-surgery.png';
+import mastheadImage from '@/masthead/masthead-laser-eye-surgery.webp';
 import RequestCallback from '@/page-sections/RequestCallback/RequestCallback';
 import Image from 'next/image';
 import { Reviews } from '@/components/page-sections/Masthead/MastheadOphthalmologyClinic';
@@ -22,12 +22,13 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
     return (
         <div className={`relative grid overflow-hidden`}>
             <BreadCrumb
-                className="hidden md:mt-12 md:flex xl:mt-16"
-                pathClassName="!stroke-white"
                 linkClassName="text-white"
+                activeLinkClass="text-[#94CAFF]"
+                className="mb-12 !hidden !px-0 md:!flex xl:mt-12"
+                pathClassName="stroke-white"
             />
 
-            <Container className="grid gap-12 pt-12 pb-24 md:grid-cols-2 md:pt-24 xl:pb-40">
+            <Container className="grid gap-12 pb-24 pt-12 md:grid-cols-2 md:pt-24 xl:pb-40">
                 <div className="grid gap-10 md:justify-self-start md:bg-transparent">
                     <Reviews className="!mt-0" />
 

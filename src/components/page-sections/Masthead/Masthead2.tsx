@@ -106,7 +106,7 @@ const Masthead2 = ({ title, subTitle, image, googleReviews, trustPilotReviews }:
                         last a lifetime
                     </p>
                     <Image
-                        src={image || '/images/masthead/masthead-home.png'}
+                        src={image || '/images/masthead/masthead-home.webp'}
                         alt="North London's Eye Hospital"
                         width={392}
                         height={582}

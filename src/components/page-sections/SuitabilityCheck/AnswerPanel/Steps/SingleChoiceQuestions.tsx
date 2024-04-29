@@ -1,8 +1,6 @@
-import { handleAlert } from '@/features/alert/alertSlice';
 import { Context } from '@/page-sections/SuitabilityCheck/Context';
 import { useContext } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useDispatch } from 'react-redux';
 import Checkbox from 'src/components/Inputs/Checkbox';
 
 interface SingleChoiceQuestionsProps {
@@ -24,7 +22,6 @@ interface Options {
  */
 const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
     const ctx = useContext(Context);
-    const dispatch = useDispatch();
 
     interface HandlerOnChangeProps {
         index: number;
@@ -99,14 +96,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
      */
     const handleNextClick = () => {
         if (!checkIfAnyItemIsActive()) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please select one of the following options'
-                })
-            );
-
+            alert('Please select one of the following options');
             return;
         }
 
@@ -155,7 +145,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                 </button>
 
                 <button
-                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-4 px-16 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:py-5 md:px-20 md:text-[1.8rem] md:leading-[2.8rem]"
+                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 px-16 py-4 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:px-20 md:py-5 md:text-[1.8rem] md:leading-[2.8rem]"
                     onClick={handleNextClick}
                 >
                     Next

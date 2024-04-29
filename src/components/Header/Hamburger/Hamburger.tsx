@@ -16,8 +16,12 @@ interface HamburgerProps {
  */
 const Hamburger = ({ onClick }: HamburgerProps) => {
     return (
-        <button onClick={onClick} className={`flex items-center justify-center gap-4 justify-self-end xl:hidden`}>
-            <Image src={IconHamburger} alt="Menu" />
+        <button
+            onClick={onClick}
+            title="Menu"
+            className={`flex items-center justify-center gap-4 justify-self-end xl:hidden`}
+        >
+            <Image src={IconHamburger} alt="" />
             <span className="font-mulishBold text-[1.6rem] leading-8">Menu</span>
         </button>
     );

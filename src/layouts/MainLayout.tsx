@@ -1,15 +1,11 @@
 import { FontResizer } from '@/components/FontResizer';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { AlertInterface } from '@/features/alert/alertSlice';
 import BottomMenu from '@/page-sections/BottomMenu/BottomMenu';
-import { AppState } from '@/store';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { ReactNode, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-const Alert = dynamic(() => import('@/components/Alert/Alert'));
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
 
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
@@ -26,7 +22,6 @@ interface PropTypes {
  * @constructor
  */
 const MainLayout = ({ children }: PropTypes): JSX.Element => {
-    const { showAlert } = useSelector((state: AppState) => state.alert as AlertInterface);
     const [loadChatBot, setLoadChatBot] = useState<boolean>(false);
 
     /**
@@ -58,7 +53,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             {children}
             <Footer />
 
-            {showAlert && <Alert />}
+            {/* {showAlert && <Alert />} */}
 
             <BottomMenu />
             {loadChatBot && <CookieConsent />}

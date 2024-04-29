@@ -1,5 +1,4 @@
 import { Container } from '@/components/Container';
-import { LinkText } from '@/components/Link';
 import { Section } from '@/components/Section';
 import Image from 'next/image';
 
@@ -30,7 +29,7 @@ const list: ItemProps[] = [
 const SurgerySection = (): JSX.Element => {
     return (
         <Section className="px-8">
-            <Container className="grid items-center justify-center gap-12 rounded-radius2 bg-[#E1F1FF] py-12 md:grid-cols-2 xl:gap-28 xl:px-10 xl:py-24">
+            <Container className="grid items-center justify-center gap-12 rounded-radius2 bg-brandLight py-12 md:grid-cols-2 xl:gap-28 xl:px-10 xl:py-24">
                 {list.map((item, i) => (
                     <Item key={i} {...item} />
                 ))}
@@ -80,20 +79,21 @@ const Item = ({ title, description, image, largeImage, link }: ItemProps): JSX.E
                 className="hidden h-full w-full min-w-[16rem] rounded-radius2 lg:block"
             />
             <div className="grid content-start gap-6">
-                <h2 className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.8rem] text-heading md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
+                <h2 className="mt-6 font-latoBold text-[2rem] normal-case leading-[2.8rem] md:mt-0 md:text-[2.4rem] md:leading-[3.2rem] lg:mt-0">
                     {title}
                 </h2>
-                <p className="">
+                <p>
                     {description}{' '}
                     {link && (
-                        <LinkText
-                            href={link}
-                            indicatorColor="bg-blue"
+                        <a
                             target="_blank"
-                            className="font-mulishBold !text-[1.4rem] font-extrabold text-blue"
+                            className="relative inline-block font-mulishBold !text-[1.4rem] font-extrabold leading-[2.4rem] text-blue decoration-blue underline-offset-4 hover:underline"
+                            title="Laser eye surgery"
+                            aria-label="Laser eye surgery"
+                            href="/laser-eye-surgery"
                         >
-                            Read More
-                        </LinkText>
+                            Learn more about laser eye surgery
+                        </a>
                     )}
                 </p>
             </div>

@@ -1,10 +1,8 @@
 import { Button2 } from '@/components/Buttons';
 import { RadioField, TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useDownloadFormSubmissionMutation } from '@/services/downloadForm';
-import { useAppDispatch } from '@/store';
 import { validateEmail } from '@/utils/miscellaneous';
-import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import useSWRMutation from 'swr/mutation';
 
 interface DownloadFormInterface {
     setShowDownloadOnTheWayTemplate: Dispatch<SetStateAction<boolean>>;
@@ -22,83 +20,40 @@ const DownloadForm = ({
     setShowForm,
     pageSlug
 }: DownloadFormInterface): JSX.Element => {
-    const dispatch = useAppDispatch();
-    const [submitForm, response] = useDownloadFormSubmissionMutation();
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const sendData = async (url: string, { arg }: { arg: any }): Promise<any> => {
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(arg)
+            });
+            return await res.json();
+        } catch (err) {
+            throw err;
+        }
+    };
+    const { trigger, isMutating } = useSWRMutation(`/api/pdf-download`, sendData);
+
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [gender, setGender] = useState<string>('male');
     const [nameError, setNameError] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
 
-    useEffect(() => {
-        try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any).error
-                    })
-                );
-
-                return;
-            }
-
-            if (response.status === 'rejected') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: 'Unable to submit form'
-                    })
-                );
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: ((response as any).error as any)?.data.data.message
-                    })
-                );
-                return;
-            }
-
-            if (response.isSuccess) {
-                // Dispatch(
-                //     handleAlert({
-                //         showAlert: true,
-                //         alertType: 'success',
-                //         alertMessage: (response.error as any).data.data.message
-                //     })
-                // );
-                // window.open('/pdf/cataract-surgery.pdf', '_blank');
-
-                setShowForm(false);
-                setShowDownloadOnTheWayTemplate(true);
-                resetForm();
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message
-                })
-            );
-        }
-    }, [response, dispatch]);
-
     /**
      * Submit the form and if submit is successful than show a thank you page
      *
      * @param {FormEvent<HTMLFormElement>} e
-     * @returns {*}
      */
-    const formSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const formSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!name) {
@@ -117,25 +72,12 @@ const DownloadForm = ({
         }
 
         if (!gender) {
-            return dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'No gender selected',
-                    timeout: 4000
-                })
-            );
+            alert('No gender selected');
         }
 
         if (!pageSlug) {
-            return dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Page slug parameter is not found',
-                    timeout: 4000
-                })
-            );
+            alert('Page slug parameter is not found');
+            return;
         }
 
         const payload = {
@@ -145,7 +87,24 @@ const DownloadForm = ({
             pageSlug
         };
 
-        submitForm(payload);
+        try {
+            // Trigger the mutation and get the result
+            const result = await trigger(payload);
+
+            // Handle the response from the server
+            if (!result?.success) {
+                alert(result?.data?.message || 'Form submission failed');
+            }
+
+            if (result?.success) {
+                setShowForm(false);
+                setShowDownloadOnTheWayTemplate(true);
+                resetForm();
+            }
+        } catch (e) {
+            alert((e as any).message || 'Something went wrong');
+            console.error(e);
+        }
     };
 
     /**
@@ -250,9 +209,9 @@ const DownloadForm = ({
 
             <Button2
                 type="submit"
-                text={response.isLoading ? 'Downloading' : 'Download'}
+                text={isMutating ? 'Downloading' : 'Download'}
                 iconPosition="left"
-                loading={response.isLoading}
+                loading={isMutating}
                 loadingIconPosition="right"
                 className="group/download justify-self-center md:justify-self-end"
                 icon={

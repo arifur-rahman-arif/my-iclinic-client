@@ -118,6 +118,7 @@ const TextField = ({
                     onChange={onChange}
                     rows={rows}
                     autoComplete="off"
+                    placeholder=""
                 />
             )}
             <label

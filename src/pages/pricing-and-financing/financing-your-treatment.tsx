@@ -66,7 +66,7 @@ export default function FinancingYourTreatment({
 
             <FinanceHeroSection
                 image={
-                    data?.masthead_image?.image_medium?.url || '/images/masthead/masthead-finance-treatment-medium.png'
+                    data?.masthead_image?.image_medium?.url || '/images/masthead/masthead-finance-treatment-medium.webp'
                 }
                 altText={data?.masthead_image?.image_large?.alt}
                 h1Title={<h1 className="uppercase text-white">{heading}</h1>}

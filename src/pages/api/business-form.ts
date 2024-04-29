@@ -10,15 +10,17 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
+            const bodyPayload: any = JSON.parse(req.body);
+
             // Ticket data to be created
             const payload = {
-                subject: `Contact request from ${req.body.name}`,
-                description: req.body.message,
-                email: req.body.email,
-                phone: req.body.phone,
+                subject: `Contact request from ${bodyPayload.name}`,
+                description: bodyPayload.message,
+                email: bodyPayload.email,
+                phone: bodyPayload.phone,
                 custom_fields: {
-                    cf_full_name: req.body.name,
-                    cf_finding_method: req.body.findingOption
+                    cf_full_name: bodyPayload.name,
+                    cf_finding_method: bodyPayload.findingOption
                 },
                 priority: 1,
                 status: 2
@@ -41,15 +43,16 @@ const businessFormHandler: NextApiHandler = async (req: NextApiRequest, res: Nex
 
             const response = await postData({
                 url: `${process.env.CUSTOM_REST_URL}/business-form`,
-                body: req.body
+                body: bodyPayload
             });
 
+            const result = await response.json();
+
             if (!response.ok) {
-                const jsonResponse = await response.json();
-                return res.status(404).json({ message: jsonResponse.data.message });
+                return res.status(response.status).json(result);
             }
 
-            res.status(200).json({ message: 'Form submitted successfully' });
+            res.status(200).json(result);
         } else {
             res.status(404).json({ message: 'Request url not found' });
         }

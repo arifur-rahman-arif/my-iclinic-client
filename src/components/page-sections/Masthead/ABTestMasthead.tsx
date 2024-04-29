@@ -19,7 +19,7 @@ const ABTestMasthead = ({ image, speakToSpecialistClass }: ABTestMastheadProps):
         <div className="grid">
             <div className="relative z-[2] grid place-items-center content-start px-8 pt-20 pb-[40rem] md:pt-[15rem] xl:min-h-[80rem] xl:pt-[20rem]">
                 <Image
-                    src={image || '/images/masthead/masthead-icl-a-bg.png'}
+                    src={image || '/images/masthead/masthead-icl-a-bg.webp'}
                     alt="ICL"
                     fill={true}
                     priority

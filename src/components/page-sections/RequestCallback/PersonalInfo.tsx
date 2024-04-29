@@ -1,17 +1,15 @@
 import { Button2 } from '@/components/Buttons';
 import { TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
 import {
     formatNumberToInternational,
     formatPhoneNumber,
     validateEmail,
     validatePhoneNumber
 } from '@/utils/miscellaneous';
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import { twMerge } from 'tailwind-merge';
+import useSWRMutation from 'swr/mutation';
 
 interface PersonalInfoInterface {
     name: string;
@@ -84,9 +82,6 @@ const PersonalInfo = ({
     buttonClassName,
     buttonText
 }: PersonalInfoInterface): JSX.Element => {
-    // const dispatch = useDispatch();
-    // const [submitForm, response] = useAbandonedCallbackMutation();
-
     const [typingTimer, setTypingTimer] = useState<any>();
 
     /**
@@ -148,175 +143,28 @@ const PersonalInfo = ({
     };
 
     /**
-     * Submit the request callback form
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
      */
-    // const handleSubmit = async () => {
-    //     if (!name) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: 'Please provide your name',
-    //                 timeout: 4000
-    //             })
-    //         );
-    //         return;
-    //     }
-    //
-    //     if (!phone) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: 'Please provide your phone',
-    //                 timeout: 4000
-    //             })
-    //         );
-    //         return;
-    //     }
-    //
-    //     const numberValid = await validatePhoneNumber(phone);
-    //
-    //     if (!numberValid) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: 'Please provide a valid phone number',
-    //                 timeout: 4000
-    //             })
-    //         );
-    //         return;
-    //     }
-    //
-    //     if (!email) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: 'Please provide your email',
-    //                 timeout: 4000
-    //             })
-    //         );
-    //         return;
-    //     }
-    //
-    //     if (!validateEmail(email)) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: 'Please provide a valid email address',
-    //                 timeout: 4000
-    //             })
-    //         );
-    //         return;
-    //     }
-    //
-    //     const internationalPhoneNumber = await formatNumberToInternational(phone);
-    //
-    //     const payload = {
-    //         name,
-    //         phone: internationalPhoneNumber,
-    //         email
-    //     };
-    //
-    //     submitForm(payload);
-    // };
-    //
-    // useEffect(() => {
-    //     try {
-    //         // If it's a fetch error
-    //         if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-    //             dispatch(
-    //                 handleAlert({
-    //                     showAlert: true,
-    //                     alertType: 'error',
-    //                     alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-    //                 })
-    //             );
-    //
-    //             return;
-    //         }
-    //
-    //         if (response.isError) {
-    //             dispatch(
-    //                 handleAlert({
-    //                     showAlert: true,
-    //                     alertType: 'error',
-    //                     alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-    //                 })
-    //             );
-    //             return;
-    //         }
-    //
-    //         if (response.isSuccess) {
-    //             const postId = (response?.data as any)?.data?.data;
-    //             Number.isInteger(postId) && localStorage.setItem(`callback-id`, postId);
-    //         }
-    //     } catch (err: any) {
-    //         dispatch(
-    //             handleAlert({
-    //                 showAlert: true,
-    //                 alertType: 'error',
-    //                 alertMessage: err.message || 'Something went wrong. Please try again'
-    //             })
-    //         );
-    //     }
-    // }, [response, dispatch]);
-
-    const dispatch = useDispatch();
-    const [submitForm, response] = useRequestCallbackSubmitMutation();
-
-    useEffect(() => {
+    const sendData = async (url: string, { arg }: { arg: any }): Promise<any> => {
         try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-                return;
-            }
-
-            if (response.isSuccess) {
-                checkInputsForNextStepActivation(stepperIndex || 0, {
-                    name,
-                    phone,
-                    email
-                });
-
-                if (typeof activateNextStepper == 'function') activateNextStepper();
-
-                resetForm();
-
-                setFormSubmitted(true);
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message || 'Something went wrong. Please try again'
-                })
-            );
+            const res = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(arg)
+            });
+            return await res.json();
+        } catch (err) {
+            throw err;
         }
-    }, [response, dispatch]);
+    };
+
+    // SWR mutation hook to handle form data submission
+    const { trigger, isMutating } = useSWRMutation(`/api/request-callback`, sendData);
 
     /**
      * Reset the form to its initial state
@@ -333,64 +181,29 @@ const PersonalInfo = ({
      */
     const formSubmit = async (): Promise<any> => {
         if (!name) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your name',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your name');
             return;
         }
 
         if (!phone) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your phone',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your phone');
             return;
         }
 
         const numberValid = await validatePhoneNumber(phone);
 
         if (!numberValid) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide a valid phone number',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide a valid phone number');
             return;
         }
 
         if (!email) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your email',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your email');
             return;
         }
 
         if (!validateEmail(email)) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide a valid email address',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide a valid email address');
             return;
         }
 
@@ -401,7 +214,32 @@ const PersonalInfo = ({
             email
         };
 
-        submitForm(payload);
+        try {
+            // Trigger the mutation and get the result
+            const result = await trigger(payload);
+
+            // Handle the response from the server
+            if (!result?.success) {
+                alert(result?.data?.message || 'Form submission failed');
+            }
+
+            if (result?.success) {
+                checkInputsForNextStepActivation(stepperIndex || 0, {
+                    name,
+                    phone,
+                    email
+                });
+
+                if (typeof activateNextStepper == 'function') activateNextStepper();
+
+                resetForm();
+
+                setFormSubmitted(true);
+            }
+        } catch (e) {
+            alert((e as any).message || 'Something went wrong');
+            console.error(e);
+        }
     };
 
     return (
@@ -476,7 +314,7 @@ const PersonalInfo = ({
                 }
                 className={twMerge('next-button group/next-button gap-2 justify-self-end', buttonClassName)}
                 mockDisabled={!(name && phone && email)}
-                loading={response.isLoading}
+                loading={isMutating}
                 onClick={() => {
                     if (typeof activateNextStepper == 'function') {
                         showInputErrors().then((res) => {

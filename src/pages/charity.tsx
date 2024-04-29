@@ -13,8 +13,7 @@ import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers'
 import { stripInitialTags } from '@/utils/miscellaneous';
 import React from 'react';
 
-interface DataInterface extends CharityPageContentInterface, PageDataInterface<CharityPageContentInterface> {
-}
+interface DataInterface extends CharityPageContentInterface, PageDataInterface<CharityPageContentInterface> {}
 
 interface PageProps {
     seo: any;
@@ -86,10 +85,10 @@ export async function getStaticProps() {
                         ...data?.acf?.section1,
                         cards: data?.acf?.section1?.cards
                             ? data.acf.section1.cards.map((card) => ({
-                                ...card,
-                                image: card?.image && formatImage(card.image),
-                                description: stripInitialTags(card.description)
-                            }))
+                                  ...card,
+                                  image: card?.image && formatImage(card.image),
+                                  description: stripInitialTags(card.description)
+                              }))
                             : null
                     },
                     section2: {

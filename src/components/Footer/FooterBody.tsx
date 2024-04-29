@@ -22,7 +22,7 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
                 <div className="grid grid-cols-1 items-start gap-12  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-[auto_auto_auto_auto]">
                     {footerList.map((list, index) => (
                         <div key={index} className="grid grid-cols-1 place-content-start gap-12">
-                            <h4 className="normal-case text-white">{list.listHeading}</h4>
+                            <span className="text-[2.4rem] leading-[3.2rem] text-white">{list.listHeading}</span>
                             <ul className="flex flex-col items-start justify-start gap-4">
                                 {list.listLinks.map((link, index) => (
                                     <li key={index}>

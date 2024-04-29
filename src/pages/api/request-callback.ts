@@ -10,10 +10,11 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
+            const bodyPayload: any = JSON.parse(req.body);
             // Send the data to WordPress API
-            await postData({
+            const response = await postData({
                 url: `${process.env.CUSTOM_REST_URL}/request-callback`,
-                body: { ...req.body, status: 'Completed' }
+                body: { ...bodyPayload, status: 'Completed' }
             });
 
             const dateObject = new Date();
@@ -25,12 +26,12 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
 
             // Ticket data to be created
             const payload = {
-                subject: `Request callback from ${req.body.name}`,
-                description: req.body.optionalMessage || 'N/A',
-                email: req.body.email,
-                phone: req.body.phone,
+                subject: `Request callback from ${bodyPayload.name}`,
+                description: bodyPayload.optionalMessage || 'N/A',
+                email: bodyPayload.email,
+                phone: bodyPayload.phone,
                 custom_fields: {
-                    cf_full_name: req.body.name,
+                    cf_full_name: bodyPayload.name,
                     cf_callback_date: formattedDate
                 },
                 priority: 1,
@@ -47,9 +48,9 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             });
 
             if (!freshdeskApiResponse.ok) {
-                console.error(freshdeskApiResponse);
                 const freshdeskResponse = await freshdeskApiResponse.json();
-                throw new Error(`API error: ${freshdeskResponse.status} ${freshdeskResponse.statusText}`);
+                console.error(freshdeskResponse);
+                throw new Error(`API error: ${freshdeskResponse.message}`);
             }
 
             // ===================================
@@ -58,12 +59,12 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // const pabauParameters: string[] = [
             //     `Fname=${firstName}`,
             //     `Lname=${lastName}`,
-            //     `mobile=${req.body.phone}`,
-            //     `email=${req.body.email}`,
+            //     `mobile=${bodyPayload.phone}`,
+            //     `email=${bodyPayload.email}`,
             //     `lead_source=Website`,
             //     `redirect_link=${process.env.NEXT_PUBLIC_SITE_URL}`,
-            //     `treatment_interest=${req.body.optionalMessage}`,
-            //     `custom_field_76880=${req.body.date}`
+            //     `treatment_interest=${bodyPayload.optionalMessage}`,
+            //     `custom_field_76880=${bodyPayload.date}`
             // ];
             //
             // const pabauResponse = await postData({
@@ -77,7 +78,14 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
             // ===================================
             // End of pabau integration
             // ===================================
-            res.status(200).json({ message: 'Form submitted successfully' });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                return res.status(response.status).json(result);
+            }
+
+            res.status(200).json(result);
         } else {
             res.status(404).json({ message: 'Request url not found' });
         }

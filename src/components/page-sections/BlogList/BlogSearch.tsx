@@ -1,8 +1,6 @@
 import { GeneralBlogInterface } from '@/components/Card/BlogCard2/BlogCard2';
-import { handleAlert } from '@/features/alert/alertSlice';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import TextField from 'src/components/Inputs/TextField';
 import useSWRMutation from 'swr/mutation';
 // import * as JsSearch from 'js-search';
@@ -36,7 +34,6 @@ let timeoutId: any;
  */
 const BlogSearch = (): JSX.Element => {
     const snap = useSnapshot(store);
-    const dispatch = useDispatch();
     /**
      * Sends data to a specified URL using a POST request.
      *
@@ -83,13 +80,7 @@ const BlogSearch = (): JSX.Element => {
 
             // Handle the response from the server
             if (!result?.success) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: result.data.message || 'Something went wrong. Please try again'
-                    })
-                );
+                alert(result.data.message || 'Something went wrong. Please try again');
                 return;
             }
 
@@ -97,13 +88,7 @@ const BlogSearch = (): JSX.Element => {
                 store.articles = result.data?.data;
             }
         } catch (e) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Something went wrong. Please try again'
-                })
-            );
+            alert('Something went wrong. Please try again');
             console.error(e);
         }
     };

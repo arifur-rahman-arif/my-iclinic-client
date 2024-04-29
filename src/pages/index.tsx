@@ -1,11 +1,10 @@
 import { Card, cardList } from '@/components/Card';
-import { CardInterface } from '@/components/Card/Card';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { SideImageSection } from '@/components/page-sections';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
-import { getPageData, getReviews } from '@/lib';
+import { getPageData } from '@/lib';
 import BlurPrevention from '@/page-sections/HomePage/BlurPrevention';
 import FundingTreatment from '@/page-sections/HomePage/FundingTreatment';
 import OurMission from '@/page-sections/HomePage/OurMission';
@@ -14,11 +13,10 @@ import VisionCorrection from '@/page-sections/HomePage/VisionCorrection';
 import Masthead3 from '@/page-sections/Masthead/Masthead3';
 import UspSection from '@/page-sections/Usp/UspSection';
 import { HomeContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import dynamic from 'next/dynamic';
+import TripleWinSection from 'src/components/page-sections/HomePage/TripleWinSection';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
-import { Key } from 'react';
-import TripleWinSection from 'src/components/page-sections/HomePage/TripleWinSection';
 
 const SpeakToSpecialist = dynamic(() => import('@/page-sections/HomePage/SpeakToSpecialist'), {
     loading: () => <ComponentLoader />
@@ -27,16 +25,10 @@ const SpeakToSpecialist = dynamic(() => import('@/page-sections/HomePage/SpeakTo
 const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
-//
-// const SustainableSlider = dynamic(() => import('@/components/Slider/SustainableSlider/SustainableSlider'), {
-//     loading: () => <ComponentLoader />
-// });
+
 const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/JourneySlider'), {
     loading: () => <ComponentLoader />
 });
-// const OffScreenSliderSection = dynamic(() => import('@/page-sections/OffScreenSlider/OffScreenSliderSection2'), {
-//     loading: () => <ComponentLoader />
-// });
 
 interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {}
 
@@ -56,18 +48,6 @@ interface HomeProps {
  * @returns {JSX.Element}
  */
 export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
-    // JOURNEY SLIDER
-    const journeySliderData: any = data?.journeySlider
-        ? data?.journeySlider.map((service) => {
-              return {
-                  ...service,
-                  title: service?.title,
-                  description: stringArrayToElementArray(service?.list),
-                  image: service?.image
-              };
-          })
-        : null;
-
     const cardListData: any = data?.private_eye_card
         ? data?.private_eye_card.map((service) => {
               return {
@@ -82,16 +62,11 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
         : null;
 
     return (
-        <Page
-            title="London's No1 Eye Clinic For Laser Eye Surgery & Vision Correction"
-            description="Trusted private eye clinic in London. We offer Laser Eye Surgery & corrective eye surgery for adults & children - 0% Finance options."
-            seo={seo}
-            yoastJson={yoastJson}
-        >
+        <Page title="Home" seo={seo} yoastJson={yoastJson}>
             <Masthead3
-                title={data?.masthead_heading || 'London private eye clinic'}
-                subTitle={data?.masthead_subheading || 'Premium eye care for all the family'}
-                image={data?.masthead_image.image_medium.url || '/images/masthead/masthead-home-large.png'}
+                title={'London private eye clinic'}
+                subTitle={'Premium eye care for all the family'}
+                image={''}
             />
 
             <SurgerySection />
@@ -108,11 +83,9 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
                 containerClassName="md:!grid-cols-1 md:!gap-12"
                 customColumn={
                     <div className="grid justify-center gap-6 md:mt-12  md:grid-cols-[auto_auto] xl:grid-cols-3">
-                        {((cardListData?.length && cardListData) || cardList).map(
-                            (list: JSX.IntrinsicAttributes & CardInterface, index: Key | null | undefined) => (
-                                <Card key={index} {...list} />
-                            )
-                        )}
+                        {(cardListData?.length ? cardListData : cardList).map((card: any, key: any) => (
+                            <Card key={key} {...card} />
+                        ))}
                     </div>
                 }
             />
@@ -123,13 +96,8 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 
             <TripleWinSection />
 
-            {/* /!* SAVING SLIDER SECTION -- *!/ */}
-            {/* <LazyComponent> */}
-            {/*     <OffScreenSliderSection sliderList={offScreenSliderList} /> */}
-            {/* </LazyComponent> */}
-
             <LazyComponent>
-                <JourneySlider sliderList={(journeySliderData?.length && journeySliderData) || journeySliderListHome} />
+                <JourneySlider sliderList={journeySliderListHome} />
             </LazyComponent>
 
             <LazyComponent>
@@ -157,25 +125,14 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<HomeContentInterface> = await getPageData({ slug: 'home' });
-        const reviews = await getReviews();
 
         return {
             /* eslint-disable */
             props: {
                 seo: data?.yoast_head || null,
                 yoastJson: data?.yoast_head_json || null,
-                reviews,
                 data: {
                     ...data?.acf,
-                    // section_1: {
-                    //     ...data?.acf?.section_1,
-                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_1?.descriptions)
-                    // }, // CORNEA CONSULTATION
-                    // section_2: {
-                    //     ...data?.acf?.section_2,
-                    //     // lists: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions),
-                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_2?.descriptions)
-                    // }, // EYES CARD
                     private_eye_card: Array.isArray(data?.acf?.private_eye_card)
                         ? data?.acf.private_eye_card.map((sectionData) => {
                               return {
@@ -183,56 +140,19 @@ export async function getStaticProps() {
                                   cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
                               };
                           })
-                        : [],
-                    // savingsliderSection: Array.isArray(data?.acf?.savingsliderSection)
-                    //     ? data?.acf.savingsliderSection.map((sliderData) => {
-                    //           return {
-                    //               ...sliderData
-                    //               //   description: convertArrayOfObjectsToStrings(sliderData?.description)
-                    //           };
-                    //       })
-                    //     : [],
-                    journeySlider: Array.isArray(data?.acf?.journeySlider)
-                        ? data?.acf.journeySlider.map((sliderData) => {
-                              return {
-                                  ...sliderData,
-                                  list: convertArrayOfObjectsToStrings(sliderData?.list)
-                              };
-                          })
                         : []
-                    // section_3: {
-                    //     ...data?.acf?.section_3,
-                    //     descriptions: convertArrayOfObjectsToStrings(data?.acf?.section_3?.descriptions)
-                    // },
-                    // imageSlider: Array.isArray(data?.acf?.imageSlider)
-                    //     ? data?.acf.imageSlider.map((sliderData) => {
-                    //           return {
-                    //               ...sliderData
-                    //               //   description: convertArrayOfObjectsToStrings(sliderData?.description)
-                    //           };
-                    //       })
-                    //     : [],
-                    // sustainability_section: {
-                    //     plastic_free_life: {
-                    //         ...data?.acf?.sustainability_section?.plastic_free_life,
-                    //         descriptions: convertArrayOfObjectsToStrings(
-                    //             data?.acf?.sustainability_section?.plastic_free_life.descriptions
-                    //         )
-                    //     },
-                    //     gift_of_a_tree: {
-                    //         ...data?.acf?.sustainability_section?.gift_of_a_tree,
-                    //         descriptions: convertArrayOfObjectsToStrings(
-                    //             data?.acf?.sustainability_section?.gift_of_a_tree.descriptions
-                    //         )
-                    //     },
-                    //     clearer_vision: {
-                    //         ...data?.acf?.sustainability_section?.clearer_vision,
-                    //         descriptions: convertArrayOfObjectsToStrings(
-                    //             data?.acf?.sustainability_section?.clearer_vision.descriptions
-                    //         )
-                    //     }
-                    // }
                 }
+                // data: {
+                //     ...data?.acf,
+                //     private_eye_card: Array.isArray(data?.acf?.private_eye_card)
+                //         ? data?.acf.private_eye_card.map((sectionData) => {
+                //               return {
+                //                   ...sectionData,
+                //                   cardList: convertArrayOfObjectsToStrings(sectionData?.cardList)
+                //               };
+                //           })
+                //         : []
+                // }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)
             /* eslint-enable */

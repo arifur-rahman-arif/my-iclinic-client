@@ -87,14 +87,14 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
             <MastheadICL
                 title={data?.masthead?.title || 'Implantable contact Lenses <span>(ICL)</span> Surgery in London'}
                 largeImage={{
-                    src: '/images/masthead/masthead-icl.png',
+                    src: '/images/masthead/masthead-icl.webp',
                     width: 541,
                     height: 735,
                     alt: 'Implantable contact Lenses ICL Surgery in London',
                     ...(data?.masthead?.largeImage as any)
                 }}
                 smallImage={{
-                    src: '/images/masthead/masthead-icl-small.png',
+                    src: '/images/masthead/masthead-icl-small.webp',
                     width: 191,
                     height: 189,
                     alt: '',
