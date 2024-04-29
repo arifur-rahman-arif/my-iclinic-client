@@ -95,7 +95,7 @@ const Header = (): JSX.Element => {
 
                     {/* Search icon */}
                     <div className="flex items-center justify-center gap-12 justify-self-end xl:hidden">
-                        <button type="button" onClick={() => setOpenSearch(true)} className="xl:hidden">
+                        <button type="button" onClick={() => setOpenSearch(true)} className="xl:hidden" title="Search">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"

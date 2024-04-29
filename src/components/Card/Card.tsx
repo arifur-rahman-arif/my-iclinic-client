@@ -27,7 +27,7 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
     return (
         <Link
             href={cardLink}
-            // title={title?.toString() || ''}
+            title={title?.toString() || ''}
             className="group/card grid w-full max-w-[40.3rem] grid-cols-2 overflow-hidden rounded-[0.8rem] border border-solid border-[#EAECF0] p-8 shadow-sm transition-all duration-500 hover:shadow-shadow1 xs:p-12"
         >
             <Image
@@ -41,7 +41,7 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
             <div className="grid place-items-center gap-2 self-center justify-self-center">
                 <span className="font-mulishBold uppercase text-heading">Suitable for</span>
                 {pillText ? (
-                    <span className="w-full rounded-primary bg-[#FF7F00] py-[0.4rem] px-[0.8rem] text-center font-mulishBold text-[1.4rem] uppercase leading-[2rem] text-white">
+                    <span className="w-full rounded-primary bg-[#FF7F00] px-[0.8rem] py-[0.4rem] text-center font-mulishBold text-[1.4rem] uppercase leading-[2rem] text-white">
                         {pillText}
                     </span>
                 ) : null}
@@ -58,7 +58,7 @@ const Card = ({ image, title, pillText, cardList, cardLink }: CardInterface): JS
                 bulletPoint={<Image src={IconArrow} alt="" className="h-[1.4rem] w-[2.03rem] translate-y-2" />}
             />
 
-            <span className="col-span-2 mt-16 self-end justify-self-end rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-[1.4rem] leading-8 text-white transition-all duration-500 hover:border-t-transparent hover:border-l-transparent hover:border-r-transparent hover:bg-transparent hover:text-[#003E79]">
+            <span className="col-span-2 mt-16 self-end justify-self-end rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-[1.4rem] leading-8 text-white transition-all duration-500 hover:border-l-transparent hover:border-r-transparent hover:border-t-transparent hover:bg-transparent hover:text-[#003E79]">
                 Learn more
             </span>
         </Link>

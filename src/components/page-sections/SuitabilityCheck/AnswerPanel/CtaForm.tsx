@@ -1,11 +1,9 @@
 import { TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
 import { Context, SuggestionEngineContext } from '@/page-sections/SuitabilityCheck/Context';
-import { useSubmitSuggestionMutation } from '@/services/suggestionRequest';
 import { formatPhoneNumber, validateEmail, validatePhoneNumber } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { ChangeEvent, useContext, useState } from 'react';
+import useSWRMutation from 'swr/mutation';
 
 interface CtaFormProps {
     node: number;
@@ -19,8 +17,27 @@ interface CtaFormProps {
  */
 const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
     const ctx: SuggestionEngineContext = useContext(Context);
-    const dispatch = useDispatch();
-    const [submitForm, response] = useSubmitSuggestionMutation();
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const sendData = async (url: string, { arg }: { arg: any }): Promise<any> => {
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(arg)
+            });
+            return await res.json();
+        } catch (err) {
+            throw err;
+        }
+    };
+    const { trigger, isMutating } = useSWRMutation(`/api/suggestion-request`, sendData);
 
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -95,7 +112,34 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
             questions: ctx.questions
         };
 
-        submitForm(payload);
+        try {
+            // Trigger the mutation and get the result
+            const result = await trigger(payload);
+
+            // Handle the response from the server
+            if (!result?.success) {
+                alert(result?.data?.message || 'Form submission failed');
+            }
+
+            if (result?.success) {
+                resetForm();
+
+                // Go to the next route
+                // if current node is 14 then increase the step by 2 as this route has only 4 routes
+                if (node === 14) {
+                    ctx.setCompletedStep((ctx.completedStep += 2));
+                } else {
+                    ctx.setCompletedStep((ctx.completedStep += 1));
+                }
+
+                const nextNode = ctx.routes[node].nextNode;
+                if (!nextNode) return;
+                ctx.navigateToStep(nextNode);
+            }
+        } catch (e) {
+            alert((e as any).message || 'Something went wrong');
+            console.error(e);
+        }
 
         // if (node === 14) {
         //     ctx.setCompletedStep((ctx.completedStep += 2));
@@ -129,59 +173,6 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
 
         setTypingTimer(timeoutID);
     };
-
-    useEffect(() => {
-        try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Unable to submit the form'
-                    })
-                );
-                console.log(response.error);
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-                console.log(response.error);
-                return;
-            }
-
-            if (response.isSuccess) {
-                resetForm();
-
-                // Go to the next route
-                // if current node is 14 then increase the step by 2 as this route has only 4 routes
-                if (node === 14) {
-                    ctx.setCompletedStep((ctx.completedStep += 2));
-                } else {
-                    ctx.setCompletedStep((ctx.completedStep += 1));
-                }
-
-                const nextNode = ctx.routes[node].nextNode;
-                if (!nextNode) return;
-                ctx.navigateToStep(nextNode);
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message || 'Something went wrong. Please try again'
-                })
-            );
-        }
-    }, [response, dispatch]);
 
     return (
         <form
@@ -229,9 +220,9 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
 
             <button
                 type="submit"
-                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 px-20 py-5 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
             >
-                {response.isLoading ? (
+                {isMutating ? (
                     <>
                         Sending
                         <Image

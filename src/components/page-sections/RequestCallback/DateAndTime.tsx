@@ -1,7 +1,5 @@
 import { Button2 } from '@/components/Buttons';
 import { TextField } from '@/components/Inputs';
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useRequestCallbackSubmitMutation } from '@/services/requestCallback';
 
 import {
     formatNumberToInternational,
@@ -12,10 +10,10 @@ import {
 } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import { useDispatch } from 'react-redux';
 import styles from './styles/DateAndTime.module.scss';
+import useSWRMutation from 'swr/mutation';
 
 const Calendar = dynamic(() => import('react-calendar'));
 
@@ -62,65 +60,34 @@ const DateAndTime = ({
     clonedElement,
     indicatorActive
 }: DateAndTimeInterface) => {
-    const dispatch = useDispatch();
-    const [submitForm, response] = useRequestCallbackSubmitMutation();
+    /**
+     * Sends data to a specified URL using a POST request.
+     *
+     * @param {string} url - The URL to send the data to.
+     * @param {object} payload - The payload object containing the data to be sent.
+     * @param {any} payload.arg - The argument to be included in the payload.
+     *
+     * @returns {Promise<any>} - A promise that resolves to the JSON response from the server.
+     */
+    const sendData = async (url: string, { arg }: { arg: any }): Promise<any> => {
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(arg)
+            });
+            return await res.json();
+        } catch (err) {
+            throw err;
+        }
+    };
+
+    // SWR mutation hook to handle form data submission
+    const { trigger, isMutating } = useSWRMutation(`/api/request-callback`, sendData);
 
     // Date and time components inputs
     const today = new Date();
     // Set the date one day ahead of the current date
     today.setDate(today.getDate() + 1);
-
-    useEffect(() => {
-        try {
-            // If it's a fetch error
-            if (response?.isError && (response.error as any).status === 'FETCH_ERROR') {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-
-                return;
-            }
-
-            if (response.isError) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: (response.error as any)?.data.message || 'Something went wrong. Please try again'
-                    })
-                );
-                return;
-            }
-
-            if (response.isSuccess) {
-                checkInputsForNextStepActivation(stepperIndex || 0, {
-                    name,
-                    phone,
-                    email
-                });
-
-                if (typeof activateNextStepper == 'function') activateNextStepper();
-
-                localStorage.removeItem('callback-id');
-
-                resetForm();
-
-                setFormSubmitted(true);
-            }
-        } catch (err: any) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: err.message || 'Something went wrong. Please try again'
-                })
-            );
-        }
-    }, [response, dispatch]);
 
     /**
      * Reset the form to its initial state
@@ -138,92 +105,33 @@ const DateAndTime = ({
      */
     const formSubmit = async (): Promise<any> => {
         if (!name) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your name',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your name');
             return;
         }
 
         if (!phone) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your phone',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your phone');
             return;
         }
 
         const numberValid = await validatePhoneNumber(phone);
 
         if (!numberValid) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide a valid phone number',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide a valid phone number');
             return;
         }
 
         if (!email) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide your email',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide your email');
             return;
         }
 
         if (!validateEmail(email)) {
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: 'Please provide a valid email address',
-                    timeout: 4000
-                })
-            );
+            alert('Please provide a valid email address');
             return;
         }
 
         const internationalPhoneNumber = await formatNumberToInternational(phone);
-        //
-        // if (!dateDifferenceInDays(new Date(), date)) {
-        //     dispatch(
-        //         handleAlert({
-        //             showAlert: true,
-        //             alertType: 'error',
-        //             alertMessage: 'Please select one day ahead of the current date',
-        //             timeout: 4000
-        //         })
-        //     );
-        //     return;
-        // }
-
-        // if (!optionalMessage) {
-        //     dispatch(
-        //         handleAlert({
-        //             showAlert: true,
-        //             alertType: 'error',
-        //             alertMessage: 'Please leave us a message about your request',
-        //             timeout: 4000
-        //         })
-        //     );
-        //     return;
-        // }
 
         const postId = localStorage.getItem('callback-id');
 
@@ -237,7 +145,34 @@ const DateAndTime = ({
             postId
         };
 
-        submitForm(payload);
+        try {
+            // Trigger the mutation and get the result
+            const result = await trigger(payload);
+
+            // Handle the response from the server
+            if (!result?.success) {
+                alert(result?.data?.message || 'Form submission failed');
+            }
+
+            if (result?.success) {
+                checkInputsForNextStepActivation(stepperIndex || 0, {
+                    name,
+                    phone,
+                    email
+                });
+
+                if (typeof activateNextStepper == 'function') activateNextStepper();
+
+                localStorage.removeItem('callback-id');
+
+                resetForm();
+
+                setFormSubmitted(true);
+            }
+        } catch (e) {
+            alert((e as any).message || 'Something went wrong');
+            console.error(e);
+        }
     };
 
     return (
@@ -301,7 +236,7 @@ const DateAndTime = ({
                 text="Submit"
                 iconPosition="right"
                 className="next-button mr-1 gap-2 justify-self-end sm:mr-0"
-                loading={response.isLoading}
+                loading={isMutating}
                 loadingIconPosition="right"
                 onClick={formSubmit}
             />

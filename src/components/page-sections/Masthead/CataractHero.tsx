@@ -1,6 +1,6 @@
 import { useReviewHook } from '@/hooks';
-import localLargeImage from '@/masthead/masthead-cataract-large.png';
-import localSmallImage from '@/masthead/masthead-cataract-small.png';
+import localLargeImage from '@/masthead/masthead-cataract-large.webp';
+import localSmallImage from '@/masthead/masthead-cataract-small.webp';
 import { ImageType3 } from '@/types';
 // import { BookConsultation } from '@/page-sections/index';
 import Image from 'next/image';

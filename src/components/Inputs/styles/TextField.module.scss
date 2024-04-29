@@ -11,7 +11,8 @@
 	/* Apply style when input is focused */
 	textarea:focus ~ .input-placeholder, input:focus ~ .input-placeholder,
 	  /* Apply style when input has a value */
-	input:not(:placeholder-shown) ~ .input-placeholder
+	input:not(:placeholder-shown) ~ .input-placeholder,
+	textarea:not(:placeholder-shown) ~ .input-placeholder
 	 {
 	  top: 0;
 	  left: 0;

@@ -30,7 +30,7 @@ module.exports = {
                 mulishRegular: 'var(--mulish-regular)',
                 mulishMedium: 'var(--mulish-medium)',
                 mulishBold: 'var(--mulish-bold)',
-                mulishExtraBold: 'var(--mulish-extra-bold)',
+                mulishExtraBold: 'var(--mulish-bold)',
                 latoLight: 'var(--lato-light)',
                 latoMedium: 'var(--lato-medium)',
                 latoBold: 'var(--lato-bold)',

@@ -1,7 +1,7 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
 import { useReviewHook } from '@/hooks';
-import mastheadImage from '@/masthead/masthead-ophthalmology-clinic.png';
+import mastheadImage from '@/masthead/masthead-ophthalmology-clinic.webp';
 import smallBg from '@/section-images/masthead-icl-mobile-bg.png';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';

@@ -10,12 +10,15 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 const pdfDownloadHandler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
-            const result = await postData({
+            const bodyPayload: any = JSON.parse(req.body);
+
+            const response = await postData({
                 url: `${process.env.CUSTOM_REST_URL}/submit-download-form`,
-                body: req.body
+                body: bodyPayload
             });
 
-            res.status(200).send(result.json());
+            const result = await response.json();
+            res.status(200).json(result);
         } else {
             res.status(404).json({ message: 'Request url not found' });
         }

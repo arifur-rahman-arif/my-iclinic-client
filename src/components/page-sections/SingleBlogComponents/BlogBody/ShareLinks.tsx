@@ -1,5 +1,3 @@
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useAppDispatch } from '@/store';
 import { copyToClipboard } from '@/utils/miscellaneous';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,7 +22,6 @@ interface ShareLinksProps {
  */
 const ShareLinks = ({ className, disableLabel, whiteIcon, siteUrl }: ShareLinksProps): JSX.Element => {
     const router = useRouter();
-    const dispatch = useAppDispatch();
 
     siteUrl = siteUrl || `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/articles/${router.query.slug}`;
 
@@ -112,13 +109,7 @@ const ShareLinks = ({ className, disableLabel, whiteIcon, siteUrl }: ShareLinksP
                 className="cursor-pointer transition-all duration-500 hover:scale-150"
                 onClick={() => {
                     copyToClipboard(`${siteUrl}`).then(() => {
-                        dispatch(
-                            handleAlert({
-                                showAlert: true,
-                                alertType: 'success',
-                                alertMessage: 'Link copied to your clipboard'
-                            })
-                        );
+                        alert('Link copied to your clipboard');
                     });
                 }}
             >

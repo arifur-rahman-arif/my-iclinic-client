@@ -3,12 +3,12 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { HorizontalSliderInterface } from '@/components/Slider/HorizontalSlider/HorizontalSlider';
 import Slide from '@/components/Slider/HorizontalSlider/Slide';
-import { useGetReviewsQuery } from '@/services/reviews';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { sliderList } from './sliderList';
+import useSWR from 'swr';
 
 const RequestCallback = dynamic(() => import('./RequestCallback'));
 const HorizontalSlider = dynamic(() => import('@/components/Slider/HorizontalSlider/HorizontalSlider'));
@@ -22,18 +22,21 @@ const CallbackSection = (): JSX.Element => {
     const router = useRouter();
     const pageSlug = router.pathname == '/' ? 'home' : router.pathname.replace('/', '');
 
-    const { data, isError, error, isSuccess } = useGetReviewsQuery(`?page-url=${pageSlug}`);
-
     const [sliders, setSliders] = useState<HorizontalSliderInterface[]>(sliderList);
+
+    // eslint-disable-next-line require-jsdoc
+    const fetcher = (url: any) => fetch(url).then((res) => res.json());
+
+    const { data, error } = useSWR(`/api/reviews/?page-url=${pageSlug}`, fetcher);
 
     useEffect(() => {
         try {
-            if (isError) {
+            if (error) {
                 setSliders(sliderList);
                 return;
             }
 
-            if (isSuccess && data?.data.data.length) {
+            if (data?.length) {
                 setSliders(data.data.data);
             }
         } catch (err: any) {
@@ -44,9 +47,6 @@ const CallbackSection = (): JSX.Element => {
     return (
         <>
             <Section className="relative">
-                {/* Extra overlay to cover the backgorund */}
-                {/* <div className="absolute top-0 left-0 z-[-1] hidden h-full w-2/4 bg-[#ECF4FB] md:block md:rounded-tr-primary md:rounded-br-primary"></div> */}
-
                 <Container className="grid grid-cols-1 items-center gap-12 rounded-radius2 border border-solid border-[#EAECF0] py-12 md:grid-cols-2 xl:grid-cols-[auto_1fr] xl:gap-48 xl:px-16">
                     <div className="grid items-center gap-12">
                         <span className="md:leaading-[3.6rem] text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-heading md:text-[3rem]">

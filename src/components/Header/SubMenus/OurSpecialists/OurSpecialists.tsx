@@ -227,19 +227,11 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
                                             treatment.active ? 'active' : 'hidden'
                                         }`}
                                     >
-                                        {/* {consultantCardList.map((consultant, key) => (
-                                            <ConsultantItem
-                                                key={key}
-                                                {...consultant}
-                                                className="mega-menu-link"
-                                                isActive={`/our-specialists/${router.query?.slug}` === consultant.url}
-                                            />
-                                        ))} */}
                                         {data?.length
                                             ? data.map((consultant: any, key: number) => (
                                                   <ConsultantItem
                                                       key={key}
-                                                      image={consultant.imageUrl || ''}
+                                                      image={consultant.imageUrl.replace('http', 'https') || ''}
                                                       name={consultant.title.rendered || ''}
                                                       degree={consultant.acf?.specialist_data?.degree || ''}
                                                       title={consultant.acf?.specialist_data?.title || ''}

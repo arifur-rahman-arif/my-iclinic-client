@@ -1,7 +1,7 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
-import mastheadImage from '@/masthead/masthead-charity.png';
+import mastheadImage from '@/masthead/masthead-charity.webp';
 import Image from 'next/image';
 import { ImageType3 } from '@/types';
 

@@ -1,5 +1,3 @@
-import { handleAlert } from '@/features/alert/alertSlice';
-import { useAppDispatch } from '@/store';
 import { postData } from '@/utils/apiHelpers';
 import { isLocalStorageEnabled } from '@/utils/miscellaneous';
 import { useEffect } from 'react';
@@ -14,18 +12,10 @@ interface PostViewHookInterface {
  * @param {number} postID
  */
 const usePostView = ({ postID }: PostViewHookInterface) => {
-    const dispatch = useAppDispatch();
-
     useEffect(() => {
         try {
             if (!isLocalStorageEnabled()) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: 'Your local storage is disabled'
-                    })
-                );
+                alert('Your local storage is disabled');
                 return;
             }
 

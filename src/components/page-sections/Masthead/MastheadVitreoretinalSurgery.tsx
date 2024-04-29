@@ -17,7 +17,7 @@ const MastheadVitreoretinalSurgery = ({ masthead }: Masthead3Props): JSX.Element
     return (
         <div className="relative">
             <Image
-                src="/images/masthead/vitreoretinal-surgery-bg.png"
+                src="/images/masthead/vitreoretinal-surgery-bg.webp"
                 alt=""
                 fill
                 className="absolute top-0 left-0 -z-[1] h-full w-full"

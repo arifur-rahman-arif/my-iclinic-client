@@ -12,6 +12,7 @@ interface LinkInterface {
     onClick?: (e: MouseEvent) => void;
     excludeAnimation?: boolean;
     target?: string;
+    title?: string;
 }
 
 /**
@@ -34,7 +35,8 @@ const LinkText = ({
     children,
     onClick,
     excludeAnimation,
-    target
+    target,
+    title
 }: LinkInterface): JSX.Element => {
     const indicator = useRef<HTMLSpanElement>(null);
     const [animationActive, setAnimationActive] = useState<boolean>(false);
@@ -51,6 +53,8 @@ const LinkText = ({
             onMouseOver={() => {
                 !excludeAnimation && setAnimationActive(true);
             }}
+            title={title || 'Page link'}
+            aria-label={title || 'Page link'}
             onMouseLeave={() => {
                 !excludeAnimation && setAnimationActive(false);
             }}

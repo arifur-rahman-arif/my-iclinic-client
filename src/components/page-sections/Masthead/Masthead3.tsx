@@ -1,6 +1,6 @@
 import { useReviewHook } from '@/hooks';
-import MastheadImageSmall from '@/masthead/masthead-home-small.png';
-// import { BookConsultation } from '@/page-sections/index';
+// import MastheadImageSmall from '@/masthead/masthead-home-small.webp';
+import MastheadImage from '@/masthead/masthead-home-large.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
@@ -21,34 +21,15 @@ interface Masthead3Props {
  */
 const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
     return (
-        <div className="relative grid min-h-[74rem] content-start md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
+        <div className="relative grid min-h-[74rem] content-start  bg-[#0957A1] md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
             <Image
-                src={MastheadImageSmall}
+                src={MastheadImage}
                 alt=""
-                className="absolute inset-0 -z-[1] h-full w-full object-cover md:hidden"
-                fill
                 priority
+                className="self-stretch object-cover md:col-start-2 md:row-span-2 md:row-start-2 md:block md:justify-self-end xl:row-start-1 xl:self-end xl:justify-self-end xl:object-center"
             />
 
-            <Image
-                src="/images/masthead/masthead-home-bg.png"
-                alt=""
-                className="absolute inset-0 -z-[1] hidden h-full w-full md:block"
-                fill
-                priority
-            />
-
-            <Image
-                src={image}
-                width={810}
-                height={600}
-                unoptimized
-                priority={true}
-                alt=""
-                className="col-start-2 row-span-2 row-start-2 hidden self-stretch object-cover md:block md:justify-self-end xl:row-start-1 xl:self-end xl:justify-self-end xl:object-center"
-            />
-
-            <div className="grid content-start px-8 pt-12 md:pt-24 lg:pl-12 xl:pt-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div className="grid content-start px-8 pt-12 md:pt-24 lg:pl-12 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] xl:pt-40">
                 <h1 className="max-w-[31.6rem] text-[3.6rem] uppercase leading-[4rem] text-white md:max-w-[49rem] md:text-[4.8rem] md:leading-[4.8rem]">
                     {title}
                 </h1>
@@ -91,7 +72,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
             <Link
                 href="/suitability-check"
                 title="Free suitability check"
-                className="sitemap-link group/link mt-12 grid w-full max-w-[55.5rem] grid-cols-[auto_1fr] content-start gap-1 rounded-tr-[6rem] bg-[#003E79] py-10 px-8 pr-16 md:row-span-2 md:self-end lg:pl-12 xl:col-span-2 xl:col-start-1 xl:row-span-1 xl:row-start-2 xl:self-end xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] 2xl:max-w-[80rem]"
+                className="sitemap-link group/link mt-12 grid w-full max-w-[55.5rem] grid-cols-[auto_1fr] content-start gap-1 rounded-tr-[6rem] bg-[#003E79] px-8 py-10 pr-16 md:row-span-2 md:self-end lg:pl-12 xl:col-span-2 xl:col-start-1 xl:row-span-1 xl:row-start-2 xl:self-end xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] 2xl:max-w-[80rem]"
             >
                 <span className="flex items-center justify-start gap-4">
                     <span className="h-[1.2rem] w-[1.2rem] rounded-full bg-[#00BFFF]"></span>
@@ -132,7 +113,7 @@ export const Reviews = (): JSX.Element => {
     const { data, isLoading } = useReviewHook();
 
     return (
-        <div className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:mx-0 md:max-w-[36.1rem] md:self-end lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start xl:mt-[10rem] xl:justify-self-start xl:px-0 xl:pt-24 xl:pb-0">
+        <div className="relative z-[2] mx-8 mt-24 grid w-full max-w-[22.7rem] place-items-center gap-7 overflow-hidden rounded-[0.5rem] bg-white p-8 shadow-shadow1 md:mx-0 md:max-w-[36.1rem] md:self-end lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start xl:mt-[10rem] xl:justify-self-start xl:px-0 xl:pb-0 xl:pt-24">
             <div className="flex flex-wrap items-end justify-start gap-10 md:justify-center">
                 {/* Review 1 */}
                 <Link
@@ -220,7 +201,7 @@ export const Reviews = (): JSX.Element => {
                 <Link
                     href="https://connect.pabau.com/bookings.php?compid=11842"
                     target="_blank"
-                    className="mt-4 flex items-center justify-center rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] py-3 px-5 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#003E79] xl:w-full xl:rounded-none xl:border-b-0 xl:border-l-0 xl:border-r-0 xl:py-6"
+                    className="mt-4 flex items-center justify-center rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#003E79] xl:w-full xl:rounded-none xl:border-b-0 xl:border-l-0 xl:border-r-0 xl:py-6"
                     title="FREE Consultation"
                 >
                     Book a Consultation

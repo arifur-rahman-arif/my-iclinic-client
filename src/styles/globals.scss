@@ -20,18 +20,6 @@
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     //outline: 1px solid red !important;
 
-    /* Selection style for Firefox */
-    ::-moz-selection {
-        color: var(--color-secondary);
-        background: var(--color-brand);
-    }
-
-    /* Selection style for Chrome */
-    ::selection {
-        color: var(--color-brand);
-        background: var(--color-brand-light);
-    }
-
     // Hide the number input arrows
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {

@@ -1,12 +1,9 @@
-import store from '@/store';
 import '@/styles/globals.scss';
-import '@/styles/wordpress-variables.scss';
+// import '@/styles/wordpress-variables.scss';
 
 import { Lato, Mulish } from 'next/font/google';
 
 import type { AppProps } from 'next/app';
-import { Provider } from 'react-redux';
-
 import { MainLayout, NoNavigationLayout } from 'src/layouts';
 import '../../build/styles/tailwind.css';
 import IclLayout from 'src/layouts/IclLayout';
@@ -52,11 +49,11 @@ const muslishBold = Mulish({
     subsets: ['latin'],
     display: 'block'
 });
-const muslishExtraBold = Mulish({
-    weight: '900',
-    subsets: ['latin'],
-    display: 'block'
-});
+// const muslishExtraBold = Mulish({
+//     weight: '900',
+//     subsets: ['latin'],
+//     display: 'block'
+// });
 
 /**
  * Main app component for the application
@@ -90,28 +87,12 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
                     --mulish-regular: ${muslishRegular.style.fontFamily};
                     --mulish-medium: ${muslishMedium.style.fontFamily};
                     --mulish-bold: ${muslishBold.style.fontFamily};
-                    --mulish-extra-bold: ${muslishExtraBold.style.fontFamily};
                 }
             `}</style>
 
-            {/* /!* Google Tag Manager *!/ */}
-            {/* <script */}
-            {/*     async */}
-            {/*     dangerouslySetInnerHTML={{ */}
-            {/*         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': */}
-            {/*                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], */}
-            {/*                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= */}
-            {/*                     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); */}
-            {/*                     })(window,document,'script','dataLayer','GTM-MFT6DQQ');` */}
-            {/*     }} */}
-            {/* /> */}
-            {/* /!* End Google Tag Manager *!/ */}
-
-            <Provider store={store}>
-                <PageLayout>
-                    <Component {...pageProps} />
-                </PageLayout>
-            </Provider>
+            <PageLayout>
+                <Component {...pageProps} />
+            </PageLayout>
         </>
     );
 }

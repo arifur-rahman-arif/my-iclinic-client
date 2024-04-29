@@ -2,9 +2,7 @@ import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
 import { TextField } from '@/components/Inputs';
 import { Section } from '@/components/Section';
-import { handleAlert } from '@/features/alert/alertSlice';
 import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import useSWRMutation from 'swr/mutation';
 import dynamic from 'next/dynamic';
 
@@ -64,7 +62,7 @@ interface FormProps {
  * @returns {JSX.Element} - JSX element representing the form.
  */
 const Form = ({ setFormSubmitted }: FormProps): JSX.Element => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -137,29 +135,14 @@ const Form = ({ setFormSubmitted }: FormProps): JSX.Element => {
 
             // Handle the response from the server
             if (!result?.success) {
-                dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertType: 'error',
-                        alertMessage: result?.data?.message || 'Form submission failed',
-                        timeout: 4000
-                    })
-                );
+                alert(result?.data?.message || 'Form submission failed');
             }
 
             if (result?.success) {
                 setFormSubmitted(true);
             }
         } catch (e) {
-            // Handle errors during form submission
-            dispatch(
-                handleAlert({
-                    showAlert: true,
-                    alertType: 'error',
-                    alertMessage: (e as any).message || 'Something went wrong',
-                    timeout: 4000
-                })
-            );
+            alert((e as any).message || 'Something went wrong');
             console.error(e);
         }
     };

@@ -56,7 +56,7 @@ const IclB = ({ seo, yoastJson, data, iclTreatments }: IclAProps): JSX.Element =
             title="ICL Surgery Specialists in London - My-iClinic"
             description="Free yourself from glasses with Implantable Contact Lenses, an innovative alternative to laser eye surgery. Interest-free finance available!"
         >
-            <ABTestMasthead image="/images/masthead/masthead-icl-b-bg.png" speakToSpecialistClass="bg-[#00BFFF]" />
+            <ABTestMasthead image="/images/masthead/masthead-icl-b-bg.webp" speakToSpecialistClass="bg-[#00BFFF]" />
 
             <Activities />
 
