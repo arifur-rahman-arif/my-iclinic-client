@@ -1,7 +1,7 @@
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
-import contactFromMap from '@/section-images/contact-form-map.png';
+import contactFromMap from '@/section-images/contact-form-map.webp';
 
 /**
  * Contact information component

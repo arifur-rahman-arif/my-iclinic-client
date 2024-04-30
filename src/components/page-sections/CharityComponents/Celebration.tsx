@@ -1,10 +1,10 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
-import headingImage from '@/section-images/20-years.png';
+import headingImage from '@/section-images/20-years.webp';
 import { ImageType3 } from '@/types';
 import Image from 'next/image';
-import msBola from '@/section-images/ms-bola.png';
-import jhon from '@/section-images/jhon-bolger.png';
+import msBola from '@/section-images/ms-bola.webp';
+import jhon from '@/section-images/jhon-bolger.webp';
 
 interface Props {
     heading: ImageType3;

@@ -47,7 +47,7 @@ const MeetFreddy = () => {
                 <LazyComponent>
                     <VideoPlayer
                         videoUrl={'/videos/meet-freddy.mp4'}
-                        localPoster="/images/section-images/meet-freddy-posterr.png"
+                        localPoster="/images/section-images/meet-freddy-posterr.webp"
                         className="mx-auto lg:pr-0"
                     />
                 </LazyComponent>

@@ -40,7 +40,7 @@ const RecentArticles = ({ articles }: RecentArticlesPropsInterface): JSX.Element
                         >
                             <div className="overflow-hidden rounded-bl-radius2 rounded-tl-radius2 md:h-[6.4rem] md:w-[6.4rem] md:rounded-radius2">
                                 <Image
-                                    src={article.image.src || '/images/section-images/placeholder-image.png'}
+                                    src={article.image.src || '/images/section-images/placeholder-image.webp'}
                                     width={90}
                                     height={90}
                                     alt=""

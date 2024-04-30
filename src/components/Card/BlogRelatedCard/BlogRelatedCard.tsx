@@ -35,7 +35,7 @@ const BlogRelatedCard = ({
         >
             <div className="h-full w-full min-w-[14.3rem] cursor-pointer overflow-hidden">
                 <Image
-                    src={image.src || '/images/section-images/placeholder-image.png'}
+                    src={image.src || '/images/section-images/placeholder-image.webp'}
                     width={image.width || 401}
                     height={image.height || 197}
                     alt=""

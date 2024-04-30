@@ -13,9 +13,9 @@ import { leftRightListLasik } from '@/page-sections/LeftRight/leftRightList';
 import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { lasikStackList } from '@/page-sections/StackedSection';
-import ClearVisionImage from '@/section-images/clear-vision-lasik.png';
-import LasikImageLarge from '@/section-images/lasik-banner-large.png';
-import LasikImage from '@/section-images/lasik-banner.png';
+import ClearVisionImage from '@/section-images/clear-vision-lasik.webp';
+import LasikImageLarge from '@/section-images/lasik-banner-large.webp';
+import LasikImage from '@/section-images/lasik-banner.webp';
 import { LasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
@@ -83,21 +83,21 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                   ...item,
                   mobileImage: (
                       <Image
-                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.webp'}
                           width={390}
                           height={390}
                           quality={70}
-                          className="rounded-primary md:hidden"
+                          className="rounded-radius2 md:hidden"
                           alt=""
                       />
                   ),
                   desktopImage: (
                       <Image
-                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.webp'}
                           width={695}
                           height={599}
                           quality={70}
-                          className="hidden rounded-primary md:block"
+                          className="hidden rounded-radius2 md:block"
                           alt=""
                       />
                   ),
@@ -115,12 +115,12 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                       return {
                           ...service,
                           image: {
-                              url: service?.image || '/images/section-images/walking-into-room.png',
+                              url: service?.image || '/images/section-images/walking-into-room.webp',
                               width: 392,
                               height: 256
                           },
                           desktopImage: {
-                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.webp',
                               width: 447,
                               height: 349
                           },
@@ -240,7 +240,7 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                         ]
                     }
                     bandImageTitle={data?.section_4?.brandImageTitle || 'Helen'}
-                    bandImageURL={data?.section_4?.bandImageURL || '/images/section-images/helen.png'}
+                    bandImageURL={data?.section_4?.bandImageURL || '/images/section-images/helen.webp'}
                     reviewTitle={
                         <>
                             {HTMLReactParser(data?.section_4?.reviewTitle) ||
@@ -265,12 +265,12 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/lasik-transparent-price.png',
+                    url: data?.section_5?.image || '/images/section-images/lasik-transparent-price.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image || '/images/section-images/lasik-transparent-price-large.png',
+                    url: data?.section_5?.large_image || '/images/section-images/lasik-transparent-price-large.webp',
                     width: 650,
                     height: 607
                 }}
@@ -337,12 +337,12 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6?.image || '/images/section-images/better-vision-lasik.png',
+                    url: data?.section_6?.image || '/images/section-images/better-vision-lasik.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image || '/images/section-images/better-vision-lasik-large.png',
+                    url: data?.section_6?.large_image || '/images/section-images/better-vision-lasik-large.webp',
                     width: 669,
                     height: 599
                 }}
@@ -352,47 +352,6 @@ export default function Lasik({ seo, yoastJson, data, filteredTreatments }: Lasi
                         <div className="place-items-end xl:grid">
                             <BookConsultation buttonClassName="group/consultation transition-all border-2 border-[#003E79] duration-500 hover:bg-transparent grid cursor-pointer px-8 py-6 place-items-center gap-5 bg-[#003E79] grid-flow-col rounded-[0.5rem]">
                                 <button className="" aria-label="Request a callback">
-                                    <svg
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 20 20"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                            stroke="white"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
-                                        />
-                                        <path
-                                            d="M13.334 1.66699V5.00033"
-                                            stroke="white"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
-                                        />
-                                        <path
-                                            d="M6.66602 1.66699V5.00033"
-                                            stroke="white"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
-                                        />
-                                        <path
-                                            d="M2.5 8.33301H17.5"
-                                            stroke="white"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="transition-all duration-500 group-hover/consultation:stroke-[#003E79]"
-                                        />
-                                    </svg>
-
                                     <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-[#003E79]">
                                         Request a callback
                                     </span>

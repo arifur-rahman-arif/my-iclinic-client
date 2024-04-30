@@ -60,7 +60,7 @@ const EyeTreatments = ({
                 name: 'Corneal diseases & treatments'
             },
             {
-                name: 'Children\'s Eyes'
+                name: "Children's Eyes"
             },
             {
                 name: 'Glaucoma care'
@@ -221,7 +221,7 @@ const EyeTreatments = ({
     return (
         <div
             className={twMerge(
-                'absolute top-full left-0 z-10 grid max-h-0 min-w-[95rem] -translate-x-1/2 overflow-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]',
+                'absolute left-0 top-full z-10 grid max-h-0 min-w-[95rem] -translate-x-1/2 overflow-hidden overflow-y-auto rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]',
                 className
             )}
         >
@@ -230,7 +230,7 @@ const EyeTreatments = ({
                     {submenus.map((menu, key) => (
                         <div
                             key={key}
-                            className={`submenu-link group/submenu-link relative cursor-pointer py-12 px-10`}
+                            className={`submenu-link group/submenu-link relative cursor-pointer px-10 py-12`}
                             onClick={() => {
                                 handleClick(key);
                             }}
@@ -245,7 +245,7 @@ const EyeTreatments = ({
                                         menu.active ? 'border-8' : 'border-[0.3rem]'
                                     }`}
                                 ></span>
-                                <strong className="text-white">{menu.name}</strong>
+                                <span className="font-mulishBold text-white">{menu.name}</span>
                                 <FaAngleRight
                                     className={`h-6 w-6 -translate-x-2 translate-y-[0.1rem] fill-white transition-all duration-1000 ${
                                         menu.active ? 'rotate-90' : 'rotate-0'
@@ -258,7 +258,7 @@ const EyeTreatments = ({
                                 <span
                                     className={`absolute left-0 w-full  ${
                                         menu.active
-                                            ? 'top-0 h-full translate-x-12 rounded-tl-[6rem] rounded-bl-[6rem] bg-[#003E79]'
+                                            ? 'top-0 h-full translate-x-12 rounded-bl-[6rem] rounded-tl-[6rem] bg-[#003E79]'
                                             : 'top-full h-[0.2rem] bg-[#005DAF]'
                                     }`}
                                 ></span>
@@ -275,7 +275,7 @@ const EyeTreatments = ({
                                         fill="none"
                                         className="absolute right-0 top-0 -translate-y-full"
                                     >
-                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79"/>
+                                        <path d="M40 30H0.5C28.1 30 38.3333 10 40 0V30Z" fill="#003E79" />
                                     </svg>
 
                                     <svg
@@ -286,14 +286,14 @@ const EyeTreatments = ({
                                         fill="none"
                                         className="absolute right-0 top-full"
                                     >
-                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79"/>
+                                        <path d="M40 0H0.5C28.1 0 38.3333 20 40 30V0Z" fill="#003E79" />
                                     </svg>
                                 </>
                             )}
                         </div>
                     ))}
 
-                    {soloLinks && soloLinks?.length && <SoloLink soloLinks={soloLinks} router={router}/>}
+                    {soloLinks && soloLinks?.length && <SoloLink soloLinks={soloLinks} router={router} />}
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
@@ -305,12 +305,12 @@ const EyeTreatments = ({
                             }`}
                         >
                             {treatment.menus.map((menuItem, key) => (
-                                <SubMenuLink {...menuItem} isActive={router.pathname === menuItem.url} key={key}/>
+                                <SubMenuLink {...menuItem} isActive={router.pathname === menuItem.url} key={key} />
                             ))}
                         </div>
                     ))}
 
-                    <MenuCta className="grid-cols-2" centerText/>
+                    <MenuCta className="grid-cols-2" centerText />
                 </div>
             </div>
         </div>
@@ -367,10 +367,10 @@ export const SubMenuLink = ({ url, name, isActive, metaDescription, className }:
                         isActive && 'border-8'
                     )}
                 ></span>
-                <strong className="text-white">{name}</strong>
-                <span className="col-start-2 block font-mulishMedium text-[#D1E8FE] line-clamp-1">
+                <span className="font-mulishBold text-white">{name}</span>
+                <span className="col-start-2 line-clamp-1 block font-mulishMedium text-[1.4rem] leading-8 text-[#D1E8FE]">
                     {metaDescription ||
-                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since'}
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}
                 </span>
             </span>
         </Link>

@@ -79,40 +79,7 @@ const SideVideoSection = ({
             <Container className="grid grid-cols-1 items-center gap-14 md:gap-32 lg:grid-cols-[1fr_auto]">
                 {/* Text column */}
                 <div className="grid">
-                    {/* <div className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-8 md:gap-x-12">
-                        {beforeAttribute && <span className="block h-full w-[0.5rem] bg-yellow"></span>}
-                        <H2Variant1 className="w-full normal-case">{h2Heading || ''}</H2Variant1>
-                    </div> */}
-
                     <SectionTextColumn heading={h2Heading} />
-
-                    {/* {darkPin && !noPin && (
-                        <div className="relative mt-6 h-2 w-full" ref={pinAnimationTrigger}>
-                            <Image
-                                src="/images/icons/icon-pin-dark-150.svg"
-                                quality={10}
-                                width={150}
-                                height={2}
-                                alt=""
-                                className="mt-6 w-0"
-                                ref={pinRef}
-                            />
-                        </div>
-                    )} */}
-
-                    {/* {!darkPin && !noPin && (
-                        <div className="mt-6 h-2 w-full" ref={pinAnimationTrigger}>
-                            <Image
-                                src="/images/icons/icon-pin-yellow.svg"
-                                quality={10}
-                                width={150}
-                                height={2}
-                                alt=""
-                                className="w-0"
-                                ref={pinRef}
-                            />
-                        </div>
-                    )} */}
 
                     {h3Heading && <H3Variant3 className="mt-12">{h3Heading}</H3Variant3>}
 

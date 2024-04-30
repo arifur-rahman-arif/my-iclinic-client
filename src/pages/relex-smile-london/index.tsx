@@ -24,7 +24,9 @@ import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray 
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { stripInitialTags } from '@/utils/miscellaneous';
+import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import { Button2 } from '@/components/Buttons';
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
     loading: () => <ComponentLoader />
@@ -170,12 +172,27 @@ export default function RelexSmileLondon({
                     </>
                 }
                 containerClass="md:!grid-cols-1 lg:!grid-cols-[auto_1fr] md:!py-0 lg:!py-24"
+                sectionClass="bg-brandLight"
                 altText="Man with luggage at airport"
-                includeScrollDownButton
+                titleClass="text-heading"
                 videoUrl={
                     data?.section_1?.video?.src || '/videos/relex-smile-vision-correction-treatment-explained.mp4'
                 }
                 videoPoster="D7qX9brFvCw"
+                textColumnExtraBottomElements={
+                    <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
+                        <BookConsultation buttonClassName="hover:bg-brandLight">
+                            <Button2 type="button" text="Request a call back" />
+                        </BookConsultation>
+
+                        <Button2
+                            type="button"
+                            text="Chat with us"
+                            onClick={openFreshdeskChat}
+                            className="group/button justify-self-center bg-transparent text-[#003E79] hover:bg-brandLight md:px-20"
+                        />
+                    </div>
+                }
             />
 
             <LazyComponent>
@@ -253,12 +270,12 @@ export default function RelexSmileLondon({
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image?.url || '/images/section-images/clear-natural-vision.png',
+                    url: data?.section_5?.image?.url || '/images/section-images/clear-natural-vision.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image?.url || '/images/section-images/clear-natural-vision-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/clear-natural-vision-large.webp',
                     width: 675,
                     height: 558
                 }}
@@ -285,6 +302,7 @@ export default function RelexSmileLondon({
                 }
                 image={data?.section_8?.image?.url}
                 altText={data?.section_8?.image?.alt}
+                descriptionWrapperClass="[&_div:last-child]:mt-6"
             />
 
             <LazyComponent>
@@ -304,7 +322,7 @@ export default function RelexSmileLondon({
                         ]
                     }
                     bandImageTitle={data?.section_9?.name || 'Mr. Lukicov'}
-                    bandImageURL={data?.section_9?.front_image || '/images/section-images/mr-lukicov.png'}
+                    bandImageURL={data?.section_9?.front_image || '/images/section-images/mr-lukicov.webp'}
                     reviewTitle="Thank you My-iClinic"
                     sliders={data?.section_9?.additional_images || relexSliders}
                     bandColor="bg-[#0099FF]"
@@ -341,12 +359,12 @@ export default function RelexSmileLondon({
                 }
                 containerClassName="xl:!grid-cols-[auto_1fr] !items-start"
                 sectionImage={{
-                    url: data?.section_6?.image?.url || '/images/section-images/laser-relex-smile.png',
+                    url: data?.section_6?.image?.url || '/images/section-images/laser-relex-smile.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image?.url || '/images/section-images/laser-relex-smile-large.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/laser-relex-smile-large.webp',
                     width: 682,
                     height: 686
                 }}

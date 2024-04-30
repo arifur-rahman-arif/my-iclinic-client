@@ -18,7 +18,7 @@ const EpiretinalMembrane = ({ section7 }: Partial<EpiretinalMembraneProps>): JSX
         <Section className="px-8 xl:px-0">
             <Container className="grid items-center gap-12 rounded-primary bg-brandLight py-12 md:grid-cols-2 lg:gap-24 lg:py-24 xl:gap-28">
                 <Image
-                    src={section7?.image || '/images/section-images/epiretinal-membrane.png'}
+                    src={section7?.image || '/images/section-images/epiretinal-membrane.webp'}
                     alt=""
                     width={449}
                     height={574}

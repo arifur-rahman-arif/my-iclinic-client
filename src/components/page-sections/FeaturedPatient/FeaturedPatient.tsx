@@ -48,18 +48,6 @@ const FeaturedPatient = ({
     sliders,
     subTitleClass
 }: FeaturedPatientInterface): JSX.Element => {
-    // Const slideElement = useRef<HTMLHeadingElement | null>(null);
-    // const slideElementLarge = useRef<HTMLHeadingElement | null>(null);
-    // slideRightAnimation({
-    //     element: slideElement,
-    //     trigger: slideElement
-    // });
-
-    // slideRightAnimation({
-    //     element: slideElementLarge,
-    //     trigger: slideElementLarge
-    // });
-
     return (
         <Section className="overflow-hidden">
             <Container>
@@ -134,17 +122,6 @@ const FeaturedPatient = ({
                             </div>
                         </div>
                     </div>
-
-                    {/* Block 4 */}
-                    {/* <div className="mt-12 md:mt-0">
-                        <CardSlider>
-                            {sliders.map((slider, index) => (
-                                <SwiperSlide className="grid place-items-center pb-20" key={index}>
-                                    <CardSlide imageURL={slider.imageURL} />
-                                </SwiperSlide>
-                            ))}
-                        </CardSlider>
-                    </div> */}
                 </div>
             </Container>
         </Section>

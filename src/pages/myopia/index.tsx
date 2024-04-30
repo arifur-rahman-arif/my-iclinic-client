@@ -85,12 +85,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image?.url || '/images/section-images/myopia.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/myopia.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image?.url || '/images/section-images/myopia-large.png',
+                    url: data?.section_1?.large_image?.url || '/images/section-images/myopia-large.webp',
                     width: 675,
                     height: 426
                 }}
@@ -110,12 +110,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image?.url || '/images/section-images/myopia-lifestyle.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/myopia-lifestyle.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image?.url || '/images/section-images/myopia-lifestyle-large.png',
+                    url: data?.section_2?.large_image?.url || '/images/section-images/myopia-lifestyle-large.webp',
                     width: 664,
                     height: 428
                 }}
@@ -141,12 +141,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image?.url || '/images/section-images/myopia-research.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/myopia-research.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image?.url || '/images/section-images/myopia-research-large.png',
+                    url: data?.section_3?.large_image?.url || '/images/section-images/myopia-research-large.webp',
                     width: 630,
                     height: 370
                 }}
@@ -197,12 +197,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     </div>
                 }
                 sectionImage={{
-                    url: data?.section_4?.image?.url || '/images/section-images/myopia-treatments.png',
+                    url: data?.section_4?.image?.url || '/images/section-images/myopia-treatments.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image?.url || '/images/section-images/myopia-treatments-large.png',
+                    url: data?.section_4?.large_image?.url || '/images/section-images/myopia-treatments-large.webp',
                     width: 702,
                     height: 411
                 }}
@@ -222,12 +222,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image?.url || '/images/section-images/mitigating-myopia.png',
+                    url: data?.section_5?.image?.url || '/images/section-images/mitigating-myopia.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image?.url || '/images/section-images/mitigating-myopia-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/mitigating-myopia-large.webp',
                     width: 628,
                     height: 343
                 }}
@@ -313,13 +313,13 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     </>
                 ]}
                 sectionImage={{
-                    url: data?.section_8?.image?.url || '/images/section-images/myopia-other-treatments.png',
+                    url: data?.section_8?.image?.url || '/images/section-images/myopia-other-treatments.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_8?.large_image?.url || '/images/section-images/myopia-other-treatments-large.png',
+                        data?.section_8?.large_image?.url || '/images/section-images/myopia-other-treatments-large.webp',
                     width: 719,
                     height: 498
                 }}
@@ -353,14 +353,14 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_9?.image?.url || '/images/section-images/myopia-emerging-eye-condition.png',
+                    url: data?.section_9?.image?.url || '/images/section-images/myopia-emerging-eye-condition.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_9?.large_image?.url ||
-                        '/images/section-images/myopia-emerging-eye-condition-large.png',
+                        '/images/section-images/myopia-emerging-eye-condition-large.webp',
                     width: 688,
                     height: 521
                 }}
@@ -384,12 +384,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 h3LightHeading={data?.section_12?.heading || 'Booking your child’s Myopia consultation'}
                 descriptions={data?.section_12?.descriptions}
                 sectionImage={{
-                    url: data?.section_12?.image?.url || '/images/section-images/myopia-consultation.png',
+                    url: data?.section_12?.image?.url || '/images/section-images/myopia-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_12?.large_image?.url || '/images/section-images/myopia-consultation-large.png',
+                    url: data?.section_12?.large_image?.url || '/images/section-images/myopia-consultation-large.webp',
                     width: 688,
                     height: 521
                 }}
@@ -447,12 +447,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_13?.image?.url || '/images/section-images/myopia-experiencing.png',
+                    url: data?.section_13?.image?.url || '/images/section-images/myopia-experiencing.webp',
                     width: 371,
                     height: 234
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_13?.large_image?.url || '/images/section-images/myopia-experiencing-large.png',
+                    url: data?.section_13?.large_image?.url || '/images/section-images/myopia-experiencing-large.webp',
                     width: 641,
                     height: 534
                 }}
@@ -501,12 +501,12 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_15?.image?.url || '/images/section-images/myopia-plano-2025.png',
+                    url: data?.section_15?.image?.url || '/images/section-images/myopia-plano-2025.webp',
                     width: 416,
                     height: 305
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_15?.large_image?.url || '/images/section-images/myopia-plano-2025-large.png',
+                    url: data?.section_15?.large_image?.url || '/images/section-images/myopia-plano-2025-large.webp',
                     width: 694,
                     height: 526
                 }}

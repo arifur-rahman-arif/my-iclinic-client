@@ -75,7 +75,7 @@ const OutOfHours = () => {
                 </p>
 
                 <Image
-                    src="/images/section-images/calender-image.png"
+                    src="/images/section-images/calender-image.webp"
                     alt=""
                     width={309}
                     height={160}

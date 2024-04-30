@@ -1,8 +1,8 @@
 import { largeSizes, useDeviceSize, useOnScreen } from '@/hooks';
-import ClearVision1 from '@/section-images/clear-vision-image-1.png';
-import ClearVision2 from '@/section-images/clear-vision-image-2.png';
-import ClearVision3 from '@/section-images/clear-vision-image-3.png';
-import ClearVision4 from '@/section-images/clear-vision-image-4.png';
+import ClearVision1 from '@/section-images/clear-vision-image-1.webp';
+import ClearVision2 from '@/section-images/clear-vision-image-2.webp';
+import ClearVision3 from '@/section-images/clear-vision-image-3.webp';
+import ClearVision4 from '@/section-images/clear-vision-image-4.webp';
 import { ImageType3 } from '@/types';
 import gsap from 'gsap';
 import Image from 'next/image';

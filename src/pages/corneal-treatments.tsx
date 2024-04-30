@@ -94,12 +94,12 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 }
                 descriptions={data?.section_1?.descriptions}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_1?.image || '/images/section-images/cornea-consultation-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/cornea-consultation-large.webp',
                     width: 643,
                     height: 529
                 }}
@@ -112,12 +112,12 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 h3LightHeading={data?.section_2?.heading || 'What is included in my private consultation?'}
                 descriptions={data?.section_2?.descriptions}
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_2?.image || '/images/section-images/cornea-consultation-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/cornea-consultation-large.webp',
                     width: 643,
                     height: 461
                 }}
@@ -152,12 +152,12 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     ]
                 }
                 sectionImage={{
-                    url: data?.section4?.image?.src || '/images/section-images/keranatural-surgery-large.jpg',
+                    url: data?.section4?.image?.src || '/images/section-images/keranatural-surgery-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section4?.image?.src || '/images/section-images/keranatural-surgery-large.jpg',
+                    url: data?.section4?.image?.src || '/images/section-images/keranatural-surgery-large.webp',
                     width: 643,
                     height: 461
                 }}
@@ -183,7 +183,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     ]
                 }
                 image={{
-                    src: '/images/section-images/corneal-cross-linking-large.jpg',
+                    src: '/images/section-images/corneal-cross-linking-large.webp',
                     width: 711,
                     height: 522,
                     ...(data?.section5?.image as any)
@@ -199,7 +199,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 }
                 descriptionContainerClassName="[&_p:first-child]:-mt-6 [&_p:first-child]:mb-6"
                 image={{
-                    src: '/images/section-images/lamellar-corneal-large.jpg',
+                    src: '/images/section-images/lamellar-corneal-large.webp',
                     width: 648,
                     height: 714,
                     ...(data?.section6?.image as any)
@@ -222,7 +222,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     ]
                 }
                 image={{
-                    src: '/images/section-images/CAIRS.jpg',
+                    src: '/images/section-images/CAIRS.webp',
                     width: 66,
                     height: 547,
                     ...(data?.section7?.image as any)
@@ -266,7 +266,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                     ]
                 }
                 image={{
-                    src: '/images/section-images/DMEK.jpg',
+                    src: '/images/section-images/DMEK.webp',
                     width: 711,
                     height: 522,
                     ...(data?.section8?.image as any)

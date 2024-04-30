@@ -3,7 +3,7 @@ import Container from '@/components/Container/Container';
 import Section from '@/components/Section/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
 import { ImageType3 } from '@/types';
-import sectionImage from '@/section-images/go-fund-me.png';
+import sectionImage from '@/section-images/go-fund-me.webp';
 import Image from 'next/image';
 
 interface Props {

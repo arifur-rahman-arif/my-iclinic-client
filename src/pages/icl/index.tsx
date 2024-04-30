@@ -140,14 +140,14 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     ]
                 }
                 image1={{
-                    src: '/images/section-images/vision-correction-promo-1.png',
+                    src: '/images/section-images/vision-correction-promo-1.webp',
                     width: 364,
                     height: 387,
                     alt: 'No more glasses & contact lenses hassle',
                     ...(data?.section1?.image1 as any)
                 }}
                 image2={{
-                    src: '/images/section-images/vision-correction-promo-2.png',
+                    src: '/images/section-images/vision-correction-promo-2.webp',
                     width: 364,
                     height: 387,
                     alt: 'No more glasses & contact lenses hassle',
@@ -170,7 +170,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     ]
                 }
                 image={{
-                    src: '/images/section-images/icl-consultation.png',
+                    src: '/images/section-images/icl-consultation.webp',
                     width: 692,
                     height: 617,
                     alt: 'ICL consultation',
@@ -192,7 +192,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     ]
                 }
                 image={{
-                    src: '/images/section-images/icl-treatment.png',
+                    src: '/images/section-images/icl-treatment.webp',
                     width: 692,
                     height: 617,
                     alt: 'ICL treatment',
@@ -212,7 +212,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     ]
                 }
                 image={{
-                    src: '/images/section-images/icl-aftercare.png',
+                    src: '/images/section-images/icl-aftercare.webp',
                     width: 692,
                     height: 617,
                     alt: 'ICL aftercare',
@@ -245,7 +245,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     ]
                 }
                 image={{
-                    src: '/images/section-images/underwater-diving.png',
+                    src: '/images/section-images/underwater-diving.webp',
                     width: 665,
                     height: 490,
                     alt: 'Our implantable contact lenses',
@@ -263,7 +263,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                     'Discuss your options and eligibility for implantable contact lens surgery with one of our experts. We will give you clear advice on your suitability and best vision correction options for your circumstances.'
                 }
                 image={{
-                    src: '/images/section-images/eye-surgery-consultation.png',
+                    src: '/images/section-images/eye-surgery-consultation.webp',
                     width: 728,
                     height: 600,
                     alt: 'My-iClinic Doctors',
@@ -293,7 +293,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                         ]
                     }
                     bandImageTitle={data?.section10?.patientName || 'Eliete'}
-                    bandImageURL={data?.section10?.patientFrontImage || '/images/section-images/eliete.png'}
+                    bandImageURL={data?.section10?.patientFrontImage || '/images/section-images/eliete.webp'}
                     reviewTitle={'Thank you My-iClinic'}
                     sliders={data?.section10?.patientImages || iclSliders}
                     bandColor="bg-[#7000FF]"
@@ -304,7 +304,7 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                 sectionId="icl-contact"
                 heading={'Is ICL for me?'}
                 backgroundImage={{
-                    src: '/images/section-images/icl-contact-bg.png',
+                    src: '/images/section-images/icl-contact-bg.webp',
                     alt: ''
                 }}
             />

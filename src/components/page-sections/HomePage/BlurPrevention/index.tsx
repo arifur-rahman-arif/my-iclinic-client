@@ -1,7 +1,7 @@
 import { LinkStyle } from '@/components/Link';
 import { Section } from '@/components/Section';
-import Image1 from '@/section-images/blurry-city.png';
-import Image2 from '@/section-images/blurry-forest.png';
+import Image1 from '@/section-images/blurry-city.webp';
+import Image2 from '@/section-images/blurry-forest.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 

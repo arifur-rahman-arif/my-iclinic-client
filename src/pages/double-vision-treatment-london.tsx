@@ -5,8 +5,8 @@ import Page from '@/components/Page';
 import { getPageData } from '@/lib';
 import { doubleVisionFaqList } from '@/page-sections/Faq/faqList';
 import { FullWidthImageSection, SideImageSection } from '@/page-sections/index';
-import FullWidthImageLarge from '@/section-images/double-vision-large.png';
-import FullWidthImage from '@/section-images/double-vision.png';
+import FullWidthImageLarge from '@/section-images/double-vision-large.webp';
+import FullWidthImage from '@/section-images/double-vision.webp';
 import { DoubleVisionPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 
@@ -118,12 +118,12 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 h3LightHeading={data?.section_1?.heading || 'Double vision symptoms and vision testing'}
                 descriptions={data?.section_1.descriptions}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/vision-testing.png',
+                    url: data?.section_1?.image || '/images/section-images/vision-testing.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/vision-testing-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/vision-testing-large.webp',
                     width: 675,
                     height: 627
                 }}
@@ -135,14 +135,14 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 h3LightHeading={data?.section_2?.heading || 'Private consultation & treatment for double vision'}
                 descriptions={data?.section_2.descriptions}
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/consultation-&-treatment-double-vision.png',
+                    url: data?.section_2?.image || '/images/section-images/consultation-&-treatment-double-vision.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_2?.large_image ||
-                        '/images/section-images/consultation-&-treatment-double-vision-large.png',
+                        '/images/section-images/consultation-&-treatment-double-vision-large.webp',
                     width: 675,
                     height: 682
                 }}
@@ -182,14 +182,14 @@ export default function DoubleVisionPage({ data, seo, yoastJson }: DoubleVisionP
                 descriptions={data?.section_3.descriptions}
                 descriptionWrapperClass="[&_div:nth-child(2)]:mt-6"
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/consultation-&-treatment-double-vision.png',
+                    url: data?.section_3?.image || '/images/section-images/consultation-&-treatment-double-vision.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_3?.image ||
-                        '/images/section-images/consultation-&-treatment-double-vision-large.png',
+                        '/images/section-images/consultation-&-treatment-double-vision-large.webp',
                     width: 675,
                     height: 682
                 }}

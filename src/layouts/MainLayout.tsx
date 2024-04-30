@@ -1,12 +1,12 @@
 import { FontResizer } from '@/components/FontResizer';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import BottomMenu from '@/page-sections/BottomMenu/BottomMenu';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { ReactNode, useEffect, useState } from 'react';
 
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
+const BottomMenu = dynamic(() => import('@/page-sections/BottomMenu/BottomMenu'));
 
 const FreshChatScript = dynamic(() => import('@/components/FreshChatScript'));
 
@@ -46,7 +46,6 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
             />
             {/* @ts-ignore */}
             <FreshChatScript />
-
             <FontResizer />
 
             <Header />
@@ -55,7 +54,7 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
 
             {/* {showAlert && <Alert />} */}
 
-            <BottomMenu />
+            {loadChatBot && <BottomMenu />}
             {loadChatBot && <CookieConsent />}
         </div>
     );

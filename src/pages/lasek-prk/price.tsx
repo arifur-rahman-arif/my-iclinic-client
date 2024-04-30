@@ -16,7 +16,7 @@ import {
     SideImageSection
 } from '@/page-sections/index';
 import { NormalSection4 } from '@/page-sections/NormalSection';
-import InclusiveCostImage from '@/section-images/lasek-inclusive-cost-image.png';
+import InclusiveCostImage from '@/section-images/lasek-inclusive-cost-image.webp';
 import { PricelskprkContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -74,12 +74,12 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
                 containerClassName="xl:!grid-cols-[1fr_auto]"
                 h3LightHeading={data?.section_1?.heading || 'What’s included in my private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-lasek.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-lasek.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-lasek-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-lasek-large.webp',
                     width: 616,
                     height: 534
                 }}
@@ -124,12 +124,12 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/lasek-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/lasek-finance.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/lasek-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/lasek-finance-large.webp',
                     width: 623,
                     height: 560
                 }}
@@ -203,8 +203,8 @@ export default function LasekPricing({ seo, yoastJson, data }: LasekPricingProps
                     data?.section_3?.description ||
                     'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
                 }
-                image={data?.section_3?.image || '/images/section-images/private-consultation-lasek.png'}
-                largeImage={data?.section_3?.large_image || '/images/section-images/private-consultation-lasek.png'}
+                image={data?.section_3?.image || '/images/section-images/private-consultation-lasek.webp'}
+                largeImage={data?.section_3?.large_image || '/images/section-images/private-consultation-lasek.webp'}
             />
 
             <FullWidthImageSection

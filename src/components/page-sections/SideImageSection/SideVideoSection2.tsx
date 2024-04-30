@@ -63,7 +63,7 @@ const SideVideoSection2 = ({
 
     return (
         <Section className="relative overflow-hidden py-16 md:py-32" ref={sectionRef}>
-            <div ref={animationRef} className={`absolute top-0 left-0 -z-[1] h-full w-0 bg-[#003E79]`}></div>
+            <div ref={animationRef} className={`absolute left-0 top-0 -z-[1] h-full w-0 bg-[#003E79]`}></div>
             <Container
                 className={`${
                     containerDefaultClassName || 'grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-24'
@@ -99,7 +99,7 @@ const SideVideoSection2 = ({
                             target="_blank"
                             href="https://connect.pabau.com/bookings.php?compid=11842"
                             title="Book a free screening test"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-white bg-[#003E79] px-8 py-6 transition-all duration-500 hover:bg-white"
+                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-radius2 border-2 border-white bg-[#003E79] px-8 py-6 transition-all duration-500 hover:bg-white"
                             aria-label="Book a free screening test"
                         >
                             <svg
@@ -151,7 +151,7 @@ const SideVideoSection2 = ({
                         {/* Phone number */}
                         <Link
                             href="tel:0208 445 8877"
-                            className={`group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary  px-8 py-6 transition-all duration-500 hover:bg-heading2 ${button2ClassName}`}
+                            className={`group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-radius2  px-8 py-6 transition-all duration-500 hover:bg-heading2 ${button2ClassName}`}
                         >
                             <svg
                                 width="20"
@@ -202,7 +202,7 @@ const SideVideoSection2 = ({
                             alt=""
                             width={sectionImageLarge.width}
                             height={sectionImageLarge.height}
-                            className="absolute top-2/4 right-0 max-h-[35rem] -translate-y-2/4 translate-x-[7.5rem] object-contain"
+                            className="absolute right-0 top-2/4 max-h-[35rem] -translate-y-2/4 translate-x-[7.5rem] object-contain"
                         />
                     </div>
                 )}

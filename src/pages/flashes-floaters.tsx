@@ -100,12 +100,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 descriptions={data?.section_1?.descriptions}
                 descriptionWrapperClass="[&_div:last-child]:mt-6"
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/eye-flashes-&-floaters-large.png',
+                    url: data?.section_1?.image || '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.image_large || '/images/section-images/eye-flashes-&-floaters-large.png',
+                    url: data?.section_1?.image_large || '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
                     width: 644,
                     height: 559
                 }}
@@ -129,12 +129,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/eye-flashes-diagnosis-large.png',
+                    url: data?.section_2?.image || '/images/section-images/eye-flashes-diagnosis-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.image_large || '/images/section-images/eye-flashes-diagnosis-large.png',
+                    url: data?.section_2?.image_large || '/images/section-images/eye-flashes-diagnosis-large.webp',
                     width: 654,
                     height: 559
                 }}
@@ -156,12 +156,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_3?.image || '/images/section-images/cornea-consultation-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.image_large || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_3?.image_large || '/images/section-images/cornea-consultation-large.webp',
                     width: 643,
                     height: 461
                 }}
@@ -198,12 +198,12 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_4?.image || '/images/section-images/cornea-consultation-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.image_large || '/images/section-images/cornea-consultation-large.png',
+                    url: data?.section_4?.image_large || '/images/section-images/cornea-consultation-large.webp',
                     width: 643,
                     height: 461
                 }}

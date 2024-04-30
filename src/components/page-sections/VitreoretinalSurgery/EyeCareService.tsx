@@ -56,15 +56,30 @@ const EyeCareService = ({ section4 }: EyeCareServiceProps) => {
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {cardList?.length
                         ? cardList.map((item, key) => (
-                              <div className="grid gap-6 rounded-[1rem] bg-[#003E79] p-12" key={key}>
-                                  <span className="grid h-[5.6rem] w-[5.6rem] place-items-center rounded-full bg-white">
+                              <div
+                                  className={`grid gap-6 rounded-[1rem]  p-12 ${
+                                      key % 2 === 0 ? 'bg-[#003E79]' : 'bg-[#FFD400]'
+                                  }`}
+                                  key={key}
+                              >
+                                  <span
+                                      className={`grid h-[5.6rem] w-[5.6rem] place-items-center rounded-full bg-white`}
+                                  >
                                       <Image src={item.icon} alt="" width={57} height={57} />
                                   </span>
                                   {/* <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-white md:text-[2.4rem] md:leading-[3.2rem]"> */}
                                   {/*     {item.title} */}
                                   {/* </span> */}
-                                  <h5 className="normal-case text-white">{item.title}</h5>
-                                  <p className="font-mulishRegular text-[#E1F1FF]">{item.description}</p>
+                                  <h5 className={`normal-case ${key % 2 === 0 ? 'text-white' : 'text-heading'}`}>
+                                      {item.title}
+                                  </h5>
+                                  <p
+                                      className={`font-mulishRegular ${
+                                          key % 2 === 0 ? 'text-[#E1F1FF]' : 'text-[#404A4D]'
+                                      }`}
+                                  >
+                                      {item.description}
+                                  </p>
                               </div>
                           ))
                         : null}

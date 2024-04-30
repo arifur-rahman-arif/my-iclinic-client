@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
-import cta3Image from '@/section-images/cta-3.png';
+import cta3Image from '@/section-images/cta-3.webp';
 
 /**
  * Cta section for blog post

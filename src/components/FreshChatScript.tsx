@@ -23,7 +23,7 @@ const FreshChatScript = (): JSX.Element => (
                 i.getElementById(t)
                     ? initFreshChat()
                     : (((e = i.createElement('script')).id = t),
-                      (e.async = !0),
+                      (e.defer = !0),
                       (e.src = 'https://myiclinic-help.freshchat.com/js/widget.js'),
                       (e.onload = initFreshChat),
                       i.head.appendChild(e));

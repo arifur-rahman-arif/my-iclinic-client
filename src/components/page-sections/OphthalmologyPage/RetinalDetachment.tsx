@@ -64,7 +64,7 @@ const RetinalDetachment = ({
         <Section>
             <Container className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 xl:gap-28">
                 <Image
-                    src="/images/section-images/opthamology-retinal-detachment.png"
+                    src="/images/section-images/opthamology-retinal-detachment.webp"
                     alt=""
                     width={395}
                     height={806}
@@ -73,7 +73,7 @@ const RetinalDetachment = ({
                 />
 
                 <Image
-                    src="/images/section-images/opthamology-retinal-detachment-large.png"
+                    src="/images/section-images/opthamology-retinal-detachment-large.webp"
                     alt=""
                     width={621}
                     height={919}

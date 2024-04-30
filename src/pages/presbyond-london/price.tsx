@@ -17,7 +17,7 @@ import {
 } from '@/page-sections/index';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
-import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.png';
+import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.webp';
 import { PricepresbeyondlondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -87,12 +87,12 @@ export default function PresbyondPricing({
             <SideImageSection
                 h3LightHeading={data?.section_1?.heading || 'What’s included in my private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-desktop.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-desktop.webp',
                     width: 616,
                     height: 549
                 }}
@@ -146,12 +146,12 @@ export default function PresbyondPricing({
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/presbyond-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/presbyond-finance.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/presbyond-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/presbyond-finance-large.webp',
                     width: 574,
                     height: 560
                 }}

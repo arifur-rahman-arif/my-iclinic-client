@@ -145,7 +145,7 @@ const SingleChoiceQuestions = ({ node }: SingleChoiceQuestionsProps) => {
                 </button>
 
                 <button
-                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 px-16 py-4 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:px-20 md:py-5 md:text-[1.8rem] md:leading-[2.8rem]"
+                    className="justify-self-end rounded-[0.5rem] border border-[#0099FF] bg-[#0099FF] px-16 py-4 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#0099FF] md:px-20 md:py-5 md:text-[1.8rem] md:leading-[2.8rem]"
                     onClick={handleNextClick}
                 >
                     Next

@@ -220,7 +220,7 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
 
             <button
                 type="submit"
-                className="flex items-center justify-center gap-6 rounded-primary border-2 border-heading2 bg-heading2 px-20 py-5 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                className="group/button flex items-center justify-center gap-4 rounded-[0.5rem] border border-[#0099FF] bg-[#0099FF] px-20 py-5 font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 hover:bg-transparent hover:text-[#0099FF]"
             >
                 {isMutating ? (
                     <>
@@ -236,7 +236,31 @@ const CtaForm = ({ node }: CtaFormProps): JSX.Element => {
                 ) : (
                     <>
                         Send
-                        <Image src="/images/icons/icon-send-white.svg" alt="" width={20} height={20} />
+                        <svg
+                            className="h-8 w-8 translate-y-[0.1rem]"
+                            width="24"
+                            height="25"
+                            viewBox="0 0 24 25"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M22 2.5L11 13.5"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/button:stroke-[#0099FF]"
+                            />
+                            <path
+                                d="M22 2.5L15 22.5L11 13.5L2 9.5L22 2.5Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-500 group-hover/button:stroke-[#0099FF]"
+                            />
+                        </svg>
                     </>
                 )}
             </button>

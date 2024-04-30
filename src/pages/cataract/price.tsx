@@ -17,7 +17,7 @@ import { TreatmentInterface } from '@/components/page-sections/FinanceCalculator
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
 // import { cataractPriceList } from '@/components/page-sections/PriceCard/priceList';
 import { getPageData, getTreatments } from '@/lib';
-// import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.png';
+// import InclusiveCostImage from '@/section-images/cataract-inclusive-cost-image.webp';
 import { PriceCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 // import HTMLReactParser from 'html-react-parser';
@@ -92,7 +92,7 @@ export default function CataractPrice({ seo, yoastJson, data, iclTreatments }: C
             <SideImageSection
                 h3LightHeading={data?.section_3?.title || 'Cataract laser surgery couldn’t be more cost-effective!'}
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/private-consultation-cataract.png',
+                    url: data?.section_3?.image || '/images/section-images/private-consultation-cataract.webp',
                     width: 390,
                     height: 390
                 }}
@@ -103,7 +103,7 @@ export default function CataractPrice({ seo, yoastJson, data, iclTreatments }: C
                 sectionImageDesktop={{
                     url:
                         data?.section_3?.large_image ||
-                        '/images/section-images/private-consultation-cataract-large.png',
+                        '/images/section-images/private-consultation-cataract-large.webp',
                     width: 611,
                     height: 584
                 }}
@@ -133,14 +133,14 @@ export default function CataractPrice({ seo, yoastJson, data, iclTreatments }: C
                 h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-cataract.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-cataract.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image ||
-                        '/images/section-images/private-consultation-cataract-large.png',
+                        '/images/section-images/private-consultation-cataract-large.webp',
                     width: 611,
                     height: 584
                 }}
@@ -198,12 +198,12 @@ export default function CataractPrice({ seo, yoastJson, data, iclTreatments }: C
                 }
                 altText=""
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/cataract-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/cataract-finance.webp',
                     width: 438,
                     height: 545
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/cataract-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/cataract-finance-large.webp',
                     width: 682,
                     height: 671
                 }}

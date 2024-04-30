@@ -40,7 +40,7 @@ const Floaters = ({ section4 }: Partial<FloatersProps>): JSX.Element => {
                 </div>
 
                 <Image
-                    src={section4?.image || '/images/section-images/floaters.png'}
+                    src={section4?.image || '/images/section-images/floaters.webp'}
                     alt="Floaters"
                     width={653}
                     height={675}

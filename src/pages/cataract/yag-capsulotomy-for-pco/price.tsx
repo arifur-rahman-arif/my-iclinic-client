@@ -58,12 +58,12 @@ export default function IclPricing({ seo, yoastJson, data }: Props): JSX.Element
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 descriptions={data?.section_1?.descriptions?.length ? data?.section_1.descriptions : []}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-yag.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-yag.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-yag-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-yag-large.webp',
                     width: 672,
                     height: 599
                 }}
@@ -98,8 +98,8 @@ export default function IclPricing({ seo, yoastJson, data }: Props): JSX.Element
                     data?.section_3?.description ||
                     'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
                 }
-                largeImage={data?.section_3?.large_image || '/images/section-images/yag-capsulotomy-large.png'}
-                image={data?.section_3?.image || '/images/section-images/yag-capsulotomy.png'}
+                largeImage={data?.section_3?.large_image || '/images/section-images/yag-capsulotomy-large.webp'}
+                image={data?.section_3?.image || '/images/section-images/yag-capsulotomy.webp'}
                 excludeCta
             />
 

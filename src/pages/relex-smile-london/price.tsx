@@ -16,7 +16,7 @@ import {
 import HTMLReactParser from 'html-react-parser';
 
 import React from 'react';
-import InclusiveCostImage from '@/section-images/inclusive-cost-image.png';
+import InclusiveCostImage from '@/section-images/inclusive-cost-image.webp';
 import { RelexSmilePriceContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import dynamic from 'next/dynamic';
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
@@ -74,14 +74,14 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                 h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-relex-smile.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-relex-smile.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image ||
-                        '/images/section-images/private-consultation-relex-smile-desktop.png',
+                        '/images/section-images/private-consultation-relex-smile-desktop.webp',
                     width: 616,
                     height: 549
                 }}
@@ -146,12 +146,12 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/relex-smile-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/relex-smile-finance.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/relex-smile-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/relex-smile-finance-large.webp',
                     width: 574,
                     height: 560
                 }}

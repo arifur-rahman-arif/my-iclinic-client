@@ -61,7 +61,7 @@ const InnerComponent = ({ numberIcon, title, image }: GalleryInterface): JSX.Ele
                     width={244}
                     height={242}
                     alt=""
-                    className="rounded-primary transition-all duration-500 hover:scale-110"
+                    className="rounded-radius2 transition-all duration-500 hover:scale-110"
                 />
             </div>
         </div>

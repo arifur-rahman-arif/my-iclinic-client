@@ -5,8 +5,8 @@ import Image from 'next/image';
 const defaultList: CardProps[] = [
     {
         title: 'ICL Consultation',
-        backgroundImage: '/images/section-images/lifelong-vision-card-bg-1.png',
-        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-1.png',
+        backgroundImage: '/images/section-images/lifelong-vision-card-bg-1.webp',
+        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-1.webp',
         list: [
             'Tailored advice for your unique vision needs.',
             'Gain clarity on the potential outcomes, benefits and risks.',
@@ -17,8 +17,8 @@ const defaultList: CardProps[] = [
     },
     {
         title: 'ICL Treatment',
-        backgroundImage: '/images/section-images/lifelong-vision-card-bg-2.png',
-        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-2.png',
+        backgroundImage: '/images/section-images/lifelong-vision-card-bg-2.webp',
+        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-2.webp',
         list: [
             'Experience sharp, natural vision without glasses.',
             'Short procedure with rapid recovery.',
@@ -29,8 +29,8 @@ const defaultList: CardProps[] = [
     },
     {
         title: 'ICL Aftercare',
-        backgroundImage: '/images/section-images/lifelong-vision-card-bg-3.png',
-        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-3.png',
+        backgroundImage: '/images/section-images/lifelong-vision-card-bg-3.webp',
+        backgroundImageLarge: '/images/section-images/lifelong-vision-card-bg-large-3.webp',
         list: [
             'Access to expert care when you need it.',
             'Regular check-ups ensure a smooth recovery.',

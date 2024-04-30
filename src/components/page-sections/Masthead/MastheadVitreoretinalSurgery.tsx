@@ -20,12 +20,16 @@ const MastheadVitreoretinalSurgery = ({ masthead }: Masthead3Props): JSX.Element
                 src="/images/masthead/vitreoretinal-surgery-bg.webp"
                 alt=""
                 fill
-                className="absolute top-0 left-0 -z-[1] h-full w-full"
+                className="absolute left-0 top-0 -z-[1] h-full w-full"
             />
 
-            <BreadCrumb className="mt-0 hidden pt-20 md:flex" linkClassName="text-white" />
+            <BreadCrumb
+                className="mt-0 hidden pt-20 md:flex"
+                linkClassName="text-white"
+                activeLinkClass="text-[#94CAFF]"
+            />
 
-            <div className="grid gap-8 pt-16 md:grid-cols-2 xl:grid-cols-2 xl:pt-0 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div className="grid gap-8 pt-16 md:grid-cols-2 xl:grid-cols-2 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)] xl:pt-0">
                 <div className="grid content-center gap-6 px-8 md:pb-24 xl:px-0">
                     <BreadCrumb className="mt-0 !px-0 md:hidden" linkClassName="text-white" />
 
@@ -40,7 +44,7 @@ const MastheadVitreoretinalSurgery = ({ masthead }: Masthead3Props): JSX.Element
                     <div className="mt-16 flex flex-wrap items-center justify-start gap-12">
                         <button
                             onClick={openFreshdeskChat}
-                            className="rounded-[0.5rem] border border-solid border-white py-5 px-10 font-mulishBold text-white transition-all duration-500 hover:border-[#0099FF] hover:bg-white hover:text-[#0099FF]"
+                            className="rounded-[0.5rem] border border-solid border-white px-10 py-5 font-mulishBold text-white transition-all duration-500 hover:border-[#0099FF] hover:bg-white hover:text-[#0099FF]"
                         >
                             Let`s connect
                         </button>

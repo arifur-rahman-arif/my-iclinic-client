@@ -3,7 +3,7 @@ import { Section } from '@/components/Section';
 import { SectionHeading } from '@/components/SectionTextColumn';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import ctaImage from '@/section-images/cta-image.png';
+import ctaImage from '@/section-images/cta-image.webp';
 import HTMLReactParser from 'html-react-parser';
 import { ReactNode } from 'react';
 import { Container } from '@/components/Container';

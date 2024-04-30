@@ -18,7 +18,7 @@ const OphthalmologistDoctors = ({ section1 }: Partial<OphthalmologistDoctorsProp
         <Section>
             <Container className="grid items-center gap-12 md:grid-cols-2 md:gap-24 xl:gap-28">
                 <Image
-                    src={section1?.image || '/images/section-images/ophthalmologists-doctors.png'}
+                    src={section1?.image || '/images/section-images/ophthalmologists-doctors.webp'}
                     alt="My-iClinic ophthalmologists are medical doctors"
                     width={672}
                     height={645}

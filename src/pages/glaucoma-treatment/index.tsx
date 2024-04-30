@@ -172,12 +172,12 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image?.url || '/images/section-images/manage-glaucoma.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/manage-glaucoma.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image?.url || '/images/section-images/manage-glaucoma-large.png',
+                    url: data?.section_1?.large_image?.url || '/images/section-images/manage-glaucoma-large.webp',
                     width: 664,
                     height: 642
                 }}
@@ -204,12 +204,12 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 descriptions={data?.section_2?.descriptions}
                 descriptionWrapperClass="[&_div_strong]:mt-6 [&_div_strong]:block [&_div_strong]:text-heading"
                 sectionImage={{
-                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma.png',
+                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma-large.png',
+                    url: data?.section_2?.image?.src || '/images/section-images/manage-glaucoma-large.webp',
                     width: 664,
                     height: 642
                 }}
@@ -235,14 +235,14 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                             image1={{
                                 src:
                                     data?.section_4?.image_1?.url ||
-                                    '/images/section-images/glaucoma-compare-slider-1.png',
+                                    '/images/section-images/glaucoma-compare-slider-1.webp',
                                 width: 748,
                                 height: 498
                             }}
                             image2={{
                                 src:
                                     data?.section_4?.image_2?.url ||
-                                    '/images/section-images/glaucoma-compare-slider-2.png',
+                                    '/images/section-images/glaucoma-compare-slider-2.webp',
                                 width: 748,
                                 height: 498
                             }}
@@ -273,12 +273,12 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                 descriptions={data?.section_5?.descriptions}
                 descriptionWrapperClass="[&_div:nth-child(2)]:my-6"
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma.png',
+                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma-large.png',
+                    url: data?.section_5?.image || '/images/section-images/manage-glaucoma-large.webp',
                     width: 664,
                     height: 642
                 }}
@@ -336,7 +336,7 @@ export default function GlaucomaPage({ seo, yoastJson, data }: GlaucomaPageProps
                         ]
                     }
                     bandImageTitle={data?.section_11?.name || 'Tamara'}
-                    bandImageURL={data?.section_11?.front_image || '/images/section-images/tamara.jpg'}
+                    bandImageURL={data?.section_11?.front_image || '/images/section-images/tamara.webp'}
                     reviewTitle="Thank you My-iClinic"
                     sliders={data?.section_11?.additional_images || glaucomaSliders}
                     bandColor="bg-[#004977]"

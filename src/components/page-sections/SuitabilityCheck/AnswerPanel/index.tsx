@@ -54,7 +54,7 @@ const AnswerPanel = ({ answerPanelBg }: AnswerPanelProps): JSX.Element => {
     };
 
     return (
-        <div className={`${answerPanelBg || 'bg-brand'} py-12`} id="answer-panel">
+        <div className={`${answerPanelBg || 'bg-brand'} py-12 md:py-24`} id="answer-panel">
             {ctx.routes?.map(
                 (route, index) =>
                     route.active && <Fragment key={index}>{renderScreen(route.screen, route.props, index)}</Fragment>

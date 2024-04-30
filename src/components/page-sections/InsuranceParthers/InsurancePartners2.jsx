@@ -27,12 +27,12 @@ const InsurancePartners2 = () => {
                     </LinkStyle>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-12 sm:flex-row sm:flex-wrap md:gap-14">
-                    <Image src="/images/logos/healthcare-practice.png" width={185} height={50} alt="" quality={100} />
+                    <Image src="/images/logos/healthcare-practice.webp" width={185} height={50} alt="" quality={100} />
                     <Image src="/images/logos/freedom.png" width={140} height={65} alt="" quality={100} />
                     <Image src="/images/logos/cigma.png" width={145} height={44} alt="" quality={100} />
-                    <Image src="/images/logos/bupa.png" width={110} height={57} alt="" quality={100} />
-                    <Image src="/images/logos/aviva.png" width={90} height={49} alt="" quality={100} />
-                    <Image src="/images/logos/general-medical.png" width={85} height={83} alt="" quality={100} />
+                    <Image src="/images/logos/bupa.webp" width={110} height={57} alt="" quality={100} />
+                    <Image src="/images/logos/aviva.webp" width={90} height={49} alt="" quality={100} />
+                    <Image src="/images/logos/general-medical.webp" width={85} height={83} alt="" quality={100} />
                 </div>
             </Container>
         </Section>

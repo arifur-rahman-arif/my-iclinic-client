@@ -37,6 +37,7 @@ const SubMenuLink = ({
             href={url}
             title={name as string}
             className={twMerge('group/submenu-link relative px-10 py-10 first:pt-12 last:pb-12', className)}
+            prefetch={false}
             onClick={() => {
                 const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
 
@@ -55,7 +56,7 @@ const SubMenuLink = ({
         >
             <span
                 className={twMerge(
-                    'absolute left-0 bottom-0 h-[0.2rem] w-full bg-[#005DAF] transition-all duration-1000 group-hover/submenu-link:h-full',
+                    'absolute bottom-0 left-0 h-[0.2rem] w-full bg-[#005DAF] transition-all duration-1000 group-hover/submenu-link:h-full',
                     isActive && 'h-full'
                 )}
             ></span>
@@ -68,7 +69,7 @@ const SubMenuLink = ({
                     )}
                 ></span>
                 <span className="font-mulishBold text-white">{name}</span>
-                <span className="col-start-2 block font-mulishMedium text-[#D1E8FE] line-clamp-1">
+                <span className="col-start-2 line-clamp-1 block font-mulishMedium text-[1.4rem] leading-8 text-[#D1E8FE]">
                     {metaDescription ||
                         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since"}
                 </span>

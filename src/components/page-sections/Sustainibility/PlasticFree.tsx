@@ -25,12 +25,12 @@ const PlasticFree = ({
             h3BoldHeading={h3BoldHeading}
             descriptions={descriptions}
             sectionImage={{
-                url: image || '/images/section-images/plastic-free-life.png',
+                url: image || '/images/section-images/plastic-free-life.webp',
                 width: 390,
                 height: 390
             }}
             sectionImageDesktop={{
-                url: largeImage || '/images/section-images/plastic-free-life-desktop.png',
+                url: largeImage || '/images/section-images/plastic-free-life-desktop.webp',
                 width: 685,
                 height: 587
             }}

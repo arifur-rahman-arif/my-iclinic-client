@@ -52,13 +52,13 @@ const WhyMyIClinic = ({ section2 }: Partial<WhyMyIClinicProps>): JSX.Element => 
                     {((mergedCardList.length && mergedCardList) || cardList).map((card, index) => (
                         <Card key={index} {...card} />
                     ))}
-                    <div className="group/card relative overflow-hidden rounded-primary">
+                    <div className="group/card relative overflow-hidden rounded-radius2">
                         <Image
-                            src={section2?.lastCard?.image || '/images/section-images/state-of-the-art-equipment.png'}
+                            src={section2?.lastCard?.image || '/images/section-images/state-of-the-art-equipment.webp'}
                             alt="State-of-the-art Equipment"
                             width={202}
                             height={316}
-                            className="max-h-[31.6rem] w-full rounded-primary object-cover transition-all duration-500 group-hover/card:scale-125"
+                            className="max-h-[31.6rem] w-full rounded-radius2 object-cover transition-all duration-500 group-hover/card:scale-125"
                         />
 
                         <div className=" absolute bottom-0 left-0 grid max-w-[22rem] gap-2 p-8">
@@ -98,7 +98,7 @@ interface CardProps {
  */
 const Card = ({ icon, title, description }: CardProps): JSX.Element => {
     return (
-        <div className="grid content-start gap-6 rounded-primary border border-solid border-[#EAECF0] p-12 shadow-sm transition-all duration-500 hover:shadow-shadow1 xl:max-w-[33rem]">
+        <div className="grid content-start gap-6 rounded-radius2 border border-solid border-[#EAECF0] p-12 shadow-sm transition-all duration-500 hover:shadow-shadow1 xl:max-w-[33rem]">
             <Image src={icon} alt={title} width={56} height={56} />
             <h3 className="mt-6 font-latoBold text-[2.4rem] normal-case leading-[3.2rem]">{title}</h3>
             <p dangerouslySetInnerHTML={{ __html: description }}></p>

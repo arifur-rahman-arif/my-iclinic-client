@@ -5,7 +5,7 @@ import Card, { CardInterface } from './Card';
 const defaultCardList: CardInterface[] = [
     {
         image: {
-            url: '/images/section-images/card-improved-vision.png'
+            url: '/images/section-images/card-improved-vision.webp'
         },
         title: 'Improved Vision',
         description: [
@@ -21,7 +21,7 @@ const defaultCardList: CardInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/card-man-drinking-water.png'
+            url: '/images/section-images/card-man-drinking-water.webp'
         },
         title: 'Improved Quality of Life',
         description: [
@@ -36,7 +36,7 @@ const defaultCardList: CardInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/card-user-writing.png'
+            url: '/images/section-images/card-user-writing.webp'
         },
         title: 'Quick Procedure',
         description: [
@@ -50,7 +50,7 @@ const defaultCardList: CardInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/card-lady-smiling.png'
+            url: '/images/section-images/card-lady-smiling.webp'
         },
         title: 'Easy Recovery & Aftercare',
         description: [

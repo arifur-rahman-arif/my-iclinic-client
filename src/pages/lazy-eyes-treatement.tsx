@@ -108,14 +108,14 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-lazy-eyes.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-lazy-eyes.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image?.url ||
-                        '/images/section-images/vision-correction-lazy-eyes-large.png',
+                        '/images/section-images/vision-correction-lazy-eyes-large.webp',
                     width: 659,
                     height: 477
                 }}
@@ -146,12 +146,12 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image?.url || '/images/section-images/amblyopia-diagnosis.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/amblyopia-diagnosis.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image?.url || '/images/section-images/amblyopia-diagnosis-large.png',
+                    url: data?.section_2?.large_image?.url || '/images/section-images/amblyopia-diagnosis-large.webp',
                     width: 664,
                     height: 562
                 }}
@@ -173,12 +173,12 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                 descriptionWrapperClass="[&_div:nth-child(2)]:mt-6"
                 containerClassName="xl:!grid-cols-[1fr_auto]"
                 sectionImage={{
-                    url: data?.section_3?.image?.url || '/images/section-images/amblyopia-consultation.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/amblyopia-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image?.url || '/images/section-images/amblyopia-consultation-large.png',
+                    url: data?.section_3?.large_image?.url || '/images/section-images/amblyopia-consultation-large.webp',
                     width: 649,
                     height: 552
                 }}
@@ -229,7 +229,7 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image?.url || '/images/section-images/lazy-eye-treatment-large.png',
+                    url: data?.section_5?.large_image?.url || '/images/section-images/lazy-eye-treatment-large.webp',
                     width: 647,
                     height: 503
                 }}
@@ -253,14 +253,14 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6?.image?.url || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.image?.url || '/images/section-images/tedy-bear.webp',
                     width: 390,
                     height: 390
                 }}
                 positionReversed
                 largeImageClassName="mx-auto w-auto"
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image?.url || '/images/section-images/tedy-bear.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/tedy-bear.webp',
                     width: 412,
                     height: 439
                 }}

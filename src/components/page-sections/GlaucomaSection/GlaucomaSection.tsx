@@ -76,7 +76,7 @@ const GlaucomaSection = ({ content, image, altText }: GlaucomaSectionProps): JSX
                 {/* Grid item 2 */}
                 <div className="row-start-1 grid place-items-center md:row-start-auto">
                     <Image
-                        src={image || '/images/section-images/glaucoma-conditions.png'}
+                        src={image || '/images/section-images/glaucoma-conditions.webp'}
                         alt={altText || ''}
                         width={562}
                         height={576}

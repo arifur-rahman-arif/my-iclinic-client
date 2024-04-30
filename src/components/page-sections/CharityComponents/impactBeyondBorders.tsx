@@ -1,7 +1,7 @@
 import { Section } from '@/components/Section';
 import bulletPoint from '@/icons/icon-dotted-arrow-white.svg';
 import iconPlay from '@/icons/icon-play-circle.svg';
-import charityMap from '@/section-images/chairty-map.png';
+import charityMap from '@/section-images/chairty-map.webp';
 import { ImageType3 } from '@/types';
 import Image from 'next/image';
 import Plyr from 'plyr';

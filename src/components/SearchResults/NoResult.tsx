@@ -1,6 +1,6 @@
 import { algoliaIndexName, algoliaSearchClient } from '@/components/Header/Search';
 import styles from '@/components/Header/Search/Style.module.scss';
-import SearchNotFound from '@/section-images/searchnotfound.png';
+import SearchNotFound from '@/section-images/searchnotfound.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';

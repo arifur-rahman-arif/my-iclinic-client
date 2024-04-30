@@ -19,7 +19,7 @@ const OffScreenSliderSection2 = ({ sliderList }: OffScreenSliderSectionInterface
     return (
         <Section>
             <ContainerFluid className="relative !px-0">
-                <Image src="/images/section-images/homepage-slider-bg.png" alt="" fill className="absolute inset-0" />
+                <Image src="/images/section-images/homepage-slider-bg.webp" alt="" fill className="absolute inset-0" />
                 <OffscreenSlider2 sliderList={sliderList} />
             </ContainerFluid>
         </Section>

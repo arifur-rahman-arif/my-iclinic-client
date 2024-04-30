@@ -2,7 +2,7 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
 import { useReviewHook } from '@/hooks';
 import mastheadImage from '@/masthead/masthead-ophthalmology-clinic.webp';
-import smallBg from '@/section-images/masthead-icl-mobile-bg.png';
+import smallBg from '@/section-images/masthead-icl-mobile-bg.webp';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,11 +25,12 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
         <div className={`${styles.styles} relative grid overflow-hidden`}>
             <BreadCrumb
                 className="hidden md:mt-12 md:flex xl:mt-16"
-                pathClassName="!stroke-white"
                 linkClassName="text-white"
+                pathClassName="stroke-white"
+                activeLinkClass="text-[#94CAFF]"
             />
 
-            <div className="grid gap-10 px-8 pt-12 pb-24 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
+            <div className="grid gap-10 px-8 pb-24 pt-12 md:bg-transparent xl:pb-40 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 <Reviews />
 
                 <h1 className="max-w-[56rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
@@ -42,7 +43,7 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
 
                 <div className="mt-48 grid justify-items-center gap-10 md:mt-12 md:justify-items-start">
                     <div className="flex items-center justify-start gap-4 md:mt-12">
-                        <Image src="/images/section-images/0-percent-finance.png" alt="" width={95} height={90} />
+                        <Image src="/images/section-images/0-percent-finance.webp" alt="" width={95} height={90} />
                         <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-[#00BFFF]">
                             Finance available
                         </span>

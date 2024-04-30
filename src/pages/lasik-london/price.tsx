@@ -14,7 +14,7 @@ import {
     FullWidthImageSection2,
     SideImageSection
 } from '@/page-sections/index';
-import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.png';
+import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.webp';
 import { PricelasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -58,12 +58,12 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
             <SideImageSection
                 h3LightHeading={data?.section_1?.heading || 'What’s included in my private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-lasik.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-lasik.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-lasik-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-lasik-large.webp',
                     width: 616,
                     height: 549
                 }}
@@ -130,12 +130,12 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/lasik-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/lasik-finance.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/lasik-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/lasik-finance-large.webp',
                     width: 574,
                     height: 560
                 }}
@@ -208,8 +208,8 @@ export default function LasikPricing({ seo, yoastJson, data }: LasikPricingProps
                     data?.section_3?.description ||
                     'Our London laser specialists save you an average of £1,000 for your treatment and aftercare appointments compared to other eye clinics.'
                 }
-                image={data?.section_3?.image || '/images/section-images/lasik-finance-large.png'}
-                largeImage={data?.section_3?.large_image || '/images/section-images/lasik-finance-large.png'}
+                image={data?.section_3?.image || '/images/section-images/lasik-finance-large.webp'}
+                largeImage={data?.section_3?.large_image || '/images/section-images/lasik-finance-large.webp'}
             />
 
             {/* SECTION 4 */}

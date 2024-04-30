@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { ImageType3 } from '@/types';
-import sectoinImage from '@/section-images/antibiotic-resistance.png';
+import sectoinImage from '@/section-images/antibiotic-resistance.webp';
 import Image from 'next/image';
 
 interface Props {

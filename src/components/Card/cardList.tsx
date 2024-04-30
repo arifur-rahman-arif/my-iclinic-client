@@ -1,10 +1,10 @@
 import { Card2Interface } from '@/components/Card/Card2';
 import { ConsultantCardInterface } from './ConsultantCard';
 import { CardInterface } from './Card';
-import CardAttribute1 from '@/section-images/card-attribute-1.png';
-import CardAttribute2 from '@/section-images/card-attribute-2.png';
-import CardAttribute4 from '@/section-images/card-attribute-3.png';
-import CardAttribute3 from '@/section-images/card-attribute-4.png';
+import CardAttribute1 from '@/section-images/card-attribute-1.webp';
+import CardAttribute2 from '@/section-images/card-attribute-2.webp';
+import CardAttribute4 from '@/section-images/card-attribute-3.webp';
+import CardAttribute3 from '@/section-images/card-attribute-4.webp';
 import IconAngleTeal from '@/icons/icon-angle-teal.svg';
 import IconAngleOrange from '@/icons/icon-angle-orange.svg';
 import IconAngleViolet from '@/icons/icon-angle-violet.svg';
@@ -12,7 +12,7 @@ import IconAngleDarkBlue from '@/icons/icon-angle-dark-blue.svg';
 
 export const cardList: CardInterface[] = [
     {
-        image: '/images/section-images/eye-care-service-card-1.png',
+        image: '/images/section-images/eye-care-service-card-1.webp',
         title: 'ReLEx SMILE',
         pillText: 'Age 20 - 39',
         cardList: [
@@ -28,7 +28,7 @@ export const cardList: CardInterface[] = [
         cardLink: '/relex-smile-london'
     },
     {
-        image: '/images/section-images/eye-care-service-card-2.png',
+        image: '/images/section-images/eye-care-service-card-2.webp',
         title: 'Cataract Treatment',
         //        pillText: 'Age 55+',
         cardList: [
@@ -41,7 +41,7 @@ export const cardList: CardInterface[] = [
         cardLink: '/cataract'
     },
     {
-        image: '/images/section-images/eye-care-service-card-3.png',
+        image: '/images/section-images/eye-care-service-card-3.webp',
         title: 'Presbyond Treatment',
         pillText: 'Age 40+',
         cardList: [
@@ -51,7 +51,7 @@ export const cardList: CardInterface[] = [
         cardLink: '/presbyond-london'
     },
     {
-        image: '/images/section-images/eye-care-service-card-4.png',
+        image: '/images/section-images/eye-care-service-card-4.webp',
         title: (
             <>
                 Implantable
@@ -69,7 +69,7 @@ export const cardList: CardInterface[] = [
         cardLink: '/icl'
     },
     {
-        image: '/images/section-images/eye-care-service-card-5.png',
+        image: '/images/section-images/eye-care-service-card-5.webp',
         title: (
             <>
                 Glaucoma Care
@@ -88,7 +88,7 @@ export const cardList: CardInterface[] = [
         cardLink: '/glaucoma-treatment'
     },
     {
-        image: '/images/section-images/eye-care-service-card-6.png',
+        image: '/images/section-images/eye-care-service-card-6.webp',
         title: (
             <>
                 Myopia Control

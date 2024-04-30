@@ -13,7 +13,7 @@ const ChatWithUs = () => {
     return (
         <Section id="chat-with-us">
             <Container className="grid content-start justify-items-center gap-12">
-                <Image src="/images/section-images/customer-support.png" alt="" width={391} height={157} />
+                <Image src="/images/section-images/customer-support.webp" alt="" width={391} height={157} />
                 <h2 className="text-center font-latoBold text-[2.8rem] normal-case leading-[3.2rem] text-heading md:text-[3.6rem] md:leading-[4rem]">
                     Chat with our ICL enthusiasts now
                     <br /> They're as friendly as they come!

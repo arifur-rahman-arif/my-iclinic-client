@@ -35,7 +35,7 @@ const GlaucomaChargeSection = ({ heading, descriptions, image }: GlaucomaChargeS
                 </div>
 
                 <Image
-                    src={image?.url || '/images/section-images/glaucoma-charge.png'}
+                    src={image?.url || '/images/section-images/glaucoma-charge.webp'}
                     alt={image?.alt || ''}
                     width={816}
                     height={565}

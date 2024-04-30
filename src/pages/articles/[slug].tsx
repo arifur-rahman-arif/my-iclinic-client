@@ -29,7 +29,7 @@ export default function SinglePost({ post, categories, seo, yoastJson }: SingleP
             <BreadCrumb className="md:mt-12 md:!flex" />
             <Header
                 image={{
-                    src: post.image.src || '/images/section-images/placeholder-image.png',
+                    src: post.image.src || '/images/section-images/placeholder-image.webp',
                     width: 1235,
                     height: 438
                 }}

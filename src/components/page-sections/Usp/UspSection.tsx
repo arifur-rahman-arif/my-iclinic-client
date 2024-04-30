@@ -61,7 +61,7 @@ const UspSection = (): JSX.Element => {
                         </span>
 
                         <Image
-                            src="/images/section-images/operating-theatre.png"
+                            src="/images/section-images/operating-theatre.webp"
                             alt="Operating theatre"
                             width={429}
                             height={482}

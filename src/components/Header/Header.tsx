@@ -8,6 +8,7 @@ import Hamburger from './Hamburger/Hamburger';
 import NavMenu from './NavMenu';
 import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
+import iclinicLogo from '@/logos/logo-iclinic-desktop.png';
 
 const MobileNavbar = dynamic(() => import('./MobileNavbar/MobileNavbar'));
 const Search = dynamic(() => import('./Search'), {
@@ -64,12 +65,10 @@ const Header = (): JSX.Element => {
                 <Container className={`mt-1 grid grid-cols-[auto_1fr_auto] items-center gap-x-4 pl-2 xs:pl-8`}>
                     <Link href="/" className="self-start py-4">
                         <Image
-                            src="/images/logos/logo-iclinic-desktop.png"
+                            src={iclinicLogo}
                             alt="My-iClinic"
                             width={200}
                             height={90}
-                            quality={100}
-                            priority
                             className="max-h-[3.6rem] max-w-[15.9rem] object-contain xl:max-h-full xl:max-w-full"
                         />
                     </Link>

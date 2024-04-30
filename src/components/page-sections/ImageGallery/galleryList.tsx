@@ -3,20 +3,20 @@ import Icon1 from '@/icons/icon-1-grey.svg';
 import Icon2 from '@/icons/icon-2-grey.svg';
 import Icon3 from '@/icons/icon-3-grey.svg';
 import Icon4 from '@/icons/icon-4-grey.svg';
-import GalleryImage1 from '@/section-images/gallery-image-premium-lense-1.png';
-import GalleryImage2 from '@/section-images/gallery-image-premium-lense-2.png';
-import GalleryImage3 from '@/section-images/gallery-image-premium-lense-3.png';
-import GalleryImage4 from '@/section-images/gallery-image-premium-lense-4.png';
+import GalleryImage1 from '@/section-images/gallery-image-premium-lense-1.webp';
+import GalleryImage2 from '@/section-images/gallery-image-premium-lense-2.webp';
+import GalleryImage3 from '@/section-images/gallery-image-premium-lense-3.webp';
+import GalleryImage4 from '@/section-images/gallery-image-premium-lense-4.webp';
 
-import HomeGalleryImage1 from '@/section-images/gallery-image-home-1.png';
-import HomeGalleryImage2 from '@/section-images/gallery-image-home-2.png';
-import HomeGalleryImage3 from '@/section-images/gallery-image-home-3.png';
-import HomeGalleryImage4 from '@/section-images/gallery-image-home-4.png';
+import HomeGalleryImage1 from '@/section-images/gallery-image-home-1.webp';
+import HomeGalleryImage2 from '@/section-images/gallery-image-home-2.webp';
+import HomeGalleryImage3 from '@/section-images/gallery-image-home-3.webp';
+import HomeGalleryImage4 from '@/section-images/gallery-image-home-4.webp';
 
-import EyelidGalleryImage1 from '@/section-images/gallery-image-eyelid-1.png';
-import EyelidGalleryImage2 from '@/section-images/gallery-image-eyelid-2.png';
-import EyelidGalleryImage3 from '@/section-images/gallery-image-eyelid-3.png';
-import EyelidGalleryImage4 from '@/section-images/gallery-image-eyelid-4.png';
+import EyelidGalleryImage1 from '@/section-images/gallery-image-eyelid-1.webp';
+import EyelidGalleryImage2 from '@/section-images/gallery-image-eyelid-2.webp';
+import EyelidGalleryImage3 from '@/section-images/gallery-image-eyelid-3.webp';
+import EyelidGalleryImage4 from '@/section-images/gallery-image-eyelid-4.webp';
 
 export const galleryListPremiumLens: GalleryInterface[] = [
     {
@@ -89,15 +89,15 @@ export const galleryListEyelid: GalleryInterface[] = [
 
 export const galleryListMyopia: GalleryInterface[] = [
     {
-        image: '/images/section-images/gallery-image-myopia-1.png'
+        image: '/images/section-images/gallery-image-myopia-1.webp'
     },
     {
-        image: '/images/section-images/gallery-image-myopia-2.png'
+        image: '/images/section-images/gallery-image-myopia-2.webp'
     },
     {
-        image: '/images/section-images/gallery-image-myopia-3.png'
+        image: '/images/section-images/gallery-image-myopia-3.webp'
     },
     {
-        image: '/images/section-images/gallery-image-myopia-4.png'
+        image: '/images/section-images/gallery-image-myopia-4.webp'
     }
 ];

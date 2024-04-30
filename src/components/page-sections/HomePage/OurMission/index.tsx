@@ -32,7 +32,7 @@ const OurMission = (): JSX.Element => {
                 </div>
 
                 <Image
-                    src="/images/section-images/our-mission.png"
+                    src="/images/section-images/our-mission.webp"
                     alt=""
                     width={368}
                     height={209}
@@ -40,7 +40,7 @@ const OurMission = (): JSX.Element => {
                 />
 
                 <Image
-                    src="/images/section-images/our-mission-large.png"
+                    src="/images/section-images/our-mission-large.webp"
                     alt=""
                     width={788}
                     height={570}

@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { ImageType3 } from '@/types';
-import sectionImage from '@/section-images/private-consultation-cataract-large.png';
+import sectionImage from '@/section-images/private-consultation-cataract-large.webp';
 import Image from 'next/image';
 import { H2Variant1 } from '@/components/Headings';
 import HTMLReactParser from 'html-react-parser';

@@ -21,8 +21,8 @@ import {
 import { leftRightListLasek } from '@/page-sections/LeftRight/leftRightList';
 import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
 import { lasekStackList } from '@/page-sections/StackedSection';
-import FullWidthImageLarge from '@/section-images/lasek-doctor-large.png';
-import FullWidthImage from '@/section-images/lasek-doctor.png';
+import FullWidthImageLarge from '@/section-images/lasek-doctor-large.webp';
+import FullWidthImage from '@/section-images/lasek-doctor.webp';
 import { LasekprkContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
@@ -93,7 +93,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                   ...item,
                   mobileImage: (
                       <Image
-                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.png'}
+                          src={item?.mobileImage || '/images/section-images/lasek-consultation-large.webp'}
                           width={390}
                           height={390}
                           quality={70}
@@ -103,7 +103,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                   ),
                   desktopImage: (
                       <Image
-                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.png'}
+                          src={item?.desktopImage || '/images/section-images/lasek-consultation-large.webp'}
                           width={675}
                           height={617}
                           quality={70}
@@ -125,7 +125,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                       return {
                           ...service,
                           desktopImage: {
-                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.webp',
                               width: 447,
                               height: 349
                           },
@@ -248,14 +248,14 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/lasek-vision-correction-treatment.png',
+                    url: data?.section_2?.image || '/images/section-images/lasek-vision-correction-treatment.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_2?.large_image ||
-                        '/images/section-images/lasek-vision-correction-treatment-large.png',
+                        '/images/section-images/lasek-vision-correction-treatment-large.webp',
                     width: 675,
                     height: 539
                 }}
@@ -360,7 +360,7 @@ export default function LasekPage({ seo, yoastJson, data, filteredTreatments }: 
                         ]
                     }
                     bandImageTitle={data?.section_7?.bandImageTitle || 'Ms. Priti Patel'}
-                    bandImageURL={data?.section_7?.image || '/images/section-images/ms-priti-patel.jpg'}
+                    bandImageURL={data?.section_7?.image || '/images/section-images/ms-priti-patel.webp'}
                     reviewTitle={data?.section_7?.review_title || 'Thank you My-iClinic'}
                     sliders={lasekSliders}
                     bandColor="bg-[#FF7F00]"

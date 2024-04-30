@@ -79,14 +79,14 @@ const Slide1 = (): JSX.Element => {
     return (
         <div className="grid grid-cols-2 gap-6 lg:max-h-[52.4rem] lg:grid-cols-[auto_auto_1fr]">
             <Image
-                src="/images/section-images/mountain-and-rivers.png"
+                src="/images/section-images/mountain-and-rivers.webp"
                 alt=""
                 width={435}
                 height={534}
                 className="h-full w-full rounded-primary"
             />
             <Image
-                src="/images/section-images/plastric-footprint.png"
+                src="/images/section-images/plastric-footprint.webp"
                 alt=""
                 width={349}
                 height={534}
@@ -156,14 +156,14 @@ const Slide2 = (): JSX.Element => {
     return (
         <div className="grid grid-cols-2 gap-6 lg:max-h-[52.4rem] lg:grid-cols-[auto_auto_1fr] ">
             <Image
-                src="/images/section-images/girl-looking-globe.png"
+                src="/images/section-images/girl-looking-globe.webp"
                 alt=""
                 width={435}
                 height={534}
                 className="h-full w-full rounded-primary"
             />
             <Image
-                src="/images/section-images/climate-conscious.png"
+                src="/images/section-images/climate-conscious.webp"
                 alt=""
                 width={349}
                 height={534}
@@ -216,14 +216,14 @@ const Slide3 = (): JSX.Element => {
     return (
         <div className="grid grid-cols-2 gap-6 lg:max-h-[52.4rem] lg:grid-cols-[auto_auto_1fr]">
             <Image
-                src="/images/section-images/forest-with-lake.png"
+                src="/images/section-images/forest-with-lake.webp"
                 alt=""
                 width={435}
                 height={534}
                 className="h-full w-full rounded-primary"
             />
             <Image
-                src="/images/section-images/real-forest-tree.png"
+                src="/images/section-images/real-forest-tree.webp"
                 alt=""
                 width={349}
                 height={534}

@@ -30,12 +30,12 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
         >
             <div className="grid h-full place-items-center content-center gap-12 md:gap-24">
                 {selectedOption?.length ? (
-                    <div className="grid grid-cols-[1fr_auto] gap-y-6 gap-x-12 justify-self-start">
-                        <span className="font-mulishMedium text-[1.8rem] uppercase leading-[2.4rem] text-white">
+                    <div className="grid grid-cols-[1fr_auto] gap-x-12 gap-y-6 justify-self-start">
+                        <span className="font-mulishBold text-[1.8rem] uppercase leading-[2.4rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
                             You have selected:
                         </span>
                         <button
-                            className="col-start-2 row-span-2 mt-4 cursor-pointer self-start font-mulishBold text-[1.4rem] uppercase leading-8 text-[#CACECF] underline-offset-4 hover:underline"
+                            className="col-start-2 row-span-2 mt-4 cursor-pointer self-start font-mulishBold text-[1.4rem] uppercase leading-8 text-[#0099FF] underline-offset-4 hover:underline"
                             onClick={() => {
                                 ctx.setCompletedStep((ctx.completedStep -= 1));
                                 ctx.navigateToStep(8);
@@ -45,14 +45,9 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                         </button>
                         <div className="grid content-start gap-6">
                             {selectedOption.map((selected, i) => (
-                                <div key={i} className="flex items-start justify-start gap-4">
-                                    <span className="font-mulishBold text-[2rem] leading-[2.4rem] text-white md:text-[2.4rem] md:leading-[3.2rem]">
-                                        {i + 1}.
-                                    </span>
-                                    <span
-                                        className="!font-mulishBold text-[2rem] leading-[2.4rem] text-white md:text-[2.4rem] md:leading-[3.2rem]"
-                                        key={i}
-                                    >
+                                <div key={i} className="flex items-start justify-start gap-2">
+                                    <span className="font-medium text-white">{i + 1}.</span>
+                                    <span className="!font-medium text-white" key={i}>
                                         {selected.label}
                                     </span>
                                 </div>
@@ -90,7 +85,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                             target="_blank"
                             title="Book a suitability check"
                             href="https://connect.pabau.com/bookings.php?compid=11842"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:!border-white hover:bg-transparent"
+                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:!border-white hover:bg-transparent"
                             aria-label="Book a free screening test"
                         >
                             <svg
@@ -143,7 +138,7 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                         <Link
                             href="tel:0208 445 8877"
                             className={
-                                'group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border-2 border-white px-8 py-6 transition-all duration-500 hover:border-heading2 hover:bg-heading2'
+                                'group/phone grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border border-white px-8 py-6 transition-all duration-500 hover:border-heading2 hover:bg-heading2'
                             }
                         >
                             <svg

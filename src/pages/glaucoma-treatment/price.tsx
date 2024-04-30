@@ -63,14 +63,14 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                 descriptions={data?.section_1?.descriptions}
                 descriptionWrapperClass="[&_div:first-child]:mb-6"
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-glaucoma-large.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-glaucoma-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image ||
-                        '/images/section-images/private-consultation-glaucoma-large.png',
+                        '/images/section-images/private-consultation-glaucoma-large.webp',
                     width: 656,
                     height: 518
                 }}
@@ -122,12 +122,12 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                 h3LightHeading={data?.section_4?.heading || 'Thinking about paying with health inwsurance?'}
                 descriptions={data?.section_4?.descriptions}
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/glaucoma-health-insurance-large.png',
+                    url: data?.section_4?.image || '/images/section-images/glaucoma-health-insurance-large.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/glaucoma-health-insurance-large.png',
+                    url: data?.section_4?.large_image || '/images/section-images/glaucoma-health-insurance-large.webp',
                     width: 622,
                     height: 568
                 }}

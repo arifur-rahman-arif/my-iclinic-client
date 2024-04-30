@@ -142,7 +142,7 @@ const OurSpecialists = ({ router }: OurSpecialistsProps): JSX.Element => {
     );
 
     return (
-        <div className="absolute left-0 top-full z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(60%_-_0.5rem)] overflow-x-hidden overflow-y-scroll rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
+        <div className="absolute left-0 top-full z-10 grid max-h-0 min-w-[var(--container-width)] -translate-x-[calc(60%_-_0.5rem)] overflow-y-auto overflow-x-hidden rounded-bl-radius2 rounded-br-radius2 bg-[#003E79] transition-all duration-1000 group-hover/menu-item:max-h-[calc(100vh_-_17rem)]">
             <div className="grid w-full grid-cols-[40rem_1fr] content-start">
                 <div className="grid min-h-[64rem] content-start bg-[#003363] py-12">
                     {submenus.map((menu, key) => (
@@ -396,7 +396,7 @@ export const SoloLink = ({ soloLinks, router }: SoloLinkProps): JSX.Element => {
                                 router.pathname === item.url ? 'border-8' : 'border-[0.3rem]'
                             }`}
                         ></span>
-                        <strong className="text-white">{item.name}</strong>
+                        <span className="font-mulishBold text-white">{item.name}</span>
                     </div>
                 </Link>
             ))}

@@ -34,7 +34,7 @@ const InfoBox = ({ image, title, descriptions, index }: InfoBoxInterface): JSX.E
 const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     {
         image: {
-            src: '/images/section-images/bacterial-conjunctivitis.png',
+            src: '/images/section-images/bacterial-conjunctivitis.webp',
             width: 603,
             height: 296
         },
@@ -45,7 +45,7 @@ const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     },
     {
         image: {
-            src: '/images/section-images/viral-conjunctivitis.png',
+            src: '/images/section-images/viral-conjunctivitis.webp',
             width: 603,
             height: 296
         },
@@ -57,7 +57,7 @@ const conjunctivitisTreatmentList: Omit<InfoBoxInterface, 'index'>[] = [
     },
     {
         image: {
-            src: '/images/section-images/allergic-conjunctivitis.png',
+            src: '/images/section-images/allergic-conjunctivitis.webp',
             width: 603,
             height: 296
         },

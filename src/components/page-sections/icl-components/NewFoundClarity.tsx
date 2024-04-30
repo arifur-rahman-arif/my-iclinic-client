@@ -6,27 +6,27 @@ const cardList: CardProps[] = [
     {
         title: 'Enjoy Clear Vision',
         description: 'Experience sharp, natural vision without the need for glasses or contacts.',
-        image: '/images/section-images/enjoy-clear-vision.png'
+        image: '/images/section-images/enjoy-clear-vision.webp'
     },
     {
         title: 'Live Actively',
         description: 'Engage in sports, hobbies, and everyday activities with clear vision.',
-        image: '/images/section-images/live-actively.png'
+        image: '/images/section-images/live-actively.webp'
     },
     {
         title: 'Comfort Beyond Compare',
         description: 'Say goodbye to discomfort from contacts and frames.',
-        image: '/images/section-images/comfort-beyond-compare.png'
+        image: '/images/section-images/comfort-beyond-compare.webp'
     },
     {
         title: 'Long-Term Convenience',
         description: 'Wake up every day with clear vision without the hassle of daily lenses.',
-        image: '/images/section-images/long-term-convenience.png'
+        image: '/images/section-images/long-term-convenience.webp'
     },
     {
         title: 'Aesthetic Freedom',
         description: 'Enhance your appearance by ditching glasses.',
-        image: '/images/section-images/aesthetic-freedom.png'
+        image: '/images/section-images/aesthetic-freedom.webp'
     }
 ];
 
@@ -77,7 +77,7 @@ const Card = ({ image, title, description }: CardProps): JSX.Element => {
     return (
         <div className="grid h-full content-start gap-12 rounded-primary border-b-4 border-transparent pb-6 shadow-shadow2 transition-all duration-500 hover:border-b-[#0099FF] hover:shadow-shadow1 md:pb-12">
             <Image
-                src={image || '/images/section-images/placeholder-image.png'}
+                src={image || '/images/section-images/placeholder-image.webp'}
                 alt={title}
                 width={400}
                 height={300}

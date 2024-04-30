@@ -4,6 +4,7 @@ import MastheadImage from '@/masthead/masthead-home-large.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
+import { BookConsultation } from '@/components/page-sections';
 
 interface Masthead3Props {
     title: string;
@@ -26,6 +27,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 src={MastheadImage}
                 alt=""
                 priority
+                quality={50}
                 className="self-stretch object-cover md:col-start-2 md:row-span-2 md:row-start-2 md:block md:justify-self-end xl:row-start-1 xl:self-end xl:justify-self-end xl:object-center"
             />
 
@@ -35,18 +37,20 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                 </h1>
                 <div className="mt-6 flex items-center justify-start gap-4">
                     <Image
-                        src="/images/section-images/5-blue-dots.png"
+                        src="/images/section-images/5-blue-dots.webp"
                         alt=""
                         width={66}
                         height={15}
                         className="hidden sm:block"
+                        quality={25}
                     />
                     <Image
-                        src="/images/section-images/3-blue-dots.png"
+                        src="/images/section-images/3-blue-dots.webp"
                         alt=""
                         width={32}
                         height={15}
                         className="sm:hidden"
+                        quality={25}
                     />
                     <h2 className="font-mulishBold !text-[1.6rem] uppercase !leading-[2.4rem] text-[#D1E8FE]">
                         {subTitle}
@@ -90,6 +94,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                     alt=""
                     width={78}
                     height={78}
+                    quality={25}
                     className="col-start-2 row-span-2 row-start-1 max-h-[5.2rem] max-w-[5.2rem] justify-self-end transition-all duration-500 group-hover/link:translate-x-4 md:max-h-full md:max-w-full"
                 />
             </Link>
@@ -183,29 +188,11 @@ export const Reviews = (): JSX.Element => {
                     0% Finance available
                 </span>
 
-                {/* <BookConsultation
-                    buttonClassName=""
-                    modalElement={
-                        <>
-                            <iframe
-                                src=""
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
-                >
-                </BookConsultation> */}
-                <Link
-                    href="https://connect.pabau.com/bookings.php?compid=11842"
-                    target="_blank"
-                    className="mt-4 flex items-center justify-center rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#003E79] xl:w-full xl:rounded-none xl:border-b-0 xl:border-l-0 xl:border-r-0 xl:py-6"
-                    title="FREE Consultation"
-                >
-                    Book a Consultation
-                </Link>
+                <BookConsultation buttonClassName="mt-4 flex items-center justify-center rounded-[0.5rem] border-2 border-solid border-[#003E79] bg-[#003E79] px-5 py-3 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#003E79] xl:w-full xl:rounded-none xl:border-b-0 xl:border-l-0 xl:border-r-0 xl:py-6">
+                    <button className="" title="FREE Consultation">
+                        Book a Consultation
+                    </button>
+                </BookConsultation>
             </div>
         </div>
     );

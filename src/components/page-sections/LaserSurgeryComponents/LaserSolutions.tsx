@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { LaserEyeSurgeryContentInterface } from '@/types';
-import laserSolutions from '@/section-images/laser-solutions.png';
+import laserSolutions from '@/section-images/laser-solutions.webp';
 import Image from 'next/image';
 
 interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section3'> {}
