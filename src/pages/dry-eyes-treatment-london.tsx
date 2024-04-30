@@ -95,9 +95,9 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
             <FullWidthImageSection
                 h3Title={data?.section_1?.heading || 'Private consultation for dry eyes'}
                 description={data?.section_1?.descriptions}
-                image={data?.section_1?.image || '/images/section-images/dry-eye-private-consultation-large.jpg'}
+                image={data?.section_1?.image || '/images/section-images/dry-eye-private-consultation-large.webp'}
                 desktopImage={
-                    data?.section_1?.large_image || '/images/section-images/dry-eye-private-consultation-large.jpg'
+                    data?.section_1?.large_image || '/images/section-images/dry-eye-private-consultation-large.webp'
                 }
                 descriptionWrapperClass="[&_div:first-child_span]:!font-mulishBold [&_div:first-child_span]:!text-[#00BFFF] [&_div]:!opacity-80"
                 containerClass="pb-16 md:!py-0"
@@ -151,12 +151,12 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                 }
                 descriptionWrapperClass="[&_div:nth-child(2)]:mt-6"
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/dry-eye-consultation-large.jpg',
+                    url: data?.section_2?.image || '/images/section-images/dry-eye-consultation-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/dry-eye-consultation-large.jpg',
+                    url: data?.section_2?.large_image || '/images/section-images/dry-eye-consultation-large.webp',
                     width: 631,
                     height: 582
                 }}
@@ -185,12 +185,12 @@ export default function DryEyesTreatmentLondon({ seo, yoastJson, data }: DryEyes
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/macular-treatment.png',
+                    url: data?.section_3?.image || '/images/section-images/macular-treatment.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/macular-treatment-large.png',
+                    url: data?.section_3?.large_image || '/images/section-images/macular-treatment-large.webp',
                     width: 658,
                     height: 459
                 }}

@@ -17,12 +17,12 @@ interface VideoPlayerInterface {
  * @returns {*}  {JSX.Element}
  */
 const VideoPlayer = ({
-                         videoUrl,
-                         videoPoster,
-                         localPoster,
-                         className,
-                         autoPlay
-                     }: VideoPlayerInterface): JSX.Element => {
+    videoUrl,
+    videoPoster,
+    localPoster,
+    className,
+    autoPlay
+}: VideoPlayerInterface): JSX.Element => {
     const videoPlayer = useRef<HTMLVideoElement | null>(null);
     useEffect(() => {
         if (!videoPlayer.current) return;
@@ -56,7 +56,7 @@ const VideoPlayer = ({
                 className
             )}
         >
-            <div className="h-full overflow-hidden rounded-primary lg:rounded-primary">
+            <div className="h-full overflow-hidden !rounded-radius2">
                 <video
                     autoPlay={autoPlay}
                     ref={videoPlayer}
@@ -65,7 +65,7 @@ const VideoPlayer = ({
                     data-poster={localPoster || `https://img.youtube.com/vi/${videoPoster}/maxresdefault.jpg`}
                     className="h-full xl:min-w-[75rem]"
                 >
-                    <source src={videoUrl} type="video/mp4"/>
+                    <source src={videoUrl} type="video/mp4" />
                 </video>
             </div>
         </div>

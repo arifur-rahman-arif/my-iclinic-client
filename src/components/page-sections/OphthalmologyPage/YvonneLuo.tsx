@@ -21,7 +21,7 @@ const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
         <Section>
             <Container className="grid overflow-hidden !px-0 md:grid-cols-2 md:!px-8 xl:grid-cols-[1fr_auto]">
                 <Image
-                    src={section3?.image || '/images/section-images/yvone-leo-small.png'}
+                    src={section3?.image || '/images/section-images/yvone-leo-small.webp'}
                     alt="Yvonne Luo"
                     width={426}
                     height={481}
@@ -29,7 +29,7 @@ const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
                 />
                 <div className="relative hidden md:col-start-2 md:row-start-1 md:block">
                     <Image
-                        src={section3?.largeImage || '/images/section-images/yvone-leo.png'}
+                        src={section3?.largeImage || '/images/section-images/yvone-leo.webp'}
                         alt="Yvonne Luo"
                         width={699}
                         height={870}
@@ -65,7 +65,7 @@ const Awards = ({ className }: AwardsProps): JSX.Element => {
                 </span>
                 <span className="col-span-2 h-[0.1rem] bg-white"></span>
                 <Image src="/images/logos/logo-euratina.png" alt="" width={128} height={128} />
-                <Image src="/images/logos/logo-royal-collage.png" alt="" width={128} height={128} />
+                <Image src="/images/logos/logo-royal-collage.webp" alt="" width={128} height={128} />
             </div>
             <div className="grid content-start gap-6 justify-self-start">
                 <span className="col-span-2 font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">

@@ -15,7 +15,7 @@ const QuestionBox = memo(({ age, index }: QuestionBoxProps): JSX.Element => {
     return (
         <button
             className={twMerge(
-                `flex w-full max-w-[22.1rem] cursor-pointer items-center justify-center gap-6 rounded-primary border-2 py-4 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500`,
+                `flex w-full max-w-[22.1rem] cursor-pointer items-center justify-center gap-6 rounded-[0.5rem] border-2 py-4 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500`,
                 `${
                     ctx.ages[index].disabled && !ctx.ages[index].active
                         ? 'cursor-not-allowed border-brand opacity-50'

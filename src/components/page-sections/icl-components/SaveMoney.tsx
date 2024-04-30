@@ -12,7 +12,7 @@ const SaveMoney = (): JSX.Element => {
     return (
         <Section id="save-money">
             <Container className="grid content-start justify-items-center gap-12 md:gap-20">
-                <Image src="/images/section-images/tree-image.png" alt="" width={245} height={245} />
+                <Image src="/images/section-images/tree-image.webp" alt="" width={245} height={245} />
                 <div className="grid gap-12">
                     <h2 className="text-center font-latoBold text-[2.8rem] normal-case leading-[3.2rem] text-heading md:text-[3.6rem] md:leading-[4rem]">
                         Save money & Our planet{' '}

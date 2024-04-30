@@ -105,7 +105,7 @@ const GoodbyeModal = (): JSX.Element => {
 
                 <div className="grid place-items-center content-start gap-12">
                     <Image
-                        src="/images/section-images/leaving-modal-image.png"
+                        src="/images/section-images/leaving-modal-image.webp"
                         alt=""
                         width={304}
                         height={254}

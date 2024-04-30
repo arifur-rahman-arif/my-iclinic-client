@@ -26,7 +26,8 @@ const Specialities = ({ section2 }: SpecialitiesProps): JSX.Element => {
 
         if (i === 1) {
             icon = 'images/icons/icon-eye-with-tears.svg';
-            className = 'xl:pb-32';
+            className =
+                'xl:pb-32 bg-[#FFD400] [&_.title-class]:text-heading [&_ul_li_span]:text-[#404A4D] [&_.bullet]:!bg-[#404A4D]';
         }
 
         if (i === 2) {
@@ -36,7 +37,8 @@ const Specialities = ({ section2 }: SpecialitiesProps): JSX.Element => {
 
         if (i === 3) {
             icon = 'images/icons/icon-eye-drop.svg';
-            className = 'xl:pb-24';
+            className =
+                'xl:pb-24 bg-[#FFD400] [&_.title-class]:text-heading [&_ul_li_span]:text-[#404A4D] [&_.bullet]:!bg-[#404A4D]';
         }
 
         return {
@@ -82,7 +84,7 @@ const SpecialityItem = ({ title, items, icon, className }: SpecialityItemProps):
             <span className="grid h-[5.4rem] w-[5.4rem] place-items-center rounded-full bg-white">
                 <Image src={icon} alt="" width={42} height={24} />
             </span>
-            <span className="font-mulishBold text-[2rem] lowercase leading-[2.8rem] text-white first-letter:uppercase">
+            <span className="title-class font-mulishBold text-[2rem] lowercase leading-[2.8rem] text-white first-letter:uppercase">
                 {title}
             </span>
 
@@ -90,7 +92,7 @@ const SpecialityItem = ({ title, items, icon, className }: SpecialityItemProps):
                 {items.length
                     ? items.map((item, key) => (
                           <li key={key} className="grid grid-cols-[auto_1fr] content-start items-start gap-4">
-                              <span className="mt-4 h-[0.7rem] w-[0.7rem] rounded-full bg-[#E1F1FF]"></span>
+                              <span className="bullet mt-4 h-[0.7rem] w-[0.7rem] rounded-full bg-[#E1F1FF]"></span>
                               <span className="font-mulishRegular text-[#E1F1FF]">{item}</span>
                           </li>
                       ))

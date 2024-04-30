@@ -24,7 +24,7 @@ const VideoColumn = ({ source, poster }: Partial<VideoColumnProps>): JSX.Element
             {onEnter && (
                 <VideoPlayer
                     videoUrl={source || '/videos/glaucoma-eye-surgery.mp4'}
-                    localPoster={poster || '/images/section-images/glaucoma-eye-surgery-poster.jpg'}
+                    localPoster={poster || '/images/section-images/glaucoma-eye-surgery-poster.webp'}
                 />
             )}
         </div>

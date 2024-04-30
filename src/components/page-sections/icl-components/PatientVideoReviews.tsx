@@ -25,14 +25,14 @@ const PatientVideoReviews = () => {
                     <LazyComponent>
                         <VideoPlayer
                             videoUrl={'/videos/icl-review-2.mp4'}
-                            localPoster="/images/section-images/icl-review-2-poster.jpg"
+                            localPoster="/images/section-images/icl-review-2-poster.webp"
                             className="mx-auto lg:pr-0"
                         />
                     </LazyComponent>
                     <LazyComponent>
                         <VideoPlayer
                             videoUrl={'/videos/icl-review.mp4'}
-                            localPoster="/images/section-images/icl-review-1-poster.png"
+                            localPoster="/images/section-images/icl-review-1-poster.webp"
                             className="mx-auto lg:pr-0"
                         />
                     </LazyComponent>

@@ -36,7 +36,7 @@ const cardList: CardInterface[] = [
         description:
             "Visual field testing is used by our technician team to assess our patients' field of vision, and, in particular, their peripheral vision to determine any areas of vision loss and any vision loss causes. Visual fields can indicate if blind spots are caused by glaucoma, diabetes, hypertension and/ or head trauma.",
         image: {
-            src: '/images/section-images/eye-care-card-image-1.png',
+            src: '/images/section-images/eye-care-card-image-1.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -47,7 +47,7 @@ const cardList: CardInterface[] = [
         description:
             "iTrace is a 5-in-1 wavefront aberrometer, corneal topographer, keratometer, autorefractor, and pupillometer. The ITrace is used by our technician team to identify the visual axis, the center of the pupil and the center of the limbus. Our iTrace machine will analyze the internal structures of our patients' eyes.",
         image: {
-            src: '/images/section-images/eye-care-card-image-2.png',
+            src: '/images/section-images/eye-care-card-image-2.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -58,7 +58,7 @@ const cardList: CardInterface[] = [
         description:
             'Our technician team uses the IOL Master to achieve high precision IOL calculations for our patients. The IOL masters laser technology accurately measures the length of the eye which can determine the best treatment for our patients.',
         image: {
-            src: '/images/section-images/eye-care-card-image-3.png',
+            src: '/images/section-images/eye-care-card-image-3.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -69,7 +69,7 @@ const cardList: CardInterface[] = [
         description:
             'OCT testing uses interferometry to create a cross-sectional map of our patients retina. Our technicians use the OCT machine to capture the back of the eye, including the optic nerve. Our specialists can diagnose glaucoma, macula edema, macular degeneration and retinal detachments by our OCT testing.',
         image: {
-            src: '/images/section-images/eye-care-card-image-4.png',
+            src: '/images/section-images/eye-care-card-image-4.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -80,7 +80,7 @@ const cardList: CardInterface[] = [
         description:
             "Sirius uses a rotating 3D Scheimpflug camera to measure a patient's corneal thickness which can be used to determine the most suitable refractive and/or corneal surgery for their eye condition.",
         image: {
-            src: '/images/section-images/eye-care-card-image-5.png',
+            src: '/images/section-images/eye-care-card-image-5.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -91,7 +91,7 @@ const cardList: CardInterface[] = [
         description:
             "The atlas (corneal topography) machine is used by our technician team to scan a three-dimensional map of the surface and curvature of the patient's cornea. The atlas detects corneal pathology to help determine a suitable treatment plan and/or surgery for our patients.",
         image: {
-            src: '/images/section-images/eye-care-card-image-6.png',
+            src: '/images/section-images/eye-care-card-image-6.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -102,7 +102,7 @@ const cardList: CardInterface[] = [
         description:
             "Our fundus is a low power microscope attached with a specialized camera designed to photograph the interior surface of the patient's eye, including their retina, their retinal vasculature, their optic disc, posterior pol and macula.",
         image: {
-            src: '/images/section-images/eye-care-card-image-7.png',
+            src: '/images/section-images/eye-care-card-image-7.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -113,7 +113,7 @@ const cardList: CardInterface[] = [
         description:
             "Our specialists will measure a patient's IOP (intraocular pressure) with iCare to monitor and/or diagnose glaucoma, diabetic retinopathy and macular degeneration.",
         image: {
-            src: '/images/section-images/eye-care-card-image-8.png',
+            src: '/images/section-images/eye-care-card-image-8.webp',
             width: 406,
             height: 235,
             alt: ''
@@ -124,7 +124,7 @@ const cardList: CardInterface[] = [
         description:
             'Our specialists will use slit lamps as an initial examination tool to assess the health of our patients conjunctiva, cornea, eyelids, iris, pupil, lens, sclera and retina.',
         image: {
-            src: '/images/section-images/eye-care-card-image-9.png',
+            src: '/images/section-images/eye-care-card-image-9.webp',
             width: 406,
             height: 235,
             alt: ''

@@ -10,12 +10,12 @@ export interface StackListInterface extends Omit<StackSlideInterface, 'index'> {
 export const presbyondStackList: Omit<StackBoxInterface, 'index'>[] = [
     {
         image: {
-            url: '/images/section-images/laser-surgery-card.png',
+            url: '/images/section-images/laser-surgery-card.webp',
             width: 329,
             height: 220
         },
         desktopImage: {
-            url: '/images/section-images/laser-surgery-card-desktop.png',
+            url: '/images/section-images/laser-surgery-card-desktop.webp',
             width: 640,
             height: 519
         },
@@ -30,12 +30,12 @@ export const presbyondStackList: Omit<StackBoxInterface, 'index'>[] = [
     },
     {
         image: {
-            url: '/images/section-images/life-results.png',
+            url: '/images/section-images/life-results.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/life-results-desktop.png',
+            url: '/images/section-images/life-results-desktop.webp',
             width: 658,
             height: 571
         },
@@ -50,12 +50,12 @@ export const presbyondStackList: Omit<StackBoxInterface, 'index'>[] = [
     },
     {
         image: {
-            url: '/images/section-images/wave-goodbye.png',
+            url: '/images/section-images/wave-goodbye.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/wave-goodbye-desktop.png',
+            url: '/images/section-images/wave-goodbye-desktop.webp',
             width: 608,
             height: 579
         },
@@ -69,12 +69,12 @@ export const presbyondStackList: Omit<StackBoxInterface, 'index'>[] = [
     },
     {
         image: {
-            url: '/images/section-images/new-vision.png',
+            url: '/images/section-images/new-vision.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/new-vision-desktop.png',
+            url: '/images/section-images/new-vision-desktop.webp',
             width: 608,
             height: 579
         },
@@ -92,12 +92,12 @@ export const iclStackList: StackListInterface[] = [
     {
         boxIcon: IconGenome,
         image: {
-            url: '/images/section-images/biocompatibility.png',
+            url: '/images/section-images/biocompatibility.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/biocompatibility-large.png',
+            url: '/images/section-images/biocompatibility-large.webp',
             width: 640,
             height: 519
         },
@@ -113,12 +113,12 @@ export const iclStackList: StackListInterface[] = [
     {
         boxIcon: IconEyeDrop,
         image: {
-            url: '/images/section-images/dry-eyes.png',
+            url: '/images/section-images/dry-eyes.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/dry-eyes-large.png',
+            url: '/images/section-images/dry-eyes-large.webp',
             width: 658,
             height: 571
         },
@@ -134,12 +134,12 @@ export const iclStackList: StackListInterface[] = [
     {
         boxIcon: IconEyeTime,
         image: {
-            url: '/images/section-images/icl-procedure.png',
+            url: '/images/section-images/icl-procedure.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/icl-procedure-large.png',
+            url: '/images/section-images/icl-procedure-large.webp',
             width: 608,
             height: 579
         },
@@ -155,12 +155,12 @@ export const iclStackList: StackListInterface[] = [
     {
         boxIcon: IconEyeBandage,
         image: {
-            url: '/images/section-images/removability.png',
+            url: '/images/section-images/removability.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/removability-large.png',
+            url: '/images/section-images/removability-large.webp',
             width: 658,
             height: 519
         },
@@ -177,12 +177,12 @@ export const iclStackList: StackListInterface[] = [
 export const lasikStackList: StackListInterface[] = [
     {
         image: {
-            url: '/images/section-images/walking-into-room.png',
+            url: '/images/section-images/walking-into-room.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/walking-into-room-large.png',
+            url: '/images/section-images/walking-into-room-large.webp',
             width: 640,
             height: 519
         },
@@ -196,12 +196,12 @@ export const lasikStackList: StackListInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/people-doing-exercise.png',
+            url: '/images/section-images/people-doing-exercise.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/people-doing-exercise-large.png',
+            url: '/images/section-images/people-doing-exercise-large.webp',
             width: 658,
             height: 571
         },
@@ -217,12 +217,12 @@ export const lasikStackList: StackListInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/man-running-in-the-beach.png',
+            url: '/images/section-images/man-running-in-the-beach.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/man-running-in-the-beach-large.png',
+            url: '/images/section-images/man-running-in-the-beach-large.webp',
             width: 608,
             height: 579
         },
@@ -236,12 +236,12 @@ export const lasikStackList: StackListInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/woman-holding-her-baby.png',
+            url: '/images/section-images/woman-holding-her-baby.webp',
             width: 392,
             height: 256
         },
         desktopImage: {
-            url: '/images/section-images/woman-holding-her-baby-large.png',
+            url: '/images/section-images/woman-holding-her-baby-large.webp',
             width: 658,
             height: 519
         },
@@ -258,7 +258,7 @@ export const lasikStackList: StackListInterface[] = [
 export const lasekStackList: StackListInterface[] = [
     {
         desktopImage: {
-            url: '/images/section-images/lasek-ditch-specs-large.png',
+            url: '/images/section-images/lasek-ditch-specs-large.webp',
             width: 447,
             height: 349
         },
@@ -269,7 +269,7 @@ export const lasekStackList: StackListInterface[] = [
     },
     {
         desktopImage: {
-            url: '/images/section-images/lasek-slider-card-image-2.png',
+            url: '/images/section-images/lasek-slider-card-image-2.webp',
             width: 447,
             height: 349
         },
@@ -280,7 +280,7 @@ export const lasekStackList: StackListInterface[] = [
     },
     {
         desktopImage: {
-            url: '/images/section-images/lasek-slider-card-image-3.png',
+            url: '/images/section-images/lasek-slider-card-image-3.webp',
             width: 447,
             height: 349
         },
@@ -291,7 +291,7 @@ export const lasekStackList: StackListInterface[] = [
     },
     {
         desktopImage: {
-            url: '/images/section-images/lasek-slider-card-image-4.png',
+            url: '/images/section-images/lasek-slider-card-image-4.webp',
             width: 447,
             height: 349
         },
@@ -326,12 +326,12 @@ export const glaucomaStackList: StackListInterface[] = [
 export const myopiaStackList: StackListInterface[] = [
     {
         image: {
-            url: '/images/section-images/myopia-stack-card-1.png',
+            url: '/images/section-images/myopia-stack-card-1.webp',
             width: 343,
             height: 194
         },
         desktopImage: {
-            url: '/images/section-images/myopia-stack-card-1-large.png',
+            url: '/images/section-images/myopia-stack-card-1-large.webp',
             width: 640,
             height: 519
         },
@@ -344,12 +344,12 @@ export const myopiaStackList: StackListInterface[] = [
     },
     {
         image: {
-            url: '/images/section-images/myopia-stack-card-2.png',
+            url: '/images/section-images/myopia-stack-card-2.webp',
             width: 343,
             height: 194
         },
         desktopImage: {
-            url: '/images/section-images/myopia-stack-card-2-large.png',
+            url: '/images/section-images/myopia-stack-card-2-large.webp',
             width: 658,
             height: 571
         },

@@ -27,7 +27,7 @@ const defaultItems: BeneficialItemsProps[] = [
             'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
         ],
         image: {
-            src: '/images/section-images/biocompatibility.png',
+            src: '/images/section-images/biocompatibility.webp',
             width: 697,
             height: 519,
             alt: 'Biocompatibility'
@@ -46,7 +46,7 @@ const defaultItems: BeneficialItemsProps[] = [
             'Because the cornea is left intact with no reshaping or removal of the corneal tissue it does not induce any dry eye symptoms and can help with any existing dry eye syndrome you may be experiencing from your everyday plastic contact lenses.'
         ],
         image: {
-            src: '/images/section-images/dry-eyes.png',
+            src: '/images/section-images/dry-eyes.webp',
             width: 697,
             height: 519,
             alt: 'No more dry eyes'
@@ -66,7 +66,7 @@ const defaultItems: BeneficialItemsProps[] = [
             'The ICL Collamer technology has unique advantages that make it an ideal material for a vision correction lens, including UV protection and it is easy to implant because it is soft and pliable.'
         ],
         image: {
-            src: '/images/section-images/icl-procedure.png',
+            src: '/images/section-images/icl-procedure.webp',
             width: 697,
             height: 519,
             alt: 'A quick ICL procedure and recovery'
@@ -85,7 +85,7 @@ const defaultItems: BeneficialItemsProps[] = [
             'In the event of a major prescription change or the availability of new vision correction options, ICL is completely removable. Allowing you to keep pace with advancing technology and your future prescription if needed.'
         ],
         image: {
-            src: '/images/section-images/icl-removability.png',
+            src: '/images/section-images/icl-removability.webp',
             width: 697,
             height: 519,
             alt: 'Removability'

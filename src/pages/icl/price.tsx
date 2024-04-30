@@ -21,7 +21,7 @@ import { getPageData } from '@/lib';
 import MastheadImageLarge from '@/masthead/masthead-icl-pricing-large.webp';
 import MastheadImageSmall from '@/masthead/masthead-icl-pricing-small.webp';
 import MastheadImageMedium from '@/masthead/masthead-icl-pricing.webp';
-import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.png';
+import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.webp';
 import { PriceIclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -93,12 +93,12 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                 h3LightHeading={data?.section_1?.heading?.light_heading || 'What’s included in my'}
                 h3BoldHeading={data?.section_1?.heading?.bold_heading || 'private consultation and treatment?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/private-consultation-icl.png',
+                    url: data?.section_1?.image || '/images/section-images/private-consultation-icl.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-icl-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/private-consultation-icl-large.webp',
                     width: 616,
                     height: 549
                 }}
@@ -191,12 +191,12 @@ export default function IclPricing({ seo, yoastJson, data }: IclPricingProps): J
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/icl-finance.png',
+                    url: data?.section_2?.image || '/images/section-images/icl-finance.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/icl-finance-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/icl-finance-large.webp',
                     width: 574,
                     height: 560
                 }}

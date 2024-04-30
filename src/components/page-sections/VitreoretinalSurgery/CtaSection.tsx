@@ -5,6 +5,8 @@ import { stripInitialTags } from '@/utils/miscellaneous';
 import Image from 'next/image';
 import Link from 'next/link';
 import VitreoretinalSurgeryContent from 'src/types/pages/vitreoretinal-surgery';
+import { BookConsultation } from '@/components/page-sections';
+import { Button2 } from '@/components/Buttons';
 
 interface CtaSectionProps extends Partial<Pick<VitreoretinalSurgeryContent, 'section7'>> {}
 
@@ -19,7 +21,7 @@ const CtaSection = ({ section7 }: CtaSectionProps): JSX.Element => {
     return (
         <Section className="relative">
             <Image
-                src="/images/section-images/your-eyes-section-bg.png"
+                src="/images/section-images/your-eyes-section-bg.webp"
                 alt=""
                 fill
                 className="absolute -z-[1] h-full w-full"
@@ -98,7 +100,7 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
         <div className="grid content-start justify-items-center gap-6">
             <Link href="/vitreoretinal-surgery" className="group/link grid gap-6">
                 <Image
-                    src={section7?.specialist?.image || '/images/section-images/yvonne-luo-cta.png'}
+                    src={section7?.specialist?.image || '/images/section-images/yvonne-luo-cta.webp'}
                     alt=""
                     width={192}
                     height={221}
@@ -133,17 +135,9 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
                     maxWidth="70rem"
                 ></BookConsultation> */}
 
-                <Link
-                    className="group/button flex items-center justify-center gap-4 rounded-[1rem] border-2 border-solid border-[#94CAFF] bg-[#94CAFF] py-5 px-12 transition-all duration-500 hover:border-[#94CAFF] hover:bg-transparent"
-                    href="https://connect.pabau.com/bookings.php?compid=11842"
-                    title="Book a consultation"
-                    target="_blank"
-                >
-                    {/* <Image src="/images/icons/icon-communication.svg" alt="" width={24} height={24} /> */}
-                    <span className="font-mulishBold text-brand transition-all duration-500 group-hover/button:text-white">
-                        Book a consultation
-                    </span>
-                </Link>
+                <BookConsultation buttonClassName="bg-[#0099FF] border-[#0099FF]">
+                    <Button2 type="button" text="Book a consultation" />
+                </BookConsultation>
 
                 <Link
                     href="tel:0208 445 8877"

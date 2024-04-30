@@ -28,12 +28,12 @@ const ClimateChange = ({
             h3LightHeading={h3LightHeading || 'How restoring your natural sight with vision correction'}
             h3BoldHeading={h3BoldHeading || 'treatment is helping the climate change crisis'}
             sectionImage={{
-                url: image || '/images/section-images/clearer-climate.png',
+                url: image || '/images/section-images/clearer-climate.webp',
                 width: 370,
                 height: 352
             }}
             sectionImageDesktop={{
-                url: largeImage || '/images/section-images/clearer-climate-desktop.png',
+                url: largeImage || '/images/section-images/clearer-climate-desktop.webp',
                 width: 675,
                 height: 642
             }}

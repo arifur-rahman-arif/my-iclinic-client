@@ -21,7 +21,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
     {
         mobileImage: (
             <Image
-                src="/images/section-images/relex-smile-consultation.png"
+                src="/images/section-images/relex-smile-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -31,7 +31,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/relex-smile-consultation-large.png"
+                src="/images/section-images/relex-smile-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -66,7 +66,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
     {
         mobileImage: (
             <Image
-                src="/images/section-images/relex-smile-treatment.png"
+                src="/images/section-images/relex-smile-treatment.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -76,7 +76,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/relex-smile-treatment-large.png"
+                src="/images/section-images/relex-smile-treatment-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -107,7 +107,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
     {
         mobileImage: (
             <Image
-                src="/images/section-images/relex-smile-aftercare.png"
+                src="/images/section-images/relex-smile-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -117,7 +117,7 @@ export const leftRightListRelexSmileLondon: Array<LeftRightSectionChildrenInterf
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/relex-smile-aftercare-large.png"
+                src="/images/section-images/relex-smile-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -145,7 +145,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasik-consultation.png"
+                src="/images/section-images/lasik-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -155,7 +155,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasik-consultation-large.png"
+                src="/images/section-images/lasik-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -176,7 +176,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasik-treatment.png"
+                src="/images/section-images/lasik-treatment.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -186,7 +186,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasik-treatment-large.png"
+                src="/images/section-images/lasik-treatment-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -207,7 +207,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasik-aftercare.png"
+                src="/images/section-images/lasik-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -217,7 +217,7 @@ export const leftRightListLasik: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasik-aftercare-large.png"
+                src="/images/section-images/lasik-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -241,7 +241,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/cataract-consultation.png"
+                src="/images/section-images/cataract-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -251,7 +251,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/cataract-consultation-large.png"
+                src="/images/section-images/cataract-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -285,7 +285,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/cataract-surgery.png"
+                src="/images/section-images/cataract-surgery.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -295,7 +295,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/cataract-surgery-large.png"
+                src="/images/section-images/cataract-surgery-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -315,7 +315,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/cataract-aftercare.png"
+                src="/images/section-images/cataract-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -325,7 +325,7 @@ export const leftRightListCataract: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/cataract-aftercare-large.png"
+                src="/images/section-images/cataract-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -350,7 +350,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyond-consultation.png"
+                src="/images/section-images/presbyond-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -360,7 +360,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyond-consultation-desktop.png"
+                src="/images/section-images/presbyond-consultation-desktop.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -378,7 +378,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyond-surgery.png"
+                src="/images/section-images/presbyond-surgery.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -388,7 +388,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyond-surgery-desktop.png"
+                src="/images/section-images/presbyond-surgery-desktop.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -407,7 +407,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presbyond-aftercare.png"
+                src="/images/section-images/presbyond-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -419,7 +419,7 @@ export const leftRightListPresbyond: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presbyond-aftercare-desktop.png"
+                src="/images/section-images/presbyond-aftercare-desktop.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -497,7 +497,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasek-consultation.png"
+                src="/images/section-images/lasek-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -507,7 +507,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasek-consultation-large.png"
+                src="/images/section-images/lasek-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -530,7 +530,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasek-treatment.png"
+                src="/images/section-images/lasek-treatment.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -540,7 +540,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasek-treatment-large.png"
+                src="/images/section-images/lasek-treatment-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -559,7 +559,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/lasek-aftercare.png"
+                src="/images/section-images/lasek-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -569,7 +569,7 @@ export const leftRightListLasek: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/lasek-aftercare-large.png"
+                src="/images/section-images/lasek-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -591,7 +591,7 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/glaucoma-consultation.png"
+                src="/images/section-images/glaucoma-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -601,7 +601,7 @@ export const leftRightListGlaucoma: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/glaucoma-consultation-large.png"
+                src="/images/section-images/glaucoma-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -626,7 +626,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/glaucoma-laser.png"
+                src="/images/section-images/glaucoma-laser.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -636,7 +636,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/glaucoma-laser-large.png"
+                src="/images/section-images/glaucoma-laser-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -670,7 +670,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/glaucoma-eye-drops.png"
+                src="/images/section-images/glaucoma-eye-drops.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -680,7 +680,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/glaucoma-eye-drops-large.png"
+                src="/images/section-images/glaucoma-eye-drops-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -724,7 +724,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/presserflo.png"
+                src="/images/section-images/presserflo.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -734,7 +734,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/presserflo.png"
+                src="/images/section-images/presserflo.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -770,7 +770,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
     {
         mobileImage: (
             <Image
-                src="/images/section-images/canaloplasty.jpg"
+                src="/images/section-images/canaloplasty.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -780,7 +780,7 @@ export const leftRightListGlaucomma: Array<LeftRightSectionChildrenInterface> = 
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/canaloplasty.jpg"
+                src="/images/section-images/canaloplasty.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -803,7 +803,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/eyelid-malposition.jpg"
+                src="/images/section-images/eyelid-malposition.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -813,7 +813,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/eyelid-malposition.jpg"
+                src="/images/section-images/eyelid-malposition.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -909,7 +909,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/ectropion-treatment.jpg"
+                src="/images/section-images/ectropion-treatment.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -919,7 +919,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/ectropion-treatment.jpg"
+                src="/images/section-images/ectropion-treatment.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -990,7 +990,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/eyelid-cyst-removal.png"
+                src="/images/section-images/eyelid-cyst-removal.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1000,7 +1000,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/eyelid-cyst-removal.png"
+                src="/images/section-images/eyelid-cyst-removal.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1092,7 +1092,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/eyelid-chalazion-removal-large.png"
+                src="/images/section-images/eyelid-chalazion-removal-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1102,7 +1102,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/eyelid-chalazion-removal-large.png"
+                src="/images/section-images/eyelid-chalazion-removal-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1175,7 +1175,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/eye-stye-removal-large.png"
+                src="/images/section-images/eye-stye-removal-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1185,7 +1185,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/eye-stye-removal-large.png"
+                src="/images/section-images/eye-stye-removal-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1278,7 +1278,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/ptosis-surgery-large.png"
+                src="/images/section-images/ptosis-surgery-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1288,7 +1288,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/ptosis-surgery-large.png"
+                src="/images/section-images/ptosis-surgery-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1359,7 +1359,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/pterygium-surgery-large.png"
+                src="/images/section-images/pterygium-surgery-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1369,7 +1369,7 @@ export const leftRightListEyelid: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/pterygium-surgery-large.png"
+                src="/images/section-images/pterygium-surgery-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1465,7 +1465,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
     {
         mobileImage: (
             <Image
-                src="/images/section-images/cosmetic-eyelid-surgery-large.png"
+                src="/images/section-images/cosmetic-eyelid-surgery-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1475,7 +1475,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/cosmetic-eyelid-surgery-large.png"
+                src="/images/section-images/cosmetic-eyelid-surgery-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1570,7 +1570,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
     {
         mobileImage: (
             <Image
-                src="/images/section-images/blepharoplasty-large.png"
+                src="/images/section-images/blepharoplasty-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1580,7 +1580,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/blepharoplasty-large.png"
+                src="/images/section-images/blepharoplasty-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1655,7 +1655,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
     {
         mobileImage: (
             <Image
-                src="/images/section-images/blepharospasm-botox-large.png"
+                src="/images/section-images/blepharospasm-botox-large.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1665,7 +1665,7 @@ export const leftRightListCosmeticEyelid: Array<LeftRightSectionChildrenInterfac
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/blepharospasm-botox-large.png"
+                src="/images/section-images/blepharospasm-botox-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1762,7 +1762,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/yag-consultation.png"
+                src="/images/section-images/yag-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1772,7 +1772,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/yag-consultation-large.png"
+                src="/images/section-images/yag-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1792,7 +1792,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/yag-treatment.png"
+                src="/images/section-images/yag-treatment.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1802,7 +1802,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/yag-treatment-large.png"
+                src="/images/section-images/yag-treatment-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1820,7 +1820,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
     {
         mobileImage: (
             <Image
-                src="/images/section-images/yag-aftercare.png"
+                src="/images/section-images/yag-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1830,7 +1830,7 @@ export const leftRightListYag: Array<LeftRightSectionChildrenInterface> = [
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/yag-aftercare-large.png"
+                src="/images/section-images/yag-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1849,7 +1849,7 @@ export const leftRightListPaediatric: Array<LeftRightSectionChildrenInterface> =
     {
         mobileImage: (
             <Image
-                src="/images/section-images/paediatric-consultation.png"
+                src="/images/section-images/paediatric-consultation.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1859,7 +1859,7 @@ export const leftRightListPaediatric: Array<LeftRightSectionChildrenInterface> =
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/paediatric-consultation-large.png"
+                src="/images/section-images/paediatric-consultation-large.webp"
                 width={704}
                 height={613}
                 quality={70}
@@ -1879,7 +1879,7 @@ export const leftRightListPaediatricAftercare: Array<LeftRightSectionChildrenInt
     {
         mobileImage: (
             <Image
-                src="/images/section-images/paediatric-aftercare.png"
+                src="/images/section-images/paediatric-aftercare.webp"
                 width={390}
                 height={390}
                 quality={70}
@@ -1889,7 +1889,7 @@ export const leftRightListPaediatricAftercare: Array<LeftRightSectionChildrenInt
         ),
         desktopImage: (
             <Image
-                src="/images/section-images/paediatric-aftercare-large.png"
+                src="/images/section-images/paediatric-aftercare-large.webp"
                 width={704}
                 height={613}
                 quality={70}

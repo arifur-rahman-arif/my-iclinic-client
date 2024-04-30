@@ -81,14 +81,14 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-astigmatism.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/vision-correction-astigmatism.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image?.url ||
-                        '/images/section-images/vision-correction-astigmatism-large.png',
+                        '/images/section-images/vision-correction-astigmatism-large.webp',
                     width: 659,
                     height: 477
                 }}
@@ -104,12 +104,12 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image?.url || '/images/section-images/astigmatism-diagnosis.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/astigmatism-diagnosis.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.image?.url || '/images/section-images/astigmatism-diagnosis-large.png',
+                    url: data?.section_2?.image?.url || '/images/section-images/astigmatism-diagnosis-large.webp',
                     width: 659,
                     height: 562
                 }}
@@ -127,12 +127,12 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 descriptions={data?.section_3.descriptions}
                 descriptionWrapperClass="[&_div:nth-child(2)]:mt-6"
                 sectionImage={{
-                    url: data?.section_3?.image?.url || '/images/section-images/astigmatism-consultation.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/astigmatism-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.image?.url || '/images/section-images/astigmatism-consultation-large.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/astigmatism-consultation-large.webp',
                     width: 649,
                     height: 552
                 }}
@@ -142,8 +142,8 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
             <FullWidthImageSection
                 h3Title={data?.section6?.heading}
                 description={data?.section6?.descriptions}
-                image={data?.section6?.image?.src || '/images/section-images/eye-assessments.png'}
-                desktopImage={data?.section6?.image?.src || '/images/section-images/eye-assessments-large.png'}
+                image={data?.section6?.image?.src || '/images/section-images/eye-assessments.webp'}
+                desktopImage={data?.section6?.image?.src || '/images/section-images/eye-assessments-large.webp'}
                 altText={data?.section6?.image?.alt}
                 sectionClass="px-8 md:px-0 bg-brandLight"
                 titleClass="text-heading max-w-[67rem]"

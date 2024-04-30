@@ -67,9 +67,7 @@ export default function OurEyeDiagnosticsTechnology({
                         />
                         <MastheadCtaButtons
                             className="mt-4 flex-row-reverse justify-end"
-                            showButton2
-                            button2Class="text-white border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
-                            button1Class="text-white bg-transparent border border-[#fff] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
+                            button1Class="text-white border-[#0099FF] bg-[#0099FF] hover:!text-[#0099FF] hover:!border-[#0099FF] hover:text-white"
                         />
                     </div>
                 }
@@ -82,8 +80,8 @@ export default function OurEyeDiagnosticsTechnology({
             <FullWidthImageSection
                 h3Title={data?.section1?.heading}
                 description={data?.section1?.descriptions}
-                image={data?.section1?.image?.src || '/images/section-images/eye-assessments.png'}
-                desktopImage={data?.section1?.image?.src || '/images/section-images/eye-assessments-large.png'}
+                image={data?.section1?.image?.src || '/images/section-images/eye-assessments.webp'}
+                desktopImage={data?.section1?.image?.src || '/images/section-images/eye-assessments-large.webp'}
                 altText={data?.section1?.image?.alt}
                 sectionClass="px-8 md:px-0 bg-brandLight"
                 titleClass="text-heading max-w-[67rem]"

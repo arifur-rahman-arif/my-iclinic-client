@@ -118,8 +118,8 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                         `Our Blepharitis treatment specialists provide straightforward, effective solutions tailored to your individual needs.`
                     ]
                 }
-                image={data?.section_1?.image || '/images/section-images/blepharitis.png'}
-                desktopImage={data?.section_1?.large_image || '/images/section-images/blepharitis.png'}
+                image={data?.section_1?.image || '/images/section-images/blepharitis.webp'}
+                desktopImage={data?.section_1?.large_image || '/images/section-images/blepharitis.webp'}
                 textColumnExtraBottomElements={
                     <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
                         <BookConsultation buttonClassName="hover:bg-brandLight">
@@ -148,12 +148,12 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_2?.image || '/images/section-images/symptoms-relieve-large.png',
+                    url: data?.section_2?.image || '/images/section-images/symptoms-relieve-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_2?.large_image || '/images/section-images/symptoms-relieve-large.png',
+                    url: data?.section_2?.large_image || '/images/section-images/symptoms-relieve-large.webp',
                     width: 675,
                     height: 558
                 }}
@@ -175,12 +175,12 @@ export default function BlepharitisPage({ seo, yoastJson, data }: BlepharitisPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_3?.image || '/images/section-images/treatments-for-blepharitis-large.png',
+                    url: data?.section_3?.image || '/images/section-images/treatments-for-blepharitis-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image || '/images/section-images/treatments-for-blepharitis-large.png',
+                    url: data?.section_3?.large_image || '/images/section-images/treatments-for-blepharitis-large.webp',
                     width: 675,
                     height: 558
                 }}

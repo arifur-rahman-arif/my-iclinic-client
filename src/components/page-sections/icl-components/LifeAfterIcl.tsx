@@ -35,7 +35,7 @@ const LifeAfterIcl = (): JSX.Element => {
 
                 <Image
                     className="self-center justify-self-center rounded-primary md:justify-self-end"
-                    src="/images/section-images/daily-life-after-icl.png"
+                    src="/images/section-images/daily-life-after-icl.webp"
                     alt="What is your daily life like after ICL"
                     width={581}
                     height={562}

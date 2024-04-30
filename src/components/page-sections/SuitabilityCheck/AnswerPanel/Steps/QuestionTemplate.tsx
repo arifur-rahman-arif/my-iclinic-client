@@ -106,19 +106,19 @@ const QuestionTemplate = memo(
                 className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
             >
                 <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
-                    <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
+                    <span className="font-latoBold text-white md:text-[3rem] md:leading-[3.6rem]">
                         Suitability Questionnaire
                     </span>
 
                     <div className="grid max-w-[57.2rem] gap-12">
                         <div className="grid grid-cols-[auto_1fr] gap-2">
-                            <span className="question-number leading-16 font-latoExtraBold text-[4rem] text-[#4E6C7C] md:text-[4.8rem] md:leading-[4.8rem]">
+                            <span className="question-number leading-16 font-latoExtraBold text-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
                                 Q{questionNumber}
                             </span>
-                            <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-[#4E6C7C]"></span>
+                            <span className="h-[0.1rem] max-w-[21.4rem] -translate-y-2 self-end bg-white"></span>
                         </div>
 
-                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">{questionText}?</span>
+                        <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">{questionText}?</span>
                     </div>
 
                     {includeRadioBoxes ? <SingleChoiceQuestions node={node} /> : null}
@@ -130,13 +130,13 @@ const QuestionTemplate = memo(
                         <div className="flex flex-wrap items-center justify-start gap-6">
                             <button
                                 onClick={() => handleClick('yes')}
-                                className="rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                                className="rounded-[0.5rem] border border-[#0099FF] bg-[#0099FF] px-20 py-5 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:bg-transparent hover:text-[#0099FF]"
                             >
                                 Yes
                             </button>
                             <button
                                 onClick={() => handleClick('no')}
-                                className="rounded-primary border-2 border-[#0186B0] bg-[#0186B0] py-5 px-20 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent"
+                                className="rounded-[0.5rem] border border-white bg-transparent px-20 py-5 font-mulishBold text-[1.8rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-[#0099FF] hover:bg-transparent hover:text-[#0099FF]"
                             >
                                 No
                             </button>

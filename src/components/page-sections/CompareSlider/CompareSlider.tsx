@@ -18,7 +18,7 @@ interface CompareSliderInterface {
 const CompareSlider = ({ image1, image2, altText1, altText2 }: CompareSliderInterface): JSX.Element => {
     return (
         <div
-            className={`${styles.styles} compare-slider relative grid h-full place-items-center overflow-hidden rounded-primary`}
+            className={`${styles.styles} compare-slider relative grid h-full place-items-center overflow-hidden rounded-radius2`}
         >
             <ImgComparisonSlider hover>
                 <Image

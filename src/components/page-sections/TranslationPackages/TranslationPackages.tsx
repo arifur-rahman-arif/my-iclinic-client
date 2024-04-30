@@ -173,7 +173,7 @@ const Package = ({
                 className={`grid min-h-[25.7rem] grid-rows-2 place-items-center overflow-hidden rounded-tl-primary rounded-tr-primary bg-darkBlue md:rounded-tr-none md:rounded-bl-primary lg:max-w-[45.5rem] ${cardClassName}`}
             >
                 <Image
-                    src="/images/section-images/translation-package.png"
+                    src="/images/section-images/translation-package.webp"
                     alt=""
                     width={511}
                     height={270}

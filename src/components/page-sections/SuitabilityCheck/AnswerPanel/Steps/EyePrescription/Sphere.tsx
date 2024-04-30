@@ -98,7 +98,7 @@ const PointCounter = ({ eye, node }: PointCounterProps): JSX.Element => {
             <div className="flex w-[15rem] items-center justify-between gap-7">
                 <button
                     aria-label="Decrease"
-                    className="grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border-2 border-heading2 bg-heading2 font-mulishExtraBold transition-all duration-500 hover:opacity-70"
+                    className="grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border border-[#0099FF] bg-[#0099FF] font-mulishExtraBold transition-all duration-500 hover:opacity-70"
                     onClick={() => handleClick('decrement')}
                 >
                     <Image unoptimized src="/images/icons/icon-minus-white.svg" alt="Dncrease" width={13} height={13} />
@@ -116,7 +116,7 @@ const PointCounter = ({ eye, node }: PointCounterProps): JSX.Element => {
 
                 <button
                     aria-label="Increase"
-                    className="grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border-2 border-heading2 bg-heading2 font-mulishExtraBold transition-all duration-500 hover:opacity-70"
+                    className="grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border border-[#0099FF] bg-[#0099FF] font-mulishExtraBold transition-all duration-500 hover:opacity-70"
                     onClick={() => handleClick('increment')}
                 >
                     <Image unoptimized src="/images/icons/plus-icon.svg" alt="Increase" width={14} height={14} />
@@ -125,16 +125,16 @@ const PointCounter = ({ eye, node }: PointCounterProps): JSX.Element => {
 
             <Tooltip
                 text={
-                    <span className="whitespace-nowrap py-2 px-6 font-mulishBold text-[1.4rem] text-white line-clamp-1">
+                    <span className="line-clamp-1 whitespace-nowrap px-6 py-2 font-mulishBold text-[1.4rem] text-white">
                         Reset sphere
                     </span>
                 }
-                className="!rounded-[1rem] !bg-heading2"
+                className="!rounded-[0.5rem] !border-[#0099FF] !bg-[#0099FF]"
                 arrowClassName="border-b-white"
             >
                 <button
                     aria-label="Reset"
-                    className="group/reset grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border-2 border-brand bg-brand font-mulishExtraBold transition-all duration-500 hover:opacity-70"
+                    className="group/reset grid h-12 w-12 cursor-pointer place-items-center rounded-[0.3rem] border border-[#0099FF] bg-[#0099FF] font-mulishExtraBold transition-all duration-500 hover:opacity-70"
                     onClick={handleResetClick}
                 >
                     <svg
@@ -179,7 +179,7 @@ const Sphere = ({ node }: SphereProps): JSX.Element => {
                 <div className="grid place-items-center gap-16">
                     <div className="relative grid -translate-x-8 grid-cols-[auto_auto] items-center justify-start gap-x-2 gap-y-4">
                         <Image src="/images/icons/icon-left-eye-small.svg" alt="" width={16} height={17} />
-                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">O.S</span>
+                        <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">O.S</span>
                         <span className="col-span-full text-[1.6rem] text-white">Left eye</span>
                     </div>
 
@@ -188,7 +188,7 @@ const Sphere = ({ node }: SphereProps): JSX.Element => {
 
                 <div className="grid place-items-center gap-16">
                     <div className="relative grid -translate-x-8 grid-cols-[auto_auto] items-center justify-start gap-x-2 gap-y-4">
-                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">O.D</span>
+                        <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">O.D</span>
                         <Image src="/images/icons/icon-right-eye-small.svg" alt="" width={16} height={17} />
                         <span className="col-span-full text-[1.6rem] text-white">Right eye</span>
                     </div>

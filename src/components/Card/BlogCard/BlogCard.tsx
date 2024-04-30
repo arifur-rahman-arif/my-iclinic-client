@@ -38,7 +38,7 @@ const BlogCard = ({ image, backgroundImage, postingDate, title, url }: BlogCardI
             </Link>
             <div className="relative grid grid-rows-[auto_auto_1fr] content-start px-12 pb-12 pt-6">
                 {/* <Image */}
-                {/*     src={backgroundImage || '/images/section-images/myopia-control-card-bg.png'} */}
+                {/*     src={backgroundImage || '/images/section-images/myopia-control-card-bg.webp'} */}
                 {/*     alt="" */}
                 {/*     width={101} */}
                 {/*     height={266} */}

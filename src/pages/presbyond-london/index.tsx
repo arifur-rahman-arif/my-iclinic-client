@@ -75,7 +75,7 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                   ...item,
                   mobileImage: (
                       <Image
-                          src={item?.mobileImage || '/images/section-images/presbyond-consultation.png'}
+                          src={item?.mobileImage || '/images/section-images/presbyond-consultation.webp'}
                           width={390}
                           height={390}
                           quality={70}
@@ -85,7 +85,7 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                   ),
                   desktopImage: (
                       <Image
-                          src={item?.desktopImage || '/images/section-images/presbyond-consultation.png'}
+                          src={item?.desktopImage || '/images/section-images/presbyond-consultation.webp'}
                           width={695}
                           height={617}
                           quality={70}
@@ -107,12 +107,12 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                       return {
                           ...service,
                           image: {
-                              url: service?.image || '/images/section-images/laser-surgery-card.png',
+                              url: service?.image || '/images/section-images/laser-surgery-card.webp',
                               width: 329,
                               height: 220
                           },
                           desktopImage: {
-                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.png',
+                              url: service?.desktopimage || '/images/section-images/lasek-ditch-specs-large.webp',
                               width: 447,
                               height: 349
                           },
@@ -193,12 +193,12 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/presbyond-laser-treatment.png',
+                    url: data?.section_1?.image || '/images/section-images/presbyond-laser-treatment.webp',
                     width: 370,
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/presbyond-laser-treatment-desktop.png',
+                    url: data?.section_1?.large_image || '/images/section-images/presbyond-laser-treatment-desktop.webp',
                     width: 688,
                     height: 642
                 }}
@@ -246,7 +246,7 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                     bandColor="bg-[#FFB800]"
                     subTitleClass="!text-[#FFB800]"
                     bandImageTitle={data?.section_3?.bandImageTitle || 'Hasina'}
-                    bandImageURL={data?.section_3?.bandImageURL || '/images/section-images/hasina.jpg'}
+                    bandImageURL={data?.section_3?.bandImageURL || '/images/section-images/hasina.webp'}
                     reviewTitle={data?.section_3?.reviewtitle || 'Thank you My-iClinic'}
                     sliders={reviewimageSliderdata ? reviewimageSliderdata : presbyondSliders}
                 />
@@ -269,12 +269,12 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/transparent-price.png',
+                    url: data?.section_4?.image || '/images/section-images/transparent-price.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/transparent-price-desktop.png',
+                    url: data?.section_4?.large_image || '/images/section-images/transparent-price-desktop.webp',
                     width: 659,
                     height: 780
                 }}

@@ -457,7 +457,7 @@ const Provider = ({ children }: ProviderProps) => {
             props: {
                 includeSuitabilityButtons: false,
                 heading:
-                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you <span class="font-mulishBold text-[#FE8083]">3 months from this date</span> to book a suitability check:'
+                    'We are very sorry but you are unlikely to be suitable for our laser treatments. We recommend booking a free suitability check 3-6 months after breastfeeding. A member of our team can contact you <span class="font-mulishBold text-[#FFD400]">3 months from this date</span> to book a suitability check:'
             },
             nextNode: 3
         },

@@ -35,7 +35,7 @@ const EducationJourney = ({ section3 }: EducationJourneyProps): JSX.Element => {
  */
 const LeftColumn = (): JSX.Element => {
     return (
-        <div className="grid gap-24 overflow-hidden rounded-[1rem] pt-12 shadow-shadow1 lg:gap-24 xl:rounded-bl-none xl:rounded-tl-none">
+        <div className="grid gap-24 overflow-hidden rounded-[1rem] border border-[#EAECF0] pt-12 lg:gap-24 xl:rounded-bl-none xl:rounded-tl-none">
             <div className="grid gap-6 px-12 xl:px-40">
                 <div className="grid gap-6 lg:grid-cols-2">
                     <Image src="/images/logos/the-royal-collage.png" alt="" width={150} height={140} />

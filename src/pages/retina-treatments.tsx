@@ -77,13 +77,13 @@ export default function RetinaTreatments({ data, seo, yoastJson }: PageProps): J
                     'Early diagnosis and prompt intervention are essential for achieving the best possible visual outcomes in macular hole cases.'
                 }
                 sectionImage={{
-                    src: '/images/section-images/macular-hole.png',
+                    src: '/images/section-images/macular-hole.webp',
                     width: 405,
                     height: 788,
                     ...data?.section6?.image
                 }}
                 sectionImageLarge={{
-                    src: '/images/section-images/macular-hole-large.png',
+                    src: '/images/section-images/macular-hole-large.webp',
                     width: 684,
                     height: 852,
                     ...data?.section6?.largeImage
@@ -112,13 +112,13 @@ export default function RetinaTreatments({ data, seo, yoastJson }: PageProps): J
                     'Regular eye examinations are crucial for early detection and management of diabetic retinopathy to preserve vision and prevent complications.'
                 }
                 sectionImage={{
-                    src: '/images/section-images/diabetic-retinopathy-small.png',
+                    src: '/images/section-images/diabetic-retinopathy-small.webp',
                     width: 385,
                     height: 852,
                     ...data?.section8?.image
                 }}
                 sectionImageLarge={{
-                    src: '/images/section-images/diabetic-retinopathy.png',
+                    src: '/images/section-images/diabetic-retinopathy.webp',
                     width: 684,
                     height: 852,
                     ...data?.section8?.largeImage

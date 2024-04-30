@@ -1,16 +1,20 @@
 import { Container } from '@/components/Container';
 import { H2Variant1 } from '@/components/Headings';
 import { Section } from '@/components/Section';
-import LadyOnCycle from '@/section-images/doctor-suggesting-patient.png';
+import LadyOnCycle from '@/section-images/doctor-suggesting-patient.webp';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useRef, useEffect, ReactNode } from 'react';
 import { smallSizes, useDeviceSize, useOnScreen } from '@/hooks';
+import { BookConsultation } from '@/components/page-sections';
+import { Button2 } from '@/components/Buttons';
+import { twMerge } from 'tailwind-merge';
 
 interface FullWidthImageSection3Interface {
     title1: ReactNode;
     title2: ReactNode;
     descriptions: string[] | ReactNode[];
+    descriptionWrapperClass?: string;
     image?: string;
     altText?: string;
 }
@@ -24,6 +28,7 @@ const FullWidthImageSection3 = ({
     title1,
     title2,
     descriptions,
+    descriptionWrapperClass,
     image,
     altText
 }: FullWidthImageSection3Interface): JSX.Element => {
@@ -47,7 +52,7 @@ const FullWidthImageSection3 = ({
     return (
         <Section className="relative py-12 md:py-[5.5rem]">
             <div
-                className="absolute right-0 -z-[1] hidden h-2/4 w-0 rounded-tl-primary rounded-bl-primary bg-[#E1F1FF] md:top-0 md:block md:h-full"
+                className="absolute right-0 -z-[1] hidden h-2/4 w-0 rounded-bl-primary rounded-tl-primary bg-[#E1F1FF] md:top-0 md:block md:h-full"
                 ref={animationRef}
             ></div>
             <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-32">
@@ -57,9 +62,15 @@ const FullWidthImageSection3 = ({
                         {title2}
                     </h3>
 
-                    {descriptions.map((desc, index) => (
-                        <div key={index}>{desc}</div>
-                    ))}
+                    <div className={twMerge('grid gap-5', descriptionWrapperClass)}>
+                        {descriptions.map((desc, index) => (
+                            <div key={index}>{desc}</div>
+                        ))}
+                    </div>
+
+                    <BookConsultation>
+                        <Button2 type="button" text="Book a free consultation" />
+                    </BookConsultation>
                 </div>
                 <div className="relative justify-self-center overflow-hidden md:row-auto">
                     <div className="absolute right-0 top-0 -z-[1] h-full w-full max-w-[75%] bg-brandLight md:hidden"></div>

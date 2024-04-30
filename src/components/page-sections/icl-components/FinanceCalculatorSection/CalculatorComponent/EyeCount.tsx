@@ -18,7 +18,7 @@ export const EyeCount = ({ index }: EyeCountProps) => {
     const ctx: CalculatorContext = useContext(AppCtx);
 
     return (
-        <div className="grid w-full place-items-center gap-6 rounded-tl-primary rounded-tr-primary border border-[#EAECF0] p-8 lg:max-w-[36.4rem]">
+        <div className="grid w-full place-items-center gap-6 rounded-tr-radius2 rounded-tr-radius2 border border-[#EAECF0] p-8 lg:max-w-[36.4rem]">
             <div className={`${styles.styles} flex flex-wrap items-center justify-center gap-8 sm:gap-12`}>
                 <button
                     title="One Eye"

@@ -12,10 +12,10 @@ import { premiumLensesFaqList } from '@/page-sections/Faq/faqList';
 import { galleryListPremiumLens } from '@/page-sections/ImageGallery';
 import { BulletPoint, CtaSection2, ImageGallery, SideImageSection, SideVideoSection2 } from '@/page-sections/index';
 import { leftRightListPremiumLenses } from '@/page-sections/LeftRight/leftRightList';
-import PremiumLense1 from '@/section-images/premium-lense-1.png';
-import PremiumLense2 from '@/section-images/premium-lense-2.png';
-import PremiumLense3 from '@/section-images/premium-lense-3.png';
-import PremiumLense4 from '@/section-images/premium-lense-4.png';
+import PremiumLense1 from '@/section-images/premium-lense-1.webp';
+import PremiumLense2 from '@/section-images/premium-lense-2.webp';
+import PremiumLense3 from '@/section-images/premium-lense-3.webp';
+import PremiumLense4 from '@/section-images/premium-lense-4.webp';
 import { PremiumlensesContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
@@ -77,6 +77,7 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                 {...data?.masthead}
                 className="xl:grid-cols-[auto_40rem_1fr]"
                 titleClass="md:max-w-[68.6rem]"
+                bannerClass="xl:max-h-[calc(100%_-_15rem)]"
                 ctaButton={
                     <>
                         <Button2
@@ -114,12 +115,12 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/laser-treatment-presbyond.png',
+                    url: data?.section_1?.image || '/images/section-images/laser-treatment-presbyond.webp',
                     width: 388,
                     height: 469
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/laser-treatment-presbyond-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/laser-treatment-presbyond-large.webp',
                     width: 675,
                     height: 617
                 }}
@@ -179,12 +180,12 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                     <LazyComponent>
                         <CompareSlider
                             image1={{
-                                src: data?.section_3?.image1 || '/images/section-images/compare-slider-1.png',
+                                src: data?.section_3?.image1 || '/images/section-images/compare-slider-1.webp',
                                 width: 617,
                                 height: 509
                             }}
                             image2={{
-                                src: data?.section_3?.image2 || '/images/section-images/compare-slider-2.png',
+                                src: data?.section_3?.image2 || '/images/section-images/compare-slider-2.webp',
                                 width: 617,
                                 height: 509
                             }}
@@ -233,28 +234,28 @@ export default function PremiumLenses({ seo, yoastJson, data }: PremiumLensesPro
                             height={83}
                             src={data?.section_3?.lenses_image?.lense_1 || PremiumLense1}
                             alt=""
-                            className="rounded-primary"
+                            className="rounded-radius2"
                         />
                         <Image
                             width={112}
                             height={83}
                             src={data?.section_3?.lenses_image?.lense_2 || PremiumLense2}
                             alt=""
-                            className="rounded-primary"
+                            className="rounded-radius2"
                         />
                         <Image
                             width={112}
                             height={83}
                             src={data?.section_3?.lenses_image?.lense_3 || PremiumLense3}
                             alt=""
-                            className="rounded-primary"
+                            className="rounded-radius2"
                         />
                         <Image
                             width={112}
                             height={83}
                             src={data?.section_3?.lenses_image?.lense_4 || PremiumLense4}
                             alt=""
-                            className="rounded-primary"
+                            className="rounded-radius2"
                         />
                     </div>
                 }

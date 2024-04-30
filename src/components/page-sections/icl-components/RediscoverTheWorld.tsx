@@ -23,14 +23,14 @@ const RediscoverTheWorld = ({ image2 }: RediscoverTheWorldProps): JSX.Element =>
 
                 <div className="grid items-center justify-items-center gap-12 md:grid-cols-[auto_auto] md:gap-16 lg:gap-24">
                     <Image
-                        src="/images/section-images/icl-treatment-before-and-after.png"
+                        src="/images/section-images/icl-treatment-before-and-after.webp"
                         alt="Rediscover the world in a whole new light"
                         width={635}
                         height={371}
                     />
 
                     <Image
-                        src={image2 || '/images/section-images/icl-after-process.png'}
+                        src={image2 || '/images/section-images/icl-after-process.webp'}
                         alt=""
                         width={582}
                         height={51.4}

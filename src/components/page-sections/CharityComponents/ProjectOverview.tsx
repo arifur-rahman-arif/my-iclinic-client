@@ -2,9 +2,9 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
 import { ImageType3 } from '@/types';
-import Image1 from '@/section-images/technology-empowerment.png';
-import Image2 from '@/section-images/health-education.png';
-import Image3 from '@/section-images/community-development.png';
+import Image1 from '@/section-images/technology-empowerment.webp';
+import Image2 from '@/section-images/health-education.webp';
+import Image3 from '@/section-images/community-development.webp';
 import Image from 'next/image';
 
 interface Props {

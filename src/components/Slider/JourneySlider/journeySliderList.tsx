@@ -11,7 +11,7 @@ export const journeySliderListHome: SliderListInterface[] = [
             'Accessible resources available from our specialists',
             'Detailed understanding & instructions given before your private consultation'
         ],
-        image: '/images/section-images/journey-slider-image-1.png'
+        image: '/images/section-images/journey-slider-image-1.webp'
     },
     {
         title: 'Private Consultation',
@@ -20,7 +20,7 @@ export const journeySliderListHome: SliderListInterface[] = [
             'One-to-one with your dedicated ophthalmologist',
             'Understanding your best treatment options'
         ],
-        image: '/images/section-images/journey-slider-image-2.png'
+        image: '/images/section-images/journey-slider-image-2.webp'
     },
     {
         title: 'Quality care & private treatment',
@@ -29,7 +29,7 @@ export const journeySliderListHome: SliderListInterface[] = [
             'Comfortable, stress-free treatment in our private suites',
             'Your ophthalmologist as your dedicated surgeon with over 30+ years experience'
         ],
-        image: '/images/section-images/journey-slider-image-3.png'
+        image: '/images/section-images/journey-slider-image-3.webp'
     },
     {
         title: 'Aftercare Appointments',
@@ -38,6 +38,6 @@ export const journeySliderListHome: SliderListInterface[] = [
             'Comprehensive eye assessments & scans',
             'Patient care advice always available'
         ],
-        image: '/images/section-images/journey-slider-image-4.png'
+        image: '/images/section-images/journey-slider-image-4.webp'
     }
 ];

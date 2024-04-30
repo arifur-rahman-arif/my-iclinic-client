@@ -19,12 +19,12 @@ const UnderAgeStep = ({ node }: UnderAgeStepProps): JSX.Element => {
     return (
         <div className={`${styles.styles} grid h-full w-full place-items-center px-8`}>
             <div className="grid h-full place-items-start content-center gap-12 md:gap-24">
-                <span className="md:leading-16 font-latoBold text-white md:text-[3.6rem]">
+                <span className="md:leading-16 font-latoBold text-white md:text-[3rem] md:leading-[3.6rem]">
                     Suitability Questionnaire
                 </span>
 
                 <div className="grid max-w-[57.2rem] gap-6">
-                    <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">Sorry !</span>
+                    <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">Sorry !</span>
 
                     <p className="text-[1.6rem] text-white">
                         Sorry, our eye specialists do not advise anybody under the age of 21 to have laser eye
@@ -39,7 +39,7 @@ const UnderAgeStep = ({ node }: UnderAgeStepProps): JSX.Element => {
                 </div>
 
                 <button
-                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-4 px-16 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:py-5 md:px-20 md:text-[1.8rem] md:leading-[2.8rem]"
+                    className="justify-self-end rounded-[0.5rem] border border-[#0099FF] bg-[#0099FF] px-16 py-4 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#0099FF] md:px-20 md:py-5 md:text-[1.8rem] md:leading-[2.8rem]"
                     onClick={() => {
                         // ctx.setCompletedStep((ctx.completedStep += 1));
                         ctx.navigateToStep(ctx.routes[node].nextNode as number);

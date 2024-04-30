@@ -41,7 +41,7 @@ const VisionCorrection = ({
 
                 <div className="grid justify-items-start gap-6 sm:ml-10">
                     <Image
-                        src="/images/section-images/vision-treatment-process.png"
+                        src="/images/section-images/vision-treatment-process.webp"
                         alt=""
                         width={275}
                         height={1005}
@@ -50,7 +50,7 @@ const VisionCorrection = ({
                     />
 
                     <Image
-                        src="/images/section-images/vision-treatment-process-large.png"
+                        src="/images/section-images/vision-treatment-process-large.webp"
                         alt=""
                         width={937}
                         height={335}

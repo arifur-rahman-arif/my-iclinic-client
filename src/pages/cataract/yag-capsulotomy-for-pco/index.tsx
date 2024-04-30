@@ -11,8 +11,8 @@ import { leftRightListYag } from '@/components/page-sections/LeftRight/leftRight
 import YagHero from '@/components/page-sections/Masthead/YagHero';
 import { Section } from '@/components/Section';
 import { getPageData } from '@/lib';
-import SimpleProcessImageLarge from '@/section-images/yag-laser-treatment-large.png';
-import SimpleProcessImage from '@/section-images/yag-laser-treatment.png';
+import SimpleProcessImageLarge from '@/section-images/yag-laser-treatment-large.webp';
+import SimpleProcessImage from '@/section-images/yag-laser-treatment.webp';
 import { YagCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
@@ -62,21 +62,21 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
                   ...item,
                   mobileImage: (
                       <Image
-                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                          src={item?.mobileImage || '/images/section-images/cataract-consultation.webp'}
                           width={390}
                           height={390}
                           quality={70}
-                          className="rounded-primary md:hidden"
+                          className="rounded-radius2 md:hidden"
                           alt=""
                       />
                   ),
                   desktopImage: (
                       <Image
-                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.webp'}
                           width={675}
                           height={617}
                           quality={70}
-                          className="hidden w-full max-w-[61.7rem] rounded-primary md:block"
+                          className="hidden w-full max-w-[61.7rem] rounded-radius2 md:block"
                           alt=""
                       />
                   ),
@@ -95,10 +95,10 @@ export default function YagCapsulotomyForPco({ data, seo, yoastJson }: YagCapsul
         >
             <BreadCrumb />
 
-            <YagHero {...data?.masthead} />
+            <YagHero {...data?.masthead} bannerClass="xl:max-h-[calc(100%_-_14rem)]" />
 
             <LazyComponent>
-                <CallbackSection />{' '}
+                <CallbackSection />
             </LazyComponent>
 
             <FullWidthImageSection

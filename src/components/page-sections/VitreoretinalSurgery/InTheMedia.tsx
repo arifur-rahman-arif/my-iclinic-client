@@ -44,7 +44,7 @@ const TextColumn = ({ section5 }: InTheMediaProps): JSX.Element => {
         <div className="grid content-start gap-8">
             <SectionHeading heading={section5?.heading} />
 
-            <span className="ml-10 font-mulishBold text-[1.8rem] leading-[2.8rem] text-[#0099FF]">
+            <span className="ml-10 font-mulishBold text-[1.8rem] leading-[2.8rem] text-[#893277]">
                 {section5?.subheading}
             </span>
 
@@ -56,7 +56,7 @@ const TextColumn = ({ section5 }: InTheMediaProps): JSX.Element => {
                     : null}
             </div>
 
-            <span className="mt-2 ml-10 font-latoBold text-[1.8rem] uppercase leading-[2.8rem] text-heading md:mt-8">
+            <span className="ml-10 mt-2 font-latoBold text-[1.8rem] uppercase leading-[2.8rem] text-heading md:mt-8">
                 {section5?.listTitle}
             </span>
 

@@ -128,7 +128,7 @@ const FinanceCalculator = (): JSX.Element => {
 
                               <EyeCount {...{ index }} />
 
-                              <div className="z-[2] grid content-start rounded-bl-primary rounded-br-primary border border-[#EAECF0] bg-white lg:grid-cols-[auto_1fr] lg:gap-24">
+                              <div className="z-[2] grid content-start rounded-bl-radius2 rounded-br-radius2 border border-[#EAECF0] bg-white lg:grid-cols-[auto_1fr] lg:gap-24">
                                   <PercentageCheckBox {...{ index, setShowAlert, setAlertMessages }} />
                                   {/* Grid item 2 */}
                                   <ResultColumn {...{ index, setShowAlert, setAlertMessages }} />
@@ -184,20 +184,20 @@ const Notification = ({ alertMessages, setShowAlert }: NotificationProps): JSX.E
 
     return (
         <div
-            className={`gap relative grid min-h-[22rem] w-full max-w-[66rem] overflow-hidden rounded-primary bg-[#FF5C00] sm:bg-transparent md:ml-auto ${styles.styles}`}
+            className={`gap relative grid min-h-[22rem] w-full max-w-[66rem] overflow-hidden rounded-radius2 bg-[#FF5C00] sm:bg-transparent md:ml-auto ${styles.styles}`}
         >
             <Image
-                src="/images/section-images/calculator-notification-bg.png"
+                src="/images/section-images/calculator-notification-bg.webp"
                 alt=""
                 fill
-                className="absolute top-0 left-0 z-[-1] hidden h-full w-full sm:block"
+                className="absolute left-0 top-0 z-[-1] hidden h-full w-full sm:block"
             />
             <AiOutlineCloseCircle
                 onClick={() => setShowAlert(false)}
-                className="close-icon absolute top-0 right-0 h-10 w-10 translate-y-8 -translate-x-8 cursor-pointer fill-white transition-all duration-300 hover:scale-110"
+                className="close-icon absolute right-0 top-0 h-10 w-10 -translate-x-8 translate-y-8 cursor-pointer fill-white transition-all duration-300 hover:scale-110"
             />
 
-            <div className="grid content-start gap-6 py-12 px-10 sm:grid-cols-[auto_1fr] md:gap-8 md:py-16 md:px-12 xl:pb-24">
+            <div className="grid content-start gap-6 px-10 py-12 sm:grid-cols-[auto_1fr] md:gap-8 md:px-12 md:py-16 xl:pb-24">
                 <Image
                     src={`/images/icons/notification-icons/icon-${getRandomNumber ? getRandomNumber : 1}.svg`}
                     alt=""

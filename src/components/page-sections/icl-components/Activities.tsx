@@ -17,8 +17,8 @@ const Activities = (): JSX.Element => {
                 </h2>
 
                 <div className="grid justify-items-center gap-12 md:grid-cols-[auto_1fr]">
-                    <Image src="/images/section-images/activities-1.png" alt="" width={223} height={334} />
-                    <Image src="/images/section-images/activities-2.png" alt="" width={619} height={334} />
+                    <Image src="/images/section-images/activities-1.webp" alt="" width={223} height={334} />
+                    <Image src="/images/section-images/activities-2.webp" alt="" width={619} height={334} />
                 </div>
 
                 {/* <div className="grid justify-items-center gap-12">

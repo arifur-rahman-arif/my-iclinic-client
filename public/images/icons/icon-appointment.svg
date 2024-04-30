@@ -1,0 +1,16 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="waiting-appointments-calendar" clip-path="url(#clip0_15911_23015)">
+<g id="waiting-appointments-calendar_2">
+<path id="vector" d="M1.71427 2.28564C1.41116 2.28564 1.12047 2.40606 0.906146 2.62038C0.691819 2.83471 0.571411 3.12539 0.571411 3.4285V14.2856C0.571411 14.5887 0.691819 14.8795 0.906146 15.0938C1.12047 15.308 1.41116 15.4285 1.71427 15.4285H14.2857C14.5888 15.4285 14.8795 15.308 15.0938 15.0938C15.3081 14.8795 15.4286 14.5887 15.4286 14.2856V3.4285C15.4286 3.12539 15.3081 2.83471 15.0938 2.62038C14.8795 2.40606 14.5888 2.28564 14.2857 2.28564H12" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="vector_2" d="M4 0.571411V3.99998" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="vector_3" d="M12 0.571411V3.99998" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="vector_4" d="M4 2.28564H9.71429" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="union" d="M7.07141 5.21313C6.75582 5.21313 6.49998 5.46897 6.49998 5.78456V7.39174H4.89284C4.57725 7.39174 4.32141 7.64758 4.32141 7.96317V9.82031C4.32141 10.1359 4.57725 10.3917 4.89284 10.3917H6.49998V11.9988C6.49998 12.3145 6.75582 12.5703 7.07141 12.5703H8.92855C9.24414 12.5703 9.49998 12.3145 9.49998 11.9988V10.3917H11.1071C11.4227 10.3917 11.6786 10.1359 11.6786 9.82031V7.96317C11.6786 7.64758 11.4227 7.39174 11.1071 7.39174H9.49998V5.78456C9.49998 5.46897 9.24414 5.21313 8.92855 5.21313H7.07141Z" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_15911_23015">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

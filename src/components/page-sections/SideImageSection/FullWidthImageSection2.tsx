@@ -3,7 +3,7 @@ import { Container } from '@/components/Container';
 import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
-import CostImage from '@/section-images/cost-effective-price.jpg';
+import CostImage from '@/section-images/cost-effective-price.webp';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 

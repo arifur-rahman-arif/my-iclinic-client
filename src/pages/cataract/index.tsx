@@ -15,8 +15,8 @@ import { cataractFaqList } from '@/components/page-sections/Faq/faqList';
 import { leftRightListCataract } from '@/components/page-sections/LeftRight/leftRightList';
 import { getPageData, getTreatments } from '@/lib';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
-import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.png';
-import SimpleProcessImage from '@/section-images/simple-process-cataract.png';
+import SimpleProcessImageLarge from '@/section-images/simple-process-cataract-large.webp';
+import SimpleProcessImage from '@/section-images/simple-process-cataract.webp';
 import { CataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
@@ -78,7 +78,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                   ...item,
                   mobileImage: (
                       <Image
-                          src={item?.mobileImage || '/images/section-images/cataract-consultation.png'}
+                          src={item?.mobileImage || '/images/section-images/cataract-consultation.webp'}
                           width={390}
                           height={390}
                           quality={70}
@@ -88,7 +88,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                   ),
                   desktopImage: (
                       <Image
-                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.png'}
+                          src={item?.desktopImage || '/images/section-images/cataract-consultation-large.webp'}
                           width={695}
                           height={580}
                           quality={70}
@@ -120,7 +120,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                   (service: { image: any; title: any; content: string | any[]; bulletpoints: string | any[] }) => {
                       return {
                           image: {
-                              url: service.image || '/images/section-images/card-improved-vision.png'
+                              url: service.image || '/images/section-images/card-improved-vision.webp'
                           },
                           title: service.title || 'Improved Vision',
                           description: service.content?.length ? service.content : undefined,
@@ -254,12 +254,12 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/vision-correction-cataract.png',
+                    url: data?.section_1?.image || '/images/section-images/vision-correction-cataract.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-cataract-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/vision-correction-cataract-large.webp',
                     width: 640,
                     height: 610
                 }}
@@ -281,12 +281,12 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/cataract-transparent-price.png',
+                    url: data?.section_4?.image || '/images/section-images/cataract-transparent-price.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image || '/images/section-images/cataract-transparent-price-large.png',
+                    url: data?.section_4?.large_image || '/images/section-images/cataract-transparent-price-large.webp',
                     width: 671,
                     height: 572
                 }}
@@ -349,12 +349,12 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
                     ]
                 }
                 sectionImage={{
-                    url: data?.bettervision?.image || '/images/section-images/better-vision-cataract.png',
+                    url: data?.bettervision?.image || '/images/section-images/better-vision-cataract.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.bettervision?.large_image || '/images/section-images/better-vision-cataract-large.png',
+                    url: data?.bettervision?.large_image || '/images/section-images/better-vision-cataract-large.webp',
                     width: 659,
                     height: 687
                 }}
@@ -369,7 +369,7 @@ export default function Cataract({ data, seo, yoastJson, iclTreatments }: Catara
             {/* <LazyComponent>
                 <BottomBanner
                     bannerImage={CataractCtaBannerImage}
-                    bannerBg="/images/section-images/cataract-banner-bg.png"
+                    bannerBg="/images/section-images/cataract-banner-bg.webp"
                     bannerTitle="Do you think Cataract could be the right treatment for you?"
                 />
             </LazyComponent> */}

@@ -2,7 +2,7 @@ import { Button2 } from '@/components/Buttons';
 import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import SectionTextColumn from '@/components/SectionTextColumn';
-import sectoinImage from '@/section-images/clock-ticking.png';
+import sectoinImage from '@/section-images/clock-ticking.webp';
 import { ImageType3 } from '@/types';
 import Image from 'next/image';
 

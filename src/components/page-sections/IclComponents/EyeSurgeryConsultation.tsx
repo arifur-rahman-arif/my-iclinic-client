@@ -3,6 +3,7 @@ import { Section } from '@/components/Section';
 import { ImageType3 } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BookConsultation } from '@/components/page-sections';
 
 interface EyeSurgeryConsultationProps {
     sectionId: string;
@@ -58,13 +59,9 @@ const EyeSurgeryConsultation = ({
                             maxWidth="70rem"
                         >
                         </BookConsultation> */}
-                        <Button2
-                            type="anchor"
-                            className="border-[#94CAFF] bg-[#94CAFF] text-[#003E79] hover:bg-transparent hover:text-[#94CAFF]"
-                            link="https://connect.pabau.com/bookings.php?compid=11842"
-                            target="_blank"
-                            text="Book a consultation"
-                        />
+                        <BookConsultation buttonClassName="border-[#0099FF] bg-[#0099FF] hover:bg-transparent hover:text-[#0099FF]">
+                            <Button2 type="button" className="" text="Book a consultation" />
+                        </BookConsultation>
 
                         <Link
                             href="tel:0208 445 8877"

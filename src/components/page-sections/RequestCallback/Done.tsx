@@ -15,7 +15,7 @@ import Image from 'next/image';
 const Done = (): JSX.Element => {
     return (
         <div className="grid grid-cols-1 place-items-center content-start gap-8" id="request-callback-confirmation">
-            <Image src="/images/section-images/check-circle.png" alt="" width={47} height={47} />
+            <Image src="/images/section-images/check-circle.webp" alt="" width={47} height={47} />
 
             <div className="flex w-full flex-col items-center justify-start gap-2">
                 <span
@@ -30,7 +30,7 @@ const Done = (): JSX.Element => {
             </div>
 
             <div className="mt-12 grid grid-cols-1 place-items-center content-start gap-4">
-                <Image src="/images/section-images/phone-call.png" alt="" width={52} height={52} />
+                <Image src="/images/section-images/phone-call.webp" alt="" width={52} height={52} />
                 <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you soon</span>
                 {/* <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading"> */}
                 {/*     {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '} */}

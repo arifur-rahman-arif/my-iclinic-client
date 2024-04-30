@@ -12,7 +12,7 @@ import Image from 'next/image';
 //                 <strong>provide a no risk of contact lens infections, dry eyes or blindness.</strong>
 //             </>
 //         ),
-//         image: '/images/section-images/offscreen-slider-image-1.png'
+//         image: '/images/section-images/offscreen-slider-image-1.webp'
 //     },
 //     {
 //         title: 'Saving Money',
@@ -33,7 +33,7 @@ import Image from 'next/image';
 //                 </LinkStyle>
 //             </div>
 //         ),
-//         image: '/images/section-images/offscreen-slider-image-2.png'
+//         image: '/images/section-images/offscreen-slider-image-2.webp'
 //     },
 //     {
 //         title: 'Saving Time',
@@ -43,14 +43,14 @@ import Image from 'next/image';
 //                 <strong>Wake up in the morning with your eyes ready before you are!</strong>
 //             </>
 //         ),
-//         image: '/images/section-images/offscreen-slider-image-3.png'
+//         image: '/images/section-images/offscreen-slider-image-3.webp'
 //     },
 //     {
 //         title: 'Saving Your Planet',
 //         subtitle: 'Getting rid of plastic waste',
 //         description:
 //             '16,000 million tonnes of plastic is wasted by wearing glasses and disposable contact lenses. Our vision correction treatments are a great long-term investment for permanently clear vision without any more plastic waste.',
-//         image: '/images/section-images/offscreen-slider-image-4.png',
+//         image: '/images/section-images/offscreen-slider-image-4.webp',
 //         extraElements: (
 //             <span className="mt-12 font-mulishBold text-[2rem] leading-[2.8rem]">Reducing our carbon footprint</span>
 //         )
@@ -74,8 +74,8 @@ export const offScreenSliderList: SlideInterface[] = [
                 </p>
             </>
         ),
-        image: '/images/section-images/offscreen-slider-image-1.png',
-        largeImage: '/images/section-images/offscreen-slider-image-large-1.png'
+        image: '/images/section-images/offscreen-slider-image-1.webp',
+        largeImage: '/images/section-images/offscreen-slider-image-large-1.webp'
     },
     {
         title: 'Saving Money',
@@ -109,8 +109,8 @@ export const offScreenSliderList: SlideInterface[] = [
                 </p>
             </>
         ),
-        image: '/images/section-images/offscreen-slider-image-2.png',
-        largeImage: '/images/section-images/offscreen-slider-image-large-2.png'
+        image: '/images/section-images/offscreen-slider-image-2.webp',
+        largeImage: '/images/section-images/offscreen-slider-image-large-2.webp'
     },
     {
         title: 'Saving Time',
@@ -127,8 +127,8 @@ export const offScreenSliderList: SlideInterface[] = [
                 </p>
             </>
         ),
-        image: '/images/section-images/offscreen-slider-image-3.png',
-        largeImage: '/images/section-images/offscreen-slider-image-large-3.png'
+        image: '/images/section-images/offscreen-slider-image-3.webp',
+        largeImage: '/images/section-images/offscreen-slider-image-large-3.webp'
     },
     {
         title: 'Saving Your Planet',
@@ -150,7 +150,7 @@ export const offScreenSliderList: SlideInterface[] = [
                 </p>
             </>
         ),
-        image: '/images/section-images/offscreen-slider-image-4.png',
-        largeImage: '/images/section-images/offscreen-slider-image-large-4.png'
+        image: '/images/section-images/offscreen-slider-image-4.webp',
+        largeImage: '/images/section-images/offscreen-slider-image-large-4.webp'
     }
 ];

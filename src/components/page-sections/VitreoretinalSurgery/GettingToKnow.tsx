@@ -120,7 +120,7 @@ const ImageColumn = (): JSX.Element => {
 
             <div className="flex items-center justify-start gap-12">
                 <Image src="/images/logos/euretina-logo.png" alt="" width={104} height={87} unoptimized />
-                <Image src="/images/logos/the-royal-collage.png" alt="" width={115} height={107} unoptimized />
+                <Image src="/images/logos/the-royal-collage.webp" alt="" width={115} height={107} unoptimized />
             </div>
 
             <div className="mt-12 grid gap-2">

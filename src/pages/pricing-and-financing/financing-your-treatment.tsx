@@ -161,8 +161,10 @@ export default function FinancingYourTreatment({
                         inconvenient spend.
                     </p>
                 ]}
-                image={data?.section_1.image?.url || '/images/section-images/monthly-spending-finance.png'}
-                desktopImage={data?.section_1.large_image?.url || '/images/section-images/monthly-spending-finance.png'}
+                image={data?.section_1.image?.url || '/images/section-images/monthly-spending-finance.webp'}
+                desktopImage={
+                    data?.section_1.large_image?.url || '/images/section-images/monthly-spending-finance.webp'
+                }
                 containerClass="pb-16 !bg-[#E1F1FF]"
                 sectionClass="md:!bg-[#E1F1FF]"
                 largeImageClassName="!rounded-primary"
@@ -178,7 +180,7 @@ export default function FinancingYourTreatment({
                                     No more
                                 </span>
                                 <Image
-                                    src="/images/section-images/no-more-glasses.png"
+                                    src="/images/section-images/no-more-glasses.webp"
                                     alt=""
                                     width={165}
                                     height={75}
@@ -271,7 +273,7 @@ export default function FinancingYourTreatment({
                 <Container className="grid place-items-center gap-12 rounded-primary pb-24 shadow-shadow1">
                     <div className="h-14 w-[calc(100%_+_4rem)] rounded-tl-primary rounded-tr-primary bg-[#FFD400] xl:w-full"></div>
                     <Image
-                        src="/images/section-images/image-lock.png"
+                        src="/images/section-images/image-lock.webp"
                         alt=""
                         width={94}
                         height={94}

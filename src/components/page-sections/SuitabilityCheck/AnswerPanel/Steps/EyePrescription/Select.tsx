@@ -45,7 +45,7 @@ const Selector = ({ eye, onSelect, options, leftValue, rightValue, showSign }: S
     return (
         <div className="relative min-h-[4.7rem] w-[21.2rem]" ref={outsideRef}>
             <div
-                className={`absolute w-full overflow-hidden rounded-[1rem] border border-solid border-white bg-heading2 p-4 transition-all duration-500 hover:z-10 ${
+                className={`absolute w-full overflow-hidden rounded-[1rem] border border-solid border-[#0099FF] bg-[#0099FF] p-4 transition-all duration-500 hover:z-10 ${
                     zIndex && 'z-10'
                 } ${open ? 'max-h-[25rem]' : 'max-h-[4.7rem]'}`}
             >
@@ -82,7 +82,7 @@ const Selector = ({ eye, onSelect, options, leftValue, rightValue, showSign }: S
                             : rightValue}
                     </span>
                     <FaAngleDown
-                        className={`ml-4 h-[2.4rem] w-[2.4rem] fill-[#9B9FA1] transition-all duration-500 ${
+                        className={`ml-4 h-[2.4rem] w-[2.4rem] fill-white transition-all duration-500 ${
                             open && 'rotate-180'
                         }`}
                     />

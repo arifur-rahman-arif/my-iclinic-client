@@ -116,8 +116,8 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     ]
                 }
                 altText=""
-                image={data?.section_3?.image || '/images/section-images/paediatric-children-large.png'}
-                desktopImage={data?.section_3?.imageLarge || '/images/section-images/paediatric-children-large.png'}
+                image={data?.section_3?.image || '/images/section-images/paediatric-children-large.webp'}
+                desktopImage={data?.section_3?.imageLarge || '/images/section-images/paediatric-children-large.webp'}
                 textColumnExtraBottomElements={
                     <BookConsultation buttonClassName="hover:bg-brandLight mt-12">
                         <Button2 type="button" text="Request a call back" />
@@ -129,12 +129,12 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                 h3LightHeading={data?.section7?.heading}
                 descriptions={data?.section7?.descriptions}
                 sectionImage={{
-                    url: data?.section7?.image?.src || '/images/section-images/about-ophthalmologist.png',
+                    url: data?.section7?.image?.src || '/images/section-images/about-ophthalmologist.webp',
                     width: 390 || data?.section7?.image?.width,
                     height: 390 || data?.section7?.image?.height
                 }}
                 sectionImageDesktop={{
-                    url: data?.section7?.image?.src || '/images/section-images/about-ophthalmologist-large.png',
+                    url: data?.section7?.image?.src || '/images/section-images/about-ophthalmologist-large.webp',
                     width: 640 || data?.section7?.image?.width,
                     height: 610 || data?.section7?.image?.height
                 }}
@@ -165,7 +165,7 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     </div>
                     <div className="row-start-1 h-full md:col-span-2 md:col-start-2 md:row-start-1">
                         <Image
-                            src={data?.section9?.image || '/images/section-images/paediatric-banner.png'}
+                            src={data?.section9?.image || '/images/section-images/paediatric-banner.webp'}
                             alt=""
                             width={619}
                             height={316}
@@ -179,12 +179,12 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                 h3LightHeading={data?.section8?.heading}
                 descriptions={data?.section8?.descriptions}
                 sectionImage={{
-                    url: data?.section8?.image?.src || '/images/section-images/about-ophthalmologist.png',
+                    url: data?.section8?.image?.src || '/images/section-images/about-ophthalmologist.webp',
                     width: 390 || data?.section8?.image?.width,
                     height: 390 || data?.section8?.image?.height
                 }}
                 sectionImageDesktop={{
-                    url: data?.section8?.image?.src || '/images/section-images/about-ophthalmologist-large.png',
+                    url: data?.section8?.image?.src || '/images/section-images/about-ophthalmologist-large.webp',
                     width: 640 || data?.section8?.image?.width,
                     height: 610 || data?.section8?.image?.height
                 }}
@@ -209,12 +209,12 @@ export default function PaediatricEyeCare({ data, seo, yoastJson }: PaediatricEy
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/about-ophthalmologist.png',
+                    url: data?.section_1?.image || '/images/section-images/about-ophthalmologist.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/about-ophthalmologist-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/about-ophthalmologist-large.webp',
                     width: 640,
                     height: 610
                 }}

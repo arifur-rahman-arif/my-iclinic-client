@@ -22,14 +22,16 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
                 <div className="grid grid-cols-1 items-start gap-12  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-[auto_auto_auto_auto]">
                     {footerList.map((list, index) => (
                         <div key={index} className="grid grid-cols-1 place-content-start gap-12">
-                            <span className="text-[2.4rem] leading-[3.2rem] text-white">{list.listHeading}</span>
+                            <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-white">
+                                {list.listHeading}
+                            </span>
                             <ul className="flex flex-col items-start justify-start gap-4">
                                 {list.listLinks.map((link, index) => (
                                     <li key={index}>
                                         <LinkText
                                             href={link.url || '#'}
-                                            className="!text-[1.6rem] !leading-[2.4rem] text-[#E9EAEB]"
-                                            indicatorColor="bg-[#E9EAEB]"
+                                            className="!text-[1.6rem] !leading-[2.4rem] text-white"
+                                            indicatorColor="bg-white"
                                         >
                                             {link.text}
                                         </LinkText>
@@ -224,7 +226,7 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
                     as a credit broker not a lender and offer finance from one lender.
                 </p>
 
-                <span className="mt-4 text-center font-mulishLight text-[1.3rem] leading-[1.6rem] text-white">
+                <span className="mt-4 text-center font-mulishLight text-[1.3rem] leading-[1.6rem] text-[#E1F1FF]">
                     Copyrights © My-Clinic {new Date().getFullYear()} | All Rights Reserved | Company Reg Number:
                     07151426
                 </span>

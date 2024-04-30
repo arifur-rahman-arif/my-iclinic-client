@@ -5,16 +5,16 @@ import Image from 'next/image';
 const list: ItemProps[] = [
     {
         title: 'Laser eye surgery',
-        image: '/images/section-images/laser-eye-surgery-2-small.png',
-        largeImage: '/images/section-images/laser-eye-surgery-2.png',
+        image: '/images/section-images/laser-eye-surgery-2-small.webp',
+        largeImage: '/images/section-images/laser-eye-surgery-2.webp',
         description:
             "Transform your world through precision laser eye surgery at My-iClinic, London's trusted destination for advanced eye care. With a commitment to your vision enhancement, our experienced surgeons and modern techniques offer a personalised path to improved clarity and visual freedom.",
         link: '/laser-eye-surgery'
     },
     {
         title: 'Corrective eye surgery',
-        image: '/images/section-images/corrective-eye-surgery-small.png',
-        largeImage: '/images/section-images/corrective-eye-surgery.png',
+        image: '/images/section-images/corrective-eye-surgery-small.webp',
+        largeImage: '/images/section-images/corrective-eye-surgery.webp',
         description:
             'Rediscover the world in perfect clarity with corrective eye surgery at our esteemed clinic in London. Our dedicated team of professionals is committed to delivering personalised solutions that address your unique vision needs, ensuring a life less hindered by glasses or contacts.'
     }

@@ -47,7 +47,14 @@ const Checkbox = ({ label, id, value, name, checked, onChange, className, labelC
                     onChange={onChange}
                 />
                 <span className="checkbox">
-                    <svg width="16" height="16" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 14 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-7 w-6"
+                    >
                         <path
                             d="M12.3334 1L5.00002 8.33333L1.66669 5"
                             stroke="#FAF9F6"
@@ -57,14 +64,7 @@ const Checkbox = ({ label, id, value, name, checked, onChange, className, labelC
                         />
                     </svg>
                 </span>
-                <span
-                    className={twMerge(
-                        'font-mulishBold text-[1.6rem] leading-8 md:text-[1.8rem] md:leading-[2.8rem]',
-                        labelClassName
-                    )}
-                >
-                    {label}
-                </span>
+                <span className={twMerge('font-mulishBold text-[1.6rem] leading-8', labelClassName)}>{label}</span>
             </label>
         </div>
     );

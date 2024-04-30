@@ -68,12 +68,12 @@ const IclA = ({ seo, yoastJson, data, iclTreatments }: IclAProps): JSX.Element =
                 topIcon={<Image src="/images/icons/icon-step-1.svg" width={89} height={90} alt="" />}
                 heading="Feeling the pinch from your glasses on your nose or ears? Or maybe Tired of the dry, itchy sensation from hours of contact lens wear!"
                 image1={{
-                    src: '/images/section-images/lens-step-image-1.png',
+                    src: '/images/section-images/lens-step-image-1.webp',
                     width: 223,
                     height: 334
                 }}
                 image2={{
-                    src: '/images/section-images/lens-step-image-2.png',
+                    src: '/images/section-images/lens-step-image-2.webp',
                     width: 619,
                     height: 334
                 }}
@@ -86,12 +86,12 @@ const IclA = ({ seo, yoastJson, data, iclTreatments }: IclAProps): JSX.Element =
                 headingMaxWidth="max-w-[100.1rem]"
                 heading="Ever walked outdoors on a chilly day and been blinded by foggy lenses? Or fed up with the daily ritual of poking and prodding your eyes with contact lenses?"
                 image1={{
-                    src: '/images/section-images/contact-lense-image-1.png',
+                    src: '/images/section-images/contact-lense-image-1.webp',
                     width: 223,
                     height: 334
                 }}
                 image2={{
-                    src: '/images/section-images/contact-lense-image-2.png',
+                    src: '/images/section-images/contact-lense-image-2.webp',
                     width: 619,
                     height: 334
                 }}
@@ -109,7 +109,7 @@ const IclA = ({ seo, yoastJson, data, iclTreatments }: IclAProps): JSX.Element =
                 topIcon={<Image src="/images/icons/icon-step-3.svg" width={89} height={90} alt="" />}
                 heading="Do you sometimes wish to flaunt your natural look without glasses being the centerpiece?"
                 image1={{
-                    src: '/images/section-images/icl-step-list-image.png',
+                    src: '/images/section-images/icl-step-list-image.webp',
                     width: 619,
                     height: 474
                 }}

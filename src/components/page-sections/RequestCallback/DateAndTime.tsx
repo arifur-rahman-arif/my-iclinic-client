@@ -223,7 +223,7 @@ const DateAndTime = ({
             {/* </div> */}
 
             <div className="grid grid-cols-1 place-items-center content-start gap-4">
-                <Image src="/images/section-images/phone-call.png" alt="" width={52} height={52} />
+                <Image src="/images/section-images/phone-call.webp" alt="" width={52} height={52} />
                 <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">We will call you on</span>
                 <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-heading">
                     {getTheDayName(date.getDay())} / {date.getDate()} {getTheMonthName(date.getMonth())} /{' '}

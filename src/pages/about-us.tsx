@@ -50,7 +50,7 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
 
             {/*
             <Section className="relative bg-[#006088F2]">
-                <Image src="/images/section-images/about-us-section-eye-bg.png" alt="" fill={true} />
+                <Image src="/images/section-images/about-us-section-eye-bg.webp" alt="" fill={true} />
 
                 <Container className="relative z-[1] grid place-items-center gap-12 py-16 md:py-24">
                     {data?.section_1?.length ? (
@@ -108,12 +108,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 h3LightHeading={data?.section_3?.heading || 'Our story'}
                 descriptions={data?.section_3.descriptions}
                 sectionImage={{
-                    url: data?.section_3?.image?.url || '/images/section-images/how-we-started.png',
+                    url: data?.section_3?.image?.url || '/images/section-images/how-we-started.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image?.url || '/images/section-images/how-we-started-large.png',
+                    url: data?.section_3?.large_image?.url || '/images/section-images/how-we-started-large.webp',
                     width: 668,
                     height: 477
                 }}
@@ -131,12 +131,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 h3LightHeading={data?.section_4?.heading || 'Our approach'}
                 descriptions={data?.section_4.descriptions}
                 sectionImage={{
-                    url: data?.section_4?.image?.url || '/images/section-images/our-approach.png',
+                    url: data?.section_4?.image?.url || '/images/section-images/our-approach.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.large_image?.url || '/images/section-images/our-approach-large.png',
+                    url: data?.section_4?.large_image?.url || '/images/section-images/our-approach-large.webp',
                     width: 668,
                     height: 477
                 }}
@@ -157,7 +157,7 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.large_image?.url || '/images/section-images/no-hidden-cost-large.png',
+                    url: data?.section_6?.large_image?.url || '/images/section-images/no-hidden-cost-large.webp',
                     width: 668,
                     height: 477
                 }}
@@ -247,12 +247,12 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
                 }
                 sectionClass="bg-[#003E79] pb-12 md:pb-0 overflow-hidden"
                 sectionImage={{
-                    url: data?.section_5?.image?.src || '/images/section-images/medical-practices.jpg',
+                    url: data?.section_5?.image?.src || '/images/section-images/medical-practices.webp',
                     width: 447,
                     height: 693
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.large_image?.src || '/images/section-images/medical-practices-large.jpg',
+                    url: data?.section_5?.large_image?.src || '/images/section-images/medical-practices-large.webp',
                     width: 570,
                     height: 631
                 }}

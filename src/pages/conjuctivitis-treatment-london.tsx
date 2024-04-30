@@ -112,8 +112,8 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                 titleClass="text-heading max-w-[57rem]"
                 descriptionClass="[&_*]:!text-[#404A4D] text-[#404A4D]"
                 altText=""
-                image={data?.section5?.image || '/images/section-images/conjunctivitis.png'}
-                desktopImage={data?.section5?.image || '/images/section-images/conjunctivitis-large.png'}
+                image={data?.section5?.image || '/images/section-images/conjunctivitis.webp'}
+                desktopImage={data?.section5?.image || '/images/section-images/conjunctivitis-large.webp'}
                 textColumnExtraBottomElements={
                     <div className="mt-12 flex flex-wrap items-center justify-start gap-6">
                         <BookConsultation buttonClassName="hover:bg-brandLight">
@@ -140,14 +140,14 @@ export default function ConjuctivitisTreatmentLondon({ data, seo, yoastJson }: C
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_1?.image?.url || '/images/section-images/conjunctivitis-consultation.png',
+                    url: data?.section_1?.image?.url || '/images/section-images/conjunctivitis-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_1?.large_image?.url ||
-                        '/images/section-images/conjunctivitis-consultation-large.png',
+                        '/images/section-images/conjunctivitis-consultation-large.webp',
                     width: 554,
                     height: 525
                 }}

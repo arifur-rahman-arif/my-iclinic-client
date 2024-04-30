@@ -46,7 +46,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section4?.heading}
                 descriptions={data?.section4?.descriptions}
                 image={{
-                    src: '/images/section-images/relex-smile.png',
+                    src: '/images/section-images/relex-smile.webp',
                     width: 690,
                     height: 570,
                     alt: 'Relex Smile',
@@ -61,7 +61,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section5?.heading}
                 descriptions={data?.section5?.descriptions}
                 image={{
-                    src: '/images/section-images/presbyond.png',
+                    src: '/images/section-images/presbyond.webp',
                     width: 690,
                     height: 570,
                     alt: 'Presbyond',
@@ -75,7 +75,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section6?.heading}
                 descriptions={data?.section6?.descriptions}
                 image={{
-                    src: '/images/section-images/lasik-london.png',
+                    src: '/images/section-images/lasik-london.webp',
                     width: 690,
                     height: 570,
                     alt: 'lasik-london',
@@ -90,7 +90,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section7?.heading}
                 descriptions={data?.section7?.descriptions}
                 image={{
-                    src: '/images/section-images/lasek-prk.png',
+                    src: '/images/section-images/lasek-prk.webp',
                     width: 690,
                     height: 570,
                     alt: 'lasek-prk',
@@ -104,7 +104,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section8?.heading}
                 descriptions={data?.section8?.descriptions}
                 image={{
-                    src: '/images/section-images/prk.png',
+                    src: '/images/section-images/prk.webp',
                     width: 690,
                     height: 570,
                     alt: 'prk',
@@ -119,7 +119,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 heading={data?.section9?.heading}
                 descriptions={data?.section9?.descriptions}
                 image={{
-                    src: '/images/section-images/ptk.png',
+                    src: '/images/section-images/ptk.webp',
                     width: 690,
                     height: 570,
                     alt: 'ptk',

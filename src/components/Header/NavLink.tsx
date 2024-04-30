@@ -193,6 +193,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                                     'font-mulishBold text-[1.6rem] leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-white',
                                     isMenuActive && 'text-[#9B9FA1]'
                                 )}
+                                prefetch={false}
                             >
                                 {menu.name}
                             </Link>
@@ -226,6 +227,7 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                     className={`relative cursor-pointer font-mulishBold text-[1.6rem] capitalize leading-8 text-heading transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
                         isMenuActive && 'text-[#9B9FA1]'
                     }`}
+                    prefetch={false}
                 >
                     {menu.name}
 

@@ -20,7 +20,7 @@ const ThankYou = (): JSX.Element => {
             className={`${styles.styles} grid h-full w-full place-items-center px-8 py-12 sm:px-12 md:px-24 md:py-24 xl:px-40`}
         >
             <button
-                className="absolute top-0 right-0 -translate-x-16 translate-y-16"
+                className="absolute right-0 top-0 -translate-x-16 translate-y-16"
                 title="Restart"
                 onClick={ctx.resetAllRouteSteps}
             >
@@ -38,7 +38,7 @@ const ThankYou = (): JSX.Element => {
                 <Link
                     href="/"
                     aria-label="Home"
-                    className="flex items-center justify-center gap-4 rounded-primary border-2 border-heading2 bg-heading2 py-5 px-20 font-mulishMedium text-[1.6rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent md:mt-12"
+                    className="flex items-center justify-center gap-4 rounded-primary border border-heading2 bg-heading2 px-20 py-5 font-mulishMedium text-[1.6rem] leading-[2.8rem] text-white transition-all duration-500 hover:border-white hover:bg-transparent md:mt-12"
                 >
                     <MdOutlineRemoveRedEye className="h-[2.4rem] w-[2.4rem] fill-white" />
                     Go to home page

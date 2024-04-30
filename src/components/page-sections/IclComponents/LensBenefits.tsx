@@ -17,7 +17,7 @@ interface LensBenefitsProps {
 const defaultCardList: CardProps[] = [
     {
         image: {
-            src: '/images/section-images/saving-money.png',
+            src: '/images/section-images/saving-money.webp',
             width: 294,
             height: 167,
             alt: 'Saving Money'
@@ -32,7 +32,7 @@ const defaultCardList: CardProps[] = [
     },
     {
         image: {
-            src: '/images/section-images/saving-time.png',
+            src: '/images/section-images/saving-time.webp',
             width: 294,
             height: 167,
             alt: 'Saving Time'
@@ -47,7 +47,7 @@ const defaultCardList: CardProps[] = [
     },
     {
         image: {
-            src: '/images/section-images/saving-vision.png',
+            src: '/images/section-images/saving-vision.webp',
             width: 294,
             height: 167,
             alt: 'Saving Vision'
@@ -62,7 +62,7 @@ const defaultCardList: CardProps[] = [
     },
     {
         image: {
-            src: '/images/section-images/save-planet.png',
+            src: '/images/section-images/save-planet.webp',
             width: 294,
             height: 167,
             alt: 'Saving Our Planet'

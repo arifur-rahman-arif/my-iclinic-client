@@ -21,7 +21,7 @@ const AchievementsAndBeyond = ({ section6 }: AchievementsAndBeyondProps): JSX.El
     return (
         <Section className="">
             <Container className="">
-                <div className="grid items-center gap-16 overflow-hidden rounded-[1rem] px-8 pt-28 pb-24 shadow-[0px_1px_24px_0px_rgba(0,21,41,0.15)] sm:px-12 md:grid-cols-2">
+                <div className="grid items-center gap-16 overflow-hidden rounded-[1rem] border border-[#EAECF0] px-8 pb-24 pt-28  sm:px-12 md:grid-cols-2">
                     <LeftColumn section6={section6} />
                     <AchievementColumn section6={section6} />
                 </div>
@@ -42,11 +42,11 @@ const LeftColumn = ({ section6 }: AchievementsAndBeyondProps): JSX.Element => {
         <div className="relative grid content-start gap-[20rem] md:gap-[15rem]">
             <div className="grid grid-cols-[1fr_auto]">
                 <Image
-                    src="/images/section-images/achievements-and-byonds-attribute.png"
+                    src="/images/section-images/achievements-and-byonds-attribute.webp"
                     alt=""
                     width={376}
                     height={382}
-                    className="absolute top-0 left-0 -z-[1] h-[36rem] w-[36rem] -translate-x-48 -translate-y-[15rem] -rotate-12 object-cover md:-translate-y-[26rem] md:rotate-0 lg:-translate-y-[24rem] xl:h-[39rem] xl:w-[38rem]"
+                    className="absolute left-0 top-0 -z-[1] h-[36rem] w-[36rem] -translate-x-48 -translate-y-[15rem] -rotate-12 object-cover md:-translate-y-[26rem] md:rotate-0 lg:-translate-y-[24rem] xl:h-[39rem] xl:w-[38rem]"
                 />
                 <SectionHeading
                     heading={section6?.heading}

@@ -10,8 +10,8 @@ import { BookConsultation, FullWidthImageSection, SideImageSection, StackColumn2
 import Image from 'next/image';
 
 import { keratoconusList } from '@/page-sections/SectionParts/stack-column/list';
-import FullWidthImageLarge from '@/section-images/keratoconus-large.png';
-import FullWidthImage from '@/section-images/keratoconus.png';
+import FullWidthImageLarge from '@/section-images/keratoconus-large.webp';
+import FullWidthImage from '@/section-images/keratoconus.webp';
 import { keratoconusContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
@@ -156,12 +156,12 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/corneal-typography.png',
+                    url: data?.section_4?.image || '/images/section-images/corneal-typography.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_4?.imagelarge || '/images/section-images/corneal-typography-large.png',
+                    url: data?.section_4?.imagelarge || '/images/section-images/corneal-typography-large.webp',
                     width: 675,
                     height: 558
                 }}
@@ -182,12 +182,12 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/treatments-for-keratoconus.png',
+                    url: data?.section_5?.image || '/images/section-images/treatments-for-keratoconus.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.imagelarge || '/images/section-images/treatments-for-keratoconus-large.png',
+                    url: data?.section_5?.imagelarge || '/images/section-images/treatments-for-keratoconus-large.webp',
                     width: 609,
                     height: 585
                 }}
@@ -207,12 +207,12 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.minimally_invasive?.image || '/images/section-images/corneal-typography.png',
+                    url: data?.minimally_invasive?.image || '/images/section-images/corneal-typography.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.minimally_invasive?.imageLarge || '/images/section-images/corneal-typography-large.png',
+                    url: data?.minimally_invasive?.imageLarge || '/images/section-images/corneal-typography-large.webp',
                     width: 675,
                     height: 558
                 }}
@@ -253,12 +253,12 @@ export default function KeratoconusPage({ seo, yoastJson, data }: KeratoconusPag
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_6?.image?.src || '/images/section-images/cta-keratoconus.png',
+                    url: data?.section_6?.image?.src || '/images/section-images/cta-keratoconus.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_6?.image?.src || '/images/section-images/cta-keratoconus.png',
+                    url: data?.section_6?.image?.src || '/images/section-images/cta-keratoconus.webp',
                     width: 675,
                     height: 682
                 }}

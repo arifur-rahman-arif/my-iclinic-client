@@ -19,7 +19,7 @@ const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
                     <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
-                            src="/images/section-images/royal-society-medicine.png"
+                            src="/images/section-images/royal-society-medicine.webp"
                             alt=""
                             quality={70}
                             width={157}
@@ -29,7 +29,7 @@ const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
                     <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
-                            src="/images/section-images/ukiscrs.png"
+                            src="/images/section-images/ukiscrs.webp"
                             alt=""
                             quality={70}
                             width={143}
@@ -39,7 +39,7 @@ const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
                     <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
-                            src="/images/section-images/royal-collage.png"
+                            src="/images/section-images/royal-collage.webp"
                             alt=""
                             quality={70}
                             width={143}
@@ -49,7 +49,7 @@ const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
                     <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">
                         <Image
                             className="h-full w-full object-contain"
-                            src="/images/section-images/escrs.png"
+                            src="/images/section-images/escrs.webp"
                             alt=""
                             quality={70}
                             width={153}

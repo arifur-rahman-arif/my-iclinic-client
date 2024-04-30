@@ -29,7 +29,7 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
             title: 'Average price of glasses per year',
             price: '£800',
             image: {
-                src: '/images/section-images/eyeglass.png',
+                src: '/images/section-images/eyeglass.webp',
                 width: 78,
                 height: 45
             }
@@ -38,7 +38,7 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
             title: 'Average price of contact lenses per year',
             price: '£360',
             image: {
-                src: '/images/section-images/replacable-contact-lense.png',
+                src: '/images/section-images/replacable-contact-lense.webp',
                 width: 79,
                 height: 35
             }
@@ -49,7 +49,7 @@ const AverageSpend = ({ heading, priceList, subheadng, totalCost }: AverageSpend
         <div className="grid lg:grid-cols-2">
             <div className="relative grid content-start gap-12 bg-[#0099FF] px-8 py-20 md:gap-44 lg:py-36 lg:pr-32 xl:pl-[calc(calc(100vw_-_var(--container-width))_/_2)]">
                 {/* <Image */}
-                {/*     src="/images/section-images/average-spend-bg.png" */}
+                {/*     src="/images/section-images/average-spend-bg.webp" */}
                 {/*     alt="" */}
                 {/*     width={717} */}
                 {/*     height={599} */}

@@ -105,8 +105,8 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
                         'Macular degeneration is categorised as an “age-related” eye condition meaning that it occurs mainly in older people.'
                     ]
                 }
-                image={data?.section_3?.image || '/images/section-images/macular-degeneration.png'}
-                desktopImage={data?.section_3?.image || '/images/section-images/macular-degeneration-large.png'}
+                image={data?.section_3?.image || '/images/section-images/macular-degeneration.webp'}
+                desktopImage={data?.section_3?.image || '/images/section-images/macular-degeneration-large.webp'}
                 containerClass="pb-16 md:py-24"
                 largeImageClassName="!rounded-none"
                 sectionClass="px-8 md:px-0 bg-brandLight"
@@ -139,14 +139,14 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_4?.image || '/images/section-images/macular-degeneration-diagnosis.png',
+                    url: data?.section_4?.image || '/images/section-images/macular-degeneration-diagnosis.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_4?.imagelarge ||
-                        '/images/section-images/macular-degeneration-diagnosis-large.png',
+                        '/images/section-images/macular-degeneration-diagnosis-large.webp',
                     width: 660,
                     height: 682
                 }}
@@ -191,12 +191,12 @@ export default function MacularDegeneration({ seo, yoastJson, data }: MacularDeg
                     ]
                 }
                 sectionImage={{
-                    url: data?.section_5?.image || '/images/section-images/macular-treatment.png',
+                    url: data?.section_5?.image || '/images/section-images/macular-treatment.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_5?.imagelarge || '/images/section-images/macular-treatment-large.png',
+                    url: data?.section_5?.imagelarge || '/images/section-images/macular-treatment-large.webp',
                     width: 661,
                     height: 621
                 }}

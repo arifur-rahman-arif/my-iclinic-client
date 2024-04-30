@@ -123,25 +123,25 @@ const WhyGlassesAndContactLenses = ({ node, questionText }: WhyGlassesAndContact
                         <div className="flex items-center justify-center gap-12">
                             {index === 0 && (
                                 <>
-                                    <Image src="/images/section-images/writing.png" alt="" width={56} height={75} />
-                                    <Image src="/images/section-images/reading.png" alt="" width={63} height={58} />
+                                    <Image src="/images/section-images/writing.webp" alt="" width={56} height={75} />
+                                    <Image src="/images/section-images/reading.webp" alt="" width={63} height={58} />
                                 </>
                             )}
                             {index === 1 && (
                                 <>
-                                    <Image src="/images/section-images/computer.png" alt="" width={73} height={64} />
-                                    <Image src="/images/section-images/tv.png" alt="" width={43} height={72} />
+                                    <Image src="/images/section-images/computer.webp" alt="" width={73} height={64} />
+                                    <Image src="/images/section-images/tv.webp" alt="" width={43} height={72} />
                                 </>
                             )}
                             {index === 2 && (
                                 <>
                                     <Image
-                                        src="/images/section-images/reading-signs.png"
+                                        src="/images/section-images/reading-signs.webp"
                                         alt=""
                                         width={68}
                                         height={95}
                                     />
-                                    <Image src="/images/section-images/driving.png" alt="" width={54} height={71} />
+                                    <Image src="/images/section-images/driving.webp" alt="" width={54} height={71} />
                                 </>
                             )}
                         </div>
@@ -159,7 +159,7 @@ const WhyGlassesAndContactLenses = ({ node, questionText }: WhyGlassesAndContact
                 </button>
 
                 <button
-                    className="justify-self-end rounded-primary border-2 border-heading2 bg-heading2 py-4 px-16 font-mulishBold text-white transition-all duration-500 hover:border-white hover:bg-transparent md:py-5 md:px-20 md:text-[1.8rem] md:leading-[2.8rem]"
+                    className="justify-self-end rounded-[0.5rem] border border-[#0099FF] bg-[#0099FF] px-16 py-4 font-mulishBold text-white transition-all duration-500 hover:bg-transparent hover:text-[#0099FF] md:px-20 md:py-5 md:text-[1.8rem] md:leading-[2.8rem]"
                     onClick={() => handleNavigationClick('yes')}
                 >
                     Next

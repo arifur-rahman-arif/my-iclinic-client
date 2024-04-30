@@ -64,12 +64,12 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
             <SideImageSection
                 h3LightHeading={data?.section_1?.heading || 'Is your child suffering from myopia (short-sightedness)?'}
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/myopia-consultation.png',
+                    url: data?.section_1?.image || '/images/section-images/myopia-consultation.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/myopia-consultation-pricing-large.png',
+                    url: data?.section_1?.large_image || '/images/section-images/myopia-consultation-pricing-large.webp',
                     width: 616,
                     height: 549
                 }}
@@ -127,14 +127,14 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                 descriptions={data?.section_2?.descriptions}
                 positionReversed
                 sectionImage={{
-                    url: data?.section_2?.image.src || '/images/section-images/myopia-refunds-and-cancellation.png',
+                    url: data?.section_2?.image.src || '/images/section-images/myopia-refunds-and-cancellation.webp',
                     width: data?.section_2?.image?.width || 370,
                     height: data?.section_2?.image?.height || 352
                 }}
                 sectionImageDesktop={{
                     url:
                         data?.section_2?.large_image?.src ||
-                        '/images/section-images/myopia-refunds-and-cancellation-large.png',
+                        '/images/section-images/myopia-refunds-and-cancellation-large.webp',
                     width: data?.section_2?.large_image?.width || 756,
                     height: data?.section_2?.large_image?.height || 550
                 }}

@@ -39,7 +39,7 @@ const IclKnowing = () => {
                 </div>
 
                 <Image
-                    src="/images/section-images/will-icl-work.png"
+                    src="/images/section-images/will-icl-work.webp"
                     alt=""
                     width={561}
                     height={562}
