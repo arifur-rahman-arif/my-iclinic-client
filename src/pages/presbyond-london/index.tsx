@@ -29,7 +29,7 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
@@ -198,7 +198,8 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                     height: 352
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/presbyond-laser-treatment-desktop.webp',
+                    url:
+                        data?.section_1?.large_image || '/images/section-images/presbyond-laser-treatment-desktop.webp',
                     width: 688,
                     height: 642
                 }}

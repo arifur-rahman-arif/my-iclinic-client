@@ -18,7 +18,7 @@ const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLog
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />

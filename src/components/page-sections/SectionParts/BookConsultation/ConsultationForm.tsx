@@ -1,8 +1,10 @@
 import RequestCallback from '@/page-sections/RequestCallback/RequestCallback';
-import dynamic from 'next/dynamic';
 import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import styles from './Style.module.scss';
+import dynamic from 'next/dynamic';
+
+const Dialog = dynamic(() => import('@mui/material/Dialog'));
 
 interface ConsultationFormInterface {
     modalOpen: boolean;
@@ -10,8 +12,6 @@ interface ConsultationFormInterface {
     modalElement?: ReactNode;
     maxWidth?: string;
 }
-
-const Dialog = dynamic(() => import('@mui/material/Dialog'));
 
 /**
  * Consultation form for pabau integration
@@ -39,7 +39,7 @@ const ConsultationForm = ({
             open={modalOpen}
             sx={{
                 '.MuiPaper-root': {
-                    borderRadius: 'var(--border-radius)',
+                    borderRadius: 'var(--border-radius2)',
                     width: '100%',
                     maxWidth: maxWidth || '50rem',
                     maxHeight: '100%',
@@ -57,7 +57,7 @@ const ConsultationForm = ({
                     }}
                 />
                 {/* Render the content of the modal */}
-                {modalElement || <RequestCallback className="!shadow-none" />}
+                {modalElement || <RequestCallback className="!border-none !shadow-none" />}
             </div>
         </Dialog>
     );

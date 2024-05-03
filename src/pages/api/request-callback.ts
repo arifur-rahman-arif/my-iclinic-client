@@ -32,7 +32,8 @@ const requestCallbackHandler: NextApiHandler = async (req: NextApiRequest, res: 
                 phone: bodyPayload.phone,
                 custom_fields: {
                     cf_full_name: bodyPayload.name,
-                    cf_callback_date: formattedDate
+                    cf_callback_date: formattedDate,
+                    cf_consultation_reason: bodyPayload.consultationReason
                 },
                 priority: 1,
                 status: 2

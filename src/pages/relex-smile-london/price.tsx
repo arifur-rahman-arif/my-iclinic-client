@@ -25,7 +25,7 @@ import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 interface DataInterface extends RelexSmilePriceContentInterface, PageDataInterface<RelexSmilePriceContentInterface> {}
@@ -187,7 +187,7 @@ export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Ele
                         </div>
 
                         {/* Cta section part */}
-                        <div className="mt-12 grid gap-y-4  gap-x-4 xs:grid-cols-[auto_1fr] sm:gap-x-8">
+                        <div className="mt-12 grid gap-x-4  gap-y-4 xs:grid-cols-[auto_1fr] sm:gap-x-8">
                             <div className="flex items-center justify-start gap-4">
                                 <Image
                                     src="/images/icons/icon-telephone-outline.svg"

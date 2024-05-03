@@ -99,7 +99,7 @@ const MobileNavbar = ({ openMobileMenu, setOpenMobileMenu, setOpenSearch }: Mobi
 
                     <div className="flex items-center justify-center gap-3">
                         <BookConsultation buttonClassName="text-white uppercase flex items-center justify-center gap-4 rounded-[0.5rem] bg-[#09F] font-mulishBold text-white hover:!text-[#09F]">
-                            <Button2 type="button" text="FREE Consultation" />
+                            <Button2 type="button" text="Book a consultation" />
                         </BookConsultation>
                         <Link
                             href="https://api.whatsapp.com/send/?phone=447850395332&text&type=phone_number&app_absent=0"

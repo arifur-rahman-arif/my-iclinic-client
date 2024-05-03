@@ -69,7 +69,7 @@ const FullWidthImageSection3 = ({
                     </div>
 
                     <BookConsultation>
-                        <Button2 type="button" text="Book a free consultation" />
+                        <Button2 type="button" text="Book a consultation" />
                     </BookConsultation>
                 </div>
                 <div className="relative justify-self-center overflow-hidden md:row-auto">

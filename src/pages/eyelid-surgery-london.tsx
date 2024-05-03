@@ -14,10 +14,7 @@ import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import CorneaOfferings from '@/page-sections/CorneaPage/CorneaOfferings';
 import VisionCorrection from '@/page-sections/HomePage/VisionCorrection';
-
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -95,9 +92,7 @@ export default function EyeLidPage({ seo, yoastJson, data }: EyeLidPageProps): J
                 }
             />
 
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
+            <CallbackSection />
 
             <GlaucomaChargeSection {...data?.section2} />
 

@@ -32,7 +32,7 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 interface DataInterface extends PricemyopiaContentInterface, PageDataInterface<PricemyopiaContentInterface> {}
@@ -69,7 +69,8 @@ export default function Price({ seo, yoastJson, data }: PriceProps): JSX.Element
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.large_image || '/images/section-images/myopia-consultation-pricing-large.webp',
+                    url:
+                        data?.section_1?.large_image || '/images/section-images/myopia-consultation-pricing-large.webp',
                     width: 616,
                     height: 549
                 }}

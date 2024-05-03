@@ -222,7 +222,7 @@ export const navMenuList: NavMenuType[] = [
     },
     {
         name: 'Cost & finance',
-        url: '/pricing-and-financing',
+        url: '/pricing-and-financing/financing-your-treatment',
         slug: 'pricing-and-financing',
         subMenuOpen: false,
         submenu: [

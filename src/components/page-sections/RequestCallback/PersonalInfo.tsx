@@ -7,9 +7,11 @@ import {
     validatePhoneNumber
 } from '@/utils/miscellaneous';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
-import { FaAngleRight } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
 import useSWRMutation from 'swr/mutation';
+import { RadioButton } from '@/components/Inputs/RadioButton';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface PersonalInfoInterface {
     name: string;
@@ -83,6 +85,53 @@ const PersonalInfo = ({
     buttonText
 }: PersonalInfoInterface): JSX.Element => {
     const [typingTimer, setTypingTimer] = useState<any>();
+    const router = useRouter();
+    let defaultReason = 'other';
+
+    if (
+        router.pathname === '/relex-smile-london' ||
+        router.pathname === '/presbyond-london' ||
+        router.pathname === '/lasik-london' ||
+        router.pathname === '/lasek-prk'
+    ) {
+        defaultReason = 'laser-eye-surgery';
+    }
+
+    if (router.pathname === '/icl') {
+        defaultReason = 'icl';
+    }
+
+    if (
+        router.pathname === '/cataract' ||
+        router.pathname === '/cataract/premium-lenses' ||
+        router.pathname === '/cataract/yag-capsulotomy-for-pco'
+    ) {
+        defaultReason = 'cataract';
+    }
+
+    const [checkedReason, setCheckedReason] = useState(defaultReason); // Set initial checked reason
+    const consultationReasons = [
+        {
+            name: 'Cataract',
+            value: 'cataract',
+            active: true
+        },
+        {
+            name: 'ICL',
+            value: 'icl',
+            active: false
+        },
+        {
+            name: 'Laser eye surgery',
+            value: 'laser-eye-surgery',
+            active: false
+        },
+        {
+            name: 'Other',
+            value: 'other',
+            active: false
+        }
+    ];
 
     /**
      * Handle the phone input for onchange event
@@ -207,11 +256,20 @@ const PersonalInfo = ({
             return;
         }
 
+        if (!checkedReason) {
+            alert('Please provide consultation reason');
+            return;
+        }
+
         const internationalPhoneNumber = await formatNumberToInternational(phone);
+
+        const consultationReason = consultationReasons.find((val) => val.value === checkedReason)?.name;
+
         const payload = {
             name,
             phone: internationalPhoneNumber,
-            email
+            email,
+            consultationReason
         };
 
         try {
@@ -240,6 +298,15 @@ const PersonalInfo = ({
             alert((e as any).message || 'Something went wrong');
             console.error(e);
         }
+    };
+
+    /**
+     * Handle checkbox change event by updating the active state of consultation reasons.
+     * @param {string} value - The name of the consultation reason that has been changed.
+     * @returns {void}
+     */
+    const handleCheckboxChange = (value: string): void => {
+        setCheckedReason(value); // Update the checked reason
     };
 
     return (
@@ -305,16 +372,49 @@ const PersonalInfo = ({
                 />
             </div>
 
+            <div className="grid gap-6">
+                <span className="font-mulishBold text-heading">
+                    Reason for consultation <span className="text-[#D90E01]">*</span>
+                </span>
+                <div className="flex flex-wrap items-center justify-start gap-6">
+                    {consultationReasons.map((reason, key) => (
+                        <RadioButton
+                            key={key}
+                            label={reason.name}
+                            onChange={(e) => handleCheckboxChange(e.currentTarget.value)}
+                            checked={reason.value === checkedReason}
+                            value={reason.value}
+                            labelClassName="!text-[#60666C] !text-[1.4rem] !leading-8"
+                            rounded={false}
+                            checkboxClassName="!w-[1.6rem] !h-[1.6rem] !rounded-[0.4rem] [&_svg]:w-4 !border-[#C1C7CD] bg-[#F3F3F3]"
+                            className="!gap-3"
+                        />
+                    ))}
+                </div>
+
+                <p className="mt-6 text-[1.4rem] leading-8 text-[#8E9398]">
+                    By submitting this form, you agree to the terms of our{' '}
+                    <Link
+                        href="/privacy-policies"
+                        target="_blank"
+                        className="text-[1.4rem] leading-8 text-[#0099FF] decoration-[#0099FF] underline-offset-4 hover:underline"
+                    >
+                        privacy policy.
+                    </Link>{' '}
+                    Your personal data is secure with us.
+                </p>
+            </div>
+
+            <span className="-mb-4 mt-6 justify-self-end font-mulishBold text-[1.4rem] leading-8">
+                15-minute free consultation
+            </span>
             <Button2
                 type="button"
-                text={buttonText || 'Next'}
-                iconPosition="right"
-                icon={
-                    <FaAngleRight className="relative top-[0.1rem] h-7 w-7 fill-white transition-all duration-500 group-hover/next-button:fill-brand" />
-                }
+                text={buttonText || 'Book my consultation'}
                 className={twMerge('next-button group/next-button gap-2 justify-self-end', buttonClassName)}
                 mockDisabled={!(name && phone && email)}
                 loading={isMutating}
+                loadingIconPosition="right"
                 onClick={() => {
                     if (typeof activateNextStepper == 'function') {
                         showInputErrors().then((res) => {

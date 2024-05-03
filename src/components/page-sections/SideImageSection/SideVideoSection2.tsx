@@ -8,6 +8,8 @@ import HTMLReactParser from 'html-react-parser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useEffect, useRef } from 'react';
+import { Button2 } from '@/components/Buttons';
+import { BookConsultation } from '@/page-sections/index';
 
 // Const VideoPlayer = dynamic(() => import('@/components/page-sections/section-parts/VideoPlayer'));
 
@@ -78,75 +80,9 @@ const SideVideoSection2 = ({
                     ))}
 
                     <div className={`flex flex-wrap items-center justify-start gap-6`}>
-                        {/* Modal */}
-                        {/* <BookConsultation
-                            modalElement={
-                                <>
-                                    <iframe
-                                        src=""
-                                        width={600}
-                                        height={700}
-                                        className="w-full md:min-h-[70rem]"
-                                    ></iframe>
-                                </>
-                            }
-                            maxWidth="70rem"
-                            buttonClassName={``}
-                        >
-                        </BookConsultation> */}
-
-                        <Link
-                            target="_blank"
-                            href="https://connect.pabau.com/bookings.php?compid=11842"
-                            title="Book a free screening test"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-radius2 border-2 border-white bg-[#003E79] px-8 py-6 transition-all duration-500 hover:bg-white"
-                            aria-label="Book a free screening test"
-                        >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M15.8333 3.33301H4.16667C3.24619 3.33301 2.5 4.0792 2.5 4.99967V16.6663C2.5 17.5868 3.24619 18.333 4.16667 18.333H15.8333C16.7538 18.333 17.5 17.5868 17.5 16.6663V4.99967C17.5 4.0792 16.7538 3.33301 15.8333 3.33301Z"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M13.334 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M6.66602 1.66699V5.00033"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                                <path
-                                    d="M2.5 8.33301H17.5"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="transition-all duration-500 group-hover/consultation:stroke-heading2"
-                                />
-                            </svg>
-
-                            <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500 group-hover/consultation:text-heading2">
-                                Book a free screening test
-                            </span>
-                        </Link>
+                        <BookConsultation buttonClassName="border-[#007EF5] bg-[#007EF5] hover:text-[#007EF5]">
+                            <Button2 type="button" text="Book a consultation" />
+                        </BookConsultation>
 
                         {/* Phone number */}
                         <Link
@@ -176,7 +112,7 @@ const SideVideoSection2 = ({
                         </Link>
                     </div>
                     <span
-                        className={`text-center font-latoBold text-[2.4rem] leading-[3.2rem] text-[#E1F1FF] md:text-left ${sloganTextColor}`}
+                        className={`text-balance font-latoMedium text-[2rem] uppercase leading-[2.8rem] text-[#94CAFF] lg:text-nowrap`}
                     >
                         A better quality of life is just around the corner!
                     </span>

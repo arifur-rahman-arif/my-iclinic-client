@@ -33,10 +33,10 @@ const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
                         alt="Yvonne Luo"
                         width={699}
                         height={870}
-                        className="h-full object-cover object-[-30rem_center] md:rounded-tr-primary md:rounded-br-primary lg:object-center"
+                        className="h-full object-cover object-[-30rem_center] md:rounded-br-primary md:rounded-tr-primary lg:object-center"
                     />
 
-                    <Awards className="absolute left-0 bottom-0 translate-x-8 -translate-y-8 lg:translate-x-12 lg:-translate-y-12 xl:grid-cols-2 xl:gap-24" />
+                    <Awards className="absolute bottom-0 left-0 -translate-y-8 translate-x-8 lg:-translate-y-12 lg:translate-x-12 xl:grid-cols-2 xl:gap-24" />
                 </div>
                 <TextColumn {...section3} />
             </Container>
@@ -65,7 +65,7 @@ const Awards = ({ className }: AwardsProps): JSX.Element => {
                 </span>
                 <span className="col-span-2 h-[0.1rem] bg-white"></span>
                 <Image src="/images/logos/logo-euratina.png" alt="" width={128} height={128} />
-                <Image src="/images/logos/logo-royal-collage.webp" alt="" width={128} height={128} />
+                <Image src="/images/logos/logo-royal-collage.png" alt="" width={128} height={128} />
             </div>
             <div className="grid content-start gap-6 justify-self-start">
                 <span className="col-span-2 font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">
@@ -107,7 +107,7 @@ interface TextColumnProps {
  */
 const TextColumn = ({ heading, designation, descriptions, subheading }: Partial<TextColumnProps>): JSX.Element => {
     return (
-        <div className="grid w-full content-start gap-12 bg-[#003E79] py-12 px-8 md:rounded-tl-primary md:rounded-bl-primary md:px-12 lg:px-20 xl:px-24">
+        <div className="grid w-full content-start gap-12 bg-[#003E79] px-8 py-12 md:rounded-bl-primary md:rounded-tl-primary md:px-12 lg:px-20 xl:px-24">
             <Awards className="md:hidden" />
 
             <div className="grid gap-2">

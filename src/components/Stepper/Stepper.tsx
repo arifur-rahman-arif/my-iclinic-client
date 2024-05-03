@@ -1,4 +1,3 @@
-import { getElementTopPosition } from '@/utils/miscellaneous';
 import { ReactNode, useState } from 'react';
 
 // import StepIndicator from './StepIndicator';
@@ -32,7 +31,7 @@ export interface StepperInterface {
  */
 const Stepper = ({
     stepperList,
-    defaultClassName = 'relative mx-auto grid grid-cols-1 gap-12 rounded-primary shadow-shadow1 p-8 sm:p-12',
+    defaultClassName = 'relative mx-auto grid grid-cols-1 gap-12 rounded-radius2 border border-[#EEF1F3] p-8 sm:p-12',
     className,
     formHeading,
     children
@@ -62,7 +61,7 @@ const Stepper = ({
             return [...tempState];
         });
 
-        scrollStepperIntoView();
+        // scrollStepperIntoView();
     };
 
     /**
@@ -94,10 +93,10 @@ const Stepper = ({
     /**
      * Change the stepper position to be visible for the user when user changes the stepper state
      */
-    const scrollStepperIntoView = () => {
-        const targetedElement = document.querySelector('.stepper-indicator');
-        window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 400);
-    };
+    // const scrollStepperIntoView = () => {
+    //     const targetedElement = document.querySelector('.eye-clinic-consultation-form');
+    //     window.scrollTo(0, getElementTopPosition(targetedElement as HTMLElement) - 400);
+    // };
 
     return (
         <div className={`${defaultClassName} ${className} `}>

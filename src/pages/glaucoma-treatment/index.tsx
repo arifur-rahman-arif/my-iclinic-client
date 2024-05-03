@@ -28,7 +28,7 @@ import GlaucomaService from '@/page-sections/GlaucomaSection/GlaucomaService';
 import SectionTextColumn from '@/components/SectionTextColumn';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {

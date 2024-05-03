@@ -31,7 +31,7 @@ import { Button2 } from '@/components/Buttons';
 import { TreatmentInterface } from '@/components/page-sections/FinanceCalculator/Context';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {

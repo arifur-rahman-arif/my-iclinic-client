@@ -26,7 +26,7 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
@@ -178,7 +178,8 @@ export default function LazyEyesTreatement({ data, seo, yoastJson }: LazyEyesPro
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_3?.large_image?.url || '/images/section-images/amblyopia-consultation-large.webp',
+                    url:
+                        data?.section_3?.large_image?.url || '/images/section-images/amblyopia-consultation-large.webp',
                     width: 649,
                     height: 552
                 }}

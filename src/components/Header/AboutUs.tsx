@@ -2,6 +2,7 @@ import { NavMenuType } from '@/components/Header/navMenuList';
 import SubMenu from '@/components/Header/SubMenus/SubMenu';
 import { useRouter } from 'next/router';
 import { FaAngleDown } from 'react-icons/fa';
+import Link from 'next/link';
 
 /**
  * About us submenu component
@@ -44,9 +45,11 @@ const AboutUs = (): JSX.Element => {
 
     return (
         <span className="group/menu-item parent-menu relative flex h-full items-center justify-center gap-2 px-6">
-            <span
+            <Link
+                href="/about-us"
+                title="About us"
                 className={`relative cursor-pointer text-[1.6rem] font-bold leading-8 text-white transition-all duration-500 group-hover/menu-item:text-[#9B9FA1] ${
-                    isMenuActive && 'text-[#9B9FA1]'
+                    isMenuActive && '!text-[#9B9FA1]'
                 }`}
                 onClick={() => {
                     const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
@@ -63,9 +66,13 @@ const AboutUs = (): JSX.Element => {
                 }}
             >
                 About us
-            </span>
+            </Link>
 
-            <FaAngleDown className="h-[1.6rem] w-[1.6rem] translate-y-[0.1rem] -rotate-90 fill-[#CDCFD0] transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1]" />
+            <FaAngleDown
+                className={`h-[1.6rem] w-[1.6rem] translate-y-[0.1rem] -rotate-90  transition-all duration-500 group-hover/menu-item:rotate-0 group-hover/menu-item:fill-[#9B9FA1] ${
+                    isMenuActive ? 'fill-[#9B9FA1]' : 'fill-[#CDCFD0]'
+                }`}
+            />
 
             <SubMenu router={router} submenu={aboutUsSubmenus} className="group-hover/menu-item:max-h-[55rem]" />
         </span>

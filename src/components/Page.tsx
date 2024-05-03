@@ -2,7 +2,7 @@
 import HTMLReactParser from 'html-react-parser';
 import Head from 'next/head';
 // import Script from 'next/script';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 interface PropInterface {
     children?: JSX.Element | JSX.Element[];
@@ -25,7 +25,7 @@ interface PropInterface {
  * @constructor
  */
 const Page = ({ children, title, description, seo, yoastJson }: PropInterface): JSX.Element => {
-    // const router = useRouter();
+    const router = useRouter();
 
     return (
         <>
@@ -35,8 +35,8 @@ const Page = ({ children, title, description, seo, yoastJson }: PropInterface): 
 
                 <meta name="google-site-verification" content="SAbAmq8u2_y-9zCpgFoI4X7bPFEeDxtda1gDc12Hr-w" />
                 <meta name="p:domain_verify" content="da57493c63d00becdd459241e65ec009" />
-                {/* <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} /> */}
-                {/* <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} /> */}
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+                <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
                 {seo && HTMLReactParser(seo)}
             </Head>
 

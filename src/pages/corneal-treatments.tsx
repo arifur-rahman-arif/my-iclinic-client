@@ -14,7 +14,7 @@ import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
     loading: () => <ComponentLoader />
@@ -223,7 +223,7 @@ export default function CornealTreatments({ seo, yoastJson, data }: CornealTreat
                 }
                 image={{
                     src: '/images/section-images/CAIRS.webp',
-                    width: 66,
+                    width: 660,
                     height: 547,
                     ...(data?.section7?.image as any)
                 }}
