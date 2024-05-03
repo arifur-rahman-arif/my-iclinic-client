@@ -24,7 +24,7 @@ import CostDetails from '@/components/page-sections/RelexSmilePriceSections/Cost
 import Button2 from '@/components/Buttons/Button2';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 interface DataInterface extends PricelasiklondonContentInterface, PageDataInterface<PricelasiklondonContentInterface> {}

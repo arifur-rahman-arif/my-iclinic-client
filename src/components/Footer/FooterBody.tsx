@@ -32,6 +32,7 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
                                             href={link.url || '#'}
                                             className="!text-[1.6rem] !leading-[2.4rem] text-white"
                                             indicatorColor="bg-white"
+                                            title={link.text}
                                         >
                                             {link.text}
                                         </LinkText>
@@ -45,7 +46,12 @@ const FooterBody = ({ excludeFooterLinks }: FooterBodyProps): JSX.Element => {
 
             <div className="grid place-items-center">
                 <div className="mb-12 flex flex-wrap items-center justify-center gap-12">
-                    <Link href="https://www.cqc.org.uk/provider/1-392154192" target="_blank" className="cursor-pointer">
+                    <Link
+                        href="https://www.cqc.org.uk/provider/1-392154192"
+                        title="Care quality commission"
+                        target="_blank"
+                        className="cursor-pointer"
+                    >
                         <Image
                             alt="Quality approved Clinic"
                             width={135}

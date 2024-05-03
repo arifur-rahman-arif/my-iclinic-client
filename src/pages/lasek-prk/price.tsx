@@ -28,7 +28,7 @@ import Image from 'next/image';
 import { Button2 } from '@/components/Buttons';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 interface DataInterface extends PricelskprkContentInterface, PageDataInterface<PricelskprkContentInterface> {}

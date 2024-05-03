@@ -29,7 +29,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 interface DataInterface extends PriceIclContentInterface, PageDataInterface<PriceIclContentInterface> {}

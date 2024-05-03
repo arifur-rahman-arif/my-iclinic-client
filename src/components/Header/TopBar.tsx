@@ -83,7 +83,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
 
                     <Link
                         href="/articles"
-                        title="Contact us"
+                        title="Articles"
                         className={`relative grid h-full cursor-pointer place-items-center px-6 font-mulishBold text-[1.6rem] leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
                             router.pathname === '/articles' ? 'text-[#9B9FA1]' : 'text-white'
                         }`}
@@ -145,7 +145,11 @@ interface SpecialistMenuProps {
  */
 const SpecialistMenu = ({ isMenuActive }: SpecialistMenuProps): JSX.Element => {
     return (
-        <Link href="/our-specialists" className="hidden cursor-pointer items-center justify-center gap-3 px-6 xl:flex">
+        <Link
+            href="/our-specialists"
+            title="Our specialists"
+            className="hidden cursor-pointer items-center justify-center gap-3 px-6 xl:flex"
+        >
             <span className="relative flex items-center justify-center gap-2">
                 <span
                     className={twMerge(

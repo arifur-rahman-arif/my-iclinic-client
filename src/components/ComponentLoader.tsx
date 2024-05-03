@@ -1,3 +1,5 @@
+import { twMerge } from 'tailwind-merge';
+
 interface ComponentLoaderInterface {
     defaultClassName?: string;
     className?: string;
@@ -13,7 +15,7 @@ const ComponentLoader = ({
     className
 }: ComponentLoaderInterface): JSX.Element => {
     return (
-        <div className={`${defaultClassName} ${className}`}>
+        <div className={twMerge(defaultClassName, className)}>
             <div role="status">
                 <svg
                     aria-hidden="true"

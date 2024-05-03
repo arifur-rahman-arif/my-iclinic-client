@@ -107,7 +107,7 @@ const RequestCallback = ({
     ]);
 
     return (
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()} className="eye-clinic-consultation-form">
             <Stepper
                 formHeading={formHeading}
                 stepperList={stepperList}

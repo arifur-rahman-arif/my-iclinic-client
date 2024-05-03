@@ -2,7 +2,7 @@ import { FontResizer } from '@/components/FontResizer';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import dynamic from 'next/dynamic';
-import Script from 'next/script';
+// import Script from 'next/script';
 import { ReactNode, useEffect, useState } from 'react';
 
 const CookieConsent = dynamic(() => import('@/components/CookieConsent/CookieConsent'));
@@ -39,11 +39,11 @@ const MainLayout = ({ children }: PropTypes): JSX.Element => {
 
     return (
         <div onMouseEnter={handleMouseEnter} onTouchStart={handleMouseEnter}>
-            <Script
-                dangerouslySetInnerHTML={{
-                    __html: `history.scrollRestoration = "manual"`
-                }}
-            />
+            {/* <Script */}
+            {/*     dangerouslySetInnerHTML={{ */}
+            {/*         __html: `history.scrollRestoration = "manual"` */}
+            {/*     }} */}
+            {/* /> */}
             {/* @ts-ignore */}
             <FreshChatScript />
             <FontResizer />

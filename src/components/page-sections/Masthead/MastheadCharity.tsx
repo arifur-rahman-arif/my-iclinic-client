@@ -50,7 +50,7 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                             type="anchor"
                             link="#our-mission"
                             text="Support our mission"
-                            className="border-[#00BFFF] bg-[#00BFFF] text-center hover:!border-[#00BFFF] hover:text-[#00BFFF] focus:!border-[#00BFFF]"
+                            className="border-[#0099FF] bg-[#0099FF] text-center hover:!border-[#00BFFF] hover:text-[#0099FF] focus:!border-[#00BFFF]"
                         />
                         <Button2
                             type="anchor"

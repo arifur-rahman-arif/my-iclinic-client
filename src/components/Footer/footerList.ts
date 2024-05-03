@@ -85,19 +85,19 @@ const footerList: FooterListInterface[] = [
         listLinks: [
             {
                 text: 'Entropia',
-                url: '/eyelid-surgery-london#eyelid-surgery-list'
+                url: '/eyelid-surgery-london#Medical-eyelid-surgery'
             },
             {
                 text: 'Blepharoplasty',
                 url: '/blepharitis-treatment'
             },
             {
-                text: 'Droopy Eyelid (Ptosis)',
-                url: '/eyelid-surgery-london#ptosis-surgery'
+                text: 'Eyelid Surgery',
+                url: '/eyelid-surgery-london'
             },
             {
                 text: 'Blepharospasm Botox',
-                url: '/eyelid-surgery-london#blepharospasm-botox'
+                url: '/eyelid-surgery-london#Blepharospasm-botox-injections'
             }
         ]
     }

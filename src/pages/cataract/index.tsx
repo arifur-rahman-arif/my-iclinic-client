@@ -36,7 +36,7 @@ const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
     loading: () => <ComponentLoader />

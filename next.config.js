@@ -1492,7 +1492,43 @@ const nextConfig = {
                 source: '/articles/the-best-laser-eye-surgery-in-london/best-laser-eye-surgery-london-uk',
                 destination: '/articles/the-best-laser-eye-surgery-in-london',
                 permanent: true
-            }
+            },
+            {
+                source: '/contact-us',
+                has: [{ type: 'query', key: 'fb-edit', value: '1' }],
+                destination: '/contact-us',
+                permanent: true
+            },
+            {
+                source: '/cataract',
+                has: [{ type: 'query', key: 'source', value: 'post_page---------------------------' }],
+                destination: '/cataract',
+                permanent: true
+            },
+            {
+                source: '/glaucoma-treatment',
+                has: [{ type: 'query', key: 'source', value: 'post_page---------------------------' }],
+                destination: '/glaucoma-treatment',
+                permanent: true
+            },
+            {
+                source: '/',
+                has: [{ type: 'query', key: 'page_id', value: '963' }],
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/',
+                has: [{ type: 'query', key: 'page_id', value: '886' }],
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/',
+                has: [{ type: 'query', key: 'page_id', value: '940' }],
+                destination: '/',
+                permanent: true
+            },
         ];
     }
     // typescript: {

@@ -20,7 +20,7 @@ const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
     loading: () => <ComponentLoader />
 });
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 
 const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
@@ -100,12 +100,16 @@ export default function FlashesFloaters({ data, seo, yoastJson }: FlashesFloater
                 descriptions={data?.section_1?.descriptions}
                 descriptionWrapperClass="[&_div:last-child]:mt-6"
                 sectionImage={{
-                    url: data?.section_1?.image || '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
+                    url:
+                        data?.section_1?.image ||
+                        '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
                     width: 390,
                     height: 390
                 }}
                 sectionImageDesktop={{
-                    url: data?.section_1?.image_large || '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
+                    url:
+                        data?.section_1?.image_large ||
+                        '/images/section-images/eye-flashes-eye-flashes-&-floaters-large.png-floaters-large.webp',
                     width: 644,
                     height: 559
                 }}

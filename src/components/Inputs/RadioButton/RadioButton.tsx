@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react';
 import styles from './RadioButton.module.scss';
+import { twMerge } from 'tailwind-merge';
 
 interface RadioButtonProps {
     label: string;
-    id: string;
+    id?: string;
     value: string | number;
-    name: string;
+    name?: string;
     checked: boolean;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     defaultClassName?: string;
@@ -59,7 +60,12 @@ export const RadioButton = ({
                     checked={checked}
                     onChange={onChange}
                 />
-                <span className={`checkbox ${rounded ? 'checkbox--rounded' : 'checkbox--flat'} ${checkboxClassName}`}>
+                <span
+                    className={`checkbox ${rounded ? 'checkbox--rounded' : 'checkbox--flat'} ${twMerge(
+                        'bg-transparent',
+                        checkboxClassName
+                    )}`}
+                >
                     <svg width="16" height="16" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.3334 1L5.00002 8.33333L1.66669 5"

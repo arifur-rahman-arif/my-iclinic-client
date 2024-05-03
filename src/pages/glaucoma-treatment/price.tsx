@@ -23,7 +23,7 @@ import Logo5 from '@/logos/cigma.png';
 import Logo6 from '@/logos/general-medical.png';
 
 const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader />
+    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
 });
 interface DataInterface extends PriceGlaucomaContentInterface, PageDataInterface<PriceGlaucomaContentInterface> {}
 

@@ -33,7 +33,7 @@ const ThankYou = (): JSX.Element => {
 
             <div className="mt-12 grid justify-items-center gap-6 md:mt-24">
                 <span className="font-mulishBold text-[1.4rem] leading-8 text-heading">
-                    Follow us for lates tips and offer{' '}
+                    Follow us for latest tips and offer{' '}
                 </span>
                 <div
                     className="

@@ -184,7 +184,9 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
         <span className="relative flex items-center justify-center gap-2">
             {menu.submenu ? (
                 <>
-                    {menu.slug === 'laser-eye-surgery' ? (
+                    {menu.slug === 'laser-eye-surgery' ||
+                    menu.slug === 'cataract' ||
+                    menu.slug === 'pricing-and-financing' ? (
                         <>
                             <Link
                                 href={menu.url}
