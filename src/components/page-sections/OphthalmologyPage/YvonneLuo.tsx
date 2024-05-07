@@ -36,7 +36,10 @@ const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
                         className="h-full object-cover object-[-30rem_center] md:rounded-br-primary md:rounded-tr-primary lg:object-center"
                     />
 
-                    <Awards className="absolute bottom-0 left-0 -translate-y-8 translate-x-8 lg:-translate-y-12 lg:translate-x-12 xl:grid-cols-2 xl:gap-24" />
+                    <Awards
+                        {...section3?.awardsSection}
+                        className="absolute bottom-0 left-0 -translate-y-8 translate-x-8 lg:-translate-y-12 lg:translate-x-12 xl:grid-cols-2 xl:gap-24"
+                    />
                 </div>
                 <TextColumn {...section3} />
             </Container>
@@ -46,6 +49,16 @@ const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
 
 interface AwardsProps {
     className?: string;
+    education?: {
+        title: string;
+        image1: string;
+        image2: string;
+    };
+    award?: {
+        heading: string;
+        number: string;
+        title: string;
+    };
 }
 
 /**
@@ -56,28 +69,40 @@ interface AwardsProps {
  * @returns {JSX.Element}
  * @constructor
  */
-const Awards = ({ className }: AwardsProps): JSX.Element => {
+const Awards = ({ className, education, award }: AwardsProps): JSX.Element => {
     return (
         <div className={twMerge('grid gap-12', className)}>
             <div className="grid grid-cols-[auto_auto] justify-start gap-x-10 gap-y-6">
                 <span className="col-span-2 font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">
-                    Member of
+                    {education?.title || 'Member of'}
                 </span>
                 <span className="col-span-2 h-[0.1rem] bg-white"></span>
-                <Image src="/images/logos/logo-euratina.png" alt="" width={128} height={128} />
-                <Image src="/images/logos/logo-royal-collage.png" alt="" width={128} height={128} />
+                <Image
+                    src={education?.image1 || '/images/logos/logo-euratina.png'}
+                    alt="Euretina"
+                    width={128}
+                    height={128}
+                />
+                <Image
+                    src={education?.image2 || '/images/logos/logo-royal-collage.png'}
+                    alt="Royal Collage"
+                    width={128}
+                    height={128}
+                />
             </div>
             <div className="grid content-start gap-6 justify-self-start">
                 <span className="col-span-2 font-latoBold text-[2rem] uppercase leading-[2.8rem] text-white">
-                    Member of
+                    {award?.heading || 'Member of'}
                 </span>
                 <span className="col-span-2 h-[0.1rem] bg-white"></span>
 
                 <div className="col-span-2 grid grid-cols-[auto_1fr] items-center gap-4">
                     <span className="grid h-[4.3rem] w-[4.3rem] place-items-center rounded-full bg-[#FFA500] font-latoBold text-[2rem] leading-[2.8rem] text-white">
-                        13
+                        {award?.number || '13'}
                     </span>
-                    <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">International Awards</span>
+                    <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">
+                        {award?.title || 'International Awards'}
+                    </span>
                 </div>
             </div>
         </div>
@@ -96,6 +121,19 @@ interface TextColumnProps {
     designation: string;
     descriptions: string[];
     subheading: string;
+    linkText?: string;
+    awardsSection: {
+        education: {
+            title: string;
+            image1: string;
+            image2: string;
+        };
+        award: {
+            heading: string;
+            number: string;
+            title: string;
+        };
+    };
 }
 
 /**
@@ -105,10 +143,17 @@ interface TextColumnProps {
  *
  * @returns {JSX.Element} The JSX element representing the text column.
  */
-const TextColumn = ({ heading, designation, descriptions, subheading }: Partial<TextColumnProps>): JSX.Element => {
+const TextColumn = ({
+    heading,
+    designation,
+    descriptions,
+    subheading,
+    linkText,
+    awardsSection
+}: Partial<TextColumnProps>): JSX.Element => {
     return (
         <div className="grid w-full content-start gap-12 bg-[#003E79] px-8 py-12 md:rounded-bl-primary md:rounded-tl-primary md:px-12 lg:px-20 xl:px-24">
-            <Awards className="md:hidden" />
+            <Awards className="md:hidden" {...awardsSection} />
 
             <div className="grid gap-2">
                 <h2 className="text-white">{heading || 'Yvonne Luo'}</h2>
@@ -128,8 +173,12 @@ const TextColumn = ({ heading, designation, descriptions, subheading }: Partial<
                 </strong>
             </div>
 
-            <LinkStyle url="/vitreoretinal-surgery" className="justify-self-start text-[1.8rem]">
-                Learn more about Yvonne
+            <LinkStyle
+                url="/vitreoretinal-surgery"
+                className="justify-self-start text-[1.8rem]"
+                title="Learn more about Yvonne"
+            >
+                {linkText || 'Learn more about Yvonne'}
             </LinkStyle>
 
             <BookConsultation buttonClassName="justify-self-start border-white focus:border-white">

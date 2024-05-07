@@ -125,16 +125,6 @@ const RightColumn = ({ section7 }: CtaSectionProps): JSX.Element => {
             </h5>
 
             <div className="mt-8 grid place-items-center gap-8">
-                {/* <BookConsultation
-                    buttonClassName=""
-                    modalElement={
-                        <>
-                            <iframe src="" width={600} height={700} className="w-full md:min-h-[70rem]"></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
-                ></BookConsultation> */}
-
                 <BookConsultation buttonClassName="bg-[#0099FF] border-[#0099FF]">
                     <Button2 type="button" text="Book a consultation" />
                 </BookConsultation>

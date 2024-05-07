@@ -8,6 +8,7 @@ interface LinkStyleInterface {
     excludeAnimation?: boolean;
     className?: string;
     onClick?: (e: MouseEvent) => void;
+    title?: string;
 }
 
 /**
@@ -16,7 +17,7 @@ interface LinkStyleInterface {
  * @param {LinkStyleInterface} { url = '#', text }
  * @returns {*}  {JSX.Element}
  */
-const LinkStyle = ({ url, children, excludeAnimation, className, onClick }: LinkStyleInterface): JSX.Element => {
+const LinkStyle = ({ url, children, excludeAnimation, className, onClick, title }: LinkStyleInterface): JSX.Element => {
     return (
         <LinkText
             href={url || '#'}
@@ -24,6 +25,7 @@ const LinkStyle = ({ url, children, excludeAnimation, className, onClick }: Link
             className={twMerge('font-mulishBold font-extrabold text-[#09F]', className)}
             excludeAnimation={excludeAnimation}
             onClick={onClick}
+            title={title}
         >
             {children}
         </LinkText>
