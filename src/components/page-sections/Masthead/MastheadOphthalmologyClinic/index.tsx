@@ -45,7 +45,7 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
                     <div className="flex items-center justify-start gap-4 md:mt-12">
                         <Image src="/images/section-images/0-percent-finance.webp" alt="" width={95} height={90} />
                         <span className="font-mulishBold text-[2rem] leading-[2.8rem] text-[#00BFFF]">
-                            Finance available
+                            {masthead?.financeText || 'Finance available'}
                         </span>
                     </div>
 

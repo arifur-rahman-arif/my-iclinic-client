@@ -4,6 +4,7 @@ export default interface RetinaTreatmentsContents {
     masthead: {
         heading: string;
         subheading: string;
+        financeText?: string;
         image: ImageType3,
     };
     // My-iClinic ophthalmologists are medical doctors
@@ -31,6 +32,19 @@ export default interface RetinaTreatmentsContents {
         designation: string;
         descriptions: string[];
         subheading: string;
+        linkText: string;
+        awardsSection: {
+            education: {
+                title: string;
+                image1: string;
+                image2: string;
+            }
+            award: {
+                heading: string;
+                number: string
+                title: string;
+            }
+        }
         image: string
         largeImage: string;
     };
