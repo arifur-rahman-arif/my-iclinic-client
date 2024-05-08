@@ -11,6 +11,7 @@ import InTheMedia from '@/page-sections/VitreoretinalSurgery/InTheMedia';
 import Specialities from '@/page-sections/VitreoretinalSurgery/Specialities';
 import { PageDataInterface, VitreoretinalSurgeryContent, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
+import { stripInitialTags } from '@/utils/miscellaneous';
 
 interface DataInterface extends VitreoretinalSurgeryContent, PageDataInterface<VitreoretinalSurgeryContent> {}
 
@@ -90,14 +91,16 @@ export async function getStaticProps(): Promise<any> {
                     },
                     section1: {
                         ...data?.acf?.section1,
-                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section1?.descriptions)
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section1?.descriptions)?.map((v) =>
+                            stripInitialTags(v)
+                        )
                     },
                     section2: {
                         ...data?.acf?.section2,
                         specialties: data.acf.section2?.specialties.map((item) => {
                             return {
                                 ...item,
-                                items: convertArrayOfObjectsToStrings(item.items)
+                                items: convertArrayOfObjectsToStrings(item.items)?.map((v) => stripInitialTags(v))
                             };
                         })
                     },

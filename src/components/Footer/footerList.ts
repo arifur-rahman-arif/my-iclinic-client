@@ -52,11 +52,11 @@ const footerList: FooterListInterface[] = [
             {
                 text: 'Paediatric Eye Care',
                 url: '/paediatric-eye-care'
+            },
+            {
+                text: 'Vitreoretinal Surgery',
+                url: '/vitreoretinal-surgery'
             }
-            // {
-            //     text: 'Glaucoma Care',
-            //     url: '/glaucoma-treatment'
-            // }
         ]
     },
     {
@@ -96,7 +96,7 @@ const footerList: FooterListInterface[] = [
                 url: '/eyelid-surgery-london'
             },
             {
-                text: 'Blepharospasm Botox',
+                text: 'Blepharospasm Correction',
                 url: '/eyelid-surgery-london#Blepharospasm-botox-injections'
             }
         ]

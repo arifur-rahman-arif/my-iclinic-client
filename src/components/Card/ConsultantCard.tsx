@@ -49,7 +49,7 @@ const ConsultantCard = ({
                         alt={name}
                         width={370}
                         height={245}
-                        quality={100}
+                        unoptimized
                         className="w-full rounded-tl-radius2 rounded-tr-radius2 transition-all duration-500 group-hover/card:scale-110"
                     />
                 </Link>
@@ -60,7 +60,7 @@ const ConsultantCard = ({
                         alt={name}
                         width={370}
                         height={245}
-                        quality={100}
+                        unoptimized
                         className={twMerge(
                             'w-full overflow-hidden rounded-tl-radius2 rounded-tr-radius2 transition-all duration-500 group-hover/card:scale-110',
                             imageClass

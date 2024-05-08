@@ -327,7 +327,7 @@ export const ConsultantItem = ({
                     alt={name}
                     width={imgWidth || 112}
                     height={imgHeight || 112}
-                    unoptimized={true}
+                    quality={100}
                     className={twMerge(
                         'h-[11.2rem] w-[11.2rem] rounded-full object-cover',
                         `${imgClassName} ${imageClass}`
