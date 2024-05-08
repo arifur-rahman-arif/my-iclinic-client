@@ -4,11 +4,11 @@ import LazyComponent from '@/components/LazyComponent';
 import { Section } from '@/components/Section';
 import SectionHeading from '@/page-sections/SectionHeading';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
-import { stripInitialTags } from '@/utils/miscellaneous';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import VitreoretinalSurgeryContent from 'src/types/pages/vitreoretinal-surgery';
+import SectionTextColumn from '@/components/SectionTextColumn';
 
 const VideoPlayer = dynamic(() => import('@/page-sections/SectionParts/VideoPlayer/VideoPlayer'), {
     loading: () => <ComponentLoader />
@@ -45,33 +45,15 @@ const TextColumn = ({ section1 }: GettingToKnowProps): JSX.Element => {
         <div className="grid content-start gap-12 md:col-start-1 md:row-start-1">
             <SectionHeading heading={section1?.heading} />
 
-            <div className="ml-[2.3rem] grid max-w-[50rem] gap-6">
-                {section1?.descriptions
-                    ? section1.descriptions.map((item, key) => (
-                          <p key={key} dangerouslySetInnerHTML={{ __html: stripInitialTags(item) }}></p>
-                      ))
-                    : null}
-            </div>
+            <SectionTextColumn
+                descriptions={section1?.descriptions}
+                className="ml-[2.3rem] grid-cols-1"
+                descriptionContainerClassName="col-start-1"
+            />
 
             <div className="ml-[2.3rem] flex flex-wrap items-center justify-center gap-8 sm:justify-start sm:gap-12">
-                {/* <BookConsultation
-                    modalElement={
-                        <>
-                            <iframe
-                                src=""
-                                width={600}
-                                height={700}
-                                className="w-full md:min-h-[70rem]"
-                            ></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
-                    buttonClassName={}
-                >
-                </BookConsultation> */}
-
                 <Link
-                    className="rounded-[0.5rem] border border-solid border-white bg-[#003E79] py-5 px-10 font-mulishBold text-white transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]"
+                    className="rounded-[0.5rem] border border-solid border-white bg-[#003E79] px-10 py-5 font-mulishBold text-white transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]"
                     href="https://connect.pabau.com/bookings.php?compid=11842"
                     title="Book a consultation"
                     target="_blank"
@@ -120,7 +102,7 @@ const ImageColumn = (): JSX.Element => {
 
             <div className="flex items-center justify-start gap-12">
                 <Image src="/images/logos/euretina-logo.png" alt="" width={104} height={87} unoptimized />
-                <Image src="/images/logos/the-royal-collage.webp" alt="" width={115} height={107} unoptimized />
+                <Image src="/images/logos/the-royal-collage.png" alt="" width={115} height={107} unoptimized />
             </div>
 
             <div className="mt-12 grid gap-2">

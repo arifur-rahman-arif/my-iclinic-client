@@ -27,7 +27,7 @@ const Specialities = ({ section2 }: SpecialitiesProps): JSX.Element => {
         if (i === 1) {
             icon = 'images/icons/icon-eye-with-tears.svg';
             className =
-                'xl:pb-32 bg-[#FFD400] [&_.title-class]:text-heading [&_ul_li_span]:text-[#404A4D] [&_.bullet]:!bg-[#404A4D]';
+                'xl:pb-32 bg-[#FFD400] [&_.title-class]:text-heading [&_ul_li_span]:text-[#404A4D]  [&_.bullet]:!bg-[#404A4D]';
         }
 
         if (i === 2) {
@@ -93,7 +93,10 @@ const SpecialityItem = ({ title, items, icon, className }: SpecialityItemProps):
                     ? items.map((item, key) => (
                           <li key={key} className="grid grid-cols-[auto_1fr] content-start items-start gap-4">
                               <span className="bullet mt-4 h-[0.7rem] w-[0.7rem] rounded-full bg-[#E1F1FF]"></span>
-                              <span className="font-mulishRegular text-[#E1F1FF]">{item}</span>
+                              <span
+                                  className="font-mulishRegular text-[#E1F1FF] [&_a]:text-[#0099FF] [&_a]:decoration-[#0099FF] [&_a]:underline-offset-4 [&_a]:hover:underline"
+                                  dangerouslySetInnerHTML={{ __html: item }}
+                              ></span>
                           </li>
                       ))
                     : null}
