@@ -1,11 +1,19 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_15957_159)">
-<path d="M7.11355 1.58496C6.03424 1.73847 5.01116 2.16205 4.1392 2.8164C3.26725 3.47075 2.57464 4.33469 2.12562 5.3281C1.6766 6.32151 1.4857 7.41222 1.57063 8.49909C1.65556 9.58595 2.01356 10.6338 2.61144 11.5454L1.52576 14.4737L5.16131 13.8164C6.09615 14.2742 7.12773 14.4995 8.16832 14.4731C9.20892 14.4467 10.2278 14.1695 11.1382 13.6649C12.0487 13.1603 12.8238 12.4432 13.3977 11.5748C13.9716 10.7064 14.3272 9.71217 14.4345 8.67678" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M11.9841 6.50511C13.3594 6.50511 14.4742 5.39025 14.4742 4.01501C14.4742 2.63976 13.3594 1.5249 11.9841 1.5249C10.6089 1.5249 9.49402 2.63976 9.49402 4.01501C9.49402 5.39025 10.6089 6.50511 11.9841 6.50511Z" stroke="#4A759F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="chat-bubble-typing-oval--messages-message-bubble-typing-chat">
+<g id="chat-bubble-typing-oval--messages-message-bubble-typing-chat_2">
+<g id="Group 4482">
+<path id="Vector" d="M11.5271 12.8843C11.3016 12.8843 11.1189 12.7016 11.1189 12.4762C11.1189 12.2507 11.3016 12.068 11.5271 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M11.5271 12.8843C11.7525 12.8843 11.9353 12.7016 11.9353 12.4762C11.9353 12.2507 11.7525 12.068 11.5271 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<defs>
-<clipPath id="clip0_15957_159">
-<rect width="16" height="16" fill="white"/>
-</clipPath>
-</defs>
+<g id="Group 4493">
+<path id="Vector_3" d="M7.03731 12.8843C6.81189 12.8843 6.62915 12.7016 6.62915 12.4762C6.62915 12.2507 6.81189 12.068 7.03731 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M7.03735 12.8843C7.26277 12.8843 7.44552 12.7016 7.44552 12.4762C7.44552 12.2507 7.26277 12.068 7.03735 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="Group 4494">
+<path id="Vector_5" d="M16.0168 12.8843C15.7914 12.8843 15.6086 12.7016 15.6086 12.4762C15.6086 12.2507 15.7914 12.068 16.0168 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M16.0168 12.8843C16.2423 12.8843 16.4251 12.7016 16.4251 12.4762C16.4251 12.2507 16.2423 12.068 16.0168 12.068" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path id="Vector_7" d="M11.9971 2C10.1887 2.00057 8.41441 2.49175 6.86309 3.42125C5.31178 4.35075 4.04155 5.68374 3.18771 7.27826C2.33386 8.87277 1.92838 10.6691 2.01444 12.4759C2.1005 14.2827 2.67489 16.0323 3.67643 17.5384L2 22L7.61373 20.9846C8.9655 21.6453 10.4489 21.9924 11.9534 21.9998C13.458 22.0073 14.9448 21.675 16.303 21.0276C17.6612 20.3803 18.856 19.4346 19.7979 18.2611C20.7399 17.0877 21.4051 15.7167 21.7435 14.2503C22.0821 12.7839 22.0855 11.26 21.7533 9.79218C21.4211 8.32433 20.7621 6.95042 19.8252 5.77286C18.8883 4.59528 17.6977 3.64445 16.3423 2.99119C14.9869 2.33793 13.5016 1.99911 11.9971 2Z" stroke="#4A759F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
 </svg>
