@@ -1,6 +1,7 @@
 import IconMapOutline from '/public/images/icons/icon-ai-navigation.svg';
 import IconChat from '@/icons/icon-bubble-typing-chat.svg';
 import IconTelephoneOutline from '@/icons/icon-telephone-down.svg';
+import IconWhatsApp from '@/icons/icon-whatsapp-blue.svg';
 import { useOnclickOutside } from '@/hooks';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 
@@ -52,36 +53,13 @@ const BottomMenu = (): JSX.Element => {
                         href="https://api.whatsapp.com/send/?phone=447850395332&text&type=phone_number&app_absent=0"
                         title="Live chat"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                            className="h-8 w-8 sm:h-10 sm:w-10"
-                        >
-                            <path
-                                d="M9.16332 1.66663C5.07845 1.6679 1.66565 5.0851 1.66566 9.1666C1.66567 10.6381 2.10362 12.0916 2.92102 13.3205L1.66333 16.6666L5.87486 15.905C6.90365 16.4078 8.03335 16.6598 9.16332 16.6605C13.2517 16.6633 16.6677 13.2506 16.6677 9.1666C16.6677 5.08724 13.2505 1.66421 9.16332 1.66663Z"
-                                stroke="#4A759F"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                            <path
-                                d="M9.57658 12.47C10.5913 13.1214 11.6492 12.647 12.386 12.0975C12.8949 11.7179 12.878 10.9858 12.4433 10.5231L11.5862 9.61066C11.2611 9.93578 10.6275 10.0967 10.1873 9.96272C9.24112 9.67475 8.844 9.1817 8.52217 8.68038C8.15256 8.10458 8.56996 7.24464 8.89508 6.91953L7.93974 6.04737C7.53698 5.67969 6.92523 5.61765 6.57382 6.03468C5.87852 6.85977 5.44611 8.11243 5.95821 8.91005C6.87753 10.3419 8.14465 11.5508 9.57658 12.47Z"
-                                stroke="#4A759F"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
+                        <Image src={IconWhatsApp} alt="w-10 h-10" />
                     </Link>
-                    {/* <span className="font-mulishBold text-[1.4rem] leading-[1.4rem] text-[#293C4E]">Chat</span> */}
                 </li>
 
                 <li className="grid place-items-center">
                     <button title="Live chat" onClick={openFreshdeskChat}>
-                        <Image src={IconChat} alt="" className="h-8 w-8 sm:h-10 sm:w-10" />
+                        <Image src={IconChat} alt="" />
                     </button>
                 </li>
 
@@ -103,7 +81,7 @@ const BottomMenu = (): JSX.Element => {
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            className="h-8 w-8 sm:h-10 sm:w-10"
+                            className="h-[2.4rem] w-[2.4rem]"
                         >
                             <path
                                 d="M3.39588 4.16479C2.98785 4.16479 2.59654 4.32689 2.30803 4.6154C2.01951 4.90392 1.85742 5.29523 1.85742 5.70326V20.3186C1.85742 20.7266 2.01951 21.118 2.30803 21.4065C2.59654 21.6949 2.98785 21.8571 3.39588 21.8571H20.319C20.727 21.8571 21.1183 21.6949 21.4068 21.4065C21.6953 21.118 21.8574 20.7266 21.8574 20.3186V5.70326C21.8574 5.29523 21.6953 4.90392 21.4068 4.6154C21.1183 4.32689 20.727 4.16479 20.319 4.16479H17.242"
@@ -205,7 +183,7 @@ const BottomMenu = (): JSX.Element => {
                             width={30}
                             height={30}
                             quality={100}
-                            className="h-8 w-8 sm:h-10 sm:w-10"
+                            className="h-[2.4rem] w-[2.4rem]"
                         />
                     </Link>
                 </li>
