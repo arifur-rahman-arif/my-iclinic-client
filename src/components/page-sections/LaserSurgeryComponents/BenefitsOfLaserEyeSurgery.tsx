@@ -56,8 +56,8 @@ const BenefitsOfLaserEyeSurgery = ({ section11 }: Props): JSX.Element => {
                         ? section11.list.map((item, index) => (
                               <div
                                   key={index}
-                                  className={`rounded-[1rem] px-4 py-6  transition-all duration-500 ${
-                                      openIndex === index && 'bg-[#94CAFF]'
+                                  className={`rounded-[1rem] px-4 pb-6 transition-all duration-500 ${
+                                      openIndex === index && 'mb-6 bg-[#94CAFF] !py-10'
                                   }`}
                               >
                                   <div className="cursor-pointer" onClick={() => handleToggle(index)}>

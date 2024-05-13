@@ -28,7 +28,7 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 pathClassName="stroke-white"
             />
 
-            <Container className="grid content-start gap-12 pb-24 pt-12 md:grid-cols-2 md:pt-24 xl:pb-40">
+            <Container className="grid content-start gap-12 pb-12 pt-12 md:grid-cols-2 md:pb-0">
                 <div className="grid content-start gap-10 md:justify-self-start md:bg-transparent">
                     <Reviews className="!mt-0" />
 
@@ -69,18 +69,8 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 </div>
 
                 <RequestCallback
-                    className="!w-full max-w-[50rem] bg-white"
+                    className="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24"
                     buttonText="Request a call back"
-                    formHeading={
-                        <div className="grid gap-1">
-                            <span className="text-center font-latoBold text-[3rem] uppercase leading-[3.6rem] text-[#FFA500]">
-                                Free
-                            </span>
-                            <span className="text-center font-mulishBold text-[1.8rem] uppercase leading-[2.8rem] text-heading">
-                                Consultation
-                            </span>
-                        </div>
-                    }
                 />
             </Container>
 

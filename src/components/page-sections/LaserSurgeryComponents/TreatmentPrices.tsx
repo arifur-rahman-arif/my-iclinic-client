@@ -50,11 +50,11 @@ const Card = ({ title, description, price }: CardProps) => {
             <h5 className="font-latoBold text-[2rem] normal-case leading-[2.8rem] text-heading">{title}</h5>
             <p dangerouslySetInnerHTML={{ __html: description }} className="-mt-10"></p>
             <div className="flex items-center justify-between gap-12 rounded-radius2 bg-[#E1F1FF] p-6">
-                <span className="font-latoBold text-[2rem] leading-[2.4rem]">From £{price}</span>
+                <span className="font-latoBold text-[1.8rem] leading-[2.8rem]">From £{price}</span>
                 <span className="font-mulishBold text-[1.4rem] uppercase leading-8 text-heading">Per-eye</span>
             </div>
             <div className="grid w-full items-center gap-8">
-                <BookConsultation buttonClassName="sitemap-link text-center !rounded-radius2 w-full">
+                <BookConsultation buttonClassName="sitemap-link text-center !rounded-[0.5rem] w-full">
                     <Button2 type="button" text="Get a quote" />
                 </BookConsultation>
             </div>

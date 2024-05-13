@@ -241,10 +241,10 @@ const Card = ({
 
     return (
         <div
-            className={`relative grid max-w-[40.3rem] grid-cols-[1fr_auto] items-start gap-y-12 gap-x-3 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] p-8 shadow-sm transition-all duration-500 hover:shadow-shadow1 xs:p-12`}
+            className={`relative grid max-w-[40.3rem] grid-cols-[1fr_auto] items-start gap-x-3 gap-y-12 overflow-hidden rounded-radius2 border border-solid border-[#EAECF0] p-8 shadow-sm transition-all duration-500 hover:shadow-shadow1 xs:p-12`}
         >
             <div className="grid">
-                <h3 className="font-latoBold text-[2.4rem] leading-[3.2rem] text-heading">{title}</h3>
+                <h3 className="font-latoBold text-[2rem] leading-[2.8rem] text-heading">{title}</h3>
                 <span className="md:font-mulishBold">{subtitle}</span>
             </div>
 
