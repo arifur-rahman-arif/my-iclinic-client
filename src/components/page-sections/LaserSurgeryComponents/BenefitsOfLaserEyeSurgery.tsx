@@ -51,7 +51,7 @@ const BenefitsOfLaserEyeSurgery = ({ section11 }: Props): JSX.Element => {
                     </h2>
                 </div>
 
-                <div className="grid gap-6">
+                <div className="grid">
                     {section11?.list?.length
                         ? section11.list.map((item, index) => (
                               <div

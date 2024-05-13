@@ -92,7 +92,8 @@ const PersonalInfo = ({
         router.pathname === '/relex-smile-london' ||
         router.pathname === '/presbyond-london' ||
         router.pathname === '/lasik-london' ||
-        router.pathname === '/lasek-prk'
+        router.pathname === '/lasek-prk' ||
+        router.pathname === '/laser-eye-surgery'
     ) {
         defaultReason = 'laser-eye-surgery';
     }
@@ -405,13 +406,13 @@ const PersonalInfo = ({
                 </p>
             </div>
 
-            <span className="-mb-4 mt-6 justify-self-end font-mulishBold text-[1.4rem] leading-8">
+            <span className="-mb-4 mt-6 justify-self-start font-mulishBold text-[1.4rem] leading-8">
                 15-minute free consultation
             </span>
             <Button2
                 type="button"
                 text={buttonText || 'Book my consultation'}
-                className={twMerge('next-button group/next-button gap-2 justify-self-end', buttonClassName)}
+                className={twMerge('next-button group/next-button gap-2 justify-self-start', buttonClassName)}
                 mockDisabled={!(name && phone && email)}
                 loading={isMutating}
                 loadingIconPosition="right"
