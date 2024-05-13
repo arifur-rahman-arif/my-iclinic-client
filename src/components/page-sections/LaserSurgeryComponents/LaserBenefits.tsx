@@ -4,7 +4,6 @@ import { LaserEyeSurgeryContentInterface } from '@/types';
 
 interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section1'> {}
 
-
 /**
  * Component to display the benefits of laser eye surgery.
  *
@@ -12,19 +11,19 @@ interface Props extends Pick<LaserEyeSurgeryContentInterface, 'section1'> {}
  * @returns {JSX.Element} The rendered component.
  */
 const LaserBenefits = ({ section1 }: Props): JSX.Element => {
-  return (
-	<Section id="laser-benefits">
-		<Container className='grid gap-12 md:grid-cols-2'>
-			{section1.card1 && <Card {...section1.card1} />}
-			{section1.card2 && <Card {...section1.card2} />}
-		</Container>
-	</Section>
-  );
+    return (
+        <Section id="laser-benefits">
+            <Container className="grid gap-6 md:grid-cols-2">
+                {section1.card1 && <Card {...section1.card1} />}
+                {section1.card2 && <Card {...section1.card2} />}
+            </Container>
+        </Section>
+    );
 };
 
 interface CardProps {
-	title: string;
-	description: string;
+    title: string;
+    description: string;
 }
 
 /**
@@ -34,13 +33,17 @@ interface CardProps {
  * @returns {JSX.Element} The rendered component.
  */
 const Card = ({ title, description }: CardProps) => {
-  return (
-	<div className='border border-[#EAECF0] border-solid shadow-md p-12 lg:p-24 rounded-radius2 grid gap-12 content-start'>
-		<h2 className='normal-case'>{title}</h2>
-		<p dangerouslySetInnerHTML={{ __html: description }}></p>
-	</div>
-  );
+    return (
+        <div
+            className="grid content-start gap-12 rounded-radius2 border border-[#EAECF0] bg-brandLight p-12 lg:p-24"
+            style={{
+                boxShadow: '0px 1px 2px 0px rgba(0, 21, 41, 0.04), 0px 1px 3px 0px rgba(0, 21, 41, 0.06)'
+            }}
+        >
+            <h2 className="normal-case">{title}</h2>
+            <p dangerouslySetInnerHTML={{ __html: description }}></p>
+        </div>
+    );
 };
-
 
 export default LaserBenefits;

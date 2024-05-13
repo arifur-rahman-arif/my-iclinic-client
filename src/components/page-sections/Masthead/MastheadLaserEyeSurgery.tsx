@@ -28,8 +28,8 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                 pathClassName="stroke-white"
             />
 
-            <Container className="grid gap-12 pb-24 pt-12 md:grid-cols-2 md:pt-24 xl:pb-40">
-                <div className="grid gap-10 md:justify-self-start md:bg-transparent">
+            <Container className="grid content-start gap-12 pb-24 pt-12 md:grid-cols-2 md:pt-24 xl:pb-40">
+                <div className="grid content-start gap-10 md:justify-self-start md:bg-transparent">
                     <Reviews className="!mt-0" />
 
                     <h1 className="max-w-[43rem] font-latoExtraBold text-[3.6rem] uppercase leading-[4rem] text-white md:text-[4.8rem] md:leading-[4.8rem]">
@@ -70,7 +70,6 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
 
                 <RequestCallback
                     className="!w-full max-w-[50rem] bg-white"
-                    buttonClassName="justify-self-center"
                     buttonText="Request a call back"
                     formHeading={
                         <div className="grid gap-1">
