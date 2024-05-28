@@ -30,6 +30,10 @@ const nextConfig = {
                 hostname: 'myiclinicn.sg-host.com'
             },
             {
+                protocol: 'http',
+                hostname: 'myiclinicn.sg-host.com'
+            },
+            {
                 protocol: 'https',
                 hostname: 'my-iclinic.co.uk'
             },

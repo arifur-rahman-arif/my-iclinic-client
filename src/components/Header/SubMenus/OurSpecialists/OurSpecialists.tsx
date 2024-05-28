@@ -354,6 +354,7 @@ export interface SoloLinkProps {
         url: string;
     }>;
     router: NextRouter;
+    linkClass?: string;
 }
 
 /**
@@ -364,14 +365,14 @@ export interface SoloLinkProps {
  * @returns {JSX.Element}
  * @constructor
  */
-export const SoloLink = ({ soloLinks, router }: SoloLinkProps): JSX.Element => {
+export const SoloLink = ({ soloLinks, router, linkClass }: SoloLinkProps): JSX.Element => {
     return (
         <div className="grid px-10 pt-8">
             {soloLinks.map((item, key) => (
                 <Link
                     key={key}
                     href={item.url}
-                    className={`submenu-link group/submenu-link relative cursor-pointer py-4`}
+                    className={twMerge('submenu-link group/submenu-link relative cursor-pointer py-4', linkClass)}
                     onClick={() => {
                         const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
 

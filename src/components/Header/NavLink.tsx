@@ -58,6 +58,18 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                             router={router}
                             soloLinks={[
                                 {
+                                    name: 'Glaucoma Care clinic',
+                                    url: '/glaucoma-treatment'
+                                },
+                                {
+                                    name: 'Eyelid Surgery',
+                                    url: '/eyelid-surgery-london'
+                                },
+                                {
+                                    name: 'Macular degeneration',
+                                    url: '/macular-degeneration'
+                                },
+                                {
                                     name: 'Retina treatments',
                                     url: '/retina-treatments'
                                 }

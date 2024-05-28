@@ -75,6 +75,18 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                         setOpenMobileMenu={setOpenMobileMenu}
                                         soloLinks={[
                                             {
+                                                name: 'Glaucoma Care clinic',
+                                                url: '/glaucoma-treatment'
+                                            },
+                                            {
+                                                name: 'Eyelid Surgery',
+                                                url: '/eyelid-surgery-london'
+                                            },
+                                            {
+                                                name: 'Macular degeneration',
+                                                url: '/macular-degeneration'
+                                            },
+                                            {
                                                 name: 'Retina treatments',
                                                 url: '/retina-treatments'
                                             }
@@ -273,8 +285,7 @@ const ParentMenuItem = ({ menu, router, setOpenMobileMenu, appCtx, index }: Pare
                     {menu.name}
 
                     {isMenuActive && (
-                        <span
-                            className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
+                        <span className="absolute left-0 top-full h-1 w-full translate-y-4 rounded-full bg-[#09F]"></span>
                     )}
                 </Link>
             )}

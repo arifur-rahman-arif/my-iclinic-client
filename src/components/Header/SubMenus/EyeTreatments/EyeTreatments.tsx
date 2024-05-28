@@ -61,15 +61,6 @@ const EyeTreatments = ({
             },
             {
                 name: "Children's Eyes"
-            },
-            {
-                name: 'Glaucoma care'
-            },
-            {
-                name: 'Eyelid surgery'
-            },
-            {
-                name: 'Macular diseases & treatments'
             }
         ]
     );
@@ -152,36 +143,6 @@ const EyeTreatments = ({
                         url: '/paediatric-eye-care',
                         slug: 'paediatric-eye-care',
                         metaDescription: 'Little Eyes, Big Care'
-                    }
-                ]
-            },
-            {
-                menus: [
-                    {
-                        name: 'Glaucoma Care clinic',
-                        url: '/glaucoma-treatment',
-                        slug: 'glaucoma-treatment',
-                        metaDescription: 'Glaucoma: Watch, Protect, Prevail'
-                    }
-                ]
-            },
-            {
-                menus: [
-                    {
-                        name: 'Eyelid Surgery (cosmetic & medical treatments)',
-                        url: '/eyelid-surgery-london',
-                        slug: 'eyelid-surgery-london',
-                        metaDescription: 'Lifted Confidence, Youthful Look'
-                    }
-                ]
-            },
-            {
-                menus: [
-                    {
-                        name: 'Macular degeneration',
-                        url: '/macular-degeneration',
-                        slug: 'macular-degeneration',
-                        metaDescription: 'Defy Degeneration, Protect Vision'
                     }
                 ]
             }
@@ -293,7 +254,9 @@ const EyeTreatments = ({
                         </div>
                     ))}
 
-                    {soloLinks && soloLinks?.length && <SoloLink soloLinks={soloLinks} router={router} />}
+                    {soloLinks && soloLinks?.length && (
+                        <SoloLink soloLinks={soloLinks} router={router} linkClass="py-8" />
+                    )}
                 </div>
 
                 <div className={`${styles.styles} grid grid-rows-[1fr_auto]`}>
