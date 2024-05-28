@@ -94,7 +94,7 @@ const TextColumn = ({ section1 }: GettingToKnowProps): JSX.Element => {
  */
 const ImageColumn = (): JSX.Element => {
     return (
-        <div className="grid content-center gap-12 rounded-[1rem] px-12 py-16 shadow-shadow1 sm:px-24 xl:px-40">
+        <div className="grid content-center gap-12 rounded-[1rem] border border-solid border-[#EAECF0] px-12 py-16 sm:px-24 xl:px-40">
             <div className="grid gap-2">
                 <span className="font-latoBold text-[2rem] uppercase leading-[2.8rem] text-heading">Member of</span>
                 <span className="h-[0.1rem] w-full bg-heading"></span>

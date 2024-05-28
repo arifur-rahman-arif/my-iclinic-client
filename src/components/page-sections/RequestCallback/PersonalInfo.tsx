@@ -407,7 +407,10 @@ const PersonalInfo = ({
             </div>
 
             <span className="-mb-4 mt-6 justify-self-start font-mulishBold text-[1.4rem] leading-8">
-                15-minute free consultation
+                15-min free consultation{' '}
+                <span className="font-mulishBold text-[1.4rem] uppercase leading-8 text-[#FF7F00]">
+                    (Laser eye surgery ONLY)
+                </span>
             </span>
             <Button2
                 type="button"

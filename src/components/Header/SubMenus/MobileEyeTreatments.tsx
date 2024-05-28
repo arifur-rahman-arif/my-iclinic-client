@@ -124,39 +124,6 @@ const MobileEyeTreatments = ({
                         metaDescription: 'Little Eyes, Big Care'
                     }
                 ]
-            },
-            {
-                name: 'Glaucoma care',
-                menus: [
-                    {
-                        name: 'Glaucoma Care clinic',
-                        url: '/glaucoma-treatment',
-                        slug: 'glaucoma-treatment',
-                        metaDescription: 'Glaucoma: Watch, Protect, Prevail'
-                    }
-                ]
-            },
-            {
-                name: 'Eyelid surgery',
-                menus: [
-                    {
-                        name: 'Eyelid Surgery (cosmetic & medical treatments)',
-                        url: '/eyelid-surgery-london',
-                        slug: 'eyelid-surgery-london',
-                        metaDescription: 'Lifted Confidence, Youthful Look'
-                    }
-                ]
-            },
-            {
-                name: 'Macular diseases & treatments',
-                menus: [
-                    {
-                        name: 'Macular degeneration',
-                        url: '/macular-degeneration',
-                        slug: 'macular-degeneration',
-                        metaDescription: 'Defy Degeneration, Protect Vision'
-                    }
-                ]
             }
         ]
     );
@@ -189,7 +156,7 @@ const MobileEyeTreatments = ({
     return (
         <div className="grid">
             {submenus.map((menu, key) => (
-                <div key={key} className="relative cursor-pointer py-6 px-6">
+                <div key={key} className="relative cursor-pointer px-6 py-6">
                     <div
                         className="relative z-[2] flex items-center justify-start gap-4  transition-all duration-500"
                         onClick={() => {
@@ -233,7 +200,7 @@ const MobileEyeTreatments = ({
                 <Link
                     href={item.url}
                     key={key}
-                    className="relative cursor-pointer py-6 px-6"
+                    className="relative cursor-pointer px-6 py-6"
                     onClick={() => {
                         setOpenMobileMenu && setOpenMobileMenu(false);
                     }}
