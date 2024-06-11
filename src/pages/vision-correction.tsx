@@ -154,7 +154,7 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
 export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<LaserEyeSurgeryContentInterface> = await getPageData({
-            slug: 'vision-correction'
+            slug: 'laser-eye-surgery'
         });
 
         const treatments = await getTreatments();
