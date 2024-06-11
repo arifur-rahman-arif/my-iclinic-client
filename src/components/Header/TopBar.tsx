@@ -82,6 +82,16 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                     </div>
 
                     <Link
+                        href="/vision-correction"
+                        title="Vision Correction"
+                        className={`relative grid h-full cursor-pointer place-items-center px-6 font-mulishBold text-[1.6rem] leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
+                            router.pathname === '/vision-correction' ? 'text-[#9B9FA1]' : 'text-white'
+                        }`}
+                    >
+                        Vision Correction
+                    </Link>
+
+                    <Link
                         href="/articles"
                         title="Articles"
                         className={`relative grid h-full cursor-pointer place-items-center px-6 font-mulishBold text-[1.6rem] leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${

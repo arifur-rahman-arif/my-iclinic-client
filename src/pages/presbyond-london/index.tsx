@@ -230,7 +230,7 @@ export default function Presbyond({ seo, yoastJson, data, filteredTreatments }: 
                     ]
                 }
                 videoUrl={data?.section_2?.videoUrl || '/videos/presbyond.mp4'}
-                videoPoster={data?.section_2?.videoPoster || 'IEVaY-Rj4RA'}
+                localPoster={data?.section_2?.videoPoster}
             />
             {/* SECTION 3 */}
             <LazyComponent>

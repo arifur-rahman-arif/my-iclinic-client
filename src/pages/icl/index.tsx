@@ -4,7 +4,6 @@ import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
 import { iclSliders } from '@/components/page-sections/FeaturedPatient';
-import { iclListCataract } from '@/components/Slider/CardSlider/normal-card-slide/normalSlideList';
 import { getPageData, getTreatments } from '@/lib';
 import { TreatmentInterface } from '@/page-sections/FinanceCalculator/Context';
 import ContactComponent from '@/page-sections/IclComponents/ContactComponent';
@@ -37,10 +36,9 @@ const CallbackSection = dynamic(() => import('@/components/page-sections/Request
 const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
     loading: () => <ComponentLoader />
 });
-const NormalSlideSection = dynamic(() => import('@/components/page-sections/NormalSlide/NormalSlideSection'), {
+const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
     loading: () => <ComponentLoader />
 });
-
 const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
     loading: () => <ComponentLoader />
 });
@@ -67,18 +65,6 @@ interface IclProps {
 export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): JSX.Element {
     const heading = data?.masthead_heading || 'ICL Surgery in London';
     const subheading = data?.masthead_subheading || 'Implantable Contact Lenses';
-
-    const reviewSliderData: any =
-        Array.isArray(data?.reviewSlider) && data.reviewSlider.length > 0
-            ? data.reviewSlider.map((service) => {
-                  return {
-                      ...service,
-                      description: service?.description,
-                      name: service?.name,
-                      title: service?.title
-                  };
-              })
-            : null;
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
@@ -327,8 +313,9 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                 />
             </LazyComponent>
 
+
             <LazyComponent>
-                <NormalSlideSection sliderList={reviewSliderData ? reviewSliderData : iclListCataract} />
+                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
 
             <LazyComponent>
@@ -498,13 +485,6 @@ export async function getStaticProps() {
                             stripInitialTags(item)
                         )
                     },
-                    reviewSlider: Array.isArray(data?.acf?.reviewSlider)
-                        ? data?.acf.reviewSlider.map((ListData) => {
-                              return {
-                                  ...ListData
-                              };
-                          })
-                        : []
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

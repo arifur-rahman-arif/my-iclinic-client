@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
+import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 
 /**
  * EnvironmentalSlider is a component that displays a slideshow using the Swiper library.
@@ -122,26 +123,18 @@ const Slide1 = (): JSX.Element => {
                     Saving more than just expenses, time and compromise, but saving the planet!
                 </strong>
 
-                {/* <BookConsultation
-                    buttonClassName=""
-                    modalElement={
-                        <>
-                            <iframe src="" width={600} height={700} className="w-full md:min-h-[70rem]"></iframe>
-                        </>
-                    }
-                    maxWidth="70rem"
+                <BookConsultation
+                    buttonClassName="w-full justify-self-start text-center sm:w-auto"
+                    maxWidth="50rem"
                 >
 
-                </BookConsultation> */}
-
-                <Button2
-                    className="w-full justify-self-start text-center sm:w-auto"
-                    type="anchor"
+<Button2
+                    type="button"
                     title="Speak to a specialist"
-                    link="https://connect.pabau.com/bookings.php?compid=11842"
                     text="Speak to a specialist"
-                    target="_blank"
                 />
+
+                </BookConsultation>
             </div>
         </div>
     );

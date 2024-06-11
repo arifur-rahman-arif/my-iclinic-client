@@ -1,6 +1,7 @@
 import { Button2 } from '@/components/Buttons';
 import ComponentLoader from '@/components/ComponentLoader';
 import styles from '@/components/GoodbyeModal/Style.module.scss';
+import BookConsultation from '@/components/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Section } from '@/components/Section';
 import { SectionHeading } from '@/components/SectionTextColumn';
 import { useOnclickOutside } from '@/hooks';
@@ -42,7 +43,7 @@ const ContactComponent = ({ sectionId, heading, backgroundImage }: ContactCompon
     const [playVideo, setPlayVideo] = useState<boolean>(false);
     return (
         <Section id={sectionId}>
-            <div className="relative grid min-h-[30rem] grid-rows-[auto_1fr] content-center justify-items-center gap-12 p-12 py-16 md:py-24 md:px-0 xl:min-h-[60rem]">
+            <div className="relative grid min-h-[30rem] grid-rows-[auto_1fr] content-center justify-items-center gap-12 p-12 py-16 md:px-0 md:py-24 xl:min-h-[60rem]">
                 <Image {...backgroundImage} className="absolute z-[-1] h-full w-full object-cover" fill={true} />
 
                 <div className="grid justify-items-center gap-12">
@@ -86,29 +87,15 @@ const ContactComponent = ({ sectionId, heading, backgroundImage }: ContactCompon
                                 </Link>
                             </div>
 
-                            {/*
                             <BookConsultation
-                                buttonClassName="bg-[#003E79] border-[#003E79] text-white hover:bg-transparent hover:border-white hover:text-white"
-                                modalElement={
-                                    <>
-                                        <iframe
-                                            src=""
-                                            width={600}
-                                            height={700}
-                                            className="w-full md:min-h-[70rem]"
-                                        ></iframe>
-                                    </>
-                                }
-                                maxWidth="70rem"
-                            ></BookConsultation> */}
-
-                            <Button2
-                                className="border-[#003E79] bg-[#003E79] text-white hover:border-white hover:bg-transparent hover:text-white"
-                                type="anchor"
-                                link="https://connect.pabau.com/bookings.php?compid=11842"
-                                target="_blank"
-                                text="Book a consultation"
-                            />
+                                buttonClassName="border-[#003E79] bg-[#003E79] text-white hover:border-white hover:bg-transparent hover:text-white"
+                            >
+                                <Button2
+                                    className=""
+                                    type="button"
+                                    text="Book a consultation"
+                                />
+                            </BookConsultation>
                         </div>
                     </div>
                 </div>
@@ -144,9 +131,9 @@ const VideoModal = ({ playVideo, setPlayVideo }: VideoModalProps): JSX.Element =
         <div
             className={`${
                 playVideo ? styles.show : ''
-            } pointer-events-none fixed top-0 left-0 z-[999] grid h-full w-full place-content-center md:py-12`}
+            } pointer-events-none fixed left-0 top-0 z-[999] grid h-full w-full place-content-center md:py-12`}
         >
-            <div className="overlay absolute top-0 left-0 h-full w-full bg-white opacity-0"></div>
+            <div className="overlay absolute left-0 top-0 h-full w-full bg-white opacity-0"></div>
 
             <div
                 ref={outsideRef}
@@ -156,7 +143,7 @@ const VideoModal = ({ playVideo, setPlayVideo }: VideoModalProps): JSX.Element =
                     onClick={() => {
                         setPlayVideo(false);
                     }}
-                    className="absolute top-0 right-0 h-10 w-10 translate-y-8 -translate-x-8 cursor-pointer fill-heading transition-all duration-300 hover:scale-110"
+                    className="absolute right-0 top-0 h-10 w-10 -translate-x-8 translate-y-8 cursor-pointer fill-heading transition-all duration-300 hover:scale-110"
                 />
 
                 {playVideo && <VideoPlayer autoPlay={true} videoUrl="/videos/icl.mp4" videoPoster={'txmJk2sY-yI'} />}

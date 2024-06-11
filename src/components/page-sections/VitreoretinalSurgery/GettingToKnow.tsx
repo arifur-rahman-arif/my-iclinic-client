@@ -6,7 +6,6 @@ import SectionHeading from '@/page-sections/SectionHeading';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
 import VitreoretinalSurgeryContent from 'src/types/pages/vitreoretinal-surgery';
 import SectionTextColumn from '@/components/SectionTextColumn';
 
@@ -52,14 +51,15 @@ const TextColumn = ({ section1 }: GettingToKnowProps): JSX.Element => {
             />
 
             <div className="ml-[2.3rem] flex flex-wrap items-center justify-center gap-8 sm:justify-start sm:gap-12">
-                <Link
-                    className="rounded-[0.5rem] border border-solid border-white bg-[#003E79] px-10 py-5 font-mulishBold text-white transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]"
-                    href="https://connect.pabau.com/bookings.php?compid=11842"
+
+
+                <BookConsultation buttonClassName="rounded-[0.5rem] border border-solid border-white bg-[#003E79] px-10 py-5 font-mulishBold text-white transition-all duration-500 hover:border-[#003E79] hover:bg-white hover:text-[#003E79]">
+                <button
                     title="Book a consultation"
-                    target="_blank"
                 >
                     Book a consultation
-                </Link>
+                </button>
+                        </BookConsultation>
 
                 <BookConsultation
                     modalElement={
