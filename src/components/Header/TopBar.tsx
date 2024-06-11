@@ -81,7 +81,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         <OurSpecialists router={router} />
                     </div>
 
-                    <Link
+                    {/* <Link
                         href="/vision-correction"
                         title="Vision Correction"
                         className={`relative grid h-full cursor-pointer place-items-center px-6 font-mulishBold text-[1.6rem] leading-8 transition-all duration-500 hover:text-[#9B9FA1] ${
@@ -89,7 +89,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                         }`}
                     >
                         Vision Correction
-                    </Link>
+                    </Link> */}
 
                     <Link
                         href="/articles"

@@ -57,11 +57,11 @@ const Context = ({ children }: PropInterface): JSX.Element => {
                 }
             ]
         },
-        {
-            name: 'Vision Correction',
-            url: '/vision-correction',
-            slug: 'vision-correction'
-        },
+        // {
+        //     name: 'Vision Correction',
+        //     url: '/vision-correction',
+        //     slug: 'vision-correction'
+        // },
         {
             name: 'Articles',
             url: '/articles',
