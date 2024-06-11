@@ -22,10 +22,10 @@ interface ConsultationButtonsProps {
  * @constructor
  */
 const ConsultationButtons = ({
-                                 freeScreeningTextClassName,
-                                 consultationTextClassName,
-                                 className
-                             }: ConsultationButtonsProps): JSX.Element => {
+    freeScreeningTextClassName,
+    consultationTextClassName,
+    className
+}: ConsultationButtonsProps): JSX.Element => {
     const [showTooltip, setShowTooltip] = useState(false);
     const outsideRef = useOnclickOutside(() => setShowTooltip(false));
 
@@ -37,39 +37,6 @@ const ConsultationButtons = ({
                 className
             )}
         >
-            {/* <BookConsultation
-                buttonClassName="flex items-center justify-center gap-4"
-                modalElement={
-                    <>
-                        <iframe
-                            src=""
-                            width={600}
-                            height={700}
-                            className="w-full md:min-h-[70rem]"
-                        ></iframe>
-                    </>
-                }
-                maxWidth="70rem"
-            >
-            </BookConsultation> */}
-            {/*
-            <Link
-                href="https://connect.pabau.com/bookings.php?compid=11842"
-                target="_blank"
-                title="Book free consultation"
-                className="flex items-center justify-center gap-4"
-            >
-                <Image src="/images/icons/icon-eye-scan.svg" alt="" width={40} height={40} />
-                <span
-                    className={twMerge(
-                        'font-mulishBold text-[1.8rem] leading-[2.8rem] text-white',
-                        freeScreeningTextClassName
-                    )}
-                >
-                    Free screening
-                </span>
-            </Link> */}
-
             <Tooltip
                 showTooltip={showTooltip}
                 type="clickable"
@@ -84,8 +51,7 @@ const ConsultationButtons = ({
                                 title="Free screening"
                                 className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-60"
                             >
-                                <span
-                                    className="h-6 w-6 block border-secondary border-solid border-[0.3rem] rounded-full"></span>
+                                <span className="block h-6 w-6 rounded-full border-[0.3rem] border-solid border-secondary"></span>
                                 {/* <Image src="/images/icons/icon-eye-scan.svg" alt="" width={40} height={40} /> */}
                                 <span className={twMerge('font-mulishBold', freeScreeningTextClassName)}>
                                     Free screening
@@ -98,8 +64,7 @@ const ConsultationButtons = ({
                                 title="Private consultation"
                                 href="https://partner.pabau.com/online-bookings/my-iclinic?groupCategory=0&serviceType=0&category=125172"
                             >
-                                 <span
-                                     className="h-6 w-6 block border-secondary border-solid border-[0.3rem] rounded-full"></span>
+                                <span className="block h-6 w-6 rounded-full border-[0.3rem] border-solid border-secondary"></span>
                                 {/* <Image src="/images/icons/icon-consultation.svg" alt="" width={40} height={40} /> */}
                                 <span className={twMerge('font-mulishBold', consultationTextClassName)}>
                                     Private consultation

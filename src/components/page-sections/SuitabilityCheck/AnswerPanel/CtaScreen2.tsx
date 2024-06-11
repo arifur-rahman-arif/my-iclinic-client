@@ -1,4 +1,4 @@
-// import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
+import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Context } from '@/page-sections/SuitabilityCheck/Context';
 import HTMLReactParser from 'html-react-parser';
 import Link from 'next/link';
@@ -65,27 +65,13 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                 {includeSuitabilityButtons ? (
                     <div className={`flex flex-wrap items-center justify-center gap-6`}>
                         {/* Modal */}
-                        {/* <BookConsultation
-                            modalElement={
-                                <>
-                                    <iframe
-                                        src=""
-                                        width={600}
-                                        height={700}
-                                        className="w-full md:min-h-[70rem]"
-                                    ></iframe>
-                                </>
-                            }
+                        <BookConsultation
                             maxWidth="70rem"
-                            buttonClassName=""
+                            buttonClassName="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:!border-white hover:bg-transparent"
                         >
-                        </BookConsultation> */}
-
-                        <Link
-                            target="_blank"
+                                 <button
                             title="Book a suitability check"
-                            href="https://connect.pabau.com/bookings.php?compid=11842"
-                            className="group/consultation grid cursor-pointer grid-flow-col place-items-center gap-5 rounded-primary border border-heading2 bg-heading2 px-8 py-6 transition-all duration-500 hover:!border-white hover:bg-transparent"
+                            className=""
                             aria-label="Book a free screening test"
                         >
                             <svg
@@ -132,7 +118,9 @@ const CtaScreen2 = ({ heading, includeSuitabilityButtons = false, node }: CtaScr
                             <span className="font-mulishBold text-[1.6rem] leading-[2.4rem] text-white transition-all duration-500">
                                 Book a suitability check
                             </span>
-                        </Link>
+                        </button>
+                        </BookConsultation>
+
 
                         {/* Phone number */}
                         <Link

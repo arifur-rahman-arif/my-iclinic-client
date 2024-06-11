@@ -1129,7 +1129,7 @@ export const keratoconusFaqList: FaqListInterface[] = [
                 <li class='list-item list-disc'><p>Headaches associated with eye pain</p></li>
             </ul>
             <p>
-                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href='/corneal-treatments'>corneal-cross linking</a> to strengthen your corneal tissue. When <a target='_blank' href='https://connect.pabau.com/bookings.php?compid=11842'>booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
+                It is always best to visit your opticians first for an eye test. Once they have confirmed you have keratoconus our specialist can provide a suitable treatment called <a href='/corneal-treatments'>corneal-cross linking</a> to strengthen your corneal tissue. When <a target='_blank' href='/contact-us'>booking an appointment with us</a>, we carry out comprehensive eye assessments which will determine the stage of your keratoconus and which treatment is best suited to help and manage your condition.
             </p>
         </div>
         `
@@ -1314,7 +1314,7 @@ export const glaucomaFaqList: FaqListInterface[] = [
                 <li class='list-item list-disc'><p>Have high pressure in the eyes (High intraocular pressure)</p></li>
             </ul>
             <p>
-                If you have one or more of the above risks, you should regularly visit your local opticians to monitor any changes to your eyes. If your opticians have confirmed you have Glaucoma, you can book a specialist Glaucoma appointment with our Glaucoma specialist to find the best treatment options suitable for your Glaucoma type. <a target='_blank' href='https://connect.pabau.com/bookings.php?compid=11842'>Book your private consultation</a>
+                If you have one or more of the above risks, you should regularly visit your local opticians to monitor any changes to your eyes. If your opticians have confirmed you have Glaucoma, you can book a specialist Glaucoma appointment with our Glaucoma specialist to find the best treatment options suitable for your Glaucoma type. <a target='_blank' href='/contact-us'>Book your private consultation</a>
             </p>
         </div>
         `

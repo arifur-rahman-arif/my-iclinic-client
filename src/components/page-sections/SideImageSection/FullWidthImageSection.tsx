@@ -34,6 +34,7 @@ interface FullWidthImageSectionInterface {
     includeCta?: boolean;
     videoUrl?: string;
     videoPoster?: string;
+    localPoster?: string;
     textColumnExtraBottomElements?: ReactNode;
     reverseColumn?: boolean;
     smallImageDefaultClassName?: string;
@@ -81,6 +82,7 @@ const FullWidthImageSection = ({
     includeCta,
     videoUrl,
     videoPoster,
+    localPoster,
     textColumnExtraBottomElements,
     reverseColumn = false,
     smallImageDefaultClassName = 'w-full rounded-t-radius2 rounded-tl-radius2 object-contain md:hidden',
@@ -165,8 +167,16 @@ const FullWidthImageSection = ({
                 {dynamicMediaColumn && dynamicMediaColumn}
                 {!albumAnimation && !dynamicMediaColumn && (
                     <>
-                        {videoUrl && videoPoster ? (
-                            <>{onEnter && <VideoPlayer videoUrl={videoUrl} videoPoster={videoPoster} />}</>
+                        {videoUrl && (videoPoster || localPoster) ? (
+                            <>
+                                {onEnter && (
+                                    <VideoPlayer
+                                        videoUrl={videoUrl}
+                                        localPoster={localPoster}
+                                        videoPoster={videoPoster}
+                                    />
+                                )}
+                            </>
                         ) : (
                             <div
                                 className={`row-start-1 grid w-full justify-self-center md:row-auto md:justify-self-end ${

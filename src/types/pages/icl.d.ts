@@ -95,9 +95,12 @@ export default interface IclContentInterface extends Sustainibility {
             imageURL: string
         }>
     },
-    reviewSlider: {
-        title: string;
-        name: string;
-        description: string;
-    }
+	patientReviews: {
+        heading: string;
+        reviews: Array<{
+            name: string;
+            review: string;
+            link: string;
+        }>
+    },
 }
