@@ -27,6 +27,10 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'my-iclinic.local'
+            },
+            {
+                protocol: 'https',
                 hostname: 'myiclinicn.sg-host.com'
             },
             {

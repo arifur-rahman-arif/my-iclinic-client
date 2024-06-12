@@ -1,7 +1,7 @@
 module.exports = {
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
     generateRobotsTxt: true,
-    exclude: ['/admin', '/articles-sitemap.xml'],
+    exclude: ['/admin', '/articles-sitemap.xml', '/vision-correction'],
     generateIndexSitemap: false,
     additionalSitemaps: [],
     robotsTxtOptions: {
