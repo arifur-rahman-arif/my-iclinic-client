@@ -147,14 +147,17 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
 }
 
 /**
- * Fetch the data from the WordPress database
+ * Fetch data from WordPress
  *
- * @returns {Promise<{props: {posts: any}}>}
+ * @export
+ * @param {*} ctx
+ * @returns {*}
  */
-export async function getStaticProps() {
+export async function getStaticProps(ctx: any) {
     try {
         const data: WpPageResponseInterface<LaserEyeSurgeryContentInterface> = await getPageData({
-            slug: 'laser-eye-surgery'
+            slug: 'vision-correction',
+            draft: true
         });
 
         const treatments = await getTreatments();
