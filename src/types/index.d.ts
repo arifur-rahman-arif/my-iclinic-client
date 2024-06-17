@@ -48,6 +48,7 @@ import PriceGlaucomaContentInterface from './pages/price-glaucoma';
 import FlashesContentInterface from './pages/flashes-floaters';
 import LaserEyeSurgeryContentInterface from './pages/laserEyeSurgery';
 import CharityPageContentInterface from './pages/charityPage';
+import VisionCorrectionContentInterface from './pages/visionCorrection';
 
 export type {
     RetinaTreatmentsContents,
@@ -101,5 +102,6 @@ export type {
     VitreoretinalSurgeryContent,
     OurSpecialistPageContent,
     LaserEyeSurgeryContentInterface,
-    CharityPageContentInterface
+    CharityPageContentInterface,
+    VisionCorrectionContentInterface
 };

@@ -374,10 +374,10 @@ const PersonalInfo = ({
             </div>
 
             <div className="grid gap-6">
-                <span className="font-mulishBold text-heading">
+                <span className="font-mulishBold text-heading consultation-reason">
                     Reason for consultation <span className="text-[#D90E01]">*</span>
                 </span>
-                <div className="flex flex-wrap items-center justify-start gap-6">
+                <div className="consultation-reason flex flex-wrap items-center justify-start gap-6">
                     {consultationReasons.map((reason, key) => (
                         <RadioButton
                             key={key}
@@ -406,7 +406,7 @@ const PersonalInfo = ({
                 </p>
             </div>
 
-            <span className="-mb-4 mt-6 justify-self-start font-mulishBold text-[1.4rem] leading-8">
+            <span className="-mb-4 mt-6 justify-self-start font-mulishBold text-[1.4rem] leading-8 form-footnote">
                 15-min free consultation{' '}
                 <span className="font-mulishBold text-[1.4rem] uppercase leading-8 text-[#FF7F00]">
                     (Laser eye surgery ONLY)

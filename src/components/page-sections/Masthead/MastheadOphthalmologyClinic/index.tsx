@@ -143,7 +143,7 @@ export const Reviews = ({ className }: ReviewsProps): JSX.Element => {
                     Google
                 </span>
                 <span className="col-span-2 flex items-center justify-center gap-2 font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading">
-                    4.9 | 93{' '}
+                    4.9 | 100{' '}
                     <span className="hidden font-mulishExtraBold text-[1.2rem] font-extrabold uppercase leading-[1.2rem] text-heading md:block">
                         reviews
                     </span>
