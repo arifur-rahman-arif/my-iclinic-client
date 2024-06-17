@@ -62,14 +62,14 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                                 text="Affordable options"
                                 link="/pricing-and-financing/financing-your-treatment#calculator"
                                 title="Affordable options"
-                                className="sitemap-link text-center hover:!border-white"
+                                className="sitemap-link text-center hover:!border-white md:-translate-y-8"
                             />
                         </div>
                     </div>
                 </div>
 
                 <RequestCallback
-                    className="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24"
+                    className="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
                     buttonText="Request a call back"
                 />
             </Container>

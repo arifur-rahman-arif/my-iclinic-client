@@ -25,7 +25,7 @@ const SurgeryDetails = ({ heading, descriptions, image, link, sectionId, imageCl
     return (
         <Section id={sectionId}>
             <Container className="grid items-center gap-12 md:grid-cols-2 lg:gap-32 2xl:grid-cols-[1fr_auto]">
-                <Image {...image} className={twMerge('max-w-[69rem] rounded-radius2', imageClassName)} />
+                <Image {...image} className={twMerge('max-w-[69rem] w-full rounded-radius2', imageClassName)} />
 
                 <div className="grid w-full content-start gap-6">
                     <h2 className="w-full font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[2.4rem] md:leading-[3.2rem]">
