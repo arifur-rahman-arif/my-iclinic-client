@@ -17,6 +17,8 @@ interface Props {
  * @returns {*}  {JSX.Element}
  */
 const ComparisonTable = ({ heading, table }: Props): JSX.Element => {
+    if (!table[0]?.tableRows) return <></>;
+
     return (
         <Section id="comparison-table">
             <Container className="grid content-start gap-12">

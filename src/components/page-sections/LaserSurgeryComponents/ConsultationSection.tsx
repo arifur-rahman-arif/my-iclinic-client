@@ -5,6 +5,11 @@ import dynamic from 'next/dynamic';
 
 const RequestCallback = dynamic(() => import('@/components/page-sections/RequestCallback/RequestCallback'));
 
+
+interface Props {
+    className?: string;
+}
+
 /**
  * ConsultationSection Component
  *
@@ -17,9 +22,9 @@ const RequestCallback = dynamic(() => import('@/components/page-sections/Request
  * // Example usage of ConsultationSection component
  * <ConsultationSection />
  */
-const ConsultationSection = (): JSX.Element => {
+const ConsultationSection = ({ className }: Props): JSX.Element => {
     return (
-        <Section id="consultaion">
+        <Section id="consultation">
             <Container className="grid gap-12">
                 <div className="grid content-start justify-items-center gap-1">
                     <h2 className="uppercase">BOOK A Consultation</h2>
@@ -28,7 +33,7 @@ const ConsultationSection = (): JSX.Element => {
                 </div>
 
                 <LazyComponent>
-                    <RequestCallback />
+                    <RequestCallback className={className} />
                 </LazyComponent>
             </Container>
         </Section>
