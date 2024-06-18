@@ -151,7 +151,7 @@ const extractSectionsFromHTML = (html) => {
 
 const indexDataToAlgolia = async (data) => {
     try {
-        // index.clearObjects();
+        index.clearObjects();
 
         index
             .saveObjects(data, { autoGenerateObjectIDIfNotExist: true })
@@ -187,7 +187,7 @@ const processPages = async (pages) => {
     await indexDataToAlgolia(sectionsData);
 };
 
-processPages(pages);
+await processPages(pages);
 
 /**
  * ==================================================================================
