@@ -136,6 +136,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                     image={{
                         ...(data?.section13?.image as any)
                     }}
+                    imageClassName="md:order-2"
                 />
             ) : (
                 <></>
@@ -164,6 +165,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                     image={{
                         ...(data?.section15?.image as any)
                     }}
+                    imageClassName="md:order-2"
                 />
             ) : (
                 <></>
@@ -192,6 +194,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                     image={{
                         ...(data?.section17?.image as any)
                     }}
+                    imageClassName="md:order-2"
                 />
             ) : (
                 <></>
@@ -220,6 +223,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                     image={{
                         ...(data?.section19?.image as any)
                     }}
+                    imageClassName="md:order-2"
                 />
             ) : (
                 <></>
