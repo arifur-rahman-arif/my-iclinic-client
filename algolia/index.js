@@ -10,6 +10,7 @@ const indexName = process.env.NEXT_PUBLIC_ALGOLIA ? 'My-iClinic' : 'My-iClinic-d
 
 const client = algoliasearch('LFKQJW9O2S', '47d64d3c035e3b58c0efafcc0d89e6ed');
 const index = client.initIndex(indexName);
+index.clearObjects();
 
 /**
  * Slice big string into smaller pieces of string
@@ -263,8 +264,6 @@ const extractSectionsFromHTML = (html) => {
 
 const indexDataToAlgolia = async (data) => {
     try {
-        index.clearObjects();
-
         index
             .saveObjects(data, { autoGenerateObjectIDIfNotExist: true })
             .then((res) => {
