@@ -14,7 +14,7 @@
     "code-check": "npx eslint . --ext .ts --ext .tsx --fix && npx tsc",
     "format": "npx prettier --write \"**/*.+(html|css|scss|sass|less|js|jsx|ts|tsx|json|php)\"",
     "prepare": "husky install",
-    "algolia": "node algolia/index.js"
+    "algolia": "node algolia/articles.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
