@@ -22,7 +22,7 @@ interface Masthead3Props {
  */
 const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
     return (
-        <div className="relative grid min-h-[74rem] content-start  bg-[#0957A1] md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
+        <main className="relative grid min-h-[74rem] content-start  bg-[#0957A1] md:min-h-max md:grid-cols-2 md:gap-12 lg:gap-20 xl:grid-cols-[auto_1fr] xl:gap-32">
             <Image
                 src={MastheadImage}
                 alt=""
@@ -98,7 +98,7 @@ const Masthead3 = ({ title, subTitle, image }: Masthead3Props): JSX.Element => {
                     className="col-start-2 row-span-2 row-start-1 max-h-[5.2rem] max-w-[5.2rem] justify-self-end transition-all duration-500 group-hover/link:translate-x-4 md:max-h-full md:max-w-full"
                 />
             </Link>
-        </div>
+        </main>
     );
 };
 

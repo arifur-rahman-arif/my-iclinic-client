@@ -16,14 +16,14 @@ interface ABTestMastheadProps {
  */
 const ABTestMasthead = ({ image, speakToSpecialistClass }: ABTestMastheadProps): JSX.Element => {
     return (
-        <div className="grid">
-            <div className="relative z-[2] grid place-items-center content-start px-8 pt-20 pb-[40rem] md:pt-[15rem] xl:min-h-[80rem] xl:pt-[20rem]">
+        <main className="grid">
+            <div className="relative z-[2] grid place-items-center content-start px-8 pb-[40rem] pt-20 md:pt-[15rem] xl:min-h-[80rem] xl:pt-[20rem]">
                 <Image
                     src={image || '/images/masthead/masthead-icl-a-bg.webp'}
                     alt="ICL"
                     fill={true}
                     priority
-                    className="absolute top-0 left-0 z-[-1] h-full w-full object-cover"
+                    className="absolute left-0 top-0 z-[-1] h-full w-full object-cover"
                 />
                 <h1 className="max-w-[30.2rem] text-center font-latoBold text-[4.8rem] leading-[4.8rem] text-white xl:max-w-[56rem] xl:text-[6.4rem] xl:leading-[6.4rem]">
                     Experience The Freedom with ICL
@@ -56,7 +56,7 @@ const ABTestMasthead = ({ image, speakToSpecialistClass }: ABTestMastheadProps):
                     <RequestCallback />
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 
@@ -70,7 +70,7 @@ export default ABTestMasthead;
  */
 const GoogleReviews = (): JSX.Element => {
     return (
-        <div className="absolute left-0 bottom-0 ml-24 hidden items-end justify-start gap-8 rounded-tl-[1rem] rounded-tr-[1rem] bg-white px-12 py-8 xl:flex 2xl:ml-[9rem]">
+        <div className="absolute bottom-0 left-0 ml-24 hidden items-end justify-start gap-8 rounded-tl-[1rem] rounded-tr-[1rem] bg-white px-12 py-8 xl:flex 2xl:ml-[9rem]">
             {/* Review 1 */}
             <div className="grid grid-cols-[auto_1fr] items-center justify-start gap-2">
                 <span className="grid place-items-center">

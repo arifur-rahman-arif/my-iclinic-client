@@ -125,12 +125,12 @@ const extractSectionsFromHTML = (html) => {
     const $ = cheerio.load(html);
     const sections = [];
 
-    $('section').each((i, el) => {
+    $('section, main').each((i, el) => {
         const section = $(el);
         const id = section.attr('id');
         const titles = section
-            .find('h2')
-            .map((_, h2) => $(h2).text().trim())
+            .find('h1, h2, h3, h4, h5, h6') // Include all heading tags
+            .map((_, heading) => $(heading).text().trim())
             .get();
         const title = titles.length > 1 ? titles : titles[0];
 

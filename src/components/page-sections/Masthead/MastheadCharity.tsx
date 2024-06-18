@@ -23,7 +23,7 @@ interface Props {
  */
 const MastheadCharity = ({ heading, subheading, description, image }: Props): JSX.Element => {
     return (
-        <div className={`relative grid min-h-[50rem] overflow-hidden xl:min-h-[73.6rem]`}>
+        <main className={`relative grid min-h-[50rem] overflow-hidden xl:min-h-[73.6rem]`}>
             <BreadCrumb
                 className="hidden md:mt-12 md:flex xl:mt-16"
                 pathClassName="!stroke-white"
@@ -70,7 +70,7 @@ const MastheadCharity = ({ heading, subheading, description, image }: Props): JS
                 className="absolute inset-0 -z-[1] h-full min-h-[33.7rem] w-full object-cover md:row-start-1 md:h-full md:w-full"
                 priority
             />
-        </div>
+        </main>
     );
 };
 

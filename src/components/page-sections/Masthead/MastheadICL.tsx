@@ -96,7 +96,7 @@ const MastheadICL = ({
         : defaultCardList;
 
     return (
-        <div className="relative grid overflow-hidden">
+        <main className="relative grid overflow-hidden">
             <Image src={largeBg} alt="" className="absolute inset-0 -z-[1] hidden h-full w-full xl:block" />
 
             <div className="relative grid xl:-ml-24 xl:justify-self-center">
@@ -175,7 +175,7 @@ const MastheadICL = ({
                     </>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 

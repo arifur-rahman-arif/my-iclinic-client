@@ -22,7 +22,7 @@ interface MastheadOphthalmologyClinicProps extends Pick<RetinaTreatmentsContents
  */
 const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmologyClinicProps>): JSX.Element => {
     return (
-        <div className={`${styles.styles} relative grid overflow-hidden`}>
+        <main className={`${styles.styles} relative grid overflow-hidden`}>
             <BreadCrumb
                 className="hidden md:mt-12 md:flex xl:mt-16"
                 linkClassName="text-white"
@@ -79,7 +79,7 @@ const MastheadOphthalmologyClinic = ({ masthead }: Partial<MastheadOphthalmology
             <Image src={smallBg} alt={''} className="absolute inset-0 -z-[1] h-full w-full md:hidden" />
 
             {/* <Conditions /> */}
-        </div>
+        </main>
     );
 };
 
