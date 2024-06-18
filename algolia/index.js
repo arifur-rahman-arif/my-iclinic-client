@@ -5,7 +5,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 if (!process.env?.NEXT_PUBLIC_ALGOLIA) return;
-
 const indexName = process.env.NEXT_PUBLIC_ALGOLIA ? 'My-iClinic' : 'My-iClinic-dev';
 
 const client = algoliasearch('LFKQJW9O2S', '47d64d3c035e3b58c0efafcc0d89e6ed');
