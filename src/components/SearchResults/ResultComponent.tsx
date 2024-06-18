@@ -22,7 +22,7 @@ const ResultComponent = ({ hit }: ResultComponentProps) => {
     if (highlightedResults) {
         return (
             <div
-                className={`mt-12 grid grid-cols-[auto_1fr_auto] content-start gap-4 gap-y-12 rounded-primary p-8 shadow-lg md:p-12 ${styles.styles}`}
+                className={`mt-12 grid grid-cols-[auto_1fr_auto] content-start gap-4 gap-y-12 border-b border-solid border-[#EAECF0] p-8 transition-all duration-500 hover:shadow-md md:p-12 ${styles.styles}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" className="mt-2">
                     <g stroke="#9B9FA1" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
@@ -42,7 +42,7 @@ const ResultComponent = ({ hit }: ResultComponentProps) => {
                         type="anchor"
                         link={url}
                         text="Read more"
-                        className="ml-8 !py-3 !px-5 text-[1.4rem] sm:justify-self-end"
+                        className="ml-8 !px-5 !py-3 text-[1.4rem] sm:justify-self-end"
                     />
                 </div>
             </div>
