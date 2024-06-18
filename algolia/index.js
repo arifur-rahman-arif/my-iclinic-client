@@ -41,7 +41,47 @@ const sliceStringByWordsAndSizeLimit = (string) => {
  * @returns {Promise<*>}
  */
 const getPosts = async () => {
-    const apiResponse = await fetch(`${process.env.WP_REST_URL}/posts?_fields=id,title,content,slug&per_page=100`, {
+    const totalPosts = await getPostsCount();
+    const postsPerPage = 100;
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+    const data = [];
+
+    for (let page = 1; page <= totalPages; page++) {
+        const apiResponse = await fetch(
+            `${process.env.WP_REST_URL}/posts?_fields=id,title,content,slug&per_page=${postsPerPage}&page=${page}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    Authorization: `Bearer ${process.env.WP_JWT_TOKEN}`
+                }
+            }
+        );
+
+        if (apiResponse.status !== 200) {
+            throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
+        }
+
+        const responseData = await apiResponse.json();
+        data.push(
+            ...responseData.map((post) => ({
+                objectID: post.id,
+                title: post?.title?.rendered || '',
+                content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered)),
+                section: `/articles/${post.slug}`,
+                type: 'article'
+            }))
+        );
+    }
+
+    return data;
+};
+
+/**
+ * Get total posts count from WordPress
+ * @returns {Promise<number>}
+ */
+const getPostsCount = async () => {
+    const apiResponse = await fetch(`${process.env.WP_REST_URL}/posts?_fields=id&per_page=1`, {
         headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             Authorization: `Bearer ${process.env.WP_JWT_TOKEN}`
@@ -49,18 +89,13 @@ const getPosts = async () => {
     });
 
     if (apiResponse.status !== 200) {
-        throw new Error('Unable to fetch WordPress posts. Error text: ' + apiResponse.statusText);
+        throw new Error('Unable to fetch WordPress posts count. Error text: ' + apiResponse.statusText);
     }
 
-    const data = await apiResponse.json();
+    const { headers } = apiResponse;
+    const headerObject = Object.fromEntries(headers.entries());
 
-    return data.map((post) => ({
-        objectID: post.id,
-        title: post?.title?.rendered || '',
-        content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered)),
-        section: `/articles/${post.slug}`,
-        type: 'article'
-    }));
+    return Number(headerObject['x-wp-total']);
 };
 
 getPosts().then((data) => {
