@@ -252,7 +252,7 @@ const extractSectionsFromHTML = (html) => {
             sections.push({
                 objectID: i,
                 title,
-                content: striptags(contentArray.toString(), [], ' ').trim(), // Example word limit
+                content: sliceStringByWordsAndSizeLimit(striptags(contentArray.toString(), [], ' ').trim()), // Example word limit
                 section: id ? `#${id}` : ''
             });
         }
