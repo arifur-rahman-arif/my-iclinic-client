@@ -63,7 +63,6 @@ module.exports = {
 const pages = [
     { name: 'Home', url: '/' },
     { name: 'About Us', url: '/about-us' },
-    { name: 'Articles', url: '/articles' },
     { name: 'Astigmatism Treatment', url: '/astigmatism-treatment' },
     { name: 'Blepharitis Treatment', url: '/blepharitis-treatment' },
     { name: 'Cataract', url: '/cataract' },
@@ -103,8 +102,6 @@ const pages = [
     { name: 'Privacy Policies', url: '/privacy-policies' },
     { name: 'Relex Smile London', url: '/relex-smile-london' },
     { name: 'Relex Smile Price', url: '/relex-smile-london/price' },
-    { name: 'Search', url: '/search' },
-    { name: 'Sitemap', url: '/sitemap' },
     { name: 'Suitability Check', url: '/suitability-check' },
     { name: 'Terms and Conditions', url: '/terms-and-conditions' },
     { name: 'Translation Service', url: '/translation-service' }
