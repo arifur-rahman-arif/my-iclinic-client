@@ -6,7 +6,7 @@ import ConsultationSection from '@/components/page-sections/LaserSurgeryComponen
 import LaserBenefits from '@/components/page-sections/LaserSurgeryComponents/LaserBenefits';
 import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/LaserSolutions';
 import SurgeryDetails from '@/components/page-sections/LaserSurgeryComponents/SurgeryDetails';
-// import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
+import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
 import MastheadLaserEyeSurgery from '@/components/page-sections/Masthead/MastheadLaserEyeSurgery';
 import { getPageData, getTreatments } from '@/lib';
 import { PageDataInterface, VisionCorrectionContentInterface, WpPageResponseInterface } from '@/types';
@@ -37,7 +37,11 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
             <MastheadLaserEyeSurgery
                 masthead={data.masthead}
                 formClassName="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
-                className="[&_.sitemap-link]:md:-translate-y-8"
+                className="[&_.finance-text]:hidden [&_.sitemap-link]:md:-translate-y-8"
+                button={{
+                    text: 'Contact us',
+                    link: '/contact-us'
+                }}
             />
 
             <LaserBenefits section1={data.section1} />
@@ -233,15 +237,17 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                 <></>
             )}
 
-            {/* <TreatmentPrices section2={data.section2} /> */}
-
-            {/* <ComparisonTable table={data?.section10?.table} */}
-            {/*                  heading={data?.section10?.heading || 'Let`s compare our service with other clinics'} /> */}
+            <TreatmentPrices section2={data.section2} />
 
             <ComparisonTable
+                table={data?.section10?.table}
+                heading={data?.section10?.heading || 'Let`s compare our service with other clinics'}
+            />
+
+            {/* <ComparisonTable
                 table={data?.section12?.table}
                 heading={data?.section12?.heading || 'How much you save with us'}
-            />
+            /> */}
 
             <TripleWinSection />
 
