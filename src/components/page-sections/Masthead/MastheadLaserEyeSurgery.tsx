@@ -9,7 +9,10 @@ import { LaserEyeSurgeryContentInterface } from '@/types';
 
 // import { BookConsultation } from '@/components/page-sections';
 
-interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {}
+interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {
+    formClassName?: string;
+    className?: string;
+}
 
 /**
  * `MastheadLaserEyeSurgery` is a React functional component that represents the masthead
@@ -18,9 +21,13 @@ interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentIn
  *
  * @returns {JSX.Element} The JSX element representing the masthead section.
  */
-const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps): JSX.Element => {
+const MastheadLaserEyeSurgery = ({
+    masthead,
+    formClassName,
+    className
+}: MastheadOphthalmologyClinicProps): JSX.Element => {
     return (
-        <div className={`relative grid overflow-hidden`}>
+        <div className={`relative grid overflow-hidden ${className}`}>
             <BreadCrumb
                 linkClassName="text-white"
                 activeLinkClass="text-[#94CAFF]"
@@ -62,16 +69,13 @@ const MastheadLaserEyeSurgery = ({ masthead }: MastheadOphthalmologyClinicProps)
                                 text="Affordable options"
                                 link="/pricing-and-financing/financing-your-treatment#calculator"
                                 title="Affordable options"
-                                className="sitemap-link text-center hover:!border-white md:-translate-y-8"
+                                className="sitemap-link text-center hover:!border-white"
                             />
                         </div>
                     </div>
                 </div>
 
-                <RequestCallback
-                    className="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
-                    buttonText="Request a call back"
-                />
+                <RequestCallback className={formClassName} buttonText="Request a call back" />
             </Container>
 
             <Image

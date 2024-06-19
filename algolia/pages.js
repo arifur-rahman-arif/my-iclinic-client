@@ -129,13 +129,13 @@ const extractSectionsFromHTML = (html) => {
         const section = $(el);
         const id = section.attr('id');
         const titles = section
-            .find('h1, h2, h3, h4, h5, h6') // Include all heading tags
+            .find('h1, h2, h3') // Include all heading tags
             .map((_, heading) => $(heading).text().trim())
             .get();
-        const title = titles.length > 1 ? titles : titles[0];
+        const title = titles.join(' ');
 
         // Remove all <h2> and <a> tags from the section to exclude them from the content
-        section.find('h2').remove();
+        section.find('h2, h1, h3').remove();
         section.find('a').remove();
 
         // Initialize an array to store content elements

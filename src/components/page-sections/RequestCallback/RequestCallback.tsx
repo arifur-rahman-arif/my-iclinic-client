@@ -3,6 +3,7 @@ import { StepperInterface } from '@/components/Stepper/Stepper';
 import { ReactNode, useState } from 'react';
 import Done from './Done';
 import PersonalInfo from './PersonalInfo';
+import { twMerge } from 'tailwind-merge';
 
 // const DateAndTime = dynamic(() => import('./DateAndTime'), {
 //     ssr: false
@@ -111,7 +112,7 @@ const RequestCallback = ({
             <Stepper
                 formHeading={formHeading}
                 stepperList={stepperList}
-                className={`${className || '!w-full max-w-[45rem] bg-white md:min-w-[40rem]'}`}
+                className={twMerge('!w-full max-w-[45rem] bg-white md:min-w-[40rem]', className)}
             >
                 <PersonalInfo
                     name={name}

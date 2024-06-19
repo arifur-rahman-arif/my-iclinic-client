@@ -34,7 +34,10 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <MastheadLaserEyeSurgery masthead={data.masthead} />
+            <MastheadLaserEyeSurgery
+                masthead={data.masthead}
+                formClassName="lg:rounded-bl-none lg:rounded-br-none max-w-[50rem] lg:pb-0 lg:px-16"
+            />
 
             <LaserBenefits section1={data.section1} />
 

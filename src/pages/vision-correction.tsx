@@ -34,7 +34,11 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
 
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
-            <MastheadLaserEyeSurgery masthead={data.masthead} />
+            <MastheadLaserEyeSurgery
+                masthead={data.masthead}
+                formClassName="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
+                className="[&_.sitemap-link]:md:-translate-y-8"
+            />
 
             <LaserBenefits section1={data.section1} />
 

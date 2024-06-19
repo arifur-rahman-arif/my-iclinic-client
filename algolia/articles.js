@@ -56,7 +56,9 @@ const getPosts = async () => {
             ...responseData.map((post) => ({
                 objectID: post.id,
                 title: post?.title?.rendered || '',
-                content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered, [], ' ')),
+                content: sliceStringByWordsAndSizeLimit(
+                    striptags(post?.content?.rendered.replaceAll('&nbsp;', ' '), [], ' ')
+                ),
                 section: `/articles/${post.slug}`,
                 type: 'article'
             }))
@@ -118,7 +120,9 @@ const getSpecialistsPost = async () => {
             objectID: post.id,
             title: post?.title?.rendered || '',
             designation: post.acf.specialist_data.degree || '' + ' ' + post.acf.specialist_data.title || '',
-            content: sliceStringByWordsAndSizeLimit(striptags(post?.content?.rendered, [], ' ')),
+            content: sliceStringByWordsAndSizeLimit(
+                striptags(post?.content?.rendered.replaceAll('&nbsp;', ' '), [], ' ')
+            ),
             section: `/our-specialists/${post.slug}`,
             type: 'specialist'
         };
