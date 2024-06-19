@@ -12,6 +12,10 @@ import { LaserEyeSurgeryContentInterface } from '@/types';
 interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentInterface, 'masthead'> {
     formClassName?: string;
     className?: string;
+    button?: {
+        text: string;
+        link: string;
+    };
 }
 
 /**
@@ -24,7 +28,8 @@ interface MastheadOphthalmologyClinicProps extends Pick<LaserEyeSurgeryContentIn
 const MastheadLaserEyeSurgery = ({
     masthead,
     formClassName,
-    className
+    className,
+    button
 }: MastheadOphthalmologyClinicProps): JSX.Element => {
     return (
         <div className={`relative grid overflow-hidden ${className}`}>
@@ -53,7 +58,7 @@ const MastheadLaserEyeSurgery = ({
                             {masthead.priceText || '£50/pcm'}
                         </span>
                         <br />
-                        <span className="font-latoBold text-[2rem] leading-[2.8rem] text-white">
+                        <span className="finance-text font-latoBold text-[2rem] leading-[2.8rem] text-white">
                             <b className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">0%</b> Finance
                             available
                         </span>
@@ -66,9 +71,9 @@ const MastheadLaserEyeSurgery = ({
                             {/* </BookConsultation> */}
                             <Button2
                                 type="anchor"
-                                text="Affordable options"
-                                link="/pricing-and-financing/financing-your-treatment#calculator"
-                                title="Affordable options"
+                                text={button?.text || 'Affordable options'}
+                                link={button?.link || '/pricing-and-financing/financing-your-treatment#calculator'}
+                                title={button?.text || 'Affordable options'}
                                 className="sitemap-link text-center hover:!border-white"
                             />
                         </div>
