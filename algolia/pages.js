@@ -181,7 +181,7 @@ const processPages = async (pages) => {
     const sectionsData = [];
 
     for (const url of pages) {
-        const pageUrl = `${process.env?.INDEXING_URL || 'https://www.websider.co.uk'}${url.url}`;
+        const pageUrl = `${process.env?.INDEXING_URL || 'https://www.my-iclinic.co.uk'}${url.url}`;
         const html = await fetchPageContent(pageUrl);
 
         if (html) {
