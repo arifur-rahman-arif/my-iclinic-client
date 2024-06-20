@@ -17,7 +17,7 @@ interface NormalSectionInterface {
  */
 const NormalSection = ({ heading, description, bannerText, list }: NormalSectionInterface): JSX.Element => {
     return (
-        <Section>
+        <Section id="normal-section">
             <Container className="grid max-w-[92.4rem] grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-2 md:gap-32">
                 <div>
                     <h2 className="w-full normal-case md:max-w-[41.5rem]">

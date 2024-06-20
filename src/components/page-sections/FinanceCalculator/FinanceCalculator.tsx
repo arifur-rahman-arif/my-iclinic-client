@@ -21,7 +21,7 @@ const FinanceCalculator = ({ excludeBottomBanner, version }: FinanceCalculatorIn
     const ctx: CalculatorContext = useContext(AppCtx);
 
     return (
-        <Section className="grid gap-48">
+        <Section id="finance-calculator" className="grid gap-48">
             <Container className="">
                 {ctx.treatmentList.length
                     ? ctx.treatmentList.map((treatment, index) => {

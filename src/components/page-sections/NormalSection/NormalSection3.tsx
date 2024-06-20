@@ -43,7 +43,7 @@ const NormalSection3 = ({
     //  */
     // const NormalSection3 = (): JSX.Element => {
     return (
-        <Section>
+        <Section id="normal-section-3">
             <Container className="grid max-w-[111.3rem] grid-cols-1 gap-12 md:grid-cols-2 md:gap-24 xl:gap-32">
                 <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">{title}</h2>
                 <div className="grid gap-6 justify-self-start">

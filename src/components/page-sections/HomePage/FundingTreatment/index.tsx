@@ -72,7 +72,7 @@ const FundingTreatment = ({
     }
 
     return (
-        <Section>
+        <Section id="funding-treatment">
             <Container className="grid gap-16 md:grid-cols-2 md:gap-12 xl:gap-16">
                 <div className="grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12">
                     <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>

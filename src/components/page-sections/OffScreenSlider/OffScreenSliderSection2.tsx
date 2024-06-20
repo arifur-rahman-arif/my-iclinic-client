@@ -17,7 +17,7 @@ interface OffScreenSliderSectionInterface {
  */
 const OffScreenSliderSection2 = ({ sliderList }: OffScreenSliderSectionInterface): JSX.Element => {
     return (
-        <Section>
+        <Section id="off-screen-slider-2">
             <ContainerFluid className="relative !px-0">
                 <Image src="/images/section-images/homepage-slider-bg.webp" alt="" fill className="absolute inset-0" />
                 <OffscreenSlider2 sliderList={sliderList} />

@@ -20,7 +20,7 @@ interface GlaucomaSectionProps {
  */
 const GlaucomaSection = ({ content, image, altText }: GlaucomaSectionProps): JSX.Element => {
     return (
-        <Section>
+        <Section id="glaucoma-conditions">
             <Container className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-32">
                 {/* Grid item 1 */}
                 {content ? (

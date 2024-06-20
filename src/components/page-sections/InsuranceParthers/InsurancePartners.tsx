@@ -20,7 +20,7 @@ import { BookConsultation } from '@/page-sections/index';
  */
 const InsurancePartners = (): JSX.Element => {
     return (
-        <Section>
+        <Section id="insurance-partners">
             <Container className="grid place-items-center gap-12">
                 <h2 className="normal-case">Our health insurance partners</h2>
 

@@ -13,7 +13,10 @@ import cta3Image from '@/section-images/cta-3.webp';
  */
 const CtaSection3 = (): JSX.Element => {
     return (
-        <div className="blog-cta relative mt-6 grid grid-cols-1 gap-12 overflow-hidden rounded-radius2 bg-brand px-8 py-12 sm:px-12 md:mt-[4.5rem] md:grid-cols-[1fr_auto] lg:gap-0 lg:px-24 lg:pr-0">
+        <section
+            id="cta-section3"
+            className="blog-cta relative mt-6 grid grid-cols-1 gap-12 overflow-hidden rounded-radius2 bg-brand px-8 py-12 sm:px-12 md:mt-[4.5rem] md:grid-cols-[1fr_auto] lg:gap-0 lg:px-24 lg:pr-0"
+        >
             <div className="relative z-[1] grid gap-12 md:gap-24">
                 <H2Variant1 className="max-w-[34rem] normal-case !text-white">
                     Find out more by Speaking to our team
@@ -56,7 +59,7 @@ const CtaSection3 = (): JSX.Element => {
                 alt=""
                 className="w-full translate-x-8 translate-y-12 self-end sm:translate-x-12 lg:translate-x-0"
             />
-        </div>
+        </section>
     );
 };
 

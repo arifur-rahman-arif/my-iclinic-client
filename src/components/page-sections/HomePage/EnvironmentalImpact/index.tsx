@@ -9,9 +9,9 @@ import EnvironmentalSlider from '@/components/Slider/EnvironmentalSlider';
  */
 const EnvironmentalImpact = (): JSX.Element => {
     return (
-        <Section>
+        <Section id="environmental-impact">
             <Container className="grid gap-12 md:gap-24">
-                <div className="grid grid-cols-[auto_1fr] content-start gap-y-12 gap-x-6">
+                <div className="grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12">
                     <span className="h-full w-[0.8rem] bg-[#005DAF]"></span>
                     <h2 className="w-full normal-case">How vision correction saves our planet</h2>
                 </div>

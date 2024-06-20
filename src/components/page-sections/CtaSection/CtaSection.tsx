@@ -22,7 +22,7 @@ interface CtaSectionInterface {
  */
 const CtaSection = ({ subtitle, title, buttonClassName, sectionClassName }: CtaSectionInterface): JSX.Element => {
     return (
-        <Section className={twMerge('relative bg-[#003E79] py-12 md:py-24', sectionClassName)}>
+        <Section id="cta-section" className={twMerge('relative bg-[#003E79] py-12 md:py-24', sectionClassName)}>
             <Container className="grid place-items-center content-center gap-4">
                 {/* Grid item 1 */}
                 <Image src={iconHeadphone} alt="" />

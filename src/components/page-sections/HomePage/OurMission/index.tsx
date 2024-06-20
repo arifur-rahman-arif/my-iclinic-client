@@ -9,9 +9,9 @@ import Image from 'next/image';
  */
 const OurMission = (): JSX.Element => {
     return (
-        <Section className="px-8">
+        <Section className="px-8" id="our-mission">
             <Container className="grid items-center gap-12 overflow-hidden rounded-radius2 bg-[#003E79] !px-0 md:grid-cols-2 lg:min-h-[47rem]">
-                <div className="grid grid-cols-[auto_1fr] content-start gap-y-12 gap-x-6 px-8  pt-12 md:py-12 lg:py-24 lg:pl-24 xl:py-32 xl:pl-32">
+                <div className="grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12 px-8  pt-12 md:py-12 lg:py-24 lg:pl-24 xl:py-32 xl:pl-32">
                     <span className="h-full w-[0.8rem] bg-white"></span>
                     <h2 className="w-full max-w-[55rem] normal-case text-white">Our mission</h2>
 

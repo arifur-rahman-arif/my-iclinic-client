@@ -12,7 +12,7 @@ import Link from 'next/link';
  */
 const BlurPrevention = (): JSX.Element => {
     return (
-        <Section>
+        <Section id="blur-prevention">
             <div className="grid grid-cols-2 overflow-hidden lg:max-h-[46rem] lg:grid-cols-[auto_50rem_auto] xl:grid-cols-[1fr_auto_1fr]">
                 <div className="max-h-[35rem] overflow-hidden lg:max-h-max">
                     <Image src={Image1} alt="" className="w-full scale-[1.09]" />
@@ -41,7 +41,7 @@ const BlurPrevention = (): JSX.Element => {
                     </span>
                     <Link
                         href="tel:0208 445 8877"
-                        className="-mt-6 justify-self-center rounded-[0.5rem] border-2 border-solid border-[#09F] bg-[#09F] py-6 px-12 text-center text-white transition-all duration-500 hover:bg-transparent hover:text-[#09F] xs:px-32"
+                        className="-mt-6 justify-self-center rounded-[0.5rem] border-2 border-solid border-[#09F] bg-[#09F] px-12 py-6 text-center text-white transition-all duration-500 hover:bg-transparent hover:text-[#09F] xs:px-32"
                     >
                         0208 445 8877
                     </Link>

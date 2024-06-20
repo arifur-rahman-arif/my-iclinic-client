@@ -14,7 +14,7 @@ export interface SectionPropInterface {
  */
 const PriceSection = ({ priceList, itemClassName }: SectionPropInterface): JSX.Element => {
     return (
-        <Section>
+        <Section id="price-section">
             <Container className="grid gap-y-12 !px-0 md:gap-x-32 lg:grid-cols-[auto_1fr] lg:gap-y-0">
                 {priceList.map((list, index) => (
                     <FoldItem

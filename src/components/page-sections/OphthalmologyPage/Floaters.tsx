@@ -15,9 +15,9 @@ interface FloatersProps extends Pick<RetinaTreatmentsContents, 'section4'> {}
  */
 const Floaters = ({ section4 }: Partial<FloatersProps>): JSX.Element => {
     return (
-        <Section>
+        <Section id="floaters">
             <Container className="grid gap-12 md:grid-cols-2 lg:gap-24 xl:gap-28">
-                <div className="grid grid-cols-[auto_1fr] content-start gap-y-6 gap-x-6">
+                <div className="grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-6">
                     <SectionHeading heading={section4?.heading || 'Floaters'} />
                     <strong className="col-start-2 text-[1.6rem] uppercase">
                         {section4?.subheading || 'Floaters are black, or grey opacities in the vision.'}

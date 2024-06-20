@@ -17,7 +17,7 @@ interface GlaucomaChargeSectionProps {
  */
 const GlaucomaChargeSection = ({ heading, descriptions, image }: GlaucomaChargeSectionProps): JSX.Element => {
     return (
-        <Section>
+        <Section id="glaucoma-charge">
             <Container className="grid grid-cols-1 justify-items-center !px-0 md:gap-0 md:!px-8 lg:grid-cols-[auto_8rem_1fr]">
                 <div className="relative z-[1] grid content-center gap-14 rounded-tl-[7.5rem] bg-[#FFD400] px-12 py-40 sm:px-16 md:col-span-2 md:col-start-1 md:row-span-full md:row-start-1 md:max-w-[50.7rem] md:rounded-[7.6rem_1rem] md:rounded-tr-radius2 md:py-16">
                     <span className="font-latoBold text-[3rem] leading-[3rem] text-heading md:text-[4rem] md:leading-[4rem]">

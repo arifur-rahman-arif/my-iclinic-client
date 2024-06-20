@@ -28,7 +28,7 @@ const NormalSection2 = ({ title1, title2, description }: NormalSection2Interface
     });
 
     return (
-        <Section>
+        <Section id="normal-section-2">
             <Container className="grid justify-items-center gap-12">
                 <h2 className="w-full max-w-[44.5rem] text-center normal-case">
                     {title1 || 'Choosing the best laser'}

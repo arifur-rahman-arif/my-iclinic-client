@@ -44,7 +44,7 @@ const WhyMyIClinic = ({ section2 }: Partial<WhyMyIClinicProps>): JSX.Element => 
     });
 
     return (
-        <Section>
+        <Section id="why-my-iclinic">
             <Container className="grid gap-12 md:gap-24">
                 <SectionTextColumn heading={section2?.heading || 'Why my-iclinic'} />
 

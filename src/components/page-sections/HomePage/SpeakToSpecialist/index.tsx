@@ -31,7 +31,7 @@ const SpeakToSpecialist = (): JSX.Element => {
     ];
 
     return (
-        <Section className="md:px-12">
+        <Section className="md:px-12" id="speak-to-specialist">
             <Container className="grid gap-12 md:grid-cols-2 md:rounded-radius2 md:border md:border-solid md:border-[#EAECF0] md:p-12 md:shadow-sm xl:grid-cols-[50rem_1fr] xl:px-28">
                 <ReviewSlider sliders={sliders} />
 

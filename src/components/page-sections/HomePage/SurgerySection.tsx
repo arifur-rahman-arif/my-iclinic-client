@@ -28,7 +28,7 @@ const list: ItemProps[] = [
  */
 const SurgerySection = (): JSX.Element => {
     return (
-        <Section className="px-8">
+        <Section className="px-8" id="surgery-description">
             <Container className="grid items-center justify-center gap-12 rounded-radius2 bg-brandLight py-12 md:grid-cols-2 xl:gap-28 xl:px-10 xl:py-24">
                 {list.map((item, i) => (
                     <Item key={i} {...item} />

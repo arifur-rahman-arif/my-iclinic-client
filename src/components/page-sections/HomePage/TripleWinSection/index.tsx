@@ -165,7 +165,7 @@ const TripleWinSection = (): JSX.Element => {
     const { onEnter } = useOnScreen({ ref: containerRef });
 
     return (
-        <Section>
+        <Section id="triple-win">
             <Container className="grid gap-12 md:grid-cols-2" ref={containerRef}>
                 <div className="grid content-start gap-6">
                     <TextColumn h3LightHeading="The triple win" />

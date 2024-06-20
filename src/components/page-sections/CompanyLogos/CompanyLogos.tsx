@@ -13,7 +13,7 @@ interface CompanyLogosProps {
  */
 const CompanyLogos = ({ sectionClass }: CompanyLogosProps): JSX.Element => {
     return (
-        <Section className={`${sectionClass || '!mt-24'}`}>
+        <Section className={`${sectionClass || '!mt-24'}`} id="company-logos">
             <Container>
                 <div className="mx-auto flex flex-wrap items-center justify-center gap-8 sm:gap-12">
                     <div className="grid h-[12rem] w-[12rem] place-items-center overflow-hidden rounded-full p-8 shadow-md transition-all duration-500 hover:shadow-none">

@@ -62,7 +62,7 @@ const RetinalDetachment = ({
     specialistCtaButton
 }: Partial<RetinalDetachmentProps>): JSX.Element => {
     return (
-        <Section>
+        <Section id="retinal-detachment">
             <Container className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 xl:gap-28">
                 <Image
                     src="/images/section-images/opthamology-retinal-detachment.webp"

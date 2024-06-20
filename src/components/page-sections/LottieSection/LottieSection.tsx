@@ -23,7 +23,7 @@ const LottieSection = ({ heading }: Props): JSX.Element => {
     const { onEnter } = useOnScreen({ ref: sectionRef, triggerPosition: '90%' });
 
     return (
-        <Section className="bg-[#003E79] md:min-h-[38.2rem]">
+        <Section id="lottie-animation" className="bg-[#003E79] md:min-h-[38.2rem]">
             <ContainerFluid className="grid grid-cols-1 gap-12 py-12 md:py-24" ref={sectionRef}>
                 <h2 className="w-full justify-self-center text-center normal-case md:max-w-[57.9rem]">
                     <strong className="normal-case text-white">

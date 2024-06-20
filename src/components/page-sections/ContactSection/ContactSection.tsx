@@ -14,7 +14,7 @@ const ContactSection = (): JSX.Element => {
     const appCtx: ContactContext = useContext(ContactCtx);
 
     return (
-        <div className="contact-form grid justify-items-center gap-12 md:gap-24">
+        <section id="contact-page" className="contact-form grid justify-items-center gap-12 md:gap-24">
             {/* <TabHeadings /> */}
 
             <div className="w-full">
@@ -26,7 +26,7 @@ const ContactSection = (): JSX.Element => {
                     if (tab.active && index === 2) return <OutOfHours key={index} />;
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 

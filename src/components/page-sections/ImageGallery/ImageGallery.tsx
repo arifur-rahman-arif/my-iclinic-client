@@ -46,7 +46,11 @@ const InnerComponent = ({ numberIcon, title, image }: GalleryInterface): JSX.Ele
         }
     }, [onEnter, deviceSize]);
     return (
-        <div className="gallery-image grid -translate-x-4 gap-8 opacity-0 will-change-transform" ref={animationRef}>
+        <section
+            id="image-gallery"
+            className="gallery-image grid -translate-x-4 gap-8 opacity-0 will-change-transform"
+            ref={animationRef}
+        >
             {numberIcon && title && (
                 <div className="grid grid-cols-[auto_1fr] items-center gap-x-4">
                     <Image src={numberIcon} alt="" className="col-span-2" />
@@ -64,7 +68,7 @@ const InnerComponent = ({ numberIcon, title, image }: GalleryInterface): JSX.Ele
                     className="rounded-radius2 transition-all duration-500 hover:scale-110"
                 />
             </div>
-        </div>
+        </section>
     );
 };
 

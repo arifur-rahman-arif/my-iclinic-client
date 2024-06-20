@@ -15,7 +15,7 @@ interface OphthalmologistDoctorsProps extends Pick<RetinaTreatmentsContents, 'se
  */
 const OphthalmologistDoctors = ({ section1 }: Partial<OphthalmologistDoctorsProps>): JSX.Element => {
     return (
-        <Section>
+        <Section id="ophthalmologist-doctors">
             <Container className="grid items-center gap-12 md:grid-cols-2 md:gap-24 xl:gap-28">
                 <Image
                     src={section1?.image || '/images/section-images/ophthalmologists-doctors.webp'}

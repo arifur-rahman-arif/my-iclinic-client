@@ -49,7 +49,7 @@ const FeaturedPatient = ({
     subTitleClass
 }: FeaturedPatientInterface): JSX.Element => {
     return (
-        <Section className="overflow-hidden">
+        <Section id="featured-patient" className="overflow-hidden">
             <Container>
                 <div className="mx-auto grid max-w-[93rem] grid-cols-1 content-start md:grid-cols-2 md:gap-24">
                     {/* For small devices */}

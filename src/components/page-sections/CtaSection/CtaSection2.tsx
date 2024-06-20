@@ -24,7 +24,7 @@ interface CtaSection2Interface {
  */
 const CtaSection2 = ({ title, subTitle, descriptions, image, subTitleClass }: CtaSection2Interface): JSX.Element => {
     return (
-        <Section className="bg-[#003E79]">
+        <Section id="cta-section2" className="bg-[#003E79]">
             <Container className="grid gap-12 md:grid-cols-2 md:gap-24 xl:grid-cols-[1fr_auto] xl:gap-32">
                 {/* Grid item 1 */}
                 <div className="grid content-center gap-12 pt-16 md:gap-24 md:py-24 xl:py-32  ">

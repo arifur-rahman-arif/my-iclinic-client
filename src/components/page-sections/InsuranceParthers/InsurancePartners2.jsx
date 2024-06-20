@@ -12,7 +12,7 @@ import { BiRightArrowAlt } from 'react-icons/bi';
  */
 const InsurancePartners2 = () => {
     return (
-        <Section>
+        <Section id="insurance-partners">
             <Container className="grid place-items-center gap-12 md:gap-24">
                 <div className="grid gap-6">
                     <h2 className="normal-case">

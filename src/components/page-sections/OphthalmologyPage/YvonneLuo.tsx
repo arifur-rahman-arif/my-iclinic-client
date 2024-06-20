@@ -18,7 +18,7 @@ interface YvonneLuoProps extends Pick<RetinaTreatmentsContents, 'section3'> {}
  */
 const YvonneLuo = ({ section3 }: Partial<YvonneLuoProps>): JSX.Element => {
     return (
-        <Section>
+        <Section id="yvone-luo">
             <Container className="grid overflow-hidden !px-0 md:grid-cols-2 md:!px-8 xl:grid-cols-[1fr_auto]">
                 <Image
                     src={section3?.image || '/images/section-images/yvone-leo-small.webp'}

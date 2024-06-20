@@ -26,7 +26,7 @@ interface OnScreenSliderSectionInterface {
  */
 const OnScreenSliderSection = ({ sliderList }: OnScreenSliderSectionInterface) => {
     return (
-        <Section>
+        <Section id="on-screen-slider">
             <Container className="grid gap-12">
                 <div className="grid items-center gap-x-10 gap-y-12">
                     <SectionTextColumn heading="Want to know more information about myopia?" />

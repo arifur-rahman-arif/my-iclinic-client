@@ -30,7 +30,7 @@ const PdfDownload = ({ title, list, description, pageSlug, downloadFile }: PdfDo
     const [showThankYouTemplate, setShowThankYouTemplate] = useState<boolean>(false);
 
     return (
-        <Section>
+        <Section id="pdf-download">
             <Container>
                 {/* <div className="relative mx-auto mb-12 grid max-w-[100.2rem] grid-cols-1 justify-items-center gap-8 md:mb-16"> */}
                 {/*     <h2> */}

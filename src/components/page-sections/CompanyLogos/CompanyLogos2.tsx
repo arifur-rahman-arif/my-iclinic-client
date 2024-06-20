@@ -17,7 +17,7 @@ import H3Variant1 from 'src/components/Headings/H3Variant1';
 const CompanyLogos2 = (): JSX.Element => {
     return (
         <Section>
-            <Container className="grid place-items-center gap-16">
+            <Container className="grid place-items-center gap-16" id="company-logos">
                 <H3Variant1 className="!font-latoLight">
                     <strong className="font-latoBold text-[2.4rem] normal-case leading-[3.2rem] md:text-[3.6rem] md:leading-[4rem]">
                         Funding your treatment

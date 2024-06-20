@@ -30,7 +30,7 @@ const VisionCorrection = ({
     footerHeading
 }: Props): JSX.Element => {
     return (
-        <Section className="md:px-12 xl:px-0">
+        <Section className="md:px-12 xl:px-0" id="vision-treatment">
             <Container className="grid gap-12 md:rounded-radius2 md:border md:border-solid md:border-[#EAECF0] md:p-24 md:px-12 md:shadow-sm xl:px-40">
                 <div className="grid gap-6">
                     <TextColumn h3LightHeading={heading || 'Are you considering vision correction treatment?'} />

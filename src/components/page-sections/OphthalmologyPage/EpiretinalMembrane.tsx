@@ -15,7 +15,7 @@ interface EpiretinalMembraneProps extends Pick<RetinaTreatmentsContents, 'sectio
  */
 const EpiretinalMembrane = ({ section7 }: Partial<EpiretinalMembraneProps>): JSX.Element => {
     return (
-        <Section className="px-8 xl:px-0">
+        <Section id="epiretinal-membrane" className="px-8 xl:px-0">
             <Container className="grid items-center gap-12 rounded-primary bg-brandLight py-12 md:grid-cols-2 lg:gap-24 lg:py-24 xl:gap-28">
                 <Image
                     src={section7?.image || '/images/section-images/epiretinal-membrane.webp'}

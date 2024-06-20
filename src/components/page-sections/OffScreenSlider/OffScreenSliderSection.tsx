@@ -16,7 +16,7 @@ interface OffScreenSliderSectionInterface {
  */
 const OffScreenSliderSection = ({ sliderList }: OffScreenSliderSectionInterface): JSX.Element => {
     return (
-        <Section>
+        <Section id="off-screen-slider">
             <ContainerFluid className="max-w-[calc(100%_-_calc(calc(100%_-_124rem)_/_2))] !px-0 md:ml-[calc(calc(100%_-_var(--container-width))_/_2)]">
                 <OffscreenSlider sliderList={sliderList} />
             </ContainerFluid>

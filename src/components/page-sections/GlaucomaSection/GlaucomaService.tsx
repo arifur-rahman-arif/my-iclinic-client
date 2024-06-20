@@ -35,7 +35,7 @@ const GlaucomaService = ({
     descriptionWrapperClass
 }: Props): JSX.Element => {
     return (
-        <Section>
+        <Section id="glaucoma-services">
             <Container
                 className={`grid items-center gap-12 md:grid-cols-2 md:gap-20 xl:gap-32 ${
                     reversed ? 'xl:grid-cols-[auto_1fr]' : ' xl:grid-cols-[1fr_auto]'

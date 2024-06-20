@@ -47,11 +47,9 @@ const Faq = ({ faqs, titleLight, titleBold, description }: FaqInterface): JSX.El
     return (
         <Section id="faq">
             <Container className="grid grid-cols-1 gap-16">
-                <div>
-                    <h2 className="text-center normal-case leading-[3.6rem] md:text-[3.2rem] xl:text-[3.2rem] xl:leading-[3.6rem]">
-                        {titleLight}
-                        <br />
-                        {titleBold}
+                <div className="grid justify-items-center">
+                    <h2 className="max-w-[40rem] text-center normal-case leading-[3.6rem] md:text-[3.2rem] xl:text-[3.2rem] xl:leading-[3.6rem]">
+                        {titleLight} {titleBold}
                     </h2>
                     <p className="mt-16 text-center font-mulishLight text-[1.8rem] leading-[3.2rem] sm:text-[2rem] sm:leading-[2.8rem] md:mt-24">
                         {typeof description === 'string' ? stripInitialTags(description) : description}

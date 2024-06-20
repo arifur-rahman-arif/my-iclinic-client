@@ -38,7 +38,7 @@ const NormalSection4 = ({
     //  */
     // const NormalSection3 = (): JSX.Element => {
     return (
-        <Section className="bg-[#F1E5FF] py-24 md:py-32">
+        <Section id="normal-section-4" className="bg-[#F1E5FF] py-24 md:py-32">
             <Container className="flex max-w-[51.8rem] flex-col items-center justify-center gap-6">
                 <h2 className="justify-self-end normal-case md:max-w-[56.6rem]">
                     <strong>{title}</strong>

@@ -15,7 +15,7 @@ const VideoPlayer = dynamic(() => import('@/page-sections/SectionParts/VideoPlay
  */
 const PatientVideoReviews = () => {
     return (
-        <Section>
+        <Section id="patient-video-reviews">
             <Container className="relative grid content-start gap-12 md:gap-24">
                 <h2 className="max-w-[67.1rem] font-latoBold text-[3rem] normal-case leading-[3.6rem] md:justify-self-center md:text-center md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
                     Hear how ICL transformed Eliete and Angel`s life
