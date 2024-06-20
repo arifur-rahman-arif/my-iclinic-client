@@ -29,7 +29,7 @@ const ContactUs = ({ seo, yoastJson }: CookiePolicyProps) => {
                 </Container>
             </div>
 
-            <Container className="rounded-radius2 bg-white p-16 md:-mt-48 md:p-24">
+            <Container className="no-search-index rounded-radius2 bg-white p-16 md:-mt-48 md:p-24">
                 <Context>
                     <ContactSection />
                 </Context>

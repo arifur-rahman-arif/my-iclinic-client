@@ -116,7 +116,7 @@ const FinanceCalculator = (): JSX.Element => {
             {ctx.treatmentList.length
                 ? ctx.treatmentList.map((treatment, index) => {
                       return (
-                          <div className="relative grid" key={index}>
+                          <div className="no-search-index relative grid" key={index}>
                               {showAlert && (
                                   <div
                                       ref={notificationRef}

@@ -31,7 +31,7 @@ const ResultColumn = ({ index }: ResultColumnProps) => {
     }
 
     return (
-        <div className="grid content-start gap-6">
+        <div className="no-search-index grid content-start gap-6">
             <MonthlyPayment index={index} />
 
             {/*  Number of instalment */}

@@ -55,7 +55,7 @@ const CallbackSection = (): JSX.Element => {
                         <RequestCallback />
                     </div>
 
-                    <div className="md:justify-self-start">
+                    <div className="no-search-index md:justify-self-start">
                         {sliders?.length ? (
                             <HorizontalSlider>
                                 {sliders.map((slider, index) => (

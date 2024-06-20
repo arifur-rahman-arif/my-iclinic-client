@@ -89,7 +89,7 @@ const PatientReviews = ({ heading, sliders }: Props): JSX.Element => {
                     {heading || 'Hear from our satisfied patients'}
                 </h2>
 
-                <div className="relative overflow-x-hidden">
+                <div className="no-search-index relative overflow-x-hidden">
                     <PatientSlider sliderList={sliders || sliderList} />
                 </div>
             </Container>

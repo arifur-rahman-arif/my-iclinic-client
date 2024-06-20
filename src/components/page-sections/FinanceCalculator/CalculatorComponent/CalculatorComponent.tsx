@@ -19,7 +19,7 @@ const CalculatorComponent = ({ index }: CalculatorComponentProps) => {
     const ctx: CalculatorContext = useContext(AppCtx);
 
     return (
-        <div className="grid place-items-center content-start overflow-hidden rounded-primary bg-white px-4 pb-12 shadow-shadow1 xs:px-8 sm:px-12">
+        <div className="no-search-index grid place-items-center content-start overflow-hidden rounded-primary bg-white px-4 pb-12 shadow-shadow1 xs:px-8 sm:px-12">
             <div className="flex w-[calc(100%_+_6rem)] flex-wrap items-center justify-center gap-4 justify-self-center px-8 py-14 shadow-md md:gap-12">
                 <span className="font-extralight text-[#697072] sm:text-[2rem] sm:leading-[2.4rem] md:text-[2.4rem] md:leading-[3.2rem]">
                     Finance
@@ -44,7 +44,7 @@ const CalculatorComponent = ({ index }: CalculatorComponentProps) => {
 
             <PercentageCheckBox {...{ index }} />
 
-            <div className="mt-12 max-w-[50rem] border-t border-[#C5CED2] pt-12 pb-4 md:mt-24">
+            <div className="mt-12 max-w-[50rem] border-t border-[#C5CED2] pb-4 pt-12 md:mt-24">
                 <span className="font-latoBold text-[2rem] leading-[3.2rem] text-heading">Terms & Conditions:</span>
                 <p className="mt-6 text-[1.6rem] leading-[2.4rem]">
                     Please consider: approval for{' '}

@@ -133,9 +133,8 @@ const extractSectionsFromHTML = (html) => {
             .get();
         const title = titles.join(' ');
 
-        // Remove all <h2> and <a> tags from the section to exclude them from the content
-        section.find('h2, h1, h3').remove();
-        section.find('a').remove();
+        // Remove all <h1>, <h2>, <h3>, <a>, and elements with .no-search-index class from the section to exclude them from the content
+        section.find('h1, h2, h3, a, .no-search-index').remove();
 
         // Initialize an array to store content elements
         const contentArray = section.contents();

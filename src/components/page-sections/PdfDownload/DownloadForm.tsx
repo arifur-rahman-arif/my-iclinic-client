@@ -118,7 +118,7 @@ const DownloadForm = ({
 
     return (
         <form
-            className="mx-auto grid w-full max-w-[45rem] grid-cols-1 content-start gap-16 px-8 py-12 md:py-28"
+            className="no-search-index mx-auto grid w-full max-w-[45rem] grid-cols-1 content-start gap-16 px-8 py-12 md:py-28"
             onSubmit={formSubmit}
         >
             <div className="grid grid-cols-1 grid-rows-[6rem_6rem] gap-14">
