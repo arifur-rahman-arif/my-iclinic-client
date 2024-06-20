@@ -1,13 +1,8 @@
-import ComponentLoader from '@/components/ComponentLoader';
 import { ContactContext, ContactCtx } from '@/page-sections/ContactSection/Context';
 import OutOfHours from './OutOfHours';
-import dynamic from 'next/dynamic';
 import { useContext } from 'react';
 import { ContactForm } from './ContactForm';
-
-const CallbackForm = dynamic(() => import('@/page-sections/ContactSection/CallbackForm'), {
-    loading: () => <ComponentLoader />
-});
+import CallbackForm from '@/page-sections/ContactSection/CallbackForm';
 
 /**
  * Contact section of contact page

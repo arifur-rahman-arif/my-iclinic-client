@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -19,7 +18,6 @@ import { leftRightListGlaucoma } from '@/page-sections/LeftRight/leftRightList';
 import { glaucomaStackList } from '@/page-sections/StackedSection';
 import { GlaucomaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import YagHero from '@/page-sections/Masthead/YagHero';
 import { Button2 } from '@/components/Buttons';
@@ -27,36 +25,17 @@ import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import GlaucomaService from '@/page-sections/GlaucomaSection/GlaucomaService';
 import SectionTextColumn from '@/components/SectionTextColumn';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
+import PdfDownload from '@/components/page-sections/PdfDownload/PdfDownload';
 
-const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader />
-});
+import FeaturedPatient from '@/page-sections/FeaturedPatient/FeaturedPatient';
 
-const StackedSection = dynamic(() => import('@/page-sections/StackedSection/StackedSection'), {
-    loading: () => <ComponentLoader />
-});
-const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/CompareSlider'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
-
-const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
+import StackedSection from '@/page-sections/StackedSection/StackedSection';
+import CompareSlider from '@/page-sections/CompareSlider/CompareSlider';
+import EnvironmentalImpact from '@/page-sections/HomePage/EnvironmentalImpact';
 
 interface DataInterface extends GlaucomaPageContentProps, PageDataInterface<GlaucomaPageContentProps> {}
 

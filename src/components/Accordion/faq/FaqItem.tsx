@@ -1,6 +1,6 @@
 import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './styles/FaqItem.module.scss';
 
 interface AccordionItemInterface {
@@ -24,8 +24,11 @@ const FaqItem = ({ accordion, index }: AccordionItemInterface): JSX.Element => {
     const { title, description } = accordion;
     const [expanded, setExpanded] = useState<boolean>(index === 0);
     const descriptionRef = useRef<HTMLDivElement | null>(null);
+    const [windowWidth, setWindowWidth] = useState<number>(0);
 
-    const windowWidth = window.innerWidth;
+    useEffect(() => {
+        setWindowWidth(windowWidth);
+    }, []);
 
     return (
         <div

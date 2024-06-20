@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -15,25 +14,15 @@ import {
 } from '@/page-sections/index';
 import { PageDataInterface, PardiatricContentInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import YagHero from '@/page-sections/Masthead/YagHero';
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends PardiatricContentInterface, PageDataInterface<PardiatricContentInterface> {}
 

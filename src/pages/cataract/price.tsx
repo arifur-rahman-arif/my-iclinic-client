@@ -1,6 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
-
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import {
@@ -21,15 +19,8 @@ import { getPageData, getTreatments } from '@/lib';
 import { PriceCataractContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 // import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
 
-// const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-//     loading: () => <ComponentLoader />
-// });
-
-const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
-    loading: () => <ComponentLoader />
-});
+import FinanceCalculatorSection from '@/page-sections/icl-components/FinanceCalculatorSection';
 
 interface DataInterface extends PriceCataractContentInterface, PageDataInterface<PriceCataractContentInterface> {}
 
@@ -247,7 +238,6 @@ export async function getStaticProps() {
     try {
         const data: WpPageResponseInterface<any> = await getPageData({ slug: 'cataract-price' });
 
-
         const treatments = await getTreatments();
         let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'Cataract');
 
@@ -261,7 +251,6 @@ export async function getStaticProps() {
             ...treatment,
             active: index === 0
         }));
-
 
         return {
             /* eslint-disable */

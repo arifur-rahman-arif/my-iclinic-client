@@ -1,39 +1,19 @@
 /* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import CostDetails from '@/components/page-sections/CataractPriceSections/CostDetails';
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData } from '@/lib';
-import MastheadImageLarge from '@/masthead/masthead-myopia-pricing-large.webp';
-import MastheadImageMedium from '@/masthead/masthead-myopia-pricing-medium.webp';
-import MastheadImageSmall from '@/masthead/masthead-myopia-pricing-small.webp';
-import {
-    BookConsultation,
-    Cta3,
-    CtaSection2,
-    FullWidthImageSection2,
-    Masthead,
-    PriceSection,
-    SideImageSection
-} from '@/page-sections/index';
-import { myopiaPriceList } from '@/page-sections/PriceCard/priceList';
+import { BookConsultation, CtaSection2, SideImageSection } from '@/page-sections/index';
 import { PricemyopiaContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
-import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-import React from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
 interface DataInterface extends PricemyopiaContentInterface, PageDataInterface<PricemyopiaContentInterface> {}
 

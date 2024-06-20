@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import ComponentLoader from '@/components/ComponentLoader';
 import { H4Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
 import { LinkText } from '@/components/Link';
@@ -19,34 +18,18 @@ import PremiumLense4 from '@/section-images/premium-lense-4.webp';
 import { PremiumlensesContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { BsArrowRightShort } from 'react-icons/bs';
 
-const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
-});
-const LottieSection = dynamic(() => import('@/page-sections/LottieSection/LottieSection'), {
-    loading: () => <ComponentLoader />
-});
-const CompareSlider = dynamic(() => import('@/page-sections/CompareSlider/CompareSlider'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
+
+import PdfDownload from '@/page-sections/PdfDownload/PdfDownload';
+import LeftRightSection from '@/page-sections/LeftRight/LeftRightSection';
+import LottieSection from '@/page-sections/LottieSection/LottieSection';
+import CompareSlider from '@/page-sections/CompareSlider/CompareSlider';
 
 interface DataInterface extends PremiumlensesContentInterface, PageDataInterface<PremiumlensesContentInterface> {}
 

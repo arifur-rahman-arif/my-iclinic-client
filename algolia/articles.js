@@ -38,7 +38,7 @@ const getPosts = async () => {
 
     for (let page = 1; page <= totalPages; page++) {
         const apiResponse = await fetch(
-            `${process.env.WP_REST_URL}/posts?_fields=id,title,content,slug&per_page=${postsPerPage}&page=${page}`,
+            `${process.env.WP_REST_URL}/posts?_fields=id,title,content,slug,author,categories&per_page=${postsPerPage}&page=${page}`,
             {
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8',
@@ -53,19 +53,39 @@ const getPosts = async () => {
 
         const responseData = await apiResponse.json();
         data.push(
-            ...responseData.map((post) => ({
-                objectID: post.id,
-                title: post?.title?.rendered || '',
-                content: sliceStringByWordsAndSizeLimit(
-                    striptags(post?.content?.rendered.replaceAll('&nbsp;', ' '), [], ' ')
-                ),
-                section: `/articles/${post.slug}`,
-                type: 'article'
-            }))
+            ...responseData.map(async (post) => {
+                const categoryApiResponse = await fetch(`${process.env.WP_REST_URL}/categories/${post.categories[0]}`, {
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                        Authorization: `Bearer ${process.env.WP_JWT_TOKEN}`
+                    }
+                });
+                const categoryData = await categoryApiResponse.json();
+
+                const authorApiResponse = await fetch(`${process.env.WP_REST_URL}/users/${post.author}`, {
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                        Authorization: `Bearer ${process.env.WP_JWT_TOKEN}`
+                    }
+                });
+                const authorData = await authorApiResponse.json();
+
+                return {
+                    objectID: post.id,
+                    title: post?.title?.rendered || '',
+                    content: sliceStringByWordsAndSizeLimit(
+                        striptags(post?.content?.rendered.replaceAll('&nbsp;', ' '), [], ' ')
+                    ),
+                    section: `/articles/${post.slug}`,
+                    category: categoryData?.name,
+                    author: authorData?.name,
+                    type: 'article'
+                };
+            })
         );
     }
 
-    return data;
+    return Promise.all(data);
 };
 
 /**

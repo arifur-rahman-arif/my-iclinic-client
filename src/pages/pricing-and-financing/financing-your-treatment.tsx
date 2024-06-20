@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import { H2Variant1, H3Variant2 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
@@ -24,13 +23,10 @@ import { convertArrayOfObjectsToStrings } from '@/utils/apiHelpers';
 import { getElementTopPosition, stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { FiHelpCircle } from 'react-icons/fi';
 
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/components/page-sections/CompanyLogos/CompanyLogos';
 
 interface DataInterface extends FinanceTreatmentPageContents, PageDataInterface<FinanceTreatmentPageContents> {}
 

@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -13,12 +12,8 @@ import UspSection from '@/page-sections/Usp/UspSection';
 import { AboutUsPageContent, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
-import dynamic from 'next/dynamic';
 import H2Variant1 from 'src/components/Headings/H2Variant1';
-
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends AboutUsPageContent, PageDataInterface<AboutUsPageContent> {}
 
@@ -172,9 +167,7 @@ export default function AboutUs({ seo, yoastJson, data }: AboutUsProps): JSX.Ele
 
             <UspSection />
 
-            <LazyComponent>
-                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
-            </LazyComponent>
+            <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
 
             <SideImageSection
                 containerClassName="!px-0 xl:!grid-cols-[1fr_auto] items-center"

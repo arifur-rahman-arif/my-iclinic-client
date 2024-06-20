@@ -1,6 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
 import { Button2 } from '@/components/Buttons';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import { H2Variant1 } from '@/components/Headings';
 import LazyComponent from '@/components/LazyComponent';
@@ -17,27 +16,14 @@ import { YagCataractContentInterface, PageDataInterface, WpPageResponseInterface
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
 import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-const LeftRightSection = dynamic(() => import('@/components/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
+import PdfDownload from '@/components/page-sections/PdfDownload/PdfDownload';
+import LeftRightSection from '@/components/page-sections/LeftRight/LeftRightSection';
 
 interface DataInterface extends YagCataractContentInterface, PageDataInterface<YagCataractContentInterface> {}
 

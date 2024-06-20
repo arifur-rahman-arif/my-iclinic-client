@@ -1,6 +1,4 @@
 import { Card, cardList } from '@/components/Card';
-import ComponentLoader from '@/components/ComponentLoader';
-import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { SideImageSection } from '@/components/page-sections';
 import { journeySliderListHome } from '@/components/Slider/JourneySlider/journeySliderList';
@@ -13,22 +11,12 @@ import VisionCorrection from '@/page-sections/HomePage/VisionCorrection';
 import Masthead3 from '@/page-sections/Masthead/Masthead3';
 import UspSection from '@/page-sections/Usp/UspSection';
 import { HomeContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import dynamic from 'next/dynamic';
 import TripleWinSection from 'src/components/page-sections/HomePage/TripleWinSection';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
-
-const SpeakToSpecialist = dynamic(() => import('@/page-sections/HomePage/SpeakToSpecialist'), {
-    loading: () => <ComponentLoader />
-});
-
-const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader />
-});
-
-const JourneySlider = dynamic(() => import('@/components/Slider/JourneySlider/JourneySlider'), {
-    loading: () => <ComponentLoader />
-});
+import JourneySlider from '@/components/Slider/JourneySlider/JourneySlider';
+import SpeakToSpecialist from '@/components/page-sections/HomePage/SpeakToSpecialist';
+import EnvironmentalImpact from '@/components/page-sections/HomePage/EnvironmentalImpact';
 
 interface DataInterface extends HomeContentInterface, PageDataInterface<HomeContentInterface> {}
 
@@ -96,19 +84,13 @@ export default function Home({ seo, yoastJson, data }: HomeProps): JSX.Element {
 
             <TripleWinSection />
 
-            <LazyComponent>
-                <JourneySlider sliderList={journeySliderListHome} />
-            </LazyComponent>
+            <JourneySlider sliderList={journeySliderListHome} />
 
-            <LazyComponent>
-                <SpeakToSpecialist />
-            </LazyComponent>
+            <SpeakToSpecialist />
 
             <OurMission />
 
-            <LazyComponent>
-                <EnvironmentalImpact />
-            </LazyComponent>
+            <EnvironmentalImpact />
 
             <FundingTreatment />
 

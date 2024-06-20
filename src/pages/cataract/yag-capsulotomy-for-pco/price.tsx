@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -11,11 +10,8 @@ import { getPageData } from '@/lib';
 import { YagPriceContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
-import dynamic from 'next/dynamic';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
 interface DataInterface extends YagPriceContentInterface, PageDataInterface<YagPriceContentInterface> {}
 

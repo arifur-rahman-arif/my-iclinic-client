@@ -12,7 +12,6 @@ import { getPageData, getTreatments } from '@/lib';
 import { LaserEyeSurgeryContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
-import React from 'react';
 
 interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {}
 

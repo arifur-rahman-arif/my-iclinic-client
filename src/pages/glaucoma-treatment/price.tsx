@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -8,7 +7,6 @@ import { BookConsultation, CtaSection, SideImageSection } from '@/page-sections/
 import { GlaucomaPackages3 } from '@/page-sections/SectionParts/GlaucomaPackages';
 import { PageDataInterface, PriceGlaucomaContentInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import CataractHero from '@/page-sections/Masthead/CataractHero';
 import React from 'react';
@@ -22,9 +20,8 @@ import Logo4 from '@/logos/freedom.png';
 import Logo5 from '@/logos/cigma.png';
 import Logo6 from '@/logos/general-medical.png';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+
 interface DataInterface extends PriceGlaucomaContentInterface, PageDataInterface<PriceGlaucomaContentInterface> {}
 
 interface PriceProps {

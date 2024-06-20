@@ -1,11 +1,9 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { AdvanceEyeCare, CtaSection2, FullWidthImageSection, SideImageSection } from '@/components/page-sections';
 import { getPageData } from '@/lib';
 import { EyeDiagnosticsPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import dynamic from 'next/dynamic';
 import NormalSection5 from 'src/components/page-sections/NormalSection/NormalSection5';
 import RelexHero from '@/page-sections/Masthead/RelexHero';
 import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Masthead/MastheadICL';
@@ -14,15 +12,9 @@ import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
 
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/components/page-sections/CompanyLogos/CompanyLogos';
+import CallbackSection from '@/components/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface
     extends EyeDiagnosticsPageContentInterface,

@@ -1,13 +1,7 @@
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
 import { Section } from '@/components/Section';
 import { SlideProps } from '@/components/Slider/PatientSlider';
-import dynamic from 'next/dynamic';
-
-const PatientSlider = dynamic(() => import('@/components/Slider/PatientSlider'), {
-    loading: () => <ComponentLoader />
-});
+import PatientSlider from '@/components/Slider/PatientSlider';
 
 export const sliderList: SlideProps[] = [
     {
@@ -89,16 +83,14 @@ interface Props {
  */
 const PatientReviews = ({ heading, sliders }: Props): JSX.Element => {
     return (
-        <Section id="newfound-clarity">
+        <Section id="patient-reviews">
             <Container className="relative grid content-start gap-12 md:gap-24">
                 <h2 className="font-latoBold text-[3rem] normal-case leading-[3.6rem] md:justify-self-center md:font-latoExtraBold md:text-[4.8rem] md:leading-[4.8rem]">
                     {heading || 'Hear from our satisfied patients'}
                 </h2>
 
                 <div className="relative overflow-x-hidden">
-                    <LazyComponent>
-                        <PatientSlider sliderList={sliders || sliderList} />
-                    </LazyComponent>
+                    <PatientSlider sliderList={sliders || sliderList} />
                 </div>
             </Container>
         </Section>

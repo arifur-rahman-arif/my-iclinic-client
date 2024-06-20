@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { getPageData } from '@/lib';
@@ -17,15 +16,12 @@ import {
 import InclusiveCostImage from '@/section-images/lasik-inclusive-cost-image.webp';
 import { PricelasiklondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import CostDetails from '@/components/page-sections/RelexSmilePriceSections/CostDetails';
 import Button2 from '@/components/Buttons/Button2';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
 interface DataInterface extends PricelasiklondonContentInterface, PageDataInterface<PricelasiklondonContentInterface> {}
 
