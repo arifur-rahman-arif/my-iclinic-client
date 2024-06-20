@@ -1,6 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
-
 import LazyComponent from '@/components/LazyComponent';
 import LinkText from '@/components/Link/LinkText';
 import Page from '@/components/Page';
@@ -25,12 +23,9 @@ import InclusiveCostImage from '@/section-images/icl-inclusive-cost-image.webp';
 import { PriceIclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/components/page-sections/RequestCallback/CallbackSection';
 
 interface DataInterface extends PriceIclContentInterface, PageDataInterface<PriceIclContentInterface> {}
 

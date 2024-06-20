@@ -1,4 +1,3 @@
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
@@ -22,18 +21,12 @@ import VisionExcellence from '@/page-sections/icl-components/VisionExcellence';
 import YourVisionVideoSection from '@/page-sections/icl-components/YourVisionVideoSection';
 import ABTestMasthead from '@/page-sections/Masthead/ABTestMasthead';
 import { FinanceTreatmentPageContents, IclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react';
 import CompanyLogos2 from 'src/components/page-sections/CompanyLogos/CompanyLogos2';
 
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-
-const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
-    loading: () => <ComponentLoader />
-});
+import Faq from '@/components/page-sections/Faq/Faq';
+import FinanceCalculatorSection from '@/page-sections/icl-components/FinanceCalculatorSection';
 
 interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {}
 

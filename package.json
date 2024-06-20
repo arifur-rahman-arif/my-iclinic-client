@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"next dev\" \"pnpm tailwind --watch\"",
     "tailwind": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css --minify",
-    "build": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css --minify && next build && next-sitemap && npm run algolia",
+    "build": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css --minify && next build && next-sitemap",
     "export": "tailwindcss -i src/styles/tailwind.css -o build/styles/tailwind.css --minify && next build && next export",
     "start": "next start",
     "analyze": "ANALYZE=true next build",
@@ -14,6 +14,7 @@
     "code-check": "npx eslint . --ext .ts --ext .tsx --fix && npx tsc",
     "format": "npx prettier --write \"**/*.+(html|css|scss|sass|less|js|jsx|ts|tsx|json|php)\"",
     "prepare": "husky install",
+    "postbuild": "npm run algolia",
     "algolia": "node algolia/articles.js"
   },
   "dependencies": {

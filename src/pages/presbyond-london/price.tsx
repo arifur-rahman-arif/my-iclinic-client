@@ -3,25 +3,19 @@ import { BreadCrumb } from '@/components/Breadcrumb';
 import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
-import { largeSizes, smallSizes, useDeviceSize } from '@/hooks';
 import { getPageData, getTreatments } from '@/lib';
 import {
     BulletPoint,
     CtaSection,
-    FinanceList,
     FullWidthImageSection,
     FullWidthImageSection2,
-    Masthead,
-    PriceSection,
     SideImageSection
 } from '@/page-sections/index';
-import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
-import { presbyondPriceList } from '@/page-sections/PriceCard/priceList';
+import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import ShortSightedImageLarge from '@/section-images/short-sighted-vision-large.webp';
 import { PricepresbeyondlondonContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import HTMLReactParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 
 import React from 'react';
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
@@ -30,13 +24,8 @@ import CostDetails from '@/components/page-sections/RelexSmilePriceSections/Cost
 import { Button2 } from '@/components/Buttons';
 import { TreatmentInterface } from '@/components/page-sections/FinanceCalculator/Context';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-
-const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
-    loading: () => <ComponentLoader />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import FinanceCalculatorSection from '@/page-sections/icl-components/FinanceCalculatorSection';
 
 interface DataInterface
     extends PricepresbeyondlondonContentInterface,

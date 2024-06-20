@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { getPageData } from '@/lib';
@@ -18,15 +17,12 @@ import HTMLReactParser from 'html-react-parser';
 import React from 'react';
 import InclusiveCostImage from '@/section-images/inclusive-cost-image.webp';
 import { RelexSmilePriceContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
-import dynamic from 'next/dynamic';
 import CataractHero from '@/components/page-sections/Masthead/CataractHero';
 import CostDetails from '@/components/page-sections/RelexSmilePriceSections/CostDetails';
 import { openFreshdeskChat } from '@/utils/miscellaneous';
 import Image from 'next/image';
 
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
 interface DataInterface extends RelexSmilePriceContentInterface, PageDataInterface<RelexSmilePriceContentInterface> {}
 
@@ -45,17 +41,6 @@ interface PricePageProps {
  * @returns {JSX.Element}
  */
 export default function Price({ seo, yoastJson, data }: PricePageProps): JSX.Element {
-    // const priceSection: any = data?.relex_smile_price
-    //     ? data?.relex_smile_price.map((service) => {
-    //           return {
-    //               ...service,
-    //               price: service?.price,
-    //               priceText: service?.priceText,
-    //               priceDescription: service?.priceDescription
-    //           };
-    //       })
-    //     : null;
-
     return (
         <Page
             title="ReLEx SMILE Laser eye surgery In London"

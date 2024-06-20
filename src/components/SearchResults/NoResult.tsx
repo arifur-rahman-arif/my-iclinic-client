@@ -48,7 +48,8 @@ const NoResult = ({ router }: NoResultProps): JSX.Element => {
      */
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        router.push(`/search?query=${searchText}`);
+        const query = encodeURIComponent(searchText);
+        router.push(`/search?query=${query}`);
         setSearchText('');
     };
 
@@ -66,7 +67,7 @@ const NoResult = ({ router }: NoResultProps): JSX.Element => {
     ];
 
     return (
-        <div className="relative my-24 mx-auto flex flex-col items-center px-4 text-center lg:my-12">
+        <div className="relative mx-auto my-24 flex flex-col items-center px-4 text-center lg:my-12">
             {query ? (
                 <div className="grid place-items-center gap-12">
                     {' '}
@@ -109,7 +110,7 @@ const NoResult = ({ router }: NoResultProps): JSX.Element => {
                     </form>
 
                     {searchResult.length ? (
-                        <div className="absolute top-full left-0 z-10 mt-3 flex max-h-[50vh] w-full flex-col space-y-10 overflow-y-auto rounded-primary bg-white p-10 shadow-xl">
+                        <div className="absolute left-0 top-full z-10 mt-3 flex max-h-[50vh] w-full flex-col space-y-10 overflow-y-auto rounded-primary bg-white p-10 shadow-xl">
                             {searchResult.map((result: any, index: number) => (
                                 <Hit key={index} hit={result} setSearchText={setSearchText} />
                             ))}
@@ -126,7 +127,7 @@ const NoResult = ({ router }: NoResultProps): JSX.Element => {
                             <Link
                                 key={index}
                                 href={`/search?query=${item}`}
-                                className="rounded-primary bg-[#CCD8DD] py-[1.2rem] px-10 text-black"
+                                className="rounded-primary bg-[#CCD8DD] px-10 py-[1.2rem] text-black"
                             >
                                 {item}
                             </Link>
@@ -155,7 +156,7 @@ const Hit = ({ hit, setSearchText }: HitProps): JSX.Element => {
     if (hit) {
         return (
             <Link
-                href={`/search?query=${hit.title}`}
+                href={`/search?query=${encodeURIComponent(hit.title)}`}
                 className="grid grid-cols-[1fr_auto] items-start gap-12"
                 onClick={() => {
                     setSearchText(hit.title);

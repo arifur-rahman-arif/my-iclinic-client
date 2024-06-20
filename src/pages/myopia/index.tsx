@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
@@ -22,23 +21,13 @@ import { StackedSection2 } from '@/page-sections/StackedSection';
 import { MyopiaPageContentProps, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Button2 } from 'src/components/Buttons';
 
-const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import PdfDownload from '@/page-sections/PdfDownload/PdfDownload';
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends MyopiaPageContentProps, PageDataInterface<MyopiaPageContentProps> {}
 
@@ -319,7 +308,8 @@ export default function Myopia({ seo, yoastJson, data, blogPosts }: PaediatricEy
                 }}
                 sectionImageDesktop={{
                     url:
-                        data?.section_8?.large_image?.url || '/images/section-images/myopia-other-treatments-large.webp',
+                        data?.section_8?.large_image?.url ||
+                        '/images/section-images/myopia-other-treatments-large.webp',
                     width: 719,
                     height: 498
                 }}

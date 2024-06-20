@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { getPageData } from '@/lib';
@@ -7,24 +6,17 @@ import { eyelidFaqList } from '@/page-sections/Faq/faqList';
 import { CtaSection, GlaucomaChargeSection } from '@/page-sections/index';
 import { EyelidContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
-import dynamic from 'next/dynamic';
 import CataractHero from '@/page-sections/Masthead/CataractHero';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import CorneaOfferings from '@/page-sections/CorneaPage/CorneaOfferings';
 import VisionCorrection from '@/page-sections/HomePage/VisionCorrection';
-import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
 
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends EyelidContentInterface, PageDataInterface<EyelidContentInterface> {}
 

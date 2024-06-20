@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import RelexHero from '@/components/page-sections/Masthead/RelexHero';
@@ -22,45 +21,22 @@ import { FinanceCalculatorButton, MastheadCtaButtons } from '@/page-sections/Mas
 import { PageDataInterface, RelexSmilePageContentProps, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage, stringArrayToElementArray } from '@/utils/apiHelpers';
 import HTMLReactParser from 'html-react-parser';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
 
-const PdfDownload = dynamic(() => import('@/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-const FeaturedPatient = dynamic(() => import('@/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader />
-});
-const LeftRightSection = dynamic(() => import('@/page-sections/LeftRight/LeftRightSection'), {
-    loading: () => <ComponentLoader />
-});
-const SideVideoSection = dynamic(() => import('@/page-sections/SideImageSection/SideVideoSection'), {
-    loading: () => <ComponentLoader />
-});
-const BottomBanner2 = dynamic(() => import('@/page-sections/BottomFullBanners/BottomBanner2'), {
-    loading: () => <ComponentLoader />
-});
-const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
-const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader />
-});
+import PdfDownload from '@/page-sections/PdfDownload/PdfDownload';
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import FeaturedPatient from '@/page-sections/FeaturedPatient/FeaturedPatient';
+import LeftRightSection from '@/page-sections/LeftRight/LeftRightSection';
+import SideVideoSection from '@/page-sections/SideImageSection/SideVideoSection';
+import BottomBanner2 from '@/page-sections/BottomFullBanners/BottomBanner2';
+import FinanceCalculatorSection from '@/page-sections/icl-components/FinanceCalculatorSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
+import EnvironmentalImpact from '@/page-sections/HomePage/EnvironmentalImpact';
 
 interface DataInterface extends RelexSmilePageContentProps, PageDataInterface<RelexSmilePageContentProps> {}
 

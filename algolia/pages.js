@@ -104,7 +104,8 @@ const pages = [
     { name: 'Relex Smile Price', url: '/relex-smile-london/price' },
     { name: 'Suitability Check', url: '/suitability-check' },
     { name: 'Terms and Conditions', url: '/terms-and-conditions' },
-    { name: 'Translation Service', url: '/translation-service' }
+    { name: 'Translation Service', url: '/translation-service' },
+    { name: 'Laser Eye Surgery', url: '/laser-eye-surgery' }
     // Add more URLs as needed
 ];
 
@@ -121,6 +122,7 @@ const fetchPageContent = async (url) => {
 const extractSectionsFromHTML = (html) => {
     const $ = cheerio.load(html);
     const sections = [];
+    const pageTitle = $('title').text().trim();
 
     $('section, main').each((i, el) => {
         const section = $(el);
@@ -140,6 +142,7 @@ const extractSectionsFromHTML = (html) => {
 
         if (title) {
             sections.push({
+                pageTitle,
                 title,
                 content: sliceStringByWordsAndSizeLimit(striptags(contentArray.toString(), [], ' ').trim()), // Example word limit
                 section: id ? `#${id}` : ''
@@ -178,14 +181,14 @@ const processPages = async (pages) => {
     const sectionsData = [];
 
     for (const url of pages) {
-        const pageUrl = `https://www.my-iclinic.co.uk${url.url}`;
+        const pageUrl = `${process.env?.INDEXING_URL || 'https://www.websider.co.uk'}${url.url}`;
         const html = await fetchPageContent(pageUrl);
 
         if (html) {
             const sections = extractSectionsFromHTML(html);
 
             sections.forEach((section) => {
-                section.section = `${pageUrl}${section.section}`;
+                section.section = `${url.url}/${section.section}`;
                 sectionsData.push(section);
             });
         }

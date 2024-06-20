@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { getPageData } from '@/lib';
@@ -10,25 +9,15 @@ import FullWidthImage from '@/section-images/double-vision.webp';
 import { DoubleVisionPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 
-import dynamic from 'next/dynamic';
 import YagHero from '@/page-sections/Masthead/YagHero';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends DoubleVisionPageContentInterface, PageDataInterface<DoubleVisionPageContentInterface> {}
 

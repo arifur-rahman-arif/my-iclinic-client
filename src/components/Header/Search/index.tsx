@@ -55,7 +55,7 @@ const Search = ({ openSearch, setOpenSearch }: SearchProps): JSX.Element => {
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         setOpenSearch(false);
-        router.push(`/search?query=${searchText}`);
+        router.push(`/search?query=${encodeURIComponent(searchText)}`);
         setSearchText('');
     };
 
@@ -63,7 +63,7 @@ const Search = ({ openSearch, setOpenSearch }: SearchProps): JSX.Element => {
         <div
             className={`${styles.styles} ${twMerge(
                 openSearch ? 'opacity-1 pointer-events-auto z-[100]' : 'pointer-events-none z-[98] opacity-0',
-                'fixed top-4 left-1/2 w-full !max-w-[90.8rem] -translate-x-1/2 transition-all duration-500'
+                'fixed left-1/2 top-4 w-full !max-w-[90.8rem] -translate-x-1/2 transition-all duration-500'
             )}`}
             ref={outsideRef}
         >
@@ -129,7 +129,7 @@ const Hit = ({ hit, setOpenSearch, setSearchText }: HitProps): JSX.Element => {
     if (hit) {
         return (
             <Link
-                href={`/search?query=${hit.title}`}
+                href={`/search?query=${encodeURIComponent(hit.title)}`}
                 className="grid grid-cols-[1fr_auto] items-start gap-12"
                 onClick={() => {
                     setOpenSearch(false);

@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import LazyComponent from '@/components/LazyComponent';
 import Page from '@/components/Page';
 import { iclFaqList } from '@/components/page-sections/Faq/faqList';
@@ -18,34 +17,16 @@ import MastheadICL from '@/page-sections/Masthead/MastheadICL';
 import { IclContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
-import dynamic from 'next/dynamic';
-import React from 'react';
 
-const PdfDownload = dynamic(() => import('@/components/page-sections/PdfDownload/PdfDownload'), {
-    loading: () => <ComponentLoader />
-});
-const CompanyLogos = dynamic(() => import('@/components/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/components/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/components/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-const FeaturedPatient = dynamic(() => import('@/components/page-sections/FeaturedPatient/FeaturedPatient'), {
-    loading: () => <ComponentLoader />
-});
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
-const EnvironmentalImpact = dynamic(() => import('@/page-sections/HomePage/EnvironmentalImpact'), {
-    loading: () => <ComponentLoader />
-});
+import PdfDownload from '@/components/page-sections/PdfDownload/PdfDownload';
+import CompanyLogos from '@/components/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/components/page-sections/Faq/Faq';
+import CallbackSection from '@/components/page-sections/RequestCallback/CallbackSection';
+import FeaturedPatient from '@/components/page-sections/FeaturedPatient/FeaturedPatient';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
+import EnvironmentalImpact from '@/page-sections/HomePage/EnvironmentalImpact';
 
-const FinanceCalculatorSection = dynamic(() => import('@/page-sections/icl-components/FinanceCalculatorSection'), {
-    loading: () => <ComponentLoader />
-});
+import FinanceCalculatorSection from '@/page-sections/icl-components/FinanceCalculatorSection';
 
 interface DataInterface extends IclContentInterface, PageDataInterface<IclContentInterface> {}
 
@@ -313,7 +294,6 @@ export default function Icl({ seo, yoastJson, data, iclTreatments }: IclProps): 
                 />
             </LazyComponent>
 
-
             <LazyComponent>
                 <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
             </LazyComponent>
@@ -484,7 +464,7 @@ export async function getStaticProps() {
                         descriptions: convertArrayOfObjectsToStrings(data?.acf?.section10?.descriptions).map((item) =>
                             stripInitialTags(item)
                         )
-                    },
+                    }
                 }
             },
             revalidate: Number(process.env.NEXT_REVALIDATE_TIME)

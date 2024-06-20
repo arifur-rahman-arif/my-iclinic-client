@@ -1,7 +1,5 @@
 import { BreadCrumb } from '@/components/Breadcrumb';
-import ComponentLoader from '@/components/ComponentLoader';
 import { Container } from '@/components/Container';
-import LazyComponent from '@/components/LazyComponent';
 import { LinkStyle } from '@/components/Link';
 import Page from '@/components/Page';
 import { Section } from '@/components/Section';
@@ -10,26 +8,16 @@ import { astigmatismFaqList } from '@/page-sections/Faq/faqList';
 import { CtaSection, FullWidthImageSection, SideImageSection } from '@/page-sections/index';
 import { AstigmatismPageContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
-import dynamic from 'next/dynamic';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import YagHero from '@/page-sections/Masthead/YagHero';
 import BookConsultation from '@/page-sections/SectionParts/BookConsultation/BookConsultation';
 import { Button2 } from '@/components/Buttons';
 import { openFreshdeskChat, stripInitialTags } from '@/utils/miscellaneous';
 
-const CompanyLogos = dynamic(() => import('@/page-sections/CompanyLogos/CompanyLogos'), {
-    loading: () => <ComponentLoader />
-});
-const Faq = dynamic(() => import('@/page-sections/Faq/Faq'), {
-    loading: () => <ComponentLoader />
-});
-const CallbackSection = dynamic(() => import('@/page-sections/RequestCallback/CallbackSection'), {
-    loading: () => <ComponentLoader className="md:min-h-[70rem]" />
-});
-
-const PatientReviews = dynamic(() => import('@/components/page-sections/icl-components/PatientReviews'), {
-    loading: () => <ComponentLoader />
-});
+import CompanyLogos from '@/page-sections/CompanyLogos/CompanyLogos';
+import Faq from '@/page-sections/Faq/Faq';
+import CallbackSection from '@/page-sections/RequestCallback/CallbackSection';
+import PatientReviews from '@/components/page-sections/icl-components/PatientReviews';
 
 interface DataInterface extends AstigmatismPageContentInterface, PageDataInterface<AstigmatismPageContentInterface> {}
 
@@ -67,9 +55,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 }
             />
 
-            <LazyComponent>
-                <CallbackSection />
-            </LazyComponent>
+            <CallbackSection />
 
             <SideImageSection
                 h3LightHeading={data?.section_1?.heading || 'Astigmatism in children and adults'}
@@ -176,9 +162,7 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 </Container>
             </Section>
 
-            <LazyComponent>
-                <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
-            </LazyComponent>
+            <PatientReviews sliders={data?.patientReviews?.reviews} heading={data?.patientReviews?.heading} />
 
             <CtaSection {...data?.ctaSection} />
 
@@ -242,18 +226,14 @@ export default function AstigmatismTreatment({ data, seo, yoastJson }: Astigmati
                 }
             />
 
-            <LazyComponent>
-                <CompanyLogos />
-            </LazyComponent>
+            <CompanyLogos />
 
-            <LazyComponent>
-                <Faq
-                    faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || astigmatismFaqList}
-                    titleLight="Astigmatism"
-                    titleBold="Frequently asked questions"
-                    description="Have a question? We are here to help."
-                />
-            </LazyComponent>
+            <Faq
+                faqs={(Array.isArray(data?.faq_list) && data?.faq_list) || astigmatismFaqList}
+                titleLight="Astigmatism"
+                titleBold="Frequently asked questions"
+                description="Have a question? We are here to help."
+            />
         </Page>
     );
 }
