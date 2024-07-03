@@ -50,6 +50,12 @@ const Pagination = ({ totalPage, currentPage, defaultClassName, className }: Pag
         return path.replace(/\/\d+$/, '');
     };
 
+    let previousPageUrl = currentPage === 1 ? '/articles/' : `${getRouterUrl()}/${currentPage - 1}`;
+
+    if (currentPage === 2) {
+        previousPageUrl = '/articles';
+    }
+
     return (
         <div
             className={`${
@@ -62,7 +68,7 @@ const Pagination = ({ totalPage, currentPage, defaultClassName, className }: Pag
             ) : (
                 <Link
                     title={`Page ${currentPage - 1}`}
-                    href={currentPage === 1 ? '/articles/' : `${getRouterUrl()}/${currentPage - 1}`}
+                    href={previousPageUrl}
                     className="rounded-full p-4 transition-all duration-500 hover:scale-125 hover:bg-brandLight"
                 >
                     <Image
