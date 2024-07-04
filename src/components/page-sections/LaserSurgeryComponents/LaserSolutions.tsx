@@ -20,7 +20,7 @@ const LaserSolutions = ({ section3 }: Props): JSX.Element => {
                 <div className="relative z-[2] grid grid-cols-[auto_1fr] content-start gap-x-6 gap-y-12 px-8 pt-12 md:py-12 lg:py-24 lg:pl-24 xl:py-32 xl:pl-32">
                     <span className="h-full w-[0.8rem] bg-white"></span>
                     <h2 className="w-full max-w-[55rem] font-latoExtraBold normal-case text-white">
-                        {section3.heading || 'Laser solutions'}
+                        {section3?.heading || 'Laser solutions'}
                     </h2>
 
                     <div className="col-span-2 col-start-1 grid max-w-[70rem] gap-6">
@@ -48,7 +48,7 @@ const LaserSolutions = ({ section3 }: Props): JSX.Element => {
                     src={laserSolutions}
                     alt=""
                     className="absolute inset-0 z-[1] h-full w-full object-cover"
-                    {...(section3.image as any)}
+                    {...(section3?.image as any)}
                 />
             </Container>
         </Section>

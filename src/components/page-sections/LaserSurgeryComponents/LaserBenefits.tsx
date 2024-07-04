@@ -14,8 +14,8 @@ const LaserBenefits = ({ section1 }: Props): JSX.Element => {
     return (
         <Section id="laser-benefits">
             <Container className="grid gap-6 md:grid-cols-2">
-                {section1.card1 && <Card {...section1.card1} />}
-                {section1.card2 && <Card {...section1.card2} />}
+                {section1?.card1 && <Card {...section1.card1} />}
+                {section1?.card2 && <Card {...section1.card2} />}
             </Container>
         </Section>
     );

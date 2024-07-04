@@ -1,4 +1,5 @@
 import Page from '@/components/Page';
+import { Faq } from '@/components/page-sections';
 import TripleWinSection from '@/components/page-sections/HomePage/TripleWinSection';
 import BenefitsOfLaserEyeSurgery from '@/components/page-sections/LaserSurgeryComponents/BenefitsOfLaserEyeSurgery';
 import ComparisonTable from '@/components/page-sections/LaserSurgeryComponents/ComparisonTable';
@@ -8,11 +9,10 @@ import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/La
 import SurgeryDetails from '@/components/page-sections/LaserSurgeryComponents/SurgeryDetails';
 import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
 import MastheadLaserEyeSurgery from '@/components/page-sections/Masthead/MastheadLaserEyeSurgery';
-import { getPageData, getTreatments } from '@/lib';
+import { getPageData } from '@/lib';
 import { PageDataInterface, VisionCorrectionContentInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
-import React from 'react';
 
 interface DataInterface extends VisionCorrectionContentInterface, PageDataInterface<VisionCorrectionContentInterface> {}
 
@@ -35,7 +35,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
     return (
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <MastheadLaserEyeSurgery
-                masthead={data.masthead}
+                masthead={data?.masthead}
                 formClassName="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
                 className="[&_.finance-text]:hidden [&_.sitemap-link]:md:-translate-y-8"
                 button={{
@@ -44,9 +44,9 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                 }}
             />
 
-            <LaserBenefits section1={data.section1} />
+            <LaserBenefits section1={data?.section1} />
 
-            <LaserSolutions section3={data.section3} />
+            <LaserSolutions section3={data?.section3} />
 
             <SurgeryDetails
                 link={data?.section4?.link || '/relex-smile-london'}
@@ -237,7 +237,7 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
                 <></>
             )}
 
-            <TreatmentPrices section2={data.section2} />
+            <TreatmentPrices section2={data?.section2} />
 
             <ComparisonTable
                 table={data?.section10?.table}
@@ -251,9 +251,19 @@ export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JS
 
             <TripleWinSection />
 
-            <BenefitsOfLaserEyeSurgery section11={data.section11} />
+            <BenefitsOfLaserEyeSurgery section11={data?.section11} />
 
             <ConsultationSection className="max-w-[45rem] [&_.consultation-reason]:hidden [&_.form-footnote]:hidden" />
+
+            {data?.faq_list?.length ? (
+                <Faq
+                    faqs={data?.faq_list}
+                    titleLight={data?.faqSection?.title}
+                    description={data?.faqSection?.description || 'Have a question?'}
+                />
+            ) : (
+                <></>
+            )}
         </Page>
     );
 }
@@ -272,20 +282,6 @@ export async function getStaticProps(ctx: any) {
             draft: true
         });
 
-        const treatments = await getTreatments();
-        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'ICL Surgery');
-
-        /**
-         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
-         *
-         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
-         * @returns {Array<Object>} - The updated array of cataract treatment objects.
-         */
-        iclTreatments = iclTreatments.map((treatment, index) => ({
-            ...treatment,
-            active: index === 0
-        }));
-
         /**
          * Sort the image data into specified format
          * @param {any} img
@@ -293,7 +289,6 @@ export async function getStaticProps(ctx: any) {
          */
         return {
             props: {
-                iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {

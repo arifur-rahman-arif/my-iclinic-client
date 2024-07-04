@@ -8,12 +8,12 @@ import LaserSolutions from '@/components/page-sections/LaserSurgeryComponents/La
 import SurgeryDetails from '@/components/page-sections/LaserSurgeryComponents/SurgeryDetails';
 import TreatmentPrices from '@/components/page-sections/LaserSurgeryComponents/TreatmentPrices';
 import MastheadLaserEyeSurgery from '@/components/page-sections/Masthead/MastheadLaserEyeSurgery';
-import { getPageData, getTreatments } from '@/lib';
-import { LaserEyeSurgeryContentInterface, PageDataInterface, WpPageResponseInterface } from '@/types';
+import { getPageData } from '@/lib';
+import { PageDataInterface, VisionCorrectionContentInterface, WpPageResponseInterface } from '@/types';
 import { convertArrayOfObjectsToStrings, formatImage } from '@/utils/apiHelpers';
 import { stripInitialTags } from '@/utils/miscellaneous';
 
-interface DataInterface extends LaserEyeSurgeryContentInterface, PageDataInterface<LaserEyeSurgeryContentInterface> {}
+interface DataInterface extends VisionCorrectionContentInterface, PageDataInterface<VisionCorrectionContentInterface> {}
 
 interface IclProps {
     seo: any;
@@ -27,7 +27,7 @@ interface IclProps {
  * @export
  * @returns {JSX.Element}
  */
-export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX.Element {
+export default function VisionCorrection({ seo, yoastJson, data }: IclProps): JSX.Element {
     const heading = data?.masthead_heading || 'Laser Eye Surgery';
     const subheading = data?.masthead_subheading || 'Reducing or eliminating the need for glasses or contact lenses';
 
@@ -35,7 +35,12 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
         <Page title={heading} description={subheading} seo={seo} yoastJson={yoastJson}>
             <MastheadLaserEyeSurgery
                 masthead={data.masthead}
-                formClassName="lg:rounded-bl-none lg:rounded-br-none max-w-[50rem] lg:pb-0 lg:px-16"
+                formClassName="!w-full max-w-[50rem] !rounded-bl-none rounded-br-none bg-white lg:px-24 lg:pb-0 lg:pt-24 [&_.consultation-reason]:hidden [&_.form-footnote]:hidden"
+                className="[&_.finance-text]:hidden [&_.sitemap-link]:md:-translate-y-8"
+                button={{
+                    text: 'Contact us',
+                    link: '/contact-us'
+                }}
             />
 
             <LaserBenefits section1={data.section1} />
@@ -129,49 +134,155 @@ export default function LaserEyeSurgery({ seo, yoastJson, data }: IclProps): JSX
                 }}
             />
 
+            {data?.section13?.heading ? (
+                <SurgeryDetails
+                    link={data?.section13?.link}
+                    sectionId={data?.section13?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section13?.heading}
+                    descriptions={data?.section13?.descriptions}
+                    image={{
+                        ...(data?.section13?.image as any)
+                    }}
+                    imageClassName="md:order-2"
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section14?.heading ? (
+                <SurgeryDetails
+                    link={data?.section14?.link}
+                    sectionId={data?.section14?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section14?.heading}
+                    descriptions={data?.section14?.descriptions}
+                    image={{
+                        ...(data?.section14?.image as any)
+                    }}
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section15?.heading ? (
+                <SurgeryDetails
+                    link={data?.section15?.link}
+                    sectionId={data?.section15?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section15?.heading}
+                    descriptions={data?.section15?.descriptions}
+                    image={{
+                        ...(data?.section15?.image as any)
+                    }}
+                    imageClassName="md:order-2"
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section16?.heading ? (
+                <SurgeryDetails
+                    link={data?.section16?.link}
+                    sectionId={data?.section16?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section16?.heading}
+                    descriptions={data?.section16?.descriptions}
+                    image={{
+                        ...(data?.section16?.image as any)
+                    }}
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section17?.heading ? (
+                <SurgeryDetails
+                    link={data?.section17?.link}
+                    sectionId={data?.section17?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section17?.heading}
+                    descriptions={data?.section17?.descriptions}
+                    image={{
+                        ...(data?.section17?.image as any)
+                    }}
+                    imageClassName="md:order-2"
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section18?.heading ? (
+                <SurgeryDetails
+                    link={data?.section18?.link}
+                    sectionId={data?.section18?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section18?.heading}
+                    descriptions={data?.section18?.descriptions}
+                    image={{
+                        ...(data?.section18?.image as any)
+                    }}
+                />
+            ) : (
+                <></>
+            )}
+
+            {data?.section19?.heading ? (
+                <SurgeryDetails
+                    link={data?.section19?.link}
+                    sectionId={data?.section19?.heading.replace(' ', '-').toLowerCase()}
+                    heading={data?.section19?.heading}
+                    descriptions={data?.section19?.descriptions}
+                    image={{
+                        ...(data?.section19?.image as any)
+                    }}
+                    imageClassName="md:order-2"
+                />
+            ) : (
+                <></>
+            )}
+
             <TreatmentPrices section2={data.section2} />
 
-            {/* <ComparisonTable table={data?.section10?.table} */}
-            {/*                  heading={data?.section10?.heading || 'Let`s compare our service with other clinics'} /> */}
-
             <ComparisonTable
+                table={data?.section10?.table}
+                heading={data?.section10?.heading || 'Let`s compare our service with other clinics'}
+            />
+
+            {/* <ComparisonTable
                 table={data?.section12?.table}
                 heading={data?.section12?.heading || 'How much you save with us'}
-            />
+            /> */}
 
             <TripleWinSection />
 
             <BenefitsOfLaserEyeSurgery section11={data.section11} />
 
-            <ConsultationSection />
+            <ConsultationSection className="max-w-[45rem] [&_.consultation-reason]:hidden [&_.form-footnote]:hidden" />
         </Page>
     );
 }
 
 /**
- * Fetch the data from the WordPress database
+ * Fetch data from WordPress
  *
- * @returns {Promise<{props: {posts: any}}>}
+ * @export
+ * @param {*} ctx
+ * @returns {*}
  */
-export async function getStaticProps() {
+export async function getStaticProps(ctx: any) {
     try {
-        const data: WpPageResponseInterface<LaserEyeSurgeryContentInterface> = await getPageData({
-            slug: 'laser-eye-surgery'
+        const data: WpPageResponseInterface<VisionCorrectionContentInterface> = await getPageData({
+            slug: 'eye-treatments-london'
         });
 
-        const treatments = await getTreatments();
-        let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'ICL Surgery');
+        // const treatments = await getTreatments();
+        // let iclTreatments = treatments.filter((treatment) => treatment.group_name === 'ICL Surgery');
 
-        /**
-         * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
-         *
-         * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
-         * @returns {Array<Object>} - The updated array of cataract treatment objects.
-         */
-        iclTreatments = iclTreatments.map((treatment, index) => ({
-            ...treatment,
-            active: index === 0
-        }));
+        // /**
+        //  * Updates the `iclTreatments` array by mapping each treatment object and setting the 'active' property based on the index.
+        //  *
+        //  * @param {Array<Object>} iclTreatments - The array of cataract treatment objects to be updated.
+        //  * @returns {Array<Object>} - The updated array of cataract treatment objects.
+        //  */
+        // iclTreatments = iclTreatments.map((treatment, index) => ({
+        //     ...treatment,
+        //     active: index === 0
+        // }));
 
         /**
          * Sort the image data into specified format
@@ -180,7 +291,7 @@ export async function getStaticProps() {
          */
         return {
             props: {
-                iclTreatments,
+                // iclTreatments,
                 seo: data?.yoast_head || '',
                 yoastJson: data?.yoast_head_json || '',
                 data: {
@@ -189,9 +300,7 @@ export async function getStaticProps() {
                         ...data?.acf?.masthead,
                         image: {
                             ...(data?.acf?.masthead?.image && formatImage(data.acf?.masthead?.image))
-                        },
-                        priceText: stripInitialTags(data?.acf?.masthead?.priceText || ''),
-                        financeText: stripInitialTags(data?.acf?.masthead?.financeText || '')
+                        }
                     },
                     section1: {
                         ...data?.acf?.section1,
@@ -265,6 +374,69 @@ export async function getStaticProps() {
                         ),
                         image: {
                             ...(data?.acf?.section9?.image && formatImage(data.acf.section9.image))
+                        }
+                    },
+                    section13: {
+                        ...data?.acf?.section13,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section13?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section13?.image && formatImage(data.acf.section13.image))
+                        }
+                    },
+                    section14: {
+                        ...data?.acf?.section14,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section14?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section14?.image && formatImage(data.acf.section14.image))
+                        }
+                    },
+                    section15: {
+                        ...data?.acf?.section15,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section15?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section15?.image && formatImage(data.acf.section15.image))
+                        }
+                    },
+                    section16: {
+                        ...data?.acf?.section16,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section16?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section16?.image && formatImage(data.acf.section16.image))
+                        }
+                    },
+                    section17: {
+                        ...data?.acf?.section17,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section17?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section17?.image && formatImage(data.acf.section17.image))
+                        }
+                    },
+                    section18: {
+                        ...data?.acf?.section18,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section18?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section18?.image && formatImage(data.acf.section18.image))
+                        }
+                    },
+                    section19: {
+                        ...data?.acf?.section19,
+                        descriptions: convertArrayOfObjectsToStrings(data?.acf?.section19?.descriptions).map((item) =>
+                            stripInitialTags(item)
+                        ),
+                        image: {
+                            ...(data?.acf?.section19?.image && formatImage(data.acf.section19.image))
                         }
                     }
                 } as DataInterface

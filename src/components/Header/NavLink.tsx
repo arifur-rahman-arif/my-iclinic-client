@@ -53,7 +53,7 @@ const NavLink = ({ menu, router }: NavLinkInterface): JSX.Element => {
                         />
                     )}
 
-                    {menu.slug === 'eye-treatments' && (
+                    {menu.slug === 'eye-treatments-london' && (
                         <EyeTreatments
                             router={router}
                             soloLinks={[
@@ -198,7 +198,8 @@ const ParentMenuItem = ({ menu, router }: { menu: NavMenuType; router: NextRoute
                 <>
                     {menu.slug === 'laser-eye-surgery' ||
                     menu.slug === 'cataract' ||
-                    menu.slug === 'pricing-and-financing' ? (
+                    menu.slug === 'pricing-and-financing' ||
+                    menu.slug === 'eye-treatments-london' ? (
                         <>
                             <Link
                                 href={menu.url}

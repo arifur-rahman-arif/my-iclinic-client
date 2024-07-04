@@ -9,7 +9,7 @@ import FaqSearch from './FaqSearch';
 interface FaqInterface {
     faqs: FaqListInterface[];
     titleLight: string;
-    titleBold: string;
+    titleBold?: string;
     description: ReactNode;
 }
 

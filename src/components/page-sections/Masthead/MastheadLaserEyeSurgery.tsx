@@ -52,16 +52,19 @@ const MastheadLaserEyeSurgery = ({
                         {masthead?.subheading || 'reducing or eliminating the need for glasses or contact lenses'}
                     </p>
 
-                    <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white">
-                        From as low as{' '}
-                        <span className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">
-                            {masthead.priceText || '£50/pcm'}
-                        </span>
+                    <span className="">
+                        <span
+                            className="font-latoBold text-[2.4rem] leading-[3.2rem] text-white [&_*]:font-latoBold [&_*]:text-[2.4rem] [&_*]:leading-[3.2rem] [&_*]:text-white"
+                            dangerouslySetInnerHTML={{ __html: masthead?.priceText }}
+                        ></span>
                         <br />
-                        <span className="finance-text font-latoBold text-[2rem] leading-[2.8rem] text-white">
-                            <b className="font-latoBold text-[2.4rem] leading-[3.2rem] text-[#FFA500]">0%</b> Finance
-                            available
-                        </span>
+
+                        {masthead?.financeText ? (
+                            <span
+                                className="finance-text font-latoBold text-[2.4rem] leading-[3.2rem] text-white [&_*]:font-latoBold [&_*]:text-[2.4rem] [&_*]:leading-[3.2rem] [&_*]:text-white"
+                                dangerouslySetInnerHTML={{ __html: masthead?.financeText }}
+                            ></span>
+                        ) : null}
                     </span>
 
                     <div className="mt-12 grid justify-items-center gap-10 md:justify-items-start">

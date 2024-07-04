@@ -86,4 +86,9 @@ export default interface VisionCorrectionContentInterface {
             description: string;
         }>
     }
+
+    faqSection: {
+        title: string;
+        description: string;
+    }
 }

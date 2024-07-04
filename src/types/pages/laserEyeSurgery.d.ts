@@ -19,6 +19,7 @@ export default interface LaserEyeSurgeryContentInterface {
         subheading: string;
         priceText: string;
         image: ImageType3,
+        financeText?: string;
     };
     // Laser Benefits
     section1: {
