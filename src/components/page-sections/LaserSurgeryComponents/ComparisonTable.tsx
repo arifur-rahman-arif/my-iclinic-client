@@ -17,6 +17,7 @@ interface Props {
  * @returns {*}  {JSX.Element}
  */
 const ComparisonTable = ({ heading, table }: Props): JSX.Element => {
+    if (!table) return <></>;
     if (!table[0]?.tableRows) return <></>;
 
     return (

@@ -82,8 +82,8 @@ export const navMenuList: NavMenuType[] = [
     },
     {
         name: 'Eye treatments',
-        url: '/eye-treatments',
-        slug: 'eye-treatments',
+        url: '/eye-treatments-london',
+        slug: 'eye-treatments-london',
         subMenuOpen: false,
         megaMenu: true,
         submenu: [
