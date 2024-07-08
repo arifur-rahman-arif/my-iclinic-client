@@ -304,13 +304,14 @@ export const ConsultantItem = ({
             className={twMerge('translate-y-8 opacity-0', className)}
             onClick={() => {
                 const parentMenus: NodeListOf<HTMLElement> = document.querySelectorAll('.parent-menu');
+
                 parentMenus.forEach((element: HTMLElement | null) => {
                     if (element) {
                         element.style.pointerEvents = 'none';
 
                         setTimeout(() => {
                             element.style.pointerEvents = 'auto';
-                        }, 1000);
+                        }, 3000);
                     }
                 });
 

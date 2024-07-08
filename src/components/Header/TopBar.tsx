@@ -75,7 +75,7 @@ const TopBar = ({ setOpenSearch }: TopBarProps): JSX.Element => {
                 </ul>
 
                 <div className="flex items-center justify-center justify-self-end">
-                    <div className="group/menu-item relative grid h-full place-items-center">
+                    <div className="group/menu-item parent-menu relative grid h-full place-items-center">
                         <SpecialistMenu isMenuActive={isMenuActive} />
 
                         <OurSpecialists router={router} />
