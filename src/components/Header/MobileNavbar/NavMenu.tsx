@@ -69,7 +69,8 @@ const NavMenu = ({ setOpenMobileMenu }: NavMenuProps): JSX.Element => {
                                         ))}
                                     </div>
                                 )}
-                                {menu.slug === 'eye-treatments' && (
+
+                                {menu.slug === 'eye-treatments-london' && (
                                     <MobileEyeTreatments
                                         router={router}
                                         setOpenMobileMenu={setOpenMobileMenu}
