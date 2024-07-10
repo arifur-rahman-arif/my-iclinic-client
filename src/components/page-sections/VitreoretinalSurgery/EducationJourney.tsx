@@ -28,7 +28,7 @@ const EducationJourney = ({ section3 }: EducationJourneyProps): JSX.Element => {
 };
 
 /**
- * Left column
+ * University colum
  *
  * @returns {JSX.Element}
  * @constructor
@@ -36,6 +36,20 @@ const EducationJourney = ({ section3 }: EducationJourneyProps): JSX.Element => {
 const LeftColumn = (): JSX.Element => {
     return (
         <div className="grid gap-24 overflow-hidden rounded-[1rem] border border-[#EAECF0] pt-12 lg:gap-24 xl:rounded-bl-none xl:rounded-tl-none">
+            <div className="grid gap-6 px-12 xl:px-40">
+                <div className="grid gap-6 lg:grid-cols-2">
+                    <Image src="/images/logos/university-college-london.png" alt="" width={150} height={140} />
+                    <span className="font-latoBold text-[2rem] leading-[2.8rem] text-[#003E79] lg:self-end lg:justify-self-end">
+                        2016
+                    </span>
+                    <span className="h-[0.1rem] bg-heading lg:col-span-2"></span>
+                </div>
+
+                <span className="max-w-[37.8rem] font-mulishBold uppercase text-heading">
+                    University College London PhD (in bionic eye / retinal prosthesis implant)
+                </span>
+            </div>
+
             <div className="grid gap-6 px-12 xl:px-40">
                 <div className="grid gap-6 lg:grid-cols-2">
                     <Image src="/images/logos/the-royal-collage.png" alt="" width={150} height={140} />
@@ -49,7 +63,11 @@ const LeftColumn = (): JSX.Element => {
                     The royal college of ophthalmologists
                 </span>
 
-                <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">MRCOphth</span>
+                <div className="grid gap-2">
+                    <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">FRCOphth</span>
+                    <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">2004 - 2006 MRCophth.</span>
+                    <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">2012 FRCOphth</span>
+                </div>
             </div>
 
             <div className="grid gap-6 px-12 pb-12 lg:pb-0 xl:px-40">
@@ -64,9 +82,13 @@ const LeftColumn = (): JSX.Element => {
                 <span className="font-mulishBold uppercase text-heading">university ouf Cambridge</span>
 
                 <div className="grid gap-2">
-                    <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">MRCOphth</span>
+                    {/* <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">MRCOphth</span> */}
                     <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">
                         MB BChir, Bachelor of Medicine and Surgery
+                    </span>
+
+                    <span className="text-[1.8rem] leading-[2.8rem] text-[#003E79]">
+                        2016 University College London PhD (In bionic eye / retinal prosthesis implant).
                     </span>
                 </div>
             </div>
